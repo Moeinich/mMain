@@ -10,9 +10,9 @@ import java.util.ArrayList;
 public class startMining {
     private ArrayList<Task> taskList = new ArrayList<>();
     public void startMining() {
-        taskList.add(new doBanking());
         taskList.add(new depositOre());
         taskList.add(new getPickaxe());
+        taskList.add(new doBanking());
         taskList.add(new goMining());
         taskList.add(new doMining());
 
