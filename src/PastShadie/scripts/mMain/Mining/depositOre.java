@@ -1,12 +1,9 @@
-package Mining;
+package src.PastShadie.scripts.mMain.Mining;
 
-import Assets.ItemList;
-import Assets.Task;
-import org.powbot.api.Condition;
-import org.powbot.api.Locatable;
+import src.PastShadie.scripts.mMain.Assets.ItemList;
+import src.PastShadie.scripts.mMain.Assets.Task;
 import org.powbot.api.rt4.Bank;
 import org.powbot.api.rt4.Inventory;
-import org.powbot.api.rt4.Players;
 
 public class depositOre extends Task {
     @Override

@@ -1,3 +1,4 @@
+package src.PastShadie.scripts.mMain;
 
 import org.powbot.api.rt4.walking.model.Skill;
 import org.powbot.api.script.AbstractScript;
@@ -9,8 +10,8 @@ import org.powbot.api.script.paint.PaintBuilder;
 import org.powbot.mobile.service.ScriptUploader;
 
 @ScriptManifest(
-        name = "pMain",
-        description = "Progressively levels different skills",
+        name = "mMain",
+        description = "Progressively levels different skills with an emphasis on ironman-mode",
         version = "0.0.1"
 )
 @ScriptConfiguration.List(
@@ -19,7 +20,7 @@ import org.powbot.mobile.service.ScriptUploader;
                         name =  "Skill",
                         description = "Which skill would you like to do?",
                         defaultValue = "Mining",
-                        allowedValues = {"Mining"},
+                        allowedValues = {"Mining", "Woodcutting"},
                         optionType = OptionType.STRING
                 )
         }
@@ -32,11 +33,11 @@ public class mMain extends AbstractScript {
     //adb.exe forward tcp:61666 tcp:61666
 
     public static void main(String[] args) {
-        new ScriptUploader().uploadAndStart("mMain", "Account", "127.0.0.1:5555", true, true);
+        new ScriptUploader().uploadAndStart("mMain", "Account", "127.0.0.1:5555", true, false);
     }
+
     @Override
     public void onStart() {
-        //Script paint, so we can see whats up
         String skill = getOption("Skill");
 
         Paint p = new PaintBuilder()
@@ -55,8 +56,8 @@ public class mMain extends AbstractScript {
         String skill = getOption("Skill");
 
         if (skill.equals("Mining")) {
-            var startMining = new Mining.startMining();
+            var startMining = new src.PastShadie.scripts.mMain.Mining.startMining();
             startMining.startMining();
-        }
     }
+}
 }

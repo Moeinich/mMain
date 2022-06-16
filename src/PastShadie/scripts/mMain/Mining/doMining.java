@@ -1,6 +1,6 @@
-package Mining;
+package src.PastShadie.scripts.mMain.Mining;
 
-import Assets.Task;
+import src.PastShadie.scripts.mMain.Assets.Task;
 import org.powbot.api.Condition;
 import org.powbot.api.rt4.*;
 

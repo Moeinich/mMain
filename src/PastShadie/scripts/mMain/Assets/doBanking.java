@@ -1,6 +1,6 @@
-package Assets;
+package src.PastShadie.scripts.mMain.Assets;
 
-import org.powbot.api.Condition;
+import src.PastShadie.scripts.mMain.Assets.Task;
 import org.powbot.api.Locatable;
 import org.powbot.api.rt4.Bank;
 import org.powbot.api.rt4.Inventory;

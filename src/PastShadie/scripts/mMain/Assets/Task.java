@@ -1,4 +1,4 @@
-package Assets;
+package src.PastShadie.scripts.mMain.Assets;
 
 public abstract class Task {
 

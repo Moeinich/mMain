@@ -1,4 +1,4 @@
-package Assets;
+package src.PastShadie.scripts.mMain.Assets;
 
 public class ItemList {
     public static final int DWARF_REMAINS_0=0;
