@@ -8,6 +8,7 @@ public class drinkPotion extends Task {
     int attackPotThreshold = 5;
     @Override
     public boolean activate() {
+        //Currently does attack potion!
         return Skills.realLevel(Constants.SKILLS_ATTACK) + attackPotThreshold > Skills.level(Constants.SKILLS_ATTACK);
     }
     @Override

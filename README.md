@@ -31,4 +31,4 @@ Will randomly switch leveling between skills and will slowly utilize every singl
 - [X] Seagull low-cb
 - [ ] Minotaur, Stronghold of Security
 - [X] Food usage *(Needs testing)*
-- [ ] Potion usage
+- [X] Potion usage *(Needs testing)*
