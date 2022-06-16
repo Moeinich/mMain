@@ -14,7 +14,6 @@ public class skillData {
     public static final Tile miningIronLocation = new Tile(3286,3368);
 
     //Combat stuff
-    public ArrayList<Task> combatTask = new ArrayList<Task>();
     public static final Area Seagull_area = new Area(
             new Tile(3151, 2841),
             new Tile(3157,2850)

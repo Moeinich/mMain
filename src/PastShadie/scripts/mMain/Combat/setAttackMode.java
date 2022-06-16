@@ -1,7 +1,6 @@
 package src.PastShadie.scripts.mMain.Combat;
 
 import org.powbot.api.rt4.Combat;
-import org.powbot.api.rt4.Inventory;
 import src.PastShadie.scripts.mMain.Assets.Task;
 
 public class setAttackMode extends Task {

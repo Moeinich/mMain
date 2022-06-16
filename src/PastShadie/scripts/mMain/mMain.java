@@ -34,7 +34,6 @@ public class mMain extends AbstractScript {
     public static void main(String[] args) {
         new ScriptUploader().uploadAndStart("mMain", "Account", "127.0.0.1:5555", true, false);
     }
-
     @Override
     public void onStart() {
         String skill = getOption("Skill");
@@ -47,16 +46,7 @@ public class mMain extends AbstractScript {
                 .trackSkill(Skill.Defence)
                 .x(30)
                 .y(50)
-                /*.trackInventoryItem(ItemList.LOGS_1511, "Logs")
-                .trackInventoryItem(ItemList.OAK_LOGS_1521, "Oak logs")
-                .trackInventoryItem(ItemList.WILLOW_LOGS_1519, "Willow logs")
-                .trackInventoryItem(ItemList.RAW_SHRIMPS_317, "Shrimps")
-                .trackInventoryItem(ItemList.RAW_ANCHOVIES_321, "Anchovies")
-                .trackInventoryItem(ItemList.RAW_TROUT_335, "Trouts")
-                .trackInventoryItem(ItemList.RAW_SALMON_331, "Salmons")
-                .trackInventoryItem(ItemList.COPPER_ORE_436, "Copper Ore")
-                .trackInventoryItem(ItemList.TIN_ORE_438, "Tin ore")
-                .trackInventoryItem(ItemList.IRON_ORE_440, "Iron ore")*/
+                //.trackInventoryItem(ItemList.LOGS_1511, "Logs")
                 .build();
         addPaint(p);
     }
