@@ -63,5 +63,9 @@ public class mMain extends AbstractScript {
             var startCombat = new src.PastShadie.scripts.mMain.Combat.startCombat();
             startCombat.Combat();
         }
+        if (skill.equals("Fishing")) {
+            var startCombat = new src.PastShadie.scripts.mMain.Combat.startCombat();
+            startCombat.Combat();
+        }
 }
 }

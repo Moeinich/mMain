@@ -16,14 +16,14 @@ Will randomly switch leveling between skills and will slowly utilize every singl
 - [ ] Willows: 30-infinity
 
 **Fishing:**
-- [ ] Train to level 20 in Al Kharid
-- [ ] Train from 20-? at Barbarian Village.
+- [X] Train to level 20 in Al Kharid *(Needs testing)*
+- [X] Train from 20-? at Barbarian Village. *(Needs testing)*
 - [ ] Possibly add Barbarian fishing switch for members.
 
 **Cooking:**
 - [ ] Cooks fish caught from fishing at Edgeville
 
-**Mining:** (In progress)
+**Mining:**
 - [X] Mines Copper & Tin to level 20 at varrock *(Needs testing)*
 - [X] Mines Iron from 20-infinity at varrock *(Needs testing)*
 
