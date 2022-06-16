@@ -57,4 +57,10 @@ public class skillData {
             new Tile(3056,3255),
             new Tile(3064, 3249)
     );
+
+    //Cooking
+    public static final Area cookingAreaEdgeville = new Area (
+            new Tile(3077,3496),
+            new Tile(3081,3491)
+    );
 }
