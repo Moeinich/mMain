@@ -3,7 +3,6 @@ package src.PastShadie.scripts.mMain.Combat;
 import org.powbot.api.Condition;
 import org.powbot.api.rt4.*;
 import src.PastShadie.scripts.mMain.Assets.Task;
-import src.PastShadie.scripts.mMain.Assets.skillData;
 
 public class eatFood extends Task {
     @Override

@@ -5,8 +5,6 @@ import org.powbot.api.script.*;
 import org.powbot.api.script.paint.Paint;
 import org.powbot.api.script.paint.PaintBuilder;
 import org.powbot.mobile.service.ScriptUploader;
-import src.PastShadie.scripts.mMain.Assets.ItemList;
-import src.PastShadie.scripts.mMain.Assets.skillData;
 
 @ScriptManifest(
         name = "mMain",
@@ -19,7 +17,7 @@ import src.PastShadie.scripts.mMain.Assets.skillData;
                         name =  "Skill",
                         description = "Which skill would you like to do?",
                         defaultValue = "Mining",
-                        allowedValues = {"Mining", "Combat", "Fishing"},
+                        allowedValues = {"Mining", "Combat", "Fishing", "Woodcutting"},
                         optionType = OptionType.STRING
                 )
         }
@@ -64,6 +62,10 @@ public class mMain extends AbstractScript {
             startCombat.Combat();
         }
         if (skill.equals("Fishing")) {
+            var startCombat = new src.PastShadie.scripts.mMain.Combat.startCombat();
+            startCombat.Combat();
+        }
+        if (skill.equals("Woodcutting")) {
             var startCombat = new src.PastShadie.scripts.mMain.Combat.startCombat();
             startCombat.Combat();
         }

@@ -11,9 +11,10 @@ Will randomly switch leveling between skills and will slowly utilize every singl
 - [ ] Proper task management (On going)
 
 **Woodcutting:**
-- [ ] Normal trees: 1-15
-- [ ] Oaks: 15-30
-- [ ] Willows: 30-infinity
+- [X] Normal trees: 1-15 *(Needs testing)*
+- [X] Oaks: 15-30 *(Needs testing)*
+- [X] Willows: 30-infinity *(Needs testing)*
+- [X] Upgrades axes along the way if they are available in the bank. *(Needs testing)*
 
 **Fishing:**
 - [X] Train to level 20 in Al Kharid *(Needs testing)*
@@ -26,6 +27,7 @@ Will randomly switch leveling between skills and will slowly utilize every singl
 **Mining:**
 - [X] Mines Copper & Tin to level 20 at varrock *(Needs testing)*
 - [X] Mines Iron from 20-infinity at varrock *(Needs testing)*
+- [X] Upgrades Pickaxes along the way if they are available in the bank. *(Needs testing)*
 
 **Combat:**
 - [X] Seagull low-cb

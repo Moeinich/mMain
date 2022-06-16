@@ -1,7 +1,6 @@
 package src.PastShadie.scripts.mMain.Combat;
 
 import org.powbot.api.Condition;
-import org.powbot.api.rt4.Inventory;
 import org.powbot.api.rt4.Npc;
 import org.powbot.api.rt4.Npcs;
 import org.powbot.api.rt4.Players;

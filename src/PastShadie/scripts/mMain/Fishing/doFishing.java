@@ -2,7 +2,6 @@ package src.PastShadie.scripts.mMain.Fishing;
 
 import org.powbot.api.Condition;
 import org.powbot.api.rt4.*;
-import src.PastShadie.scripts.mMain.Assets.ItemList;
 import src.PastShadie.scripts.mMain.Assets.Task;
 import src.PastShadie.scripts.mMain.Assets.skillData;
 

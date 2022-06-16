@@ -2,12 +2,10 @@ package src.PastShadie.scripts.mMain.Assets;
 
 import org.powbot.api.Area;
 import org.powbot.api.Tile;
-import org.powbot.api.rt4.Constants;
+import org.powbot.api.rt4.GameObject;
 import org.powbot.api.rt4.Npc;
 import org.powbot.api.rt4.Npcs;
-import org.powbot.api.rt4.Skills;
-
-import java.util.ArrayList;
+import org.powbot.api.rt4.Objects;
 
 public class skillData {
 
@@ -37,5 +35,26 @@ public class skillData {
     public static final Area BarbarianVillageFishingArea = new Area(
             new Tile(3101, 3422),
             new Tile(3109,3436)
+    );
+
+    //Woodcutting
+    public static final int[] normalTreeID = {1276, 1278};
+    public static final int[] oakTreeID = {10820};
+    public static final int[] willowTreeID = {10819};
+    public static GameObject treeNormal = Objects.stream().within(6).id(normalTreeID).nearest().first();
+    public static GameObject treeOak = Objects.stream().within(6).id(oakTreeID).nearest().first();
+    public static GameObject treeWillow = Objects.stream().within(6).id(willowTreeID).nearest().first();
+
+    public static final Area normalTreeLocation = new Area (
+            new Tile(3032,3273),
+            new Tile(3049, 3260)
+    );
+    public static final Area oakTreeLocation = new Area (
+            new Tile(3099,3245),
+            new Tile(3104, 3240)
+    );
+    public static final Area willowTreeLocation = new Area (
+            new Tile(3056,3255),
+            new Tile(3064, 3249)
     );
 }

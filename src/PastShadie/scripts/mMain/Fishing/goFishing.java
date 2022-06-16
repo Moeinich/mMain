@@ -2,7 +2,6 @@ package src.PastShadie.scripts.mMain.Fishing;
 
 import org.powbot.api.rt4.*;
 import org.powbot.api.rt4.walking.model.Skill;
-import src.PastShadie.scripts.mMain.Assets.ItemList;
 import src.PastShadie.scripts.mMain.Assets.Task;
 
 import static src.PastShadie.scripts.mMain.Assets.skillData.*;

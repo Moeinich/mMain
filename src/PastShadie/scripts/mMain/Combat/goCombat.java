@@ -1,6 +1,5 @@
 package src.PastShadie.scripts.mMain.Combat;
 
-import org.powbot.api.rt4.Inventory;
 import org.powbot.api.rt4.Movement;
 import org.powbot.api.rt4.Players;
 import src.PastShadie.scripts.mMain.Assets.Task;
