@@ -1,4 +1,4 @@
-package src.PastShadie.scripts.mMain.Woodcutting;
+package src.PastShadie.scripts.mMain.Cooking;
 
 import org.powbot.api.Locatable;
 import org.powbot.api.rt4.Movement;
@@ -8,10 +8,13 @@ import src.PastShadie.scripts.mMain.Assets.Task;
 import org.powbot.api.rt4.Bank;
 import org.powbot.api.rt4.Inventory;
 
-public class woodcuttingBanking extends Task {
+public class cookingBanking extends Task {
     @Override
     public boolean activate() {
-        return Inventory.isFull() || Inventory.stream().id(ItemList.BRONZE_AXE_1351, ItemList.STEEL_AXE_1353, ItemList.MITHRIL_AXE_1355, ItemList.ADAMANT_AXE_1357, ItemList.RUNE_AXE_1359).count() == 0;
+        return Inventory.stream().id(ItemList.RAW_SHRIMPS_317,
+                                     ItemList.RAW_ANCHOVIES_321,
+                                     ItemList.RAW_TROUT_335,
+                                     ItemList.RAW_SALMON_331).count() == 0;
     }
     @Override
     public void execute() {

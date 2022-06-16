@@ -1,11 +1,9 @@
 package src.PastShadie.scripts.mMain.Fishing;
 
-import org.powbot.api.rt4.Constants;
-import org.powbot.api.rt4.Skills;
+import org.powbot.api.Locatable;
+import org.powbot.api.rt4.*;
 import src.PastShadie.scripts.mMain.Assets.ItemList;
 import src.PastShadie.scripts.mMain.Assets.Task;
-import org.powbot.api.rt4.Bank;
-import org.powbot.api.rt4.Inventory;
 
 public class fishBanking extends Task {
     @Override
@@ -14,6 +12,11 @@ public class fishBanking extends Task {
     }
     @Override
     public void execute() {
-        Bank.open();
+        Locatable nearestBank = Bank.nearest();
+        if (Bank.inViewport() && nearestBank.tile().distanceTo(Players.local()) < 2) {
+            Bank.open();
+        } else {
+            Movement.moveToBank();
+        }
     }
 }
