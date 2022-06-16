@@ -33,7 +33,7 @@ public class mMain extends AbstractScript {
     //adb.exe forward tcp:61666 tcp:61666
 
     public static void main(String[] args) {
-        new ScriptUploader().uploadAndStart("mMain", "Account", "127.0.0.1:5555", true, false);
+        new ScriptUploader().uploadAndStart("mMain", "Account", "127.0.0.1:5555", true, true);
     }
 
     @Override
@@ -57,7 +57,7 @@ public class mMain extends AbstractScript {
 
         if (skill.equals("Mining")) {
             var startMining = new src.PastShadie.scripts.mMain.Mining.startMining();
-            startMining.startMining();
+            startMining.Mining();
     }
 }
 }

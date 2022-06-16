@@ -10,7 +10,7 @@ import org.powbot.api.rt4.Players;
 public class doBanking extends Task {
     @Override
     public boolean activate() {
-        return Inventory.isFull();
+        return Inventory.isFull() || Inventory.stream().id(ItemList.BRONZE_PICKAXE_1265, ItemList.STEEL_PICKAXE_1269, ItemList.MITHRIL_PICKAXE_1273, ItemList.ADAMANT_PICKAXE_1271, ItemList.RUNE_PICKAXE_1275).count() == 0;
     }
 
     @Override

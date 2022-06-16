@@ -1,5 +1,6 @@
 package src.PastShadie.scripts.mMain.Mining;
 
+import src.PastShadie.scripts.mMain.Assets.ItemList;
 import src.PastShadie.scripts.mMain.Assets.Task;
 import org.powbot.api.Condition;
 import org.powbot.api.rt4.*;
@@ -7,7 +8,7 @@ import org.powbot.api.rt4.*;
 public class doMining extends Task {
     @Override
     public boolean activate() {
-        return !Inventory.stream().name("pickaxe").isEmpty() && !Inventory.isFull();
+        return !Inventory.isFull();
     }
 
     @Override
