@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class startWoodcutting {
     private ArrayList<Task> woodcuttingTasks = new ArrayList<>();
-    public void Mining() {
+    public void Woodcutting() {
         if (woodcuttingTasks.isEmpty()) {
             woodcuttingTasks.add(new getAxe());
             woodcuttingTasks.add(new depositLogs());

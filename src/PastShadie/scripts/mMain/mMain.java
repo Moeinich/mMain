@@ -17,7 +17,7 @@ import org.powbot.mobile.service.ScriptUploader;
                         name =  "Skill",
                         description = "Which skill would you like to do?",
                         defaultValue = "Mining",
-                        allowedValues = {"Mining", "Combat", "Fishing", "Woodcutting"},
+                        allowedValues = {"Mining", "Combat", "Fishing", "Woodcutting", "Cooking"},
                         optionType = OptionType.STRING
                 )
         }
@@ -62,12 +62,17 @@ public class mMain extends AbstractScript {
             startCombat.Combat();
         }
         if (skill.equals("Fishing")) {
-            var startCombat = new src.PastShadie.scripts.mMain.Combat.startCombat();
-            startCombat.Combat();
+            var startFishing = new src.PastShadie.scripts.mMain.Fishing.startFishing();
+            startFishing.Fishing();
         }
         if (skill.equals("Woodcutting")) {
-            var startCombat = new src.PastShadie.scripts.mMain.Combat.startCombat();
-            startCombat.Combat();
+            var startWoodcutting = new src.PastShadie.scripts.mMain.Woodcutting.startWoodcutting();
+            startWoodcutting.Woodcutting();
+        }
+        if (skill.equals("Cooking")) {
+            var startCooking = new src.PastShadie.scripts.mMain.Cooking.startCooking();
+            startCooking.Cooking();
+
         }
 }
 }

@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class startCooking {
     private ArrayList<Task> cookingTasks = new ArrayList<>();
-    public void Fishing() {
+    public void Cooking() {
         if (cookingTasks.isEmpty()) {
             cookingTasks.add(new depositFish());
             cookingTasks.add(new withdrawFish());
