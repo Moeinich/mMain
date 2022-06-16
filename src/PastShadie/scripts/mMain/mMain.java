@@ -1,14 +1,12 @@
 package src.PastShadie.scripts.mMain;
 
 import org.powbot.api.rt4.walking.model.Skill;
-import org.powbot.api.script.AbstractScript;
-import org.powbot.api.script.OptionType;
-import org.powbot.api.script.ScriptConfiguration;
-import org.powbot.api.script.ScriptManifest;
+import org.powbot.api.script.*;
 import org.powbot.api.script.paint.Paint;
 import org.powbot.api.script.paint.PaintBuilder;
 import org.powbot.mobile.service.ScriptUploader;
 import src.PastShadie.scripts.mMain.Assets.ItemList;
+import src.PastShadie.scripts.mMain.Assets.skillData;
 
 @ScriptManifest(
         name = "mMain",
@@ -34,8 +32,9 @@ public class mMain extends AbstractScript {
     //adb.exe forward tcp:61666 tcp:61666
 
     public static void main(String[] args) {
-        new ScriptUploader().uploadAndStart("mMain", "Account", "127.0.0.1:5555", true, true);
+        new ScriptUploader().uploadAndStart("mMain", "Account", "127.0.0.1:5555", true, false);
     }
+
     @Override
     public void onStart() {
         String skill = getOption("Skill");
