@@ -23,7 +23,7 @@ Will randomly switch leveling between skills and will slowly utilize every singl
 **Cooking:**
 - [ ] Cooks fish caught from fishing at Edgeville
 
-**Mining:** (In progress)
+**Mining:**
 - [X] Mines Copper & Tin to level 20 at varrock *(Needs testing)*
 - [X] Mines Iron from 20-infinity at varrock *(Needs testing)*
 
