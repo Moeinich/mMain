@@ -2,7 +2,6 @@ package src.PastShadie.scripts.mMain.Mining;
 
 import src.PastShadie.scripts.mMain.Assets.Task;
 import org.powbot.mobile.script.ScriptManager;
-import src.PastShadie.scripts.mMain.Assets.doBanking;
 
 import java.util.ArrayList;
 
@@ -12,7 +11,7 @@ public class startMining {
         if (taskList.isEmpty()) {
             taskList.add(new getPickaxe());
             taskList.add(new depositOre());
-            taskList.add(new doBanking());
+            taskList.add(new miningBanking());
             taskList.add(new goMining());
             taskList.add(new doMining());
         }

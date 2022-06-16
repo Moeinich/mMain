@@ -2,11 +2,6 @@ package src.PastShadie.scripts.mMain.Combat;
 
 import org.powbot.mobile.script.ScriptManager;
 import src.PastShadie.scripts.mMain.Assets.Task;
-import src.PastShadie.scripts.mMain.Assets.doBanking;
-import src.PastShadie.scripts.mMain.Mining.depositOre;
-import src.PastShadie.scripts.mMain.Mining.doMining;
-import src.PastShadie.scripts.mMain.Mining.getPickaxe;
-import src.PastShadie.scripts.mMain.Mining.goMining;
 
 import java.util.ArrayList;
 

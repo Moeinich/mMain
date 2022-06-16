@@ -1,12 +1,14 @@
-package src.PastShadie.scripts.mMain.Assets;
+package src.PastShadie.scripts.mMain.Mining;
 
 import org.powbot.api.Locatable;
 import org.powbot.api.rt4.Bank;
 import org.powbot.api.rt4.Inventory;
 import org.powbot.api.rt4.Movement;
 import org.powbot.api.rt4.Players;
+import src.PastShadie.scripts.mMain.Assets.ItemList;
+import src.PastShadie.scripts.mMain.Assets.Task;
 
-public class doBanking extends Task {
+public class miningBanking extends Task {
     @Override
     public boolean activate() {
         return Inventory.isFull() ||
