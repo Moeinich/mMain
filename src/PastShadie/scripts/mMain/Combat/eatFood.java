@@ -13,7 +13,7 @@ public class eatFood extends Task {
     @Override
     public void execute() {
         Npc combatMonster = Npcs.stream().at(Players.local().interacting().tile()).first();
-        Item food = Inventory.stream().name("Lobster").first();
+        Item food = Inventory.stream().action("Eat").first();
 
         if(food.valid()){
             if(food.interact("Eat")) {
