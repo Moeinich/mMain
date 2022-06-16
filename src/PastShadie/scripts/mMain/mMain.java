@@ -19,7 +19,7 @@ import src.PastShadie.scripts.mMain.Assets.skillData;
                         name =  "Skill",
                         description = "Which skill would you like to do?",
                         defaultValue = "Mining",
-                        allowedValues = {"Mining", "Combat"},
+                        allowedValues = {"Mining", "Combat", "Fishing"},
                         optionType = OptionType.STRING
                 )
         }
