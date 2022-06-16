@@ -21,7 +21,7 @@ import src.PastShadie.scripts.mMain.Assets.ItemList;
                         name =  "Skill",
                         description = "Which skill would you like to do?",
                         defaultValue = "Mining",
-                        allowedValues = {"Mining", "Woodcutting"},
+                        allowedValues = {"Mining", "Combat"},
                         optionType = OptionType.STRING
                 )
         }
@@ -36,7 +36,6 @@ public class mMain extends AbstractScript {
     public static void main(String[] args) {
         new ScriptUploader().uploadAndStart("mMain", "Account", "127.0.0.1:5555", true, true);
     }
-
     @Override
     public void onStart() {
         String skill = getOption("Skill");
@@ -71,5 +70,9 @@ public class mMain extends AbstractScript {
             var startMining = new src.PastShadie.scripts.mMain.Mining.startMining();
             startMining.Mining();
     }
+        if (skill.equals("Combat")) {
+            var startCombat = new src.PastShadie.scripts.mMain.Combat.startCombat();
+            startCombat.Combat();
+        }
 }
 }
