@@ -12,9 +12,8 @@ public class depositOre extends Task {
     }
     @Override
     public void execute() {
-        if (Bank.opened()) {
+            System.out.print("We are depositing ores!");
             Bank.depositAllExcept(ItemList.BRONZE_PICKAXE_1265, ItemList.STEEL_PICKAXE_1269, ItemList.MITHRIL_PICKAXE_1273, ItemList.ADAMANT_PICKAXE_1271, ItemList.RUNE_PICKAXE_1275);
             Bank.close();
-        }
     }
 }

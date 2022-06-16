@@ -14,6 +14,7 @@ public class getPickaxe extends Task {
 
     @Override
     public void execute() {
+        System.out.println("We are running the upgrade pickaxe sequence");
         String bronzePickaxe = "Bronze pickaxe";
         String steelPickaxe = "Steel pickaxe";
         String mithrilPickaxe = "Mithril pickaxe";

@@ -6,7 +6,7 @@ Will randomly switch leveling between skills and will slowly utilize every singl
 - [ ] Switch between skills
 - [ ] Add support for Woodcutting
 - [ ] Add support for Fishing
-- [ ] Add support for Mining
+- [X] Add support for Mining
 - [ ] Add support for Combat
 - [ ] Proper task management (On going)
 
@@ -24,8 +24,8 @@ Will randomly switch leveling between skills and will slowly utilize every singl
 - [ ] Cooks fish caught from fishing at Edgeville
 
 **Mining:** (In progress)
-- [ ] Mines Copper & Tin to level 20 at varrock (Needs testing)
-- [ ] Mines Iron from 20-infinity at varrock (Needs testing)
+- [x] Mines Copper & Tin to level 20 at varrock (Needs testing)
+- [x] Mines Iron from 20-infinity at varrock (Needs testing)
 
 **Combat:**
 - [ ] Seagull low-cb
