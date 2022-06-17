@@ -13,6 +13,7 @@ public class startFiremaking {
         }
 
         for (Task task : firemakingTasks) {
+            System.out.print("We are starting firemaking");
             if (task.activate()) {
                 task.execute();
                 if (ScriptManager.INSTANCE.isStopping()) {

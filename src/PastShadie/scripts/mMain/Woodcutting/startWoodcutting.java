@@ -17,6 +17,7 @@ public class startWoodcutting {
         }
 
         for (Task task : woodcuttingTasks) {
+            System.out.print("We are starting woodcutting");
             if (task.activate()) {
                 task.execute();
                 if (ScriptManager.INSTANCE.isStopping()) {

@@ -11,12 +11,13 @@ public class startCooking {
         if (cookingTasks.isEmpty()) {
             cookingTasks.add(new depositFish());
             cookingTasks.add(new withdrawFish());
-            cookingTasks.add(new cookingBanking());
+            //cookingTasks.add(new cookingBanking());
             cookingTasks.add(new goCooking());
             cookingTasks.add(new doCooking());
         }
 
         for (Task task : cookingTasks) {
+            System.out.print("We are starting cooking");
             if (task.activate()) {
                 task.execute();
                 if (ScriptManager.INSTANCE.isStopping()) {

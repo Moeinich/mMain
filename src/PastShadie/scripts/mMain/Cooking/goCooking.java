@@ -11,10 +11,11 @@ import src.PastShadie.scripts.mMain.Assets.skillData;
 public class goCooking extends Task {
     @Override
     public boolean activate() {
-        return (!skillData.cookingAreaEdgeville.contains(Players.local()) && (Inventory.stream().id(skillData.cookedFish).count() >= 1));
+        return (!skillData.cookingAreaEdgeville.contains(Players.local()) && (Inventory.stream().id(skillData.rawFish).count() >= 1));
     }
     @Override
     public void execute() {
+        System.out.print("Activate go cooking");
         Movement.builder(skillData.cookingAreaEdgeville.getRandomTile()).setRunMin(45).setRunMax(75).move();
     }
 }

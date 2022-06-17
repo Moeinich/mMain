@@ -1,16 +1,6 @@
 # mMain
 **This is a new try at doing an account builder for Pow. The goal is to have fully functional multi-skill training with an emphasis on Iron man mode.**
 
-**Progressive Mode:**
-Will randomly switch leveling between skills and will slowly utilize every single supported skill.
-- [ ] Switch between skills
-- [ ] Add support for Woodcutting
-- [ ] Add support for Fishing
-- [ ] Add support for Mining
-- [ ] Add support for Combat
-- [ ] Add support for Firemaking
-- [ ] Proper task management (On going)
-
 **Woodcutting:**
 - [X] Normal trees: 1-15 *(Needs testing)*
 - [X] Oaks: 15-30 *(Needs testing)*

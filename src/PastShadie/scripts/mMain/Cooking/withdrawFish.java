@@ -10,9 +10,7 @@ import src.PastShadie.scripts.mMain.Assets.skillData;
 public class withdrawFish extends Task {
     @Override
     public boolean activate() {
-        return Bank.opened() &&
-                Inventory.isEmpty() &&
-                Bank.stream().id(skillData.rawFish).count() >= 1;
+        return Bank.opened() && Inventory.isEmpty();
     }
     @Override
     public void execute() {

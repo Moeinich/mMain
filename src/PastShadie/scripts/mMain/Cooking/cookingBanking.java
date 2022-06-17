@@ -16,10 +16,12 @@ public class cookingBanking extends Task {
     }
     @Override
     public void execute() {
+        System.out.println("banking cooking");
         Locatable nearestBank = Bank.nearest();
         if (Bank.inViewport() && nearestBank.tile().distanceTo(Players.local()) < 2) {
             Bank.open();
         } else {
+            System.out.print("Move to bank!");
             Movement.moveToBank();
         }
     }

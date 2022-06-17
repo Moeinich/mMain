@@ -15,6 +15,7 @@ public class woodcuttingBanking extends Task {
     }
     @Override
     public void execute() {
+        System.out.println("banking wc");
         Locatable nearestBank = Bank.nearest();
         if (Bank.inViewport() && nearestBank.tile().distanceTo(Players.local()) < 2) {
             Bank.open();

@@ -9,8 +9,8 @@ import src.PastShadie.scripts.mMain.Assets.skillData;
 public class depositFish extends Task {
     @Override
     public boolean activate() {
-        return Inventory.isFull() && Bank.opened() &&
-                        Inventory.stream().id(skillData.rawFish).count() == 0;
+        System.out.print("Activate deposit fish");
+        return Inventory.isFull() && Bank.opened();
     }
     @Override
     public void execute() {

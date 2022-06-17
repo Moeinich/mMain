@@ -17,6 +17,7 @@ public class startFishing {
         }
 
         for (Task task : fishingTasks) {
+            System.out.print("We are starting fishing");
             if (task.activate()) {
                 task.execute();
                 if (ScriptManager.INSTANCE.isStopping()) {

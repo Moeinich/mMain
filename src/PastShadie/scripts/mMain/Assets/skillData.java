@@ -64,6 +64,8 @@ public class skillData {
             new Tile(3081,3491)
     );
 
+    public static GameObject cookingStove = Objects.stream().id(12269).first();
+
     public static final int[] rawFish = {ItemList.RAW_SHRIMPS_317, ItemList.RAW_ANCHOVIES_321, ItemList.RAW_TROUT_335, ItemList.RAW_SALMON_331};
     public static final int[] cookedFish = {ItemList.SHRIMPS_315, ItemList.ANCHOVIES_319, ItemList.TROUT_333, ItemList.SALMON_329};
 
