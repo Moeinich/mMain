@@ -8,6 +8,7 @@ Will randomly switch leveling between skills and will slowly utilize every singl
 - [ ] Add support for Fishing
 - [ ] Add support for Mining
 - [ ] Add support for Combat
+- [ ] Add support for Firemaking
 - [ ] Proper task management (On going)
 
 **Woodcutting:**
@@ -23,6 +24,9 @@ Will randomly switch leveling between skills and will slowly utilize every singl
 
 **Cooking:**
 - [ ] Cooks fish caught from fishing at Edgeville
+
+**Firemaking**
+- [ ] Light fires at Grand Exchange from the logs in bank.
 
 **Mining:**
 - [X] Mines Copper & Tin to level 20 at varrock *(Needs testing)*

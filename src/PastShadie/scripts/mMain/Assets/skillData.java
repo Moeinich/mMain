@@ -63,4 +63,13 @@ public class skillData {
             new Tile(3077,3496),
             new Tile(3081,3491)
     );
+
+    public static final int[] rawFish = {ItemList.RAW_SHRIMPS_317, ItemList.RAW_ANCHOVIES_321, ItemList.RAW_TROUT_335, ItemList.RAW_SALMON_331};
+    public static final int[] cookedFish = {ItemList.SHRIMPS_315, ItemList.ANCHOVIES_319, ItemList.TROUT_333, ItemList.SALMON_329};
+
+
+    //Firemaking
+    public static final Tile firemakingGE1 = new Tile(3196,3489);
+    public static final Tile firemakingGE2 = new Tile(3196,3490);
+    public static final Tile firemakingGE3 = new Tile(3196,3491);
 }

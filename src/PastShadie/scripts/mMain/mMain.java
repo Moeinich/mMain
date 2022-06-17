@@ -16,8 +16,8 @@ import org.powbot.mobile.service.ScriptUploader;
                 @ScriptConfiguration(
                         name =  "Skill",
                         description = "Which skill would you like to do?",
-                        defaultValue = "Mining",
-                        allowedValues = {"Mining", "Combat", "Fishing", "Woodcutting", "Cooking"},
+                        defaultValue = "Cooking",
+                        allowedValues = {"Mining", "Combat", "Fishing", "Woodcutting", "Cooking", "Firemaking"},
                         optionType = OptionType.STRING
                 )
         }
@@ -30,7 +30,7 @@ public class mMain extends AbstractScript {
     //adb.exe forward tcp:61666 tcp:61666
 
     public static void main(String[] args) {
-        new ScriptUploader().uploadAndStart("mMain", "Account", "127.0.0.1:5555", true, false);
+        new ScriptUploader().uploadAndStart("mMain", "Account", "emulator-5554", true, true);
     }
     @Override
     public void onStart() {
@@ -72,7 +72,10 @@ public class mMain extends AbstractScript {
         if (skill.equals("Cooking")) {
             var startCooking = new src.PastShadie.scripts.mMain.Cooking.startCooking();
             startCooking.Cooking();
-
         }
-}
+        if (skill.equals("Firemaking")) {
+            var startFiremaking = new src.PastShadie.scripts.mMain.Firemaking.startFiremaking();
+            startFiremaking.Firemaking();
+        }
+    }
 }

@@ -8,12 +8,14 @@ Will randomly switch leveling between skills and will slowly utilize every singl
 - [ ] Add support for Fishing
 - [ ] Add support for Mining
 - [ ] Add support for Combat
+- [ ] Add support for Firemaking
 - [ ] Proper task management (On going)
 
 **Woodcutting:**
-- [ ] Normal trees: 1-15
-- [ ] Oaks: 15-30
-- [ ] Willows: 30-infinity
+- [X] Normal trees: 1-15 *(Needs testing)*
+- [X] Oaks: 15-30 *(Needs testing)*
+- [X] Willows: 30-infinity *(Needs testing)*
+- [X] Upgrades axes along the way if they are available in the bank. *(Needs testing)*
 
 **Fishing:**
 - [X] Train to level 20 in Al Kharid *(Needs testing)*
@@ -23,9 +25,13 @@ Will randomly switch leveling between skills and will slowly utilize every singl
 **Cooking:**
 - [ ] Cooks fish caught from fishing at Edgeville
 
+**Firemaking**
+- [ ] Light fires at Grand Exchange from the logs in bank.
+
 **Mining:**
 - [X] Mines Copper & Tin to level 20 at varrock *(Needs testing)*
 - [X] Mines Iron from 20-infinity at varrock *(Needs testing)*
+- [X] Upgrades Pickaxes along the way if they are available in the bank. *(Needs testing)*
 
 **Combat:**
 - [X] Seagull low-cb
