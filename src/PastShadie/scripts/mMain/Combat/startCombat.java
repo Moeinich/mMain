@@ -17,7 +17,6 @@ public class startCombat {
         }
 
         for (Task task : combatTask) {
-            System.out.print("We are starting combat");
             if (task.activate()) {
                 task.execute();
                 if (ScriptManager.INSTANCE.isStopping()) {

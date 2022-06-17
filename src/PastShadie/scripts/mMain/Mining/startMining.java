@@ -17,7 +17,6 @@ public class startMining {
         }
 
         for (Task task : taskList) {
-            System.out.print("We are starting mining");
             if (task.activate()) {
                 task.execute();
                 if (ScriptManager.INSTANCE.isStopping()) {

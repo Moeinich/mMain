@@ -18,7 +18,6 @@ public class miningBanking extends Task {
     Locatable nearestBank = Bank.nearest();
     @Override
     public void execute() {
-        System.out.println("banking mining");
         if (Bank.inViewport() && nearestBank.tile().distanceTo(Players.local()) < 2) {
             Bank.open();
         } else {
