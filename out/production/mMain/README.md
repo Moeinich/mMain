@@ -13,7 +13,7 @@
 - [ ] Possibly add Barbarian fishing switch for members.
 
 **Cooking:**
-- [ ] Cooks fish caught from fishing at Edgeville
+- [X] Cooks fish caught from fishing at Edgeville
 
 **Firemaking**
 - [ ] Light fires at Grand Exchange from the logs in bank.

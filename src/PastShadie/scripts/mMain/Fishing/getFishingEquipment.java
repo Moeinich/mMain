@@ -8,7 +8,8 @@ import src.PastShadie.scripts.mMain.Assets.Task;
 public class getFishingEquipment extends Task {
     @Override
     public boolean activate() {
-        return Bank.opened() && Inventory.stream().id(ItemList.SMALL_FISHING_NET_303).count() == 0 || (Inventory.stream().id(ItemList.FLY_FISHING_ROD_309).count() == 0 && Inventory.stream().id(ItemList.FEATHER_314).count() == 0);
+        return Bank.opened()
+                && (Inventory.stream().id(ItemList.SMALL_FISHING_NET_303, ItemList.FLY_FISHING_ROD_309, ItemList.FEATHER_314).count() == 0);
     }
     @Override
     public void execute() {

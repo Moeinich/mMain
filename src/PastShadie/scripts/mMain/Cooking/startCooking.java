@@ -11,6 +11,7 @@ public class startCooking {
     public void Cooking() {
         if (cookingTasks.isEmpty()) {
             cookingTasks.add(new depositFish());
+            cookingTasks.add(new noFishBanked());
             cookingTasks.add(new withdrawFish());
             cookingTasks.add(new cookingBanking());
             cookingTasks.add(new goCooking());

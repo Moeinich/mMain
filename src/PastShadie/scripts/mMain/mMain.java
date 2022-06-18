@@ -16,7 +16,7 @@ import org.powbot.mobile.service.ScriptUploader;
                 @ScriptConfiguration(
                         name =  "Skill",
                         description = "Which skill would you like to do?",
-                        defaultValue = "Cooking",
+                        defaultValue = "Fishing",
                         allowedValues = {"Mining", "Combat", "Fishing", "Woodcutting", "Cooking", "Firemaking"},
                         optionType = OptionType.STRING
                 )
@@ -46,8 +46,8 @@ public class mMain extends AbstractScript {
                 .trackSkill(Skill.Woodcutting)
                 .trackSkill(Skill.Cooking)
                 .trackSkill(Skill.Firemaking)
-                .x(30)
-                .y(50)
+                .x(60)
+                .y(100)
                 //.trackInventoryItem(ItemList.LOGS_1511, "Logs")
                 .build();
         addPaint(p);

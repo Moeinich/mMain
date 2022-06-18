@@ -8,12 +8,13 @@ import src.PastShadie.scripts.mMain.Assets.Task;
 public class fishBanking extends Task {
     @Override
     public boolean activate() {
-        return Inventory.isFull() || (Skills.realLevel(Constants.SKILLS_FISHING) >= 20 && Inventory.stream().id(ItemList.SMALL_FISHING_NET_303).count() >= 1);
+        return Inventory.stream().id(ItemList.SMALL_FISHING_NET_303, ItemList.FLY_FISHING_ROD_309).count() == 0
+                || Inventory.isFull();
     }
     @Override
     public void execute() {
         Locatable nearestBank = Bank.nearest();
-        if (Bank.inViewport() && nearestBank.tile().distanceTo(Players.local()) < 2) {
+        if (Bank.inViewport() && nearestBank.tile().distanceTo(Players.local()) < 4) {
             Bank.open();
         } else {
             Movement.moveToBank();
