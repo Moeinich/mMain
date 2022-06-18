@@ -13,6 +13,7 @@ public class fishBanking extends Task {
     }
     @Override
     public void execute() {
+        System.out.println("We are banking!");
         Locatable nearestBank = Bank.nearest();
         if (Bank.inViewport() && nearestBank.tile().distanceTo(Players.local()) < 4) {
             Bank.open();

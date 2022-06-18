@@ -4,7 +4,7 @@
 **Woodcutting:**
 - [X] Normal trees: 1-15 *(Needs testing)*
 - [X] Oaks: 15-30 *(Needs testing)*
-- [X] Willows: 30-infinity *(Needs testing)*
+- [X] Willows: 30-? *(Needs testing)*
 - [X] Upgrades axes along the way if they are available in the bank. *(Needs testing)*
 
 **Fishing:**
@@ -17,6 +17,7 @@
 
 **Firemaking**
 - [ ] Light fires at Grand Exchange from the logs in bank.
+- [ ] Progressively switch to higher tiers of logs depending on fm level
 
 **Mining:**
 - [X] Mines Copper & Tin to level 20 at varrock *(Needs testing)*

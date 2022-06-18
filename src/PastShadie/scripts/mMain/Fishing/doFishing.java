@@ -8,9 +8,11 @@ import src.PastShadie.scripts.mMain.Assets.skillData;
 public class doFishing extends Task {
     @Override
     public boolean activate() {
-        return !Inventory.isFull()
-                && skillData.AlKharidFishingSpot.inViewport()
-                || skillData.BarbarianVillageFishingSpot.inViewport();
+        System.out.print(skillData.BarbarianVillageFishingArea.contains(Players.local()));
+        return  !Inventory.isFull()
+                && skillData.BarbarianVillageFishingArea.contains(Players.local())
+                || skillData.AlKharidFishingSpot1.contains(Players.local())
+                || skillData.AlKharidFishingSpot2.contains(Players.local());
     }
     @Override
     public void execute() {

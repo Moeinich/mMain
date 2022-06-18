@@ -13,6 +13,7 @@ public class getFishingEquipment extends Task {
     }
     @Override
     public void execute() {
+        System.out.println("We are getting equipment!");
         //Withdraw small fishing net, if none in inventory, if low level fishing(!)
         if (Inventory.stream().id(ItemList.SMALL_FISHING_NET_303).count() == 0 && Skills.realLevel(Constants.SKILLS_FISHING) <= 19) {
                 Condition.wait(Bank::open, 50, 10);

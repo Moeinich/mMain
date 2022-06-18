@@ -9,11 +9,12 @@ import static src.PastShadie.scripts.mMain.Assets.skillData.*;
 public class goFishing extends Task {
     @Override
     public boolean activate() {
-        return ((Skill.Fishing.realLevel() <= 19 && (!AlKharidFishingSpot1.contains(Players.local()) || !AlKharidFishingSpot2.contains(Players.local()))) ||
-                Skill.Fishing.realLevel() >= 20 && !BarbarianVillageFishingArea.contains(Players.local()));
+        return ( (Skill.Fishing.realLevel() <= 19 && (!AlKharidFishingSpot1.contains(Players.local()) || !AlKharidFishingSpot2.contains(Players.local())) )
+                || (Skill.Fishing.realLevel() >= 20 && !BarbarianVillageFishingArea.contains(Players.local())) );
     }
     @Override
     public void execute() {
+        System.out.println("We are going to the fish area");
         //Al Kharid fishing spot below bank
         if (Skill.Fishing.realLevel() <= 19) {
             Movement.builder(AlKharidFishingSpot1.getRandomTile()).setRunMin(45).setRunMax(75).move();

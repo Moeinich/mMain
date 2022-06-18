@@ -1,7 +1,9 @@
 package src.PastShadie.scripts.mMain.Fishing;
 
+import org.powbot.api.rt4.Players;
 import src.PastShadie.scripts.mMain.Assets.Task;
 import org.powbot.mobile.script.ScriptManager;
+import src.PastShadie.scripts.mMain.Assets.skillData;
 
 import java.util.ArrayList;
 
