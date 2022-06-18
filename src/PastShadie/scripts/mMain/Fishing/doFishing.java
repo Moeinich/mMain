@@ -8,7 +8,6 @@ import src.PastShadie.scripts.mMain.Assets.skillData;
 public class doFishing extends Task {
     @Override
     public boolean activate() {
-        System.out.print(skillData.BarbarianVillageFishingArea.contains(Players.local()));
         return  !Inventory.isFull()
                 && skillData.BarbarianVillageFishingArea.contains(Players.local())
                 || skillData.AlKharidFishingSpot1.contains(Players.local())
@@ -16,7 +15,7 @@ public class doFishing extends Task {
     }
     @Override
     public void execute() {
-        System.out.print("We are doing fishing!");
+        System.out.println("Do fishing!");
         if (Skills.realLevel(Constants.SKILLS_FISHING) <= 19) {
             if (skillData.AlKharidFishingSpot.inViewport() && Players.local().animation() == -1) {
                 skillData.AlKharidFishingSpot.interact("Small Net", "Fishing Spot");

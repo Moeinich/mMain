@@ -9,7 +9,7 @@ import static src.PastShadie.scripts.mMain.Assets.skillData.*;
 public class goFishing extends Task {
     @Override
     public boolean activate() {
-        return ( (Skill.Fishing.realLevel() <= 19 && (!AlKharidFishingSpot1.contains(Players.local()) || !AlKharidFishingSpot2.contains(Players.local())) )
+        return ( (Skill.Fishing.realLevel() <= 19 && (!AlKharidFishingSpot1.contains(Players.local()) && !AlKharidFishingSpot2.contains(Players.local())) )
                 || (Skill.Fishing.realLevel() >= 20 && !BarbarianVillageFishingArea.contains(Players.local())) );
     }
     @Override

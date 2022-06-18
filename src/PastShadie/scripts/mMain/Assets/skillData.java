@@ -2,10 +2,8 @@ package src.PastShadie.scripts.mMain.Assets;
 
 import org.powbot.api.Area;
 import org.powbot.api.Tile;
-import org.powbot.api.rt4.GameObject;
-import org.powbot.api.rt4.Npc;
-import org.powbot.api.rt4.Npcs;
-import org.powbot.api.rt4.Objects;
+import org.powbot.api.rt4.*;
+import org.powbot.api.rt4.walking.model.Skill;
 
 public class skillData {
 
@@ -36,6 +34,15 @@ public class skillData {
             new Tile(3101, 3422),
             new Tile(3109,3436)
     );
+
+    public Tile movementFishing(){
+        if (Skill.Fishing.realLevel() <= 19) {
+            AlKharidFishingSpot1.getRandomTile();
+        }
+        if (Skill.Fishing.realLevel() >= 20) {
+            BarbarianVillageFishingArea.getRandomTile();
+        }
+    };
 
     //Woodcutting
     public static final int[] normalTreeID = {1276, 1278};

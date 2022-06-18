@@ -30,7 +30,7 @@ public class mMain extends AbstractScript {
     //adb.exe forward tcp:61666 tcp:61666
 
     public static void main(String[] args) {
-        new ScriptUploader().uploadAndStart("mMain", "Account", "127.0.0.1:5555", true, true);
+        new ScriptUploader().uploadAndStart("mMain", "Account", "emulator-5554", true, true);
     }
     @Override
     public void onStart() {

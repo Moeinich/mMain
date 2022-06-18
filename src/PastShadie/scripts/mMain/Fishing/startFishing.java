@@ -1,5 +1,6 @@
 package src.PastShadie.scripts.mMain.Fishing;
 
+import org.powbot.api.rt4.Inventory;
 import org.powbot.api.rt4.Players;
 import src.PastShadie.scripts.mMain.Assets.Task;
 import org.powbot.mobile.script.ScriptManager;
@@ -25,6 +26,7 @@ public class startFishing {
                     ScriptManager.INSTANCE.stop();
                     break;
                 }
+                //System.out.println("Executing: "+ Task.name);
                 return;
             }
         }
