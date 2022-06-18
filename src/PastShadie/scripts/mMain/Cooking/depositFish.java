@@ -10,7 +10,7 @@ public class depositFish extends Task {
     @Override
     public boolean activate() {
         System.out.print("Activate deposit fish");
-        return Inventory.isFull() && Bank.opened();
+        return Inventory.isFull() && Bank.opened() && Inventory.stream().id(skillData.cookedFish).count() >= 1;
     }
     @Override
     public void execute() {
