@@ -11,7 +11,7 @@ import src.PastShadie.scripts.mMain.Assets.skillData;
 public class cookingBanking extends Task {
     @Override
     public boolean activate() {
-        return Inventory.stream().id(skillData.rawFish).count() == 0 && !Bank.opened();
+        return (Inventory.stream().id(skillData.rawFish).count() == 0 && !Bank.opened());
     }
     @Override
     public void execute() {

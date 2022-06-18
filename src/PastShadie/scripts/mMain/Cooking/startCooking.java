@@ -1,5 +1,6 @@
 package src.PastShadie.scripts.mMain.Cooking;
 
+import org.powbot.api.rt4.Constants;
 import src.PastShadie.scripts.mMain.Assets.Task;
 import org.powbot.mobile.script.ScriptManager;
 
@@ -17,7 +18,6 @@ public class startCooking {
         }
 
         for (Task task : cookingTasks) {
-            System.out.print("We are starting cooking");
             if (task.activate()) {
                 task.execute();
                 if (ScriptManager.INSTANCE.isStopping()) {

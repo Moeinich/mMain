@@ -13,12 +13,11 @@ public class doCooking extends Task {
 
     @Override
     public void execute() {
-        System.out.println("We are doing some cooking.");
         Component cookWidget = Widgets.widget(270).component(14);
 
         if (skillData.cookingStove.inViewport() && !Widgets.widget(270).valid()) {
             skillData.cookingStove.interact("Cook", "Stove");
-            Condition.wait(() -> Widgets.widget(270).valid(), 200,50);
+            Condition.wait(() -> Widgets.widget(270).valid(), 150,50);
         }
         if(cookWidget.valid()) {
             cookWidget.click();
