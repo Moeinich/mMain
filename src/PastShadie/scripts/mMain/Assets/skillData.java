@@ -98,7 +98,7 @@ public class skillData {
     public static int[] logs = {ItemList.LOGS_1511, ItemList.OAK_LOGS_1521, ItemList.WILLOW_LOGS_1519};
 
     public static final Area firemakingArea = new Area (
-            new Tile(3198, 3492, 0),
-            new Tile(3193, 3487, 0)
+            new Tile(3191, 3492, 0),
+            new Tile(3199, 3486, 0)
     );
 }

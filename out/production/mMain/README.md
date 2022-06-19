@@ -4,7 +4,7 @@
 **Woodcutting:**
 - [X] Normal trees: 1-15 *(Needs testing)*
 - [X] Oaks: 15-30 *(Needs testing)*
-- [X] Willows: 30-? *(Needs testing)*
+- [X] Willows: 30-?
 - [X] Withdraw the right axe depending on wc level.
 
 **Fishing:**

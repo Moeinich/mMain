@@ -1,5 +1,6 @@
 package src.PastShadie.scripts.mMain.Firemaking;
 
+import org.powbot.api.rt4.Movement;
 import org.powbot.api.rt4.Players;
 import src.PastShadie.scripts.mMain.Assets.ItemList;
 import src.PastShadie.scripts.mMain.Assets.Task;
@@ -18,5 +19,14 @@ public class goFiremaking extends Task {
     public void execute() {
         System.out.print("We are going to the firemaking area");
 
+        if (!skillData.firemakingGE1.equals(Players.local())) {
+            Movement.builder(skillData.firemakingGE1).setRunMin(45).setRunMax(75).move();
+        }
+        if (!skillData.firemakingGE2.equals(Players.local())) {
+            Movement.builder(skillData.firemakingGE2).setRunMin(45).setRunMax(75).move();
+        }
+        if (!skillData.firemakingGE2.equals(Players.local())) {
+            Movement.builder(skillData.firemakingGE3).setRunMin(45).setRunMax(75).move();
+        }
     }
 }
