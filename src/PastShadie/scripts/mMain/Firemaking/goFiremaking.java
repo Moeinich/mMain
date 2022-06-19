@@ -15,17 +15,18 @@ public class goFiremaking extends Task {
                 && Inventory.stream().id(ItemList.TINDERBOX_590).count() == 1
                 && !skillData.firemakingArea.contains(Players.local());
     }
+
+    public static int fmSpot = 1;
     @Override
     public void execute() {
         System.out.print("We are going to the firemaking area");
-
-        if (!skillData.firemakingGE1.equals(Players.local())) {
+        if (fmSpot == 1 && !skillData.firemakingGE1.equals(Players.local())) {
             Movement.builder(skillData.firemakingGE1).setRunMin(45).setRunMax(75).move();
         }
-        if (!skillData.firemakingGE2.equals(Players.local())) {
+        if (fmSpot == 2 && !skillData.firemakingGE2.equals(Players.local())) {
             Movement.builder(skillData.firemakingGE2).setRunMin(45).setRunMax(75).move();
         }
-        if (!skillData.firemakingGE2.equals(Players.local())) {
+        if (fmSpot == 3 && !skillData.firemakingGE2.equals(Players.local())) {
             Movement.builder(skillData.firemakingGE3).setRunMin(45).setRunMax(75).move();
         }
     }

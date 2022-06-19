@@ -101,4 +101,7 @@ public class skillData {
             new Tile(3191, 3492, 0),
             new Tile(3199, 3486, 0)
     );
+    public static final Area doFiremakingArea = new Area (
+            new Tile(3196, 3488, 0),
+            new Tile(3168, 3491, 0));
 }
