@@ -8,28 +8,37 @@ import src.PastShadie.scripts.mMain.Assets.skillData;
 public class doWoodcutting extends Task {
     @Override
     public boolean activate() {
-        return !Inventory.isFull() && (
-                skillData.treeNormal.inViewport() || skillData.treeOak.inViewport() || skillData.treeWillow.inViewport()
+        return !Inventory.isFull()
+                &&( (skillData.normalTreeLocation.contains(Players.local())
+                || skillData.oakTreeLocation.contains(Players.local())
+                || skillData.willowTreeLocation.contains(Players.local()) )
         );
     }
     @Override
     public void execute() {
+        int[] normalTreeID = {1276, 1278};
+        int[] oakTreeID = {10820};
+        int[] willowTreeID = {10819};
+        GameObject treeNormal = Objects.stream().within(6).id(normalTreeID).nearest().first();
+        GameObject treeOak = Objects.stream().within(6).id(oakTreeID).nearest().first();
+        GameObject treeWillow = Objects.stream().within(6).id(willowTreeID).nearest().first();
+
         //cut normal logs
         if (Skills.realLevel(Constants.SKILLS_WOODCUTTING) <= 14 && Players.local().animation() == -1) {
-                    skillData.treeNormal.interact("Chop down", "Tree");
-                    Condition.wait(() -> Objects.stream().at(skillData.treeNormal.tile()).id(skillData.normalTreeID).isEmpty(), 150, 50);
+                    treeNormal.interact("Chop down", "Tree");
+                    Condition.wait(() -> Objects.stream().at(treeNormal.tile()).id(normalTreeID).isEmpty(), 150, 50);
         }
 
         //Cut oak logs
         if (Skills.realLevel(Constants.SKILLS_WOODCUTTING) <= 14 && Skills.realLevel(Constants.SKILLS_WOODCUTTING) < 30 && Players.local().animation() == -1) {
-            skillData.treeOak.interact("Chop down", "Tree");
-            Condition.wait(() -> Objects.stream().at(skillData.treeOak.tile()).id(skillData.oakTreeID).isEmpty(), 150, 50);
+            treeOak.interact("Chop down", "Oak");
+            Condition.wait(() -> Objects.stream().at(treeOak.tile()).id(oakTreeID).isEmpty(), 150, 50);
         }
 
         //Cut willow logs
         if (Skills.realLevel(Constants.SKILLS_WOODCUTTING) >= 30 && Players.local().animation() == -1) {
-            skillData.treeWillow.interact("Chop down", "Tree");
-            Condition.wait(() -> Objects.stream().at(skillData.treeWillow.tile()).id(skillData.willowTreeID).isEmpty(), 150, 50);
+            treeWillow.interact("Chop down", "Willow");
+            Condition.wait(() -> Objects.stream().at(treeWillow.tile()).id(willowTreeID).isEmpty(), 150, 50);
         }
     }
 }

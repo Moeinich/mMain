@@ -17,11 +17,6 @@ public class goMining extends Task {
     @Override
     public void execute() {
         System.out.println("We are running the go mining sequence");
-        if (Skills.realLevel(Constants.SKILLS_MINING) <= 19) {
-            Movement.builder(skillData.miningCopperLocation).setRunMin(45).setRunMax(75).move();
-        }
-        if (Skills.realLevel(Constants.SKILLS_MINING) >= 20) {
-            Movement.builder(skillData.miningIronLocation).setRunMin(45).setRunMax(75).move();
-        }
+            Movement.builder(skillData.movementMining()).setRunMin(45).setRunMax(75).move();
     }
 }

@@ -7,17 +7,27 @@ import org.powbot.api.rt4.walking.model.Skill;
 
 public class skillData {
 
-    //Mining stuff
+    //Mining
     public static final Tile miningCopperLocation = new Tile(3287,3366);
     public static final Tile miningIronLocation = new Tile(3286,3368);
 
-    //Combat stuff
+    public static Tile movementMining(){
+        if (Skill.Fishing.realLevel() <= 19) {
+            return miningCopperLocation;
+        }
+        if (Skill.Fishing.realLevel() >= 20) {
+            return miningIronLocation;
+        }
+        return null;
+    }
+
+    //Combat
     public static final Area Seagull_area = new Area(
             new Tile(3151, 2841),
             new Tile(3157,2850)
     );
 
-    //Fishing stuff
+    //Fishing
     public static final Area AlKharidFishingSpot1 = new Area(
             new Tile(3264, 3150),
             new Tile(3270,3145)
@@ -41,15 +51,7 @@ public class skillData {
         return null;
     }
 
-
     //Woodcutting
-    public static final int[] normalTreeID = {1276, 1278};
-    public static final int[] oakTreeID = {10820};
-    public static final int[] willowTreeID = {10819};
-    public static GameObject treeNormal = Objects.stream().within(6).id(normalTreeID).nearest().first();
-    public static GameObject treeOak = Objects.stream().within(6).id(oakTreeID).nearest().first();
-    public static GameObject treeWillow = Objects.stream().within(6).id(willowTreeID).nearest().first();
-
     public static final Area normalTreeLocation = new Area (
             new Tile(3032,3273),
             new Tile(3049, 3260)
@@ -62,6 +64,19 @@ public class skillData {
             new Tile(3056,3255),
             new Tile(3064, 3249)
     );
+
+    public static Tile movementWoodcutting(){
+        if (Skill.Fishing.realLevel() <= 14) {
+            return normalTreeLocation.getRandomTile();
+        }
+        if (Skill.Fishing.realLevel() >= 15 && Skill.Woodcutting.realLevel() < 30) {
+            return oakTreeLocation.getRandomTile();
+        }
+        if (Skill.Fishing.realLevel() >= 30) {
+            return willowTreeLocation.getRandomTile();
+        }
+        return null;
+    }
 
     //Cooking
     public static final Area cookingAreaEdgeville = new Area (
@@ -79,4 +94,11 @@ public class skillData {
     public static final Tile firemakingGE1 = new Tile(3196,3489);
     public static final Tile firemakingGE2 = new Tile(3196,3490);
     public static final Tile firemakingGE3 = new Tile(3196,3491);
+
+    public static int[] logs = {ItemList.LOGS_1511, ItemList.OAK_LOGS_1521, ItemList.WILLOW_LOGS_1519};
+
+    public static final Area firemakingArea = new Area (
+            new Tile(3198, 3492, 0),
+            new Tile(3193, 3487, 0)
+    );
 }

@@ -13,19 +13,7 @@ public class goWoodcutting extends Task {
     }
     @Override
     public void execute() {
-        //go to normal logs
-        if (Skill.Woodcutting.realLevel() <= 14) {
-            Movement.builder(skillData.normalTreeLocation.getRandomTile()).setRunMin(45).setRunMax(75).move();
-        }
-
-        //go to oak logs
-        if (Skill.Woodcutting.realLevel() >= 15 && Skill.Woodcutting.realLevel() < 30) {
-            Movement.builder(skillData.oakTreeLocation.getRandomTile()).setRunMin(45).setRunMax(75).move();
-        }
-
-        //go to willow logs
-        if (Skill.Woodcutting.realLevel() >= 30) {
-            Movement.builder(skillData.willowTreeLocation.getRandomTile()).setRunMin(45).setRunMax(75).move();
-        }
+        System.out.println("We are going to WC area");
+        Movement.builder(skillData.movementWoodcutting()).setRunMin(45).setRunMax(75).move();
     }
 }

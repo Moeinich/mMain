@@ -4,16 +4,16 @@
 **Woodcutting:**
 - [X] Normal trees: 1-15 *(Needs testing)*
 - [X] Oaks: 15-30 *(Needs testing)*
-- [X] Willows: 30-? *(Needs testing)*
-- [X] Upgrades axes along the way if they are available in the bank. *(Needs testing)*
+- [X] Willows: 30-?
+- [X] Withdraw the right axe depending on wc level.
 
 **Fishing:**
 - [X] Train to level 20 in Al Kharid *(Needs testing)*
-- [X] Train from 20-? at Barbarian Village. *(Needs testing)*
-- [ ] Possibly add Barbarian fishing switch for members.
+- [X] Train from 20-? at Barbarian Village.
+- [X] Swap fishing gear along the way *(Needs testing)*
 
 **Cooking:**
-- [X] Cooks fish caught from fishing at Edgeville
+- [X] Cooks fish caught from fishing at Edgeville (Does Shrimps, Trouts & Salmons)
 
 **Firemaking**
 - [ ] Light fires at Grand Exchange from the logs in bank.
@@ -21,8 +21,8 @@
 
 **Mining:**
 - [X] Mines Copper & Tin to level 20 at varrock *(Needs testing)*
-- [X] Mines Iron from 20-infinity at varrock *(Needs testing)*
-- [X] Upgrades Pickaxes along the way if they are available in the bank. *(Needs testing)*
+- [X] Mines Iron from 20-infinity at varrock
+- [X] Upgrades Pickaxes along the way if they are available in the bank.
 
 **Combat:**
 - [X] Seagull low-cb

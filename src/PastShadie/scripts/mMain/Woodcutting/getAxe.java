@@ -20,6 +20,7 @@ public class getAxe extends Task {
     }
     @Override
     public void execute() {
+        System.out.println("We are getting an axe!");
         String bronzeAxe = "Bronze axe";
         String steelAxe = "Steel axe";
         String mithrilAxe = "Mithril axe";

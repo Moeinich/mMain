@@ -1,4 +1,4 @@
-package src.PastShadie.scripts.mMain.Woodcutting;
+package src.PastShadie.scripts.mMain.Firemaking;
 
 import org.powbot.api.Locatable;
 import org.powbot.api.rt4.Movement;
@@ -7,17 +7,20 @@ import src.PastShadie.scripts.mMain.Assets.ItemList;
 import src.PastShadie.scripts.mMain.Assets.Task;
 import org.powbot.api.rt4.Bank;
 import org.powbot.api.rt4.Inventory;
+import src.PastShadie.scripts.mMain.Assets.skillData;
 
-public class woodcuttingBanking extends Task {
+public class firemakingBanking extends Task {
     @Override
     public boolean activate() {
-        return Inventory.isFull() || Inventory.stream().id(ItemList.BRONZE_AXE_1351, ItemList.STEEL_AXE_1353, ItemList.MITHRIL_AXE_1355, ItemList.ADAMANT_AXE_1357, ItemList.RUNE_AXE_1359).count() == 0;
+        return Inventory.stream().id(skillData.logs).count() == 0
+                && !Bank.opened()
+                || Inventory.stream().id(ItemList.TINDERBOX_590).count() == 0;
     }
     @Override
     public void execute() {
-        System.out.println("We are banking.");
+        System.out.println("We are banking!");
         Locatable nearestBank = Bank.nearest();
-        if (Bank.inViewport() && nearestBank.tile().distanceTo(Players.local()) < 2) {
+        if (Bank.inViewport() && nearestBank.tile().distanceTo(Players.local()) < 4) {
             Bank.open();
         } else {
             Movement.moveToBank();
