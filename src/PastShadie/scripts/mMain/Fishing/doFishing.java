@@ -17,15 +17,19 @@ public class doFishing extends Task {
     public void execute() {
         System.out.println("Do fishing!");
         if (Skills.realLevel(Constants.SKILLS_FISHING) <= 19) {
-            if (skillData.AlKharidFishingSpot.inViewport() && Players.local().animation() == -1) {
-                skillData.AlKharidFishingSpot.interact("Small Net", "Fishing Spot");
-                Condition.wait(() -> Npcs.stream().at(skillData.AlKharidFishingSpot.tile()).isEmpty(), 150, 50);
+            Npc AlKharidFishingSpot = Npcs.stream().name("Fishing spot").nearest().first();
+
+            if (AlKharidFishingSpot.inViewport() && Players.local().animation() == -1) {
+                AlKharidFishingSpot.interact("Small Net", "Fishing Spot");
+                Condition.wait(() -> Npcs.stream().at(AlKharidFishingSpot.tile()).isEmpty(), 150, 50);
             }
         }
         if (Skills.realLevel(Constants.SKILLS_FISHING) >= 20) {
-            if (skillData.BarbarianVillageFishingSpot.inViewport() && Players.local().animation() == -1) {
-                skillData.BarbarianVillageFishingSpot.interact("Lure", "Rod Fishing Spot");
-                Condition.wait(() -> Npcs.stream().at(skillData.BarbarianVillageFishingSpot.tile()).isEmpty(), 150, 50);
+            Npc BarbarianVillageFishingSpot = Npcs.stream().name("Rod Fishing spot").nearest().first();
+
+            if (BarbarianVillageFishingSpot.inViewport() && Players.local().animation() == -1) {
+                BarbarianVillageFishingSpot.interact("Lure", "Rod Fishing spot");
+                Condition.wait(() -> Npcs.stream().at(BarbarianVillageFishingSpot.tile()).isEmpty(), 150, 50);
             }
         }
     }

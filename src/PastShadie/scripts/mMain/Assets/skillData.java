@@ -18,10 +18,6 @@ public class skillData {
     );
 
     //Fishing stuff
-    public static Npc AlKharidFishingSpot = Npcs.stream().name("Fishing spot").nearest().first();
-    public static Npc BarbarianVillageFishingSpot = Npcs.stream().name("Rod Fishing spot").nearest().first();
-
-
     public static final Area AlKharidFishingSpot1 = new Area(
             new Tile(3264, 3150),
             new Tile(3270,3145)
@@ -35,14 +31,16 @@ public class skillData {
             new Tile(3109,3436)
     );
 
-    public Tile movementFishing(){
+    public static Tile movementFishing(){
         if (Skill.Fishing.realLevel() <= 19) {
-            AlKharidFishingSpot1.getRandomTile();
+            return AlKharidFishingSpot1.getRandomTile();
         }
         if (Skill.Fishing.realLevel() >= 20) {
-            BarbarianVillageFishingArea.getRandomTile();
+            return BarbarianVillageFishingArea.getRandomTile();
         }
-    };
+        return null;
+    }
+
 
     //Woodcutting
     public static final int[] normalTreeID = {1276, 1278};

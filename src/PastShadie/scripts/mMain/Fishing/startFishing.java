@@ -26,7 +26,6 @@ public class startFishing {
                     ScriptManager.INSTANCE.stop();
                     break;
                 }
-                //System.out.println("Executing: "+ Task.name);
                 return;
             }
         }
