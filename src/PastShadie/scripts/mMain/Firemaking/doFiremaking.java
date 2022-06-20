@@ -5,6 +5,7 @@ import org.powbot.api.rt4.*;
 import src.PastShadie.scripts.mMain.Assets.ItemList;
 import src.PastShadie.scripts.mMain.Assets.Task;
 import src.PastShadie.scripts.mMain.Assets.skillData;
+import src.PastShadie.scripts.mMain.mMain;
 
 public class doFiremaking extends Task {
     @Override
@@ -15,7 +16,8 @@ public class doFiremaking extends Task {
     }
     @Override
     public void execute() {
-        System.out.println("We are doing firemaking!");
+        mMain.scriptStatus = "Do firemaking";
+
         Inventory.stream().id(skillData.logs).first().interact("Use");
         Inventory.stream().id(ItemList.TINDERBOX_590).first().interact("Use");
         Condition.wait(() -> Players.local().animation() == -1, 2000,50);

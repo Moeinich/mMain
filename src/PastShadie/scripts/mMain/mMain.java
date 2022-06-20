@@ -32,12 +32,17 @@ public class mMain extends AbstractScript {
     public static void main(String[] args) {
         new ScriptUploader().uploadAndStart("mMain", "Account", "emulator-5554", true, true);
     }
+
+    public static String scriptStatus;
+
     @Override
     public void onStart() {
         String skill = getOption("Skill");
+        scriptStatus = "none";
 
         Paint p = new PaintBuilder()
                 .addString("Skill: " , () -> skill)
+                .addString("Status: ", () -> scriptStatus)
                 .trackSkill(Skill.Mining)
                 .trackSkill(Skill.Defence)
                 .trackSkill(Skill.Attack)

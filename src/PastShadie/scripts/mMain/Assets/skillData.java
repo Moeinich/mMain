@@ -4,6 +4,7 @@ import org.powbot.api.Area;
 import org.powbot.api.Tile;
 import org.powbot.api.rt4.*;
 import org.powbot.api.rt4.walking.model.Skill;
+import org.powbot.mobile.script.ScriptManager;
 import src.PastShadie.scripts.mMain.Firemaking.goFiremaking;
 
 public class skillData {
@@ -99,8 +100,8 @@ public class skillData {
     public static int[] logs = {ItemList.LOGS_1511, ItemList.OAK_LOGS_1521, ItemList.WILLOW_LOGS_1519};
 
     public static final Area firemakingArea = new Area (
-            new Tile(3191, 3492, 0),
-            new Tile(3199, 3486, 0)
+            new Tile(3195, 3491, 0),
+            new Tile(3198, 3487, 0)
     );
     public static final Area doFiremakingArea = new Area (
             new Tile(3196, 3488, 0),
@@ -117,5 +118,17 @@ public class skillData {
             return firemakingGE3;
         }
         return null;
+    }
+    public static int withdrawLogs() {
+        if (Skills.realLevel(Constants.SKILLS_FIREMAKING) <= 14) {
+            return ItemList.LOGS_1511;
+        }
+        if (Skills.realLevel(Constants.SKILLS_FIREMAKING) >= 15 && Skills.realLevel(Constants.SKILLS_FIREMAKING) <= 29) {
+            return ItemList.OAK_LOGS_1521;
+        }
+        if (Skills.realLevel(Constants.SKILLS_FIREMAKING) > 30) {
+            return ItemList.WILLOW_LOGS_1519;
+        }
+        return 0;
     }
 }

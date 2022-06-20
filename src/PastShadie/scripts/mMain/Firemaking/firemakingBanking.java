@@ -8,6 +8,7 @@ import src.PastShadie.scripts.mMain.Assets.Task;
 import org.powbot.api.rt4.Bank;
 import org.powbot.api.rt4.Inventory;
 import src.PastShadie.scripts.mMain.Assets.skillData;
+import src.PastShadie.scripts.mMain.mMain;
 
 public class firemakingBanking extends Task {
     @Override
@@ -18,7 +19,7 @@ public class firemakingBanking extends Task {
     }
     @Override
     public void execute() {
-        System.out.println("We are banking!");
+        mMain.scriptStatus = "Banking";
         Locatable nearestBank = Bank.nearest();
         if (Bank.inViewport() && nearestBank.tile().distanceTo(Players.local()) < 4) {
             Bank.open();
