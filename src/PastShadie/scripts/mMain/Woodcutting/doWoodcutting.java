@@ -13,34 +13,30 @@ public class doWoodcutting extends Task {
                 &&( (skillData.normalTreeLocation.contains(Players.local())
                 || skillData.oakTreeLocation.contains(Players.local())
                 || skillData.willowTreeLocation.contains(Players.local()) )
+                && Players.local().animation() == -1
         );
     }
     @Override
     public void execute() {
-        mMain.scriptStatus = "Do woodcutting";
-        int[] normalTreeID = {1276, 1278};
-        int[] oakTreeID = {10820};
-        int[] willowTreeID = {10819};
-        GameObject treeNormal = Objects.stream().within(6).id(normalTreeID).nearest().first();
-        GameObject treeOak = Objects.stream().within(6).id(oakTreeID).nearest().first();
-        GameObject treeWillow = Objects.stream().within(6).id(willowTreeID).nearest().first();
+        mMain.scriptStatus = "Cutting trees";
+        GameObject treeNormal = Objects.stream().within(6).id(skillData.normalTreeID).nearest().first();
+        GameObject treeOak = Objects.stream().within(6).id(skillData.oakTreeID).nearest().first();
+        GameObject treeWillow = Objects.stream().within(6).id(skillData.willowTreeID).nearest().first();
 
         //cut normal logs
-        if (Skills.realLevel(Constants.SKILLS_WOODCUTTING) <= 14 && Players.local().animation() == -1) {
-                    treeNormal.interact("Chop down", "Tree");
-                    Condition.wait(() -> Objects.stream().at(treeNormal.tile()).id(normalTreeID).isEmpty(), 150, 50);
+        if (Skills.realLevel(Constants.SKILLS_WOODCUTTING) <= 14) {
+            treeNormal.interact("Chop down", "Tree");
+            Condition.wait(() -> Objects.stream().at(treeNormal.tile()).id(skillData.normalTreeID).isEmpty(), 500, 50);
         }
-
         //Cut oak logs
-        if (Skills.realLevel(Constants.SKILLS_WOODCUTTING) <= 14 && Skills.realLevel(Constants.SKILLS_WOODCUTTING) < 30 && Players.local().animation() == -1) {
+        if (Skills.realLevel(Constants.SKILLS_WOODCUTTING) >= 15 && Skills.realLevel(Constants.SKILLS_WOODCUTTING) < 30) {
             treeOak.interact("Chop down", "Oak");
-            Condition.wait(() -> Objects.stream().at(treeOak.tile()).id(oakTreeID).isEmpty(), 150, 50);
+            Condition.wait(() -> Objects.stream().at(treeOak.tile()).id(skillData.oakTreeID).isEmpty(), 500, 50);
         }
-
         //Cut willow logs
-        if (Skills.realLevel(Constants.SKILLS_WOODCUTTING) >= 30 && Players.local().animation() == -1) {
+        if (Skills.realLevel(Constants.SKILLS_WOODCUTTING) >= 30) {
             treeWillow.interact("Chop down", "Willow");
-            Condition.wait(() -> Objects.stream().at(treeWillow.tile()).id(willowTreeID).isEmpty(), 150, 50);
+            Condition.wait(() -> Objects.stream().at(treeWillow.tile()).id(skillData.willowTreeID).isEmpty(), 500, 50);
         }
     }
 }

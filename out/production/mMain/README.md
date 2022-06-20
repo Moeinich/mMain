@@ -5,7 +5,7 @@
 - [X] Normal trees: 1-15 *(Needs testing)*
 - [X] Oaks: 15-30 *(Needs testing)*
 - [X] Willows: 30-?
-- [X] Withdraw the right axe depending on wc level.
+- [X] Withdraw axe depending on wc level.
 
 **Fishing:**
 - [X] Train to level 20 in Al Kharid *(Needs testing)*
@@ -22,7 +22,7 @@
 **Mining:**
 - [X] Mines Copper & Tin to level 20 at varrock *(Needs testing)*
 - [X] Mines Iron from 20-infinity at varrock
-- [X] Upgrades Pickaxes along the way if they are available in the bank.
+- [X] Withdraw Pickaxe depending on mining level
 
 **Combat:**
 - [X] Seagull low-cb

@@ -4,7 +4,6 @@ import org.powbot.api.Area;
 import org.powbot.api.Tile;
 import org.powbot.api.rt4.*;
 import org.powbot.api.rt4.walking.model.Skill;
-import org.powbot.mobile.script.ScriptManager;
 import src.PastShadie.scripts.mMain.Firemaking.goFiremaking;
 
 public class skillData {
@@ -12,6 +11,8 @@ public class skillData {
     //Mining
     public static final Tile miningCopperLocation = new Tile(3287,3366);
     public static final Tile miningIronLocation = new Tile(3286,3368);
+
+    public static int[] pickaxes = {ItemList.BRONZE_PICKAXE_1265, ItemList.STEEL_PICKAXE_1269, ItemList.MITHRIL_PICKAXE_1273, ItemList.ADAMANT_PICKAXE_1271, ItemList.RUNE_PICKAXE_1275};
 
     public static Tile movementMining(){
         if (Skill.Fishing.realLevel() <= 19) {
@@ -21,6 +22,27 @@ public class skillData {
             return miningIronLocation;
         }
         return null;
+    }
+    public static int withdrawPickaxe() {
+        if (Skill.Mining.realLevel() < 6) {
+            return ItemList.BRONZE_PICKAXE_1265;
+        }
+        if (Skill.Mining.realLevel() >= 6 && Skill.Mining.realLevel() < 21) {
+            return ItemList.STEEL_PICKAXE_1269;
+        }
+        if (Skill.Mining.realLevel() >= 21 && Skill.Mining.realLevel() < 31) {
+            return ItemList.MITHRIL_PICKAXE_1273;
+        }
+        if (Skill.Mining.realLevel() >= 31 && Skill.Mining.realLevel() < 41) {
+            return ItemList.ADAMANT_PICKAXE_1271;
+        }
+        if (Skill.Mining.realLevel() > 41) {
+            return ItemList.RUNE_PICKAXE_1275;
+        }
+        if (Bank.stream().id(ItemList.STEEL_PICKAXE_1269, ItemList.MITHRIL_PICKAXE_1273, ItemList.ADAMANT_PICKAXE_1271, ItemList.RUNE_PICKAXE_1275).count() == 0) {
+            return ItemList.BRONZE_PICKAXE_1265;
+        }
+        return 0;
     }
 
     //Combat
@@ -54,9 +76,13 @@ public class skillData {
     }
 
     //Woodcutting
+    public static int[] normalTreeID = {1276, 1278};
+    public static int[] oakTreeID = {10820};
+    public static int[] willowTreeID = {10819};
+
     public static final Area normalTreeLocation = new Area (
-            new Tile(3032,3273),
-            new Tile(3049, 3260)
+            new Tile(3074,3274),
+            new Tile(3086, 3263)
     );
     public static final Area oakTreeLocation = new Area (
             new Tile(3099,3245),
@@ -68,17 +94,41 @@ public class skillData {
     );
 
     public static Tile movementWoodcutting(){
-        if (Skill.Fishing.realLevel() <= 14) {
+        if (Skills.realLevel(Constants.SKILLS_WOODCUTTING) <= 14) {
             return normalTreeLocation.getRandomTile();
         }
-        if (Skill.Fishing.realLevel() >= 15 && Skill.Woodcutting.realLevel() < 30) {
+        if (Skills.realLevel(Constants.SKILLS_WOODCUTTING) >= 15 && (Skills.realLevel(Constants.SKILLS_WOODCUTTING) < 30)) {
             return oakTreeLocation.getRandomTile();
         }
-        if (Skill.Fishing.realLevel() >= 30) {
+        if (Skills.realLevel(Constants.SKILLS_WOODCUTTING) >= 30) {
             return willowTreeLocation.getRandomTile();
         }
         return null;
     }
+    public static int withdrawAxe() {
+        if (Skills.realLevel(Constants.SKILLS_WOODCUTTING) < 6) {
+            return ItemList.BRONZE_AXE_1351;
+        }
+        if (Skills.realLevel(Constants.SKILLS_WOODCUTTING) >= 6 && Skills.realLevel(Constants.SKILLS_WOODCUTTING) < 21) {
+            return ItemList.STEEL_AXE_1353;
+        }
+        if (Skills.realLevel(Constants.SKILLS_WOODCUTTING) >= 21 && Skills.realLevel(Constants.SKILLS_WOODCUTTING) < 31) {
+            return ItemList.MITHRIL_AXE_1355;
+        }
+        if (Skills.realLevel(Constants.SKILLS_WOODCUTTING) >= 31 && Skills.realLevel(Constants.SKILLS_WOODCUTTING) < 41) {
+            return ItemList.ADAMANT_AXE_1357;
+        }
+        if (Skills.realLevel(Constants.SKILLS_WOODCUTTING) >41) {
+            return ItemList.RUNE_AXE_1359;
+        }
+        if (Bank.stream().id(ItemList.STEEL_AXE_1353, ItemList.MITHRIL_AXE_1355, ItemList.ADAMANT_AXE_1357, ItemList.RUNE_AXE_1359).count() == 0) {
+            return ItemList.BRONZE_AXE_1351;
+        }
+        return 0;
+    }
+
+
+    public static final int[] wcAxes = {ItemList.BRONZE_AXE_1351, ItemList.STEEL_AXE_1353, ItemList.MITHRIL_AXE_1355, ItemList.ADAMANT_AXE_1357, ItemList.RUNE_AXE_1359};
 
     //Cooking
     public static final Area cookingAreaEdgeville = new Area (
