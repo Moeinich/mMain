@@ -6,17 +6,17 @@ import org.powbot.mobile.script.ScriptManager;
 import java.util.ArrayList;
 
 public class startMining {
-    private ArrayList<Task> taskList = new ArrayList<>();
+    private ArrayList<Task> miningTasks = new ArrayList<>();
     public void Mining() {
-        if (taskList.isEmpty()) {
-            taskList.add(new getPickaxe());
-            taskList.add(new depositOre());
-            taskList.add(new miningBanking());
-            taskList.add(new goMining());
-            taskList.add(new doMining());
+        if (miningTasks.isEmpty()) {
+            miningTasks.add(new getPickaxe());
+            miningTasks.add(new depositOre());
+            miningTasks.add(new miningBanking());
+            miningTasks.add(new goMining());
+            miningTasks.add(new doMining());
         }
 
-        for (Task task : taskList) {
+        for (Task task : miningTasks) {
             if (task.activate()) {
                 task.execute();
                 if (ScriptManager.INSTANCE.isStopping()) {
