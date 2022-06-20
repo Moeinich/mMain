@@ -10,7 +10,6 @@ public class startFiremaking {
     public void Firemaking() {
         if (firemakingTasks.isEmpty()) {
             firemakingTasks.add(new withdrawTinderbox());
-            firemakingTasks.add(new switchFiremakingLane());
             firemakingTasks.add(new withdrawLogs());
             firemakingTasks.add(new firemakingBanking());
             firemakingTasks.add(new goFiremaking());

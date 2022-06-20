@@ -20,6 +20,9 @@ public class goFiremaking extends Task {
     @Override
     public void execute() {
         System.out.print("We are going to the firemaking area");
+        Movement.builder(skillData.moveToFiremakingSpot()).setRunMin(45).setRunMax(75).move();
+
+        /*
         if (fmSpot == 1 && !skillData.firemakingGE1.equals(Players.local())) {
             Movement.builder(skillData.firemakingGE1).setRunMin(45).setRunMax(75).move();
         }
@@ -28,6 +31,6 @@ public class goFiremaking extends Task {
         }
         if (fmSpot == 3 && !skillData.firemakingGE2.equals(Players.local())) {
             Movement.builder(skillData.firemakingGE3).setRunMin(45).setRunMax(75).move();
-        }
+        }*/
     }
 }

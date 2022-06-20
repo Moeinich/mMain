@@ -4,6 +4,7 @@ import org.powbot.api.Area;
 import org.powbot.api.Tile;
 import org.powbot.api.rt4.*;
 import org.powbot.api.rt4.walking.model.Skill;
+import src.PastShadie.scripts.mMain.Firemaking.goFiremaking;
 
 public class skillData {
 
@@ -103,5 +104,18 @@ public class skillData {
     );
     public static final Area doFiremakingArea = new Area (
             new Tile(3196, 3488, 0),
-            new Tile(3168, 3491, 0));
+            new Tile(3168, 3491, 0)
+    );
+    public static Tile moveToFiremakingSpot(){
+        if (goFiremaking.fmSpot == 1 && !skillData.firemakingGE1.equals(Players.local())) {
+            return firemakingGE1;
+        }
+        if (goFiremaking.fmSpot == 2 && !skillData.firemakingGE2.equals(Players.local())) {
+            return firemakingGE2;
+        }
+        if (goFiremaking.fmSpot == 3 && !skillData.firemakingGE2.equals(Players.local())) {
+            return firemakingGE3;
+        }
+        return null;
+    }
 }

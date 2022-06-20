@@ -19,7 +19,7 @@ public class withdrawLogs extends Task {
         if (Skills.realLevel(Constants.SKILLS_FIREMAKING) <= 14) {
             Bank.withdraw(ItemList.LOGS_1511, amountToWithdraw);
         }
-        if (Skills.realLevel(Constants.SKILLS_FIREMAKING) >= 15 && Skills.realLevel(Constants.SKILLS_COOKING) <= 29) {
+        if (Skills.realLevel(Constants.SKILLS_FIREMAKING) >= 15 && Skills.realLevel(Constants.SKILLS_FIREMAKING) <= 29) {
             Bank.withdraw(ItemList.OAK_LOGS_1521, amountToWithdraw);
         }
         if (Skills.realLevel(Constants.SKILLS_FIREMAKING) > 30) {

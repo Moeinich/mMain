@@ -16,12 +16,15 @@ public class doFiremaking extends Task {
     @Override
     public void execute() {
         System.out.println("We are doing firemaking!");
+        Inventory.stream().id(skillData.logs).first().interact("Use");
+        Inventory.stream().id(ItemList.TINDERBOX_590).first().interact("Use");
+        Condition.wait(() -> Players.local().animation() == -1, 2000,50);
 
-        if (Skills.realLevel(Constants.SKILLS_FIREMAKING) <= 14) {
-            Inventory.stream().id(ItemList.LOGS_1511).first().interact("Use");
-            Inventory.stream().id(ItemList.TINDERBOX_590).first().interact("Use");
-            Condition.wait(() -> Players.local().animation() == -1, 2000,50);
-
+        if (Inventory.stream().id(skillData.logs).count() == 0) {
+            goFiremaking.fmSpot += 1;
+        }
+        if (goFiremaking.fmSpot == 4) {
+            goFiremaking.fmSpot = 1;
         }
     }
 }
