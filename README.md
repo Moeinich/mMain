@@ -16,8 +16,8 @@
 - [X] Cooks fish caught from fishing at Edgeville (Does Shrimps, Trouts & Salmons)
 
 **Firemaking**
-- [ ] Light fires at Grand Exchange from the logs in bank.
-- [ ] Progressively switch to higher tiers of logs depending on fm level
+- [X] Light fires at Grand Exchange from the logs in bank.
+- [X] Progressively switch to higher tiers of logs depending on fm level
 
 **Mining:**
 - [X] Mines Copper & Tin to level 20 at varrock *(Needs testing)*
