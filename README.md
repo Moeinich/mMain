@@ -13,14 +13,14 @@
 - [X] Swap fishing gear along the way *(Needs testing)*
 
 **Cooking:**
-- [X] Cooks fish caught from fishing at Edgeville (Does Shrimps, Trouts & Salmons)
+- [X] Cooks fish caught from fishing at Edgeville
 
 **Firemaking**
 - [X] Light fires at Grand Exchange from the logs in bank.
 - [X] Progressively switch to higher tiers of logs depending on fm level
 
 **Mining:**
-- [X] Mines Copper & Tin to level 20 at varrock *(Needs testing)*
+- [X] Mines Copper & Tin to level 20 at varrock
 - [X] Mines Iron from 20-infinity at varrock
 - [X] Withdraw Pickaxe depending on mining level
 
@@ -28,7 +28,7 @@
 - [ ] Crafting bars
 
 **Combat:**
-- [X] Seagull low-cb
+- [X] Seagull low-cb *(Needs testing)*
 - [ ] Minotaur, Stronghold of Security
 - [X] Food usage *(Needs testing)*
 - [X] Potion usage *(Needs testing)*
