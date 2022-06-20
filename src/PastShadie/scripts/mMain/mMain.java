@@ -38,7 +38,7 @@ public class mMain extends AbstractScript {
     @Override
     public void onStart() {
         String skill = getOption("Skill");
-        scriptStatus = "none";
+        scriptStatus = "Starting...";
 
         Paint p = new PaintBuilder()
                 .addString("Skill: " , () -> skill)
