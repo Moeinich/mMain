@@ -4,6 +4,7 @@ import org.powbot.api.Condition;
 import org.powbot.api.rt4.*;
 import src.PastShadie.scripts.mMain.Assets.ItemList;
 import src.PastShadie.scripts.mMain.Assets.Task;
+import src.PastShadie.scripts.mMain.mMain;
 
 public class getFishingEquipment extends Task {
     @Override
@@ -13,7 +14,7 @@ public class getFishingEquipment extends Task {
     }
     @Override
     public void execute() {
-        System.out.println("We are getting equipment!");
+        mMain.scriptStatus = "Get equipment";
         //Withdraw small fishing net, if none in inventory, if low level fishing(!)
         if (Inventory.stream().id(ItemList.SMALL_FISHING_NET_303).count() == 0 && Skills.realLevel(Constants.SKILLS_FISHING) <= 19) {
                 Condition.wait(Bank::open, 50, 10);

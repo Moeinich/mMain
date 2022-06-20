@@ -4,6 +4,7 @@ import org.powbot.api.Locatable;
 import org.powbot.api.rt4.*;
 import src.PastShadie.scripts.mMain.Assets.ItemList;
 import src.PastShadie.scripts.mMain.Assets.Task;
+import src.PastShadie.scripts.mMain.mMain;
 
 public class fishBanking extends Task {
     @Override
@@ -13,7 +14,7 @@ public class fishBanking extends Task {
     }
     @Override
     public void execute() {
-        System.out.println("We are banking!");
+        mMain.scriptStatus = "Banking";
         Locatable nearestBank = Bank.nearest();
         if (Bank.inViewport() && nearestBank.tile().distanceTo(Players.local()) < 4) {
             Bank.open();

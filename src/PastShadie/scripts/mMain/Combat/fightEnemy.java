@@ -6,6 +6,7 @@ import org.powbot.api.rt4.Npcs;
 import org.powbot.api.rt4.Players;
 import src.PastShadie.scripts.mMain.Assets.Task;
 import src.PastShadie.scripts.mMain.Assets.skillData;
+import src.PastShadie.scripts.mMain.mMain;
 
 public class fightEnemy extends Task {
     public String npcName = "Seagull";
@@ -13,6 +14,7 @@ public class fightEnemy extends Task {
 
     @Override
     public boolean activate() {
+        mMain.scriptStatus = "Fight enemy";
         return skillData.Seagull_area.contains(Players.local()) && !Players.local().healthBarVisible();
     }
     @Override

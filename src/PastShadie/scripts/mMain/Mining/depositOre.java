@@ -4,6 +4,7 @@ import src.PastShadie.scripts.mMain.Assets.ItemList;
 import src.PastShadie.scripts.mMain.Assets.Task;
 import org.powbot.api.rt4.Bank;
 import org.powbot.api.rt4.Inventory;
+import src.PastShadie.scripts.mMain.mMain;
 
 public class depositOre extends Task {
     @Override
@@ -12,7 +13,7 @@ public class depositOre extends Task {
     }
     @Override
     public void execute() {
-            System.out.print("We are depositing ores!");
+        mMain.scriptStatus = "Deposit ores";
             Bank.depositAllExcept(ItemList.BRONZE_PICKAXE_1265, ItemList.STEEL_PICKAXE_1269, ItemList.MITHRIL_PICKAXE_1273, ItemList.ADAMANT_PICKAXE_1271, ItemList.RUNE_PICKAXE_1275);
             Bank.close();
     }

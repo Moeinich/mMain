@@ -3,6 +3,7 @@ package src.PastShadie.scripts.mMain.Combat;
 import org.powbot.api.Condition;
 import org.powbot.api.rt4.*;
 import src.PastShadie.scripts.mMain.Assets.Task;
+import src.PastShadie.scripts.mMain.mMain;
 
 public class drinkPotion extends Task {
     int attackPotThreshold = 5;
@@ -13,6 +14,7 @@ public class drinkPotion extends Task {
     }
     @Override
     public void execute() {
+        mMain.scriptStatus = "Drink potion";
         Item potion = Inventory.stream().filtered(i -> i.name().contains("Super attack")).first();
         Npc combatMonster = Npcs.stream().at(Players.local().interacting().tile()).first();
 

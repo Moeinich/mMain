@@ -4,6 +4,7 @@ import org.powbot.api.Condition;
 import org.powbot.api.rt4.*;
 import src.PastShadie.scripts.mMain.Assets.Task;
 import src.PastShadie.scripts.mMain.Assets.skillData;
+import src.PastShadie.scripts.mMain.mMain;
 
 public class doCooking extends Task {
     @Override
@@ -13,6 +14,7 @@ public class doCooking extends Task {
 
     @Override
     public void execute() {
+        mMain.scriptStatus = "Do cooking";
         Component cookWidget = Widgets.widget(270).component(14);
 
         if (skillData.cookingStove.inViewport() && !Widgets.widget(270).valid()) {

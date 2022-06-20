@@ -7,6 +7,7 @@ import src.PastShadie.scripts.mMain.Assets.Task;
 import org.powbot.api.rt4.Bank;
 import org.powbot.api.rt4.Inventory;
 import src.PastShadie.scripts.mMain.Assets.skillData;
+import src.PastShadie.scripts.mMain.mMain;
 
 public class goCooking extends Task {
     @Override
@@ -15,7 +16,7 @@ public class goCooking extends Task {
     }
     @Override
     public void execute() {
-        System.out.print("Activate go cooking");
+        mMain.scriptStatus = "Go to cooking area";
         Movement.builder(skillData.cookingAreaEdgeville.getRandomTile()).setRunMin(45).setRunMax(75).move();
     }
 }

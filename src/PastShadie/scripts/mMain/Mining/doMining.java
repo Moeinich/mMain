@@ -4,6 +4,7 @@ import src.PastShadie.scripts.mMain.Assets.Task;
 import org.powbot.api.Condition;
 import org.powbot.api.rt4.*;
 import src.PastShadie.scripts.mMain.Assets.skillData;
+import src.PastShadie.scripts.mMain.mMain;
 
 public class doMining extends Task {
     @Override
@@ -13,7 +14,7 @@ public class doMining extends Task {
 
     @Override
     public void execute() {
-        System.out.print("We are running the do mining sequence");
+        mMain.scriptStatus = "Do mining";
         //Mine copper ores till 20 mining
         if (Skills.realLevel(Constants.SKILLS_MINING) <= 19) {
             GameObject copperOre = Objects.stream().within(2).id(11161,11360).nearest().first();

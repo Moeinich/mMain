@@ -6,6 +6,7 @@ import org.powbot.mobile.script.ScriptManager;
 import src.PastShadie.scripts.mMain.Assets.ItemList;
 import src.PastShadie.scripts.mMain.Assets.Task;
 import src.PastShadie.scripts.mMain.Assets.skillData;
+import src.PastShadie.scripts.mMain.mMain;
 
 public class noFishBanked extends Task {
     @Override
@@ -15,6 +16,7 @@ public class noFishBanked extends Task {
 
     @Override
     public void execute() {
+        mMain.scriptStatus = "no fish banked!";
         if (Bank.stream().id(ItemList.RAW_SHRIMPS_317).count() == 0) {
             ScriptManager.INSTANCE.stop();
         }

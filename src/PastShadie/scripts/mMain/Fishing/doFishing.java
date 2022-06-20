@@ -4,6 +4,7 @@ import org.powbot.api.Condition;
 import org.powbot.api.rt4.*;
 import src.PastShadie.scripts.mMain.Assets.Task;
 import src.PastShadie.scripts.mMain.Assets.skillData;
+import src.PastShadie.scripts.mMain.mMain;
 
 public class doFishing extends Task {
     @Override
@@ -15,7 +16,7 @@ public class doFishing extends Task {
     }
     @Override
     public void execute() {
-        System.out.println("Do fishing!");
+        mMain.scriptStatus = "Do fishing";
         if (Skills.realLevel(Constants.SKILLS_FISHING) <= 19) {
             Npc AlKharidFishingSpot = Npcs.stream().name("Fishing spot").nearest().first();
 

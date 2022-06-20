@@ -6,6 +6,7 @@ import org.powbot.api.rt4.Movement;
 import org.powbot.api.rt4.Players;
 import org.powbot.api.rt4.Skills;
 import src.PastShadie.scripts.mMain.Assets.skillData;
+import src.PastShadie.scripts.mMain.mMain;
 
 public class goMining extends Task {
 
@@ -16,7 +17,7 @@ public class goMining extends Task {
 
     @Override
     public void execute() {
-        System.out.println("We are running the go mining sequence");
+        mMain.scriptStatus = "Go to mining area";
             Movement.builder(skillData.movementMining()).setRunMin(45).setRunMax(75).move();
     }
 }

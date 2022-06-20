@@ -3,6 +3,7 @@ package src.PastShadie.scripts.mMain.Combat;
 import org.powbot.api.Condition;
 import org.powbot.api.rt4.*;
 import src.PastShadie.scripts.mMain.Assets.Task;
+import src.PastShadie.scripts.mMain.mMain;
 
 public class eatFood extends Task {
     @Override
@@ -11,6 +12,7 @@ public class eatFood extends Task {
     }
     @Override
     public void execute() {
+        mMain.scriptStatus = "Eating food";
         Npc combatMonster = Npcs.stream().at(Players.local().interacting().tile()).first();
         Item food = Inventory.stream().action("Eat").first();
 

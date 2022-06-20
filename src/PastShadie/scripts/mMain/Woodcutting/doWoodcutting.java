@@ -4,6 +4,7 @@ import org.powbot.api.Condition;
 import org.powbot.api.rt4.*;
 import src.PastShadie.scripts.mMain.Assets.Task;
 import src.PastShadie.scripts.mMain.Assets.skillData;
+import src.PastShadie.scripts.mMain.mMain;
 
 public class doWoodcutting extends Task {
     @Override
@@ -16,6 +17,7 @@ public class doWoodcutting extends Task {
     }
     @Override
     public void execute() {
+        mMain.scriptStatus = "Do woodcutting";
         int[] normalTreeID = {1276, 1278};
         int[] oakTreeID = {10820};
         int[] willowTreeID = {10819};

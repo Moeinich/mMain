@@ -7,6 +7,7 @@ import src.PastShadie.scripts.mMain.Assets.Task;
 import org.powbot.api.rt4.Bank;
 import org.powbot.api.rt4.Inventory;
 import src.PastShadie.scripts.mMain.Assets.skillData;
+import src.PastShadie.scripts.mMain.mMain;
 
 public class withdrawFish extends Task {
     @Override
@@ -15,6 +16,7 @@ public class withdrawFish extends Task {
     }
     @Override
     public void execute() {
+        mMain.scriptStatus = "Withdraw fish";
         int amountToWithdraw = 28;
         if (Skills.realLevel(Constants.SKILLS_COOKING) <= 14) {
             Bank.withdraw(ItemList.RAW_SHRIMPS_317, amountToWithdraw);

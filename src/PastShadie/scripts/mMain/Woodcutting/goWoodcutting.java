@@ -5,6 +5,7 @@ import org.powbot.api.rt4.Players;
 import org.powbot.api.rt4.walking.model.Skill;
 import src.PastShadie.scripts.mMain.Assets.Task;
 import src.PastShadie.scripts.mMain.Assets.skillData;
+import src.PastShadie.scripts.mMain.mMain;
 
 public class goWoodcutting extends Task {
     @Override
@@ -13,7 +14,7 @@ public class goWoodcutting extends Task {
     }
     @Override
     public void execute() {
-        System.out.println("We are going to WC area");
+        mMain.scriptStatus = "Go to wc area";
         Movement.builder(skillData.movementWoodcutting()).setRunMin(45).setRunMax(75).move();
     }
 }

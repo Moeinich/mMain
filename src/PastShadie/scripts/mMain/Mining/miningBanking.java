@@ -7,6 +7,7 @@ import org.powbot.api.rt4.Movement;
 import org.powbot.api.rt4.Players;
 import src.PastShadie.scripts.mMain.Assets.ItemList;
 import src.PastShadie.scripts.mMain.Assets.Task;
+import src.PastShadie.scripts.mMain.mMain;
 
 public class miningBanking extends Task {
     @Override
@@ -16,6 +17,7 @@ public class miningBanking extends Task {
     }
     @Override
     public void execute() {
+        mMain.scriptStatus = "Banking";
         Locatable nearestBank = Bank.nearest();
 
         if (Bank.inViewport() && nearestBank.tile().distanceTo(Players.local()) < 4) {

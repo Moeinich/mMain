@@ -5,6 +5,7 @@ import src.PastShadie.scripts.mMain.Assets.ItemList;
 import src.PastShadie.scripts.mMain.Assets.Task;
 import org.powbot.api.rt4.Bank;
 import org.powbot.api.rt4.Inventory;
+import src.PastShadie.scripts.mMain.mMain;
 
 public class getAxe extends Task {
     @Override
@@ -20,7 +21,7 @@ public class getAxe extends Task {
     }
     @Override
     public void execute() {
-        System.out.println("We are getting an axe!");
+        mMain.scriptStatus = "Getting an axe";
         String bronzeAxe = "Bronze axe";
         String steelAxe = "Steel axe";
         String mithrilAxe = "Mithril axe";

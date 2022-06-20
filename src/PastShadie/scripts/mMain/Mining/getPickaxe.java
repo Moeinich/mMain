@@ -5,6 +5,7 @@ import src.PastShadie.scripts.mMain.Assets.Task;
 import org.powbot.api.rt4.Bank;
 import org.powbot.api.rt4.Inventory;
 import org.powbot.api.rt4.walking.model.Skill;
+import src.PastShadie.scripts.mMain.mMain;
 
 public class getPickaxe extends Task {
     @Override
@@ -21,7 +22,7 @@ public class getPickaxe extends Task {
 
     @Override
     public void execute() {
-        System.out.println("We are running the upgrade pickaxe sequence");
+        mMain.scriptStatus = "Getting pickaxe";
         String bronzePickaxe = "Bronze pickaxe";
         String steelPickaxe = "Steel pickaxe";
         String mithrilPickaxe = "Mithril pickaxe";
