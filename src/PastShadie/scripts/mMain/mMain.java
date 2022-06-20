@@ -16,8 +16,8 @@ import org.powbot.mobile.service.ScriptUploader;
                 @ScriptConfiguration(
                         name =  "Skill",
                         description = "Which skill would you like to do?",
-                        defaultValue = "Woodcutting",
-                        allowedValues = {"Mining", "Combat", "Fishing", "Woodcutting", "Cooking", "Firemaking"},
+                        defaultValue = "Mining",
+                        allowedValues = {"Mining", "Combat", "Fishing", "Woodcutting", "Cooking", "Firemaking", "Smithing"},
                         optionType = OptionType.STRING
                 )
         }
@@ -51,6 +51,7 @@ public class mMain extends AbstractScript {
                 .trackSkill(Skill.Woodcutting)
                 .trackSkill(Skill.Cooking)
                 .trackSkill(Skill.Firemaking)
+                .trackSkill(Skill.Smithing)
                 .x(60)
                 .y(100)
                 .build();
@@ -84,6 +85,10 @@ public class mMain extends AbstractScript {
         if (skill.equals("Firemaking")) {
             var startFiremaking = new src.PastShadie.scripts.mMain.Firemaking.startFiremaking();
             startFiremaking.Firemaking();
+        }
+        if (skill.equals("Smithing")) {
+            var startSmithing = new src.PastShadie.scripts.mMain.Smithing.startSmithing();
+            startSmithing.startSmithing();
         }
     }
 }

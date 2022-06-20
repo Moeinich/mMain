@@ -7,9 +7,13 @@ import java.util.ArrayList;
 
 public class startSmithing {
     private ArrayList<Task> smithingTasks = new ArrayList<>();
-    public void Mining() {
+    public void startSmithing() {
         if (smithingTasks.isEmpty()) {
-            //taskList.add(new getPickaxe());
+            smithingTasks.add(new withdrawMaterials());
+            smithingTasks.add(new depositProducts());
+            smithingTasks.add(new smithingBanking());
+            smithingTasks.add(new goSmithing());
+            smithingTasks.add(new doProducts());
         }
 
         for (Task task : smithingTasks) {

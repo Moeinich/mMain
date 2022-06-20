@@ -2,8 +2,8 @@
 **This is a new try at doing an account builder for Pow. The goal is to have fully functional multi-skill training with an emphasis on Iron man mode.**
 
 **Woodcutting:**
-- [X] Normal trees: 1-15 *(Needs testing)*
-- [X] Oaks: 15-30 *(Needs testing)*
+- [X] Normal trees: 1-15
+- [X] Oaks: 15-30
 - [X] Willows: 30-?
 - [X] Withdraw axe depending on wc level.
 
@@ -23,6 +23,9 @@
 - [X] Mines Copper & Tin to level 20 at varrock *(Needs testing)*
 - [X] Mines Iron from 20-infinity at varrock
 - [X] Withdraw Pickaxe depending on mining level
+
+**Smithing**
+- [ ] Crafting bars
 
 **Combat:**
 - [X] Seagull low-cb

@@ -106,20 +106,20 @@ public class skillData {
         return null;
     }
     public static int withdrawAxe() {
-        if (Skills.realLevel(Constants.SKILLS_WOODCUTTING) < 6) {
-            return ItemList.BRONZE_AXE_1351;
-        }
-        if (Skills.realLevel(Constants.SKILLS_WOODCUTTING) >= 6 && Skills.realLevel(Constants.SKILLS_WOODCUTTING) < 21) {
-            return ItemList.STEEL_AXE_1353;
-        }
-        if (Skills.realLevel(Constants.SKILLS_WOODCUTTING) >= 21 && Skills.realLevel(Constants.SKILLS_WOODCUTTING) < 31) {
-            return ItemList.MITHRIL_AXE_1355;
-        }
-        if (Skills.realLevel(Constants.SKILLS_WOODCUTTING) >= 31 && Skills.realLevel(Constants.SKILLS_WOODCUTTING) < 41) {
-            return ItemList.ADAMANT_AXE_1357;
-        }
         if (Skills.realLevel(Constants.SKILLS_WOODCUTTING) >41) {
             return ItemList.RUNE_AXE_1359;
+        }
+        if (Skills.realLevel(Constants.SKILLS_WOODCUTTING) >= 31) {
+            return ItemList.ADAMANT_AXE_1357;
+        }
+        if (Skills.realLevel(Constants.SKILLS_WOODCUTTING) >= 21) {
+            return ItemList.MITHRIL_AXE_1355;
+        }
+        if (Skills.realLevel(Constants.SKILLS_WOODCUTTING) >= 6) {
+            return ItemList.STEEL_AXE_1353;
+        }
+        if (Skills.realLevel(Constants.SKILLS_WOODCUTTING) < 6) {
+            return ItemList.BRONZE_AXE_1351;
         }
         if (Bank.stream().id(ItemList.STEEL_AXE_1353, ItemList.MITHRIL_AXE_1355, ItemList.ADAMANT_AXE_1357, ItemList.RUNE_AXE_1359).count() == 0) {
             return ItemList.BRONZE_AXE_1351;
@@ -181,4 +181,14 @@ public class skillData {
         }
         return 0;
     }
+
+    //Smithing
+    public static final int[] ores = {ItemList.COPPER_ORE_436, ItemList.TIN_ORE_438, ItemList.IRON_ORE_440};
+    public static final int[] bars = {ItemList.BRONZE_BAR_2349, ItemList.IRON_BAR_2351};
+    public static final int copperOre = ItemList.COPPER_ORE_436;
+    public static final int tinOre = ItemList.TIN_ORE_438;
+    public static final int ironOre = ItemList.IRON_ORE_440;
+    public static GameObject furnaceEdgeville = Objects.stream().id(12269).first();
+
+    public static final Area smithingAreaEdgeville = new Area(new Tile(3105, 3501, 0), new Tile(3110, 3496, 0));
 }

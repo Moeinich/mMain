@@ -24,6 +24,9 @@
 - [X] Mines Iron from 20-infinity at varrock
 - [X] Withdraw Pickaxe depending on mining level
 
+**Smithing**
+- [ ] Crafting bars
+
 **Combat:**
 - [X] Seagull low-cb
 - [ ] Minotaur, Stronghold of Security
