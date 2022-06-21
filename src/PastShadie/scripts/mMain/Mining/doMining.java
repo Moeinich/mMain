@@ -16,7 +16,7 @@ public class doMining extends Task {
     public void execute() {
         mMain.scriptStatus = "Do mining";
         //Mine copper ores till 20 mining
-        if (Skills.realLevel(Constants.SKILLS_MINING) <= 19) {
+        if (Skills.realLevel(Constants.SKILLS_MINING) <= 25) {
             GameObject copperOre = Objects.stream().within(2).id(11161,11360).nearest().first();
             if (copperOre.inViewport() && Players.local().animation() == -1) {
                 copperOre.interact("Mine", "Rocks");
@@ -24,12 +24,12 @@ public class doMining extends Task {
             }
         }
 
-        if (Skills.realLevel(Constants.SKILLS_MINING) >= 20) {
+        if (Skills.realLevel(Constants.SKILLS_MINING) >= 26) {
             GameObject ironOre = Objects.stream().within(2).id(11365).nearest().first();
             if (ironOre.inViewport() && Players.local().animation() == -1) {
                 ironOre.interact("Mine", "Rocks");
                 Condition.wait(() -> Objects.stream().at(ironOre.tile()).id(11365).isEmpty(), 150, 50);
             }
         }
-}
+    }
 }

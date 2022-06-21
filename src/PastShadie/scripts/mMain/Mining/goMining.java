@@ -11,10 +11,10 @@ public class goMining extends Task {
 
     @Override
     public boolean activate() {
-        if (!skillData.miningCopperLocation.equals(Players.local().tile()) && Skill.Mining.realLevel() <= 19){
+        if (!skillData.miningCopperLocation.equals(Players.local().tile()) && Skill.Mining.realLevel() <= 25){
             return true;
         }
-        if (!skillData.miningIronLocation.equals(Players.local().tile()) && Skill.Mining.realLevel() >= 20){
+        if (!skillData.miningIronLocation.equals(Players.local().tile()) && Skill.Mining.realLevel() >= 26){
             return true;
         }
         return false;
@@ -23,7 +23,6 @@ public class goMining extends Task {
     @Override
     public void execute() {
         mMain.scriptStatus = "Go to mining area";
-        System.out.println("Mining level" + Skill.Mining.realLevel());
         Movement.builder(skillData.movementMining()).setRunMin(45).setRunMax(75).move();
     }
 }

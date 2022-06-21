@@ -25,7 +25,9 @@
 - [X] Withdraw Pickaxe depending on mining level
 
 **Smithing**
-- [ ] Crafting bars
+- [X] Crafting bars
+- [ ] Crafting Bronze Warhammers to reach 15 smithing for iron bars
+- [X] Iron bars
 
 **Combat:**
 - [X] Seagull low-cb *(Needs testing)*

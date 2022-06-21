@@ -13,7 +13,8 @@ public class smithingBanking extends Task {
     @Override
     public boolean activate() {
         return !Bank.opened()
-                && Inventory.stream().id(skillData.smithingOres).count() == 0;
+                && Inventory.stream().id(skillData.smithingOres).count() == 0
+                && Inventory.stream().id(skillData.smithingBars).count() == 0;
     }
 
 
@@ -25,7 +26,7 @@ public class smithingBanking extends Task {
         if (Bank.inViewport() && nearestBank.tile().distanceTo(Players.local()) < 4) {
             Bank.open();
         } else {
-            Movement.moveToBank();
+            Movement.builder(nearestBank).setRunMin(45).setRunMax(75).move();
         }
     }
 }

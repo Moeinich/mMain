@@ -15,10 +15,10 @@ public class skillData {
     public static int[] pickaxes = {ItemList.BRONZE_PICKAXE_1265, ItemList.STEEL_PICKAXE_1269, ItemList.MITHRIL_PICKAXE_1273, ItemList.ADAMANT_PICKAXE_1271, ItemList.RUNE_PICKAXE_1275};
 
     public static Tile movementMining(){
-        if (Skill.Mining.realLevel() <= 19) {
+        if (Skill.Mining.realLevel() <= 25) {
             return miningCopperLocation;
         }
-        if (Skill.Mining.realLevel() >= 20) {
+        if (Skill.Mining.realLevel() >= 26) {
             return miningIronLocation;
         }
         return null;
@@ -187,10 +187,15 @@ public class skillData {
     public static int[] ironBarOres = {ItemList.IRON_ORE_440};
     public static int[] smithingOres = {ItemList.COPPER_ORE_436, ItemList.TIN_ORE_438, ItemList.IRON_ORE_440};
     public static int[] smithingBars = {ItemList.BRONZE_BAR_2349, ItemList.IRON_BAR_2351};
+    public static int[] bronzeWarhammer = {ItemList.BRONZE_WARHAMMER_1337};
     public static int copperOre = ItemList.COPPER_ORE_436;
     public static int tinOre = ItemList.TIN_ORE_438;
     public static int ironOre = ItemList.IRON_ORE_440;
-    public static GameObject furnaceEdgeville = Objects.stream().id(16469).first();
+    public static int bronzeBar = ItemList.BRONZE_BAR_2349;
+    public static Area smithingAreaEdgeville = new Area(new Tile(3109, 3499, 0), new Tile(3108, 3498, 0));
+    public static Tile smithingTileVarrockWest = new Tile(3188,3427);
+    public static Area edgevilleBank = new Area(new Tile(3091, 3499, 0), new Tile(3098, 3488, 0));
+    public static Area varrockWestBank = new Area(new Tile(3180, 3447, 0), new Tile(3190, 3433, 0));
 
-    public static final Area smithingAreaEdgeville = new Area(new Tile(3105, 3501, 0), new Tile(3110, 3496, 0));
+
 }
