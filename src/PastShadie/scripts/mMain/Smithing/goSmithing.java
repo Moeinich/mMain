@@ -1,5 +1,6 @@
 package src.PastShadie.scripts.mMain.Smithing;
 
+import org.powbot.api.rt4.Inventory;
 import org.powbot.api.rt4.Movement;
 import org.powbot.api.rt4.Players;
 import src.PastShadie.scripts.mMain.Assets.Task;
@@ -9,7 +10,7 @@ import src.PastShadie.scripts.mMain.mMain;
 public class goSmithing extends Task {
     @Override
     public boolean activate() {
-        return !skillData.smithingAreaEdgeville.equals(Players.local().tile());
+        return !skillData.smithingAreaEdgeville.contains(Players.local().tile()) && Inventory.stream().id(skillData.smithingOres).count() == 28;
     }
 
 

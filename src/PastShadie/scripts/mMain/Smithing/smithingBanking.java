@@ -13,7 +13,7 @@ public class smithingBanking extends Task {
     @Override
     public boolean activate() {
         return !Bank.opened()
-                && Inventory.stream().id(skillData.ores).count() == 0;
+                && Inventory.stream().id(skillData.smithingOres).count() == 0;
     }
 
 

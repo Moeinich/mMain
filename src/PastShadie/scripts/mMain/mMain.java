@@ -16,7 +16,7 @@ import org.powbot.mobile.service.ScriptUploader;
                 @ScriptConfiguration(
                         name =  "Skill",
                         description = "Which skill would you like to do?",
-                        defaultValue = "Mining",
+                        defaultValue = "Smithing",
                         allowedValues = {"Mining", "Combat", "Fishing", "Woodcutting", "Cooking", "Firemaking", "Smithing"},
                         optionType = OptionType.STRING
                 )

@@ -9,7 +9,7 @@ import src.PastShadie.scripts.mMain.mMain;
 public class depositProducts extends Task {
     @Override
     public boolean activate() {
-        return Bank.opened() && Inventory.stream().id(skillData.bars).count() >= 1;
+        return Bank.opened() && Inventory.stream().id(skillData.smithingBars).count() >= 1;
     }
 
 

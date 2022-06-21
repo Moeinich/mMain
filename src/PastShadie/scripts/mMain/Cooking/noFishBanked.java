@@ -17,13 +17,13 @@ public class noFishBanked extends Task {
     @Override
     public void execute() {
         mMain.scriptStatus = "no fish banked!";
-        if (Bank.stream().id(ItemList.RAW_SHRIMPS_317).count() == 0) {
+        if (Bank.stream().id(ItemList.RAW_SHRIMPS_317).first().stackSize() == 0) {
             ScriptManager.INSTANCE.stop();
         }
-        if (Bank.stream().id(ItemList.RAW_TROUT_335).count() == 0) {
+        if (Bank.stream().id(ItemList.RAW_TROUT_335).first().stackSize() == 0) {
             ScriptManager.INSTANCE.stop();
         }
-        if (Bank.stream().id(ItemList.RAW_SALMON_331).count() == 0) {
+        if (Bank.stream().id(ItemList.RAW_SALMON_331).first().stackSize() == 0) {
             ScriptManager.INSTANCE.stop();
         }
     }

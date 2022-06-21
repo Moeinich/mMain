@@ -158,13 +158,13 @@ public class skillData {
             new Tile(3168, 3491, 0)
     );
     public static Tile moveToFiremakingSpot(){
-        if (goFiremaking.fmSpot == 1 && !skillData.firemakingGE1.equals(Players.local())) {
+        if (goFiremaking.fmSpot == 1) {
             return firemakingGE1;
         }
-        if (goFiremaking.fmSpot == 2 && !skillData.firemakingGE2.equals(Players.local())) {
+        if (goFiremaking.fmSpot == 2) {
             return firemakingGE2;
         }
-        if (goFiremaking.fmSpot == 3 && !skillData.firemakingGE2.equals(Players.local())) {
+        if (goFiremaking.fmSpot == 3) {
             return firemakingGE3;
         }
         return null;
@@ -183,12 +183,14 @@ public class skillData {
     }
 
     //Smithing
-    public static final int[] ores = {ItemList.COPPER_ORE_436, ItemList.TIN_ORE_438, ItemList.IRON_ORE_440};
-    public static final int[] bars = {ItemList.BRONZE_BAR_2349, ItemList.IRON_BAR_2351};
-    public static final int copperOre = ItemList.COPPER_ORE_436;
-    public static final int tinOre = ItemList.TIN_ORE_438;
-    public static final int ironOre = ItemList.IRON_ORE_440;
-    public static GameObject furnaceEdgeville = Objects.stream().id(12269).first();
+    public static int[] copperBarOres = {ItemList.COPPER_ORE_436, ItemList.TIN_ORE_438};
+    public static int[] ironBarOres = {ItemList.IRON_ORE_440};
+    public static int[] smithingOres = {ItemList.COPPER_ORE_436, ItemList.TIN_ORE_438, ItemList.IRON_ORE_440};
+    public static int[] smithingBars = {ItemList.BRONZE_BAR_2349, ItemList.IRON_BAR_2351};
+    public static int copperOre = ItemList.COPPER_ORE_436;
+    public static int tinOre = ItemList.TIN_ORE_438;
+    public static int ironOre = ItemList.IRON_ORE_440;
+    public static GameObject furnaceEdgeville = Objects.stream().id(16469).first();
 
     public static final Area smithingAreaEdgeville = new Area(new Tile(3105, 3501, 0), new Tile(3110, 3496, 0));
 }
