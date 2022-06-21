@@ -15,10 +15,10 @@ public class skillData {
     public static int[] pickaxes = {ItemList.BRONZE_PICKAXE_1265, ItemList.STEEL_PICKAXE_1269, ItemList.MITHRIL_PICKAXE_1273, ItemList.ADAMANT_PICKAXE_1271, ItemList.RUNE_PICKAXE_1275};
 
     public static Tile movementMining(){
-        if (Skill.Fishing.realLevel() <= 19) {
+        if (Skill.Mining.realLevel() <= 19) {
             return miningCopperLocation;
         }
-        if (Skill.Fishing.realLevel() >= 20) {
+        if (Skill.Mining.realLevel() >= 20) {
             return miningIronLocation;
         }
         return null;

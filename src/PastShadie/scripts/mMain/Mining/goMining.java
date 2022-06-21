@@ -1,5 +1,6 @@
 package src.PastShadie.scripts.mMain.Mining;
 
+import org.powbot.api.rt4.walking.model.Skill;
 import src.PastShadie.scripts.mMain.Assets.Task;
 import org.powbot.api.rt4.Constants;
 import org.powbot.api.rt4.Movement;
@@ -12,7 +13,13 @@ public class goMining extends Task {
 
     @Override
     public boolean activate() {
-        return !skillData.miningCopperLocation.equals(Players.local().tile()) && !skillData.miningIronLocation.equals(Players.local().tile());
+        if (!skillData.miningCopperLocation.equals(Players.local()) && Skill.Mining.realLevel() <= 19){
+            return true;
+        }
+        if (!skillData.miningIronLocation.equals(Players.local()) && Skill.Mining.realLevel() >= 20){
+            return true;
+        }
+        return false;
     }
 
     @Override
