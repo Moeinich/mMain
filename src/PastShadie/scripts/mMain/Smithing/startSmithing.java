@@ -13,6 +13,7 @@ public class startSmithing {
             smithingTasks.add(new depositProducts());
             smithingTasks.add(new smithingBanking());
             smithingTasks.add(new goSmithing());
+            smithingTasks.add(new doBars());
             smithingTasks.add(new doProducts());
         }
 
