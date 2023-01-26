@@ -1,15 +1,14 @@
 package src.PastShadie.scripts.mMain.Progressive;
 
 import src.PastShadie.scripts.mMain.Assets.Task;
-public class skillSwitcher extends Task {
 
+public class startSkill extends Task {
     @Override
     public boolean activate() {
-        return false;
+        return true;
     }
 
     @Override
     public void execute() {
-        //Do somesthing
     }
 }

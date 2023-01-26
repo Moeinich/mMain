@@ -9,6 +9,7 @@ public class startProgressive {
     public void Progressive() {
             if (progressiveTasks.isEmpty()) {
                 progressiveTasks.add(new skillSwitcher());
+                progressiveTasks.add(new startSkill());
             }
 
             for (Task task : progressiveTasks) {

@@ -1,7 +1,4 @@
 package src.PastShadie.scripts.mMain;
-import java.util.Timer;
-import java.util.TimerTask;
-import java.util.Random;
 
 import org.powbot.api.rt4.walking.model.Skill;
 import org.powbot.api.script.*;
@@ -28,7 +25,7 @@ import src.PastShadie.scripts.mMain.Woodcutting.startWoodcutting;
                 @ScriptConfiguration(
                         name =  "Skill",
                         description = "Which skill would you like to do?",
-                        defaultValue = "Smithing",
+                        defaultValue = "Progressive",
                         allowedValues = {"Progressive", "Mining", "Combat", "Fishing", "Woodcutting", "Cooking", "Firemaking", "Smithing"},
                         optionType = OptionType.STRING
                 )
@@ -42,7 +39,7 @@ public class mMain extends AbstractScript {
     //adb.exe forward tcp:61666 tcp:61666
 
     public static void main(String[] args) {
-        new ScriptUploader().uploadAndStart("mMain", "Account", "emulator-5554", true, true);
+        new ScriptUploader().uploadAndStart("mMain", "Account", "emulator-5554", true, false);
     }
 
     public static String scriptStatus;
@@ -77,35 +74,30 @@ public class mMain extends AbstractScript {
         if(skill.equals("Progressive")) {
             var startProgressive = new startProgressive();
             startProgressive.Progressive();
+        }
 
-        if (skill.equals("Mining")) {
+        //Doing individual progressive skills!
+        else if (skill.equals("Mining")) {
             var startMining = new startMining();
             startMining.Mining();
-    }
-        if (skill.equals("Combat")) {
+        } else if (skill.equals("Combat")) {
             var startCombat = new startCombat();
             startCombat.Combat();
-        }
-        if (skill.equals("Fishing")) {
+        } else if (skill.equals("Fishing")) {
             var startFishing = new startFishing();
             startFishing.Fishing();
-        }
-        if (skill.equals("Woodcutting")) {
+        } else if (skill.equals("Woodcutting")) {
             var startWoodcutting = new startWoodcutting();
             startWoodcutting.Woodcutting();
-        }
-        if (skill.equals("Cooking")) {
+        } else if (skill.equals("Cooking")) {
             var startCooking = new startCooking();
             startCooking.Cooking();
-        }
-        if (skill.equals("Firemaking")) {
+        } else if (skill.equals("Firemaking")) {
             var startFiremaking = new startFiremaking();
             startFiremaking.Firemaking();
-        }
-        if (skill.equals("Smithing")) {
+        } else if (skill.equals("Smithing")) {
             var startSmithing = new startSmithing();
             startSmithing.startSmithing();
         }
     }
-}
 }
