@@ -8,7 +8,7 @@ public class startProgressive {
     private ArrayList<Task> progressiveTasks = new ArrayList<>();
     public void Progressive() {
             if (progressiveTasks.isEmpty()) {
-                progressiveTasks.add(new startTimer());
+                progressiveTasks.add(new skillSwitcher());
             }
 
             for (Task task : progressiveTasks) {

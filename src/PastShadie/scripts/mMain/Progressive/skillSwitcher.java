@@ -5,19 +5,18 @@ import java.util.TimerTask;
 import java.util.concurrent.ThreadLocalRandom;
 
 import src.PastShadie.scripts.mMain.Assets.Task;
-public class startTimer extends Task {
+public class skillSwitcher extends Task {
     private Timer timer;
     private boolean isTimerRunning = false;
     private int randomDuration;
     public int skillNumber;
-
 
     @Override
     public boolean activate() {
         return !isTimerRunning;
         //return
     }
-}
+
     @Override
     public void execute() {
         isTimerRunning = true;
