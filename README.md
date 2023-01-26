@@ -6,10 +6,12 @@
 - [X] Oaks: 15-30
 - [X] Willows: 30-?
 - [X] Withdraw axe depending on wc level.
+- [X] Banks logs
 
 **Fishing:**
 - [X] Train to level 20 in Al Kharid *(Needs testing)*
 - [X] Train from 20-? at Barbarian Village.
+- [X] Banks fish
 - [X] Swap fishing gear along the way *(Needs testing)*
 
 **Cooking:**
@@ -23,6 +25,7 @@
 - [X] Mines Copper & Tin to level 20 at varrock
 - [X] Mines Iron from 20-infinity at varrock
 - [X] Withdraw Pickaxe depending on mining level
+- [X] Banks ores
 
 **Smithing**
 - [X] Crafting bars
