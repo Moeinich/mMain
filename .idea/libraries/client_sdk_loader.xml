@@ -1,7 +1,7 @@
 <component name="libraryTable">
   <library name="client-sdk-loader">
     <CLASSES>
-      <root url="jar://$USER_HOME$/Downloads/client-sdk-loader.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/PastShadie/scripts/mMain/Assets/SDKs/client-sdk-loader.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

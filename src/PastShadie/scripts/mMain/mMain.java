@@ -1,10 +1,22 @@
 package src.PastShadie.scripts.mMain;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.Random;
 
 import org.powbot.api.rt4.walking.model.Skill;
 import org.powbot.api.script.*;
 import org.powbot.api.script.paint.Paint;
 import org.powbot.api.script.paint.PaintBuilder;
 import org.powbot.mobile.service.ScriptUploader;
+
+import src.PastShadie.scripts.mMain.Combat.startCombat;
+import src.PastShadie.scripts.mMain.Cooking.startCooking;
+import src.PastShadie.scripts.mMain.Firemaking.startFiremaking;
+import src.PastShadie.scripts.mMain.Fishing.startFishing;
+import src.PastShadie.scripts.mMain.Mining.startMining;
+import src.PastShadie.scripts.mMain.Progressive.startProgressive;
+import src.PastShadie.scripts.mMain.Smithing.startSmithing;
+import src.PastShadie.scripts.mMain.Woodcutting.startWoodcutting;
 
 @ScriptManifest(
         name = "mMain",
@@ -17,7 +29,7 @@ import org.powbot.mobile.service.ScriptUploader;
                         name =  "Skill",
                         description = "Which skill would you like to do?",
                         defaultValue = "Smithing",
-                        allowedValues = {"Mining", "Combat", "Fishing", "Woodcutting", "Cooking", "Firemaking", "Smithing"},
+                        allowedValues = {"Progressive", "Mining", "Combat", "Fishing", "Woodcutting", "Cooking", "Firemaking", "Smithing"},
                         optionType = OptionType.STRING
                 )
         }
@@ -62,33 +74,38 @@ public class mMain extends AbstractScript {
     public void poll() {
         String skill = getOption("Skill");
 
+        if(skill.equals("Progressive")) {
+            var startProgressive = new startProgressive();
+            startProgressive.Progressive();
+
         if (skill.equals("Mining")) {
-            var startMining = new src.PastShadie.scripts.mMain.Mining.startMining();
+            var startMining = new startMining();
             startMining.Mining();
     }
         if (skill.equals("Combat")) {
-            var startCombat = new src.PastShadie.scripts.mMain.Combat.startCombat();
+            var startCombat = new startCombat();
             startCombat.Combat();
         }
         if (skill.equals("Fishing")) {
-            var startFishing = new src.PastShadie.scripts.mMain.Fishing.startFishing();
+            var startFishing = new startFishing();
             startFishing.Fishing();
         }
         if (skill.equals("Woodcutting")) {
-            var startWoodcutting = new src.PastShadie.scripts.mMain.Woodcutting.startWoodcutting();
+            var startWoodcutting = new startWoodcutting();
             startWoodcutting.Woodcutting();
         }
         if (skill.equals("Cooking")) {
-            var startCooking = new src.PastShadie.scripts.mMain.Cooking.startCooking();
+            var startCooking = new startCooking();
             startCooking.Cooking();
         }
         if (skill.equals("Firemaking")) {
-            var startFiremaking = new src.PastShadie.scripts.mMain.Firemaking.startFiremaking();
+            var startFiremaking = new startFiremaking();
             startFiremaking.Firemaking();
         }
         if (skill.equals("Smithing")) {
-            var startSmithing = new src.PastShadie.scripts.mMain.Smithing.startSmithing();
+            var startSmithing = new startSmithing();
             startSmithing.startSmithing();
         }
     }
+}
 }
