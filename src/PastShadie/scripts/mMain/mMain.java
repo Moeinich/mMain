@@ -4,14 +4,22 @@ import org.powbot.api.rt4.walking.model.Skill;
 import org.powbot.api.script.*;
 import org.powbot.api.script.paint.Paint;
 import org.powbot.api.script.paint.PaintBuilder;
+import org.powbot.mobile.script.ScriptManager;
 import org.powbot.mobile.service.ScriptUploader;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadLocalRandom;
+import java.util.concurrent.TimeUnit;
 
 import src.PastShadie.scripts.mMain.Combat.startCombat;
 import src.PastShadie.scripts.mMain.Cooking.startCooking;
 import src.PastShadie.scripts.mMain.Firemaking.startFiremaking;
 import src.PastShadie.scripts.mMain.Fishing.startFishing;
 import src.PastShadie.scripts.mMain.Mining.startMining;
-import src.PastShadie.scripts.mMain.Progressive.startProgressive;
 import src.PastShadie.scripts.mMain.Smithing.startSmithing;
 import src.PastShadie.scripts.mMain.Woodcutting.startWoodcutting;
 
@@ -39,7 +47,7 @@ public class mMain extends AbstractScript {
     //adb.exe forward tcp:61666 tcp:61666
 
     public static void main(String[] args) {
-        new ScriptUploader().uploadAndStart("mMain", "Account", "emulator-5554", true, false);
+        new ScriptUploader().uploadAndStart("mMain", "Account", "emulator-5554", true, true);
     }
 
     public static String scriptStatus;
@@ -71,33 +79,83 @@ public class mMain extends AbstractScript {
     public void poll() {
         String skill = getOption("Skill");
 
-        if(skill.equals("Progressive")) {
-            var startProgressive = new startProgressive();
-            startProgressive.Progressive();
-        }
+        switch (skill) {
+            case "Progressive":
+                Executor executor = Executors.newSingleThreadExecutor();
+                List<Runnable> tasks = Arrays.asList(
+                        () -> {
+                            var startMining = new startMining();
+                            startMining.Mining();
+                        },
+                        () -> {
+                            var startFishing = new startFishing();
+                            startFishing.Fishing();
+                        },
+                        () -> {
+                            var startWoodcutting = new startWoodcutting();
+                            startWoodcutting.Woodcutting();
+                        },
+                        () -> {
+                            var startCooking = new startCooking();
+                            startCooking.Cooking();
+                        },
+                        () -> {
+                            var startFiremaking = new startFiremaking();
+                            startFiremaking.Firemaking();
+                        },
+                        () -> {
+                            var startSmithing = new startSmithing();
+                            startSmithing.startSmithing();
+                        }
+                        // Add future skills to this tasklist!
+                );
 
-        //Doing individual progressive skills!
-        else if (skill.equals("Mining")) {
-            var startMining = new startMining();
-            startMining.Mining();
-        } else if (skill.equals("Combat")) {
-            var startCombat = new startCombat();
-            startCombat.Combat();
-        } else if (skill.equals("Fishing")) {
-            var startFishing = new startFishing();
-            startFishing.Fishing();
-        } else if (skill.equals("Woodcutting")) {
-            var startWoodcutting = new startWoodcutting();
-            startWoodcutting.Woodcutting();
-        } else if (skill.equals("Cooking")) {
-            var startCooking = new startCooking();
-            startCooking.Cooking();
-        } else if (skill.equals("Firemaking")) {
-            var startFiremaking = new startFiremaking();
-            startFiremaking.Firemaking();
-        } else if (skill.equals("Smithing")) {
-            var startSmithing = new startSmithing();
-            startSmithing.startSmithing();
+                while (true) {
+                    if (ScriptManager.INSTANCE.isStopping()) {
+                        ScriptManager.INSTANCE.stop();
+                        break;
+                    }
+                    long duration = ThreadLocalRandom.current().nextLong(200, 6000); //Generate a random stopwatch timer.
+                    CountDownLatch latch = new CountDownLatch(1);
+                    int taskIndex = ThreadLocalRandom.current().nextInt(tasks.size()); //Finding a new skill to do
+
+                    executor.execute(() -> {
+                        tasks.get(taskIndex).run();
+                        latch.countDown();
+                    });
+
+                    try {
+                        boolean reachedZero = latch.await(duration, TimeUnit.MILLISECONDS);
+                        if(!reachedZero){
+                            break;
+                        }
+                    } catch (InterruptedException e) {
+                        e.printStackTrace(); //Print the stacktrace if we have some kind of exception
+                    }
+                }
+
+                //Doing individual progressive skills!
+            case "Mining":
+                var startMining = new startMining();
+                startMining.Mining();
+            case "Combat":
+                var startCombat = new startCombat();
+                startCombat.Combat();
+            case "Fishing":
+                var startFishing = new startFishing();
+                startFishing.Fishing();
+            case "Woodcutting":
+                var startWoodcutting = new startWoodcutting();
+                startWoodcutting.Woodcutting();
+            case "Cooking":
+                var startCooking = new startCooking();
+                startCooking.Cooking();
+            case "Firemaking":
+                var startFiremaking = new startFiremaking();
+                startFiremaking.Firemaking();
+            case "Smithing":
+                var startSmithing = new startSmithing();
+                startSmithing.startSmithing();
         }
     }
 }
