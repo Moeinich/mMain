@@ -114,9 +114,8 @@ public class mMain extends AbstractScript {
                     ScriptManager.INSTANCE.stop();
                 });
 
-
-
-                //Doing individual progressive skills!
+                //Starting individual progressive skills
+                //in case you want to do x skill only.
             case "Mining":
                 var startMining = new startMining();
                 startMining.Mining();

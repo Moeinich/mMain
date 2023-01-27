@@ -1,5 +1,10 @@
 # mMain
 **This is a new try at doing an account builder for Pow. The goal is to have fully functional multi-skill training with an emphasis on Iron man mode.**
+**You really shouldnt run this**
+
+**Progressive:**
+- [ ] Do a proper timer to switch between tasks
+- [ ] Make skills work with skill switching.
 
 **Woodcutting:**
 - [X] Normal trees: 1-15
