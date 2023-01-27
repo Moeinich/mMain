@@ -14,6 +14,8 @@ import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.TimeUnit;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import src.PastShadie.scripts.mMain.Combat.startCombat;
 import src.PastShadie.scripts.mMain.Cooking.startCooking;
@@ -34,7 +36,7 @@ import src.PastShadie.scripts.mMain.Woodcutting.startWoodcutting;
                         name =  "Skill",
                         description = "Which skill would you like to do?",
                         defaultValue = "Progressive",
-                        allowedValues = {"Progressive", "Mining", "Combat", "Fishing", "Woodcutting", "Cooking", "Firemaking", "Smithing"},
+                        allowedValues = {"Progressive", "Mining", "Fishing", "Woodcutting", "Cooking", "Firemaking", "Smithing"},
                         optionType = OptionType.STRING
                 )
         }
