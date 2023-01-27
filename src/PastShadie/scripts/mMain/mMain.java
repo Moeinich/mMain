@@ -9,13 +9,9 @@ import org.powbot.mobile.service.ScriptUploader;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadLocalRandom;
-import java.util.concurrent.TimeUnit;
-import java.util.Timer;
-import java.util.TimerTask;
 
 import src.PastShadie.scripts.mMain.Combat.startCombat;
 import src.PastShadie.scripts.mMain.Cooking.startCooking;
@@ -108,30 +104,17 @@ public class mMain extends AbstractScript {
                         }
                         // Add future skills to this tasklist!
                 );
-
-                while (true) {
-                    if (ScriptManager.INSTANCE.isStopping()) {
-                        ScriptManager.INSTANCE.stop();
-                        break;
-                    }
-                    long duration = ThreadLocalRandom.current().nextLong(200, 6000); //Generate a random stopwatch timer.
-                    CountDownLatch latch = new CountDownLatch(1);
-                    int taskIndex = ThreadLocalRandom.current().nextInt(tasks.size()); //Finding a new skill to do
-
-                    executor.execute(() -> {
+                long duration = ThreadLocalRandom.current().nextLong(5000, 10000);
+                final int taskIndex = ThreadLocalRandom.current().nextInt(tasks.size());
+                final long startTime = System.currentTimeMillis();
+                executor.execute(() -> {
+                    while (System.currentTimeMillis() - startTime < duration && !ScriptManager.INSTANCE.isStopping()) {
                         tasks.get(taskIndex).run();
-                        latch.countDown();
-                    });
-
-                    try {
-                        boolean reachedZero = latch.await(duration, TimeUnit.MILLISECONDS);
-                        if(!reachedZero){
-                            break;
-                        }
-                    } catch (InterruptedException e) {
-                        e.printStackTrace(); //Print the stacktrace if we have some kind of exception
                     }
-                }
+                    ScriptManager.INSTANCE.stop();
+                });
+
+
 
                 //Doing individual progressive skills!
             case "Mining":
