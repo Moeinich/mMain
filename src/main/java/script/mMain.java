@@ -23,7 +23,7 @@ import java.util.concurrent.ThreadLocalRandom;
                 @ScriptConfiguration(
                         name =  "Skill",
                         description = "Which skill would you like to do?",
-                        defaultValue = "Progressive",
+                        defaultValue = "Mining",
                         allowedValues = {"Progressive", "Mining", "Fishing", "Woodcutting", "Cooking", "Firemaking", "Smithing"},
                         optionType = OptionType.STRING
                 )
