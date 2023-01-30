@@ -64,7 +64,6 @@ public class mMain extends AbstractScript {
     }
 
     public class Stopwatch {
-
         public long stopTime;
 
         public Stopwatch(long time) {
@@ -86,7 +85,6 @@ public class mMain extends AbstractScript {
         public boolean hasFinished() {
             return System.currentTimeMillis() >= stopTime;
         }
-
     }
 
     @Override
