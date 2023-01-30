@@ -1,5 +1,6 @@
 package script;
 
+import org.powbot.api.Random;
 import org.powbot.api.rt4.walking.model.Skill;
 import org.powbot.api.script.*;
 import org.powbot.api.script.paint.Paint;
@@ -62,6 +63,32 @@ public class mMain extends AbstractScript {
         addPaint(p);
     }
 
+    public class Stopwatch {
+
+        public long stopTime;
+
+        public Stopwatch(long time) {
+            reset(time);
+        }
+
+        public Stopwatch() {
+            stopTime = 0;
+        }
+
+        public void reset(long time) {
+            stopTime = System.currentTimeMillis() + time;
+        }
+
+        public long timeLeft() {
+            return (stopTime - System.currentTimeMillis());
+        }
+
+        public boolean hasFinished() {
+            return System.currentTimeMillis() >= stopTime;
+        }
+
+    }
+
     @Override
     public void poll() {
         String skill = getOption("Skill");
@@ -96,17 +123,19 @@ public class mMain extends AbstractScript {
                         }
                         // Add future skills to this tasklist!
                 );
-                long duration = ThreadLocalRandom.current().nextLong(1200000, 2640000);
-                mMain.scriptStatus = "Generating new task!";
+                final Stopwatch runtime = new Stopwatch();
+                runtime.reset(Random.nextInt(1200000, 2640000));
                 final int taskIndex = ThreadLocalRandom.current().nextInt(tasks.size());
-                final long startTime = System.currentTimeMillis();
                 executor.execute(() -> {
-                    while (System.currentTimeMillis() - startTime < duration && !ScriptManager.INSTANCE.isStopping()) {
+                    while(runtime.hasFinished()) {
                         tasks.get(taskIndex).run();
                         mMain.scriptStatus = "Running task loop!";
+                        if (ScriptManager.INSTANCE.isStopping()) {
+                            break;
+                        }
                     }
-                    ScriptManager.INSTANCE.stop();
                 });
+                break;
 
                 //Starting individual progressive skills
                 //in case you want to do x skill only.
@@ -114,24 +143,31 @@ public class mMain extends AbstractScript {
             case "Mining":
                 var startMining = new Mining.startMining();
                 startMining.Mining();
+                break;
             case "Combat":
                 var startCombat = new Combat.startCombat();
                 startCombat.Combat();
+                break;
             case "Fishing":
                 var startFishing = new Fishing.startFishing();
                 startFishing.Fishing();
+                break;
             case "Woodcutting":
                 var startWoodcutting = new Woodcutting.startWoodcutting();
                 startWoodcutting.Woodcutting();
+                break;
             case "Cooking":
                 var startCooking = new Cooking.startCooking();
                 startCooking.Cooking();
+                break;
             case "Firemaking":
                 var startFiremaking = new Firemaking.startFiremaking();
                 startFiremaking.Firemaking();
+                break;
             case "Smithing":
                 var startSmithing = new Smithing.startSmithing();
                 startSmithing.startSmithing();
+                break;
         }
     }
 }
