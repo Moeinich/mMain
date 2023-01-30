@@ -85,6 +85,13 @@ public class mMain extends AbstractScript {
 
     @Override
     public void poll() {
+        var startMining = new Mining.startMining();
+        var startWoodcutting = new Woodcutting.startWoodcutting();
+        var startFishing = new Fishing.startFishing();
+        var startCooking = new Cooking.startCooking();
+        var startFiremaking = new Firemaking.startFiremaking();
+        var startSmithing = new Smithing.startSmithing();
+        var startCombat = new Combat.startCombat();
         String skill = getOption("Skill");
 
         switch (skill) {
@@ -92,27 +99,22 @@ public class mMain extends AbstractScript {
                 Executor executor = Executors.newSingleThreadExecutor();
                 List<Runnable> tasks = Arrays.asList(
                         () -> {
-                            var startMining = new Mining.startMining();
+
                             startMining.Mining();
                         },
                         () -> {
-                            var startFishing = new Fishing.startFishing();
                             startFishing.Fishing();
                         },
                         () -> {
-                            var startWoodcutting = new Woodcutting.startWoodcutting();
                             startWoodcutting.Woodcutting();
                         },
                         () -> {
-                            var startCooking = new Cooking.startCooking();
                             startCooking.Cooking();
                         },
                         () -> {
-                            var startFiremaking = new Firemaking.startFiremaking();
                             startFiremaking.Firemaking();
                         },
                         () -> {
-                            var startSmithing = new Smithing.startSmithing();
                             startSmithing.Smithing();
                         }
                         // Add future skills to this tasklist!
@@ -139,31 +141,24 @@ public class mMain extends AbstractScript {
                 //in case you want to do x skill only.
 
             case "Mining":
-                var startMining = new Mining.startMining();
                 startMining.Mining();
                 break;
             case "Combat":
-                var startCombat = new Combat.startCombat();
                 startCombat.Combat();
                 break;
             case "Fishing":
-                var startFishing = new Fishing.startFishing();
                 startFishing.Fishing();
                 break;
             case "Woodcutting":
-                var startWoodcutting = new Woodcutting.startWoodcutting();
                 startWoodcutting.Woodcutting();
                 break;
             case "Cooking":
-                var startCooking = new Cooking.startCooking();
                 startCooking.Cooking();
                 break;
             case "Firemaking":
-                var startFiremaking = new Firemaking.startFiremaking();
                 startFiremaking.Firemaking();
                 break;
             case "Smithing":
-                var startSmithing = new Smithing.startSmithing();
                 startSmithing.Smithing();
                 break;
         }
