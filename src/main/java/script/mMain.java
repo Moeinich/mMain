@@ -113,7 +113,7 @@ public class mMain extends AbstractScript {
                         },
                         () -> {
                             var startSmithing = new Smithing.startSmithing();
-                            startSmithing.startSmithing();
+                            startSmithing.Smithing();
                         }
                         // Add future skills to this tasklist!
                 );
@@ -164,7 +164,7 @@ public class mMain extends AbstractScript {
                 break;
             case "Smithing":
                 var startSmithing = new Smithing.startSmithing();
-                startSmithing.startSmithing();
+                startSmithing.Smithing();
                 break;
         }
     }
