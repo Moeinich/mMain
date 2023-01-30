@@ -21,6 +21,6 @@ public class withdrawLogs extends Task {
         
         if (Bank.stream().id(ItemList.LOGS_1511).count() > 27 || Bank.stream().id(ItemList.OAK_LOGS_1521).count() > 27 || Bank.stream().id(ItemList.WILLOW_LOGS_1519).count() > 27) {
             Bank.withdraw(skillData.withdrawLogs(), amountToWithdraw);
-        } ScriptManager.INSTANCE.stop();
+        } mMain.taskRunning.set(false);
     }
 }

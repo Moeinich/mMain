@@ -10,9 +10,11 @@ import org.powbot.mobile.service.ScriptUploader;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 @ScriptManifest(
         name = "mMain",
@@ -24,7 +26,7 @@ import java.util.concurrent.ThreadLocalRandom;
                 @ScriptConfiguration(
                         name =  "Skill",
                         description = "Which skill would you like to do?",
-                        defaultValue = "Mining",
+                        defaultValue = "Progressive",
                         allowedValues = {"Progressive", "Mining", "Fishing", "Woodcutting", "Cooking", "Firemaking", "Smithing"},
                         optionType = OptionType.STRING
                 )
@@ -38,10 +40,12 @@ public class mMain extends AbstractScript {
     //adb.exe forward tcp:61666 tcp:61666
 
     public static void main(String[] args) {
-        new ScriptUploader().uploadAndStart("mMain", "Account", "emulator-5554", true, false);
+        new ScriptUploader().uploadAndStart("mMain", "Account", "emulator-5554", true, true);
     }
 
     public static String scriptStatus;
+    Executor taskHandler = Executors.newSingleThreadExecutor();
+    public static final AtomicBoolean taskRunning = new AtomicBoolean(false);
 
     @Override
     public void onStart() {
@@ -51,7 +55,7 @@ public class mMain extends AbstractScript {
         Paint p = new PaintBuilder()
                 .addString("Skill: " , () -> skill)
                 .addString("Status: ", () -> scriptStatus)
-                .addString("Skill Time left: ", () -> String.valueOf(Stopwatch.timeLeft()))
+                .addString("Skill Time left: ", () -> String.valueOf(Stopwatch.timeLeft() / 1000 / 60) + " min")
                 .trackSkill(Skill.Mining)
                 .trackSkill(Skill.Fishing)
                 .trackSkill(Skill.Woodcutting)
@@ -65,21 +69,26 @@ public class mMain extends AbstractScript {
     }
 
     public static class Stopwatch {
-        public static long stopTime;
+        private long startTime;
+        private static long stopTime;
+        private boolean running;
+
         public Stopwatch() {
             stopTime = 0;
         }
         public void reset(long time) {
-            stopTime = System.currentTimeMillis() + time;
-        }
-        public Stopwatch(long time) {
-            reset(time);
+            startTime = System.currentTimeMillis();
+            stopTime = startTime + time;
+            running = true;
         }
         public static long timeLeft() {
             return (stopTime - System.currentTimeMillis());
         }
         public boolean hasFinished() {
             return System.currentTimeMillis() >= stopTime;
+        }
+        public boolean isRunning() {
+            return running;
         }
     }
 
@@ -96,10 +105,8 @@ public class mMain extends AbstractScript {
 
         switch (skill) {
             case "Progressive":
-                Executor executor = Executors.newSingleThreadExecutor();
                 List<Runnable> tasks = Arrays.asList(
                         () -> {
-
                             startMining.Mining();
                         },
                         () -> {
@@ -119,23 +126,35 @@ public class mMain extends AbstractScript {
                         }
                         // Add future skills to this tasklist!
                 );
-                final Stopwatch runtime = new Stopwatch();
-                runtime.reset(Random.nextInt(1200000, 2640000));
-                System.out.println("start stopwatch");
-                final int taskIndex = ThreadLocalRandom.current().nextInt(tasks.size());
-                mMain.scriptStatus = "Started watch + got task";
-                System.out.println("got task" + taskIndex);
-                executor.execute(() -> {
-                    while(runtime.hasFinished() & !ScriptManager.INSTANCE.isStopping()) {
-                        tasks.get(taskIndex).run();
-                        mMain.scriptStatus = "Running task loop!";
-                        System.out.println("Running task loop!");
-                        if (ScriptManager.INSTANCE.isStopping()) {
-                            break;
-                        }
+                if (taskRunning.compareAndSet(false, true)) {
+                    final Stopwatch runtime = new Stopwatch();
+                    System.out.println("Current time: " + System.currentTimeMillis());
+                    if (!runtime.isRunning()) {
+                        runtime.reset(Random.nextInt(22, 54 * 1000 * 60));
                     }
-                });
+                    System.out.println("stopTime: " + runtime.stopTime);
+                    final int taskIndex = ThreadLocalRandom.current().nextInt(tasks.size());
+                    final CountDownLatch countdownLatch = new CountDownLatch(1);
+                    taskHandler.execute(() -> {
+                        try {
+                            while(!runtime.hasFinished()) {
+                                countdownLatch.await();
+                                tasks.get(taskIndex).run();
+                                if (ScriptManager.INSTANCE.isStopping()) {
+                                    ScriptManager.INSTANCE.stop();
+                                    break;
+                                }
+                            }
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        } finally {
+                            taskRunning.set(false);
+                        }
+                    });
+                    countdownLatch.countDown();
+                }
                 break;
+
 
                 //Starting individual progressive skills
                 //in case you want to do x skill only.
