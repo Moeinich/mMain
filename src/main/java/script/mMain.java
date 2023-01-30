@@ -51,6 +51,7 @@ public class mMain extends AbstractScript {
         Paint p = new PaintBuilder()
                 .addString("Skill: " , () -> skill)
                 .addString("Status: ", () -> scriptStatus)
+                .addString("Skill Time left: ", () -> String.valueOf(Stopwatch.timeLeft()))
                 .trackSkill(Skill.Mining)
                 .trackSkill(Skill.Fishing)
                 .trackSkill(Skill.Woodcutting)
@@ -63,25 +64,20 @@ public class mMain extends AbstractScript {
         addPaint(p);
     }
 
-    public class Stopwatch {
-        public long stopTime;
-
-        public Stopwatch(long time) {
-            reset(time);
-        }
-
+    public static class Stopwatch {
+        public static long stopTime;
         public Stopwatch() {
             stopTime = 0;
         }
-
         public void reset(long time) {
             stopTime = System.currentTimeMillis() + time;
         }
-
-        public long timeLeft() {
+        public Stopwatch(long time) {
+            reset(time);
+        }
+        public static long timeLeft() {
             return (stopTime - System.currentTimeMillis());
         }
-
         public boolean hasFinished() {
             return System.currentTimeMillis() >= stopTime;
         }
@@ -123,11 +119,15 @@ public class mMain extends AbstractScript {
                 );
                 final Stopwatch runtime = new Stopwatch();
                 runtime.reset(Random.nextInt(1200000, 2640000));
+                System.out.println("start stopwatch");
                 final int taskIndex = ThreadLocalRandom.current().nextInt(tasks.size());
+                mMain.scriptStatus = "Started watch + got task";
+                System.out.println("got task" + taskIndex);
                 executor.execute(() -> {
-                    while(runtime.hasFinished()) {
+                    while(runtime.hasFinished() & !ScriptManager.INSTANCE.isStopping()) {
                         tasks.get(taskIndex).run();
                         mMain.scriptStatus = "Running task loop!";
+                        System.out.println("Running task loop!");
                         if (ScriptManager.INSTANCE.isStopping()) {
                             break;
                         }
