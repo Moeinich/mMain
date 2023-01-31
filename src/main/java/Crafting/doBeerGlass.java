@@ -20,8 +20,8 @@ import Assets.skillData;
 import script.mMain;
 
 public class doBeerGlass extends Task {
-    Component beerGlassWidgetID = Widgets.widget(270).component(14);
     Component beerGlassWidget = Components.stream().widget(270).action("Make", "Beer glass").viewable().first();
+
 
     @Override
     public boolean activate() {

@@ -26,7 +26,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
                 @ScriptConfiguration(
                         name =  "Skill",
                         description = "Which skill would you like to do?",
-                        defaultValue = "Crafting",
+                        defaultValue = "Thieving",
                         allowedValues = {"Progressive", "Mining", "Fishing", "Woodcutting", "Cooking", "Firemaking", "Smithing", "Thieving", "Crafting"},
                         optionType = OptionType.STRING
                 )
