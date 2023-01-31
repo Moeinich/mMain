@@ -26,8 +26,8 @@ import java.util.concurrent.atomic.AtomicBoolean;
                 @ScriptConfiguration(
                         name =  "Skill",
                         description = "Which skill would you like to do?",
-                        defaultValue = "Progressive",
-                        allowedValues = {"Progressive", "Mining", "Fishing", "Woodcutting", "Cooking", "Firemaking", "Smithing"},
+                        defaultValue = "Thieving",
+                        allowedValues = {"Progressive", "Mining", "Fishing", "Woodcutting", "Cooking", "Firemaking", "Smithing", "Thieving"},
                         optionType = OptionType.STRING
                 )
         }
@@ -55,21 +55,20 @@ public class mMain extends AbstractScript {
         Paint p = new PaintBuilder()
                 .addString("Skill: " , () -> skill)
                 .addString("Status: ", () -> scriptStatus)
-                .addString("Skill Time left: ", () -> String.valueOf(Stopwatch.timeLeft() / 1000 / 60) + " min")
+                .addString("Skill Time left: ", () -> Stopwatch.timeLeft() / 1000 / 60 + " min")
                 .trackSkill(Skill.Mining)
                 .trackSkill(Skill.Fishing)
                 .trackSkill(Skill.Woodcutting)
                 .trackSkill(Skill.Cooking)
                 .trackSkill(Skill.Firemaking)
                 .trackSkill(Skill.Smithing)
-                .x(60)
-                .y(100)
+                .removeScriptNameVersion()
+                .withoutDiscordWebhook()
                 .build();
         addPaint(p);
     }
 
     public static class Stopwatch {
-        private long startTime;
         private static long stopTime;
         private boolean running;
 
@@ -77,7 +76,7 @@ public class mMain extends AbstractScript {
             stopTime = 0;
         }
         public void reset(long time) {
-            startTime = System.currentTimeMillis();
+            long startTime = System.currentTimeMillis();
             stopTime = startTime + time;
             running = true;
         }
@@ -101,38 +100,26 @@ public class mMain extends AbstractScript {
         var startFiremaking = new Firemaking.startFiremaking();
         var startSmithing = new Smithing.startSmithing();
         var startCombat = new Combat.startCombat();
+        var startThieving = new Thieving.startThieving();
         String skill = getOption("Skill");
 
         switch (skill) {
             case "Progressive":
                 List<Runnable> tasks = Arrays.asList(
-                        () -> {
-                            startMining.Mining();
-                        },
-                        () -> {
-                            startFishing.Fishing();
-                        },
-                        () -> {
-                            startWoodcutting.Woodcutting();
-                        },
-                        () -> {
-                            startCooking.Cooking();
-                        },
-                        () -> {
-                            startFiremaking.Firemaking();
-                        },
-                        () -> {
-                            startSmithing.Smithing();
-                        }
+                        startMining::Mining,
+                        startFishing::Fishing,
+                        startWoodcutting::Woodcutting,
+                        startCooking::Cooking,
+                        startFiremaking::Firemaking,
+                        startSmithing::Smithing,
+                        startThieving::Thieving
                         // Add future skills to this tasklist!
                 );
                 if (taskRunning.compareAndSet(false, true)) {
                     final Stopwatch runtime = new Stopwatch();
-                    System.out.println("Current time: " + System.currentTimeMillis());
                     if (!runtime.isRunning()) {
                         runtime.reset(Random.nextInt(22, 54 * 1000 * 60));
                     }
-                    System.out.println("stopTime: " + runtime.stopTime);
                     final int taskIndex = ThreadLocalRandom.current().nextInt(tasks.size());
                     final CountDownLatch countdownLatch = new CountDownLatch(1);
                     taskHandler.execute(() -> {
@@ -154,7 +141,6 @@ public class mMain extends AbstractScript {
                     countdownLatch.countDown();
                 }
                 break;
-
 
                 //Starting individual progressive skills
                 //in case you want to do x skill only.
@@ -179,6 +165,9 @@ public class mMain extends AbstractScript {
                 break;
             case "Smithing":
                 startSmithing.Smithing();
+                break;
+            case "Thieving":
+                startThieving.Thieving();
                 break;
         }
     }

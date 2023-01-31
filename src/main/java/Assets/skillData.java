@@ -80,6 +80,7 @@ public class skillData {
     public static int[] normalTreeID = {1276, 1278};
     public static int[] oakTreeID = {10820};
     public static int[] willowTreeID = {10819};
+    public static int[] teakTreeID = {40758};
 
     public static final Area normalTreeLocation = new Area (
             new Tile(3074,3274),
@@ -92,6 +93,10 @@ public class skillData {
     public static final Area willowTreeLocation = new Area (
             new Tile(3056,3255),
             new Tile(3064, 3249)
+    );
+    public static final Area teakLocation = new Area (
+            new Tile(2185,2987),
+            new Tile(2185, 2991)
     );
 
     public static Tile movementWoodcutting(){
@@ -198,5 +203,15 @@ public class skillData {
     public static Area edgevilleBank = new Area(new Tile(3091, 3499, 0), new Tile(3098, 3488, 0));
     public static Area varrockWestBank = new Area(new Tile(3180, 3447, 0), new Tile(3190, 3433, 0));
 
-
+    //Thieving
+    public static final Area thievingMenArea = new Area (
+            new Tile(3217, 3229, 0),
+            new Tile(3225, 3209, 0)
+    );
+    public static Tile movementThieving(){
+        if (Skills.realLevel(Constants.SKILLS_WOODCUTTING) <= 5) {
+            return thievingMenArea.getRandomTile();
+        }
+        return null;
+    }
 }

@@ -1,11 +1,13 @@
 package Fishing;
 
 import org.powbot.api.Condition;
+import org.powbot.api.Tile;
 import org.powbot.api.rt4.*;
 import org.powbot.api.rt4.walking.model.Skill;
 
 import Assets.ItemList;
 import Assets.Task;
+import Assets.skillData;
 import script.mMain;
 
 public class getFishingEquipment extends Task {
