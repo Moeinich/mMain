@@ -11,6 +11,7 @@ public class startThieving {
     public void Thieving() {
         if (thievingTasks.isEmpty()) {
             thievingTasks.add(new thievingMen());
+            thievingTasks.add(new teaStall());
         }
 
         for (Task task : thievingTasks) {
