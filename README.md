@@ -4,7 +4,7 @@
 
 **Progressive:**
 - [X] Do a proper timer to switch between tasks
-- [-] Make skills work with skill switching.
+- [ ] Make skills work with skill switching.
 
 **Woodcutting:**
 - [X] Normal trees: 1-15
