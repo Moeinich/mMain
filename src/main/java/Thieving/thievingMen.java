@@ -24,7 +24,7 @@ public class thievingMen extends Task {
     Item CoinPouch = Inventory.stream().name("Coin pouch").first();
     @Override
     public boolean activate() {
-        return Skills.realLevel(Constants.SKILLS_THIEVING) <= 5 || (Skills.realLevel(Constants.SKILLS_THIEVING) > 5 && Inventory.stream().name("Coin pouch").count() >= 1);
+        return Skills.realLevel(Constants.SKILLS_THIEVING) <= 4 || (Skills.realLevel(Constants.SKILLS_THIEVING) > 5 && Inventory.stream().name("Coin pouch").count() >= 1);
     }
 
     @Override

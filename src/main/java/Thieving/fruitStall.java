@@ -69,7 +69,7 @@ public class fruitStall extends Task {
     public void execute() {
         //We need to check hosidius favor!
         if (!KOUREND_FAVOR.checkedFavor) {
-            mMain.State = "Checking favor!";
+            mMain.State = "Checking favor!" + KOUREND_FAVOR.hosidiusFavorValue;
             KOUREND_FAVOR.hosidiusFavorValue = KOUREND_FAVOR.HOSIDIUS.getValue();
             KOUREND_FAVOR.checkedFavor = true;
         }
@@ -80,7 +80,7 @@ public class fruitStall extends Task {
         if (shouldDropItems()) {
             dropItems();
         }
-        else if (shouldThieve() && KOUREND_FAVOR.hosidiusFavorValue <= 19) {
+        else if (shouldThieve() && KOUREND_FAVOR.hosidiusFavorValue >= 19) {
             if (!Game.tab(Game.Tab.INVENTORY)) {
                 Condition.wait(() -> Game.tab(Game.Tab.INVENTORY), 250, 10);
             }
