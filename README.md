@@ -32,7 +32,7 @@
 - [X] Withdraw Pickaxe depending on mining level
 - [X] Banks ores
   
-- **Thieving**
+**Thieving**
 - [X] 1-5 Men in lumbridge
 - [X] 5-25 Tea stalls varrock
 - [X] 25-60 fruit stalls (Will check if you have Hosidius favor!)
