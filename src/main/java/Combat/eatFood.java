@@ -13,7 +13,7 @@ public class eatFood extends Task {
     }
     @Override
     public void execute() {
-        mMain.scriptStatus = "Eating food";
+        mMain.State = "Eating food";
         Npc combatMonster = Npcs.stream().at(Players.local().interacting().tile()).first();
         Item food = Inventory.stream().action("Eat").first();
 

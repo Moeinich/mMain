@@ -16,7 +16,7 @@ return Bank.opened() && Inventory.stream().id(skillData.pickaxes).count() == 0;
 
     @Override
     public void execute() {
-        mMain.scriptStatus = "Getting pickaxe";
+        mMain.State = "Getting pickaxe";
         int amountToWithdraw = 1;
         Bank.depositInventory();
         Bank.withdraw(skillData.withdrawPickaxe(), amountToWithdraw);

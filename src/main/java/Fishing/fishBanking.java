@@ -15,7 +15,7 @@ public class fishBanking extends Task {
     }
     @Override
     public void execute() {
-        mMain.scriptStatus = "Banking";
+        mMain.State = "Banking";
         Locatable nearestBank = Bank.nearest();
         if (Bank.inViewport() && nearestBank.tile().distanceTo(Players.local()) < 4) {
             Bank.open();

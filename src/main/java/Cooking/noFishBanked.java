@@ -15,7 +15,7 @@ public class noFishBanked extends Task {
 
     @Override
     public void execute() {
-        mMain.scriptStatus = "no fish banked!";
+        mMain.State = "no fish banked!";
         if (Bank.stream().id(ItemList.RAW_SHRIMPS_317).first().stackSize() == 0) {
             ScriptManager.INSTANCE.stop();
         }

@@ -1,6 +1,5 @@
 package Firemaking;
 
-import org.powbot.mobile.script.ScriptManager;
 import org.powbot.api.rt4.Bank;
 import org.powbot.api.rt4.Inventory;
 
@@ -16,7 +15,7 @@ public class withdrawLogs extends Task {
     }
     @Override
     public void execute() {
-        mMain.scriptStatus = "Withdraw logs";
+        mMain.State = "Withdraw logs";
         int amountToWithdraw = 27;
         
         if (Bank.stream().id(ItemList.LOGS_1511).count() > 27 || Bank.stream().id(ItemList.OAK_LOGS_1521).count() > 27 || Bank.stream().id(ItemList.WILLOW_LOGS_1519).count() > 27) {

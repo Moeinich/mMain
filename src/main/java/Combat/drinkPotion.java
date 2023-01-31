@@ -15,7 +15,7 @@ public class drinkPotion extends Task {
     }
     @Override
     public void execute() {
-        mMain.scriptStatus = "Drink potion";
+        mMain.State = "Drink potion";
         Item potion = Inventory.stream().filtered(i -> i.name().contains("Super attack")).first();
         Npc combatMonster = Npcs.stream().at(Players.local().interacting().tile()).first();
 

@@ -16,7 +16,7 @@ public class depositOre extends Task {
 
     @Override
     public void execute() {
-        mMain.scriptStatus = "Deposit ores";
+        mMain.State = "Deposit ores";
             Bank.depositAllExcept(skillData.pickaxes);
             Bank.close();
     }

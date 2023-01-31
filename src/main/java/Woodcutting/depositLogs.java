@@ -14,7 +14,7 @@ public class depositLogs extends Task {
     }
     @Override
     public void execute() {
-        mMain.scriptStatus = "Deposit logs";
+        mMain.State = "Deposit logs";
         Bank.depositAllExcept(skillData.wcAxes);
     }
 }

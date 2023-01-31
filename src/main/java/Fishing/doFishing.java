@@ -17,7 +17,7 @@ public class doFishing extends Task {
     }
     @Override
     public void execute() {
-        mMain.scriptStatus = "Do fishing";
+        mMain.State = "Do fishing";
         if (Skills.realLevel(Constants.SKILLS_FISHING) <= 19) {
             Npc AlKharidFishingSpot = Npcs.stream().name("Fishing spot").nearest().first();
 

@@ -23,7 +23,7 @@ public class depositProducts extends Task {
 
     @Override
     public void execute() {
-        mMain.scriptStatus = "Deposit products";
+        mMain.State = "Deposit products";
         Bank.depositInventory();
     }
 }

@@ -14,7 +14,7 @@ public class withdrawTinderbox extends Task {
     }
     @Override
     public void execute() {
-        mMain.scriptStatus = "Withdraw Tinderbox";
+        mMain.State = "Withdraw Tinderbox";
         Bank.depositInventory();
         Bank.withdraw(ItemList.TINDERBOX_590, 1);
     }

@@ -18,13 +18,13 @@ import Assets.Task;
 import Assets.skillData;
 import script.mMain;
 
-public class teaStall extends Task {
+public class fruitStall extends Task {
     @Override
     public boolean activate() {
-        return Skills.realLevel(Constants.SKILLS_THIEVING) > 5 && Skills.realLevel(Constants.SKILLS_THIEVING) < 25;
+        return Skills.realLevel(Constants.SKILLS_THIEVING) >= 25;
     }
 
-    public static final String[] badItems = {"Cup of tea", "Coins"};
+    public static final String[] badItems = {"LOT OF ITEMS!"};
     static final int STALL_ID = 635;
     public boolean shouldDropItems() {
         List<Item> itemsToDrop = Inventory.stream().name(badItems).list();
@@ -48,7 +48,6 @@ public class teaStall extends Task {
             dropItems();
         }
         else if (shouldThieve()) {
-            mMain.State = "Entering shouldthieve()"; // debug
             if (!Game.tab(Game.Tab.INVENTORY)) {
                 Condition.wait(() -> Game.tab(Game.Tab.INVENTORY), 250, 10);
             }

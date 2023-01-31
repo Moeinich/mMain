@@ -33,7 +33,7 @@ public class thievingMen extends Task {
             Condition.wait(() -> Game.tab(Game.Tab.INVENTORY), 250, 10);
         }
         if (CoinPouch.stackSize() >= triggerCount) {
-            mMain.scriptStatus = "Opening pouches";
+            mMain.State = "Opening pouches";
             CoinPouch.interact("Open-all");
             Condition.wait((Callable<Boolean>) () -> Inventory.stream().name("Coin pouch").count() == 0);
             if (shouldRandomize) {
@@ -46,19 +46,19 @@ public class thievingMen extends Task {
         }
 
         if (!skillData.thievingMenArea.contains(Players.local())) {
-            mMain.scriptStatus = "Going to lumbridge";
+            mMain.State = "Going to lumbridge";
             Movement.builder(skillData.movementThieving()).setRunMin(45).setRunMax(75).move();
         }
 
         Npc Man = Npcs.stream().name("Man").nearest().first();
         if (Man.inViewport() && Players.local().animation() == -1) {
-            mMain.scriptStatus = "Thieving men";
+            mMain.State = "Thieving men";
             Man.interact("Pickpocket", "Man");
         }
 
         //Open pouches if we're done thieving in lumbridge
         if (Skills.realLevel(Constants.SKILLS_THIEVING) > 5 && Inventory.stream().name("Coin pouch").count() >= 1) {
-            mMain.scriptStatus = "Done with men, empty pouches";
+            mMain.State = "Done with men, empty pouches";
             CoinPouch.interact("Open-all");
             Condition.wait((Callable<Boolean>) () -> Inventory.stream().name("Coin pouch").count() == 0);
         }

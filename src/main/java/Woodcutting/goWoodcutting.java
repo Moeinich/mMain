@@ -28,7 +28,7 @@ public class goWoodcutting extends Task {
     }
     @Override
     public void execute() {
-        mMain.scriptStatus = "Going to trees";
+        mMain.State = "Going to trees";
         Movement.builder(skillData.movementWoodcutting()).setRunMin(45).setRunMax(75).move();
     }
 }

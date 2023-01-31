@@ -12,7 +12,7 @@ public class setAttackMode extends Task {
     }
     @Override
     public void execute() {
-        mMain.scriptStatus = "Setting cb mode";
+        mMain.State = "Setting cb mode";
         System.out.print("Setting combat mode to defensive!");
         Combat.style(Combat.Style.DEFENSIVE);
     }

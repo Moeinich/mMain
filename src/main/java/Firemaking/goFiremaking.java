@@ -20,7 +20,7 @@ public class goFiremaking extends Task {
     public static int fmSpot = 1;
     @Override
     public void execute() {
-        mMain.scriptStatus = "Go to FM spot";
+        mMain.State = "Go to FM spot";
         Movement.builder(skillData.moveToFiremakingSpot()).setRunMin(45).setRunMax(75).move();
     }
 }

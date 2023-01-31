@@ -16,7 +16,7 @@ public class doMining extends Task {
 
     @Override
     public void execute() {
-        mMain.scriptStatus = "Do mining";
+        mMain.State = "Do mining";
         //Mine copper ores till 20 mining
         if (Skills.realLevel(Constants.SKILLS_MINING) <= 25) {
             GameObject copperOre = Objects.stream().within(2).id(11161,11360).nearest().first();

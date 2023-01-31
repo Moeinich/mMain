@@ -21,7 +21,7 @@ public class goFishing extends Task {
     }
     @Override
     public void execute() {
-        mMain.scriptStatus = "Go to fishing area";
+        mMain.State = "Go to fishing area";
         Movement.builder(skillData.movementFishing()).setRunMin(45).setRunMax(75).move();
     }
 }

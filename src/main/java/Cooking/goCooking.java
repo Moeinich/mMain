@@ -15,7 +15,7 @@ public class goCooking extends Task {
     }
     @Override
     public void execute() {
-        mMain.scriptStatus = "Go to cooking area";
+        mMain.State = "Go to cooking area";
         Movement.builder(skillData.cookingAreaEdgeville.getRandomTile()).setRunMin(45).setRunMax(75).move();
     }
 }

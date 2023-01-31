@@ -14,7 +14,7 @@ public class getAxe extends Task {
     }
     @Override
     public void execute() {
-        mMain.scriptStatus = "Getting an axe";
+        mMain.State = "Getting an axe";
         int amountToWithdraw = 1;
 
         Bank.depositInventory();

@@ -12,6 +12,7 @@ public class startThieving {
         if (thievingTasks.isEmpty()) {
             thievingTasks.add(new thievingMen());
             thievingTasks.add(new teaStall());
+            thievingTasks.add(new fruitStall());
         }
 
         for (Task task : thievingTasks) {

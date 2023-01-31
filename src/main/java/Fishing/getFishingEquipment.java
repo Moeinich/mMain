@@ -1,13 +1,11 @@
 package Fishing;
 
 import org.powbot.api.Condition;
-import org.powbot.api.Tile;
 import org.powbot.api.rt4.*;
 import org.powbot.api.rt4.walking.model.Skill;
 
 import Assets.ItemList;
 import Assets.Task;
-import Assets.skillData;
 import script.mMain;
 
 public class getFishingEquipment extends Task {
@@ -23,7 +21,7 @@ public class getFishingEquipment extends Task {
     }
     @Override
     public void execute() {
-        mMain.scriptStatus = "Get equipment";
+        mMain.State = "Get equipment";
 
         if (Skills.realLevel(Constants.SKILLS_FISHING) <= 19) {
                 Condition.wait(Bank::open, 50, 10);

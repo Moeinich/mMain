@@ -43,18 +43,18 @@ public class mMain extends AbstractScript {
         new ScriptUploader().uploadAndStart("mMain", "Account", "emulator-5554", true, true);
     }
 
-    public static String scriptStatus;
+    public static String State;
     Executor taskHandler = Executors.newSingleThreadExecutor();
     public static final AtomicBoolean taskRunning = new AtomicBoolean(false);
 
     @Override
     public void onStart() {
         String skill = getOption("Skill");
-        scriptStatus = "Starting...";
+        State = "Starting...";
 
         Paint p = new PaintBuilder()
                 .addString("Skill: " , () -> skill)
-                .addString("Status: ", () -> scriptStatus)
+                .addString("State: ", () -> State)
                 .addString("Skill Time left: ", () -> Stopwatch.timeLeft() / 1000 / 60 + " min")
                 .trackSkill(Skill.Mining)
                 .trackSkill(Skill.Fishing)
@@ -62,6 +62,7 @@ public class mMain extends AbstractScript {
                 .trackSkill(Skill.Cooking)
                 .trackSkill(Skill.Firemaking)
                 .trackSkill(Skill.Smithing)
+                .trackSkill(Skill.Thieving)
                 .removeScriptNameVersion()
                 .withoutDiscordWebhook()
                 .build();
@@ -118,7 +119,7 @@ public class mMain extends AbstractScript {
                 if (taskRunning.compareAndSet(false, true)) {
                     final Stopwatch runtime = new Stopwatch();
                     if (!runtime.isRunning()) {
-                        runtime.reset(Random.nextInt(22, 54 * 1000 * 60));
+                        runtime.reset(Random.nextInt(54, 120 * 1000 * 60));
                     }
                     final int taskIndex = ThreadLocalRandom.current().nextInt(tasks.size());
                     final CountDownLatch countdownLatch = new CountDownLatch(1);

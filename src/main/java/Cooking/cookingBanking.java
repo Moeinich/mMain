@@ -17,7 +17,7 @@ public class cookingBanking extends Task {
     }
     @Override
     public void execute() {
-        mMain.scriptStatus = "Banking";
+        mMain.State = "Banking";
         Locatable nearestBank = Bank.nearest();
         if (Bank.inViewport() && nearestBank.tile().distanceTo(Players.local()) < 5) {
             Bank.open();

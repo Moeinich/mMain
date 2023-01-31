@@ -17,7 +17,7 @@ public class doFiremaking extends Task {
     }
     @Override
     public void execute() {
-        mMain.scriptStatus = "Do firemaking";
+        mMain.State = "Do firemaking";
 
         Inventory.stream().id(skillData.logs).first().interact("Use");
         Inventory.stream().id(ItemList.TINDERBOX_590).first().interact("Use");

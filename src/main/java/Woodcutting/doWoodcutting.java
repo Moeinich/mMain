@@ -22,7 +22,7 @@ public class doWoodcutting extends Task {
     }
     @Override
     public void execute() {
-        mMain.scriptStatus = "Cutting trees";
+        mMain.State = "Cutting trees";
         GameObject treeNormal = Objects.stream().within(6).id(skillData.normalTreeID).nearest().first();
         GameObject treeOak = Objects.stream().within(6).id(skillData.oakTreeID).nearest().first();
         GameObject treeWillow = Objects.stream().within(6).id(skillData.willowTreeID).nearest().first();
@@ -47,7 +47,7 @@ public class doWoodcutting extends Task {
         if (Skills.realLevel(Constants.SKILLS_WOODCUTTING) >= 50) {
             if (Inventory.stream().id(ItemList.TEAK_LOGS_6333).count() >= 26) {
                 while(Inventory.stream().id(ItemList.TEAK_LOGS_6333).count() >= 1) {
-                    mMain.scriptStatus = "dropping items";
+                    mMain.State = "dropping items";
                     List<Item> itemsToDrop = Inventory.stream().name("Teak logs").list();
                     Inventory.drop(itemsToDrop);
                     Condition.wait(() -> itemsToDrop.isEmpty(), 20, 50);

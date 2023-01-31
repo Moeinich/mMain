@@ -14,7 +14,7 @@ public class goCombat extends Task {
     }
     @Override
     public void execute() {
-        mMain.scriptStatus = "Go to cb area";
+        mMain.State = "Go to cb area";
         Movement.builder(skillData.Seagull_area.getRandomTile()).setRunMin(45).setRunMax(75).move();
     }
 }

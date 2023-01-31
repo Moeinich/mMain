@@ -22,7 +22,7 @@ public class goSmithing extends Task {
 
     @Override
     public void execute() {
-        mMain.scriptStatus = "Go smithing";
+        mMain.State = "Go smithing";
         if (Inventory.stream().id(skillData.smithingOres).count() == 28) {
             Movement.builder(skillData.smithingAreaEdgeville.getRandomTile()).setRunMin(45).setRunMax(75).move();
         }

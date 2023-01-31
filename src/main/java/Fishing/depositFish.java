@@ -14,7 +14,7 @@ public class depositFish extends Task {
     }
     @Override
     public void execute() {
-        mMain.scriptStatus = "Deposit fish";
+        mMain.State = "Deposit fish";
         Bank.depositAllExcept(ItemList.SMALL_FISHING_NET_303, ItemList.FLY_FISHING_ROD_309, ItemList.FEATHER_314);
     }
 }

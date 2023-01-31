@@ -24,7 +24,7 @@ public class goMining extends Task {
 
     @Override
     public void execute() {
-        mMain.scriptStatus = "Go to mining area";
+        mMain.State = "Go to mining area";
         Movement.builder(skillData.movementMining()).setRunMin(45).setRunMax(75).move();
     }
 }

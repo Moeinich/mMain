@@ -14,7 +14,7 @@ public class doCooking extends Task {
 
     @Override
     public void execute() {
-        mMain.scriptStatus = "Do cooking";
+        mMain.State = "Do cooking";
         Component cookWidget = Widgets.widget(270).component(14);
 
         if (skillData.cookingStove.inViewport() && !Widgets.widget(270).valid()) {

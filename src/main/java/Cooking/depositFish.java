@@ -14,7 +14,7 @@ public class depositFish extends Task {
     }
     @Override
     public void execute() {
-        mMain.scriptStatus = "Depositing fish";
+        mMain.State = "Depositing fish";
         Bank.depositInventory();
     }
 }
