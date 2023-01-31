@@ -3,8 +3,8 @@
 **You really shouldnt run this**
 
 **Progressive:**
-- [ ] Do a proper timer to switch between tasks
-- [ ] Make skills work with skill switching.
+- [X] Do a proper timer to switch between tasks
+- [-] Make skills work with skill switching.
 
 **Woodcutting:**
 - [X] Normal trees: 1-15
@@ -31,14 +31,8 @@
 - [X] Mines Iron from 20-infinity at varrock
 - [X] Withdraw Pickaxe depending on mining level
 - [X] Banks ores
-
-**Smithing**
-- [X] Crafting bars
-- [ ] Crafting Bronze Warhammers to reach 15 smithing for iron bars
-- [X] Iron bars
-
-**Combat:**
-- [X] Seagull low-cb *(Needs testing)*
-- [ ] Minotaur, Stronghold of Security
-- [X] Food usage *(Needs testing)*
-- [X] Potion usage *(Needs testing)*
+  
+- **Thieving**
+- [X] 1-5 Men in lumbridge
+- [X] 5-25 Tea stalls varrock
+- [X] 25-60 fruit stalls (Will check if you have Hosidius favor!)
