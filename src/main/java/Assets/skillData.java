@@ -222,4 +222,13 @@ public class skillData {
         }
         return null;
     }
+
+    //Crafting
+    public static final Area craftingArea = new Area (
+            new Tile(3160, 3493, 0),
+            new Tile(3168, 3486, 0)
+    );
+    public static Tile movementCrafting(){
+            return craftingArea.getRandomTile();
+    }
 }

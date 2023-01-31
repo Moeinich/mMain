@@ -26,8 +26,8 @@ import java.util.concurrent.atomic.AtomicBoolean;
                 @ScriptConfiguration(
                         name =  "Skill",
                         description = "Which skill would you like to do?",
-                        defaultValue = "Thieving",
-                        allowedValues = {"Progressive", "Mining", "Fishing", "Woodcutting", "Cooking", "Firemaking", "Smithing", "Thieving"},
+                        defaultValue = "Crafting",
+                        allowedValues = {"Progressive", "Mining", "Fishing", "Woodcutting", "Cooking", "Firemaking", "Smithing", "Thieving", "Crafting"},
                         optionType = OptionType.STRING
                 )
         }
@@ -63,6 +63,8 @@ public class mMain extends AbstractScript {
                 .trackSkill(Skill.Firemaking)
                 .trackSkill(Skill.Smithing)
                 .trackSkill(Skill.Thieving)
+                .x(40)
+                .y(400)
                 .removeScriptNameVersion()
                 .withoutDiscordWebhook()
                 .build();
@@ -102,6 +104,7 @@ public class mMain extends AbstractScript {
         var startSmithing = new Smithing.startSmithing();
         var startCombat = new Combat.startCombat();
         var startThieving = new Thieving.startThieving();
+        var startCrafting = new Crafting.startCrafting();
         String skill = getOption("Skill");
 
         switch (skill) {
@@ -112,7 +115,8 @@ public class mMain extends AbstractScript {
                         startWoodcutting::Woodcutting,
                         startCooking::Cooking,
                         startFiremaking::Firemaking,
-                        startThieving::Thieving
+                        startThieving::Thieving,
+                        startCrafting::Crafting
                         // Add future skills to this tasklist!
                 );
                 if (taskRunning.compareAndSet(false, true)) {
@@ -168,6 +172,9 @@ public class mMain extends AbstractScript {
                 break;
             case "Thieving":
                 startThieving.Thieving();
+                break;
+            case "Crafting":
+                startCrafting.Crafting();
                 break;
         }
     }
