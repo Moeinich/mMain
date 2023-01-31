@@ -112,14 +112,13 @@ public class mMain extends AbstractScript {
                         startWoodcutting::Woodcutting,
                         startCooking::Cooking,
                         startFiremaking::Firemaking,
-                        startSmithing::Smithing,
                         startThieving::Thieving
                         // Add future skills to this tasklist!
                 );
                 if (taskRunning.compareAndSet(false, true)) {
                     final Stopwatch runtime = new Stopwatch();
                     if (!runtime.isRunning()) {
-                        runtime.reset(Random.nextInt(54, 120 * 1000 * 60));
+                        runtime.reset(Random.nextInt(44, 120 * 1000 * 60));
                     }
                     final int taskIndex = ThreadLocalRandom.current().nextInt(tasks.size());
                     final CountDownLatch countdownLatch = new CountDownLatch(1);

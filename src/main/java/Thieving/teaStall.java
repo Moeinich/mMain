@@ -21,7 +21,7 @@ import script.mMain;
 public class teaStall extends Task {
     @Override
     public boolean activate() {
-        return Skills.realLevel(Constants.SKILLS_THIEVING) > 5 && Skills.realLevel(Constants.SKILLS_THIEVING) < 25;
+        return Skills.realLevel(Constants.SKILLS_THIEVING) > 5 && Skills.realLevel(Constants.SKILLS_THIEVING) <= 24;
     }
 
     public static final String[] badItems = {"Cup of tea", "Coins"};

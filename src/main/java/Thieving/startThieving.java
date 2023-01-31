@@ -13,6 +13,7 @@ public class startThieving {
             thievingTasks.add(new thievingMen());
             thievingTasks.add(new teaStall());
             thievingTasks.add(new fruitStall());
+            thievingTasks.add(new thievingDone());
         }
 
         for (Task task : thievingTasks) {

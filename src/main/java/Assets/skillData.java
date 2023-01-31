@@ -209,12 +209,16 @@ public class skillData {
             new Tile(3212, 3228, 0)
     );
     public static Tile teaStallTile = new Tile(3269,3412);
+    public static Tile fruitStallTile = new Tile(1796, 3607);
     public static Tile movementThieving(){
         if (Skills.realLevel(Constants.SKILLS_THIEVING) <= 5) {
             return thievingMenArea.getRandomTile();
         }
-        if (Skills.realLevel(Constants.SKILLS_THIEVING)  > 5 && Skills.realLevel(Constants.SKILLS_THIEVING) < 25) {
+        if (Skills.realLevel(Constants.SKILLS_THIEVING)  > 5 && Skills.realLevel(Constants.SKILLS_THIEVING) <= 24) {
             return teaStallTile;
+        }
+        if (Skills.realLevel(Constants.SKILLS_THIEVING) >= 25) {
+            return fruitStallTile;
         }
         return null;
     }
