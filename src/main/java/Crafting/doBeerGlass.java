@@ -1,6 +1,7 @@
 package Crafting;
 
 import org.powbot.api.Condition;
+import org.powbot.api.event.SkillExpGainedEvent;
 import org.powbot.api.rt4.Bank;
 import org.powbot.api.rt4.Component;
 import org.powbot.api.rt4.Components;
@@ -11,6 +12,7 @@ import org.powbot.api.rt4.Item;
 import org.powbot.api.rt4.Skills;
 import org.powbot.api.rt4.Widgets;
 
+import java.util.Date;
 import java.util.concurrent.Callable;
 
 import Assets.ItemList;
@@ -19,6 +21,7 @@ import script.mMain;
 
 public class doBeerGlass extends Task {
     Component beerGlassWidget = Components.stream().widget(270).action("Make", "Beer glass").viewable().first();
+    private static Date lastSkillExpGainedTime = null;
 
     @Override
     public boolean activate() {
@@ -53,17 +56,9 @@ public class doBeerGlass extends Task {
             }
         }
 
-        int startingAmount = Inventory.stream().name("Molten glass").count();
-
         if (Widgets.widget(270).valid()) {
             mMain.State = "Click widget";
             beerGlassWidget.click();
-            int currentAmount = startingAmount;
-            while (currentAmount >= startingAmount) {
-                Condition.sleep(400);
-                currentAmount = Inventory.stream().name("Molten glass").count();
-            }
         }
-
     }
 }
