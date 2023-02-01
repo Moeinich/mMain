@@ -89,38 +89,5 @@ public class doBeerGlass extends Task {
                 }
             }
         }
-}
-
-
-        /* if (Inventory.stream().id(ItemList.MOLTEN_GLASS_1775).count() == 0) {
-            mMain.State = "Get molten glass";
-            if (!Bank.opened() && Bank.inViewport()) {
-                Bank.open();
-            }
-            if (Bank.open()) {
-                Bank.depositAllExcept("Glassblowing pipe");
-                Bank.withdraw(ItemList.MOLTEN_GLASS_1775, 27);
-                Bank.close();
-            }
-        }
-
-        if (Game.tab(Game.Tab.INVENTORY)) {
-            mMain.State = "Use BP on glass";
-            Item glassblowingPipe = Inventory.stream().name("Glassblowing pipe").first();
-            Item moltenGlass = Inventory.stream().name("Molten glass").first();
-            if (Inventory.selectedItem().id() != glassblowingPipe.id() && !Widgets.widget(270).valid()) {
-                glassblowingPipe.interact("Use");
-                Condition.wait((Callable<Boolean>) () -> Inventory.selectedItem().id() == glassblowingPipe.id(), 150, 20);
-            }
-            if (Inventory.selectedItem().id() == glassblowingPipe.id() && !Widgets.widget(270).valid()) {
-                moltenGlass.interact("Use");
-                Condition.wait((Callable<Boolean>) () -> Widgets.widget(270).valid(), 150, 50);
-            }
-        }
-
-        if (Widgets.widget(270).valid()) {
-            mMain.State = "Click widget";
-            beerGlassWidget.click();
-            Condition.wait(() -> Players.local().animation() == -1, 2000,50);
-        }*/
+    }
 }
