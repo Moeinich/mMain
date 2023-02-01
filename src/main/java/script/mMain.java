@@ -63,6 +63,7 @@ public class mMain extends AbstractScript {
                 .trackSkill(Skill.Firemaking)
                 .trackSkill(Skill.Smithing)
                 .trackSkill(Skill.Thieving)
+                .trackSkill(Skill.Crafting)
                 .x(40)
                 .y(400)
                 .removeScriptNameVersion()
