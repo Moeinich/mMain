@@ -11,6 +11,7 @@ import org.powbot.api.rt4.Item;
 import org.powbot.api.rt4.Players;
 import org.powbot.api.rt4.Skills;
 import org.powbot.api.rt4.Widgets;
+import org.powbot.mobile.script.ScriptManager;
 
 import java.util.concurrent.Callable;
 
@@ -40,7 +41,9 @@ public class doBeerGlass extends Task {
             }
             if (Bank.stream().name("Molten glass").first().stackSize() < 27) {
                 mMain.State = "We ran out of MG";
-                //Stop script, maybe??
+                mMain.taskRunning.set(false); //Skip task on progressive
+            } else {
+                ScriptManager.INSTANCE.stop(); //Stop script
             }
             if (moltenGlassCount == 0) {
                 mMain.State = "Withdraw 27 MG";
