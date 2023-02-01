@@ -11,7 +11,6 @@ public class startCrafting {
     public void Crafting() {
         if (craftingTasks.isEmpty()) {
             craftingTasks.add(new goCraftingArea());
-            craftingTasks.add(new getCraftingEquipment());
             craftingTasks.add(new doBeerGlass());
         }
 

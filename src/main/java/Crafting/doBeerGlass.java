@@ -56,14 +56,14 @@ public class doBeerGlass extends Task {
                 beerGlassWidget.click();
                 Condition.wait((Callable<Boolean>) () -> !Widgets.widget(270).valid());
             }
-            int initialCount = (int) Inventory.stream().name("Molten glass").count();
+            int initialCount = (int) moltenGlassCount;
             while (true) {
-                int currentCount = (int) Inventory.stream().name("Molten glass").count();
+                int currentCount = (int) moltenGlassCount;
                 if (currentCount >= initialCount) {
                     mMain.State = "We stopped crafting";
                     break;
                 } else {
-                    mMain.State = "We're still going";
+                    mMain.State = "We're still going, c: " + moltenGlassCount;
                     initialCount = currentCount;
                     Condition.sleep(6000);
                 }
