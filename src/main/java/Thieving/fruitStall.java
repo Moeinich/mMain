@@ -84,10 +84,13 @@ public class fruitStall extends Task {
             if (!Game.tab(Game.Tab.INVENTORY)) {
                 Condition.wait(() -> Game.tab(Game.Tab.INVENTORY), 250, 10);
             }
-            if (!Players.local().tile().equals(skillData.movementThieving())) { // Need to move to our thieving spot
+            if (!Players.local().tile().equals(skillData.movementThieving()) && !(skillData.movementThieving().tile().distanceTo(Players.local()) < 3)) { // Need to move to our thieving spot
                 mMain.State = "Walking to Thieving spot";
                 Movement.walkTo(skillData.movementThieving());
-                Condition.wait(() -> Players.local().tile() == skillData.movementThieving(), 150, 20);
+                Condition.wait(() -> skillData.movementThieving().tile().distanceTo(Players.local()) < 3, 150, 20);
+                if (skillData.movementThieving().tile().distanceTo(Players.local()) < 3) {
+                    Movement.step(skillData.movementThieving());
+                }
             } else if (Players.local().animation() == -1) { // Not currently thieving
                 GameObject fruitStall = Objects.stream().within(2).id(STALL_ID).nearest().first();
                 if (fruitStall.valid()) {
