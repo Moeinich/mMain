@@ -27,7 +27,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
                         name =  "Skill",
                         description = "Which skill would you like to do?",
                         defaultValue = "Crafting",
-                        allowedValues = {"Progressive", "Mining", "Fishing", "Woodcutting", "Cooking", "Firemaking", "Smithing", "Thieving", "Crafting"},
+                        allowedValues = {"Progressive", "Mining", "Fishing", "Woodcutting", "Cooking", "Firemaking", "Smithing", "Thieving", "Crafting", "Fletching"},
                         optionType = OptionType.STRING
                 )
         }
@@ -106,6 +106,8 @@ public class mMain extends AbstractScript {
         var startCombat = new Combat.startCombat();
         var startThieving = new Thieving.startThieving();
         var startCrafting = new Crafting.startCrafting();
+        var startFletching = new Fletching.startFletching();
+
         String skill = getOption("Skill");
 
         switch (skill) {
@@ -176,6 +178,9 @@ public class mMain extends AbstractScript {
                 break;
             case "Crafting":
                 startCrafting.Crafting();
+                break;
+            case "Fletching":
+                startFletching.Fletching();
                 break;
         }
     }
