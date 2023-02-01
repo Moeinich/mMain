@@ -21,6 +21,9 @@ import script.mMain;
 
 public class doBeerGlass extends Task {
     Component beerGlassWidget = Components.stream().widget(270).action("Make", "Beer glass").viewable().first();
+    Item glassblowingPipe = Inventory.stream().name("Glassblowing pipe").first();
+    Item moltenGlass = Inventory.stream().name("Molten glass").first();
+    int moltenGlassCount = (int) Inventory.stream().id(ItemList.MOLTEN_GLASS_1775).count();
 
 
     @Override
@@ -30,19 +33,16 @@ public class doBeerGlass extends Task {
 
     @Override
     public void execute() {
-        Item glassblowingPipe = Inventory.stream().name("Glassblowing pipe").first();
-        Item moltenGlass = Inventory.stream().name("Molten glass").first();
-
         if (Bank.opened()) {
-            Bank.depositAllExcept(ItemList.GLASSBLOWING_PIPE_1785, ItemList.MOLTEN_GLASS_1775);
-            if (Inventory.stream().id(ItemList.GLASSBLOWING_PIPE_1785).count() == 0) {
-                Bank.withdraw(ItemList.GLASSBLOWING_PIPE_1785, 1);
+            Bank.depositAllExcept("Glassblowing pipe", "Molten glass");
+            if (Inventory.stream().name("Glassblowing pipe").count() == 0) {
+                Bank.withdraw("Glassblowing pipe", 1);
             }
-            if (Bank.stream().id(ItemList.MOLTEN_GLASS_1775).first().stackSize() < 27) {
+            if (Bank.stream().name("Molten glass").first().stackSize() < 27) {
                 mMain.State = "We ran out of MG";
                 //Stop script, maybe??
             }
-            if (Inventory.stream().id(ItemList.MOLTEN_GLASS_1775).count() == 0) {
+            if (moltenGlassCount == 0) {
                 mMain.State = "Withdraw 27 MG";
                 Bank.withdraw(ItemList.MOLTEN_GLASS_1775, 27);
                 Condition.wait(() -> Bank.close(), 50, 10);
@@ -53,9 +53,9 @@ public class doBeerGlass extends Task {
                 beerGlassWidget.click();
                 Condition.wait((Callable<Boolean>) () -> !Widgets.widget(270).valid());
             }
-            int initialCount = (int) Inventory.stream().id(ItemList.MOLTEN_GLASS_1775).count();
+            int initialCount = (int) Inventory.stream().name("Molten glass").count();
             while (true) {
-                int currentCount = (int) Inventory.stream().id(ItemList.MOLTEN_GLASS_1775).count();
+                int currentCount = (int) Inventory.stream().name("Molten glass").count();
                 if (currentCount >= initialCount) {
                     mMain.State = "We stopped crafting";
                     break;
@@ -64,14 +64,14 @@ public class doBeerGlass extends Task {
                     initialCount = currentCount;
                     Condition.sleep(6000);
                 }
-                if (Inventory.stream().id(ItemList.MOLTEN_GLASS_1775).count() > 0) {
+                if (moltenGlassCount > 0) {
                     mMain.State = "MG count 0";
                     break;
                 }
             }
         }
         else {
-            if (Inventory.stream().id(ItemList.MOLTEN_GLASS_1775).count() >= 1) {
+            if (moltenGlassCount >= 1 && Game.tab(Game.Tab.INVENTORY)) {
                 if (Inventory.selectedItem().id() != glassblowingPipe.id() && !Widgets.widget(270).valid()) {
                     mMain.State = "Use GBP";
                     glassblowingPipe.interact("Use");
@@ -83,9 +83,6 @@ public class doBeerGlass extends Task {
                 if (Bank.inViewport()) {
                     mMain.State = "Open bank";
                     Bank.open();
-                } else {
-                    mMain.State = "Open inventory";
-                    Game.tab(Game.Tab.INVENTORY);
                 }
             }
         }
