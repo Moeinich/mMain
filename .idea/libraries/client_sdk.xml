@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="client-sdk">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/src/PastShadie/scripts/mMain/Assets/SDKs/client-sdk.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>

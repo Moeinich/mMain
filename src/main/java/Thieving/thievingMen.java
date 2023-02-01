@@ -50,7 +50,7 @@ public class thievingMen extends Task {
             Movement.builder(skillData.movementThieving()).setRunMin(45).setRunMax(75).move();
         }
 
-        Npc Man = Npcs.stream().name("Man").nearest().first();
+        Npc Man = Npcs.stream().reachable().within(skillData.thievingMenArea).name("Man").nearest().first();
         if (Man.inViewport() && Players.local().animation() == -1) {
             mMain.State = "Thieving men";
             Man.interact("Pickpocket", "Man");
