@@ -15,6 +15,7 @@ public class startCrafting {
             craftingTasks.add(new doEmptyOilLamp());
             craftingTasks.add(new doVial());
             craftingTasks.add(new doEmptyFishBowl());
+            craftingTasks.add(new doUnpoweredOrb());
         }
 
         for (Task task : craftingTasks) {
