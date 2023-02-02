@@ -1,6 +1,7 @@
 package Helpers;
 
 import org.powbot.api.Area;
+import org.powbot.api.Locatable;
 import org.powbot.api.Tile;
 import org.powbot.api.rt4.*;
 import org.powbot.api.rt4.walking.model.Skill;
@@ -229,7 +230,8 @@ public class SkillData {
             new Tile(3168, 3486, 0)
     );
     public static Tile movementCrafting(){
-            return craftingArea.getRandomTile();
+        Locatable nearestBank = Bank.nearest();
+            return (Tile) nearestBank;
     }
 
     //Fletching
@@ -238,6 +240,7 @@ public class SkillData {
             new Tile(3168, 3486, 0)
     );
     public static Tile movementFletching(){
-        return fletchingArea.getRandomTile();
+        Locatable nearestBank = Bank.nearest();
+        return (Tile) nearestBank;
     }
 }
