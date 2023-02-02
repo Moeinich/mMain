@@ -130,7 +130,8 @@ public class mMain extends AbstractScript {
                         startCooking::Cooking,
                         startFiremaking::Firemaking,
                         startThieving::Thieving,
-                        startCrafting::Crafting
+                        startCrafting::Crafting,
+                        startFletching::Fletching
                         // Add future skills to this tasklist!
                 );
                 if (taskRunning.compareAndSet(false, true)) {

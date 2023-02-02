@@ -21,10 +21,7 @@ public class GoWoodcutting extends Task {
         if (!SkillData.willowTreeLocation.contains(Players.local()) && Skills.realLevel(Constants.SKILLS_WOODCUTTING) >= 30 && (Skills.realLevel(Constants.SKILLS_WOODCUTTING) < 50)){
             return true;
         }
-        if (!SkillData.teakLocation.contains(Players.local()) && Skills.realLevel(Constants.SKILLS_WOODCUTTING) >= 50){
-            return true;
-        }
-        return false;
+        return !SkillData.teakLocation.contains(Players.local()) && Skills.realLevel(Constants.SKILLS_WOODCUTTING) >= 50;
     }
     @Override
     public void execute() {
