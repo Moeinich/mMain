@@ -36,7 +36,7 @@ import Woodcutting.StartWoodcutting;
                 @ScriptConfiguration(
                         name =  "Skill",
                         description = "Which skill would you like to do?",
-                        defaultValue = "Crafting",
+                        defaultValue = "Fletching",
                         allowedValues = {"Progressive", "Mining", "Fishing", "Woodcutting", "Cooking", "Firemaking", "Smithing", "Thieving", "Crafting", "Fletching"},
                         optionType = OptionType.STRING
                 )

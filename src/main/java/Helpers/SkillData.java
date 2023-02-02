@@ -231,4 +231,13 @@ public class SkillData {
     public static Tile movementCrafting(){
             return craftingArea.getRandomTile();
     }
+
+    //Fletching
+    public static final Area fletchingArea = new Area (
+            new Tile(3160, 3493, 0),
+            new Tile(3168, 3486, 0)
+    );
+    public static Tile movementFletching(){
+        return fletchingArea.getRandomTile();
+    }
 }

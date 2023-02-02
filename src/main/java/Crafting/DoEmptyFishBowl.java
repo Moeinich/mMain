@@ -1,92 +1,77 @@
 package Crafting;
 
 import org.powbot.api.Condition;
-import org.powbot.api.Random;
 import org.powbot.api.rt4.Bank;
 import org.powbot.api.rt4.Constants;
 import org.powbot.api.rt4.Game;
 import org.powbot.api.rt4.Inventory;
-import org.powbot.api.rt4.Item;
 import org.powbot.api.rt4.Skills;
-import org.powbot.api.rt4.Widgets;
 import org.powbot.mobile.script.ScriptManager;
 
-import java.util.concurrent.Callable;
-
+import Helpers.InteractionsHelper;
 import Helpers.ItemList;
 import Helpers.Task;
 import script.mMain;
 
 public class DoEmptyFishBowl extends Task {
-    int timer = 0;
-    int initialCount = (int) Inventory.stream().id(ItemList.MOLTEN_GLASS_1775).count();
-
+    int CombineWithItemID = ItemList.MOLTEN_GLASS_1775;
+    int ToolID = ItemList.GLASSBLOWING_PIPE_1785;
+    int WidgetID = 270;
+    int ComponentID = 17;
 
     @Override
     public boolean activate() {
-        return Skills.realLevel(Constants.SKILLS_CRAFTING) >= 42 && Skills.realLevel(Constants.SKILLS_CRAFTING) < 46;
+        return Skills.realLevel(Constants.SKILLS_CRAFTING) <= 42 && Skills.realLevel(Constants.SKILLS_CRAFTING) < 46;
     }
 
     @Override
     public void execute() {
-        if (Inventory.stream().id(ItemList.MOLTEN_GLASS_1775).count() == 0) {
-            mMain.State = "Bank loop";
-            if (!Bank.opened() && Bank.inViewport()) {
-                Bank.open();
-            }
-            if (Inventory.stream().name("Molten glass").count() == 0) {
-                Bank.depositAllExcept("Glassblowing pipe");
-            }
-            if (Inventory.stream().name("Glassblowing pipe").count() == 0) {
-                Bank.withdraw("Glassblowing pipe", 1);
-            }
-            if (Bank.stream().name("Molten glass").first().stackSize() < 27) {
-                mMain.State = "We ran out of MG";
-                mMain.taskRunning.set(false); //Skip task on progressive
-            } else {
-                Bank.withdraw("Molten glass", 27);
-                Bank.close();
-                Condition.wait(() -> !Bank.opened(), 200,50);
-            }
-        } else if (Game.tab(Game.Tab.INVENTORY)) {
-            while (!ScriptManager.INSTANCE.isStopping()) {
-                mMain.State = "Crafting loop";
-                int currentCount = (int) Inventory.stream().id(ItemList.MOLTEN_GLASS_1775).count();
-                if (currentCount >= initialCount) {
-                    timer += 2;
-                    if (timer >= 2) {
-                        Item glassblowingPipe = Inventory.stream().name("Glassblowing pipe").first();
-                        Item moltenGlass = Inventory.stream().name("Molten glass").first();
-
-                        if (Inventory.stream().id(ItemList.MOLTEN_GLASS_1775).count() >= 1 && Game.tab(Game.Tab.INVENTORY)) {
-                            if (ScriptManager.INSTANCE.isStopping()) {
-                                ScriptManager.INSTANCE.stop();
-                            }
-                            if (Inventory.selectedItem().id() != glassblowingPipe.id() && !Widgets.widget(270).valid()) {
-                                glassblowingPipe.interact("Use");
-                                Condition.wait((Callable<Boolean>) () -> Inventory.selectedItem().id() == glassblowingPipe.id(), 150, 20);
-                            }
-                            if (Inventory.selectedItem().id() == glassblowingPipe.id()) {
-                                moltenGlass.interact("Use");
-                                Condition.wait((Callable<Boolean>) () -> Widgets.widget(270).valid(), 500, 20);
-                            }
-                            if (Widgets.widget(270).valid()) {
-                                Widgets.widget(270).component(17).click(); //Widget is 270, Empty fishbowl has component 17.
-                                Condition.wait((Callable<Boolean>) () -> !Widgets.widget(270).valid(), 150, 20);
-                            }
-                        }
-                        if (Inventory.stream().id(ItemList.MOLTEN_GLASS_1775).count() == 0) {
-                            break;
-                        }
-                        timer = 0;
-                    }
-                } else {
-                    initialCount = currentCount;
-                    timer = 0;
-                }
-                int randomSleep = Random.nextInt(2000, 2500);
-                Condition.sleep(randomSleep);
-            }
+        if (Inventory.stream().id(CombineWithItemID).count() == 0 && Game.tab(Game.Tab.INVENTORY)) {
+            mMain.State = "Banking loop";
+            bank();
         }
+        if (Game.tab(Game.Tab.INVENTORY) && !Bank.opened() && Inventory.stream().id(CombineWithItemID).contains()) {
+            mMain.State = "craft loop";
+            craft();
+        }
+        if (ScriptManager.INSTANCE.isStopping()) {
+            ScriptManager.INSTANCE.stop();
+        }
+    }
+
+    private void bank() {
+        checkTool();
+        withdrawLogs();
+    }
+
+    private void checkTool() {
+        InteractionsHelper interactionsHelper = new InteractionsHelper();
+        mMain.State = "Check tool";
+        if (Inventory.stream().id(ToolID).count() == 0) {
+            interactionsHelper.CheckInventoryItemAndWithdraw(ToolID);
+        }
+
+    }
+    private void withdrawLogs() {
+        InteractionsHelper interactionsHelper = new InteractionsHelper();
+        mMain.State = "Withdraw items";
+        if (!Bank.opened()) {
+            Bank.open();
+        }
+        if (Inventory.stream().id(CombineWithItemID).count() == 0) {
+            Bank.depositAllExcept(ToolID);
+            interactionsHelper.WithdrawItem(CombineWithItemID, 27);
+            Bank.close();
+            Condition.wait( () -> !Bank.opened(), 500, 20);
+        }
+    }
+    private void craft() {
+        while (Inventory.stream().id(CombineWithItemID).count() >= 1) {
+            CombineItems(ToolID, CombineWithItemID, WidgetID, ComponentID);
+        }
+    }
+    public void CombineItems(int ToolID, int CombineWithItemID, int WidgetID, int ComponentID) {
+        InteractionsHelper interactionsHelper = new InteractionsHelper();
+        interactionsHelper.CombineItems(ToolID, CombineWithItemID, WidgetID, ComponentID);
     }
 }

@@ -1,26 +1,26 @@
 package Fletching;
 
 import org.powbot.api.Condition;
-import org.powbot.api.Random;
 import org.powbot.api.rt4.Bank;
 import org.powbot.api.rt4.Constants;
 import org.powbot.api.rt4.Game;
 import org.powbot.api.rt4.Inventory;
-import org.powbot.api.rt4.Item;
 import org.powbot.api.rt4.Skills;
-import org.powbot.api.rt4.Widgets;
 import org.powbot.mobile.script.ScriptManager;
 
-import java.util.concurrent.Callable;
-
-import Helpers.FletchingHelper;
+import Helpers.InteractionsHelper;
 import Helpers.ItemList;
 import Helpers.Task;
 import script.mMain;
 
 public class DoMapleLongbow extends Task {
-    int LogID = ItemList.MAPLE_LOGS_1517;
-    int knifeId = ItemList.KNIFE_946;
+    int CombineWithItemID = ItemList.MAPLE_LOGS_1517;
+    int ToolID = ItemList.KNIFE_946;
+    int BowStringID = ItemList.BOW_STRING_1777;
+    int BowID = ItemList.MAPLE_LONGBOW_U_62;
+    int WidgetID = 270;
+    int ComponentID = 16;
+    int StringComponentID = 14;
 
 
     @Override
@@ -30,151 +30,59 @@ public class DoMapleLongbow extends Task {
 
     @Override
     public void execute() {
-        if (Inventory.stream().id(ItemList.MAPLE_LOGS_1517).count() == 0) {
+        if (Inventory.stream().id(CombineWithItemID).count() == 0 && Game.tab(Game.Tab.INVENTORY)) {
             mMain.State = "Banking loop";
             bank();
         }
-        if (Game.tab(Game.Tab.INVENTORY) && Inventory.stream().id(LogID).count() > 0) {
-            mMain.State = "Fletch loop";
+        if (Game.tab(Game.Tab.INVENTORY) && !Bank.opened() && Inventory.stream().id(CombineWithItemID).contains()) {
+            mMain.State = "Fletching bows";
             fletch();
         }
-        if (Game.tab(Game.Tab.INVENTORY) && Inventory.stream().id(LogID).count() == 0) {
-            mMain.State = "String loop";
+        if (Game.tab(Game.Tab.INVENTORY) && !Bank.opened() && Inventory.stream().id(BowStringID).contains()) {
+            mMain.State = "Stringing bows";
             stringing();
+        }
+        if (ScriptManager.INSTANCE.isStopping()) {
+            ScriptManager.INSTANCE.stop();
         }
     }
 
     private void bank() {
-        checkKnife();
+        checkTool();
         withdrawLogs();
     }
 
-    private void checkKnife() {
+    private void checkTool() {
+        InteractionsHelper interactionsHelper = new InteractionsHelper();
         mMain.State = "Check knife";
-        if (!Bank.opened() && Bank.inViewport()) {
-            Bank.open();
+        if (Inventory.stream().id(ToolID).count() == 0) {
+            interactionsHelper.CheckInventoryItemAndWithdraw(ToolID);
         }
-        if (Inventory.stream().id(knifeId).count() == 0) {
-            Bank.withdraw(knifeId, 1);
-        }
+
     }
     private void withdrawLogs() {
-        FletchingHelper fletchingHelper = new FletchingHelper();
+        InteractionsHelper interactionsHelper = new InteractionsHelper();
         mMain.State = "Withdraw logs";
-        if (Inventory.stream().id(LogID).count() == 0) {
-            Bank.depositAllExcept(knifeId);
+        if (!Bank.opened()) {
+            Bank.open();
         }
-        fletchingHelper.withdrawLogs("Maple logs");
+        if (Inventory.stream().id(CombineWithItemID).count() == 0) {
+            Bank.depositAllExcept(ToolID);
+            interactionsHelper.WithdrawItem(CombineWithItemID, 27);
+            Bank.close();
+            Condition.wait( () -> !Bank.opened(), 500, 20);
+        }
     }
-
     private void fletch() {
-        int currentCount = (int) Inventory.stream().id(LogID).count();
-        while (!ScriptManager.INSTANCE.isStopping() && Game.tab(Game.Tab.INVENTORY)) {
-            int randomSleep = Random.nextInt(2000, 2500);
-            Item knife = Inventory.stream().id(knifeId).first();
-            Item logs = Inventory.stream().id(LogID).first();
-
-            if (Inventory.selectedItem().id() != knife.id() && !Widgets.widget(270).valid()) {
-                knife.interact("Use");
-                Condition.wait( () -> Inventory.selectedItem().id() == knife.id(), 150, 20);
-            }
-            if (Inventory.selectedItem().id() == knife.id()) {
-                logs.interact("Use");
-                Condition.wait( () -> Widgets.widget(270).valid(), 500, 20);
-            }
-            if (Widgets.widget(270).valid()) {
-                Widgets.widget(270).component(14).click();
-                Condition.wait( () -> !Widgets.widget(270).valid(), 150, 20);
-            }
-            if (currentCount != (int) Inventory.stream().id(ItemList.MAPLE_LOGS_1517).count()) {
-                Condition.sleep(randomSleep);
-            }
+        while (Inventory.stream().id(CombineWithItemID).count() >= 1) {
+            InteractionsHelper interactionsHelper = new InteractionsHelper();
+            interactionsHelper.CombineItems(ToolID, CombineWithItemID, WidgetID, ComponentID);
         }
     }
     private void stringing() {
-        int currentCount = (int) Inventory.stream().id(LogID).count();
-        while (!ScriptManager.INSTANCE.isStopping() && Inventory.stream().id(LogID).count() >= 1 && Game.tab(Game.Tab.INVENTORY)) {
-            int randomSleep = Random.nextInt(2000, 2500);
-            Item knife = Inventory.stream().id(knifeId).first();
-            Item logs = Inventory.stream().id(LogID).first();
-
-            if (Inventory.selectedItem().id() != knife.id() && !Widgets.widget(270).valid()) {
-                knife.interact("Use");
-                Condition.wait( () -> Inventory.selectedItem().id() == knife.id(), 150, 20);
-            }
-            if (Inventory.selectedItem().id() == knife.id()) {
-                logs.interact("Use");
-                Condition.wait( () -> Widgets.widget(270).valid(), 500, 20);
-            }
-            if (Widgets.widget(270).valid()) {
-                Widgets.widget(270).component(14).click();
-                Condition.wait( () -> !Widgets.widget(270).valid(), 150, 20);
-            }
-            if (currentCount != (int) Inventory.stream().id(ItemList.MAPLE_LOGS_1517).count()) {
-                Condition.sleep(randomSleep);
-            }
-        }
+        while (Inventory.stream().id(BowStringID).count() >= 1) {
+            InteractionsHelper interactionsHelper = new InteractionsHelper();
+            interactionsHelper.CombineItems(BowID, BowStringID, WidgetID, StringComponentID);
         }
     }
-
-
-
-        /*
-        if (Inventory.stream().id(ItemList.MAPLE_LOGS_1517).count() == 0) {
-            mMain.State = "Banking loop";
-            if (!Bank.opened() && Bank.inViewport()) {
-                Bank.open();
-            }
-            if (Inventory.stream().name("Maple logs").count() == 0) {
-                Bank.depositAllExcept("Knife");
-            }
-            if (Inventory.stream().name("Knife").count() == 0) {
-                Bank.withdraw("Knife", 1);
-            }
-            if (Bank.stream().name("Maple logs").first().stackSize() < 27) {
-                mMain.State = "We ran out of logs";
-                mMain.taskRunning.set(false); //Skip task on progressive
-            } else {
-                Bank.withdraw("Logs", 27);
-                Bank.close();
-                Condition.wait(() -> !Bank.opened(), 200,50);
-            }
-        } else if (Game.tab(Game.Tab.INVENTORY)) {
-            while (!ScriptManager.INSTANCE.isStopping()) {
-                mMain.State = "Fletching loop";
-                int currentCount = (int) Inventory.stream().id(ItemList.MAPLE_LOGS_1517).count();
-                if (currentCount >= initialCount) {
-                    timer += 2;
-                    if (timer >= 2) {
-                        Item Knife = Inventory.stream().name("Knife").first();
-                        Item Logs = Inventory.stream().name("Logs").first();
-
-                        if (Inventory.stream().id(ItemList.MAPLE_LOGS_1517).count() >= 1 && Game.tab(Game.Tab.INVENTORY)) {
-                            if (ScriptManager.INSTANCE.isStopping()) {
-                                ScriptManager.INSTANCE.stop();
-                            }
-                            if (Inventory.selectedItem().id() != Knife.id() && !Widgets.widget(270).valid()) {
-                                Knife.interact("Use");
-                                Condition.wait((Callable<Boolean>) () -> Inventory.selectedItem().id() == Knife.id(), 150, 20);
-                            }
-                            if (Inventory.selectedItem().id() == Knife.id()) {
-                                Logs.interact("Use");
-                                Condition.wait((Callable<Boolean>) () -> Widgets.widget(270).valid(), 500, 20);
-                            }
-                            if (Widgets.widget(270).valid()) {
-                                Widgets.widget(270).component(14).click(); //Widget is 270, We don't know component yet!
-                                Condition.wait((Callable<Boolean>) () -> !Widgets.widget(270).valid(), 150, 20);
-                            }
-                        }
-                        if (Inventory.stream().id(ItemList.MAPLE_LOGS_1517).count() == 0) {
-                            break;
-                        }
-                        timer = 0;
-                    }
-                } else {
-                    initialCount = currentCount;
-                    timer = 0;
-                }
-                int randomSleep = Random.nextInt(2000, 2500);
-                Condition.sleep(randomSleep);
-            }*/
+}
