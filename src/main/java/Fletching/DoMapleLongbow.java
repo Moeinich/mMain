@@ -66,11 +66,22 @@ public class DoMapleLongbow extends Task {
         if (!Bank.opened()) {
             Bank.open();
         }
-        if (Inventory.stream().id(CombineWithItemID).count() == 0) {
+        if (Bank.stream().id(CombineWithItemID).count() >= 1) {
             Bank.depositAllExcept(ToolID);
             interactionsHelper.WithdrawItem(CombineWithItemID, 27);
             Bank.close();
             Condition.wait( () -> !Bank.opened(), 500, 20);
+        }
+        if (Bank.stream().id(BowID).count() >= 1) {
+            Bank.depositAllExcept(ToolID);
+            interactionsHelper.WithdrawItem(BowID, 14);
+            interactionsHelper.WithdrawItem(BowStringID, 14);
+            Bank.close();
+            Condition.wait( () -> !Bank.opened(), 500, 20);
+        }
+        else {
+            Bank.close();
+            mMain.taskRunning.set(false); //Stop if we dont have materials!
         }
     }
     private void fletch() {
