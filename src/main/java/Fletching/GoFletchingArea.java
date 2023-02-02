@@ -2,6 +2,7 @@ package Fletching;
 
 import org.powbot.api.rt4.Movement;
 import org.powbot.api.rt4.Players;
+import org.powbot.api.rt4.walking.model.Skill;
 
 import Helpers.Task;
 import Helpers.SkillData;
@@ -17,7 +18,7 @@ public class GoFletchingArea extends Task {
     public void execute() {
         if (!Players.local().tile().equals(SkillData.movementFletching())) {
             mMain.State = "Walking to Fletching spot";
-            Movement.builder(SkillData.movementFletching()).setRunMin(45).setRunMax(75).move();
+            Movement.moveTo(SkillData.movementFletching());
         }
     }
 }

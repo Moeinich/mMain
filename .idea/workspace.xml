@@ -6,21 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="c7dd1c8c-f10c-49ed-8219-521bd6f55188" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Crafting/DoBeerGlass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Crafting/DoBeerGlass.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Crafting/DoEmptyFishBowl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Crafting/DoEmptyFishBowl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Crafting/DoEmptyOilLamp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Crafting/DoEmptyOilLamp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Crafting/DoUnpoweredOrb.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Crafting/DoUnpoweredOrb.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Crafting/DoVial.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Crafting/DoVial.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Fletching/DoArrowShafts.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Fletching/DoArrowShafts.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Fletching/DoLongbow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Fletching/DoLongbow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Fletching/DoMapleLongbow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Fletching/DoMapleLongbow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Fletching/DoMapleShortbow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Fletching/DoMapleShortbow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Fletching/DoOakLongbow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Fletching/DoOakLongbow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Fletching/DoOakShortbow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Fletching/DoOakShortbow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Fletching/DoWillowLongbow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Fletching/DoWillowLongbow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Fletching/DoWillowShortbow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Fletching/DoWillowShortbow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Crafting/GoCraftingArea.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Crafting/GoCraftingArea.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Fletching/GoFletchingArea.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Fletching/GoFletchingArea.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Helpers/InteractionsHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Helpers/InteractionsHelper.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

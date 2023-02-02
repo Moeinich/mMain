@@ -2,6 +2,7 @@ package Crafting;
 
 import org.powbot.api.rt4.Movement;
 import org.powbot.api.rt4.Players;
+import org.powbot.api.rt4.walking.model.Skill;
 
 import Helpers.Task;
 import Helpers.SkillData;
@@ -17,7 +18,7 @@ public class GoCraftingArea extends Task {
     public void execute() {
         if (!Players.local().tile().equals(SkillData.movementCrafting())) {
             mMain.State = "Walking to Crafting spot";
-            Movement.builder(SkillData.movementCrafting()).setRunMin(45).setRunMax(75).move();
+            Movement.moveTo(SkillData.movementCrafting());
         }
     }
 }
