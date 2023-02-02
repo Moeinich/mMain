@@ -1,4 +1,4 @@
-package Crafting;
+package Fletching;
 
 import org.powbot.api.Condition;
 import org.powbot.api.Random;
@@ -17,65 +17,65 @@ import Assets.ItemList;
 import Assets.Task;
 import script.mMain;
 
-public class doEmptyFishBowl extends Task {
+public class DoOakShortbow extends Task {
     int timer = 0;
-    int initialCount = (int) Inventory.stream().id(ItemList.MOLTEN_GLASS_1775).count();
+    int initialCount = (int) Inventory.stream().id(ItemList.OAK_LOGS_1521).count();
 
 
     @Override
     public boolean activate() {
-        return Skills.realLevel(Constants.SKILLS_CRAFTING) >= 42 && Skills.realLevel(Constants.SKILLS_CRAFTING) < 46;
+        return Skills.realLevel(Constants.SKILLS_FLETCHING) >= 20 && Skills.realLevel(Constants.SKILLS_FLETCHING) < 25;
     }
 
     @Override
     public void execute() {
-        if (Inventory.stream().id(ItemList.MOLTEN_GLASS_1775).count() == 0) {
-            mMain.State = "Bank loop";
+        if (Inventory.stream().id(ItemList.OAK_LOGS_1521).count() == 0) {
+            mMain.State = "Banking loop";
             if (!Bank.opened() && Bank.inViewport()) {
                 Bank.open();
             }
-            if (Inventory.stream().name("Molten glass").count() == 0) {
-                Bank.depositAllExcept("Glassblowing pipe");
+            if (Inventory.stream().name("Oak logs").count() == 0) {
+                Bank.depositAllExcept("Knife");
             }
-            if (Inventory.stream().name("Glassblowing pipe").count() == 0) {
-                Bank.withdraw("Glassblowing pipe", 1);
+            if (Inventory.stream().name("Knife").count() == 0) {
+                Bank.withdraw("Knife", 1);
             }
-            if (Bank.stream().name("Molten glass").first().stackSize() < 27) {
-                mMain.State = "We ran out of MG";
+            if (Bank.stream().name("Oak logs").first().stackSize() < 27) {
+                mMain.State = "We ran out of logs";
                 mMain.taskRunning.set(false); //Skip task on progressive
             } else {
-                Bank.withdraw("Molten glass", 27);
+                Bank.withdraw("Logs", 27);
                 Bank.close();
                 Condition.wait(() -> !Bank.opened(), 200,50);
             }
         } else if (Game.tab(Game.Tab.INVENTORY)) {
             while (!ScriptManager.INSTANCE.isStopping()) {
-                mMain.State = "Crafting loop";
-                int currentCount = (int) Inventory.stream().id(ItemList.MOLTEN_GLASS_1775).count();
+                mMain.State = "Fletching loop";
+                int currentCount = (int) Inventory.stream().id(ItemList.OAK_LOGS_1521).count();
                 if (currentCount >= initialCount) {
                     timer += 2;
                     if (timer >= 2) {
-                        Item glassblowingPipe = Inventory.stream().name("Glassblowing pipe").first();
-                        Item moltenGlass = Inventory.stream().name("Molten glass").first();
+                        Item Knife = Inventory.stream().name("Knife").first();
+                        Item Logs = Inventory.stream().name("Logs").first();
 
-                        if (Inventory.stream().id(ItemList.MOLTEN_GLASS_1775).count() >= 1 && Game.tab(Game.Tab.INVENTORY)) {
+                        if (Inventory.stream().id(ItemList.OAK_LOGS_1521).count() >= 1 && Game.tab(Game.Tab.INVENTORY)) {
                             if (ScriptManager.INSTANCE.isStopping()) {
                                 ScriptManager.INSTANCE.stop();
                             }
-                            if (Inventory.selectedItem().id() != glassblowingPipe.id() && !Widgets.widget(270).valid()) {
-                                glassblowingPipe.interact("Use");
-                                Condition.wait((Callable<Boolean>) () -> Inventory.selectedItem().id() == glassblowingPipe.id(), 150, 20);
+                            if (Inventory.selectedItem().id() != Knife.id() && !Widgets.widget(270).valid()) {
+                                Knife.interact("Use");
+                                Condition.wait((Callable<Boolean>) () -> Inventory.selectedItem().id() == Knife.id(), 150, 20);
                             }
-                            if (Inventory.selectedItem().id() == glassblowingPipe.id()) {
-                                moltenGlass.interact("Use");
+                            if (Inventory.selectedItem().id() == Knife.id()) {
+                                Logs.interact("Use");
                                 Condition.wait((Callable<Boolean>) () -> Widgets.widget(270).valid(), 500, 20);
                             }
                             if (Widgets.widget(270).valid()) {
-                                Widgets.widget(270).component(17).click(); //Widget is 270, Empty fishbowl has component 17.
+                                Widgets.widget(270).component(14).click(); //Widget is 270, We don't know component yet!
                                 Condition.wait((Callable<Boolean>) () -> !Widgets.widget(270).valid(), 150, 20);
                             }
                         }
-                        if (Inventory.stream().id(ItemList.MOLTEN_GLASS_1775).count() == 0) {
+                        if (Inventory.stream().id(ItemList.OAK_LOGS_1521).count() == 0) {
                             break;
                         }
                         timer = 0;

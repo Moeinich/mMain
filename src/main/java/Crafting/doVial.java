@@ -24,7 +24,7 @@ public class doVial extends Task {
 
     @Override
     public boolean activate() {
-        return Skills.realLevel(Constants.SKILLS_CRAFTING) >= 33 && Skills.realLevel(Constants.SKILLS_CRAFTING) < 41;
+        return Skills.realLevel(Constants.SKILLS_CRAFTING) >= 33 && Skills.realLevel(Constants.SKILLS_CRAFTING) < 42;
     }
 
     @Override
