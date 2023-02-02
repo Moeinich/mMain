@@ -1,5 +1,7 @@
 package Fletching;
 
+import org.powbot.api.Locatable;
+import org.powbot.api.rt4.Bank;
 import org.powbot.api.rt4.Movement;
 import org.powbot.api.rt4.Players;
 import org.powbot.api.rt4.walking.model.Skill;
@@ -11,14 +13,13 @@ import script.mMain;
 public class GoFletchingArea extends Task {
     @Override
     public boolean activate() {
-        return !SkillData.fletchingArea.contains(Players.local().tile());
+        Locatable nearestBank = Bank.nearest();
+        return !Bank.inViewport();
     }
 
     @Override
     public void execute() {
-        if (!Players.local().tile().equals(SkillData.movementFletching())) {
             mMain.State = "Walking to Fletching spot";
-            Movement.moveTo(SkillData.movementFletching());
+            Movement.moveToBank();
         }
-    }
 }

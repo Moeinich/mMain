@@ -21,7 +21,7 @@ public class DoArrowShafts extends Task {
 
     @Override
     public boolean activate() {
-        return Skills.realLevel(Constants.SKILLS_FLETCHING) > 10;
+        return Skills.realLevel(Constants.SKILLS_FLETCHING) < 10;
     }
 
     @Override
@@ -30,7 +30,7 @@ public class DoArrowShafts extends Task {
             mMain.State = "Banking loop";
             bank();
         }
-        if (Game.tab(Game.Tab.INVENTORY) && !Bank.opened() && Inventory.stream().id(CombineWithItemID).contains()) {
+        if (Game.tab(Game.Tab.INVENTORY) && !Bank.opened() && Inventory.stream().id(CombineWithItemID).count() > 0) {
             mMain.State = "Fletch loop";
             fletch();
         }

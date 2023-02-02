@@ -16,9 +16,7 @@ public class GoCraftingArea extends Task {
 
     @Override
     public void execute() {
-        if (!Players.local().tile().equals(SkillData.movementCrafting())) {
             mMain.State = "Walking to Crafting spot";
-            Movement.moveTo(SkillData.movementCrafting());
-        }
+            Movement.moveToBank();
     }
 }

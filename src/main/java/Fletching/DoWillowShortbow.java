@@ -30,7 +30,7 @@ public class DoWillowShortbow extends Task {
             mMain.State = "Banking loop";
             bank();
         }
-        if (Game.tab(Game.Tab.INVENTORY) && !Bank.opened() && Inventory.stream().id(CombineWithItemID).contains()) {
+        if (Game.tab(Game.Tab.INVENTORY) && !Bank.opened() && Inventory.stream().id(CombineWithItemID).count() > 0) {
             mMain.State = "Fletch loop";
             fletch();
         }
@@ -70,11 +70,8 @@ public class DoWillowShortbow extends Task {
     }
     private void fletch() {
         while (Inventory.stream().id(CombineWithItemID).count() >= 1) {
-            CombineItems(ToolID, CombineWithItemID, WidgetID, ComponentID);
+            InteractionsHelper interactionsHelper = new InteractionsHelper();
+            interactionsHelper.CombineItems(ToolID, CombineWithItemID, WidgetID, ComponentID);
         }
-    }
-    public void CombineItems(int ToolID, int CombineWithItemID, int WidgetID, int ComponentID) {
-        InteractionsHelper interactionsHelper = new InteractionsHelper();
-        interactionsHelper.CombineItems(ToolID, CombineWithItemID, WidgetID, ComponentID);
     }
 }
