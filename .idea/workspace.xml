@@ -6,6 +6,64 @@
   <component name="ChangeListManager">
     <list default="true" id="c7dd1c8c-f10c-49ed-8219-521bd6f55188" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Combat/drinkPotion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Combat/DrinkPotion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Combat/eatFood.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Combat/EatFood.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Combat/fightEnemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Combat/FightEnemy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Combat/goCombat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Combat/GoCombat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Combat/setAttackMode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Combat/SetAttackMode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Combat/startCombat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Combat/StartCombat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Cooking/cookingBanking.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Cooking/CookingBanking.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Cooking/depositFish.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Cooking/DepositFish.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Cooking/doCooking.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Cooking/DoCooking.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Cooking/goCooking.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Cooking/GoCooking.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Cooking/noFishBanked.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Cooking/NoFishBanked.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Cooking/startCooking.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Cooking/StartCooking.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Cooking/withdrawFish.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Cooking/WithdrawFish.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Crafting/doBeerGlass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Crafting/DoBeerGlass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Crafting/doEmptyFishBowl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Crafting/DoEmptyFishBowl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Crafting/doEmptyOilLamp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Crafting/DoEmptyOilLamp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Crafting/doUnpoweredOrb.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Crafting/DoUnpoweredOrb.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Crafting/doVial.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Crafting/DoVial.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Crafting/goCraftingArea.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Crafting/GoCraftingArea.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Crafting/startCrafting.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Crafting/StartCrafting.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Firemaking/doFiremaking.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Firemaking/DoFiremaking.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Firemaking/firemakingBanking.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Firemaking/FiremakingBanking.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Firemaking/goFiremaking.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Firemaking/GoFiremaking.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Firemaking/startFiremaking.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Firemaking/StartFiremaking.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Firemaking/withdrawLogs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Firemaking/WithdrawLogs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Firemaking/withdrawTinderbox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Firemaking/WithdrawTinderbox.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Fishing/depositFish.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Fishing/DepositFish.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Fishing/doFishing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Fishing/DoFishing.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Fishing/fishBanking.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Fishing/FishBanking.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Fishing/getFishingEquipment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Fishing/GetFishingEquipment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Fishing/goFishing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Fishing/GoFishing.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Fishing/startFishing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Fishing/StartFishing.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Helpers/skillData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Helpers/SkillData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Mining/depositOre.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Mining/DepositOre.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Mining/doMining.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Mining/DoMining.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Mining/getPickaxe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Mining/GetPickaxe.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Mining/goMining.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Mining/GoMining.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Mining/miningBanking.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Mining/MiningBanking.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Mining/startMining.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Mining/StartMining.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Smithing/depositProducts.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Smithing/DepositProducts.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Smithing/doBars.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Smithing/DoBars.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Smithing/doProducts.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Smithing/DoProducts.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Smithing/goSmithing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Smithing/GoSmithing.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Smithing/smithingBanking.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Smithing/SmithingBanking.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Smithing/startSmithing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Smithing/StartSmithing.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Smithing/withdrawMaterials.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Smithing/WithdrawMaterials.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Thieving/fruitStall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Thieving/FruitStall.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Thieving/startThieving.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Thieving/StartThieving.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Thieving/teaStall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Thieving/TeaStall.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Thieving/thievingDone.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Thieving/ThievingDone.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Thieving/thievingMen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Thieving/ThievingMen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Woodcutting/depositLogs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Woodcutting/DepositLogs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Woodcutting/doWoodcutting.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Woodcutting/DoWoodcutting.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Woodcutting/getAxe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Woodcutting/GetAxe.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Woodcutting/goWoodcutting.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Woodcutting/GoWoodcutting.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Woodcutting/startWoodcutting.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Woodcutting/StartWoodcutting.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Woodcutting/woodcuttingBanking.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Woodcutting/WoodcuttingBanking.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/script/mMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/script/mMain.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

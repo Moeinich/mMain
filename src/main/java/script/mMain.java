@@ -16,6 +16,16 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.atomic.AtomicBoolean;
 
+import Combat.StartCombat;
+import Cooking.StartCooking;
+import Crafting.StartCrafting;
+import Firemaking.StartFiremaking;
+import Fishing.StartFishing;
+import Mining.StartMining;
+import Smithing.StartSmithing;
+import Thieving.StartThieving;
+import Woodcutting.StartWoodcutting;
+
 @ScriptManifest(
         name = "mMain",
         description = "Progressively levels different skills with an emphasis on ironman-mode",
@@ -98,15 +108,15 @@ public class mMain extends AbstractScript {
 
     @Override
     public void poll() {
-        var startMining = new Mining.startMining();
-        var startWoodcutting = new Woodcutting.startWoodcutting();
-        var startFishing = new Fishing.startFishing();
-        var startCooking = new Cooking.startCooking();
-        var startFiremaking = new Firemaking.startFiremaking();
-        var startSmithing = new Smithing.startSmithing();
-        var startCombat = new Combat.startCombat();
-        var startThieving = new Thieving.startThieving();
-        var startCrafting = new Crafting.startCrafting();
+        var startMining = new StartMining();
+        var startWoodcutting = new StartWoodcutting();
+        var startFishing = new StartFishing();
+        var startCooking = new StartCooking();
+        var startFiremaking = new StartFiremaking();
+        var startSmithing = new StartSmithing();
+        var startCombat = new StartCombat();
+        var startThieving = new StartThieving();
+        var startCrafting = new StartCrafting();
         var startFletching = new Fletching.startFletching();
 
         String skill = getOption("Skill");
