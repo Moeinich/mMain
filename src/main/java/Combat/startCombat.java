@@ -1,7 +1,7 @@
 package Combat;
 
 import org.powbot.mobile.script.ScriptManager;
-import Assets.Task;
+import Helpers.Task;
 
 import java.util.ArrayList;
 

@@ -1,14 +1,14 @@
 package Fishing;
 
-import static Assets.skillData.AlKharidFishingSpot1;
-import static Assets.skillData.AlKharidFishingSpot2;
-import static Assets.skillData.BarbarianVillageFishingArea;
+import static Helpers.skillData.AlKharidFishingSpot1;
+import static Helpers.skillData.AlKharidFishingSpot2;
+import static Helpers.skillData.BarbarianVillageFishingArea;
 
 import org.powbot.api.rt4.*;
 import org.powbot.api.rt4.walking.model.Skill;
 
-import Assets.Task;
-import Assets.skillData;
+import Helpers.Task;
+import Helpers.skillData;
 import script.mMain;
 
 public class goFishing extends Task {

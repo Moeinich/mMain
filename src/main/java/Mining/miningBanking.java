@@ -6,8 +6,8 @@ import org.powbot.api.rt4.Inventory;
 import org.powbot.api.rt4.Movement;
 import org.powbot.api.rt4.Players;
 
-import Assets.Task;
-import Assets.skillData;
+import Helpers.Task;
+import Helpers.skillData;
 import script.mMain;
 
 public class miningBanking extends Task {

@@ -1,9 +1,9 @@
 package Cooking;
 
-import Assets.Task;
+import Helpers.Task;
 import org.powbot.api.rt4.Bank;
 import org.powbot.api.rt4.Inventory;
-import Assets.skillData;
+import Helpers.skillData;
 import script.mMain;
 
 public class depositFish extends Task {

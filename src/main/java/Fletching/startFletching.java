@@ -4,7 +4,7 @@ import org.powbot.mobile.script.ScriptManager;
 
 import java.util.ArrayList;
 
-import Assets.Task;
+import Helpers.Task;
 
 public class startFletching {
     private ArrayList<Task> fletchingTasks = new ArrayList<>();

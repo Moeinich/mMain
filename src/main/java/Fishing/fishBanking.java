@@ -3,8 +3,8 @@ package Fishing;
 import org.powbot.api.Locatable;
 import org.powbot.api.rt4.*;
 
-import Assets.ItemList;
-import Assets.Task;
+import Helpers.ItemList;
+import Helpers.Task;
 import script.mMain;
 
 public class fishBanking extends Task {

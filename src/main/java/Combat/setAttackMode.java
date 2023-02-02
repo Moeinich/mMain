@@ -2,7 +2,7 @@ package Combat;
 
 import org.powbot.api.rt4.Combat;
 
-import Assets.Task;
+import Helpers.Task;
 import script.mMain;
 
 public class setAttackMode extends Task {

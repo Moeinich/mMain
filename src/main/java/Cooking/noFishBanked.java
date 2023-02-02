@@ -3,8 +3,8 @@ package Cooking;
 import org.powbot.api.rt4.*;
 import org.powbot.mobile.script.ScriptManager;
 
-import Assets.ItemList;
-import Assets.Task;
+import Helpers.ItemList;
+import Helpers.Task;
 import script.mMain;
 
 public class noFishBanked extends Task {

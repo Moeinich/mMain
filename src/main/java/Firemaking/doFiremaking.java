@@ -3,9 +3,9 @@ package Firemaking;
 import org.powbot.api.Condition;
 import org.powbot.api.rt4.*;
 
-import Assets.ItemList;
-import Assets.Task;
-import Assets.skillData;
+import Helpers.ItemList;
+import Helpers.Task;
+import Helpers.skillData;
 import script.mMain;
 
 public class doFiremaking extends Task {

@@ -3,8 +3,8 @@ package Smithing;
 import org.powbot.api.Condition;
 import org.powbot.api.rt4.*;
 
-import Assets.Task;
-import Assets.skillData;
+import Helpers.Task;
+import Helpers.skillData;
 import script.mMain;
 
 public class doProducts extends Task {

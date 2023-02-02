@@ -1,11 +1,10 @@
 package Crafting;
 
-import org.powbot.api.Condition;
 import org.powbot.api.rt4.Movement;
 import org.powbot.api.rt4.Players;
 
-import Assets.Task;
-import Assets.skillData;
+import Helpers.Task;
+import Helpers.skillData;
 import script.mMain;
 
 public class goCraftingArea extends Task {

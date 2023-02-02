@@ -4,7 +4,7 @@ import org.powbot.mobile.script.ScriptManager;
 
 import java.util.ArrayList;
 
-import Assets.Task;
+import Helpers.Task;
 
 public class startCrafting {
     private ArrayList<Task> craftingTasks = new ArrayList<>();

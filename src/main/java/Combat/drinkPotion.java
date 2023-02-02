@@ -3,7 +3,7 @@ package Combat;
 import org.powbot.api.Condition;
 import org.powbot.api.rt4.*;
 
-import Assets.Task;
+import Helpers.Task;
 import script.mMain;
 
 public class drinkPotion extends Task {

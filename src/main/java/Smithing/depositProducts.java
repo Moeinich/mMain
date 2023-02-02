@@ -4,8 +4,8 @@ import org.powbot.api.rt4.Bank;
 import org.powbot.api.rt4.Inventory;
 import org.powbot.api.rt4.Players;
 
-import Assets.Task;
-import Assets.skillData;
+import Helpers.Task;
+import Helpers.skillData;
 import script.mMain;
 
 public class depositProducts extends Task {

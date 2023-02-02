@@ -4,9 +4,9 @@ import org.powbot.api.rt4.Movement;
 import org.powbot.api.rt4.Players;
 import org.powbot.api.rt4.Inventory;
 
-import Assets.ItemList;
-import Assets.Task;
-import Assets.skillData;
+import Helpers.ItemList;
+import Helpers.Task;
+import Helpers.skillData;
 import script.mMain;
 
 public class goFiremaking extends Task {

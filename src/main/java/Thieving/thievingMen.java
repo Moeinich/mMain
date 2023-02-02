@@ -14,8 +14,8 @@ import org.powbot.api.rt4.Skills;
 
 import java.util.concurrent.Callable;
 
-import Assets.Task;
-import Assets.skillData;
+import Helpers.Task;
+import Helpers.skillData;
 import script.mMain;
 
 public class thievingMen extends Task {

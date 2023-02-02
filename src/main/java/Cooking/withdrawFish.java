@@ -5,8 +5,8 @@ import org.powbot.api.rt4.Skills;
 import org.powbot.api.rt4.Bank;
 import org.powbot.api.rt4.Inventory;
 
-import Assets.ItemList;
-import Assets.Task;
+import Helpers.ItemList;
+import Helpers.Task;
 import script.mMain;
 
 public class withdrawFish extends Task {

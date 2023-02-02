@@ -6,9 +6,9 @@ import org.powbot.api.rt4.Players;
 import org.powbot.api.rt4.Bank;
 import org.powbot.api.rt4.Inventory;
 
-import Assets.ItemList;
-import Assets.Task;
-import Assets.skillData;
+import Helpers.ItemList;
+import Helpers.Task;
+import Helpers.skillData;
 import script.mMain;
 
 public class firemakingBanking extends Task {

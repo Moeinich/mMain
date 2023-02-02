@@ -1,6 +1,6 @@
 package Woodcutting;
 
-import Assets.Task;
+import Helpers.Task;
 import org.powbot.mobile.script.ScriptManager;
 
 import java.util.ArrayList;

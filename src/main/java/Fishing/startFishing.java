@@ -5,7 +5,7 @@ import org.powbot.mobile.script.ScriptManager;
 
 import java.util.ArrayList;
 
-import Assets.Task;
+import Helpers.Task;
 
 public class startFishing {
     private ArrayList<Task> fishingTasks = new ArrayList<>();

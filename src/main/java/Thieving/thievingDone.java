@@ -3,7 +3,7 @@ package Thieving;
 import org.powbot.api.rt4.Constants;
 import org.powbot.api.rt4.Skills;
 
-import Assets.Task;
+import Helpers.Task;
 import script.mMain;
 
 public class thievingDone extends Task {

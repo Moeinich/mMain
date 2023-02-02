@@ -5,9 +5,9 @@ import org.powbot.api.rt4.*;
 
 import java.util.List;
 
-import Assets.ItemList;
-import Assets.Task;
-import Assets.skillData;
+import Helpers.ItemList;
+import Helpers.Task;
+import Helpers.skillData;
 import script.mMain;
 
 public class doWoodcutting extends Task {

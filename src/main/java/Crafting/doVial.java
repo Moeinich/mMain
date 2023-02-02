@@ -13,8 +13,8 @@ import org.powbot.mobile.script.ScriptManager;
 
 import java.util.concurrent.Callable;
 
-import Assets.ItemList;
-import Assets.Task;
+import Helpers.ItemList;
+import Helpers.Task;
 import script.mMain;
 
 public class doVial extends Task {

@@ -7,15 +7,14 @@ import org.powbot.api.rt4.Constants;
 import org.powbot.api.rt4.Game;
 import org.powbot.api.rt4.Inventory;
 import org.powbot.api.rt4.Item;
-import org.powbot.api.rt4.Players;
 import org.powbot.api.rt4.Skills;
 import org.powbot.api.rt4.Widgets;
 import org.powbot.mobile.script.ScriptManager;
 
 import java.util.concurrent.Callable;
 
-import Assets.ItemList;
-import Assets.Task;
+import Helpers.ItemList;
+import Helpers.Task;
 import script.mMain;
 
 public class doBeerGlass extends Task {

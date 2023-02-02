@@ -1,4 +1,4 @@
-package Assets;
+package Helpers;
 
 import org.powbot.api.Area;
 import org.powbot.api.Tile;

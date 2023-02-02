@@ -15,8 +15,8 @@ import org.powbot.api.rt4.Varpbits;
 
 import java.util.List;
 
-import Assets.Task;
-import Assets.skillData;
+import Helpers.Task;
+import Helpers.skillData;
 import script.mMain;
 
 public class fruitStall extends Task {
