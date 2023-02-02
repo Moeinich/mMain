@@ -1,4 +1,4 @@
-package Crafting;
+package Fletching;
 
 import org.powbot.api.rt4.Movement;
 import org.powbot.api.rt4.Players;

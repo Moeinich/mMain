@@ -1,19 +1,12 @@
 package Fletching;
 
 import org.powbot.api.Condition;
-import org.powbot.api.Random;
 import org.powbot.api.rt4.Bank;
 import org.powbot.api.rt4.Constants;
 import org.powbot.api.rt4.Game;
 import org.powbot.api.rt4.Inventory;
-import org.powbot.api.rt4.Item;
 import org.powbot.api.rt4.Skills;
-import org.powbot.api.rt4.Widgets;
 import org.powbot.mobile.script.ScriptManager;
-
-import java.util.concurrent.Callable;
-
-import javax.tools.Tool;
 
 import Helpers.InteractionsHelper;
 import Helpers.ItemList;

@@ -3,8 +3,6 @@ package Fletching;
 import org.powbot.mobile.script.ScriptManager;
 
 import java.util.ArrayList;
-
-import Crafting.GoFletchingArea;
 import Helpers.Task;
 
 public class startFletching {
