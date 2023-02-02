@@ -70,11 +70,8 @@ public class DoVial extends Task {
     }
     private void craft() {
         while (Inventory.stream().id(CombineWithItemID).count() >= 1) {
-            CombineItems(ToolID, CombineWithItemID, WidgetID, ComponentID);
+            InteractionsHelper interactionsHelper = new InteractionsHelper();
+            interactionsHelper.CombineItems(ToolID, CombineWithItemID, WidgetID, ComponentID);
         }
-    }
-    public void CombineItems(int ToolID, int CombineWithItemID, int WidgetID, int ComponentID) {
-        InteractionsHelper interactionsHelper = new InteractionsHelper();
-        interactionsHelper.CombineItems(ToolID, CombineWithItemID, WidgetID, ComponentID);
     }
 }

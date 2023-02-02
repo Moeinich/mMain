@@ -13,7 +13,6 @@ import script.mMain;
 public class GoFletchingArea extends Task {
     @Override
     public boolean activate() {
-        Locatable nearestBank = Bank.nearest();
         return !Bank.inViewport();
     }
 
