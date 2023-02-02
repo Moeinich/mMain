@@ -21,7 +21,7 @@ public class DoBeerGlass extends Task {
 
     @Override
     public boolean activate() {
-        return Skills.realLevel(Constants.SKILLS_CRAFTING) > 12;
+        return Skills.realLevel(Constants.SKILLS_CRAFTING) >= 11;
     }
 
     @Override

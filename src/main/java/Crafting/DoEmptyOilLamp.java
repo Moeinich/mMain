@@ -21,7 +21,7 @@ public class DoEmptyOilLamp extends Task {
 
     @Override
     public boolean activate() {
-        return Skills.realLevel(Constants.SKILLS_CRAFTING) <= 12 && Skills.realLevel(Constants.SKILLS_CRAFTING) < 33;
+        return Skills.realLevel(Constants.SKILLS_CRAFTING) <= 12 && Skills.realLevel(Constants.SKILLS_CRAFTING) <= 32;
     }
 
     @Override
