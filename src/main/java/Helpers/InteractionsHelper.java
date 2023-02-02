@@ -24,13 +24,10 @@ public class InteractionsHelper {
             }
         }
         public void CheckInventoryItemAndWithdraw(int item) {
-            mMain.State = "Check knife";
             if (!Bank.opened() && Bank.inViewport()) {
                 Bank.open();
             }
-            if (Inventory.stream().id(item).count() == 0) {
                 Bank.withdraw(item, 1);
-            }
         }
 
         public void CombineItems(int RequiredItemID, int CombineWithItemID, int WidgetID, int ComponentID) {

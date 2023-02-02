@@ -17,7 +17,7 @@ public class GoFletchingArea extends Task {
     public void execute() {
         if (!Players.local().tile().equals(SkillData.movementFletching())) {
             mMain.State = "Walking to Fletching spot";
-            Movement.builder(SkillData.movementCrafting()).setRunMin(45).setRunMax(75).move();
+            Movement.builder(SkillData.movementFletching()).setRunMin(45).setRunMax(75).move();
         }
     }
 }

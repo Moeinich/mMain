@@ -46,7 +46,7 @@ public class DoVial extends Task {
 
     private void checkTool() {
         InteractionsHelper interactionsHelper = new InteractionsHelper();
-        mMain.State = "Check tool";
+        mMain.State = "Checking tool..";
         if (Inventory.stream().id(ToolID).count() == 0) {
             interactionsHelper.CheckInventoryItemAndWithdraw(ToolID);
         }

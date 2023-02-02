@@ -46,7 +46,7 @@ public class DoLongbow extends Task {
 
     private void checkKnife() {
         InteractionsHelper interactionsHelper = new InteractionsHelper();
-        mMain.State = "Check knife";
+        mMain.State = "Checking tool..";
         if (Inventory.stream().id(ToolID).count() == 0) {
             interactionsHelper.CheckInventoryItemAndWithdraw(ToolID);
         }
