@@ -37,8 +37,8 @@ public class InteractionsHelper {
                 mMain.State = "Combining..";
                 int currentCount = (int) Inventory.stream().id(ItemList.WILLOW_LOGS_1519).count();
                 if (currentCount >= initialCount) {
-                    timer += 2;
-                    if (timer >= 2) {
+                    timer += 1;
+                    if (timer >= 4) {
                         Item Tool = Inventory.stream().id(RequiredItemID).first();
                         Item CombineWithID = Inventory.stream().id(CombineWithItemID).first();
 
@@ -68,7 +68,7 @@ public class InteractionsHelper {
                     initialCount = currentCount;
                     timer = 0;
                 }
-                int randomSleep = Random.nextInt(1750, 1850);
+                int randomSleep = Random.nextInt(1000, 1300);
                 Condition.sleep(randomSleep);
             }
         }
