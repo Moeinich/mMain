@@ -41,7 +41,7 @@ public class DoUnpoweredOrb extends Task {
 
     private void bank() {
         checkTool();
-        withdrawLogs();
+        withdrawItems();
     }
 
     private void checkTool() {
@@ -52,17 +52,20 @@ public class DoUnpoweredOrb extends Task {
         }
 
     }
-    private void withdrawLogs() {
+    private void withdrawItems() {
         InteractionsHelper interactionsHelper = new InteractionsHelper();
         mMain.State = "Withdraw items";
         if (!Bank.opened()) {
             Bank.open();
         }
-        if (Inventory.stream().id(CombineWithItemID).count() == 0) {
+        if (Bank.stream().id(CombineWithItemID).count() >= 1) {
             Bank.depositAllExcept(ToolID);
             interactionsHelper.WithdrawItem(CombineWithItemID, 27);
             Bank.close();
             Condition.wait( () -> !Bank.opened(), 500, 20);
+        } else {
+            Bank.close();
+            mMain.taskRunning.set(false); //Stop if we dont have materials!
         }
     }
     private void craft() {

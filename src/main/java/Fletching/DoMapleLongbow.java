@@ -49,7 +49,7 @@ public class DoMapleLongbow extends Task {
 
     private void bank() {
         checkTool();
-        withdrawLogs();
+        withdrawItems();
     }
 
     private void checkTool() {
@@ -60,9 +60,9 @@ public class DoMapleLongbow extends Task {
         }
 
     }
-    private void withdrawLogs() {
+    private void withdrawItems() {
         InteractionsHelper interactionsHelper = new InteractionsHelper();
-        mMain.State = "Withdraw logs";
+        mMain.State = "Withdraw items";
         if (!Bank.opened()) {
             Bank.open();
         }

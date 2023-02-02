@@ -41,7 +41,7 @@ public class DoLongbow extends Task {
 
     private void bank() {
         checkKnife();
-        withdrawLogs();
+        withdrawItems();
     }
 
     private void checkKnife() {
@@ -52,9 +52,9 @@ public class DoLongbow extends Task {
         }
 
     }
-    private void withdrawLogs() {
+    private void withdrawItems() {
         InteractionsHelper interactionsHelper = new InteractionsHelper();
-        mMain.State = "Withdraw logs";
+        mMain.State = "Withdraw items";
         if (!Bank.opened()) {
             Bank.open();
         }
