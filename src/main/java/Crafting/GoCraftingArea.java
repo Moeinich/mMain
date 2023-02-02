@@ -1,5 +1,6 @@
 package Crafting;
 
+import org.powbot.api.rt4.Bank;
 import org.powbot.api.rt4.Movement;
 import org.powbot.api.rt4.Players;
 import org.powbot.api.rt4.walking.model.Skill;
@@ -11,9 +12,8 @@ import script.mMain;
 public class GoCraftingArea extends Task {
     @Override
     public boolean activate() {
-        return !SkillData.craftingArea.contains(Players.local().tile());
+        return !Bank.inViewport();
     }
-
     @Override
     public void execute() {
             mMain.State = "Walking to Crafting spot";
