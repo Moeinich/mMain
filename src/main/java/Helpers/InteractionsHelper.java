@@ -33,7 +33,7 @@ public class InteractionsHelper {
         public void CombineItems(int RequiredItemID, int CombineWithItemID, int WidgetID, int ComponentID) {
             int timer = 0;
             int initialCount = (int) Inventory.stream().id(CombineWithItemID).count();
-            while (!ScriptManager.INSTANCE.isStopping()) {
+            while (!ScriptManager.INSTANCE.isStopping() && Inventory.stream().id(CombineWithItemID).count() >= 1) {
                 mMain.State = "Combining.." + RequiredItemID + " " + CombineWithItemID;
                 int currentCount = (int) Inventory.stream().id(CombineWithItemID).count();
                 if (currentCount >= initialCount) {
