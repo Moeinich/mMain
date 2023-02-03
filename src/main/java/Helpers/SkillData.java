@@ -48,22 +48,18 @@ public class SkillData {
 
     //Combat
     public static final Area Seagull_area = new Area(
-            new Tile(3151, 2841),
-            new Tile(3157,2850)
+            new Tile(3151, 2841), new Tile(3157,2850)
     );
 
     //Fishing
     public static final Area AlKharidFishingSpot1 = new Area(
-            new Tile(3264, 3150),
-            new Tile(3270,3145)
+            new Tile(3264, 3150), new Tile(3270,3145)
     );
     public static final Area AlKharidFishingSpot2 = new Area(
-            new Tile(3273, 3142),
-            new Tile(3280,3137)
+            new Tile(3273, 3142), new Tile(3280,3137)
     );
     public static final Area BarbarianVillageFishingArea = new Area(
-            new Tile(3101, 3422),
-            new Tile(3109,3436)
+            new Tile(3101, 3422), new Tile(3109,3436)
     );
 
     public static Tile movementFishing(){
@@ -83,20 +79,16 @@ public class SkillData {
     public static int[] teakTreeID = {40758};
 
     public static final Area normalTreeLocation = new Area (
-            new Tile(3074,3274),
-            new Tile(3086, 3263)
+            new Tile(3074,3274), new Tile(3086, 3263)
     );
     public static final Area oakTreeLocation = new Area (
-            new Tile(3099,3245),
-            new Tile(3104, 3240)
+            new Tile(3099,3245), new Tile(3104, 3240)
     );
     public static final Area willowTreeLocation = new Area (
-            new Tile(3056,3255),
-            new Tile(3064, 3249)
+            new Tile(3056,3255), new Tile(3064, 3249)
     );
     public static final Area teakLocation = new Area (
-            new Tile(2185,2987),
-            new Tile(2185, 2991)
+            new Tile(2185,2987), new Tile(2185, 2991)
     );
 
     public static Tile movementWoodcutting(){
@@ -138,8 +130,7 @@ public class SkillData {
 
     //Cooking
     public static final Area cookingAreaEdgeville = new Area (
-            new Tile(3077,3496),
-            new Tile(3081,3491)
+            new Tile(3077,3496), new Tile(3081,3491)
     );
 
     public static GameObject cookingStove = Objects.stream().id(12269).first();
@@ -156,12 +147,10 @@ public class SkillData {
     public static int[] logs = {ItemList.LOGS_1511, ItemList.OAK_LOGS_1521, ItemList.WILLOW_LOGS_1519};
 
     public static final Area firemakingArea = new Area (
-            new Tile(3195, 3491, 0),
-            new Tile(3198, 3487, 0)
+            new Tile(3195, 3491, 0), new Tile(3198, 3487, 0)
     );
     public static final Area doFiremakingArea = new Area (
-            new Tile(3196, 3488, 0),
-            new Tile(3168, 3491, 0)
+            new Tile(3196, 3488, 0), new Tile(3168, 3491, 0)
     );
     public static Tile moveToFiremakingSpot(){
         if (GoFiremaking.fmSpot == 1) {
@@ -205,8 +194,7 @@ public class SkillData {
 
     //Thieving
     public static final Area thievingMenArea = new Area (
-            new Tile(3225, 3209, 0),
-            new Tile(3212, 3228, 0)
+            new Tile(3225, 3209, 0), new Tile(3212, 3228, 0)
     );
     public static Tile teaStallTile = new Tile(3269,3412);
     public static Tile fruitStallTile = new Tile(1796, 3607);
@@ -225,12 +213,33 @@ public class SkillData {
 
     //Crafting
     public static final Area craftingArea = new Area (
-            new Tile(3160, 3493, 0),
-            new Tile(3168, 3486, 0)
+            new Tile(3160, 3493, 0), new Tile(3168, 3486, 0)
     );
     //Fletching
     public static final Area fletchingArea = new Area (
-            new Tile(3160, 3493, 0),
-            new Tile(3168, 3486, 0)
+            new Tile(3160, 3493, 0), new Tile(3168, 3486, 0)
+    );
+
+    //Agility
+    public static final Area GnomeObstacle1Area = new Area (
+            new Tile(2490, 3436, 0), new Tile(2469, 3441, 0)
+    );
+    public static final Area GnomeObstacle2Area = new Area (
+            new Tile(2478, 3429, 0), new Tile(2470, 3425, 0)
+    );
+    public static final Area GnomeObstacle3Area = new Area (
+            new Tile(2476, 3424, 1), new Tile(2471, 3422, 1)
+    );
+    public static final Area GnomeObstacle4Area = new Area (
+            new Tile(2472, 3420, 2), new Tile(2477, 3419, 2)
+    );
+    public static final Area GnomeObstacle5Area = new Area (
+            new Tile(2483, 3420, 2), new Tile(2488, 3418, 2)
+    );
+    public static final Area GnomeObstacle6Area = new Area (
+            new Tile(2489, 3417, 0), new Tile(2481, 3425, 0)
+    );
+    public static final Area GnomeObstacle7Area = new Area (
+            new Tile(2482, 3427, 0), new Tile(2489, 3431, 0)
     );
 }

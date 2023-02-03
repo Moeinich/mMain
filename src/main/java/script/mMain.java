@@ -16,6 +16,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.atomic.AtomicBoolean;
 
+import Agility.StartAgility;
 import Combat.StartCombat;
 import Cooking.StartCooking;
 import Crafting.StartCrafting;
@@ -37,7 +38,7 @@ import Woodcutting.StartWoodcutting;
                         name =  "Skill",
                         description = "Which skill would you like to do?",
                         defaultValue = "Fletching",
-                        allowedValues = {"Progressive", "Mining", "Fishing", "Woodcutting", "Cooking", "Firemaking", "Smithing", "Thieving", "Crafting", "Fletching"},
+                        allowedValues = {"Progressive", "Mining", "Fishing", "Woodcutting", "Cooking", "Firemaking", "Smithing", "Thieving", "Crafting", "Fletching", "Agility"},
                         optionType = OptionType.STRING
                 )
         }
@@ -118,6 +119,7 @@ public class mMain extends AbstractScript {
         var startThieving = new StartThieving();
         var startCrafting = new StartCrafting();
         var startFletching = new Fletching.startFletching();
+        var startAgility = new Agility.StartAgility();
 
         String skill = getOption("Skill");
 
@@ -193,6 +195,9 @@ public class mMain extends AbstractScript {
                 break;
             case "Fletching":
                 startFletching.Fletching();
+                break;
+            case "Agility":
+                startAgility.Agility();
                 break;
         }
     }
