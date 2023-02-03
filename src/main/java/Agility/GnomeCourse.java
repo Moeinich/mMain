@@ -19,7 +19,7 @@ public class GnomeCourse extends Task {
         GameObject GnomeObstacle1ID = Objects.stream().within(5).id(23145).nearest().first();
         GameObject GnomeObstacle2ID = Objects.stream().within(5).id(23134).nearest().first();
         if (SkillData.GnomeObstacle1Area.contains(Players.local()) && GnomeObstacle1ID.inViewport()) {
-            GnomeObstacle1ID.interact("Walk-across", "Log balance",);
+            GnomeObstacle1ID.interact("Walk-across", "Log balance");
             Condition.wait( () -> GnomeObstacle2ID.inViewport(), 500, 50);
         }
 
