@@ -17,7 +17,7 @@ public class DoLongbow extends Task {
     int CombineWithItemID = ItemList.LOGS_1511;
     int ToolID = ItemList.KNIFE_946;
     int WidgetID = 270;
-    int ComponentID = 15;
+    int ComponentID = 17;
 
     @Override
     public boolean activate() {
