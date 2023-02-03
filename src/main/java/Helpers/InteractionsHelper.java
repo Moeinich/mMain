@@ -32,10 +32,10 @@ public class InteractionsHelper {
 
         public void CombineItems(int RequiredItemID, int CombineWithItemID, int WidgetID, int ComponentID) {
             int timer = 0;
-            int initialCount = (int) Inventory.stream().id(ItemList.WILLOW_LOGS_1519).count();
+            int initialCount = (int) Inventory.stream().id(RequiredItemID).count();
             while (!ScriptManager.INSTANCE.isStopping()) {
                 mMain.State = "Combining..";
-                int currentCount = (int) Inventory.stream().id(ItemList.WILLOW_LOGS_1519).count();
+                int currentCount = (int) Inventory.stream().id(RequiredItemID).count();
                 if (currentCount >= initialCount) {
                     timer += 1;
                     if (timer >= 4) {
@@ -59,7 +59,7 @@ public class InteractionsHelper {
                                 Condition.wait( () -> !Widgets.widget(WidgetID).valid(), 150, 20);
                             }
                         }
-                        if (Inventory.stream().id(ItemList.WILLOW_LOGS_1519).count() == 0) {
+                        if (Inventory.stream().id(RequiredItemID).count() == 0) {
                             break;
                         }
                         timer = 0;
