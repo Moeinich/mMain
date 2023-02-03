@@ -40,11 +40,11 @@ public class DoLongbow extends Task {
     }
 
     private void bank() {
-        checkKnife();
+        checkTool();
         withdrawItems();
     }
 
-    private void checkKnife() {
+    private void checkTool() {
         InteractionsHelper interactionsHelper = new InteractionsHelper();
         mMain.State = "Checking tool..";
         if (Inventory.stream().id(ToolID).count() == 0) {

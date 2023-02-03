@@ -27,14 +27,16 @@ public class InteractionsHelper {
             if (!Bank.opened() && Bank.inViewport()) {
                 Bank.open();
             }
-                Bank.withdraw(item, 1);
+            Bank.depositInventory();
+            Condition.wait( () -> Inventory.isEmpty(), 250, 50);
+            Bank.withdraw(item, 1);
         }
 
         public void CombineItems(int RequiredItemID, int CombineWithItemID, int WidgetID, int ComponentID) {
             int timer = 0;
             int initialCount = (int) Inventory.stream().id(CombineWithItemID).count();
             while (!ScriptManager.INSTANCE.isStopping() && Inventory.stream().id(CombineWithItemID).count() >= 1) {
-                mMain.State = "Combining.." + RequiredItemID + " " + CombineWithItemID;
+                mMain.State = "Combining.. " + RequiredItemID + " " + CombineWithItemID;
                 int currentCount = (int) Inventory.stream().id(CombineWithItemID).count();
                 if (currentCount >= initialCount) {
                     timer += 1;
