@@ -6,14 +6,29 @@ import org.powbot.api.rt4.Constants;
 import org.powbot.api.rt4.Game;
 import org.powbot.api.rt4.Inventory;
 import org.powbot.api.rt4.Skills;
+import org.powbot.api.rt4.Varpbits;
 import org.powbot.mobile.script.ScriptManager;
 
 import Helpers.InteractionsHelper;
 import Helpers.ItemList;
 import Helpers.Task;
+import Thieving.FruitStall;
 import script.mMain;
 
 public class AttackPotions extends Task {
+    private enum DRUIDIC_RITUAL {
+        DRUIDIC_RITUAL(80); //completed er = 4!
+        int var;
+        DRUIDIC_RITUAL(int var){
+            this.var = var;
+        }
+        public int getValue(){
+            return (int) (Varpbits.value(var) * .1);
+        }
+        public static boolean checkedFavor = false;
+        public static int DruidicRitualValue = 0;
+    }
+
     int CombineWithItemID = ItemList.GUAM_POTION_UNF_91;
     int ToolID = ItemList.EYE_OF_NEWT_221;
     int WidgetID = 270;
@@ -24,6 +39,17 @@ public class AttackPotions extends Task {
     }
     @Override
     public void execute() {
+        //We need to check if Druidic ritual is completed
+        if (!DRUIDIC_RITUAL.checkedFavor) {
+            mMain.State = "Checking quest completion";
+            DRUIDIC_RITUAL.DruidicRitualValue = DRUIDIC_RITUAL.DRUIDIC_RITUAL.getValue();
+            DRUIDIC_RITUAL.checkedFavor = true;
+        }
+        if (DRUIDIC_RITUAL.DruidicRitualValue != 4) {
+            mMain.taskRunning.set(false);
+        }
+
+
         if ((Inventory.stream().id(ToolID).count() == 0 || Inventory.stream().id(CombineWithItemID).count() == 0) && Game.tab(Game.Tab.INVENTORY)) {
             mMain.State = "Banking loop";
             bank();
