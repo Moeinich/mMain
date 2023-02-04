@@ -15,7 +15,7 @@ import script.mMain;
 public class GnomeCourse extends Task {
     @Override
     public boolean activate() {
-        return Skills.realLevel(Constants.SKILLS_FLETCHING) <= 9;
+        return Skills.realLevel(Constants.SKILLS_AGILITY) <= 9;
     }
     @Override
     public void execute() {
