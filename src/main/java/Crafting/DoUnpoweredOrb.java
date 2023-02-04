@@ -21,7 +21,7 @@ public class DoUnpoweredOrb extends Task {
 
     @Override
     public boolean activate() {
-        return Skills.realLevel(Constants.SKILLS_CRAFTING) <= 46;
+        return Skills.realLevel(Constants.SKILLS_CRAFTING) >= 46;
     }
 
     @Override

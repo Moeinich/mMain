@@ -21,7 +21,7 @@ public class DoEmptyFishBowl extends Task {
 
     @Override
     public boolean activate() {
-        return Skills.realLevel(Constants.SKILLS_CRAFTING) <= 42 && Skills.realLevel(Constants.SKILLS_CRAFTING) <= 45;
+        return Skills.realLevel(Constants.SKILLS_CRAFTING) >= 42 && Skills.realLevel(Constants.SKILLS_CRAFTING) <= 45;
     }
 
     @Override

@@ -21,7 +21,7 @@ public class DoOakLongbow extends Task {
 
     @Override
     public boolean activate() {
-        return Skills.realLevel(Constants.SKILLS_FLETCHING) >= 10 && Skills.realLevel(Constants.SKILLS_FLETCHING) < 20;
+        return Skills.realLevel(Constants.SKILLS_FLETCHING) >= 25 && Skills.realLevel(Constants.SKILLS_FLETCHING) <= 34;
     }
 
     @Override
