@@ -22,37 +22,37 @@ public class GnomeCourse extends Task {
         GameObject GnomeObstacle2ID = Objects.stream().within(5).id(23134).nearest().first();
         if (SkillData.GnomeObstacle1Area.contains(Players.local()) && GnomeObstacle1ID.inViewport()) {
             GnomeObstacle1ID.interact("Walk-across", "Log balance");
-            Condition.wait( () -> GnomeObstacle2ID.inViewport(), 500, 50);
+            Condition.wait( () -> SkillData.GnomeObstacle2Area.contains(Players.local()), 500, 50);
         }
 
         GameObject GnomeObstacle3ID = Objects.stream().within(5).id(23559).nearest().first();
         if (SkillData.GnomeObstacle2Area.contains(Players.local()) && GnomeObstacle2ID.inViewport()) {
             GnomeObstacle1ID.interact("Climb-over", "Obstacle net");
-            Condition.wait( () -> GnomeObstacle3ID.inViewport(), 500, 50);
+            Condition.wait( () -> SkillData.GnomeObstacle3Area.contains(Players.local()), 500, 50);
         }
 
         GameObject GnomeObstacle4ID = Objects.stream().within(5).id(23557).nearest().first();
         if (SkillData.GnomeObstacle3Area.contains(Players.local()) && GnomeObstacle3ID.inViewport()) {
             GnomeObstacle1ID.interact("Climb", "Tree branch");
-            Condition.wait( () -> GnomeObstacle4ID.inViewport(), 500, 50);
+            Condition.wait( () -> SkillData.GnomeObstacle4Area.contains(Players.local()), 500, 50);
         }
 
         GameObject GnomeObstacle5ID = Objects.stream().within(5).id(23560).nearest().first();
         if (SkillData.GnomeObstacle4Area.contains(Players.local()) && GnomeObstacle4ID.inViewport()) {
             GnomeObstacle1ID.interact("Walk-on", "Balacing rope");
-            Condition.wait( () -> GnomeObstacle5ID.inViewport(), 500, 50);
+            Condition.wait( () -> SkillData.GnomeObstacle5Area.contains(Players.local()), 500, 50);
         }
 
         GameObject GnomeObstacle6ID = Objects.stream().within(5).id(23135).nearest().first();
         if (SkillData.GnomeObstacle5Area.contains(Players.local()) && GnomeObstacle5ID.inViewport()) {
             GnomeObstacle1ID.interact("Climb-down", "Tree branch");
-            Condition.wait( () -> GnomeObstacle6ID.inViewport(), 500, 50);
+            Condition.wait( () -> SkillData.GnomeObstacle6Area.contains(Players.local()), 500, 50);
         }
 
         GameObject GnomeObstacle7ID = Objects.stream().within(5).id(23138).nearest().first();
         if (SkillData.GnomeObstacle6Area.contains(Players.local()) && GnomeObstacle6ID.inViewport()) {
             GnomeObstacle1ID.interact("Climb-over", "Obstacle net");
-            Condition.wait( () -> GnomeObstacle7ID.inViewport(), 500, 50);
+            Condition.wait( () -> SkillData.GnomeObstacle7Area.contains(Players.local()), 500, 50);
         }
         if (SkillData.GnomeObstacle7Area.contains(Players.local()) && GnomeObstacle7ID.inViewport()) {
             GnomeObstacle1ID.interact("Squeeze-through", "Obstacle pipe");

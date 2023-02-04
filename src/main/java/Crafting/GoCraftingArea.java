@@ -11,10 +11,10 @@ import Helpers.SkillData;
 import script.mMain;
 
 public class GoCraftingArea extends Task {
+    Locatable nearestBank = Bank.nearest();
     @Override
     public boolean activate() {
-        Locatable nearestBank = Bank.nearest();
-        return !Bank.inViewport() || nearestBank.tile().distanceTo(Players.local()) < 5;
+        return !Bank.inViewport() || nearestBank.tile().distanceTo(Players.local()) < 10;
     }
     @Override
     public void execute() {
