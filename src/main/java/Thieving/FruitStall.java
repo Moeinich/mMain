@@ -30,11 +30,6 @@ public class FruitStall extends Task {
         KOUREND_FAVOR(int var){
             this.var = var;
         }
-
-        public int getVar(){
-            return var;
-        }
-
         public int getValue(){
             return (int) (Varpbits.value(var) * .1);
         }
