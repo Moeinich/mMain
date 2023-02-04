@@ -10,6 +10,7 @@ public class StartAgility {
     private ArrayList<Task> agilityTasks = new ArrayList<>();
     public void Agility() {
         if (agilityTasks.isEmpty()) {
+            agilityTasks.add(new WalkToAgilityObstacles());
             agilityTasks.add(new GnomeCourse());
         }
 

@@ -4,13 +4,14 @@ import org.powbot.mobile.script.ScriptManager;
 
 import java.util.ArrayList;
 
+import Helpers.GoToBank;
 import Helpers.Task;
 
 public class StartCrafting {
     private ArrayList<Task> craftingTasks = new ArrayList<>();
     public void Crafting() {
         if (craftingTasks.isEmpty()) {
-            craftingTasks.add(new GoCraftingArea());
+            craftingTasks.add(new GoToBank());
             craftingTasks.add(new DoBeerGlass());
             craftingTasks.add(new DoEmptyOilLamp());
             craftingTasks.add(new DoVial());

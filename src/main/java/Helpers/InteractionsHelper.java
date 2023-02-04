@@ -20,7 +20,7 @@ public class InteractionsHelper {
                 mMain.State = "We ran out of " + ItemName;
                 mMain.taskRunning.set(false); //Skip task on progressive
             } else {
-                Bank.withdraw(ItemName, 27);
+                Bank.withdraw(ItemName, Amount);
             }
         }
         public void CheckInventoryItemAndWithdraw(int item) {

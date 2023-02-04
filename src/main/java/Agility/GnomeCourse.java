@@ -19,7 +19,7 @@ public class GnomeCourse extends Task {
     }
     @Override
     public void execute() {
-        GameObject GnomeObstacle1ID = Objects.stream().within(5).id(23145).nearest().first();
+        GameObject GnomeObstacle1ID = Objects.stream().within(20).id(23145).nearest().first();
         GameObject GnomeObstacle2ID = Objects.stream().within(5).id(23134).nearest().first();
         if (SkillData.GnomeObstacle1Area.contains(Players.local()) && GnomeObstacle1ID.inViewport()) {
             mMain.State = "obstacle 1";
@@ -48,14 +48,14 @@ public class GnomeCourse extends Task {
             Condition.wait( () -> SkillData.GnomeObstacle5Area.contains(Players.local()), 500, 50);
         }
 
-        GameObject GnomeObstacle6ID = Objects.stream().within(5).id(23135).nearest().first();
+        GameObject GnomeObstacle6ID = Objects.stream().within(10).id(23135).nearest().first();
         if (SkillData.GnomeObstacle5Area.contains(Players.local()) && GnomeObstacle5ID.inViewport()) {
             mMain.State = "obstacle 5";
             GnomeObstacle5ID.interact("Climb-down", "Tree branch");
             Condition.wait( () -> SkillData.GnomeObstacle6Area.contains(Players.local()), 500, 50);
         }
 
-        GameObject GnomeObstacle7ID = Objects.stream().within(5).id(23138).nearest().first();
+        GameObject GnomeObstacle7ID = Objects.stream().within(20).id(23138).nearest().first();
         if (SkillData.GnomeObstacle6Area.contains(Players.local()) && GnomeObstacle6ID.inViewport()) {
             mMain.State = "obstacle 6";
             GnomeObstacle6ID.interact("Climb-over", "Obstacle net");
@@ -64,8 +64,7 @@ public class GnomeCourse extends Task {
         if (SkillData.GnomeObstacle7Area.contains(Players.local()) && GnomeObstacle7ID.inViewport()) {
             mMain.State = "obstacle 7";
             GnomeObstacle7ID.interact("Squeeze-through", "Obstacle pipe");
-            Condition.wait( () -> GnomeObstacle1ID.inViewport(), 500, 50);
-            Movement.moveTo(SkillData.GnomeObstacle1Area.getRandomTile());
+            Condition.wait( () -> SkillData.GnomeObstacle1Area.contains(Players.local()), 1500, 50);
         }
     }
 }

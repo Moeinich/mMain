@@ -37,8 +37,8 @@ import Woodcutting.StartWoodcutting;
                 @ScriptConfiguration(
                         name =  "Skill",
                         description = "Which skill would you like to do?",
-                        defaultValue = "Fletching",
-                        allowedValues = {"Progressive", "Mining", "Fishing", "Woodcutting", "Cooking", "Firemaking", "Smithing", "Thieving", "Crafting", "Fletching", "Agility"},
+                        defaultValue = "Agility",
+                        allowedValues = {"Progressive", "Mining", "Fishing", "Woodcutting", "Cooking", "Firemaking", "Smithing", "Thieving", "Crafting", "Fletching", "Agility", "Herblore"},
                         optionType = OptionType.STRING
                 )
         }
@@ -120,6 +120,7 @@ public class mMain extends AbstractScript {
         var startCrafting = new StartCrafting();
         var startFletching = new Fletching.startFletching();
         var startAgility = new Agility.StartAgility();
+        var startHerblore = new Herblore.StartHerblore();
 
         String skill = getOption("Skill");
 
@@ -133,7 +134,9 @@ public class mMain extends AbstractScript {
                         startFiremaking::Firemaking,
                         startThieving::Thieving,
                         startCrafting::Crafting,
-                        startFletching::Fletching
+                        startFletching::Fletching,
+                        startAgility::Agility,
+                        startHerblore::Herblore
                         // Add future skills to this tasklist!
                 );
                 if (taskRunning.compareAndSet(false, true)) {
@@ -198,6 +201,9 @@ public class mMain extends AbstractScript {
                 break;
             case "Agility":
                 startAgility.Agility();
+                break;
+            case "Herblore":
+                startHerblore.Herblore();
                 break;
         }
     }

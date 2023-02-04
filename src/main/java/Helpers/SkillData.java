@@ -211,21 +211,21 @@ public class SkillData {
         return null;
     }
 
-    //Crafting
-    public static final Area craftingArea = new Area (
-            new Tile(3160, 3493, 0), new Tile(3168, 3486, 0)
-    );
-    //Fletching
-    public static final Area fletchingArea = new Area (
-            new Tile(3160, 3493, 0), new Tile(3168, 3486, 0)
-    );
-
     //Agility
+    public static final Area GnomeObstacleLowerArea = new Area (
+            new Tile(2468, 3441, 0), new Tile(2491, 3413, 0)
+    );
+    public static final Area GnomeObstacleAreaMidFloor = new Area (
+            new Tile(2469, 3425, 1), new Tile(2477, 3421, 1)
+    );
+    public static final Area GnomeObstacleAreaTopFloor = new Area (
+            new Tile(2470, 3423, 2), new Tile(2490, 3416, 2)
+    );
     public static final Area GnomeObstacle1Area = new Area (
-            new Tile(2490, 3436, 0), new Tile(2469, 3441, 0)
+            new Tile(2472, 3436, 0), new Tile(2488, 3440, 0)
     );
     public static final Area GnomeObstacle2Area = new Area (
-            new Tile(2478, 3429, 0), new Tile(2470, 3425, 0)
+            new Tile(2471, 3429, 0), new Tile(2477, 3427, 0)
     );
     public static final Area GnomeObstacle3Area = new Area (
             new Tile(2476, 3424, 1), new Tile(2471, 3422, 1)
@@ -242,4 +242,10 @@ public class SkillData {
     public static final Area GnomeObstacle7Area = new Area (
             new Tile(2482, 3427, 0), new Tile(2489, 3431, 0)
     );
+    public static Tile movementAgility(){
+        if (Skills.realLevel(Constants.SKILLS_AGILITY) <= 9) {
+            return GnomeObstacle1Area.getRandomTile();
+        }
+        return null;
+    }
 }

@@ -3,13 +3,15 @@ package Fletching;
 import org.powbot.mobile.script.ScriptManager;
 
 import java.util.ArrayList;
+
+import Helpers.GoToBank;
 import Helpers.Task;
 
 public class startFletching {
     private ArrayList<Task> fletchingTasks = new ArrayList<>();
     public void Fletching() {
         if (fletchingTasks.isEmpty()) {
-            fletchingTasks.add(new GoFletchingArea());
+            fletchingTasks.add(new GoToBank());
             fletchingTasks.add(new DoArrowShafts());
             fletchingTasks.add(new DoLongbow());
             fletchingTasks.add(new DoOakShortbow());
