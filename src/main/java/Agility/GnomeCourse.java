@@ -44,7 +44,7 @@ public class GnomeCourse extends Task {
         GameObject GnomeObstacle5ID = Objects.stream().within(5).id(23560).nearest().first();
         if (SkillData.GnomeObstacle4Area.contains(Players.local()) && GnomeObstacle4ID.inViewport()) {
             mMain.State = "obstacle 4";
-            GnomeObstacle4ID.interact("Walk-on", "Balacing rope");
+            GnomeObstacle4ID.interact("Walk-on", "Balancing rope");
             Condition.wait( () -> SkillData.GnomeObstacle5Area.contains(Players.local()), 500, 50);
         }
 
