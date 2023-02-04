@@ -1,5 +1,6 @@
 package Crafting;
 
+import org.powbot.api.Locatable;
 import org.powbot.api.rt4.Bank;
 import org.powbot.api.rt4.Movement;
 import org.powbot.api.rt4.Players;
@@ -12,7 +13,8 @@ import script.mMain;
 public class GoCraftingArea extends Task {
     @Override
     public boolean activate() {
-        return !Bank.inViewport();
+        Locatable nearestBank = Bank.nearest();
+        return !Bank.inViewport() || nearestBank.tile().distanceTo(Players.local()) < 5;
     }
     @Override
     public void execute() {

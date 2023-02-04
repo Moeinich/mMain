@@ -1,10 +1,12 @@
 package Agility;
 
 import org.powbot.api.Condition;
+import org.powbot.api.rt4.Constants;
 import org.powbot.api.rt4.GameObject;
 import org.powbot.api.rt4.Movement;
 import org.powbot.api.rt4.Objects;
 import org.powbot.api.rt4.Players;
+import org.powbot.api.rt4.Skills;
 
 import Helpers.SkillData;
 import Helpers.Task;
@@ -12,7 +14,7 @@ import Helpers.Task;
 public class GnomeCourse extends Task {
     @Override
     public boolean activate() {
-        return false;
+        return Skills.realLevel(Constants.SKILLS_FLETCHING) <= 9;
     }
     @Override
     public void execute() {

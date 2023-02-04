@@ -8,6 +8,8 @@ import org.powbot.api.rt4.Inventory;
 import org.powbot.api.rt4.Skills;
 import org.powbot.mobile.script.ScriptManager;
 
+import javax.tools.Tool;
+
 import Helpers.InteractionsHelper;
 import Helpers.ItemList;
 import Helpers.Task;
@@ -30,7 +32,7 @@ public class DoMapleLongbow extends Task {
 
     @Override
     public void execute() {
-        if (Inventory.stream().id(CombineWithItemID).count() == 0 && Game.tab(Game.Tab.INVENTORY)) {
+        if ((Inventory.stream().id(ToolID).count() == 0 || Inventory.stream().id(CombineWithItemID).count() == 0) && Game.tab(Game.Tab.INVENTORY)) {
             mMain.State = "Banking loop";
             bank();
         }

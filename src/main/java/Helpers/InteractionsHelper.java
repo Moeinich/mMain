@@ -28,7 +28,7 @@ public class InteractionsHelper {
                 Bank.open();
             }
             Bank.depositInventory();
-            Condition.wait( () -> Inventory.isEmpty(), 250, 50);
+            Condition.wait( () -> Inventory.isEmpty(), 150, 50);
             Bank.withdraw(item, 1);
         }
 

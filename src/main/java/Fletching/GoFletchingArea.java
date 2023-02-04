@@ -13,12 +13,13 @@ import script.mMain;
 public class GoFletchingArea extends Task {
     @Override
     public boolean activate() {
-        return !Bank.inViewport();
+        Locatable nearestBank = Bank.nearest();
+        return !Bank.inViewport() || nearestBank.tile().distanceTo(Players.local()) < 5;
     }
 
     @Override
     public void execute() {
-            mMain.State = "Walking to Fletching spot";
-            Movement.moveToBank();
-        }
+        mMain.State = "Walking to Fletching spot";
+        Movement.moveToBank();
+    }
 }

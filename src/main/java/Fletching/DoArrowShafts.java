@@ -26,12 +26,12 @@ public class DoArrowShafts extends Task {
 
     @Override
     public void execute() {
-        if (Inventory.stream().id(CombineWithItemID).count() == 0 && Game.tab(Game.Tab.INVENTORY)) {
+        if ((Inventory.stream().id(ToolID).count() == 0 || Inventory.stream().id(CombineWithItemID).count() == 0) && Game.tab(Game.Tab.INVENTORY)) {
             mMain.State = "Banking loop";
             bank();
         }
         if (Game.tab(Game.Tab.INVENTORY) && !Bank.opened() && Inventory.stream().id(CombineWithItemID).count() > 0) {
-            mMain.State = "Fletch loop";
+            mMain.State = "craft loop";
             fletch();
         }
         if (ScriptManager.INSTANCE.isStopping()) {
