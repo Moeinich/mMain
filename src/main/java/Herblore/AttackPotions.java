@@ -3,18 +3,15 @@ package Herblore;
 import org.powbot.api.Condition;
 import org.powbot.api.Locatable;
 import org.powbot.api.rt4.Bank;
-import org.powbot.api.rt4.Constants;
 import org.powbot.api.rt4.Game;
 import org.powbot.api.rt4.Inventory;
 import org.powbot.api.rt4.Players;
-import org.powbot.api.rt4.Skills;
 import org.powbot.api.rt4.Varpbits;
 import org.powbot.mobile.script.ScriptManager;
 
 import Helpers.InteractionsHelper;
 import Helpers.ItemList;
 import Helpers.Task;
-import Thieving.FruitStall;
 import script.mMain;
 
 public class AttackPotions extends Task {
@@ -27,7 +24,7 @@ public class AttackPotions extends Task {
         public int getValue(){
             return (int) (Varpbits.value(var) * .1);
         }
-        public static boolean checkedFavor = false;
+        public static boolean checkedCompletion = false;
         public static int DruidicRitualValue = 0;
     }
 
@@ -43,10 +40,10 @@ public class AttackPotions extends Task {
     @Override
     public void execute() {
         //We need to check if Druidic ritual is completed
-        if (!DRUIDIC_RITUAL.checkedFavor) {
+        if (!DRUIDIC_RITUAL.checkedCompletion) {
             mMain.State = "Checking quest completion";
             DRUIDIC_RITUAL.DruidicRitualValue = DRUIDIC_RITUAL.DRUIDIC_RITUAL.getValue();
-            DRUIDIC_RITUAL.checkedFavor = true;
+            DRUIDIC_RITUAL.checkedCompletion = true;
         }
         if (DRUIDIC_RITUAL.DruidicRitualValue != 4) {
             mMain.taskRunning.set(false);
