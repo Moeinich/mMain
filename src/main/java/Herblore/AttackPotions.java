@@ -1,10 +1,12 @@
 package Herblore;
 
 import org.powbot.api.Condition;
+import org.powbot.api.Locatable;
 import org.powbot.api.rt4.Bank;
 import org.powbot.api.rt4.Constants;
 import org.powbot.api.rt4.Game;
 import org.powbot.api.rt4.Inventory;
+import org.powbot.api.rt4.Players;
 import org.powbot.api.rt4.Skills;
 import org.powbot.api.rt4.Varpbits;
 import org.powbot.mobile.script.ScriptManager;
@@ -35,7 +37,8 @@ public class AttackPotions extends Task {
     int ComponentID = 14;
 
     public boolean activate() {
-        return Skills.realLevel(Constants.SKILLS_HERBLORE) >= 3;
+        Locatable nearestBank = Bank.nearest();
+        return nearestBank.tile().distanceTo(Players.local()) < 10;
     }
     @Override
     public void execute() {
