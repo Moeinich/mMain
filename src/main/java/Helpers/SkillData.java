@@ -246,6 +246,9 @@ public class SkillData {
         if (Skills.realLevel(Constants.SKILLS_AGILITY) <= 9) {
             return GnomeObstacle1Area.getRandomTile();
         }
+        if (Skills.realLevel(Constants.SKILLS_AGILITY) >= 10 && Skills.realLevel(Constants.SKILLS_AGILITY) <= 80) {
+            return GnomeObstacle1Area.getRandomTile();
+        }
         return null;
     }
 }

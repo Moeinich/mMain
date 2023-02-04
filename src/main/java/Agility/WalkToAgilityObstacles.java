@@ -12,12 +12,16 @@ import script.mMain;
 public class WalkToAgilityObstacles extends Task {
     @Override
     public boolean activate() {
-        if (
+        //Gnome course
+        if ( Skills.realLevel(Constants.SKILLS_AGILITY) <= 9 &&
                 !SkillData.GnomeObstacleLowerArea.contains(Players.local())
-                        && !SkillData.GnomeObstacleAreaMidFloor.contains(Players.local())
-                        && !SkillData.GnomeObstacleAreaTopFloor.contains(Players.local())
-                        && Skills.realLevel(Constants.SKILLS_AGILITY) <= 9) {
-
+                && !SkillData.GnomeObstacleAreaMidFloor.contains(Players.local())
+                && !SkillData.GnomeObstacleAreaTopFloor.contains(Players.local()) )
+        {
+            return true;
+        }
+        //Draynor
+        if (Skills.realLevel(Constants.SKILLS_AGILITY) >= 10 && Skills.realLevel(Constants.SKILLS_AGILITY) <= 80 ){
             return true;
         }
         return false;
