@@ -6,9 +6,6 @@ import org.powbot.api.Locatable;
 import org.powbot.api.rt4.Bank;
 import org.powbot.api.rt4.Inventory;
 import org.powbot.api.rt4.Movement;
-import org.powbot.api.rt4.Players;
-
-import java.util.concurrent.Callable;
 
 import Helpers.InteractionsHelper;
 import Helpers.Task;
@@ -22,13 +19,13 @@ return Inventory.stream().id(SkillData.pickaxes).count() == 0;}
 
     @Override
     public void execute() {
-        mMain.State = "Getting pickaxe";
         Locatable nearestBank = Bank.nearest();
-        if (nearestBank.tile().distanceTo(Players.local()) < 4 && !Bank.inViewport()) {
+        if (!Bank.inViewport()) {
+            mMain.State = "Moving to bank";
             Movement.moveTo(nearestBank);
         }
         InteractionsHelper interactionsHelper = new InteractionsHelper();
-        if (!Bank.opened()) {
+        if (Bank.opened()) {
             mMain.State = "getting pickaxe";
             Bank.open();
             interactionsHelper.DepositAndWithdraw(SkillData.withdrawPickaxe(), 1);

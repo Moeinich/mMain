@@ -197,7 +197,7 @@ public class SkillData {
         if (Skills.realLevel(Constants.SKILLS_FIREMAKING) >= 15 && Skills.realLevel(Constants.SKILLS_FIREMAKING) <= 29) {
             return ItemList.OAK_LOGS_1521;
         }
-        if (Skills.realLevel(Constants.SKILLS_FIREMAKING) > 30) {
+        if (Skills.realLevel(Constants.SKILLS_FIREMAKING) >= 30) {
             return ItemList.WILLOW_LOGS_1519;
         }
         return 0;

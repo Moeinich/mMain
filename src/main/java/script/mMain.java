@@ -16,7 +16,6 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-import Agility.StartAgility;
 import Combat.StartCombat;
 import Cooking.StartCooking;
 import Crafting.StartCrafting;
@@ -29,7 +28,7 @@ import Woodcutting.StartWoodcutting;
 
 @ScriptManifest(
         name = "mMain",
-        description = "Progressively levels different skills with an emphasis on ironman-mode",
+        description = "Progressively levels different skills",
         version = "0.0.1"
 )
 @ScriptConfiguration.List(
@@ -37,7 +36,7 @@ import Woodcutting.StartWoodcutting;
                 @ScriptConfiguration(
                         name =  "Skill",
                         description = "Which skill would you like to do?",
-                        defaultValue = "Fishing",
+                        defaultValue = "Mining",
                         allowedValues = {"Progressive", "Mining", "Fishing", "Woodcutting", "Cooking", "Firemaking", "Smithing", "Thieving", "Crafting", "Fletching", "Agility", "Herblore"},
                         optionType = OptionType.STRING
                 )
@@ -77,6 +76,7 @@ public class mMain extends AbstractScript {
                 .trackSkill(Skill.Crafting)
                 .trackSkill(Skill.Fletching)
                 .trackSkill(Skill.Herblore)
+                .trackSkill(Skill.Agility)
                 .x(40)
                 .y(400)
                 .removeScriptNameVersion()

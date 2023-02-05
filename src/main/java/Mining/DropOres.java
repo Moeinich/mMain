@@ -18,7 +18,7 @@ public class DropOres extends Task {
         return Inventory.isFull();
     }
     @Override
-    public void execute() {mMain.State = "Dropping ores..";
+    public void execute() {mMain.State = "Dropping..";
         List<Item> itemsToDrop = Inventory.stream().name(badItems).list();
         Inventory.drop(itemsToDrop);
     }

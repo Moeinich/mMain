@@ -5,14 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c7dd1c8c-f10c-49ed-8219-521bd6f55188" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Fishing/AlKharidFishing.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Fishing/BarbarianVillageFishing.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Mining/CopperOres.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Mining/IronOres.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Woodcutting/treeNormal.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Woodcutting/treeOak.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Woodcutting/treeTeak.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Woodcutting/treeWillow.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.4/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/checksums/checksums.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.4/dependencies-accessors/dependencies-accessors.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/dependencies-accessors/dependencies-accessors.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.4/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/executionHistory/executionHistory.bin" afterDir="false" />
@@ -22,56 +14,17 @@
       <change beforePath="$PROJECT_DIR$/.gradle/7.4/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Agility/WalkToAgilityObstacles.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Agility/WalkToAgilityObstacles.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Crafting/DoUnpoweredOrb.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Crafting/DoUnpoweredOrb.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Crafting/doBeerGlass.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Crafting/doBeerGlass.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Crafting/doEmptyFishBowl.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Crafting/doEmptyFishBowl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Crafting/doEmptyOilLamp.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Crafting/doEmptyOilLamp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Crafting/doVial.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Crafting/doVial.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Fishing/depositFish.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Fishing/doFishing.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Fishing/fishBanking.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Fishing/goFishing.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Fishing/startFishing.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Fishing/startFishing.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Fletching/DoArrowShafts.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Fletching/DoArrowShafts.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Fletching/DoLongbow.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Fletching/DoLongbow.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Fletching/DoMapleLongbow.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Fletching/DoMapleLongbow.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Fletching/DoMapleShortbow.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Fletching/DoMapleShortbow.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Fletching/DoOakLongbow.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Fletching/DoOakLongbow.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Fletching/DoOakShortbow.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Fletching/DoOakShortbow.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Fletching/DoWillowLongbow.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Fletching/DoWillowLongbow.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Fletching/DoWillowShortbow.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Fletching/DoWillowShortbow.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/Helpers/SkillData.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Helpers/SkillData.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Herblore/AttackPotions.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Herblore/AttackPotions.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Mining/depositOre.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Mining/doMining.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Mining/getPickaxe.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Mining/getPickaxe.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Mining/goMining.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Mining/miningBanking.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Mining/startMining.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Mining/startMining.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Thieving/fruitStall.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Thieving/fruitStall.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Mining/DropOres.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Mining/DropOres.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/script/mMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/script/mMain.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Agility/WalkToAgilityObstacles.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Agility/WalkToAgilityObstacles.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Fishing/DepositFish.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Fishing/DropFish.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Fishing/DoFishing.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Fishing/FishBanking.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Fishing/GetFishingEquipment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Fishing/GetFishingEquipment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Fishing/GoFishing.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Fishing/StartFishing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Fishing/StartFishing.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Helpers/GoToBank.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Helpers/GoToBank.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Helpers/SkillData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Helpers/SkillData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Mining/DepositOre.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Mining/DropOres.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Mining/DoMining.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Mining/DropOres.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Mining/DropOres.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Mining/GetPickaxe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Mining/GetPickaxe.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Mining/GoMining.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Mining/MiningBanking.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Mining/StartMining.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Mining/StartMining.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Thieving/FruitStall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Thieving/FruitStall.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Woodcutting/DepositLogs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Woodcutting/DropLogs.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Woodcutting/DoWoodcutting.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Woodcutting/GoWoodcutting.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Woodcutting/StartWoodcutting.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Woodcutting/StartWoodcutting.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Woodcutting/WoodcuttingBanking.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Woodcutting/DropLogs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Woodcutting/DropLogs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Woodcutting/GetAxe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Woodcutting/GetAxe.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/script/mMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/script/mMain.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
