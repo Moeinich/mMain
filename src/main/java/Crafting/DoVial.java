@@ -17,7 +17,7 @@ public class DoVial extends Task {
     int CombineWithItemID = ItemList.MOLTEN_GLASS_1775;
     int ToolID = ItemList.GLASSBLOWING_PIPE_1785;
     int WidgetID = 270;
-    int ComponentID = 16;
+    int ComponentID = 17;
 
     @Override
     public boolean activate() {
@@ -55,6 +55,9 @@ public class DoVial extends Task {
     private void withdrawItems() {
         InteractionsHelper interactionsHelper = new InteractionsHelper();
         mMain.State = "Withdraw items";
+        if (!Bank.opened() && Bank.inViewport()) {
+            Bank.open();
+        }
         if (Bank.stream().id(CombineWithItemID).count() >= 1) {
             Bank.depositAllExcept(ToolID);
             interactionsHelper.WithdrawItem(CombineWithItemID, 27);

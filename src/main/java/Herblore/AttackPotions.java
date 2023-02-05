@@ -79,6 +79,9 @@ public class AttackPotions extends Task {
     private void GetUnfinishedPotions() {
         InteractionsHelper interactionsHelper = new InteractionsHelper();
         mMain.State = "Withdraw items";
+        if (!Bank.opened() && Bank.inViewport()) {
+            Bank.open();
+        }
         if (Bank.stream().id(CombineWithItemID).count() >= 1 && Bank.stream().id(ToolID).count() == 1) {
             interactionsHelper.WithdrawItem(CombineWithItemID, 14);
             Bank.close();

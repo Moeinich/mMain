@@ -63,6 +63,9 @@ public class DoMapleLongbow extends Task {
     private void withdrawItems() {
         InteractionsHelper interactionsHelper = new InteractionsHelper();
         mMain.State = "Withdraw items";
+        if (!Bank.opened() && Bank.inViewport()) {
+            Bank.open();
+        }
         if (Bank.stream().id(CombineWithItemID).count() >= 1) {
             Bank.depositAllExcept(ToolID);
             interactionsHelper.WithdrawItem(CombineWithItemID, 27);

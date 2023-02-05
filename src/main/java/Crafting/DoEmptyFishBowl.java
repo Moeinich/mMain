@@ -17,7 +17,7 @@ public class DoEmptyFishBowl extends Task {
     int CombineWithItemID = ItemList.MOLTEN_GLASS_1775;
     int ToolID = ItemList.GLASSBLOWING_PIPE_1785;
     int WidgetID = 270;
-    int ComponentID = 17;
+    int ComponentID = 18;
 
     @Override
     public boolean activate() {
@@ -55,6 +55,9 @@ public class DoEmptyFishBowl extends Task {
     private void withdrawItems() {
         InteractionsHelper interactionsHelper = new InteractionsHelper();
         mMain.State = "Withdraw items";
+        if (!Bank.opened() && Bank.inViewport()) {
+            Bank.open();
+        }
         if (Bank.stream().id(CombineWithItemID).count() >= 1) {
             Bank.depositAllExcept(ToolID);
             interactionsHelper.WithdrawItem(CombineWithItemID, 27);
