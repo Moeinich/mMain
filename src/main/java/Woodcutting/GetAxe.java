@@ -5,6 +5,7 @@ import org.powbot.api.Locatable;
 import org.powbot.api.rt4.Bank;
 import org.powbot.api.rt4.Inventory;
 import org.powbot.api.rt4.Movement;
+import org.powbot.api.rt4.Players;
 
 import Helpers.InteractionsHelper;
 import Helpers.Task;
@@ -21,13 +22,13 @@ public class GetAxe extends Task {
     public void execute() {
         Locatable nearestBank = Bank.nearest();
 
-
-        if (!Bank.inViewport()) {
+        if (nearestBank.tile().distanceTo(Players.local()) > 5) {
             mMain.State = "Moving to bank";
-            Movement.moveTo(nearestBank);
+            Movement.moveToBank();
         }
+
         InteractionsHelper interactionsHelper = new InteractionsHelper();
-        if (Bank.opened()) {
+        if (!Bank.opened()) {
             mMain.State = "getting axe";
             Bank.open();
             interactionsHelper.DepositAndWithdraw(SkillData.withdrawAxe(), 1);

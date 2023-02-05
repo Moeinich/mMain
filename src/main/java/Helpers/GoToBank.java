@@ -11,7 +11,7 @@ public class GoToBank extends Task{
     Locatable nearestBank = Bank.nearest();
     @Override
     public boolean activate() {
-        return nearestBank.tile().distanceTo(Players.local()) < 4 || !Bank.inViewport();
+        return nearestBank.tile().distanceTo(Players.local()) > 5;
     }
     @Override
     public void execute() {

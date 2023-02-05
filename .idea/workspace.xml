@@ -14,18 +14,11 @@
       <change beforePath="$PROJECT_DIR$/.gradle/7.4/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Helpers/SkillData.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Helpers/SkillData.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Mining/DropOres.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Mining/DropOres.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/script/mMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/script/mMain.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Helpers/GoToBank.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Helpers/GoToBank.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Helpers/GoToBank.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Helpers/GoToBank.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Helpers/SkillData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Helpers/SkillData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Mining/DropOres.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Mining/DropOres.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Mining/GetPickaxe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Mining/GetPickaxe.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Woodcutting/DropLogs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Woodcutting/DropLogs.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Woodcutting/GetAxe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Woodcutting/GetAxe.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/script/mMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/script/mMain.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
