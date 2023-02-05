@@ -55,7 +55,7 @@ public class DoMapleLongbow extends Task {
     private void checkTool() {
         InteractionsHelper interactionsHelper = new InteractionsHelper();
         mMain.State = "Checking tool..";
-        if (Inventory.stream().id(ToolID).count() == 0 && Bank.stream().id(CombineWithItemID).count() >= 1) {
+        if (Inventory.stream().id(ToolID).count() == 0) {
             interactionsHelper.DepositAndWithdraw(ToolID, 1);
         }
 

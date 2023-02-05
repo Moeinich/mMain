@@ -55,7 +55,7 @@ public class DoEmptyFishBowl extends Task {
     private void withdrawItems() {
         InteractionsHelper interactionsHelper = new InteractionsHelper();
         mMain.State = "Withdraw items";
-        if (Bank.stream().id(CombineWithItemID).count() >= 1 && Bank.stream().id(ToolID).count() == 1) {
+        if (Bank.stream().id(CombineWithItemID).count() >= 1) {
             Bank.depositAllExcept(ToolID);
             interactionsHelper.WithdrawItem(CombineWithItemID, 27);
             Bank.close();
