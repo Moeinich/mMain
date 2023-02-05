@@ -28,7 +28,11 @@ public class WalkToAgilityObstacles extends Task {
     }
     @Override
     public void execute() {
-        mMain.State = "Going to Agility area ";
-        Movement.builder(SkillData.movementAgility()).setRunMin(45).setRunMax(75).move();
+        if (Skills.realLevel(Constants.SKILLS_AGILITY) >= 10) {
+            mMain.taskRunning.set(false);
+        } else {
+            mMain.State = "Going to Agility area ";
+            Movement.builder(SkillData.movementAgility()).setRunMin(45).setRunMax(75).move();
+        }
     }
 }

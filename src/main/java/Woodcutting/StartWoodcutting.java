@@ -10,10 +10,11 @@ public class StartWoodcutting {
     public void Woodcutting() {
         if (woodcuttingTasks.isEmpty()) {
             woodcuttingTasks.add(new GetAxe());
-            woodcuttingTasks.add(new DepositLogs());
-            woodcuttingTasks.add(new WoodcuttingBanking());
-            woodcuttingTasks.add(new GoWoodcutting());
-            woodcuttingTasks.add(new DoWoodcutting());
+            woodcuttingTasks.add(new DropLogs());
+            woodcuttingTasks.add(new treeNormal());
+            woodcuttingTasks.add(new treeOak());
+            woodcuttingTasks.add(new treeWillow());
+            woodcuttingTasks.add(new treeTeak());
         }
 
         for (Task task : woodcuttingTasks) {

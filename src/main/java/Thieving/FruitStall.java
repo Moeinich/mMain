@@ -14,6 +14,7 @@ import org.powbot.api.rt4.Players;
 import org.powbot.api.rt4.Skills;
 import org.powbot.api.rt4.Varpbits;
 import org.powbot.api.rt4.World;
+import org.powbot.api.rt4.walking.model.Skill;
 
 import java.util.List;
 
@@ -40,7 +41,7 @@ public class FruitStall extends Task {
         return Skills.realLevel(Constants.SKILLS_THIEVING) >= 25 && Skills.realLevel(Constants.SKILLS_THIEVING) <= 59;
     }
 
-    public static final String[] badItems = {"Cooking apple", "Banana", "Strawberry", "Jangerberries", "Lemon", "Redberries", "Pineapple", "Lime", "Strange fruit", "Golovanova fruit top", "Papaya fruit"};
+    public static final String[] badItems = SkillData.badItems;
     static final int STALL_ID = 28823;
     public boolean shouldDropItems() {
         List<Item> itemsToDrop = Inventory.stream().name(badItems).list();
@@ -51,7 +52,6 @@ public class FruitStall extends Task {
         mMain.State = "Dropping Tea!";
         List<Item> itemsToDrop = Inventory.stream().name(badItems).list();
         Inventory.drop(itemsToDrop);
-        Condition.wait(() -> itemsToDrop.isEmpty(), 20, 50);
     }
     public boolean shouldThieve() {
         return !Inventory.isFull();

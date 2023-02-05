@@ -8,28 +8,54 @@ import org.powbot.api.rt4.walking.model.Skill;
 import Firemaking.GoFiremaking;
 
 public class SkillData {
+    public static final String[] badItems = {
+            "Cooking apple",
+            "Banana",
+            "Strawberry",
+            "Jangerberries",
+            "Lemon",
+            "Redberries",
+            "Pineapple",
+            "Lime",
+            "Strange fruit",
+            "Golovanova fruit top",
+            "Papaya fruit",
+            "Copper ore",
+            "Tin ore",
+            "Iron ore",
+            "Logs",
+            "Oak logs",
+            "Willow logs",
+            "Teak logs",
+            "Raw shrimp",
+            "Raw anchovies",
+            "Raw herring",
+            "Raw trout",
+            "Raw salmon",
+            "Raw tuna"};
+
 
     //Mining
     public static Tile miningCopperLocation = new Tile(3287,3366);
-    public static Tile miningIronLocation = new Tile(3286,3368);
+    public static Tile miningIronLocation = new Tile(1475,3779);
 
-    public static int[] pickaxes = {ItemList.BRONZE_PICKAXE_1265, ItemList.STEEL_PICKAXE_1269, ItemList.MITHRIL_PICKAXE_1273, ItemList.ADAMANT_PICKAXE_1271, ItemList.RUNE_PICKAXE_1275};
+    public static int[] pickaxes = {ItemList.BRONZE_PICKAXE_1265, ItemList.BLACK_PICKAXE_12297, ItemList.MITHRIL_PICKAXE_1273, ItemList.ADAMANT_PICKAXE_1271, ItemList.RUNE_PICKAXE_1275};
 
     public static Tile movementMining(){
-        if (Skill.Mining.realLevel() <= 25) {
+        if (Skill.Mining.realLevel() <= 14) {
             return miningCopperLocation;
         }
-        if (Skill.Mining.realLevel() >= 26) {
+        if (Skill.Mining.realLevel() >= 15) {
             return miningIronLocation;
         }
         return null;
     }
     public static int withdrawPickaxe() {
-        if (Skill.Mining.realLevel() < 6) {
+        if (Skill.Mining.realLevel() < 11) {
             return ItemList.BRONZE_PICKAXE_1265;
         }
-        if (Skill.Mining.realLevel() >= 6 && Skill.Mining.realLevel() < 21) {
-            return ItemList.STEEL_PICKAXE_1269;
+        if (Skill.Mining.realLevel() >= 11 && Skill.Mining.realLevel() < 21) {
+            return ItemList.BLACK_PICKAXE_12297;
         }
         if (Skill.Mining.realLevel() >= 21 && Skill.Mining.realLevel() < 31) {
             return ItemList.MITHRIL_PICKAXE_1273;
@@ -40,10 +66,7 @@ public class SkillData {
         if (Skill.Mining.realLevel() > 41) {
             return ItemList.RUNE_PICKAXE_1275;
         }
-        if (Bank.stream().id(ItemList.STEEL_PICKAXE_1269, ItemList.MITHRIL_PICKAXE_1273, ItemList.ADAMANT_PICKAXE_1271, ItemList.RUNE_PICKAXE_1275).count() == 0) {
-            return ItemList.BRONZE_PICKAXE_1265;
-        }
-        return 0;
+        else return ItemList.BRONZE_PICKAXE_1265;
     }
 
     //Combat
@@ -98,8 +121,11 @@ public class SkillData {
         if (Skills.realLevel(Constants.SKILLS_WOODCUTTING) >= 15 && (Skills.realLevel(Constants.SKILLS_WOODCUTTING) < 30)) {
             return oakTreeLocation.getRandomTile();
         }
-        if (Skills.realLevel(Constants.SKILLS_WOODCUTTING) >= 30) {
+        if (Skills.realLevel(Constants.SKILLS_WOODCUTTING) >= 30 && Skills.realLevel(Constants.SKILLS_WOODCUTTING) <= 41) {
             return willowTreeLocation.getRandomTile();
+        }
+        if (Skills.realLevel(Constants.SKILLS_WOODCUTTING) >= 42) {
+            return teakLocation.getRandomTile();
         }
         return null;
     }

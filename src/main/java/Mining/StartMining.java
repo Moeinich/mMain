@@ -12,10 +12,9 @@ public class StartMining {
     public void Mining() {
         if (miningTasks.isEmpty()) {
             miningTasks.add(new GetPickaxe());
-            miningTasks.add(new DepositOre());
-            miningTasks.add(new MiningBanking());
-            miningTasks.add(new GoMining());
-            miningTasks.add(new DoMining());
+            miningTasks.add(new DropOres());
+            miningTasks.add(new CopperOres());
+            miningTasks.add(new IronOres());
         }
 
         for (Task task : miningTasks) {

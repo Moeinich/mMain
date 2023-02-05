@@ -12,10 +12,9 @@ public class StartFishing {
     public void Fishing() {
         if (fishingTasks.isEmpty()) {
             fishingTasks.add(new GetFishingEquipment());
-            fishingTasks.add(new DepositFish());
-            fishingTasks.add(new FishBanking());
-            fishingTasks.add(new GoFishing());
-            fishingTasks.add(new DoFishing());
+            fishingTasks.add(new DropFish());
+            fishingTasks.add(new AlKharidFishing());
+            fishingTasks.add(new BarbarianVillageFishing());
         }
 
         for (Task task : fishingTasks) {
