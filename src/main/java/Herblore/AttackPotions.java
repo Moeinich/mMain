@@ -72,8 +72,7 @@ public class AttackPotions extends Task {
         InteractionsHelper interactionsHelper = new InteractionsHelper();
         mMain.State = "Grabbing eyes";
         if (Inventory.stream().id(ToolID).count() == 0) {
-            Condition.wait( () -> Bank.depositInventory(), 500, 20);
-            interactionsHelper.WithdrawItem(ToolID, 14);
+            interactionsHelper.DepositAndWithdraw(ToolID, 14);
         }
 
     }

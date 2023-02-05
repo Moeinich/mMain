@@ -41,7 +41,7 @@ public class InteractionsHelper {
             int currentCount = (int) Inventory.stream().id(CombineWithItemID).count();
             if (currentCount >= initialCount) {
                 timer += 1;
-                if (timer >= 4) {
+                if (timer >= 3) {
                     Item Tool = Inventory.stream().id(RequiredItemID).first();
                     Item CombineWithID = Inventory.stream().id(CombineWithItemID).first();
 
