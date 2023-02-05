@@ -80,10 +80,7 @@ public class AttackPotions extends Task {
     private void GetUnfinishedPotions() {
         InteractionsHelper interactionsHelper = new InteractionsHelper();
         mMain.State = "Withdraw items";
-        if (!Bank.opened()) {
-            Bank.open();
-        }
-        if (Bank.stream().id(CombineWithItemID).count() >= 1) {
+        if (Bank.stream().id(CombineWithItemID).count() >= 1 && Bank.stream().id(ToolID).count() == 1) {
             interactionsHelper.WithdrawItem(CombineWithItemID, 14);
             Bank.close();
             Condition.wait( () -> !Bank.opened(), 500, 20);

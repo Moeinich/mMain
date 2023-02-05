@@ -1,6 +1,7 @@
 package Thieving;
 
 import org.powbot.api.Condition;
+import org.powbot.api.Random;
 import org.powbot.api.rt4.Camera;
 import org.powbot.api.rt4.Constants;
 import org.powbot.api.rt4.Game;
@@ -12,6 +13,7 @@ import org.powbot.api.rt4.Objects;
 import org.powbot.api.rt4.Players;
 import org.powbot.api.rt4.Skills;
 import org.powbot.api.rt4.Varpbits;
+import org.powbot.api.rt4.World;
 
 import java.util.List;
 
@@ -21,12 +23,8 @@ import script.mMain;
 
 public class FruitStall extends Task {
     private enum KOUREND_FAVOR {
-        ARCEUUS(4896),
-        HOSIDIUS(4895),
-        LOVAKENGJ(4898),
-        PISCARILIUS(4899),
-        SHAYZIEN(4894);
-        int var;
+        HOSIDIUS(4895);
+        final int var;
         KOUREND_FAVOR(int var){
             this.var = var;
         }
@@ -75,17 +73,25 @@ public class FruitStall extends Task {
         if (shouldDropItems()) {
             dropItems();
         }
-        else if (shouldThieve() && KOUREND_FAVOR.hosidiusFavorValue >= 19) {
+        else if (shouldThieve() && KOUREND_FAVOR.hosidiusFavorValue >= 20) {
             if (!Game.tab(Game.Tab.INVENTORY)) {
                 Condition.wait(() -> Game.tab(Game.Tab.INVENTORY), 250, 10);
             }
-            if (!Players.local().tile().equals(SkillData.movementThieving()) && !(SkillData.movementThieving().tile().distanceTo(Players.local()) < 3)) { // Need to move to our thieving spot
+            if (!(SkillData.movementThieving().tile().distanceTo(Players.local()) < 3)) { // Need to move to our thieving spot
                 mMain.State = "Walking to Thieving spot";
                 Movement.walkTo(SkillData.movementThieving());
                 Condition.wait(() -> SkillData.movementThieving().tile().distanceTo(Players.local()) < 3, 150, 20);
                 if (SkillData.movementThieving().tile().distanceTo(Players.local()) < 3) {
                     Movement.step(SkillData.movementThieving());
                 }
+
+                if (Players.count() >= 2) {
+                    int[] p2p = {302, 303, 304, 305, 306, 307, 309, 310, 311, 312, 313, 314, 315, 317, 318, 319, 320, 321, 322, 323};
+                    int randomWorld = p2p[Random.nextInt(0, p2p.length - 1)];
+                    World world = new World(2, randomWorld, 1, World.Type.MEMBERS, World.Server.RUNE_SCAPE, World.Specialty.NONE);
+                    world.hop();
+                }
+
             } else if (Players.local().animation() == -1) { // Not currently thieving
                 GameObject fruitStall = Objects.stream().within(2).id(STALL_ID).nearest().first();
                 if (fruitStall.valid()) {

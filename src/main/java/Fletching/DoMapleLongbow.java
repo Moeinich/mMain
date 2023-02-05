@@ -8,8 +8,6 @@ import org.powbot.api.rt4.Inventory;
 import org.powbot.api.rt4.Skills;
 import org.powbot.mobile.script.ScriptManager;
 
-import javax.tools.Tool;
-
 import Helpers.InteractionsHelper;
 import Helpers.ItemList;
 import Helpers.Task;
@@ -57,17 +55,14 @@ public class DoMapleLongbow extends Task {
     private void checkTool() {
         InteractionsHelper interactionsHelper = new InteractionsHelper();
         mMain.State = "Checking tool..";
-        if (Inventory.stream().id(ToolID).count() == 0) {
-            interactionsHelper.CheckInventoryItemAndWithdraw(ToolID);
+        if (Inventory.stream().id(ToolID).count() == 0 && Bank.stream().id(CombineWithItemID).count() >= 1) {
+            interactionsHelper.DepositAndWithdraw(ToolID, 1);
         }
 
     }
     private void withdrawItems() {
         InteractionsHelper interactionsHelper = new InteractionsHelper();
         mMain.State = "Withdraw items";
-        if (!Bank.opened()) {
-            Bank.open();
-        }
         if (Bank.stream().id(CombineWithItemID).count() >= 1) {
             Bank.depositAllExcept(ToolID);
             interactionsHelper.WithdrawItem(CombineWithItemID, 27);
@@ -75,8 +70,7 @@ public class DoMapleLongbow extends Task {
             Condition.wait( () -> !Bank.opened(), 500, 20);
         }
         if (Bank.stream().id(BowID).count() >= 1) {
-            Bank.depositAllExcept(ToolID);
-            interactionsHelper.WithdrawItem(BowID, 14);
+            interactionsHelper.DepositAndWithdraw(BowID, 14);
             interactionsHelper.WithdrawItem(BowStringID, 14);
             Bank.close();
             Condition.wait( () -> !Bank.opened(), 500, 20);

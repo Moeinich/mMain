@@ -48,17 +48,14 @@ public class DoMapleShortbow extends Task {
         InteractionsHelper interactionsHelper = new InteractionsHelper();
         mMain.State = "Checking tool..";
         if (Inventory.stream().id(ToolID).count() == 0) {
-            interactionsHelper.CheckInventoryItemAndWithdraw(ToolID);
+            interactionsHelper.DepositAndWithdraw(ToolID, 1);
         }
 
     }
     private void withdrawItems() {
         InteractionsHelper interactionsHelper = new InteractionsHelper();
         mMain.State = "Withdraw items";
-        if (!Bank.opened()) {
-            Bank.open();
-        }
-        if (Bank.stream().id(CombineWithItemID).count() >= 1) {
+        if (Bank.stream().id(CombineWithItemID).count() >= 1 && Bank.stream().id(ToolID).count() == 1) {
             Bank.depositAllExcept(ToolID);
             interactionsHelper.WithdrawItem(CombineWithItemID, 27);
             Bank.close();
