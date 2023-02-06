@@ -56,3 +56,4 @@
 
 **Agility**
 - [X] 1-10 Gnome course
+- [X] 10-? Draynor course
