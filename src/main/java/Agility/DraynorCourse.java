@@ -57,7 +57,7 @@ public class DraynorCourse extends Task {
             Camera.angleToLocatable(DraynorObstacle1);
             mMain.State = "Handle obstacle 1";
             DraynorObstacle1.interact("Climb", "Rough wall");
-            Condition.wait( () -> (!Players.local().inMotion()), 800, 50);
+            Condition.wait( () -> (!Players.local().inMotion()), 1000, 50);
         }
         GameObject DraynorObstacle2 = Objects.stream().within(7).id(11405).nearest().first();
         if (SkillData.DraynorObstacle2.contains(Players.local()) && DraynorObstacle2.inViewport()) {
@@ -98,14 +98,14 @@ public class DraynorCourse extends Task {
         if (SkillData.DraynorObstacle5.contains(Players.local()) && DraynorObstacle5.inViewport()) {
             mMain.State = "Handle obstacle 5";
             DraynorObstacle5.interact("Jump-up", "Wall");
-            Condition.wait( () -> (!Players.local().inMotion()), 1200, 100);
+            Condition.wait( () -> (!Players.local().inMotion()), 1400, 100);
         }
 
         GameObject DraynorObstacle6 = Objects.stream().within(7).id(11631).nearest().first();
         if (SkillData.DraynorObstacle6.contains(Players.local()) && DraynorObstacle6.inViewport()) {
             mMain.State = "Handle obstacle 6";
             DraynorObstacle6.interact("Jump", "Gap");
-            Condition.wait( () -> (!Players.local().inMotion()), 1200, 100);
+            Condition.wait( () -> (!Players.local().inMotion()), 1500, 100);
         }
 
         GameObject DraynorObstacle7 = Objects.stream().within(10).id(11632).nearest().first();
