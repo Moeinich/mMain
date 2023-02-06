@@ -46,6 +46,7 @@ public class DraynorCourse extends Task {
     public void ShouldRunObstacle() {
         String ItemName = "Mark of grace";
         if (!Movement.running() && Movement.energyLevel() > 30) {
+            mMain.State = "Enable run..";
             Condition.wait( () -> Movement.running(), 150, 50);
         }
 

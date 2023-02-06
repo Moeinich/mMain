@@ -21,6 +21,7 @@ public class GnomeCourse extends Task {
     @Override
     public void execute() {
         if (!Movement.running() && Movement.energyLevel() > 30) {
+            mMain.State = "Enable run..";
             Condition.wait( () -> Movement.running(), 150, 50);
         }
 
