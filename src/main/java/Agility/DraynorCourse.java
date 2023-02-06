@@ -37,11 +37,6 @@ public class DraynorCourse extends Task {
         }
 
         if (Game.tab(Game.Tab.INVENTORY) && Inventory.stream().id(ItemList.CAKE_1891, ItemList._23_CAKE_1893, ItemList.SLICE_OF_CAKE_1895).count() >= 1) {
-            String ItemName = "Mark of grace";
-            GroundItem groundItem = GroundItems.stream().within(5).name(ItemName).nearest().first();
-            if (groundItem.inViewport()) {
-                LootMarks();
-            }
             ShouldRunObstacle();
         }
     }
@@ -68,17 +63,35 @@ public class DraynorCourse extends Task {
 
         GameObject DraynorObstacle2 = Objects.stream().within(7).id(11405).nearest().first();
         if (SkillData.DraynorObstacle2.contains(Players.local()) && DraynorObstacle2.inViewport()) {
+            GroundItem groundItem = GroundItems.stream().within(5).name("Mark of grace").nearest().first();
+            if (groundItem.inViewport()) {
+                mMain.State = "Pickup mark";
+                LootMarks();
+            }
+
             DraynorObstacle2.interact("Cross", "Tightrope");
             Condition.wait( () -> (!Players.local().inMotion()), 800, 50);
         }
 
         GameObject DraynorObstacle3 = Objects.stream().within(7).id(11406).nearest().first();
         if (SkillData.DraynorObstacle3.contains(Players.local()) && DraynorObstacle3.inViewport()) {
+            GroundItem groundItem = GroundItems.stream().within(5).name("Mark of grace").nearest().first();
+            if (groundItem.inViewport()) {
+                mMain.State = "Pickup mark";
+                LootMarks();
+            }
+
             DraynorObstacle3.interact("Cross", "Tightrope");
             Condition.wait( () -> (!Players.local().inMotion()), 800, 50);
         }
         GameObject DraynorObstacle4 = Objects.stream().within(7).id(11430).nearest().first();
         if (SkillData.DraynorObstacle4.contains(Players.local()) && DraynorObstacle4.inViewport()) {
+            GroundItem groundItem = GroundItems.stream().within(5).name("Mark of grace").nearest().first();
+            if (groundItem.inViewport()) {
+                mMain.State = "Pickup mark";
+                LootMarks();
+            }
+
             DraynorObstacle4.interact("Balance", "Narrow wall");
             Condition.wait( () -> (!Players.local().inMotion()), 800, 50);
         }
@@ -97,6 +110,12 @@ public class DraynorCourse extends Task {
 
         GameObject DraynorObstacle7 = Objects.stream().within(7).id(11632).nearest().first();
         if (SkillData.DraynorObstacle7.contains(Players.local()) && DraynorObstacle7.inViewport()) {
+            GroundItem groundItem = GroundItems.stream().within(5).name("Mark of grace").nearest().first();
+            if (groundItem.inViewport()) {
+                mMain.State = "Pickup mark";
+                LootMarks();
+            }
+
             DraynorObstacle7.interact("Climb-down", "Crate");
             Condition.wait( () -> (!Players.local().inMotion()), 1200, 100);
         }
