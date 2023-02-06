@@ -45,6 +45,9 @@ public class DraynorCourse extends Task {
 
     public void ShouldRunObstacle() {
         String ItemName = "Mark of grace";
+        if (!Movement.running() && Movement.energyLevel() > 30) {
+            Condition.wait( () -> Movement.running(), 150, 50);
+        }
 
         GameObject DraynorObstacle1 = Objects.stream().within(10).id(11404).nearest().first();
         if (SkillData.DraynorStart.contains(Players.local()) && DraynorObstacle1.inViewport()) {
