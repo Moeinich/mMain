@@ -40,11 +40,11 @@ public class DraynorCourse extends Task {
     }
     public void LootMarks() {
         PlayerHelper playerHelper = new PlayerHelper();
-        playerHelper.LootItems(ItemList.MARK_OF_GRACE_11849);
+        playerHelper.LootItems("Take", "Mark of grace");
     }
 
     public void ShouldRunObstacle() {
-        int ItemName = ItemList.MARK_OF_GRACE_11849;
+        String ItemName = "Mark of grace";
 
         GameObject DraynorObstacle1 = Objects.stream().within(10).id(11404).nearest().first();
         if (SkillData.DraynorStart.contains(Players.local()) && DraynorObstacle1.inViewport()) {
@@ -55,7 +55,7 @@ public class DraynorCourse extends Task {
         GameObject DraynorObstacle2 = Objects.stream().within(10).id(11405).nearest().first();
         if (SkillData.DraynorObstacle2.contains(Players.local()) && DraynorObstacle2.inViewport()) {
 
-            GroundItem groundItem = GroundItems.stream().within(7).id(ItemName).nearest().first();
+            GroundItem groundItem = GroundItems.stream().within(7).name(ItemName).nearest().first();
             if (groundItem.inViewport()) {
                 LootMarks();
             }
@@ -79,7 +79,7 @@ public class DraynorCourse extends Task {
         GameObject DraynorObstacle5 = Objects.stream().within(10).id(11630).nearest().first();
         if (SkillData.DraynorObstacle5.contains(Players.local()) && DraynorObstacle5.inViewport()) {
 
-            GroundItem groundItem = GroundItems.stream().within(7).id(ItemName).nearest().first();
+            GroundItem groundItem = GroundItems.stream().within(7).name(ItemName).nearest().first();
             if (groundItem.inViewport()) {
                 LootMarks();
             }
@@ -97,7 +97,7 @@ public class DraynorCourse extends Task {
         GameObject DraynorObstacle7 = Objects.stream().within(10).id(11632).nearest().first();
         if (SkillData.DraynorObstacle7.contains(Players.local()) && DraynorObstacle7.inViewport()) {
 
-            GroundItem groundItem = GroundItems.stream().within(7).id(ItemName).nearest().first();
+            GroundItem groundItem = GroundItems.stream().within(7).name(ItemName).nearest().first();
             if (groundItem.inViewport()) {
                 LootMarks();
             }

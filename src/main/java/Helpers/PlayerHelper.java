@@ -39,10 +39,11 @@ public class PlayerHelper {
             }
         }
     }
-    public void LootItems(int ItemName) {
-        GroundItem groundItem = GroundItems.stream().within(7).id(ItemName).nearest().first();
+    public void LootItems(String Action, String ItemName) {
+        GroundItem groundItem = GroundItems.stream().within(7).name(ItemName).nearest().first();
         if (groundItem.inViewport()){
-            groundItem.interact("Take");
+            groundItem.interact(Action, ItemName);
+            Condition.wait(() -> GroundItems.stream().id(groundItem.id()).at(groundItem.tile()).isEmpty(), 150, 50);
         }
     }
 }
