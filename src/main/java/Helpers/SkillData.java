@@ -241,6 +241,9 @@ public class SkillData {
     }
 
     //Agility
+    public static final Area GnomeStartArea = new Area (
+            new Tile(2472, 3436, 0), new Tile(2476, 3438, 0)
+    );
     public static final Area GnomeObstacleLowerArea = new Area (
             new Tile(2468, 3441, 0), new Tile(2491, 3413, 0)
     );
@@ -318,7 +321,7 @@ public class SkillData {
     );
     public static Tile movementAgility(){
         if (Skills.realLevel(Constants.SKILLS_AGILITY) <= 9) {
-            return GnomeObstacle1Area.getRandomTile();
+            return GnomeStartArea.getRandomTile();
         }
         if (Skills.realLevel(Constants.SKILLS_AGILITY) >= 10 && Skills.realLevel(Constants.SKILLS_AGILITY) <= 80) {
             return DraynorStart.getRandomTile();
