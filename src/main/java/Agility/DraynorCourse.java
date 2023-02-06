@@ -1,8 +1,6 @@
 package Agility;
 
 import org.powbot.api.Condition;
-import org.powbot.api.Locatable;
-import org.powbot.api.rt4.Bank;
 import org.powbot.api.rt4.Constants;
 import org.powbot.api.rt4.GameObject;
 import org.powbot.api.rt4.Inventory;
@@ -10,12 +8,9 @@ import org.powbot.api.rt4.Movement;
 import org.powbot.api.rt4.Objects;
 import org.powbot.api.rt4.Players;
 import org.powbot.api.rt4.Skills;
-import org.powbot.api.rt4.walking.model.Skill;
 
-import java.util.concurrent.Callable;
-
-import Helpers.InteractionsHelper;
 import Helpers.ItemList;
+import Helpers.PlayerHelper;
 import Helpers.SkillData;
 import Helpers.Task;
 import script.mMain;
@@ -27,9 +22,16 @@ public class DraynorCourse extends Task {
     @Override
     public void execute() {
         if (Inventory.stream().id(ItemList.CAKE_1891, ItemList._23_CAKE_1893, ItemList.SLICE_OF_CAKE_1895).count() == 0) {
-            ShouldBank();
+            PlayerHelper playerHelper = new PlayerHelper();
+            playerHelper.BankForFood(ItemList.CAKE_1891, 27);
         }
-        if (Inventory.stream().id(ItemList.CAKE_1891, ItemList.SLICE_OF_CAKE_1895).count() > 0) {
+
+        if (Skills.level(Constants.SKILLS_HITPOINTS) < 5) {
+            PlayerHelper playerHelper = new PlayerHelper();
+            playerHelper.ShouldEat();
+        }
+
+        if (Inventory.stream().id(ItemList.CAKE_1891, ItemList._23_CAKE_1893, ItemList.SLICE_OF_CAKE_1895).count() >= 1) {
             ShouldRunObstacle();
         }
     }
@@ -81,25 +83,5 @@ public class DraynorCourse extends Task {
             Movement.moveTo(SkillData.DraynorStart.getRandomTile());
             Condition.wait( () -> SkillData.DraynorStart.contains(Players.local()), 500, 50);
         }
-    }
-
-    public void ShouldBank() {
-        Locatable nearestBank = Bank.nearest();
-        if (nearestBank.tile().distanceTo(Players.local()) > 5) {
-            Movement.moveToBank();
-        }
-        if (nearestBank.tile().distanceTo(Players.local()) < 5) {
-            if (!Bank.opened()) {
-                Bank.open();
-                Condition.wait( () -> Bank.opened(), 200, 50);
-            }
-            if (Bank.opened()) {
-                InteractionsHelper interactionsHelper = new InteractionsHelper();
-                interactionsHelper.DepositAndWithdraw(ItemList.CAKE_1891, 27);
-                Condition.wait( () -> Inventory.stream().id(ItemList.CAKE_1891).count() >= 1, 200, 50);
-                Condition.wait( () -> !Bank.opened(), 150, 50);
-            }
-        }
-
     }
 }
