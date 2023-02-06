@@ -272,7 +272,7 @@ public class SkillData {
             new Tile(2489, 3417, 0), new Tile(2481, 3425, 0)
     );
     public static final Area GnomeObstacle7Area = new Area (
-            new Tile(2482, 3427, 0), new Tile(2489, 3431, 0)
+            new Tile(2481, 3431, 0), new Tile(2489, 3428, 0)
     );
 
     //Draynor
