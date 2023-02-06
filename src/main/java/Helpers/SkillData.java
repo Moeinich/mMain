@@ -311,7 +311,7 @@ public class SkillData {
             new Tile(3089, 3268, 3), new Tile(3094, 3265, 3)
     );
     public static final Area DraynorObstacle5 = new Area (
-            new Tile(3088, 3258, 3), new Tile(3088, 3261, 3)
+            new Tile(3088, 3257, 3), new Tile(3088, 3261, 3)
     );
     public static final Area DraynorObstacle6 = new Area (
             new Tile(3087, 3255, 3), new Tile(3094, 3255, 3)
