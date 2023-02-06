@@ -35,6 +35,7 @@ public class PlayerHelper {
                 InteractionsHelper interactionsHelper = new InteractionsHelper();
                 interactionsHelper.DepositAndWithdraw(FoodName, Amount);
                 Condition.wait( () -> Inventory.stream().id(FoodName).count() >= 1, 200, 50);
+                Bank.close();
                 Condition.wait( () -> !Bank.opened(), 150, 50);
             }
         }

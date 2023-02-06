@@ -27,22 +27,26 @@ public class DraynorCourse extends Task {
     }
     @Override
     public void execute() {
+        mMain.State = "in draynor loop!";
         if (Game.tab(Game.Tab.INVENTORY) && Inventory.stream().action("Eat").isEmpty()) {
+            mMain.State = "Get food";
             PlayerHelper playerHelper = new PlayerHelper();
             playerHelper.BankForFood(ItemList.CAKE_1891, 27);
         }
 
         if (Skills.level(Constants.SKILLS_HITPOINTS) < 5 && Game.tab(Game.Tab.INVENTORY)) {
+            mMain.State = "Eating..";
             PlayerHelper playerHelper = new PlayerHelper();
             playerHelper.ShouldEat();
         }
 
-        if (!Game.tab(Game.Tab.INVENTORY) && Inventory.stream().id(ItemList.CAKE_1891, ItemList._23_CAKE_1893, ItemList.SLICE_OF_CAKE_1895).count() >= 1) {
+        if (Inventory.stream().id(ItemList.CAKE_1891, ItemList._23_CAKE_1893, ItemList.SLICE_OF_CAKE_1895).isNotEmpty()) {
             ShouldRunObstacle();
         }
     }
     public void LootMarks() {
         PlayerHelper playerHelper = new PlayerHelper();
+        mMain.State = "Pickup mark";
         playerHelper.LootItems("Take", "Mark of grace");
     }
 
@@ -55,7 +59,6 @@ public class DraynorCourse extends Task {
 
         GameObject DraynorObstacle1 = Objects.stream().within(7).id(11404).nearest().first();
         if (SkillData.DraynorStart.contains(Players.local()) && DraynorObstacle1.inViewport()) {
-            Camera.angleToLocatable(DraynorObstacle1);
             mMain.State = "Handle obstacle 1";
             DraynorObstacle1.interact("Climb", "Rough wall");
             Condition.wait( () -> (!Players.local().inMotion()), 800, 50);
@@ -77,7 +80,6 @@ public class DraynorCourse extends Task {
         if (SkillData.DraynorObstacle3.contains(Players.local()) && DraynorObstacle3.inViewport()) {
             GroundItem groundItem = GroundItems.stream().within(5).name("Mark of grace").nearest().first();
             if (groundItem.inViewport()) {
-                mMain.State = "Pickup mark";
                 LootMarks();
             }
             mMain.State = "Handle obstacle 3";
@@ -89,22 +91,21 @@ public class DraynorCourse extends Task {
         if (SkillData.DraynorObstacle4.contains(Players.local()) && DraynorObstacle4.inViewport()) {
             GroundItem groundItem = GroundItems.stream().within(5).name("Mark of grace").nearest().first();
             if (groundItem.inViewport()) {
-                mMain.State = "Pickup mark";
                 LootMarks();
             }
             mMain.State = "Handle obstacle 4";
             DraynorObstacle4.interact("Balance", "Narrow wall");
             Condition.wait( () -> (!Players.local().inMotion()), 800, 50);
-            int sleep = Random.nextInt(200, 400);
+            int sleep = Random.nextInt(400, 600);
             Condition.sleep(sleep);
         }
 
         GameObject DraynorObstacle5 = Objects.stream().within(7).id(11630).nearest().first();
         if (SkillData.DraynorObstacle5.contains(Players.local()) && DraynorObstacle5.inViewport()) {
-            mMain.State = "Handle obstacle 5";
+
             DraynorObstacle5.interact("Jump-up", "Wall");
             Condition.wait( () -> (!Players.local().inMotion()), 1200, 100);
-            int sleep = Random.nextInt(200, 400);
+            int sleep = Random.nextInt(400, 600);
             Condition.sleep(sleep);
         }
 
@@ -113,7 +114,7 @@ public class DraynorCourse extends Task {
             mMain.State = "Handle obstacle 6";
             DraynorObstacle6.interact("Jump", "Gap");
             Condition.wait( () -> (!Players.local().inMotion()), 1200, 100);
-            int sleep = Random.nextInt(400, 600);
+            int sleep = Random.nextInt(700, 900);
             Condition.sleep(sleep);
         }
 
@@ -121,7 +122,6 @@ public class DraynorCourse extends Task {
         if (SkillData.DraynorObstacle7.contains(Players.local()) && DraynorObstacle7.inViewport()) {
             GroundItem groundItem = GroundItems.stream().within(5).name("Mark of grace").nearest().first();
             if (groundItem.inViewport()) {
-                mMain.State = "Pickup mark";
                 LootMarks();
             }
             mMain.State = "Handle obstacle 7";
@@ -132,7 +132,6 @@ public class DraynorCourse extends Task {
         if (SkillData.DraynorFailArea.contains(Players.local())) {
             mMain.State = "Move to start";
             Movement.step(SkillData.DraynorStart.getRandomTile());
-            Condition.wait( () -> SkillData.DraynorStart.contains(Players.local()), 800, 50);
         }
     }
 }

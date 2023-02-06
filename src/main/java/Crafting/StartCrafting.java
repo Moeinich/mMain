@@ -12,11 +12,11 @@ public class StartCrafting {
     public void Crafting() {
         if (craftingTasks.isEmpty()) {
             craftingTasks.add(new GoToBank());
-            craftingTasks.add(new DoBeerGlass());
-            craftingTasks.add(new DoEmptyOilLamp());
-            craftingTasks.add(new DoVial());
-            craftingTasks.add(new DoEmptyFishBowl());
-            craftingTasks.add(new DoUnpoweredOrb());
+            craftingTasks.add(new BeerGlass());
+            craftingTasks.add(new EmptyOilLamp());
+            craftingTasks.add(new Vial());
+            craftingTasks.add(new EmptyFishBowl());
+            craftingTasks.add(new UnpoweredOrb());
         }
 
         for (Task task : craftingTasks) {

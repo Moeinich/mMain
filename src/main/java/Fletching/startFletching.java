@@ -12,14 +12,14 @@ public class startFletching {
     public void Fletching() {
         if (fletchingTasks.isEmpty()) {
             fletchingTasks.add(new GoToBank());
-            fletchingTasks.add(new DoArrowShafts());
-            fletchingTasks.add(new DoLongbow());
-            fletchingTasks.add(new DoOakShortbow());
-            fletchingTasks.add(new DoOakLongbow());
-            fletchingTasks.add(new DoWillowShortbow());
-            fletchingTasks.add(new DoWillowLongbow());
-            fletchingTasks.add(new DoMapleShortbow());
-            fletchingTasks.add(new DoMapleLongbow());
+            fletchingTasks.add(new ArrowShafts());
+            fletchingTasks.add(new Longbow());
+            fletchingTasks.add(new OakShortbow());
+            fletchingTasks.add(new OakLongbow());
+            fletchingTasks.add(new WillowShortbow());
+            fletchingTasks.add(new WillowLongbow());
+            fletchingTasks.add(new MapleShortbow());
+            fletchingTasks.add(new MapleLongbow());
         }
 
         for (Task task : fletchingTasks) {

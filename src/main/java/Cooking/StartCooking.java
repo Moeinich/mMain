@@ -9,12 +9,7 @@ public class StartCooking {
     private ArrayList<Task> cookingTasks = new ArrayList<>();
     public void Cooking() {
         if (cookingTasks.isEmpty()) {
-            cookingTasks.add(new DepositFish());
-            cookingTasks.add(new NoFishBanked());
-            cookingTasks.add(new WithdrawFish());
-            cookingTasks.add(new CookingBanking());
-            cookingTasks.add(new GoCooking());
-            cookingTasks.add(new DoCooking());
+            cookingTasks.add(new Sardines());
         }
 
         for (Task task : cookingTasks) {

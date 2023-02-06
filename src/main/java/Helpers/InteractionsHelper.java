@@ -4,8 +4,11 @@ import org.powbot.api.Condition;
 import org.powbot.api.Random;
 import org.powbot.api.rt4.Bank;
 import org.powbot.api.rt4.Game;
+import org.powbot.api.rt4.GameObject;
 import org.powbot.api.rt4.Inventory;
 import org.powbot.api.rt4.Item;
+import org.powbot.api.rt4.Movement;
+import org.powbot.api.rt4.Players;
 import org.powbot.api.rt4.Widgets;
 import org.powbot.mobile.script.ScriptManager;
 
@@ -60,6 +63,39 @@ public class InteractionsHelper {
                         if (Widgets.widget(WidgetID).valid()) {
                             Widgets.widget(WidgetID).component(ComponentID).click();
                             Condition.wait( () -> !Widgets.widget(WidgetID).valid(), 150, 20);
+                        }
+                    }
+                    if (Inventory.stream().id(RequiredItemID).count() == 0) {
+                        break;
+                    }
+                    timer = 0;
+                }
+            } else {
+                initialCount = currentCount;
+                timer = 0;
+            }
+            int randomSleep = Random.nextInt(1000, 1300);
+            Condition.sleep(randomSleep);
+        }
+    }
+    public void InteractWithGameobject(int RequiredItemID, GameObject Gameobject, int WidgetID, int ComponentID, String Action, String Name) {
+        int timer = 0;
+        int initialCount = (int) Inventory.stream().id(RequiredItemID).count();
+        while (!ScriptManager.INSTANCE.isStopping() && Inventory.stream().id(RequiredItemID).count() >= 1) {
+            int currentCount = (int) Inventory.stream().id(RequiredItemID).count();
+            if (currentCount >= initialCount) {
+                timer += 1;
+                if (timer >= 3) {
+                    if (Inventory.stream().id(RequiredItemID).count() >= 1 && Game.tab(Game.Tab.INVENTORY)) {
+                        if (ScriptManager.INSTANCE.isStopping()) {
+                            ScriptManager.INSTANCE.stop();
+                        }
+                        if (Inventory.selectedItem().id() != RequiredItemID && !Widgets.widget(WidgetID).valid()) {
+                            Gameobject.interact(Action, Name);
+                        }
+                        if (Widgets.widget(WidgetID).valid()) {
+                            Widgets.widget(WidgetID).component(ComponentID).click();
+                            Condition.wait( () -> !Widgets.widget(WidgetID).valid(), 300, 100);
                         }
                     }
                     if (Inventory.stream().id(RequiredItemID).count() == 0) {

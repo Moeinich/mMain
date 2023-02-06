@@ -3,7 +3,6 @@ package script;
 import org.powbot.api.Condition;
 import org.powbot.api.Random;
 import org.powbot.api.rt4.Camera;
-import org.powbot.api.rt4.Movement;
 import org.powbot.api.rt4.walking.model.Skill;
 import org.powbot.api.script.*;
 import org.powbot.api.script.paint.Paint;
@@ -19,16 +18,6 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-import Combat.StartCombat;
-import Cooking.StartCooking;
-import Crafting.StartCrafting;
-import Firemaking.StartFiremaking;
-import Fishing.StartFishing;
-import Mining.StartMining;
-import Smithing.StartSmithing;
-import Thieving.StartThieving;
-import Woodcutting.StartWoodcutting;
-
 @ScriptManifest(
         name = "mMain",
         description = "Progressively levels different skills",
@@ -39,7 +28,7 @@ import Woodcutting.StartWoodcutting;
                 @ScriptConfiguration(
                         name =  "Skill",
                         description = "Which skill would you like to do?",
-                        defaultValue = "Mining",
+                        defaultValue = "Cooking",
                         allowedValues = {"Progressive", "Mining", "Fishing", "Woodcutting", "Cooking", "Firemaking", "Smithing", "Thieving", "Crafting", "Fletching", "Agility", "Herblore"},
                         optionType = OptionType.STRING
                 )
@@ -118,15 +107,15 @@ public class mMain extends AbstractScript {
             Condition.wait( () -> Camera.getZoom() > 4, 250, 50);
         }
 
-        var startMining = new StartMining();
-        var startWoodcutting = new StartWoodcutting();
-        var startFishing = new StartFishing();
-        var startCooking = new StartCooking();
-        var startFiremaking = new StartFiremaking();
-        var startSmithing = new StartSmithing();
-        var startCombat = new StartCombat();
-        var startThieving = new StartThieving();
-        var startCrafting = new StartCrafting();
+        var startMining = new Mining.StartMining();
+        var startWoodcutting = new Woodcutting.StartWoodcutting();
+        var startFishing = new Fishing.StartFishing();
+        var startCooking = new Cooking.StartCooking();
+        var startFiremaking = new Firemaking.StartFiremaking();
+        var startSmithing = new Smithing.StartSmithing();
+        var startCombat = new Combat.StartCombat();
+        var startThieving = new Thieving.StartThieving();
+        var startCrafting = new Crafting.StartCrafting();
         var startFletching = new Fletching.startFletching();
         var startAgility = new Agility.StartAgility();
         var startHerblore = new Herblore.StartHerblore();
