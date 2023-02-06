@@ -36,7 +36,8 @@ public class WalkToAgilityObstacles extends Task {
     public void execute() {
         if (Skills.realLevel(Constants.SKILLS_AGILITY) >= 99) {
             mMain.taskRunning.set(false);
-        } else {
+        }
+        if (!SkillData.DraynorFloorArea.contains(Players.local())) {
             mMain.State = "Going to Agility course";
             Movement.moveTo(SkillData.movementAgility());
         }

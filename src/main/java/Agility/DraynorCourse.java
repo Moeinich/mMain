@@ -80,7 +80,7 @@ public class DraynorCourse extends Task {
             }
             mMain.State = "Handle obstacle 3";
             DraynorObstacle3.interact("Cross", "Tightrope");
-            Condition.wait( () -> (!Players.local().inMotion()), 800, 50);
+            Condition.wait( () -> (!Players.local().inMotion()), 900, 50);
         }
         GameObject DraynorObstacle4 = Objects.stream().within(7).id(11430).nearest().first();
         if (SkillData.DraynorObstacle4.contains(Players.local()) && DraynorObstacle4.inViewport()) {
