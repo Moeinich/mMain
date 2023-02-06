@@ -26,7 +26,7 @@ public class PlayerHelper {
         if (nearestBank.tile().distanceTo(Players.local()) > 5) {
             Movement.moveToBank();
         }
-        if (nearestBank.tile().distanceTo(Players.local()) < 5) {
+        if (nearestBank.tile().distanceTo(Players.local()) <= 5) {
             if (!Bank.opened()) {
                 Bank.open();
                 Condition.wait( () -> Bank.opened(), 200, 50);
