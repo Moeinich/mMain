@@ -32,12 +32,12 @@ public class DraynorCourse extends Task {
             playerHelper.BankForFood(ItemList.CAKE_1891, 27);
         }
 
-        if (Skills.level(Constants.SKILLS_HITPOINTS) < 5) {
+        if (Skills.level(Constants.SKILLS_HITPOINTS) < 5 && Game.tab(Game.Tab.INVENTORY)) {
             PlayerHelper playerHelper = new PlayerHelper();
             playerHelper.ShouldEat();
         }
 
-        if (Game.tab(Game.Tab.INVENTORY) && Inventory.stream().id(ItemList.CAKE_1891, ItemList._23_CAKE_1893, ItemList.SLICE_OF_CAKE_1895).count() >= 1) {
+        if (!Game.tab(Game.Tab.INVENTORY) && Inventory.stream().id(ItemList.CAKE_1891, ItemList._23_CAKE_1893, ItemList.SLICE_OF_CAKE_1895).count() >= 1) {
             ShouldRunObstacle();
         }
     }
