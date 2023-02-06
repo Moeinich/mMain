@@ -108,7 +108,7 @@ public class DraynorCourse extends Task {
             Condition.wait( () -> (!Players.local().inMotion()), 1200, 100);
         }
 
-        GameObject DraynorObstacle7 = Objects.stream().within(7).id(11632).nearest().first();
+        GameObject DraynorObstacle7 = Objects.stream().within(10).id(11632).nearest().first();
         if (SkillData.DraynorObstacle7.contains(Players.local()) && DraynorObstacle7.inViewport()) {
             GroundItem groundItem = GroundItems.stream().within(5).name("Mark of grace").nearest().first();
             if (groundItem.inViewport()) {
