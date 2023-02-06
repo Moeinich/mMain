@@ -10,6 +10,7 @@ import org.powbot.api.rt4.Movement;
 import org.powbot.api.rt4.Objects;
 import org.powbot.api.rt4.Players;
 import org.powbot.api.rt4.Skills;
+import org.powbot.api.rt4.Widgets;
 
 import Helpers.ItemList;
 import Helpers.PlayerHelper;
@@ -47,6 +48,7 @@ public class DraynorCourse extends Task {
         String ItemName = "Mark of grace";
         if (!Movement.running() && Movement.energyLevel() > 30) {
             mMain.State = "Enable run..";
+            Widgets.widget(160).component(29).click();
             Condition.wait( () -> Movement.running(), 150, 50);
         }
 

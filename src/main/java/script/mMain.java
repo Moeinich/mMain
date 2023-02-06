@@ -1,7 +1,9 @@
 package script;
 
+import org.powbot.api.Condition;
 import org.powbot.api.Random;
 import org.powbot.api.rt4.Camera;
+import org.powbot.api.rt4.Movement;
 import org.powbot.api.rt4.walking.model.Skill;
 import org.powbot.api.script.*;
 import org.powbot.api.script.paint.Paint;
@@ -113,6 +115,7 @@ public class mMain extends AbstractScript {
     public void poll() {
         if (Camera.getZoom() > 4) {
             Camera.moveZoomSlider(Camera.ZOOM_MAX);
+            Condition.wait( () -> Camera.getZoom() > 4, 250, 50);
         }
 
         var startMining = new StartMining();
