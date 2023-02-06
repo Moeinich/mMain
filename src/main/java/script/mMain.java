@@ -131,7 +131,6 @@ public class mMain extends AbstractScript {
                         startMining::Mining,
                         startFishing::Fishing,
                         startWoodcutting::Woodcutting,
-                        startCooking::Cooking,
                         startFiremaking::Firemaking,
                         startThieving::Thieving,
                         startCrafting::Crafting,
