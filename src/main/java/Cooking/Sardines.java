@@ -41,11 +41,11 @@ public class Sardines extends Task {
         if (!SkillData.edgevilleBank.contains(Players.local())) {
             Movement.step(SkillData.edgevilleBank.getRandomTile());
         }
-        if (!Bank.opened() && Bank.inViewport()) {
+        if (SkillData.edgevilleBank.contains(Players.local()) && !Bank.opened() && Bank.inViewport()) {
             Bank.open();
+            InteractionsHelper interactionsHelper = new InteractionsHelper();
+            interactionsHelper.DepositAndWithdraw(ItemList.RAW_SARDINE_327, 28);
         }
-        InteractionsHelper interactionsHelper = new InteractionsHelper();
-        interactionsHelper.DepositAndWithdraw(ItemList.RAW_SARDINE_327, 28);
     }
     private void ShouldCook() {
         mMain.State = "Do cooking";
