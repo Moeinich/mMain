@@ -22,7 +22,7 @@ public class WalkToAgilityObstacles extends Task {
         }
         //Draynor
         if (Skills.realLevel(Constants.SKILLS_AGILITY) >= 10 && Skills.realLevel(Constants.SKILLS_AGILITY) <= 80 &&
-            !SkillData.DraynorFloorArea.contains(Players.local()) && !SkillData.DraynorTopArea.contains(Players.local()))
+                (!SkillData.DraynorFloorArea.contains(Players.local()) || !SkillData.DraynorTopArea.contains(Players.local())) )
         {
             return true;
         }
