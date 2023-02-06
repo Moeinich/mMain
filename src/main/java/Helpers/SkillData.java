@@ -282,6 +282,9 @@ public class SkillData {
     public static final Area DraynorTopArea = new Area (
             new Tile(3084, 3283, 3), new Tile(3105, 3253, 3)
     );
+    public static final Area DraynorCrateArea = new Area (
+            new Tile(3101, 3262, 1), new Tile(3103, 3260, 1)
+    );
     public static final Area DraynorFailArea = new Area (
             new Tile(3102, 3282, 0),
             new Tile(3085, 3282, 0),

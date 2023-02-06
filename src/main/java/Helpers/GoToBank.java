@@ -4,6 +4,8 @@ import org.powbot.api.Locatable;
 import org.powbot.api.rt4.Bank;
 import org.powbot.api.rt4.Movement;
 import org.powbot.api.rt4.Players;
+import org.powbot.dax.api.DaxWalker;
+import org.powbot.dax.teleports.Teleport;
 
 import script.mMain;
 
@@ -16,6 +18,7 @@ public class GoToBank extends Task{
     @Override
     public void execute() {
         mMain.State = "Walking to bank";
+        DaxWalker.blacklistTeleports(Teleport.SOUL_WARS_MINIGAME);
         Movement.moveToBank();
     }
 }
