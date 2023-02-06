@@ -43,7 +43,7 @@ public class PlayerHelper {
         GroundItem groundItem = GroundItems.stream().within(7).name(ItemName).nearest().first();
         if (groundItem.inViewport()){
             groundItem.interact(Action, ItemName);
-            Condition.wait(() -> GroundItems.stream().id(groundItem.id()).at(groundItem.tile()).isEmpty(), 150, 50);
+            Condition.wait(() -> GroundItems.stream().id(groundItem.id()).at(groundItem.tile()).isEmpty(), 300, 50);
         }
     }
 }

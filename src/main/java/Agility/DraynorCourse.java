@@ -25,7 +25,7 @@ public class DraynorCourse extends Task {
     }
     @Override
     public void execute() {
-        if (Inventory.stream().action("Eat").count() == 0) {
+        if (Game.tab(Game.Tab.INVENTORY) && Inventory.stream().action("Eat").isEmpty()) {
             PlayerHelper playerHelper = new PlayerHelper();
             playerHelper.BankForFood(ItemList.CAKE_1891, 27);
         }
@@ -36,10 +36,7 @@ public class DraynorCourse extends Task {
         }
 
         if (Inventory.stream().id(ItemList.CAKE_1891, ItemList._23_CAKE_1893, ItemList.SLICE_OF_CAKE_1895).count() >= 1) {
-            if (Game.tab(Game.Tab.INVENTORY)) {
                 ShouldRunObstacle();
-                mMain.State = "Inventory Eat count: " + Inventory.stream().action("Eat").count();
-            }
         }
     }
     public void LootMarks() {

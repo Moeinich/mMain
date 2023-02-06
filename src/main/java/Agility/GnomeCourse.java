@@ -3,13 +3,16 @@ package Agility;
 import org.powbot.api.Condition;
 import org.powbot.api.rt4.Camera;
 import org.powbot.api.rt4.Constants;
+import org.powbot.api.rt4.Game;
 import org.powbot.api.rt4.GameObject;
+import org.powbot.api.rt4.Inventory;
 import org.powbot.api.rt4.Movement;
 import org.powbot.api.rt4.Objects;
 import org.powbot.api.rt4.Players;
 import org.powbot.api.rt4.Skills;
 import org.powbot.api.rt4.Widgets;
 
+import Helpers.ItemList;
 import Helpers.SkillData;
 import Helpers.Task;
 import script.mMain;
@@ -26,7 +29,9 @@ public class GnomeCourse extends Task {
             Widgets.widget(160).component(29).click();
             Condition.wait( () -> Movement.running(), 150, 50);
         }
-
+        ShouldRunObstacle();
+        }
+    public void ShouldRunObstacle() {
         GameObject GnomeObstacle1ID = Objects.stream().within(20).id(23145).nearest().first();
         if (SkillData.GnomeObstacle1Area.contains(Players.local()) && GnomeObstacle1ID.inViewport()) {
             GnomeObstacle1ID.interact("Walk-across", "Log balance");
