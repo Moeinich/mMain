@@ -27,7 +27,6 @@ public class DraynorCourse extends Task {
     }
     @Override
     public void execute() {
-        mMain.State = "in draynor loop!";
         if (Game.tab(Game.Tab.INVENTORY) && Inventory.stream().action("Eat").isEmpty()) {
             mMain.State = "Get food";
             PlayerHelper playerHelper = new PlayerHelper();
