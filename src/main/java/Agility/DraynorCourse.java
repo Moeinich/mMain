@@ -33,6 +33,7 @@ public class DraynorCourse extends Task {
 
         if (Inventory.stream().id(ItemList.CAKE_1891, ItemList._23_CAKE_1893, ItemList.SLICE_OF_CAKE_1895).count() >= 1) {
             ShouldRunObstacle();
+            mMain.State = "Inventory Eat count: " + Inventory.stream().action("Eat").count();
         }
     }
     public void ShouldRunObstacle() {
