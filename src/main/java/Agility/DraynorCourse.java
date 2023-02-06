@@ -37,7 +37,12 @@ public class DraynorCourse extends Task {
         }
 
         if (Game.tab(Game.Tab.INVENTORY) && Inventory.stream().id(ItemList.CAKE_1891, ItemList._23_CAKE_1893, ItemList.SLICE_OF_CAKE_1895).count() >= 1) {
-                ShouldRunObstacle();
+            String ItemName = "Mark of grace";
+            GroundItem groundItem = GroundItems.stream().within(5).name(ItemName).nearest().first();
+            if (groundItem.inViewport()) {
+                LootMarks();
+            }
+            ShouldRunObstacle();
         }
     }
     public void LootMarks() {
@@ -46,72 +51,54 @@ public class DraynorCourse extends Task {
     }
 
     public void ShouldRunObstacle() {
-        String ItemName = "Mark of grace";
         if (!Movement.running() && Movement.energyLevel() > 30) {
             mMain.State = "Enable run..";
             Widgets.widget(160).component(29).click();
             Condition.wait( () -> Movement.running(), 150, 50);
         }
 
-        GameObject DraynorObstacle1 = Objects.stream().within(10).id(11404).nearest().first();
+        GameObject DraynorObstacle1 = Objects.stream().within(7).id(11404).nearest().first();
         if (SkillData.DraynorStart.contains(Players.local()) && DraynorObstacle1.inViewport()) {
+
             Camera.angleToLocatable(DraynorObstacle1);
+
             DraynorObstacle1.interact("Climb", "Rough wall");
             Condition.wait( () -> (!Players.local().inMotion()), 800, 50);
         }
 
-        GameObject DraynorObstacle2 = Objects.stream().within(10).id(11405).nearest().first();
+        GameObject DraynorObstacle2 = Objects.stream().within(7).id(11405).nearest().first();
         if (SkillData.DraynorObstacle2.contains(Players.local()) && DraynorObstacle2.inViewport()) {
-
-            GroundItem groundItem = GroundItems.stream().within(7).name(ItemName).nearest().first();
-            if (groundItem.inViewport()) {
-                LootMarks();
-            }
-
             DraynorObstacle2.interact("Cross", "Tightrope");
             Condition.wait( () -> (!Players.local().inMotion()), 800, 50);
         }
 
-        GameObject DraynorObstacle3 = Objects.stream().within(10).id(11406).nearest().first();
+        GameObject DraynorObstacle3 = Objects.stream().within(7).id(11406).nearest().first();
         if (SkillData.DraynorObstacle3.contains(Players.local()) && DraynorObstacle3.inViewport()) {
             DraynorObstacle3.interact("Cross", "Tightrope");
             Condition.wait( () -> (!Players.local().inMotion()), 800, 50);
         }
-
-        GameObject DraynorObstacle4 = Objects.stream().within(10).id(11430).nearest().first();
+        GameObject DraynorObstacle4 = Objects.stream().within(7).id(11430).nearest().first();
         if (SkillData.DraynorObstacle4.contains(Players.local()) && DraynorObstacle4.inViewport()) {
             DraynorObstacle4.interact("Balance", "Narrow wall");
             Condition.wait( () -> (!Players.local().inMotion()), 800, 50);
         }
 
-        GameObject DraynorObstacle5 = Objects.stream().within(10).id(11630).nearest().first();
+        GameObject DraynorObstacle5 = Objects.stream().within(7).id(11630).nearest().first();
         if (SkillData.DraynorObstacle5.contains(Players.local()) && DraynorObstacle5.inViewport()) {
-
-            GroundItem groundItem = GroundItems.stream().within(7).name(ItemName).nearest().first();
-            if (groundItem.inViewport()) {
-                LootMarks();
-            }
-
             DraynorObstacle5.interact("Jump-up", "Wall");
-            Condition.wait( () -> (!Players.local().inMotion()), 800, 50);
+            Condition.wait( () -> (!Players.local().inMotion()), 1200, 100);
         }
 
-        GameObject DraynorObstacle6 = Objects.stream().within(10).id(11631).nearest().first();
+        GameObject DraynorObstacle6 = Objects.stream().within(7).id(11631).nearest().first();
         if (SkillData.DraynorObstacle6.contains(Players.local()) && DraynorObstacle6.inViewport()) {
             DraynorObstacle6.interact("Jump", "Gap");
-            Condition.wait( () -> (!Players.local().inMotion()), 800, 50);
+            Condition.wait( () -> (!Players.local().inMotion()), 1200, 100);
         }
 
-        GameObject DraynorObstacle7 = Objects.stream().within(10).id(11632).nearest().first();
+        GameObject DraynorObstacle7 = Objects.stream().within(7).id(11632).nearest().first();
         if (SkillData.DraynorObstacle7.contains(Players.local()) && DraynorObstacle7.inViewport()) {
-
-            GroundItem groundItem = GroundItems.stream().within(7).name(ItemName).nearest().first();
-            if (groundItem.inViewport()) {
-                LootMarks();
-            }
-
             DraynorObstacle7.interact("Climb-down", "Crate");
-            Condition.wait( () -> (!Players.local().inMotion()), 800, 50);
+            Condition.wait( () -> (!Players.local().inMotion()), 1200, 100);
         }
 
         if (SkillData.DraynorFailArea.contains(Players.local())) {

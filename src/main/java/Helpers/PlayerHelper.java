@@ -19,7 +19,7 @@ public class PlayerHelper {
         mMain.State = "Eating food";
         Item food = Inventory.stream().action("Eat").first();
         food.interact("Eat");
-        Condition.wait(() -> !(Skills.level(Constants.SKILLS_HITPOINTS) >= 6), 100, 30);
+        Condition.wait(() -> Players.local().animation() == -1, 250, 50);
     }
     public void BankForFood(int FoodName, int Amount) {
         Locatable nearestBank = Bank.nearest();

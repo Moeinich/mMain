@@ -18,7 +18,8 @@
 - [X] Swap fishing gear along the way
 
 **Cooking:**
-- [ ] Not working atm.
+- [ ] Sardines 1-35
+- [ ] Wines to 70
 
 **Firemaking**
 - [X] Light fires at Grand Exchange from the logs in bank.
