@@ -54,13 +54,11 @@ public class DraynorCourse extends Task {
 
         GameObject DraynorObstacle1 = Objects.stream().within(7).id(11404).nearest().first();
         if (SkillData.DraynorStart.contains(Players.local()) && DraynorObstacle1.inViewport()) {
-
             Camera.angleToLocatable(DraynorObstacle1);
-
+            mMain.State = "Handle obstacle 1";
             DraynorObstacle1.interact("Climb", "Rough wall");
             Condition.wait( () -> (!Players.local().inMotion()), 800, 50);
         }
-
         GameObject DraynorObstacle2 = Objects.stream().within(7).id(11405).nearest().first();
         if (SkillData.DraynorObstacle2.contains(Players.local()) && DraynorObstacle2.inViewport()) {
             GroundItem groundItem = GroundItems.stream().within(5).name("Mark of grace").nearest().first();
@@ -68,7 +66,7 @@ public class DraynorCourse extends Task {
                 mMain.State = "Pickup mark";
                 LootMarks();
             }
-
+            mMain.State = "Handle obstacle 2";
             DraynorObstacle2.interact("Cross", "Tightrope");
             Condition.wait( () -> (!Players.local().inMotion()), 800, 50);
         }
@@ -80,7 +78,7 @@ public class DraynorCourse extends Task {
                 mMain.State = "Pickup mark";
                 LootMarks();
             }
-
+            mMain.State = "Handle obstacle 3";
             DraynorObstacle3.interact("Cross", "Tightrope");
             Condition.wait( () -> (!Players.local().inMotion()), 800, 50);
         }
@@ -91,19 +89,21 @@ public class DraynorCourse extends Task {
                 mMain.State = "Pickup mark";
                 LootMarks();
             }
-
+            mMain.State = "Handle obstacle 4";
             DraynorObstacle4.interact("Balance", "Narrow wall");
             Condition.wait( () -> (!Players.local().inMotion()), 800, 50);
         }
 
         GameObject DraynorObstacle5 = Objects.stream().within(7).id(11630).nearest().first();
         if (SkillData.DraynorObstacle5.contains(Players.local()) && DraynorObstacle5.inViewport()) {
+            mMain.State = "Handle obstacle 5";
             DraynorObstacle5.interact("Jump-up", "Wall");
             Condition.wait( () -> (!Players.local().inMotion()), 1200, 100);
         }
 
         GameObject DraynorObstacle6 = Objects.stream().within(7).id(11631).nearest().first();
         if (SkillData.DraynorObstacle6.contains(Players.local()) && DraynorObstacle6.inViewport()) {
+            mMain.State = "Handle obstacle 6";
             DraynorObstacle6.interact("Jump", "Gap");
             Condition.wait( () -> (!Players.local().inMotion()), 1200, 100);
         }
@@ -115,7 +115,7 @@ public class DraynorCourse extends Task {
                 mMain.State = "Pickup mark";
                 LootMarks();
             }
-
+            mMain.State = "Handle obstacle 7";
             DraynorObstacle7.interact("Climb-down", "Crate");
             Condition.wait( () -> (!Players.local().inMotion()), 1200, 100);
         }
