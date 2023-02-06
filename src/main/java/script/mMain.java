@@ -111,6 +111,10 @@ public class mMain extends AbstractScript {
 
     @Override
     public void poll() {
+        if (Camera.getZoom() > 4) {
+            Camera.moveZoomSlider(Camera.ZOOM_MAX);
+        }
+
         var startMining = new StartMining();
         var startWoodcutting = new StartWoodcutting();
         var startFishing = new StartFishing();
@@ -201,9 +205,6 @@ public class mMain extends AbstractScript {
                 startFletching.Fletching();
                 break;
             case "Agility":
-                if (Camera.getZoom() > 4) {
-                    Camera.moveZoomSlider(Camera.ZOOM_MAX);
-                }
                 startAgility.Agility();
                 break;
             case "Herblore":

@@ -8,6 +8,7 @@ import org.powbot.api.rt4.Movement;
 import org.powbot.api.rt4.Objects;
 import org.powbot.api.rt4.Players;
 import org.powbot.api.rt4.Skills;
+import org.powbot.api.rt4.Widgets;
 
 import Helpers.SkillData;
 import Helpers.Task;
@@ -22,6 +23,7 @@ public class GnomeCourse extends Task {
     public void execute() {
         if (!Movement.running() && Movement.energyLevel() > 30) {
             mMain.State = "Enable run..";
+            Widgets.widget(160).component(29).click();
             Condition.wait( () -> Movement.running(), 150, 50);
         }
 
