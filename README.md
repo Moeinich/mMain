@@ -18,7 +18,7 @@
 - [X] Swap fishing gear along the way
 
 **Cooking:**
-- [ ] Sardines 1-35
+- [X] Sardines 1-35
 - [ ] Wines to 70
 
 **Firemaking**
