@@ -111,7 +111,7 @@ public class DraynorCourse extends Task {
                 LootMarks();
             }
 
-            DraynorObstacle6.interact("Climb-down", "Crate");
+            DraynorObstacle7.interact("Climb-down", "Crate");
             Condition.wait( () -> (Players.local().animation() == -1), 500, 50);
         }
 
