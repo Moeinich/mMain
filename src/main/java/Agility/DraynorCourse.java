@@ -113,7 +113,7 @@ public class DraynorCourse extends Task {
             mMain.State = "Handle obstacle 6";
             DraynorObstacle6.interact("Jump", "Gap");
             Condition.wait( () -> (!Players.local().inMotion()), 1200, 100);
-            int sleep = Random.nextInt(200, 400);
+            int sleep = Random.nextInt(400, 600);
             Condition.sleep(sleep);
         }
 
