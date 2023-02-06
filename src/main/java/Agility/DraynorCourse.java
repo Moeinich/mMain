@@ -3,6 +3,8 @@ package Agility;
 import org.powbot.api.Condition;
 import org.powbot.api.rt4.Constants;
 import org.powbot.api.rt4.GameObject;
+import org.powbot.api.rt4.GroundItem;
+import org.powbot.api.rt4.GroundItems;
 import org.powbot.api.rt4.Inventory;
 import org.powbot.api.rt4.Movement;
 import org.powbot.api.rt4.Objects;
@@ -36,7 +38,14 @@ public class DraynorCourse extends Task {
             mMain.State = "Inventory Eat count: " + Inventory.stream().action("Eat").count();
         }
     }
+    public void LootMarks() {
+        PlayerHelper playerHelper = new PlayerHelper();
+        playerHelper.LootItems(ItemList.MARK_OF_GRACE_11849);
+    }
+
     public void ShouldRunObstacle() {
+        int ItemName = ItemList.MARK_OF_GRACE_11849;
+
         GameObject DraynorObstacle1 = Objects.stream().within(10).id(11404).nearest().first();
         if (SkillData.DraynorStart.contains(Players.local()) && DraynorObstacle1.inViewport()) {
             DraynorObstacle1.interact("Climb", "Rough wall");
@@ -45,6 +54,12 @@ public class DraynorCourse extends Task {
 
         GameObject DraynorObstacle2 = Objects.stream().within(10).id(11405).nearest().first();
         if (SkillData.DraynorObstacle2.contains(Players.local()) && DraynorObstacle2.inViewport()) {
+
+            GroundItem groundItem = GroundItems.stream().within(7).id(ItemName).nearest().first();
+            if (groundItem.inViewport()) {
+                LootMarks();
+            }
+
             DraynorObstacle2.interact("Cross", "Tightrope");
             Condition.wait( () -> SkillData.DraynorObstacle3.contains(Players.local()), 500, 50);
         }
@@ -63,6 +78,12 @@ public class DraynorCourse extends Task {
 
         GameObject DraynorObstacle5 = Objects.stream().within(10).id(11630).nearest().first();
         if (SkillData.DraynorObstacle5.contains(Players.local()) && DraynorObstacle5.inViewport()) {
+
+            GroundItem groundItem = GroundItems.stream().within(7).id(ItemName).nearest().first();
+            if (groundItem.inViewport()) {
+                LootMarks();
+            }
+
             DraynorObstacle5.interact("Jump-up", "Wall");
             Condition.wait( () -> SkillData.DraynorObstacle6.contains(Players.local()), 500, 50);
         }
@@ -75,6 +96,12 @@ public class DraynorCourse extends Task {
 
         GameObject DraynorObstacle7 = Objects.stream().within(10).id(11632).nearest().first();
         if (SkillData.DraynorObstacle7.contains(Players.local()) && DraynorObstacle7.inViewport()) {
+
+            GroundItem groundItem = GroundItems.stream().within(7).id(ItemName).nearest().first();
+            if (groundItem.inViewport()) {
+                LootMarks();
+            }
+
             DraynorObstacle6.interact("Climb-down", "Crate");
             Condition.wait( () -> SkillData.DraynorFailArea.contains(Players.local()), 500, 50);
         }

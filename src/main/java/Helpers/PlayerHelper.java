@@ -4,6 +4,8 @@ import org.powbot.api.Condition;
 import org.powbot.api.Locatable;
 import org.powbot.api.rt4.Bank;
 import org.powbot.api.rt4.Constants;
+import org.powbot.api.rt4.GroundItem;
+import org.powbot.api.rt4.GroundItems;
 import org.powbot.api.rt4.Inventory;
 import org.powbot.api.rt4.Item;
 import org.powbot.api.rt4.Movement;
@@ -35,6 +37,12 @@ public class PlayerHelper {
                 Condition.wait( () -> Inventory.stream().id(FoodName).count() >= 1, 200, 50);
                 Condition.wait( () -> !Bank.opened(), 150, 50);
             }
+        }
+    }
+    public void LootItems(int ItemName) {
+        GroundItem groundItem = GroundItems.stream().within(7).id(ItemName).nearest().first();
+        if (groundItem.inViewport()){
+            groundItem.interact("Take");
         }
     }
 }
