@@ -74,9 +74,5 @@ public class GnomeCourse extends Task {
             GnomeObstacle7ID.interact("Squeeze-through", "Obstacle pipe");
             Condition.wait( () -> (!Players.local().inMotion()), 500, 50);
         }
-        if (!GnomeObstacle1ID.inViewport()) {
-            mMain.State = "Move to Gnome start";
-            Movement.moveTo(SkillData.GnomeStartArea.getRandomTile());
-        }
     }
 }

@@ -171,7 +171,7 @@ public class VarrockCourse extends Task {
             Condition.wait( () -> (CurrentXP != Skills.experience(Skill.Agility) || SkillData.VarrockFailArea.contains(Players.local())), 800, 50);
         }
 
-        if (!VarrockObstacle1.inViewport()) {
+        if (!VarrockObstacle1.inViewport() && SkillData.VarrockFailArea.contains(Players.local())) {
             mMain.State = "Move to Varrock start";
             Movement.moveTo(SkillData.VarrockStart.getRandomTile());
         }

@@ -1,7 +1,6 @@
 package Agility;
 
 import org.powbot.api.Condition;
-import org.powbot.api.Random;
 import org.powbot.api.rt4.Constants;
 import org.powbot.api.rt4.Game;
 import org.powbot.api.rt4.GameObject;
@@ -131,9 +130,9 @@ public class DraynorCourse extends Task {
             Condition.wait( () -> (CurrentXP != Skills.experience(Skill.Agility) || SkillData.VarrockFailArea.contains(Players.local())), 800, 50);
         }
 
-        if (!DraynorObstacle1.inViewport()) {
+        if (!DraynorObstacle1.inViewport() && SkillData.DraynorFloorArea.contains(Players.local())) {
             mMain.State = "Move to Draynor start";
-            Movement.moveTo(SkillData.DraynorStart.getRandomTile());
+            Movement.step(SkillData.DraynorStart.getRandomTile());
         }
     }
 }
