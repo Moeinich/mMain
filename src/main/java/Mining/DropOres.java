@@ -12,7 +12,10 @@ import script.mMain;
 
 
 public class DropOres extends Task {
-    public static final String[] badItems = SkillData.badItems;
+    public static final String[] badItems = {
+            "Copper ore",
+            "Tin ore",
+            "Iron ore"};
     @Override
     public boolean activate() {
         return Inventory.isFull();

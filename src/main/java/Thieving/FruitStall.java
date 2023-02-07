@@ -40,7 +40,18 @@ public class FruitStall extends Task {
         return Skills.realLevel(Constants.SKILLS_THIEVING) >= 25 && Skills.realLevel(Constants.SKILLS_THIEVING) <= 59;
     }
 
-    public static final String[] badItems = SkillData.badItems;
+    public static final String[] badItems = {
+            "Cooking apple",
+            "Banana",
+            "Strawberry",
+            "Jangerberries",
+            "Lemon",
+            "Redberries",
+            "Pineapple",
+            "Lime",
+            "Strange fruit",
+            "Golovanova fruit top",
+            "Papaya fruit"};
     static final int STALL_ID = 28823;
     public boolean shouldDropItems() {
         List<Item> itemsToDrop = Inventory.stream().name(badItems).list();

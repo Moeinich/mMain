@@ -9,32 +9,6 @@ import Firemaking.GoFiremaking;
 
 public class SkillData {
     public static final int[] p2p = {302, 303, 304, 305, 306, 307, 309, 310, 311, 312, 313, 314, 315, 317, 318, 319, 320, 321, 322, 323};
-    public static final String[] badItems = {
-            "Cooking apple",
-            "Banana",
-            "Strawberry",
-            "Jangerberries",
-            "Lemon",
-            "Redberries",
-            "Pineapple",
-            "Lime",
-            "Strange fruit",
-            "Golovanova fruit top",
-            "Papaya fruit",
-            "Copper ore",
-            "Tin ore",
-            "Iron ore",
-            "Logs",
-            "Oak logs",
-            "Willow logs",
-            "Teak logs",
-            "Raw shrimp",
-            "Raw anchovies",
-            "Raw herring",
-            "Raw trout",
-            "Raw salmon",
-            "Raw tuna"};
-
 
     //Mining
     public static Tile miningCopperLocation = new Tile(3287,3366);
@@ -273,7 +247,7 @@ public class SkillData {
             new Tile(2489, 3417, 0), new Tile(2481, 3425, 0)
     );
     public static final Area GnomeObstacle7Area = new Area (
-            new Tile(2481, 3431, 0), new Tile(2489, 3428, 0)
+            new Tile(2489, 3427, 0), new Tile(2482, 3431, 0)
     );
 
     //Draynor

@@ -12,7 +12,13 @@ import Helpers.Task;
 import script.mMain;
 
 public class DropFish extends Task {
-    public static final String[] badItems = SkillData.badItems;
+    public static final String[] badItems = {
+            "Raw shrimp",
+            "Raw anchovies",
+            "Raw herring",
+            "Raw trout",
+            "Raw salmon",
+            "Raw tuna"};
     @Override
     public boolean activate() {
         return Inventory.isFull();
