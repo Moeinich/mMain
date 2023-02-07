@@ -53,6 +53,7 @@ public class VarrockCourse extends Task {
     }
 
     public void ShouldRunObstacle() {
+        mMain.State = "In obstacle loop";
         if (!Movement.running() && Movement.energyLevel() > 30) {
             mMain.State = "Enable run..";
             Widgets.widget(160).component(29).click();
