@@ -8,6 +8,7 @@ import org.powbot.api.rt4.walking.model.Skill;
 import Firemaking.GoFiremaking;
 
 public class SkillData {
+    public static final int[] p2p = {302, 303, 304, 305, 306, 307, 309, 310, 311, 312, 313, 314, 315, 317, 318, 319, 320, 321, 322, 323};
     public static final String[] badItems = {
             "Cooking apple",
             "Banana",

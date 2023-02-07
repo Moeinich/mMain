@@ -14,7 +14,6 @@ import org.powbot.api.rt4.Players;
 import org.powbot.api.rt4.Skills;
 import org.powbot.api.rt4.Varpbits;
 import org.powbot.api.rt4.World;
-import org.powbot.api.rt4.walking.model.Skill;
 
 import java.util.List;
 
@@ -84,8 +83,13 @@ public class FruitStall extends Task {
                 if (SkillData.movementThieving().tile().distanceTo(Players.local()) < 3) {
                     Movement.step(SkillData.movementThieving());
                 }
-
             } else if (Players.local().animation() == -1) { // Not currently thieving
+                if (Players.stream().within(SkillData.fruitStallArea).count() >= 2) {
+                    int[] p2p = SkillData.p2p;
+                    int randomWorld = p2p[Random.nextInt(0, p2p.length - 1)];
+                    World world = new World(2, randomWorld, 1, World.Type.MEMBERS, World.Server.RUNE_SCAPE, World.Specialty.NONE);
+                    world.hop();
+                }
                 GameObject fruitStall = Objects.stream().within(2).id(STALL_ID).nearest().first();
                 if (fruitStall.valid()) {
                     if (!fruitStall.inViewport()) { // Need to turn camera to the stall

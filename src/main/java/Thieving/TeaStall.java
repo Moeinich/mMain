@@ -1,6 +1,7 @@
 package Thieving;
 
 import org.powbot.api.Condition;
+import org.powbot.api.Random;
 import org.powbot.api.rt4.Camera;
 import org.powbot.api.rt4.Constants;
 import org.powbot.api.rt4.Game;
@@ -11,6 +12,7 @@ import org.powbot.api.rt4.Movement;
 import org.powbot.api.rt4.Objects;
 import org.powbot.api.rt4.Players;
 import org.powbot.api.rt4.Skills;
+import org.powbot.api.rt4.World;
 
 import java.util.List;
 
@@ -60,6 +62,13 @@ public class TeaStall extends Task {
                     Movement.step(SkillData.movementThieving());
                 }
             } else if (Players.local().animation() == -1) { // Not currently thieving
+                if (Players.stream().within(SkillData.fruitStallArea).count() >= 2) {
+                    int[] p2p = SkillData.p2p;
+                    int randomWorld = p2p[Random.nextInt(0, p2p.length - 1)];
+                    World world = new World(2, randomWorld, 1, World.Type.MEMBERS, World.Server.RUNE_SCAPE, World.Specialty.NONE);
+                    world.hop();
+                }
+
                 GameObject teaStall = Objects.stream().within(2).id(STALL_ID).nearest().first();
                 if (teaStall.valid()) {
                     if (!teaStall.inViewport()) { // Need to turn camera to the stall
