@@ -240,6 +240,7 @@ public class SkillData {
     }
 
     //Agility
+    //Gnome
     public static final Area GnomeStartArea = new Area (
             new Tile(2472, 3436, 0), new Tile(2476, 3438, 0)
     );
@@ -321,12 +322,89 @@ public class SkillData {
     public static final Area DraynorObstacle7 = new Area (
             new Tile(3096, 3261, 3), new Tile(3102, 3256, 3)
     );
+    //Varrock
+    //Varrock
+    public static final Area VarrockFloorArea = new Area (
+            new Tile(3183, 3431, 0), new Tile(3244, 3391, 0)
+    );
+
+    public static final Area VarrockFirstArea = new Area (
+            new Tile(3183, 3420, 1), new Tile(3204, 3406, 1)
+    );
+
+    public static final Area VarrockMidArea = new Area (
+            new Tile(3132, 3459, 2), new Tile(3331, 3326, 2)
+    );
+
+    public static final Area VarrockTopArea = new Area (
+            new Tile(3105, 3466, 3), new Tile(3338, 3274, 3)
+    );
+
+    public static final Area VarrockGhostArea = new Area (
+            new Tile(3113, 3411, 1), new Tile(3222, 3314, 1)
+    );
+
+    public static final Area VarrockFailArea = new Area (
+            new Tile(3183, 3431, 0), new Tile(3244, 3391, 0)
+    );
+    public static final Area VarrockStart = new Area (
+            new Tile(3221, 3411, 0),
+            new Tile(3224, 3412, 0),
+            new Tile(3224, 3416, 0),
+            new Tile(3221, 3416, 0)
+    );
+
+    public static final Area VarrockObstacle2 = new Area (
+            new Tile(3214, 3420, 3), new Tile(3220, 3409, 3)
+    );
+    public static final Area VarrockObstacle3 = new Area (
+            new Tile(3201, 3420, 3), new Tile(3208, 3412, 3)
+    );
+    public static final Area VarrockObstacle4 = new Area (
+            new Tile(3197, 3416, 1), new Tile(3194, 3416, 1)
+    );
+    public static final Area VarrockObstacle5 = new Area (
+            new Tile(3192, 3406, 3), new Tile(3198, 3402, 3)
+    );
+    public static final Area VarrockObstacle6 = new Area (
+            new Tile(3190, 3382, 3),
+            new Tile(3180, 3382, 3),
+            new Tile(3180, 3399, 3),
+            new Tile(3201, 3399, 3),
+            new Tile(3201, 3404, 3),
+            new Tile(3209, 3404, 3),
+            new Tile(3209, 3395, 3),
+            new Tile(3203, 3394, 3)
+    );
+
+    public static final Area VarrockObstacle6MoveTo = new Area (
+            new Tile(3206, 3403, 3), new Tile(3208, 3395, 3)
+    );
+    public static final Area VarrockObstacle7 = new Area (
+            new Tile(3218, 3405, 3), new Tile(3232, 3392, 3)
+    );
+
+    public static final Area VarrockObstacle7MoveTo = new Area (
+            new Tile(3229, 3402, 3), new Tile(3232, 3400, 3)
+    );
+
+    public static final Area VarrockObstacle8 = new Area (
+            new Tile(3236, 3403, 3), new Tile(3240, 3408, 3)
+    );
+
+    public static final Area VarrockObstacle9 = new Area (
+            new Tile(3236, 3410, 3), new Tile(3240, 3415, 3)
+    );
+
     public static Tile movementAgility(){
         if (Skills.realLevel(Constants.SKILLS_AGILITY) <= 9) {
             return GnomeStartArea.getRandomTile();
         }
-        if (Skills.realLevel(Constants.SKILLS_AGILITY) >= 10 && Skills.realLevel(Constants.SKILLS_AGILITY) <= 80) {
+        if (Skills.realLevel(Constants.SKILLS_AGILITY) >= 10 && Skills.realLevel(Constants.SKILLS_AGILITY) <= 29) {
             return DraynorStart.getRandomTile();
+        }
+        if (Skills.realLevel(Constants.SKILLS_AGILITY) >= 30 && Skills.realLevel(Constants.SKILLS_AGILITY) <= 80) {
+            return VarrockStart.getRandomTile();
         }
         return null;
     }

@@ -30,6 +30,16 @@ public class WalkToAgilityObstacles extends Task {
         {
             return true;
         }
+        //Varrock
+        if (Skills.realLevel(Constants.SKILLS_AGILITY) >= 30 && Skills.realLevel(Constants.SKILLS_AGILITY) <= 80
+                && !SkillData.VarrockFloorArea.contains(Players.local())
+                && !SkillData.VarrockFirstArea.contains(Players.local())
+                && !SkillData.VarrockMidArea.contains(Players.local())
+                && !SkillData.VarrockTopArea.contains(Players.local())
+                && !SkillData.VarrockGhostArea.contains(Players.local()) )
+        {
+            return true;
+        }
         return false;
     }
     @Override

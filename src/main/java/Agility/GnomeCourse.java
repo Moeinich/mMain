@@ -64,7 +64,6 @@ public class GnomeCourse extends Task {
         GameObject GnomeObstacle6ID = Objects.stream().within(10).id(23135).nearest().first();
         if (SkillData.GnomeObstacle6Area.contains(Players.local()) && GnomeObstacle6ID.inViewport()) {
             mMain.State = "Handle obstacle 6";
-            mMain.State = "obstacle 6";
             GnomeObstacle6ID.interact("Climb-over", "Obstacle net");
             Condition.wait( () -> (!Players.local().inMotion()), 500, 50);
         }
@@ -74,6 +73,10 @@ public class GnomeCourse extends Task {
             mMain.State = "Handle obstacle 7";
             GnomeObstacle7ID.interact("Squeeze-through", "Obstacle pipe");
             Condition.wait( () -> (!Players.local().inMotion()), 500, 50);
+        }
+        if (!GnomeObstacle1ID.inViewport()) {
+            mMain.State = "Move to Gnome start";
+            Movement.moveTo(SkillData.GnomeStartArea.getRandomTile());
         }
     }
 }

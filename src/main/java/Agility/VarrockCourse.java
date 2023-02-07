@@ -2,6 +2,7 @@ package Agility;
 
 import org.powbot.api.Condition;
 import org.powbot.api.Random;
+import org.powbot.api.rt4.Camera;
 import org.powbot.api.rt4.Constants;
 import org.powbot.api.rt4.Game;
 import org.powbot.api.rt4.GameObject;
@@ -21,11 +22,11 @@ import Helpers.SkillData;
 import Helpers.Task;
 import script.mMain;
 
-public class DraynorCourse extends Task {
+public class VarrockCourse extends Task {
     int CurrentXP = Skills.experience(Skill.Agility);
 
     public boolean activate() {
-        return Skills.realLevel(Constants.SKILLS_AGILITY) >= 10 && Skills.realLevel(Constants.SKILLS_AGILITY) <= 80;
+        return Skills.realLevel(Constants.SKILLS_AGILITY) >= 30 && Skills.realLevel(Constants.SKILLS_AGILITY) <= 80;
     }
     @Override
     public void execute() {
@@ -58,16 +59,16 @@ public class DraynorCourse extends Task {
             Condition.wait( () -> Movement.running(), 150, 50);
         }
 
-        GameObject DraynorObstacle1 = Objects.stream().within(7).id(11404).nearest().first();
-        if (SkillData.DraynorStart.contains(Players.local()) && DraynorObstacle1.inViewport()) {
+        GameObject VarrockObstacle1 = Objects.stream().within(7).id(14412).nearest().first();
+        if (SkillData.VarrockStart.contains(Players.local()) && VarrockObstacle1.inViewport()) {
             mMain.State = "Handle obstacle 1";
             CurrentXP = Skills.experience(Skill.Agility);
-            DraynorObstacle1.interact("Climb", "Rough wall");
+            VarrockObstacle1.interact("Climb", "Rough wall");
             Condition.wait( () -> (CurrentXP != Skills.experience(Skill.Agility) || SkillData.VarrockFailArea.contains(Players.local())), 800, 50);
         }
 
-        GameObject DraynorObstacle2 = Objects.stream().within(7).id(11405).nearest().first();
-        if (SkillData.DraynorObstacle2.contains(Players.local()) && DraynorObstacle2.inViewport()) {
+        GameObject VarrockObstacle2 = Objects.stream().within(7).id(14413).nearest().first();
+        if (SkillData.VarrockObstacle2.contains(Players.local()) && VarrockObstacle2.inViewport()) {
             GroundItem groundItem = GroundItems.stream().within(5).name("Mark of grace").nearest().first();
             if (groundItem.inViewport()) {
                 mMain.State = "Pickup mark";
@@ -75,65 +76,103 @@ public class DraynorCourse extends Task {
             }
             mMain.State = "Handle obstacle 2";
             CurrentXP = Skills.experience(Skill.Agility);
-            DraynorObstacle2.interact("Cross", "Tightrope");
+            VarrockObstacle2.interact("Cross", "Clothes line");
             Condition.wait( () -> (CurrentXP != Skills.experience(Skill.Agility) || SkillData.VarrockFailArea.contains(Players.local())), 800, 50);
         }
 
-        GameObject DraynorObstacle3 = Objects.stream().within(7).id(11406).nearest().first();
-        if (SkillData.DraynorObstacle3.contains(Players.local()) && DraynorObstacle3.inViewport()) {
+        GameObject VarrockObstacle3 = Objects.stream().within(10).id(14414).nearest().first();
+        if (SkillData.VarrockObstacle3.contains(Players.local()) && VarrockObstacle3.inViewport()) {
             GroundItem groundItem = GroundItems.stream().within(5).name("Mark of grace").nearest().first();
             if (groundItem.inViewport()) {
                 LootMarks();
             }
             mMain.State = "Handle obstacle 3";
             CurrentXP = Skills.experience(Skill.Agility);
-            DraynorObstacle3.interact("Cross", "Tightrope");
+            VarrockObstacle3.interact("Leap", "Gap");
             Condition.wait( () -> (CurrentXP != Skills.experience(Skill.Agility) || SkillData.VarrockFailArea.contains(Players.local())), 800, 50);
         }
 
-        GameObject DraynorObstacle4 = Objects.stream().within(7).id(11430).nearest().first();
-        if (SkillData.DraynorObstacle4.contains(Players.local()) && DraynorObstacle4.inViewport()) {
+        GameObject VarrockObstacle4 = Objects.stream().within(7).id(14832).nearest().first();
+        if (SkillData.VarrockObstacle4.contains(Players.local()) && VarrockObstacle4.inViewport()) {
             GroundItem groundItem = GroundItems.stream().within(5).name("Mark of grace").nearest().first();
             if (groundItem.inViewport()) {
                 LootMarks();
             }
+
             mMain.State = "Handle obstacle 4";
             CurrentXP = Skills.experience(Skill.Agility);
-            DraynorObstacle4.interact("Balance", "Narrow wall");
+            VarrockObstacle4.interact("Balance", "Wall");
             Condition.wait( () -> (CurrentXP != Skills.experience(Skill.Agility) || SkillData.VarrockFailArea.contains(Players.local())), 800, 50);
         }
 
-        GameObject DraynorObstacle5 = Objects.stream().within(7).id(11630).nearest().first();
-        if (SkillData.DraynorObstacle5.contains(Players.local()) && DraynorObstacle5.inViewport()) {
+        GameObject VarrockObstacle5 = Objects.stream().within(10).id(14833).nearest().first();
+        if (SkillData.VarrockObstacle5.contains(Players.local()) && VarrockObstacle5.inViewport()) {
             mMain.State = "Handle obstacle 5";
             CurrentXP = Skills.experience(Skill.Agility);
-            DraynorObstacle5.interact("Jump-up", "Wall");
+            VarrockObstacle5.interact("Leap", "Gap");
             Condition.wait( () -> (CurrentXP != Skills.experience(Skill.Agility) || SkillData.VarrockFailArea.contains(Players.local())), 800, 50);
         }
 
-        GameObject DraynorObstacle6 = Objects.stream().within(7).id(11631).nearest().first();
-        if (SkillData.DraynorObstacle6.contains(Players.local()) && DraynorObstacle6.inViewport()) {
+        GameObject VarrockObstacle6 = Objects.stream().within(10).id(14834).nearest().first();
+        if (SkillData.VarrockObstacle6.contains(Players.local()) && !VarrockObstacle6.inViewport()) {
+            GroundItem groundItem = GroundItems.stream().within(20).name("Mark of grace").nearest().first();
+            if (groundItem.inViewport()) {
+                mMain.State = "Pickup mark";
+                LootMarks();
+            }
+            mMain.State = "Moving to obstacle 6";
+            Movement.step(SkillData.VarrockObstacle6MoveTo.getRandomTile());
+        }
+        if (SkillData.VarrockObstacle6.contains(Players.local()) && VarrockObstacle6.inViewport()) {
             mMain.State = "Handle obstacle 6";
             CurrentXP = Skills.experience(Skill.Agility);
-            DraynorObstacle6.interact("Jump", "Gap");
+            VarrockObstacle6.interact("Leap", "Gap");
             Condition.wait( () -> (CurrentXP != Skills.experience(Skill.Agility) || SkillData.VarrockFailArea.contains(Players.local())), 800, 50);
         }
 
-        GameObject DraynorObstacle7 = Objects.stream().within(10).id(11632).nearest().first();
-        if (SkillData.DraynorObstacle7.contains(Players.local()) && DraynorObstacle7.inViewport()) {
+        GameObject VarrockObstacle7 = Objects.stream().within(20).id(14835).nearest().first();
+        if (SkillData.VarrockObstacle7.contains(Players.local()) && !VarrockObstacle7.inViewport()) {
+            mMain.State = "Moving to obstacle 7";
+            Movement.step(SkillData.VarrockObstacle7MoveTo.getRandomTile());
+        }
+        if (SkillData.VarrockObstacle7.contains(Players.local()) && VarrockObstacle7.inViewport()) {
             GroundItem groundItem = GroundItems.stream().within(5).name("Mark of grace").nearest().first();
             if (groundItem.inViewport()) {
                 LootMarks();
             }
             mMain.State = "Handle obstacle 7";
             CurrentXP = Skills.experience(Skill.Agility);
-            DraynorObstacle7.interact("Climb-down", "Crate");
+            VarrockObstacle7.interact("Leap", "Gap");
             Condition.wait( () -> (CurrentXP != Skills.experience(Skill.Agility) || SkillData.VarrockFailArea.contains(Players.local())), 800, 50);
         }
 
-        if (!DraynorObstacle1.inViewport()) {
-            mMain.State = "Move to Draynor start";
-            Movement.moveTo(SkillData.DraynorStart.getRandomTile());
+        GameObject VarrockObstacle8 = Objects.stream().within(10).id(14836).nearest().first();
+        if (SkillData.VarrockObstacle8.contains(Players.local()) && VarrockObstacle8.inViewport()) {
+            GroundItem groundItem = GroundItems.stream().within(10).name("Mark of grace").nearest().first();
+            if (groundItem.inViewport()) {
+                LootMarks();
+            }
+            mMain.State = "Handle obstacle 8";
+            CurrentXP = Skills.experience(Skill.Agility);
+            VarrockObstacle8.interact("Hurdle", "Ledge");
+            Condition.wait( () -> (CurrentXP != Skills.experience(Skill.Agility) || SkillData.VarrockFailArea.contains(Players.local())), 800, 50);
+        }
+
+        GameObject VarrockObstacle9 = Objects.stream().within(10).id(14841).nearest().first();
+        if (SkillData.VarrockObstacle9.contains(Players.local()) && VarrockObstacle9.inViewport()) {
+            GroundItem groundItem = GroundItems.stream().within(5).name("Mark of grace").nearest().first();
+            if (groundItem.inViewport()) {
+                LootMarks();
+            }
+            mMain.State = "Handle obstacle 9";
+            CurrentXP = Skills.experience(Skill.Agility);
+            VarrockObstacle9.interact("Jump-off", "Edge");
+            Condition.wait( () -> (CurrentXP != Skills.experience(Skill.Agility) || SkillData.VarrockFailArea.contains(Players.local())), 800, 50);
+        }
+
+        if (!VarrockObstacle1.inViewport()) {
+            mMain.State = "Move to Varrock start";
+            Movement.moveTo(SkillData.VarrockStart.getRandomTile());
         }
     }
 }

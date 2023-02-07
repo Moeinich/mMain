@@ -5,7 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c7dd1c8c-f10c-49ed-8219-521bd6f55188" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Agility/VarrockCourse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Agility/DraynorCourse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Agility/DraynorCourse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Agility/GnomeCourse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Agility/GnomeCourse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Agility/StartAgility.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Agility/StartAgility.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Agility/WalkToAgilityObstacles.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Agility/WalkToAgilityObstacles.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Helpers/SkillData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Helpers/SkillData.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,6 +53,11 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.ide.settings.spelling&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/java/Agility" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="mMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="script.mMain" />
