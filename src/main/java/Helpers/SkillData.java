@@ -285,17 +285,6 @@ public class SkillData {
     public static final Area DraynorCrateArea = new Area (
             new Tile(3101, 3262, 1), new Tile(3103, 3260, 1)
     );
-    public static final Area DraynorFailArea = new Area (
-            new Tile(3102, 3282, 0),
-            new Tile(3085, 3282, 0),
-            new Tile(3081, 3252, 0),
-            new Tile(3087, 3245, 0),
-            new Tile(3106, 3245, 0),
-            new Tile(3112, 3257, 0),
-            new Tile(3110, 3267, 0),
-            new Tile(3107, 3275, 0),
-            new Tile(3102, 3275, 0)
-    );
     public static final Area DraynorStart = new Area (
             new Tile(3106, 3275, 0), new Tile(3103, 3281, 0)
     );

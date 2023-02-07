@@ -85,13 +85,6 @@ public class FruitStall extends Task {
                     Movement.step(SkillData.movementThieving());
                 }
 
-                if (Players.count() >= 2) {
-                    int[] p2p = {302, 303, 304, 305, 306, 307, 309, 310, 311, 312, 313, 314, 315, 317, 318, 319, 320, 321, 322, 323};
-                    int randomWorld = p2p[Random.nextInt(0, p2p.length - 1)];
-                    World world = new World(2, randomWorld, 1, World.Type.MEMBERS, World.Server.RUNE_SCAPE, World.Specialty.NONE);
-                    world.hop();
-                }
-
             } else if (Players.local().animation() == -1) { // Not currently thieving
                 GameObject fruitStall = Objects.stream().within(2).id(STALL_ID).nearest().first();
                 if (fruitStall.valid()) {
