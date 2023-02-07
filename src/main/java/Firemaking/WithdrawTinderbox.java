@@ -10,7 +10,7 @@ import script.mMain;
 public class WithdrawTinderbox extends Task {
     @Override
     public boolean activate() {
-        return Bank.opened() && Inventory.stream().id(ItemList.TINDERBOX_590).count() == 0;
+        return Bank.opened() && Inventory.stream().id(ItemList.TINDERBOX_590).isEmpty();
     }
     @Override
     public void execute() {

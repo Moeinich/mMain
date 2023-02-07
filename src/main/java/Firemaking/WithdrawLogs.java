@@ -11,7 +11,7 @@ import script.mMain;
 public class WithdrawLogs extends Task {
     @Override
     public boolean activate() {
-        return Bank.opened() && !Inventory.isFull() && Inventory.stream().id(SkillData.logs).count() == 0;
+        return Bank.opened() && !Inventory.isFull() && Inventory.stream().id(SkillData.logs).isEmpty();
     }
     @Override
     public void execute() {

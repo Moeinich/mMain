@@ -14,9 +14,9 @@ import script.mMain;
 public class FiremakingBanking extends Task {
     @Override
     public boolean activate() {
-        return Inventory.stream().id(SkillData.logs).count() == 0
+        return Inventory.stream().id(SkillData.logs).isEmpty()
                 && !Bank.opened()
-                || Inventory.stream().id(ItemList.TINDERBOX_590).count() == 0;
+                || Inventory.stream().id(ItemList.TINDERBOX_590).isEmpty();
     }
     @Override
     public void execute() {

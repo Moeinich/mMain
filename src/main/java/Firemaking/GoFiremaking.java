@@ -13,7 +13,7 @@ public class GoFiremaking extends Task {
     @Override
     public boolean activate() {
         return Inventory.stream().id(SkillData.logs).count() >= 27
-                && Inventory.stream().id(ItemList.TINDERBOX_590).count() == 1
+                && Inventory.stream().id(ItemList.TINDERBOX_590).isNotEmpty()
                 && !SkillData.firemakingArea.contains(Players.local());
     }
 

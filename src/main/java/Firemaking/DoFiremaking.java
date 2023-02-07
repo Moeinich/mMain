@@ -11,8 +11,8 @@ import script.mMain;
 public class DoFiremaking extends Task {
     @Override
     public boolean activate() {
-        return Inventory.stream().id(SkillData.logs).count() >= 1
-                && Inventory.stream().id(ItemList.TINDERBOX_590).count() >= 1
+        return Inventory.stream().id(SkillData.logs).isNotEmpty()
+                && Inventory.stream().id(ItemList.TINDERBOX_590).isNotEmpty()
                 && SkillData.doFiremakingArea.contains(Players.local());
     }
     @Override
@@ -23,7 +23,7 @@ public class DoFiremaking extends Task {
         Inventory.stream().id(ItemList.TINDERBOX_590).first().interact("Use");
         Condition.wait(() -> Players.local().animation() == -1, 2000,50);
 
-        if (Inventory.stream().id(SkillData.logs).count() == 0) {
+        if (Inventory.stream().id(SkillData.logs).isEmpty()) {
             GoFiremaking.fmSpot += 1;
         }
         if (GoFiremaking.fmSpot == 4) {
