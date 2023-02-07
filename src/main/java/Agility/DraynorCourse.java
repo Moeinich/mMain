@@ -25,7 +25,7 @@ public class DraynorCourse extends Task {
     int CurrentXP = Skills.experience(Skill.Agility);
 
     public boolean activate() {
-        return Skills.realLevel(Constants.SKILLS_AGILITY) >= 10 && Skills.realLevel(Constants.SKILLS_AGILITY) <= 80;
+        return Skills.realLevel(Constants.SKILLS_AGILITY) >= 10 && Skills.realLevel(Constants.SKILLS_AGILITY) <= 29;
     }
     @Override
     public void execute() {
