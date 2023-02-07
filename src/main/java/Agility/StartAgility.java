@@ -13,6 +13,7 @@ public class StartAgility {
             //agilityTasks.add(new WalkToAgilityObstacles());
             agilityTasks.add(new GnomeCourse());
             agilityTasks.add(new DraynorCourse());
+            agilityTasks.add(new VarrockCourse());
         }
 
         for (Task task : agilityTasks) {

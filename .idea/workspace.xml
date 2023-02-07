@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c7dd1c8c-f10c-49ed-8219-521bd6f55188" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/Agility/VarrockCourse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Agility/VarrockCourse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Agility/StartAgility.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Agility/StartAgility.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
