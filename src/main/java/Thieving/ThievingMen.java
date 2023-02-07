@@ -24,7 +24,7 @@ public class ThievingMen extends Task {
     Item CoinPouch = Inventory.stream().name("Coin pouch").first();
     @Override
     public boolean activate() {
-        return Skills.realLevel(Constants.SKILLS_THIEVING) <= 30 || (Skills.realLevel(Constants.SKILLS_THIEVING) >= 5 && Inventory.stream().name("Coin pouch").count() >= 1);
+        return Skills.realLevel(Constants.SKILLS_THIEVING) <= 4 || (Skills.realLevel(Constants.SKILLS_THIEVING) >= 5 && Inventory.stream().name("Coin pouch").count() >= 1);
     }
 
     @Override
@@ -36,7 +36,7 @@ public class ThievingMen extends Task {
             ShouldOpenPouches();
         }
         //Open pouches if we're done thieving in lumbridge
-        if (Skills.realLevel(Constants.SKILLS_THIEVING) >= 70 && Inventory.stream().name("Coin pouch").count() >= 1) {
+        if (Skills.realLevel(Constants.SKILLS_THIEVING) >= 5 && Inventory.stream().name("Coin pouch").count() >= 1) {
             mMain.State = "Done with men, empty pouches";
             CoinPouch.interact("Open-all");
             Condition.wait( () -> Inventory.stream().name("Coin pouch").isEmpty(), 200, 50);

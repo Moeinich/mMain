@@ -6,10 +6,12 @@ import java.util.ArrayList;
 
 import Helpers.GoToBank;
 import Helpers.Task;
+import script.mMain;
 
 public class startFletching {
     private ArrayList<Task> fletchingTasks = new ArrayList<>();
     public void Fletching() {
+        mMain.RunningSkill = "Fletching";
         if (fletchingTasks.isEmpty()) {
             fletchingTasks.add(new GoToBank());
             fletchingTasks.add(new ArrowShafts());

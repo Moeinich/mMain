@@ -7,10 +7,12 @@ import java.util.ArrayList;
 import Agility.GnomeCourse;
 import Helpers.GoToBank;
 import Helpers.Task;
+import script.mMain;
 
 public class StartHerblore {
     private ArrayList<Task> HerbloreTasks = new ArrayList<>();
     public void Herblore() {
+        mMain.RunningSkill = "Herblore";
         if (HerbloreTasks.isEmpty()) {
             HerbloreTasks.add(new GoToBank());
             HerbloreTasks.add(new AttackPotions());

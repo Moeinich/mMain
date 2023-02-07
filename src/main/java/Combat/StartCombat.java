@@ -2,12 +2,14 @@ package Combat;
 
 import org.powbot.mobile.script.ScriptManager;
 import Helpers.Task;
+import script.mMain;
 
 import java.util.ArrayList;
 
 public class StartCombat {
     private ArrayList<Task> combatTask = new ArrayList<>();
     public void Combat() {
+        mMain.RunningSkill = "Combat";
         if (combatTask.isEmpty()) {
             combatTask.add(new EatFood());
             combatTask.add(new SetAttackMode());

@@ -1,6 +1,8 @@
 package Smithing;
 
 import Helpers.Task;
+import script.mMain;
+
 import org.powbot.mobile.script.ScriptManager;
 
 import java.util.ArrayList;
@@ -9,6 +11,7 @@ public class StartSmithing {
     private ArrayList<Task> smithingTasks = new ArrayList<>();
     public void Smithing() {
         if (smithingTasks.isEmpty()) {
+            mMain.RunningSkill = "Smithing";
             smithingTasks.add(new WithdrawMaterials());
             smithingTasks.add(new DepositProducts());
             smithingTasks.add(new SmithingBanking());

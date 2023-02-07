@@ -6,10 +6,12 @@ import java.util.ArrayList;
 
 import Helpers.GoToBank;
 import Helpers.Task;
+import script.mMain;
 
 public class StartCrafting {
     private ArrayList<Task> craftingTasks = new ArrayList<>();
     public void Crafting() {
+        mMain.RunningSkill = "Crafting";
         if (craftingTasks.isEmpty()) {
             craftingTasks.add(new GoToBank());
             craftingTasks.add(new BeerGlass());

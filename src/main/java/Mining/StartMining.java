@@ -6,11 +6,13 @@ import org.powbot.mobile.script.ScriptManager;
 import java.util.ArrayList;
 
 import Helpers.Task;
+import script.mMain;
 
 public class StartMining {
     private ArrayList<Task> miningTasks = new ArrayList<>();
     public void Mining() {
         if (miningTasks.isEmpty()) {
+            mMain.RunningSkill = "Mining";
             miningTasks.add(new GetPickaxe());
             miningTasks.add(new DropOres());
             miningTasks.add(new CopperOres());

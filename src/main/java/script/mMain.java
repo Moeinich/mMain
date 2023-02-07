@@ -28,7 +28,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
                 @ScriptConfiguration(
                         name =  "Skill",
                         description = "Which skill would you like to do?",
-                        defaultValue = "Thieving",
+                        defaultValue = "Agility",
                         allowedValues = {"Progressive", "Mining", "Fishing", "Woodcutting", "Cooking", "Firemaking", "Smithing", "Thieving", "Crafting", "Fletching", "Agility", "Herblore"},
                         optionType = OptionType.STRING
                 )
@@ -44,7 +44,7 @@ public class mMain extends AbstractScript {
     public static void main(String[] args) {
         new ScriptUploader().uploadAndStart("mMain", "Account", "emulator-5554", true, true);
     }
-
+    public static String RunningSkill;
     public static String State;
     Executor taskHandler = Executors.newSingleThreadExecutor();
     public static final AtomicBoolean taskRunning = new AtomicBoolean(false);
@@ -52,29 +52,54 @@ public class mMain extends AbstractScript {
     @Override
     public void onStart() {
         String skill = getOption("Skill");
+        RunningSkill = "Determining...";
         State = "Starting...";
 
-        Paint p = new PaintBuilder()
-                .addString("Skill: " , () -> skill)
-                .addString("State: ", () -> State)
-                .addString("Skill Time left: ", () -> Stopwatch.timeLeft() / 1000 / 60 + " min")
-                .trackSkill(Skill.Mining)
-                .trackSkill(Skill.Fishing)
-                .trackSkill(Skill.Woodcutting)
-                .trackSkill(Skill.Cooking)
-                .trackSkill(Skill.Firemaking)
-                .trackSkill(Skill.Smithing)
-                .trackSkill(Skill.Thieving)
-                .trackSkill(Skill.Crafting)
-                .trackSkill(Skill.Fletching)
-                .trackSkill(Skill.Herblore)
-                .trackSkill(Skill.Agility)
-                .x(40)
-                .y(400)
-                .removeScriptNameVersion()
-                .withoutDiscordWebhook()
-                .build();
-        addPaint(p);
+        if (skill.equals("Progressive")) {
+            Paint p = new PaintBuilder()
+                    .addString("Skill: " , () -> skill)
+                    .addString("Running: " , () -> RunningSkill)
+                    .addString("Skill Time left: ", () -> Stopwatch.timeLeft() / 1000 / 60 + " min")
+                    .addString("State: ", () -> State)
+                    .trackSkill(Skill.Mining)
+                    .trackSkill(Skill.Fishing)
+                    .trackSkill(Skill.Woodcutting)
+                    .trackSkill(Skill.Cooking)
+                    .trackSkill(Skill.Firemaking)
+                    .trackSkill(Skill.Smithing)
+                    .trackSkill(Skill.Thieving)
+                    .trackSkill(Skill.Crafting)
+                    .trackSkill(Skill.Fletching)
+                    .trackSkill(Skill.Herblore)
+                    .trackSkill(Skill.Agility)
+                    .x(40)
+                    .y(400)
+                    .removeScriptNameVersion()
+                    .withoutDiscordWebhook()
+                    .build();
+            addPaint(p);
+        } else {
+            Paint p = new PaintBuilder()
+                    .addString("Skill: " , () -> skill)
+                    .addString("State: ", () -> State)
+                    .trackSkill(Skill.Mining)
+                    .trackSkill(Skill.Fishing)
+                    .trackSkill(Skill.Woodcutting)
+                    .trackSkill(Skill.Cooking)
+                    .trackSkill(Skill.Firemaking)
+                    .trackSkill(Skill.Smithing)
+                    .trackSkill(Skill.Thieving)
+                    .trackSkill(Skill.Crafting)
+                    .trackSkill(Skill.Fletching)
+                    .trackSkill(Skill.Herblore)
+                    .trackSkill(Skill.Agility)
+                    .x(40)
+                    .y(400)
+                    .removeScriptNameVersion()
+                    .withoutDiscordWebhook()
+                    .build();
+            addPaint(p);
+        }
     }
 
     public static class Stopwatch {

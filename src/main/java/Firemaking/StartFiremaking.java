@@ -5,10 +5,12 @@ import org.powbot.mobile.script.ScriptManager;
 import java.util.ArrayList;
 
 import Helpers.Task;
+import script.mMain;
 
 public class StartFiremaking {
     private ArrayList<Task> firemakingTasks = new ArrayList<>();
     public void Firemaking() {
+        mMain.RunningSkill = "Firemaking";
         if (firemakingTasks.isEmpty()) {
             firemakingTasks.add(new WithdrawTinderbox());
             firemakingTasks.add(new WithdrawLogs());

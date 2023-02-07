@@ -1,6 +1,8 @@
 package Cooking;
 
 import Helpers.Task;
+import script.mMain;
+
 import org.powbot.mobile.script.ScriptManager;
 
 import java.util.ArrayList;
@@ -8,6 +10,7 @@ import java.util.ArrayList;
 public class StartCooking {
     private ArrayList<Task> cookingTasks = new ArrayList<>();
     public void Cooking() {
+        mMain.RunningSkill = "Cooking";
         if (cookingTasks.isEmpty()) {
             cookingTasks.add(new Sardines());
         }

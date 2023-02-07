@@ -1,6 +1,8 @@
 package Woodcutting;
 
 import Helpers.Task;
+import script.mMain;
+
 import org.powbot.mobile.script.ScriptManager;
 
 import java.util.ArrayList;
@@ -8,6 +10,7 @@ import java.util.ArrayList;
 public class StartWoodcutting {
     private ArrayList<Task> woodcuttingTasks = new ArrayList<>();
     public void Woodcutting() {
+        mMain.RunningSkill = "Woodcutting";
         if (woodcuttingTasks.isEmpty()) {
             woodcuttingTasks.add(new GetAxe());
             woodcuttingTasks.add(new DropLogs());
