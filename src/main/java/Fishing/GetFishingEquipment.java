@@ -4,6 +4,7 @@ import org.powbot.api.Condition;
 import org.powbot.api.Locatable;
 import org.powbot.api.rt4.Bank;
 import org.powbot.api.rt4.Constants;
+import org.powbot.api.rt4.Game;
 import org.powbot.api.rt4.Inventory;
 import org.powbot.api.rt4.Movement;
 import org.powbot.api.rt4.Players;
@@ -18,10 +19,10 @@ import script.mMain;
 public class GetFishingEquipment extends Task {
     @Override
     public boolean activate() {
-        if (Skill.Fishing.realLevel() <= 19 && Inventory.stream().name("Small fishing net").isEmpty()) {
+        if (Game.tab(Game.Tab.INVENTORY) && Skill.Fishing.realLevel() <= 19 && Inventory.stream().name("Small fishing net").isEmpty()) {
             return true;
         }
-        if (Skill.Fishing.realLevel() >= 20 && Inventory.stream().name("Fly fishing rod").isEmpty() || Inventory.stream().name("Feather").isEmpty()) {
+        if (Game.tab(Game.Tab.INVENTORY) && Skill.Fishing.realLevel() >= 20 && Inventory.stream().name("Fly fishing rod").isEmpty() || Inventory.stream().name("Feather").isEmpty()) {
             return true;
         }
         return false;

@@ -4,6 +4,7 @@ package Mining;
 import org.powbot.api.Condition;
 import org.powbot.api.Locatable;
 import org.powbot.api.rt4.Bank;
+import org.powbot.api.rt4.Game;
 import org.powbot.api.rt4.Inventory;
 import org.powbot.api.rt4.Movement;
 import org.powbot.api.rt4.Players;
@@ -16,7 +17,7 @@ import script.mMain;
 public class GetPickaxe extends Task {
     @Override
     public boolean activate() {
-return Inventory.stream().id(SkillData.pickaxes).count() == 0;}
+return Game.tab(Game.Tab.INVENTORY) && Inventory.stream().id(SkillData.pickaxes).count() == 0;}
 
     @Override
     public void execute() {
