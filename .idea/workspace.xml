@@ -19,7 +19,9 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/Fletching/OakShortbow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Fletching/OakShortbow.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Fletching/WillowLongbow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Fletching/WillowLongbow.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Fletching/WillowShortbow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Fletching/WillowShortbow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Helpers/InteractionsHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Helpers/InteractionsHelper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Herblore/AttackPotions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Herblore/AttackPotions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/script/mMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/script/mMain.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

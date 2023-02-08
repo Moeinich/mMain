@@ -58,7 +58,7 @@ public class ArrowShafts extends Task {
         if (!Bank.opened() && Bank.inViewport()) {
             Bank.open();
         }
-        if (Bank.stream().id(CombineWithItemID).count() >= 1) {
+        if (Bank.stream().id(CombineWithItemID).isNotEmpty()) {
             Bank.depositAllExcept(ToolID);
             interactionsHelper.WithdrawItem(CombineWithItemID, 27);
             Bank.close();

@@ -18,7 +18,7 @@ public class InteractionsHelper {
         if (!Bank.opened() && Bank.inViewport()) {
             Bank.open();
         }
-        if (Bank.stream().id(ItemName).first().stackSize() < 27) {
+        if (Bank.stream().id(ItemName).first().stackSize() < Amount) {
             mMain.State = "We ran out of " + ItemName;
             mMain.taskRunning.set(false); //Skip task on progressive
         } else {
