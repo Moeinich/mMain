@@ -1,4 +1,4 @@
-package Thieving;
+package Helpers;
 
 import org.powbot.api.Condition;
 import org.powbot.api.Locatable;
@@ -12,7 +12,7 @@ import org.powbot.dax.teleports.Teleport;
 import Helpers.Task;
 import script.mMain;
 
-public class ShouldBank extends Task {
+public class BankBeforeTask extends Task {
     Locatable nearestBank = Bank.nearest();
     public boolean activate() {
         return mMain.ShouldBank;

@@ -5,6 +5,7 @@ import org.powbot.mobile.script.ScriptManager;
 import java.util.ArrayList;
 
 import Helpers.Task;
+import Helpers.BankBeforeTask;
 import script.mMain;
 
 public class StartThieving {
@@ -12,7 +13,7 @@ public class StartThieving {
     public void Thieving() {
         mMain.RunningSkill = "Thieving";
         if (thievingTasks.isEmpty()) {
-            thievingTasks.add(new ShouldBank());
+            thievingTasks.add(new BankBeforeTask());
             thievingTasks.add(new ThievingMen());
             thievingTasks.add(new TeaStall());
             thievingTasks.add(new FruitStall());
