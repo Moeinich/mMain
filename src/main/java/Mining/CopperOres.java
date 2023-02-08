@@ -1,13 +1,14 @@
 package Mining;
 
 import org.powbot.api.Condition;
+import org.powbot.api.Random;
 import org.powbot.api.rt4.Constants;
 import org.powbot.api.rt4.GameObject;
-import org.powbot.api.rt4.Inventory;
 import org.powbot.api.rt4.Movement;
 import org.powbot.api.rt4.Objects;
 import org.powbot.api.rt4.Players;
 import org.powbot.api.rt4.Skills;
+import org.powbot.api.rt4.World;
 
 import Helpers.SkillData;
 import Helpers.Task;
@@ -26,6 +27,13 @@ public class CopperOres extends Task {
             Movement.builder(SkillData.movementMining()).setRunMin(45).setRunMax(75).move();
         }
         if (SkillData.miningCopperLocation.equals(Players.local().tile())) {
+            if (Players.stream().within(SkillData.miningCopperArea).count() >= 2) {
+                int[] p2p = SkillData.p2p;
+                int randomWorld = p2p[Random.nextInt(0, p2p.length - 1)];
+                World world = new World(2, randomWorld, 1, World.Type.MEMBERS, World.Server.RUNE_SCAPE, World.Specialty.NONE);
+                world.hop();
+            }
+
             mMain.State = "Mining...";
             GameObject copperOre = Objects.stream().within(2).id(11161,11360).nearest().first();
             if (copperOre.inViewport() && Players.local().animation() == -1) {
