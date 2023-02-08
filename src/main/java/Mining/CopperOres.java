@@ -27,18 +27,18 @@ public class CopperOres extends Task {
             Movement.builder(SkillData.movementMining()).setRunMin(45).setRunMax(75).move();
         }
         if (SkillData.miningCopperLocation.equals(Players.local().tile())) {
-            if (Players.stream().within(SkillData.miningCopperArea).count() >= 2) {
+            if (Players.stream().within(SkillData.miningCopperArea).count() != 1) {
                 int[] p2p = SkillData.p2p;
                 int randomWorld = p2p[Random.nextInt(0, p2p.length - 1)];
                 World world = new World(2, randomWorld, 1, World.Type.MEMBERS, World.Server.RUNE_SCAPE, World.Specialty.NONE);
                 world.hop();
             }
-
-            mMain.State = "Mining...";
-            GameObject copperOre = Objects.stream().within(2).id(11161,11360).nearest().first();
-            if (copperOre.inViewport() && Players.local().animation() == -1) {
-                copperOre.interact("Mine", "Rocks");
-                Condition.wait(() -> Objects.stream().at(copperOre.tile()).id(11161,11360).isEmpty(), 150, 50);
+            if (Players.local().animation() == -1 && Players.stream().within(SkillData.miningCopperArea).count() == 1) {
+                mMain.State = "Mining...";
+                GameObject copperOre = Objects.stream().within(1).id(11161,11360).nearest().first();
+                if (copperOre.interact("Mine", "Rocks")) {
+                    Condition.wait(() -> Objects.stream().at(copperOre.tile()).id(11161,11360).isEmpty(), 150, 50);
+                }
             }
         }
     }

@@ -30,17 +30,18 @@ public class IronOres extends Task {
             Movement.builder(SkillData.movementMining()).setRunMin(45).setRunMax(75).move();
         }
         if (SkillData.miningIronLocation.equals(Players.local().tile())) {
-            if (Players.stream().within(SkillData.miningIronArea).count() >= 2) {
+            if (Players.stream().within(SkillData.miningIronArea).count() != 1) {
                 int[] p2p = SkillData.p2p;
                 int randomWorld = p2p[Random.nextInt(0, p2p.length - 1)];
                 World world = new World(2, randomWorld, 1, World.Type.MEMBERS, World.Server.RUNE_SCAPE, World.Specialty.NONE);
                 world.hop();
             }
-            mMain.State = "Mining...";
-            GameObject ironOre = Objects.stream().within(1).id(11364, 11365).nearest().first();
-            if (ironOre.inViewport() && Players.local().animation() == -1) {
-                ironOre.interact("Mine", "Rocks");
-                Condition.wait(() -> Objects.stream().at(ironOre.tile()).id(11364, 11365).isEmpty(), 150, 50);
+            if (Players.local().animation() == -1 && Players.stream().within(SkillData.miningIronArea).count() == 1) {
+                mMain.State = "Mining...";
+                GameObject ironOre = Objects.stream().within(1).id(11364, 11365).nearest().first();
+                if (ironOre.interact("Mine", "Rocks")) {
+                    Condition.wait(() -> Objects.stream().at(ironOre.tile()).id(11364, 11365).isEmpty(), 150, 50);
+                }
             }
         }
     }
