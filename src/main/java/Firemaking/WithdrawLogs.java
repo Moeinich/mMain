@@ -3,6 +3,7 @@ package Firemaking;
 import org.powbot.api.rt4.Bank;
 import org.powbot.api.rt4.Inventory;
 
+import Helpers.InteractionsHelper;
 import Helpers.ItemList;
 import Helpers.Task;
 import Helpers.SkillData;
@@ -16,10 +17,9 @@ public class WithdrawLogs extends Task {
     @Override
     public void execute() {
         mMain.State = "Withdraw logs";
-        int amountToWithdraw = 27;
-        
-        if (Bank.stream().id(ItemList.LOGS_1511).count() > 27 || Bank.stream().id(ItemList.OAK_LOGS_1521).count() > 27 || Bank.stream().id(ItemList.WILLOW_LOGS_1519).count() > 27) {
-            Bank.withdraw(SkillData.withdrawLogs(), amountToWithdraw);
+        if (Bank.stream().id(ItemList.LOGS_1511).isEmpty() || Bank.stream().id(ItemList.OAK_LOGS_1521).isEmpty() || Bank.stream().id(ItemList.WILLOW_LOGS_1519).isEmpty()) {
+            InteractionsHelper interactionsHelper = new InteractionsHelper();
+            interactionsHelper.WithdrawItem(SkillData.withdrawLogs(), 27);
         } mMain.taskRunning.set(false);
     }
 }
