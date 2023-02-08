@@ -46,7 +46,7 @@ public class mMain extends AbstractScript {
     }
     public static String RunningSkill;
     public static String State;
-    public static Boolean ShouldBank = false;
+    public static Boolean ShouldBank;
     Executor taskHandler = Executors.newSingleThreadExecutor();
     public static final AtomicBoolean taskRunning = new AtomicBoolean(false);
 
