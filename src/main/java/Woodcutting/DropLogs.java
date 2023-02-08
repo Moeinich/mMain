@@ -1,13 +1,11 @@
 package Woodcutting;
 
-import org.powbot.api.rt4.Bank;
 import org.powbot.api.rt4.Inventory;
 import org.powbot.api.rt4.Item;
 
 import java.util.List;
 
 import Helpers.Task;
-import Helpers.SkillData;
 import script.mMain;
 
 public class DropLogs extends Task {

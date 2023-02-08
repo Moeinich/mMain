@@ -4,7 +4,6 @@ import org.powbot.mobile.script.ScriptManager;
 
 import java.util.ArrayList;
 
-import Agility.GnomeCourse;
 import Helpers.GoToBank;
 import Helpers.Task;
 import script.mMain;

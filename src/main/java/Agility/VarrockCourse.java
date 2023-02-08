@@ -1,8 +1,6 @@
 package Agility;
 
 import org.powbot.api.Condition;
-import org.powbot.api.Random;
-import org.powbot.api.rt4.Camera;
 import org.powbot.api.rt4.Constants;
 import org.powbot.api.rt4.Game;
 import org.powbot.api.rt4.GameObject;

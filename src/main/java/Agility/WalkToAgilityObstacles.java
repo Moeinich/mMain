@@ -4,8 +4,6 @@ import org.powbot.api.rt4.Constants;
 import org.powbot.api.rt4.Movement;
 import org.powbot.api.rt4.Players;
 import org.powbot.api.rt4.Skills;
-import org.powbot.dax.api.DaxWalker;
-import org.powbot.dax.teleports.Teleport;
 
 import Helpers.SkillData;
 import Helpers.Task;

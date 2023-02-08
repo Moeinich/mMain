@@ -12,10 +12,8 @@ import org.powbot.api.rt4.Npcs;
 import org.powbot.api.rt4.Players;
 import org.powbot.api.rt4.Skills;
 
-import java.util.concurrent.Callable;
-
-import Helpers.Task;
 import Helpers.SkillData;
+import Helpers.Task;
 import script.mMain;
 
 public class ThievingMen extends Task {

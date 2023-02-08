@@ -7,12 +7,10 @@ import org.powbot.api.rt4.Bank;
 import org.powbot.api.rt4.Inventory;
 import org.powbot.api.rt4.Movement;
 import org.powbot.api.rt4.Players;
-import org.powbot.dax.api.DaxWalker;
-import org.powbot.dax.teleports.Teleport;
 
 import Helpers.InteractionsHelper;
-import Helpers.Task;
 import Helpers.SkillData;
+import Helpers.Task;
 import script.mMain;
 
 public class GetPickaxe extends Task {

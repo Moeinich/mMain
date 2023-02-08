@@ -19,7 +19,7 @@ public class treeNormal extends Task {
     }
     @Override
     public void execute() {
-        if (!SkillData.normalTreeLocation.equals(Players.local().tile())) {
+        if (!SkillData.normalTreeLocation.contains(Players.local())) {
             mMain.State = "Go to noob trees";
             Movement.builder(SkillData.movementWoodcutting()).setRunMin(45).setRunMax(75).move();
         }
@@ -27,8 +27,9 @@ public class treeNormal extends Task {
         if (SkillData.normalTreeLocation.contains(Players.local()) && Players.local().animation() == -1) {
             GameObject treeNormal = Objects.stream().within(6).id(SkillData.normalTreeID).nearest().first();
             mMain.State = "Cutting Trees..";
-            treeNormal.interact("Chop down", "Tree");
-            Condition.wait(() -> Objects.stream().at(treeNormal.tile()).id(SkillData.normalTreeID).isEmpty(), 500, 50);
+            if (treeNormal.interact("Chop down", "Tree")) {
+                Condition.wait(() -> Objects.stream().at(treeNormal.tile()).id(SkillData.normalTreeID).isEmpty(), 500, 50);
+            }
         }
     }
 }

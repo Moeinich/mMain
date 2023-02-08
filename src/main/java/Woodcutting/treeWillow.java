@@ -19,15 +19,16 @@ public class treeWillow extends Task {
 
     @Override
     public void execute() {
-        if (!SkillData.willowTreeLocation.equals(Players.local().tile())) {
+        if (!SkillData.willowTreeLocation.contains(Players.local())) {
             mMain.State = "Go to Willow trees";
             Movement.builder(SkillData.movementWoodcutting()).setRunMin(45).setRunMax(75).move();
         }
         if (SkillData.willowTreeLocation.contains(Players.local()) && Players.local().animation() == -1) {
             GameObject treeWillow = Objects.stream().within(6).id(SkillData.willowTreeID).nearest().first();
             mMain.State = "Cutting Willows";
-            treeWillow.interact("Chop down", "Willow");
-            Condition.wait(() -> Objects.stream().at(treeWillow.tile()).id(SkillData.willowTreeID).isEmpty(), 500, 50);
+            if (treeWillow.interact("Chop down", "Willow")) {
+                Condition.wait(() -> Objects.stream().at(treeWillow.tile()).id(SkillData.willowTreeID).isEmpty(), 500, 50);
+            }
         }
     }
 }

@@ -18,15 +18,16 @@ public class treeOak extends Task {
     }
     @Override
     public void execute() {
-        if (!SkillData.oakTreeLocation.equals(Players.local().tile())) {
+        if (!SkillData.oakTreeLocation.contains(Players.local())) {
             mMain.State = "Go to Oak trees";
             Movement.builder(SkillData.movementWoodcutting()).setRunMin(45).setRunMax(75).move();
         }
         if (SkillData.oakTreeLocation.contains(Players.local()) && Players.local().animation() == -1) {
             GameObject treeOak = Objects.stream().within(6).id(SkillData.oakTreeID).nearest().first();
             mMain.State = "Cutting Oaks";
-            treeOak.interact("Chop down", "Tree");
-            Condition.wait(() -> Objects.stream().at(treeOak.tile()).id(SkillData.oakTreeID).isEmpty(), 500, 50);
+            if (treeOak.interact("Chop down", "Tree")) {
+                Condition.wait(() -> Objects.stream().at(treeOak.tile()).id(SkillData.oakTreeID).isEmpty(), 500, 50);
+            }
         }
     }
 }
