@@ -1,7 +1,10 @@
 package Helpers;
 
+import org.powbot.api.Condition;
 import org.powbot.api.Locatable;
 import org.powbot.api.rt4.Bank;
+import org.powbot.api.rt4.Inventory;
+import org.powbot.api.rt4.Item;
 import org.powbot.api.rt4.Movement;
 import org.powbot.api.rt4.Players;
 import org.powbot.dax.api.DaxWalker;
@@ -17,6 +20,13 @@ public class GoToBank extends Task{
     }
     @Override
     public void execute() {
+        if (Inventory.stream().name("Coin pouch").isNotEmpty()) {
+            Item CoinPouch = Inventory.stream().name("Coin pouch").first();
+            mMain.State = "Opening pouches";
+            if (CoinPouch.interact("Open-all", "Coin pouch") && !Players.local().inMotion()) {
+                Condition.wait( () -> Inventory.stream().name("Coin pouch").isEmpty(), 200,50);
+            }
+        }
         mMain.State = "Walking to bank";
         DaxWalker.blacklistTeleports(Teleport.SOUL_WARS_MINIGAME);
         Movement.moveToBank();
