@@ -75,7 +75,6 @@ public class mMain extends AbstractScript {
                     .trackSkill(Skill.Agility)
                     .x(40)
                     .y(400)
-                    .removeScriptNameVersion()
                     .withoutDiscordWebhook()
                     .build();
             addPaint(p);
@@ -96,7 +95,6 @@ public class mMain extends AbstractScript {
                     .trackSkill(Skill.Agility)
                     .x(40)
                     .y(400)
-                    .removeScriptNameVersion()
                     .withoutDiscordWebhook()
                     .build();
             addPaint(p);
