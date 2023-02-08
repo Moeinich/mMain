@@ -12,6 +12,7 @@ public class StartThieving {
     public void Thieving() {
         mMain.RunningSkill = "Thieving";
         if (thievingTasks.isEmpty()) {
+            thievingTasks.add(new ShouldBank());
             thievingTasks.add(new ThievingMen());
             thievingTasks.add(new TeaStall());
             thievingTasks.add(new FruitStall());

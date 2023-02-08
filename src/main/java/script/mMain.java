@@ -46,6 +46,7 @@ public class mMain extends AbstractScript {
     }
     public static String RunningSkill;
     public static String State;
+    public static Boolean ShouldBank = false;
     Executor taskHandler = Executors.newSingleThreadExecutor();
     public static final AtomicBoolean taskRunning = new AtomicBoolean(false);
 
@@ -172,6 +173,7 @@ public class mMain extends AbstractScript {
                         try {
                             while(!runtime.hasFinished()) {
                                 countdownLatch.await();
+                                ShouldBank = true;
                                 tasks.get(taskIndex).run();
                                 if (ScriptManager.INSTANCE.isStopping()) {
                                     ScriptManager.INSTANCE.stop();
