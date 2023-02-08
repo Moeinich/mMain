@@ -14,19 +14,21 @@ import script.mMain;
 public class BankBeforeTask extends Task {
     Locatable nearestBank = Bank.nearest();
     public boolean activate() {
-        return mMain.ShouldBank;
+        if(mMain.ShouldBank = true) {
+            return true;
+        } else return false;
     }
 
     @Override
     public void execute() {
         if (Inventory.isEmpty()) {
-            mMain.State = "Inventory empty, moving on..";
+            mMain.State = "Inventory empty, moving on.. " + mMain.ShouldBank;
             if (Bank.opened()) {
                 if (Bank.close()) {
                     Condition.wait( () -> !Bank.opened(), 150, 50);
                 }
-            }
-            mMain.ShouldBank = false;
+            } else mMain.ShouldBank = false;
+
         }
 
         if (nearestBank.tile().distanceTo(Players.local()) > 5) {
