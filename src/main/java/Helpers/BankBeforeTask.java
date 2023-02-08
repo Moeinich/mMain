@@ -20,6 +20,16 @@ public class BankBeforeTask extends Task {
 
     @Override
     public void execute() {
+        if (Inventory.isEmpty()) {
+            mMain.State = "Inventory empty, moving on..";
+            if (Bank.opened()) {
+                if (Bank.close()) {
+                    Condition.wait( () -> !Bank.opened(), 150, 50);
+                }
+            }
+            mMain.ShouldBank = false;
+        }
+
         if (nearestBank.tile().distanceTo(Players.local()) > 5) {
         mMain.State = "Walking to bank";
         DaxWalker.blacklistTeleports(Teleport.SOUL_WARS_MINIGAME);
@@ -33,10 +43,6 @@ public class BankBeforeTask extends Task {
                 if(Bank.depositInventory()) {
                     Condition.wait( () -> Inventory.isEmpty(), 150, 50);
                 }
-            }
-            if (Inventory.isEmpty()) {
-                Bank.close();
-                mMain.ShouldBank = false;
             }
         }
     }

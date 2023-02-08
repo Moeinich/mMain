@@ -5,10 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c7dd1c8c-f10c-49ed-8219-521bd6f55188" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Thieving/ShouldBank.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Thieving/StartThieving.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Thieving/StartThieving.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/script/mMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/script/mMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Helpers/BankBeforeTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Helpers/BankBeforeTask.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,12 +54,12 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration name="mMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="script.mMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="script.mMain" />
       <module name="script.mMain.main" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="script.*" />
+          <option name="PATTERN" value="Helpers.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -71,7 +69,7 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.mMain" />
+        <item itemvalue="Application.script.mMain" />
       </list>
     </recent_temporary>
   </component>
