@@ -79,6 +79,7 @@ public class MapleLongbow extends Task {
             Condition.wait( () -> !Bank.opened(), 500, 20);
         }
         else {
+            mMain.State = "Out of materials, switching..";
             Bank.close();
             mMain.taskRunning.set(false); //Stop if we dont have materials!
         }
