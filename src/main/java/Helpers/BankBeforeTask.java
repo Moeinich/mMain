@@ -29,7 +29,7 @@ public class BankBeforeTask extends Task {
             } else mMain.ShouldBank = false;
 
         }
-        
+
         Locatable nearestBank = Bank.nearest();
         if (nearestBank.tile().distanceTo(Players.local()) > 5) {
         mMain.State = "Bank before task";
