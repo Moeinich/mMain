@@ -5,7 +5,6 @@ import org.powbot.api.Locatable;
 import org.powbot.api.rt4.Bank;
 import org.powbot.api.rt4.Inventory;
 import org.powbot.api.rt4.Item;
-import org.powbot.api.rt4.Movement;
 import org.powbot.api.rt4.Players;
 import org.powbot.dax.api.DaxWalker;
 import org.powbot.dax.teleports.Teleport;
@@ -31,7 +30,7 @@ public class GoToBank extends Task{
         if (nearestBank.tile().distanceTo(Players.local()) > 5) {
             mMain.State = "Walking to bank " + "Tiles off:" + nearestBank.tile().distanceTo(Players.local());
             DaxWalker.blacklistTeleports(Teleport.SOUL_WARS_MINIGAME);
-            Movement.moveTo(nearestBank);
+            DaxWalker.walkToBank();
         }
     }
 }
