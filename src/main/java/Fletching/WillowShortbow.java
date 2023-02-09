@@ -26,7 +26,6 @@ public class WillowShortbow extends Task {
 
     @Override
     public void execute() {
-        mMain.State = "Willow Shortb loop!";
         if (Game.tab(Game.Tab.INVENTORY) && (Inventory.stream().id(ToolID).isEmpty() || Inventory.stream().id(CombineWithItemID).isEmpty())) {
             mMain.State = "Banking loop";
             bank();

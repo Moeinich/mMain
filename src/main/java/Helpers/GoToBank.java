@@ -29,7 +29,6 @@ public class GoToBank extends Task{
         }
         if (nearestBank.tile().distanceTo(Players.local()) > 5) {
             mMain.State = "Walking to bank";
-            DaxWalker.blacklistTeleports(Teleport.SOUL_WARS_MINIGAME);
             Movement.moveToBank();
         }
     }
