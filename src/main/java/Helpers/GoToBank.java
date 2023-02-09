@@ -27,8 +27,10 @@ public class GoToBank extends Task{
                 Condition.wait( () -> Inventory.stream().name("Coin pouch").isEmpty(), 200,50);
             }
         }
-        mMain.State = "Walking to bank";
-        DaxWalker.blacklistTeleports(Teleport.SOUL_WARS_MINIGAME);
-        Movement.moveToBank();
+        if (nearestBank.tile().distanceTo(Players.local()) > 5) {
+            mMain.State = "Walking to bank";
+            DaxWalker.blacklistTeleports(Teleport.SOUL_WARS_MINIGAME);
+            Movement.moveToBank();
+        }
     }
 }

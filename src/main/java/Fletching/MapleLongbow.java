@@ -30,11 +30,11 @@ public class MapleLongbow extends Task {
 
     @Override
     public void execute() {
-        if (Game.tab(Game.Tab.INVENTORY) && (Inventory.stream().id(ToolID).count() == 0 || Inventory.stream().id(CombineWithItemID).count() == 0)) {
+        if (Game.tab(Game.Tab.INVENTORY) && (Inventory.stream().id(ToolID).isEmpty() || Inventory.stream().id(CombineWithItemID).isEmpty())) {
             mMain.State = "Banking loop";
             bank();
         }
-        if (Game.tab(Game.Tab.INVENTORY) && !Bank.opened() && Inventory.stream().id(CombineWithItemID).count() > 0) {
+        if (Game.tab(Game.Tab.INVENTORY) && !Bank.opened() && Inventory.stream().id(CombineWithItemID).isNotEmpty()) {
             mMain.State = "Fletching bows";
             fletch();
         }
