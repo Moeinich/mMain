@@ -21,7 +21,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 @ScriptManifest(
         name = "mMain",
         description = "Progressively levels different skills",
-        version = "0.0.4"
+        version = "0.0.5"
 )
 @ScriptConfiguration.List(
         {

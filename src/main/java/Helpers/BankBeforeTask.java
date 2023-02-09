@@ -34,7 +34,7 @@ public class BankBeforeTask extends Task {
         if (nearestBank.tile().distanceTo(Players.local()) > 5) {
         mMain.State = "Bank before task";
         DaxWalker.blacklistTeleports(Teleport.SOUL_WARS_MINIGAME);
-        Movement.moveToBank();
+        DaxWalker.walkToBank();
         }
         if (nearestBank.tile().distanceTo(Players.local()) <= 5) {
             if (!Bank.opened() && Bank.inViewport()) {
