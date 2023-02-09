@@ -139,8 +139,6 @@ public class SkillData {
             new Tile(3077,3496), new Tile(3081,3491)
     );
 
-    public static GameObject cookingStove = Objects.stream().id(12269).first();
-
     //Firemaking
     public static final Tile firemakingGE1 = new Tile(3196,3489);
     public static final Tile firemakingGE2 = new Tile(3196,3490);

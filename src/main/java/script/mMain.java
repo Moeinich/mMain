@@ -21,14 +21,14 @@ import java.util.concurrent.atomic.AtomicBoolean;
 @ScriptManifest(
         name = "mMain",
         description = "Progressively levels different skills",
-        version = "0.0.5"
+        version = "0.0.6"
 )
 @ScriptConfiguration.List(
         {
                 @ScriptConfiguration(
                         name =  "Skill",
                         description = "Which skill would you like to do?",
-                        defaultValue = "Agility",
+                        defaultValue = "Fishing",
                         allowedValues = {"Progressive", "Mining", "Fishing", "Woodcutting", "Cooking", "Firemaking", "Smithing", "Thieving", "Crafting", "Fletching", "Agility", "Herblore"},
                         optionType = OptionType.STRING
                 )
@@ -46,7 +46,7 @@ public class mMain extends AbstractScript {
     }
     public static String RunningSkill;
     public static String State;
-    public static Boolean ShouldBank;
+    public static Boolean ShouldBank = true;
     Executor taskHandler = Executors.newSingleThreadExecutor();
     public static final AtomicBoolean taskRunning = new AtomicBoolean(false);
 
@@ -163,15 +163,16 @@ public class mMain extends AbstractScript {
                 if (taskRunning.compareAndSet(false, true)) {
                     final Stopwatch runtime = new Stopwatch();
                     if (!runtime.isRunning()) {
-                        runtime.reset(Random.nextInt(44, 120 * 1000 * 60));
+                        if (mMain.ShouldBank = false) {
+                            mMain.ShouldBank = true;
+                        } else runtime.reset(Random.nextInt(44, 120 * 1000 * 60));
                     }
                     final int taskIndex = ThreadLocalRandom.current().nextInt(tasks.size());
                     final CountDownLatch countdownLatch = new CountDownLatch(1);
                     taskHandler.execute(() -> {
                         try {
-                            while(!runtime.hasFinished()) {
+                            while(!runtime.hasFinished() && taskRunning.get()) {
                                 countdownLatch.await();
-                                ShouldBank = true;
                                 tasks.get(taskIndex).run();
                                 if (ScriptManager.INSTANCE.isStopping()) {
                                     ScriptManager.INSTANCE.stop();

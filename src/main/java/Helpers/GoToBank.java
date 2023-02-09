@@ -1,7 +1,6 @@
 package Helpers;
 
 import org.powbot.api.Condition;
-import org.powbot.api.Locatable;
 import org.powbot.api.rt4.Bank;
 import org.powbot.api.rt4.Inventory;
 import org.powbot.api.rt4.Item;
@@ -14,8 +13,7 @@ import script.mMain;
 public class GoToBank extends Task{
     @Override
     public boolean activate() {
-        Locatable nearestBank = Bank.nearest();
-        return nearestBank.tile().distanceTo(Players.local()) > 5;
+        return Bank.nearest().tile().distanceTo(Players.local()) > 5;
     }
     @Override
     public void execute() {
@@ -26,10 +24,8 @@ public class GoToBank extends Task{
                 Condition.wait( () -> Inventory.stream().name("Coin pouch").isEmpty(), 200,50);
             }
         }
-
-        Locatable nearestBank = Bank.nearest();
-        if (nearestBank.tile().distanceTo(Players.local()) > 5) {
-            mMain.State = "Walking to bank " + "Tiles off:" + nearestBank.tile().distanceTo(Players.local());
+        if (Bank.nearest().tile().distanceTo(Players.local()) > 5) {
+            mMain.State = "Walking to bank";
             DaxWalker.blacklistTeleports(Teleport.SOUL_WARS_MINIGAME);
             DaxWalker.walkToBank();
         }

@@ -3,8 +3,10 @@ package Cooking;
 import org.powbot.api.rt4.Bank;
 import org.powbot.api.rt4.Constants;
 import org.powbot.api.rt4.Game;
+import org.powbot.api.rt4.GameObject;
 import org.powbot.api.rt4.Inventory;
 import org.powbot.api.rt4.Movement;
+import org.powbot.api.rt4.Objects;
 import org.powbot.api.rt4.Players;
 import org.powbot.api.rt4.Skills;
 
@@ -39,7 +41,7 @@ public class Sardines extends Task {
     private void ShouldBank() {
         mMain.State = "Get raw fish";
         if (!SkillData.edgevilleBank.contains(Players.local())) {
-            Movement.step(SkillData.edgevilleBank.getRandomTile());
+            Movement.moveTo(SkillData.edgevilleBank.getRandomTile());
         }
         if (SkillData.edgevilleBank.contains(Players.local()) && !Bank.opened() && Bank.inViewport()) {
             Bank.open();
@@ -53,8 +55,9 @@ public class Sardines extends Task {
             Movement.moveTo(SkillData.StoveAreaEdgeville.getRandomTile());
         }
         if (SkillData.StoveAreaEdgeville.contains(Players.local())) {
+            GameObject cookingStove = Objects.stream().id(12269).first();
             InteractionsHelper interactionsHelper = new InteractionsHelper();
-            interactionsHelper.InteractWithGameobject(ItemList.RAW_SARDINE_327, SkillData.cookingStove, 270, 14, "Cook", "Stove");
+            interactionsHelper.InteractWithGameobject(ItemList.RAW_SARDINE_327, cookingStove, 270, 14, "Cook", "Stove");
         }
     }
 }

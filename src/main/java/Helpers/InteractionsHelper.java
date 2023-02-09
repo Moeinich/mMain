@@ -18,7 +18,7 @@ public class InteractionsHelper {
         if (!Bank.opened() && Bank.inViewport()) {
             Bank.open();
         }
-        if (Bank.stream().id(ItemName).first().stackSize() < Amount) {
+        if (Bank.stream().id(ItemName).first().stackSize() < 1) {
             mMain.State = "We ran out of " + ItemName;
             mMain.taskRunning.set(false); //Skip task on progressive
         } else {
@@ -29,9 +29,14 @@ public class InteractionsHelper {
         if (!Bank.opened() && Bank.inViewport()) {
             Bank.open();
         }
-        Bank.depositInventory();
-        Condition.wait( () -> Inventory.isEmpty(), 150, 50);
-        Bank.withdraw(item, amount);
+        if (Bank.stream().id(item).first().stackSize() < 1) {
+            mMain.State = "We ran out of " + item;
+            mMain.taskRunning.set(false);//Skip task on progressive
+        } else {
+            Bank.depositInventory();
+            Condition.wait( () -> Inventory.isEmpty(), 150, 50);
+            Bank.withdraw(item, amount);
+        }
     }
 
     public void CombineItems(int RequiredItemID, int CombineWithItemID, int WidgetID, int ComponentID) {
@@ -105,7 +110,7 @@ public class InteractionsHelper {
                 initialCount = currentCount;
                 timer = 0;
             }
-            int randomSleep = Random.nextInt(1000, 1300);
+            int randomSleep = Random.nextInt(800, 1000);
             Condition.sleep(randomSleep);
         }
     }

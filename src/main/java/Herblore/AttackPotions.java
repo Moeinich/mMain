@@ -3,9 +3,11 @@ package Herblore;
 import org.powbot.api.Condition;
 import org.powbot.api.Locatable;
 import org.powbot.api.rt4.Bank;
+import org.powbot.api.rt4.Constants;
 import org.powbot.api.rt4.Game;
 import org.powbot.api.rt4.Inventory;
 import org.powbot.api.rt4.Players;
+import org.powbot.api.rt4.Skills;
 import org.powbot.api.rt4.Varpbits;
 import org.powbot.mobile.script.ScriptManager;
 
@@ -34,8 +36,7 @@ public class AttackPotions extends Task {
     int ComponentID = 14;
 
     public boolean activate() {
-        Locatable nearestBank = Bank.nearest();
-        return nearestBank.tile().distanceTo(Players.local()) < 10;
+        return  Bank.nearest().tile().distanceTo(Players.local()) < 10;
     }
     @Override
     public void execute() {
@@ -48,12 +49,16 @@ public class AttackPotions extends Task {
         if (DRUIDIC_RITUAL.DruidicRitualValue != 4) {
             mMain.taskRunning.set(false);
         }
+        if (Skills.realLevel(Constants.SKILLS_HERBLORE) < 3) {
+            mMain.State = "Druidic ritual not started";
+            mMain.taskRunning.set(false);
+        }
 
         if (Game.tab(Game.Tab.INVENTORY) && (Inventory.stream().id(ToolID).isEmpty() || Inventory.stream().id(CombineWithItemID).isEmpty())) {
             mMain.State = "Banking loop";
             bank();
         }
-        if (Game.tab(Game.Tab.INVENTORY) && !Bank.opened() && Inventory.stream().id(CombineWithItemID).isNotEmpty()) {
+        if (Game.tab(Game.Tab.INVENTORY) && !Bank.opened() && Inventory.stream().id(CombineWithItemID, ToolID).isNotEmpty()) {
             mMain.State = "craft loop";
             craft();
         }
