@@ -12,7 +12,6 @@ import org.powbot.dax.teleports.Teleport;
 import script.mMain;
 
 public class BankBeforeTask extends Task {
-    Locatable nearestBank = Bank.nearest();
     public boolean activate() {
         if(mMain.ShouldBank = true) {
             return true;
@@ -30,7 +29,8 @@ public class BankBeforeTask extends Task {
             } else mMain.ShouldBank = false;
 
         }
-
+        
+        Locatable nearestBank = Bank.nearest();
         if (nearestBank.tile().distanceTo(Players.local()) > 5) {
         mMain.State = "Bank before task";
         DaxWalker.blacklistTeleports(Teleport.SOUL_WARS_MINIGAME);
