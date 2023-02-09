@@ -26,7 +26,7 @@ public class GoToBank extends Task{
                 Condition.wait( () -> Inventory.stream().name("Coin pouch").isEmpty(), 200,50);
             }
         }
-        
+
         Locatable nearestBank = Bank.nearest();
         if (nearestBank.tile().distanceTo(Players.local()) > 5) {
             mMain.State = "Walking to bank " + "Tiles off:" + nearestBank.tile().distanceTo(Players.local());
