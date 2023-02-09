@@ -22,7 +22,7 @@ public class BankBeforeTask extends Task {
     @Override
     public void execute() {
         if (Inventory.isEmpty()) {
-            mMain.State = "Inventory empty, moving on.. " + mMain.ShouldBank;
+            mMain.State = "Inventory empty, moving on.. ";
             if (Bank.opened()) {
                 if (Bank.close()) {
                     Condition.wait( () -> !Bank.opened(), 150, 50);

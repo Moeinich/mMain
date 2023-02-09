@@ -13,9 +13,9 @@ import org.powbot.dax.teleports.Teleport;
 import script.mMain;
 
 public class GoToBank extends Task{
-    Locatable nearestBank = Bank.nearest();
     @Override
     public boolean activate() {
+        Locatable nearestBank = Bank.nearest();
         return nearestBank.tile().distanceTo(Players.local()) > 5;
     }
     @Override
@@ -27,8 +27,10 @@ public class GoToBank extends Task{
                 Condition.wait( () -> Inventory.stream().name("Coin pouch").isEmpty(), 200,50);
             }
         }
+        Locatable nearestBank = Bank.nearest();
         if (nearestBank.tile().distanceTo(Players.local()) > 5) {
-            mMain.State = "Walking to bank";
+            mMain.State = "Walking to bank " + "Tiles off: " + nearestBank.tile().distanceTo(Players.local());
+            DaxWalker.blacklistTeleports(Teleport.SOUL_WARS_MINIGAME);
             Movement.moveToBank();
         }
     }
