@@ -9,6 +9,8 @@ import org.powbot.api.rt4.Objects;
 import org.powbot.api.rt4.Players;
 import org.powbot.api.rt4.Skills;
 import org.powbot.api.rt4.World;
+import org.powbot.dax.api.DaxWalker;
+import org.powbot.dax.teleports.Teleport;
 
 import Helpers.SkillData;
 import Helpers.Task;
@@ -26,7 +28,7 @@ public class IronOres extends Task {
             if (SkillData.movementMining().tile().distanceTo(Players.local()) < 3) {
                 Movement.step(SkillData.movementMining());
             }
-
+            DaxWalker.blacklistTeleports(Teleport.LUMBRIDGE_HOME_TELEPORT);
             Movement.builder(SkillData.movementMining()).setRunMin(45).setRunMax(75).move();
         }
         if (SkillData.miningIronLocation.equals(Players.local().tile())) {
