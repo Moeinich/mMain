@@ -14,7 +14,7 @@ public class SkillData {
     public static Tile miningCopperLocation = new Tile(3287,3366);
     public static Area miningCopperArea = new Area(new Tile(3286, 3367, 0), new Tile(3288, 3365, 0));
     public static Tile miningIronLocation = new Tile(1475,3779);
-    public static Area miningIronArea = new Area(new Tile(1473, 3781, 0), new Tile(1476, 3777, 0));
+    public static Area miningIronArea = new Area(new Tile(1476, 3778, 0), new Tile(1473, 3780, 0));
 
     public static int[] pickaxes = {ItemList.BRONZE_PICKAXE_1265, ItemList.BLACK_PICKAXE_12297, ItemList.MITHRIL_PICKAXE_1273, ItemList.ADAMANT_PICKAXE_1271, ItemList.RUNE_PICKAXE_1275};
 

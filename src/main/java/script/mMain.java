@@ -18,17 +18,19 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.atomic.AtomicBoolean;
 
+import Helpers.InteractionsHelper;
+
 @ScriptManifest(
         name = "mMain",
         description = "Progressively levels different skills",
-        version = "0.0.6"
+        version = "0.0.7"
 )
 @ScriptConfiguration.List(
         {
                 @ScriptConfiguration(
                         name =  "Skill",
                         description = "Which skill would you like to do?",
-                        defaultValue = "Fishing",
+                        defaultValue = "Firemaking",
                         allowedValues = {"Progressive", "Mining", "Fishing", "Woodcutting", "Cooking", "Firemaking", "Smithing", "Thieving", "Crafting", "Fletching", "Agility", "Herblore"},
                         optionType = OptionType.STRING
                 )
@@ -55,6 +57,7 @@ public class mMain extends AbstractScript {
         String skill = getOption("Skill");
         RunningSkill = "Determining...";
         State = "Starting...";
+        InteractionsHelper.cameraCheck();
 
         if (skill.equals("Progressive")) {
             Paint p = new PaintBuilder()
@@ -74,7 +77,7 @@ public class mMain extends AbstractScript {
                     .trackSkill(Skill.Herblore)
                     .trackSkill(Skill.Agility)
                     .x(40)
-                    .y(400)
+                    .y(300)
                     .withoutDiscordWebhook()
                     .build();
             addPaint(p);
@@ -94,7 +97,7 @@ public class mMain extends AbstractScript {
                     .trackSkill(Skill.Herblore)
                     .trackSkill(Skill.Agility)
                     .x(40)
-                    .y(400)
+                    .y(300)
                     .withoutDiscordWebhook()
                     .build();
             addPaint(p);
@@ -126,11 +129,6 @@ public class mMain extends AbstractScript {
 
     @Override
     public void poll() {
-        if (Camera.getZoom() > 4) {
-            Camera.moveZoomSlider(Camera.ZOOM_MAX);
-            Condition.wait( () -> Camera.getZoom() > 4, 250, 50);
-        }
-
         var startMining = new Mining.StartMining();
         var startWoodcutting = new Woodcutting.StartWoodcutting();
         var startFishing = new Fishing.StartFishing();

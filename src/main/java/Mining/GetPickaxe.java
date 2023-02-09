@@ -8,6 +8,7 @@ import org.powbot.api.rt4.Game;
 import org.powbot.api.rt4.Inventory;
 import org.powbot.api.rt4.Movement;
 import org.powbot.api.rt4.Players;
+import org.powbot.dax.api.DaxWalker;
 
 import Helpers.InteractionsHelper;
 import Helpers.SkillData;
@@ -17,7 +18,7 @@ import script.mMain;
 public class GetPickaxe extends Task {
     @Override
     public boolean activate() {
-return Game.tab(Game.Tab.INVENTORY) && Inventory.stream().id(SkillData.pickaxes).count() == 0;}
+return Game.tab(Game.Tab.INVENTORY) && Inventory.stream().id(SkillData.pickaxes).isEmpty();}
 
     @Override
     public void execute() {
@@ -25,13 +26,15 @@ return Game.tab(Game.Tab.INVENTORY) && Inventory.stream().id(SkillData.pickaxes)
 
         if (nearestBank.tile().distanceTo(Players.local()) > 5) {
             mMain.State = "Moving to bank";
-            Movement.moveToBank();
+            DaxWalker.walkToBank();
         }
-
-        InteractionsHelper interactionsHelper = new InteractionsHelper();
         if (!Bank.opened()) {
-            mMain.State = "Getting pickaxe";
+            mMain.State = "Open bank";
             Bank.open();
+        }
+        if (Bank.opened()) {
+            mMain.State = "Get pickaxe";
+            InteractionsHelper interactionsHelper = new InteractionsHelper();
             interactionsHelper.DepositAndWithdraw(SkillData.withdrawPickaxe(), 1);
             Bank.close();
             Condition.wait( () -> !Bank.opened(), 250, 50);

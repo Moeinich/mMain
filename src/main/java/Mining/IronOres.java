@@ -9,6 +9,7 @@ import org.powbot.api.rt4.Objects;
 import org.powbot.api.rt4.Players;
 import org.powbot.api.rt4.Skills;
 import org.powbot.api.rt4.World;
+import org.powbot.api.rt4.walking.model.Skill;
 import org.powbot.dax.api.DaxWalker;
 import org.powbot.dax.teleports.Teleport;
 
@@ -25,11 +26,11 @@ public class IronOres extends Task {
     public void execute() {
         if (!SkillData.miningIronLocation.equals(Players.local().tile())) {
             mMain.State = "Go to iron area";
-            if (SkillData.movementMining().tile().distanceTo(Players.local()) < 3) {
+            if (SkillData.movementMining().distanceTo(Players.local()) < 3) {
                 Movement.step(SkillData.movementMining());
             }
             DaxWalker.blacklistTeleports(Teleport.LUMBRIDGE_HOME_TELEPORT);
-            Movement.builder(SkillData.movementMining()).setRunMin(45).setRunMax(75).move();
+            DaxWalker.walkTo(SkillData.movementMining());
         }
         if (SkillData.miningIronLocation.equals(Players.local().tile())) {
             if (Players.stream().within(SkillData.miningIronArea).count() != 1) {
@@ -40,7 +41,7 @@ public class IronOres extends Task {
             }
             if (Players.local().animation() == -1 && Players.stream().within(SkillData.miningIronArea).count() == 1) {
                 mMain.State = "Mining...";
-                GameObject ironOre = Objects.stream().within(1).id(11364, 11365).nearest().first();
+                GameObject ironOre = Objects.stream().within(SkillData.miningIronArea).id(11364, 11365).nearest().first();
                 if (ironOre.interact("Mine", "Rocks")) {
                     Condition.wait(() -> Objects.stream().at(ironOre.tile()).id(11364, 11365).isEmpty(), 150, 50);
                 }

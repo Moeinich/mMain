@@ -3,6 +3,7 @@ package Helpers;
 import org.powbot.api.Condition;
 import org.powbot.api.Random;
 import org.powbot.api.rt4.Bank;
+import org.powbot.api.rt4.Camera;
 import org.powbot.api.rt4.Game;
 import org.powbot.api.rt4.GameObject;
 import org.powbot.api.rt4.Inventory;
@@ -112,6 +113,18 @@ public class InteractionsHelper {
             }
             int randomSleep = Random.nextInt(800, 1000);
             Condition.sleep(randomSleep);
+        }
+    }
+
+    public static void cameraCheck() {
+        Game.tab(Game.Tab.SETTINGS);
+        if (Camera.getZoom() < 3) {
+            Camera.moveZoomSlider(Camera.ZOOM_MAX);
+            Condition.wait( () -> Camera.getZoom() > 3, 250, 50);
+        }
+        if (Camera.pitch() < 90) {
+            Camera.pitch(99);
+            Condition.wait( () -> Camera.pitch(99), 250, 50);
         }
     }
 }

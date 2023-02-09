@@ -20,6 +20,6 @@ public class WithdrawLogs extends Task {
         if (Bank.stream().id(ItemList.LOGS_1511).isNotEmpty() || Bank.stream().id(ItemList.OAK_LOGS_1521).isNotEmpty() || Bank.stream().id(ItemList.WILLOW_LOGS_1519).isNotEmpty()) {
             InteractionsHelper interactionsHelper = new InteractionsHelper();
             interactionsHelper.WithdrawItem(SkillData.withdrawLogs(), 27);
-        } mMain.taskRunning.set(false);
+        } else mMain.taskRunning.set(false);
     }
 }
