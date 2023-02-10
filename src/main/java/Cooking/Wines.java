@@ -55,14 +55,8 @@ public class Wines extends Task {
     private void withdrawItems() {
         InteractionsHelper interactionsHelper = new InteractionsHelper();
         mMain.State = "Withdraw items";
-        if (!Bank.opened() && Bank.inViewport()) {
-            Bank.open();
-        }
         if (Bank.stream().id(CombineWithItemID).isNotEmpty()) {
-            Bank.depositAllExcept(ToolID);
             interactionsHelper.WithdrawItem(CombineWithItemID, 27);
-            Bank.close();
-            Condition.wait( () -> !Bank.opened(), 500, 20);
         }
     }
     private void craft() {

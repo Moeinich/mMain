@@ -63,20 +63,16 @@ public class MapleLongbow extends Task {
     private void withdrawItems() {
         InteractionsHelper interactionsHelper = new InteractionsHelper();
         mMain.State = "Withdraw items";
-        if (!Bank.opened() && Bank.inViewport()) {
-            Bank.open();
-        }
-        if (Bank.stream().id(CombineWithItemID).isNotEmpty()) {
-            Bank.depositAllExcept(ToolID);
+        if (Bank.stream().id(CombineWithItemID).isNotEmpty() && Inventory.stream().id(ToolID).isNotEmpty()) {
             interactionsHelper.WithdrawItem(CombineWithItemID, 27);
             Bank.close();
-            Condition.wait( () -> !Bank.opened(), 500, 20);
+            Condition.wait( () -> !Bank.opened(), 500, 50);
         }
-        if (Bank.stream().id(BowID).count() >= 1) {
+        if (Bank.stream().id(BowID).isNotEmpty() && Inventory.stream().id(ToolID).isNotEmpty()) {
             interactionsHelper.DepositAndWithdraw(BowID, 14);
             interactionsHelper.WithdrawItem(BowStringID, 14);
             Bank.close();
-            Condition.wait( () -> !Bank.opened(), 500, 20);
+            Condition.wait( () -> !Bank.opened(), 500, 50);
         }
     }
     private void fletch() {
