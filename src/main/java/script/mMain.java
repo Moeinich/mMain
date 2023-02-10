@@ -32,7 +32,7 @@ import Helpers.SkillData;
                 @ScriptConfiguration(
                         name =  "Skill",
                         description = "Which skill would you like to do?",
-                        defaultValue = "Firemaking",
+                        defaultValue = "Mining",
                         allowedValues = {"Progressive", "Mining", "Fishing", "Woodcutting", "Cooking", "Firemaking", "Smithing", "Thieving", "Crafting", "Fletching", "Agility", "Herblore"},
                         optionType = OptionType.STRING
                 )
@@ -195,72 +195,72 @@ public class mMain extends AbstractScript {
                 //in case you want to do x skill only.
 
             case "Mining":
-                if (SkillData.MiningDone = true) {
+                if (SkillData.MiningDone == true) {
                     ScriptManager.INSTANCE.stop();
                 } else startMining.Mining();
                 break;
 
             case "Combat":
-                if (SkillData.FishingDone = true) {
+                if (SkillData.FishingDone == true) {
                     ScriptManager.INSTANCE.stop();
                 } else startCombat.Combat();
                 break;
 
             case "Fishing":
-                if (SkillData.FishingDone = true) {
+                if (SkillData.FishingDone == true) {
                     ScriptManager.INSTANCE.stop();
                 } else startFishing.Fishing();
                 break;
 
             case "Woodcutting":
-                if (SkillData.WoodcuttingDone = true) {
+                if (SkillData.WoodcuttingDone == true) {
                     ScriptManager.INSTANCE.stop();
                 } else startWoodcutting.Woodcutting();
                 break;
 
             case "Cooking":
-                if (SkillData.CookingDone = true) {
+                if (SkillData.CookingDone == true) {
                     ScriptManager.INSTANCE.stop();
                 } else startCooking.Cooking();
                 break;
             case "Firemaking":
-                if (SkillData.FiremakingDone = true) {
+                if (SkillData.FiremakingDone == true) {
                     ScriptManager.INSTANCE.stop();
                 } else startFiremaking.Firemaking();
                 break;
 
             case "Smithing":
-                if (SkillData.SmithingDone = true) {
+                if (SkillData.SmithingDone == true) {
                     ScriptManager.INSTANCE.stop();
                 } else startSmithing.Smithing();
                 break;
 
             case "Thieving":
-                if (SkillData.ThievingDone = true) {
+                if (SkillData.ThievingDone == true) {
                     ScriptManager.INSTANCE.stop();
                 } else startThieving.Thieving();
                 break;
 
             case "Crafting":
-                if (SkillData.CraftingDone = true) {
+                if (SkillData.CraftingDone == true) {
                     ScriptManager.INSTANCE.stop();
                 } else startCrafting.Crafting();
                 break;
 
             case "Fletching":
-                if (SkillData.FletchingDone = true) {
+                if (SkillData.FletchingDone == true) {
                     ScriptManager.INSTANCE.stop();
                 } else startFletching.Fletching();
                 break;
 
             case "Agility":
-                if (SkillData.AgilityDone = true) {
+                if (SkillData.AgilityDone == true) {
                     ScriptManager.INSTANCE.stop();
                 } else startAgility.Agility();
                 break;
 
             case "Herblore":
-                if (SkillData.HerbloreDone = true) {
+                if (SkillData.HerbloreDone == true) {
                     ScriptManager.INSTANCE.stop();
                 } else startHerblore.Herblore();
                 break;
