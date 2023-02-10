@@ -2,7 +2,10 @@ package script;
 
 import org.powbot.api.Random;
 import org.powbot.api.rt4.walking.model.Skill;
-import org.powbot.api.script.*;
+import org.powbot.api.script.AbstractScript;
+import org.powbot.api.script.OptionType;
+import org.powbot.api.script.ScriptConfiguration;
+import org.powbot.api.script.ScriptManifest;
 import org.powbot.api.script.paint.Paint;
 import org.powbot.api.script.paint.PaintBuilder;
 import org.powbot.mobile.script.ScriptManager;
@@ -17,11 +20,12 @@ import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import Helpers.InteractionsHelper;
+import Helpers.SkillData;
 
 @ScriptManifest(
         name = "mMain",
         description = "Progressively levels different skills",
-        version = "0.0.9"
+        version = "0.0.10"
 )
 @ScriptConfiguration.List(
         {
@@ -155,6 +159,9 @@ public class mMain extends AbstractScript {
                         startCooking::Cooking
                         // Add future skills to this tasklist!
                 );
+                if (SkillData.AllSkillsDone()) {
+                    ScriptManager.INSTANCE.stop();
+                }
                 if (taskRunning.compareAndSet(false, true)) {
                     final Stopwatch runtime = new Stopwatch();
                     if (!runtime.isRunning()) {

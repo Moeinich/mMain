@@ -6,7 +6,7 @@ import script.mMain;
 
 public class AgilityDone extends Task {
     public boolean activate() {
-        return !SkillData.AgilityDone;
+        return SkillData.AgilityDone;
     }
     @Override
     public void execute() {

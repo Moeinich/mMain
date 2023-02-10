@@ -13,6 +13,7 @@ public class StartFishing {
     public void Fishing() {
         mMain.RunningSkill = "Fishing";
         if (fishingTasks.isEmpty()) {
+            fishingTasks.add(new FishingDone());
             fishingTasks.add(new GetFishingEquipment());
             fishingTasks.add(new DropFish());
             fishingTasks.add(new AlKharidFishing());

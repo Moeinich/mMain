@@ -38,7 +38,7 @@ public class FruitStall extends Task {
 
     @Override
     public boolean activate() {
-        return Skills.realLevel(Constants.SKILLS_THIEVING) >= 25 && Skills.realLevel(Constants.SKILLS_THIEVING) <= 59;
+        return Skills.realLevel(Constants.SKILLS_THIEVING) >= 25 && Skills.realLevel(Constants.SKILLS_THIEVING) <= 60;
     }
 
     public static final String[] badItems = {
@@ -71,6 +71,10 @@ public class FruitStall extends Task {
 
     @Override
     public void execute() {
+        if (Skills.realLevel(Constants.SKILLS_THIEVING) == 60) {
+            SkillData.SetSkillDone();
+        }
+
         //We need to check hosidius favor!
         if (!KOUREND_FAVOR.checkedFavor) {
             mMain.State = "Checking favor!" + KOUREND_FAVOR.hosidiusFavorValue;

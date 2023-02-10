@@ -13,6 +13,7 @@ public class startFletching {
     public void Fletching() {
         mMain.RunningSkill = "Fletching";
         if (fletchingTasks.isEmpty()) {
+            fletchingTasks.add(new FletchingDone());
             fletchingTasks.add(new GoToBank());
             fletchingTasks.add(new ArrowShafts());
             fletchingTasks.add(new Longbow());

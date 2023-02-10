@@ -12,6 +12,7 @@ public class StartWoodcutting {
     public void Woodcutting() {
         mMain.RunningSkill = "Woodcutting";
         if (woodcuttingTasks.isEmpty()) {
+            woodcuttingTasks.add(new WoodcuttingDone());
             woodcuttingTasks.add(new GetAxe());
             woodcuttingTasks.add(new DropLogs());
             woodcuttingTasks.add(new treeNormal());

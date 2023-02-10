@@ -13,6 +13,7 @@ public class StartMining {
     public void Mining() {
         if (miningTasks.isEmpty()) {
             mMain.RunningSkill = "Mining";
+            miningTasks.add(new MiningDone());
             miningTasks.add(new GetPickaxe());
             miningTasks.add(new DropOres());
             miningTasks.add(new CopperOres());

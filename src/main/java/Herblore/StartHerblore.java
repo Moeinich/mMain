@@ -13,6 +13,7 @@ public class StartHerblore {
     public void Herblore() {
         mMain.RunningSkill = "Herblore";
         if (HerbloreTasks.isEmpty()) {
+            HerbloreTasks.add(new HerbloreDone());
             HerbloreTasks.add(new GoToBank());
             HerbloreTasks.add(new AttackPotions());
         }

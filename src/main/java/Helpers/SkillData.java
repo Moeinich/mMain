@@ -24,7 +24,20 @@ public class SkillData {
     public static Boolean AgilityDone = false;
     public static Boolean HerbloreDone = false;
 
-    public void runningSkill() {
+    public static boolean AllSkillsDone() {
+        return MiningDone
+                && FishingDone
+                && WoodcuttingDone
+                && CookingDone
+                && FiremakingDone
+                && SmithingDone
+                && ThievingDone
+                && CraftingDone
+                && FletchingDone
+                && AgilityDone
+                && HerbloreDone;
+    }
+    public static void SetSkillDone() {
         if (mMain.RunningSkill.equals("Mining")) {
             MiningDone = true;
         }

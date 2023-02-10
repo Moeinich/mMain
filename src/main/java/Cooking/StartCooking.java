@@ -12,6 +12,7 @@ public class StartCooking {
     public void Cooking() {
         mMain.RunningSkill = "Cooking";
         if (cookingTasks.isEmpty()) {
+            cookingTasks.add(new CookingDone());
             cookingTasks.add(new Sardines());
         }
 

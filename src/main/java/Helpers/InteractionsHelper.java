@@ -21,6 +21,7 @@ public class InteractionsHelper {
         }
         if (Bank.stream().id(ItemName).first().stackSize() < 1) {
             mMain.State = "We ran out of " + ItemName;
+            SkillData.SetSkillDone();
             mMain.taskRunning.set(false); //Skip task on progressive
         } else {
             Bank.withdraw(ItemName, Amount);
@@ -32,6 +33,7 @@ public class InteractionsHelper {
         }
         if (Bank.stream().id(item).first().stackSize() < 1) {
             mMain.State = "We ran out of " + item;
+            SkillData.SetSkillDone();
             mMain.taskRunning.set(false);//Skip task on progressive
         } else {
             Bank.depositInventory();

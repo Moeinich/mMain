@@ -1,7 +1,6 @@
 package Agility;
 
 import org.powbot.api.rt4.Constants;
-import org.powbot.api.rt4.Movement;
 import org.powbot.api.rt4.Players;
 import org.powbot.api.rt4.Skills;
 
@@ -44,9 +43,9 @@ public class WalkToAgilityObstacles extends Task {
     }
     @Override
     public void execute() {
-        if (Skills.realLevel(Constants.SKILLS_AGILITY) >= 99) {
+        if (Skills.realLevel(Constants.SKILLS_AGILITY) >= 70) {
             mMain.taskRunning.set(false);
-            SkillData.AgilityDone = true;
+            SkillData.SetSkillDone();
         }
         mMain.State = "Going to Agility course";
         PlayerHelper.WalkToTile(SkillData.movementAgility());

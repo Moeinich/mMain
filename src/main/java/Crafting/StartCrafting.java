@@ -13,6 +13,7 @@ public class StartCrafting {
     public void Crafting() {
         mMain.RunningSkill = "Crafting";
         if (craftingTasks.isEmpty()) {
+            craftingTasks.add(new CraftingDone());
             craftingTasks.add(new GoToBank());
             craftingTasks.add(new BeerGlass());
             craftingTasks.add(new EmptyOilLamp());

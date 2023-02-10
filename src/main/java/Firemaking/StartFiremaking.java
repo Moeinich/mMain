@@ -12,6 +12,7 @@ public class StartFiremaking {
     public void Firemaking() {
         mMain.RunningSkill = "Firemaking";
         if (firemakingTasks.isEmpty()) {
+            firemakingTasks.add(new FiremakingDone());
             firemakingTasks.add(new WithdrawTinderbox());
             firemakingTasks.add(new WithdrawLogs());
             firemakingTasks.add(new FiremakingBanking());
