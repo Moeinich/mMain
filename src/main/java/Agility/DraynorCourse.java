@@ -52,9 +52,7 @@ public class DraynorCourse extends Task {
 
     public void ShouldRunObstacle() {
         if (!Movement.running() && Movement.energyLevel() > 30) {
-            mMain.State = "Enable run..";
-            Widgets.widget(160).component(29).click();
-            Condition.wait( () -> Movement.running(), 150, 50);
+            PlayerHelper.EnableRun();
         }
 
         if (SkillData.DraynorStart.contains(Players.local())) {

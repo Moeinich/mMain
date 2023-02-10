@@ -1,8 +1,6 @@
 package script;
 
-import org.powbot.api.Condition;
 import org.powbot.api.Random;
-import org.powbot.api.rt4.Camera;
 import org.powbot.api.rt4.walking.model.Skill;
 import org.powbot.api.script.*;
 import org.powbot.api.script.paint.Paint;
@@ -23,7 +21,7 @@ import Helpers.InteractionsHelper;
 @ScriptManifest(
         name = "mMain",
         description = "Progressively levels different skills",
-        version = "0.0.7"
+        version = "0.0.8"
 )
 @ScriptConfiguration.List(
         {
@@ -59,10 +57,11 @@ public class mMain extends AbstractScript {
         State = "Starting...";
         InteractionsHelper.cameraCheck();
 
+        Paint p;
         if (skill.equals("Progressive")) {
-            Paint p = new PaintBuilder()
-                    .addString("Skill: " , () -> skill)
-                    .addString("Running: " , () -> RunningSkill)
+            p = new PaintBuilder()
+                    .addString("Skill: ", () -> skill)
+                    .addString("Running: ", () -> RunningSkill)
                     .addString("Skill Time left: ", () -> Stopwatch.timeLeft() / 1000 / 60 + " min")
                     .addString("State: ", () -> State)
                     .trackSkill(Skill.Mining)
@@ -78,12 +77,10 @@ public class mMain extends AbstractScript {
                     .trackSkill(Skill.Agility)
                     .x(40)
                     .y(300)
-                    .withoutDiscordWebhook()
                     .build();
-            addPaint(p);
         } else {
-            Paint p = new PaintBuilder()
-                    .addString("Skill: " , () -> skill)
+            p = new PaintBuilder()
+                    .addString("Skill: ", () -> skill)
                     .addString("State: ", () -> State)
                     .trackSkill(Skill.Mining)
                     .trackSkill(Skill.Fishing)
@@ -98,10 +95,9 @@ public class mMain extends AbstractScript {
                     .trackSkill(Skill.Agility)
                     .x(40)
                     .y(300)
-                    .withoutDiscordWebhook()
                     .build();
-            addPaint(p);
         }
+        addPaint(p);
     }
 
     public static class Stopwatch {
@@ -155,7 +151,8 @@ public class mMain extends AbstractScript {
                         startCrafting::Crafting,
                         startFletching::Fletching,
                         startAgility::Agility,
-                        startHerblore::Herblore
+                        startHerblore::Herblore,
+                        startCooking::Cooking
                         // Add future skills to this tasklist!
                 );
                 if (taskRunning.compareAndSet(false, true)) {

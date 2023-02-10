@@ -14,7 +14,7 @@ public class SkillData {
     public static Tile miningCopperLocation = new Tile(3287,3366);
     public static Area miningCopperArea = new Area(new Tile(3286, 3367, 0), new Tile(3288, 3365, 0));
     public static Tile miningIronLocation = new Tile(1475,3779);
-    public static Area miningIronArea = new Area(new Tile(1476, 3778, 0), new Tile(1473, 3780, 0));
+    public static Area miningIronArea = new Area(new Tile(1476, 3777, 0), new Tile(1473, 3781, 0));
 
     public static int[] pickaxes = {ItemList.BRONZE_PICKAXE_1265, ItemList.BLACK_PICKAXE_12297, ItemList.MITHRIL_PICKAXE_1273, ItemList.ADAMANT_PICKAXE_1271, ItemList.RUNE_PICKAXE_1275};
 
@@ -98,15 +98,18 @@ public class SkillData {
         if (Skills.realLevel(Constants.SKILLS_WOODCUTTING) >= 15 && (Skills.realLevel(Constants.SKILLS_WOODCUTTING) < 30)) {
             return oakTreeLocation.getRandomTile();
         }
-        if (Skills.realLevel(Constants.SKILLS_WOODCUTTING) >= 30 && Skills.realLevel(Constants.SKILLS_WOODCUTTING) <= 41) {
+        if (Skills.realLevel(Constants.SKILLS_WOODCUTTING) >= 30 && Skills.realLevel(Constants.SKILLS_WOODCUTTING) < 35) {
             return willowTreeLocation.getRandomTile();
         }
-        if (Skills.realLevel(Constants.SKILLS_WOODCUTTING) >= 42) {
+        if (Skills.realLevel(Constants.SKILLS_WOODCUTTING) >= 35) {
             return teakLocation.getRandomTile();
         }
         return null;
     }
     public static int withdrawAxe() {
+        if (Bank.stream().id(ItemList.STEEL_AXE_1353, ItemList.MITHRIL_AXE_1355, ItemList.ADAMANT_AXE_1357, ItemList.RUNE_AXE_1359).isEmpty()) {
+            return ItemList.BRONZE_AXE_1351;
+        }
         if (Skills.realLevel(Constants.SKILLS_WOODCUTTING) >41) {
             return ItemList.RUNE_AXE_1359;
         }
@@ -122,14 +125,8 @@ public class SkillData {
         if (Skills.realLevel(Constants.SKILLS_WOODCUTTING) < 6) {
             return ItemList.BRONZE_AXE_1351;
         }
-        if (Bank.stream().id(ItemList.STEEL_AXE_1353, ItemList.MITHRIL_AXE_1355, ItemList.ADAMANT_AXE_1357, ItemList.RUNE_AXE_1359).count() == 0) {
-            return ItemList.BRONZE_AXE_1351;
-        }
         return 0;
     }
-
-
-    public static final int[] wcAxes = {ItemList.BRONZE_AXE_1351, ItemList.STEEL_AXE_1353, ItemList.MITHRIL_AXE_1355, ItemList.ADAMANT_AXE_1357, ItemList.RUNE_AXE_1359};
 
     //Cooking
     public static final Area cookingAreaEdgeville = new Area (

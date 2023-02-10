@@ -10,6 +10,7 @@ import org.powbot.api.rt4.Movement;
 import org.powbot.api.rt4.Players;
 import org.powbot.api.rt4.Skills;
 import org.powbot.api.rt4.walking.model.Skill;
+import org.powbot.dax.api.DaxWalker;
 
 import Helpers.InteractionsHelper;
 import Helpers.ItemList;
@@ -29,14 +30,13 @@ public class GetFishingEquipment extends Task {
     }
     @Override
     public void execute() {
-        Locatable nearestBank = Bank.nearest();
         mMain.State = "Go to bank";
-        if (nearestBank.tile().distanceTo(Players.local()) < 4 && !Bank.inViewport()) {
-            Movement.moveToBank();
+        if (Bank.nearest().tile().distanceTo(Players.local()) < 4) {
+            DaxWalker.walkToBank();
         }
         mMain.State = "Get equipment";
         InteractionsHelper interactionsHelper = new InteractionsHelper();
-        if (!Bank.opened()) {
+        if (Bank.inViewport() && !Bank.opened()) {
             if (Skills.realLevel(Constants.SKILLS_FISHING) <= 19) {
                 interactionsHelper.DepositAndWithdraw(ItemList.SMALL_FISHING_NET_303, 1);
                 Bank.close();

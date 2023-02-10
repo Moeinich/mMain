@@ -53,9 +53,7 @@ public class VarrockCourse extends Task {
     public void ShouldRunObstacle() {
         mMain.State = "In obstacle loop";
         if (!Movement.running() && Movement.energyLevel() > 30) {
-            mMain.State = "Enable run..";
-            Widgets.widget(160).component(29).click();
-            Condition.wait( () -> Movement.running(), 150, 50);
+            PlayerHelper.EnableRun();
         }
 
         if (SkillData.VarrockStart.contains(Players.local())) {
@@ -64,7 +62,7 @@ public class VarrockCourse extends Task {
                 mMain.State = "Handle obstacle 1";
                 CurrentXP = Skills.experience(Skill.Agility);
                 if (VarrockObstacle1.interact("Climb", "Rough wall")) {
-                    Condition.wait( () -> (CurrentXP != Skills.experience(Skill.Agility) || SkillData.VarrockFailArea.contains(Players.local())), 400, 50);
+                    Condition.wait( () -> (CurrentXP != Skills.experience(Skill.Agility)), 400, 50);
                 }
             }
         }

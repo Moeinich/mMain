@@ -9,13 +9,14 @@ import Helpers.Task;
 import script.mMain;
 
 public class DropLogs extends Task {
-    public static final String[] badItems = {"Logs", "Oak logs", "Willow logs", "Teak logs"};
     @Override
     public boolean activate() {
         return Inventory.isFull();
     }
     @Override
-    public void execute() {mMain.State = "Dropping..";
+    public void execute() {
+        mMain.State = "Dropping..";
+        String[] badItems = {"Logs", "Oak logs", "Willow logs", "Teak logs"};
         List<Item> itemsToDrop = Inventory.stream().name(badItems).list();
         Inventory.drop(itemsToDrop);
     }

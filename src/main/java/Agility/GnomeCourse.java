@@ -11,6 +11,7 @@ import org.powbot.api.rt4.Skills;
 import org.powbot.api.rt4.Widgets;
 import org.powbot.api.rt4.walking.model.Skill;
 
+import Helpers.PlayerHelper;
 import Helpers.SkillData;
 import Helpers.Task;
 import script.mMain;
@@ -25,11 +26,8 @@ public class GnomeCourse extends Task {
     @Override
     public void execute() {
         if (!Movement.running() && Movement.energyLevel() > 30) {
-            mMain.State = "Enable run..";
-            Widgets.widget(160).component(29).click();
-            Condition.wait( () -> Movement.running(), 150, 50);
-        }
-        ShouldRunObstacle();
+            PlayerHelper.EnableRun();
+        } else ShouldRunObstacle();
         }
     public void ShouldRunObstacle() {
         if (SkillData.GnomeObstacle1Area.contains(Players.local())) {

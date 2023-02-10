@@ -16,6 +16,7 @@ import org.powbot.api.rt4.World;
 
 import java.util.List;
 
+import Helpers.PlayerHelper;
 import Helpers.Task;
 import Helpers.SkillData;
 import script.mMain;
@@ -56,7 +57,7 @@ public class TeaStall extends Task {
             }
             if (!Players.local().tile().equals(SkillData.movementThieving()) && !(SkillData.movementThieving().tile().distanceTo(Players.local()) < 3)) { // Need to move to our thieving spot
                 mMain.State = "Walking to Thieving spot";
-                Movement.walkTo(SkillData.movementThieving());
+                PlayerHelper.WalkToTile(SkillData.movementThieving());
                 Condition.wait(() -> SkillData.movementThieving().tile().distanceTo(Players.local()) < 3, 150, 20);
                 if (SkillData.movementThieving().tile().distanceTo(Players.local()) < 3) {
                     Movement.step(SkillData.movementThieving());

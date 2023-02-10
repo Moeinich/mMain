@@ -5,6 +5,7 @@ import org.powbot.api.rt4.Movement;
 import org.powbot.api.rt4.Players;
 import org.powbot.api.rt4.Skills;
 
+import Helpers.PlayerHelper;
 import Helpers.SkillData;
 import Helpers.Task;
 import script.mMain;
@@ -46,6 +47,6 @@ public class WalkToAgilityObstacles extends Task {
             mMain.taskRunning.set(false);
         }
         mMain.State = "Going to Agility course";
-        Movement.moveTo(SkillData.movementAgility());
+        PlayerHelper.WalkToTile(SkillData.movementAgility());
     }
 }

@@ -5,6 +5,7 @@ import org.powbot.api.rt4.Players;
 import org.powbot.api.rt4.Inventory;
 
 import Helpers.ItemList;
+import Helpers.PlayerHelper;
 import Helpers.Task;
 import Helpers.SkillData;
 import script.mMain;
@@ -21,6 +22,6 @@ public class GoFiremaking extends Task {
     @Override
     public void execute() {
         mMain.State = "Go to FM spot";
-        Movement.builder(SkillData.moveToFiremakingSpot()).setRunMin(45).setRunMax(75).move();
+        PlayerHelper.WalkToTile(SkillData.moveToFiremakingSpot());
     }
 }

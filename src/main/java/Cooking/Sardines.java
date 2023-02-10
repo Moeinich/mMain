@@ -12,6 +12,7 @@ import org.powbot.api.rt4.Skills;
 
 import Helpers.InteractionsHelper;
 import Helpers.ItemList;
+import Helpers.PlayerHelper;
 import Helpers.SkillData;
 import Helpers.Task;
 import script.mMain;
@@ -36,12 +37,12 @@ public class Sardines extends Task {
         }
     }
     private void MoveToEdgeville() {
-        Movement.moveTo(SkillData.cookingAreaEdgeville.getRandomTile());
+        PlayerHelper.WalkToTile(SkillData.cookingAreaEdgeville.getRandomTile());
     }
     private void ShouldBank() {
         mMain.State = "Get raw fish";
         if (!SkillData.edgevilleBank.contains(Players.local())) {
-            Movement.moveTo(SkillData.edgevilleBank.getRandomTile());
+            PlayerHelper.WalkToTile(SkillData.edgevilleBank.getRandomTile());
         }
         if (SkillData.edgevilleBank.contains(Players.local()) && !Bank.opened() && Bank.inViewport()) {
             Bank.open();
@@ -52,7 +53,7 @@ public class Sardines extends Task {
     private void ShouldCook() {
         mMain.State = "Do cooking";
         if (!SkillData.StoveAreaEdgeville.contains(Players.local())) {
-            Movement.moveTo(SkillData.StoveAreaEdgeville.getRandomTile());
+            PlayerHelper.WalkToTile(SkillData.StoveAreaEdgeville.getRandomTile());
         }
         if (SkillData.StoveAreaEdgeville.contains(Players.local())) {
             GameObject cookingStove = Objects.stream().id(12269).first();

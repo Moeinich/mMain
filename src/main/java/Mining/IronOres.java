@@ -9,10 +9,8 @@ import org.powbot.api.rt4.Objects;
 import org.powbot.api.rt4.Players;
 import org.powbot.api.rt4.Skills;
 import org.powbot.api.rt4.World;
-import org.powbot.api.rt4.walking.model.Skill;
-import org.powbot.dax.api.DaxWalker;
-import org.powbot.dax.teleports.Teleport;
 
+import Helpers.PlayerHelper;
 import Helpers.SkillData;
 import Helpers.Task;
 import script.mMain;
@@ -27,10 +25,9 @@ public class IronOres extends Task {
         if (!SkillData.miningIronLocation.equals(Players.local().tile())) {
             mMain.State = "Go to iron area";
             if (SkillData.movementMining().distanceTo(Players.local()) < 3) {
-                Movement.step(SkillData.movementMining());
+                Movement.step(SkillData.miningIronLocation);
             }
-            DaxWalker.blacklistTeleports(Teleport.LUMBRIDGE_HOME_TELEPORT);
-            DaxWalker.walkTo(SkillData.movementMining());
+            PlayerHelper.WalkToTile(SkillData.movementMining());
         }
         if (SkillData.miningIronLocation.equals(Players.local().tile())) {
             if (Players.stream().within(SkillData.miningIronArea).count() != 1) {

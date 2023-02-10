@@ -14,7 +14,7 @@ import script.mMain;
 
 public class treeTeak extends Task {
     public boolean activate() {
-        return Skills.realLevel(Constants.SKILLS_WOODCUTTING) >= 42;
+        return Skills.realLevel(Constants.SKILLS_WOODCUTTING) >= 35;
     }
 
     @Override

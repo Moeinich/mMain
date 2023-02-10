@@ -9,8 +9,8 @@ import org.powbot.api.rt4.Objects;
 import org.powbot.api.rt4.Players;
 import org.powbot.api.rt4.Skills;
 import org.powbot.api.rt4.World;
-import org.powbot.dax.api.DaxWalker;
 
+import Helpers.PlayerHelper;
 import Helpers.SkillData;
 import Helpers.Task;
 import script.mMain;
@@ -26,9 +26,9 @@ public class CopperOres extends Task {
         if (!SkillData.miningCopperLocation.equals(Players.local().tile())) {
             mMain.State = "Go to copper area";
             if (SkillData.movementMining().distanceTo(Players.local()) < 3) {
-                Movement.step(SkillData.movementMining());
+                Movement.step(SkillData.miningCopperLocation);
             }
-            DaxWalker.walkTo(SkillData.movementMining());
+            PlayerHelper.WalkToTile(SkillData.movementMining());
         }
         if (SkillData.miningCopperLocation.equals(Players.local().tile())) {
             if (Players.stream().within(SkillData.miningCopperArea).count() != 1) {

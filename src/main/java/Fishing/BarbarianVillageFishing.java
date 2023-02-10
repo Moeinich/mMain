@@ -8,6 +8,7 @@ import org.powbot.api.rt4.Npcs;
 import org.powbot.api.rt4.Players;
 import org.powbot.api.rt4.Skills;
 
+import Helpers.PlayerHelper;
 import Helpers.SkillData;
 import Helpers.Task;
 import script.mMain;
@@ -21,7 +22,7 @@ public class BarbarianVillageFishing extends Task {
     public void execute() {
         if (!SkillData.BarbarianVillageFishingArea.contains(Players.local())) {
             mMain.State = "Go to fishing area";
-            Movement.builder(SkillData.movementFishing()).setRunMin(45).setRunMax(75).move();
+            PlayerHelper.WalkToTile(SkillData.movementFishing());
         }
 
         if (SkillData.BarbarianVillageFishingArea.contains(Players.local())) {

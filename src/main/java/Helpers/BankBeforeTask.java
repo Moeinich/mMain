@@ -16,10 +16,9 @@ public class BankBeforeTask extends Task {
             return true;
         } else return false;
     }
-
     @Override
     public void execute() {
-        if (Game.tab(Game.Tab.INVENTORY) && Inventory.isEmpty()) {
+        if (Inventory.isEmpty() && Game.tab(Game.Tab.INVENTORY)) {
             mMain.State = "Inventory empty, moving on.. ";
             if (Bank.open()) {
                 if (Bank.opened()) {
@@ -31,7 +30,7 @@ public class BankBeforeTask extends Task {
 
         if (Bank.nearest().tile().distanceTo(Players.local()) > 5 && Inventory.isNotEmpty()) {
         mMain.State = "Bank before task";
-        DaxWalker.blacklistTeleports(Teleport.SOUL_WARS_MINIGAME);
+        DaxWalker.blacklistTeleports(Teleport.CASTLE_WARS_MINIGAME, Teleport.SOUL_WARS_MINIGAME, Teleport.CLAN_WARS_MINIGAME);
         DaxWalker.walkToBank();
         }
         if (Bank.nearest().tile().distanceTo(Players.local()) <= 5) {

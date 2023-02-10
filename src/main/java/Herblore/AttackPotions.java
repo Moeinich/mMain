@@ -17,19 +17,6 @@ import Helpers.Task;
 import script.mMain;
 
 public class AttackPotions extends Task {
-    private enum DRUIDIC_RITUAL {
-        DRUIDIC_RITUAL(80); //completed er = 4!
-        int var;
-        DRUIDIC_RITUAL(int var){
-            this.var = var;
-        }
-        public int getValue(){
-            return (int) (Varpbits.value(var) * .1);
-        }
-        public static boolean checkedCompletion = false;
-        public static int DruidicRitualValue = 0;
-    }
-
     int CombineWithItemID = ItemList.GUAM_POTION_UNF_91;
     int ToolID = ItemList.EYE_OF_NEWT_221;
     int WidgetID = 270;
@@ -40,25 +27,16 @@ public class AttackPotions extends Task {
     }
     @Override
     public void execute() {
-        //We need to check if Druidic ritual is completed
-        if (!DRUIDIC_RITUAL.checkedCompletion) {
-            mMain.State = "Checking quest completion";
-            DRUIDIC_RITUAL.DruidicRitualValue = DRUIDIC_RITUAL.DRUIDIC_RITUAL.getValue();
-            DRUIDIC_RITUAL.checkedCompletion = true;
-        }
-        if (DRUIDIC_RITUAL.DruidicRitualValue != 4) {
-            mMain.taskRunning.set(false);
-        }
         if (Skills.realLevel(Constants.SKILLS_HERBLORE) < 3) {
-            mMain.State = "Druidic ritual not started";
+            mMain.State = "Druidic ritual not done";
             mMain.taskRunning.set(false);
         }
 
-        if (Game.tab(Game.Tab.INVENTORY) && (Inventory.stream().id(ToolID).isEmpty() || Inventory.stream().id(CombineWithItemID).isEmpty())) {
+        if (Skills.realLevel(Constants.SKILLS_HERBLORE) >= 3 && Game.tab(Game.Tab.INVENTORY) && (Inventory.stream().id(ToolID).isEmpty() || Inventory.stream().id(CombineWithItemID).isEmpty())) {
             mMain.State = "Banking loop";
             bank();
         }
-        if (Game.tab(Game.Tab.INVENTORY) && !Bank.opened() && Inventory.stream().id(CombineWithItemID, ToolID).isNotEmpty()) {
+        if (Skills.realLevel(Constants.SKILLS_HERBLORE) >= 3 && Game.tab(Game.Tab.INVENTORY) && !Bank.opened() && Inventory.stream().id(CombineWithItemID, ToolID).isNotEmpty()) {
             mMain.State = "craft loop";
             craft();
         }
