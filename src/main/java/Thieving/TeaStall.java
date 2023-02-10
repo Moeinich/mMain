@@ -51,7 +51,6 @@ public class TeaStall extends Task {
             dropItems();
         }
         else if (shouldThieve()) {
-            mMain.State = "Entering shouldthieve()"; // debug
             if (!Game.tab(Game.Tab.INVENTORY)) {
                 Condition.wait(() -> Game.tab(Game.Tab.INVENTORY), 250, 10);
             }

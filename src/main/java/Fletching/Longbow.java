@@ -26,11 +26,12 @@ public class Longbow extends Task {
 
     @Override
     public void execute() {
+        mMain.State ="LB LOOP!";
         if (Game.tab(Game.Tab.INVENTORY) && (Inventory.stream().id(ToolID).isEmpty() || Inventory.stream().id(CombineWithItemID).isEmpty())) {
             mMain.State = "Banking loop";
             bank();
         }
-        if (Game.tab(Game.Tab.INVENTORY) && !Bank.opened() && Inventory.stream().id(CombineWithItemID, ToolID).isNotEmpty()) {
+        if (Game.tab(Game.Tab.INVENTORY) && !Bank.opened() && Inventory.stream().id(CombineWithItemID).isNotEmpty()) {
             mMain.State = "craft loop";
             fletch();
         }
@@ -47,7 +48,7 @@ public class Longbow extends Task {
     private void checkTool() {
         InteractionsHelper interactionsHelper = new InteractionsHelper();
         mMain.State = "Checking tool..";
-        if (Inventory.stream().id(ToolID).count() == 0) {
+        if (Inventory.stream().id(ToolID).isEmpty()) {
             interactionsHelper.DepositAndWithdraw(ToolID, 1);
         }
 
@@ -55,7 +56,12 @@ public class Longbow extends Task {
     private void withdrawItems() {
         InteractionsHelper interactionsHelper = new InteractionsHelper();
         mMain.State = "Withdraw items";
-        if (Bank.stream().id(CombineWithItemID).isNotEmpty() && Inventory.stream().id(ToolID).isNotEmpty()) {
+        if (!Bank.opened()) {
+            Bank.open();
+            Condition.wait( () -> Bank.opened(), 500, 50);
+        }
+        if (Inventory.stream().id(ToolID).isNotEmpty()) {
+            Bank.depositAllExcept(ToolID);
             interactionsHelper.WithdrawItem(CombineWithItemID, 27);
             Bank.close();
             Condition.wait( () -> !Bank.opened(), 500, 50);

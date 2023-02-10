@@ -25,14 +25,15 @@ public class InteractionsHelper {
             Bank.close();
             mMain.taskRunning.set(false); //Skip task on progressive
         } else {
-            Bank.withdraw(ItemName, Amount);
+            Bank.withdrawModeQuantity();
+            Bank.withdrawAmount(ItemName, Amount);
         }
     }
     public void DepositAndWithdraw(int item, int amount) {
         if (!Bank.opened() && Bank.inViewport()) {
             Bank.open();
         }
-        if (Bank.stream().id(item).first().stackSize() < 1) {
+        if (Bank.stream().id(item).isEmpty()) {
             mMain.State = "We ran out of " + item;
             SkillData.SetSkillDone();
             Bank.close();
@@ -48,7 +49,7 @@ public class InteractionsHelper {
         int timer = 0;
         int initialCount = (int) Inventory.stream().id(CombineWithItemID).count();
         while (!ScriptManager.INSTANCE.isStopping() && Inventory.stream().id(CombineWithItemID).isNotEmpty()) {
-            mMain.State = "Combining.. " + RequiredItemID + " " + CombineWithItemID;
+            mMain.State = "Combining.. ";
             int currentCount = (int) Inventory.stream().id(CombineWithItemID).count();
             if (currentCount >= initialCount) {
                 timer += 1;
@@ -121,14 +122,9 @@ public class InteractionsHelper {
     }
 
     public static void cameraCheck() {
-        Game.tab(Game.Tab.SETTINGS);
-        if (Camera.getZoom() < 3) {
+        if (Game.tab(Game.Tab.SETTINGS) && Camera.getZoom() > 4) {
             Camera.moveZoomSlider(Camera.ZOOM_MAX);
-            Condition.wait( () -> Camera.getZoom() > 3, 250, 50);
-        }
-        if (Camera.pitch() < 90) {
-            Camera.pitch(99);
-            Condition.wait( () -> Camera.pitch(99), 250, 50);
+            Condition.wait( () -> Camera.getZoom() < 3, 250, 50);
         }
     }
 }

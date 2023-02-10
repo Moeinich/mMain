@@ -4,10 +4,12 @@ package Mining;
 import org.powbot.api.Condition;
 import org.powbot.api.Locatable;
 import org.powbot.api.rt4.Bank;
+import org.powbot.api.rt4.Constants;
 import org.powbot.api.rt4.Game;
 import org.powbot.api.rt4.Inventory;
 import org.powbot.api.rt4.Movement;
 import org.powbot.api.rt4.Players;
+import org.powbot.api.rt4.Skills;
 import org.powbot.dax.api.DaxWalker;
 
 import Helpers.InteractionsHelper;
@@ -22,9 +24,13 @@ return Game.tab(Game.Tab.INVENTORY) && Inventory.stream().id(SkillData.pickaxes)
 
     @Override
     public void execute() {
-        Locatable nearestBank = Bank.nearest();
+        if (Skills.realLevel(Constants.SKILLS_MINING) >= 70) {
+            mMain.State = "Mining done!";
+            SkillData.SetSkillDone();
+            mMain.taskRunning.set(false);
+        }
 
-        if (nearestBank.tile().distanceTo(Players.local()) > 5) {
+        if (Bank.nearest().tile().distanceTo(Players.local()) > 5) {
             mMain.State = "Moving to bank";
             DaxWalker.walkToBank();
         }

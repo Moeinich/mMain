@@ -10,7 +10,7 @@ import script.mMain;
 
 public class DropFish extends Task {
     public static final String[] badItems = {
-            "Raw shrimp",
+            "Raw shrimps",
             "Raw anchovies",
             "Raw herring",
             "Raw trout",

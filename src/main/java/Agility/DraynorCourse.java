@@ -61,7 +61,7 @@ public class DraynorCourse extends Task {
                 mMain.State = "Handle obstacle 1";
                 CurrentXP = Skills.experience(Skill.Agility);
                 if (DraynorObstacle1.interact("Climb", "Rough wall")) {
-                    Condition.wait( () -> (CurrentXP != Skills.experience(Skill.Agility) || SkillData.VarrockFailArea.contains(Players.local())), 800, 50);
+                    Condition.wait( () -> (CurrentXP != Skills.experience(Skill.Agility)), 800, 50);
                 }
             }
         }
@@ -77,7 +77,7 @@ public class DraynorCourse extends Task {
                 mMain.State = "Handle obstacle 2";
                 CurrentXP = Skills.experience(Skill.Agility);
                 if (DraynorObstacle2.interact("Cross", "Tightrope")) {
-                    Condition.wait( () -> (CurrentXP != Skills.experience(Skill.Agility) || SkillData.VarrockFailArea.contains(Players.local())), 800, 50);
+                    Condition.wait( () -> (CurrentXP != Skills.experience(Skill.Agility) || SkillData.DraynorFloorArea.contains(Players.local())), 800, 50);
                 }
             }
         }
@@ -92,7 +92,7 @@ public class DraynorCourse extends Task {
                 mMain.State = "Handle obstacle 3";
                 CurrentXP = Skills.experience(Skill.Agility);
                 if (DraynorObstacle3.interact("Cross", "Tightrope")) {
-                    Condition.wait( () -> (CurrentXP != Skills.experience(Skill.Agility) || SkillData.VarrockFailArea.contains(Players.local())), 800, 50);
+                    Condition.wait( () -> (CurrentXP != Skills.experience(Skill.Agility) || SkillData.DraynorFloorArea.contains(Players.local())), 800, 50);
                 }
             }
         }
@@ -107,7 +107,7 @@ public class DraynorCourse extends Task {
                 mMain.State = "Handle obstacle 4";
                 CurrentXP = Skills.experience(Skill.Agility);
                 if (DraynorObstacle4.interact("Balance", "Narrow wall")) {
-                    Condition.wait( () -> (CurrentXP != Skills.experience(Skill.Agility) || SkillData.VarrockFailArea.contains(Players.local())), 800, 50);
+                    Condition.wait( () -> (CurrentXP != Skills.experience(Skill.Agility) || SkillData.DraynorFloorArea.contains(Players.local())), 800, 50);
                 }
             }
         }
@@ -118,7 +118,7 @@ public class DraynorCourse extends Task {
                 mMain.State = "Handle obstacle 5";
                 CurrentXP = Skills.experience(Skill.Agility);
                 if (DraynorObstacle5.interact("Jump-up", "Wall")) {
-                    Condition.wait( () -> (CurrentXP != Skills.experience(Skill.Agility) || SkillData.VarrockFailArea.contains(Players.local())), 800, 50);
+                    Condition.wait( () -> (CurrentXP != Skills.experience(Skill.Agility) || SkillData.DraynorFloorArea.contains(Players.local())), 800, 50);
                 }
             }
         }
@@ -129,7 +129,7 @@ public class DraynorCourse extends Task {
                 mMain.State = "Handle obstacle 6";
                 CurrentXP = Skills.experience(Skill.Agility);
                 if (DraynorObstacle6.interact("Jump", "Gap")) {
-                    Condition.wait( () -> (CurrentXP != Skills.experience(Skill.Agility) || SkillData.VarrockFailArea.contains(Players.local())), 800, 50);
+                    Condition.wait( () -> (CurrentXP != Skills.experience(Skill.Agility) || SkillData.DraynorFloorArea.contains(Players.local())), 800, 50);
                 }
             }
         }
@@ -144,7 +144,7 @@ public class DraynorCourse extends Task {
                 mMain.State = "Handle obstacle 7";
                 CurrentXP = Skills.experience(Skill.Agility);
                 if (DraynorObstacle7.interact("Climb-down", "Crate")) {
-                    Condition.wait( () -> (CurrentXP != Skills.experience(Skill.Agility) || SkillData.VarrockFailArea.contains(Players.local())), 800, 50);
+                    Condition.wait( () -> (CurrentXP != Skills.experience(Skill.Agility) || SkillData.DraynorFloorArea.contains(Players.local())), 800, 50);
                 }
             }
         }

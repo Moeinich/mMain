@@ -1,7 +1,9 @@
 package Firemaking;
 
 import org.powbot.api.rt4.Bank;
+import org.powbot.api.rt4.Constants;
 import org.powbot.api.rt4.Inventory;
+import org.powbot.api.rt4.Skills;
 
 import Helpers.InteractionsHelper;
 import Helpers.ItemList;

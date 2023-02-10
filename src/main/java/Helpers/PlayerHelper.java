@@ -26,11 +26,11 @@ public class PlayerHelper {
         Condition.wait(() -> Players.local().animation() == -1, 250, 50);
     }
     public void BankForFood(int FoodName, int Amount) {
-        Locatable nearestBank = Bank.nearest();
-        if (nearestBank.tile().distanceTo(Players.local()) > 5) {
+        mMain.State = "Bank for food";
+        if (Bank.nearest().tile().distanceTo(Players.local()) > 5) {
             Movement.moveToBank();
         }
-        if (nearestBank.tile().distanceTo(Players.local()) <= 5) {
+        if (Bank.nearest().tile().distanceTo(Players.local()) <= 5) {
             if (!Bank.opened()) {
                 Bank.open();
                 Condition.wait( () -> Bank.opened(), 200, 50);
@@ -52,12 +52,8 @@ public class PlayerHelper {
         }
     }
     public static void WalkToTile(Tile place) {
-        DaxWalker.blacklistTeleports(Teleport.CASTLE_WARS_MINIGAME, Teleport.SOUL_WARS_MINIGAME, Teleport.CLAN_WARS_MINIGAME);
+        DaxWalker.blacklistTeleports(Teleport.CASTLE_WARS_MINIGAME, Teleport.SOUL_WARS_MINIGAME, Teleport.CLAN_WARS_MINIGAME, Teleport.LAST_MAN_STANDING_MINIGAME);
         DaxWalker.walkTo(place);
-    }
-    public static void WalkToArea(Area place) {
-        DaxWalker.blacklistTeleports(Teleport.CASTLE_WARS_MINIGAME, Teleport.SOUL_WARS_MINIGAME, Teleport.CLAN_WARS_MINIGAME);
-        DaxWalker.walkTo(place.getRandomTile());
     }
     public static void EnableRun() {
             mMain.State = "Enable run..";

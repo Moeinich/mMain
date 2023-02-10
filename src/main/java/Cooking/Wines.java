@@ -46,7 +46,7 @@ public class Wines extends Task {
 
     private void checkTool() {
         InteractionsHelper interactionsHelper = new InteractionsHelper();
-        mMain.State = "Checking tool..";
+        mMain.State = "Get jugs";
         if (Inventory.stream().id(ToolID).isEmpty()) {
             interactionsHelper.DepositAndWithdraw(ToolID, 14);
         }
@@ -56,7 +56,9 @@ public class Wines extends Task {
         InteractionsHelper interactionsHelper = new InteractionsHelper();
         mMain.State = "Withdraw items";
         if (Bank.stream().id(CombineWithItemID).isNotEmpty()) {
-            interactionsHelper.WithdrawItem(CombineWithItemID, 27);
+            interactionsHelper.WithdrawItem(CombineWithItemID, 14);
+            Bank.close();
+            Condition.wait( () -> !Bank.opened(), 500, 50);
         }
     }
     private void craft() {

@@ -30,32 +30,49 @@ public class MapleLongbow extends Task {
 
     @Override
     public void execute() {
-        if (Game.tab(Game.Tab.INVENTORY) && (Inventory.stream().id(ToolID).isEmpty() || Inventory.stream().id(CombineWithItemID).isEmpty())) {
-            mMain.State = "Banking loop";
-            bank();
-        }
-        if (Game.tab(Game.Tab.INVENTORY) && !Bank.opened() && Inventory.stream().id(CombineWithItemID, ToolID).isNotEmpty()) {
+        if (Game.tab(Game.Tab.INVENTORY) && !Bank.opened() && Inventory.stream().id(CombineWithItemID).isNotEmpty()) {
             mMain.State = "Fletching bows";
             fletch();
         }
-        if (Game.tab(Game.Tab.INVENTORY) && !Bank.opened() && Inventory.stream().id(BowStringID, BowID).isNotEmpty()) {
+        if (Game.tab(Game.Tab.INVENTORY) && !Bank.opened() && Inventory.stream().id(BowStringID).isNotEmpty()) {
             mMain.State = "Stringing bows";
             stringing();
+        }
+
+        if (Game.tab(Game.Tab.INVENTORY) && (Inventory.stream().id(ToolID).isEmpty() || Inventory.stream().id(CombineWithItemID).isEmpty()) || Inventory.stream().id(BowID).isEmpty()) {
+            if (!Bank.opened()) {
+                Bank.open();
+            }
+            if (Bank.stream().id(CombineWithItemID).isNotEmpty()) {
+                mMain.State = "Banking loop";
+                BankForFletching();
+            }
+            if (Bank.stream().id(BowID).isNotEmpty() && Bank.stream().id(BowStringID).isNotEmpty()) {
+                mMain.State = "Bank Stringing";
+                BankForStringing();
+            }
         }
         if (ScriptManager.INSTANCE.isStopping()) {
             ScriptManager.INSTANCE.stop();
         }
     }
 
-    private void bank() {
+    private void BankForFletching() {
         checkTool();
         withdrawItems();
+    }
+    private void BankForStringing() {
+        InteractionsHelper interactionsHelper = new InteractionsHelper();
+        interactionsHelper.DepositAndWithdraw(BowID, 14);
+        interactionsHelper.WithdrawItem(BowStringID, 14);
+        Bank.close();
+        Condition.wait( () -> !Bank.opened(), 500, 50);
     }
 
     private void checkTool() {
         InteractionsHelper interactionsHelper = new InteractionsHelper();
         mMain.State = "Checking tool..";
-        if (Inventory.stream().id(ToolID).count() == 0) {
+        if (Inventory.stream().id(ToolID).isEmpty()) {
             interactionsHelper.DepositAndWithdraw(ToolID, 1);
         }
 
@@ -63,14 +80,13 @@ public class MapleLongbow extends Task {
     private void withdrawItems() {
         InteractionsHelper interactionsHelper = new InteractionsHelper();
         mMain.State = "Withdraw items";
-        if (Bank.stream().id(CombineWithItemID).isNotEmpty() && Inventory.stream().id(ToolID).isNotEmpty()) {
-            interactionsHelper.WithdrawItem(CombineWithItemID, 27);
-            Bank.close();
-            Condition.wait( () -> !Bank.opened(), 500, 50);
+        if (!Bank.opened()) {
+            Bank.open();
+            Condition.wait( () -> Bank.opened(), 500, 50);
         }
-        if (Bank.stream().id(BowID).isNotEmpty() && Inventory.stream().id(ToolID).isNotEmpty()) {
-            interactionsHelper.DepositAndWithdraw(BowID, 14);
-            interactionsHelper.WithdrawItem(BowStringID, 14);
+        if (Inventory.stream().id(ToolID).isNotEmpty()) {
+            Bank.depositAllExcept(ToolID);
+            interactionsHelper.WithdrawItem(CombineWithItemID, 27);
             Bank.close();
             Condition.wait( () -> !Bank.opened(), 500, 50);
         }

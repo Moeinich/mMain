@@ -2,6 +2,11 @@
 **This is a new try at doing an account builder for Pow. The goal is to have fully functional multi-skill training.**
 **You really shouldnt run this**
 
+**Things to note:**
+Let pow close level up messages. Please have these items on ur account:
+- 1600 sardines
+- 
+
 **Progressive:**
 - [X] Do a proper timer to switch between tasks
 - [ ] Make skills work with skill switching. (In progress)
@@ -19,7 +24,7 @@
 
 **Cooking:**
 - [X] Sardines 1-35
-- [ ] Wines to 70
+- [X] Wines to 70
 
 **Firemaking**
 - [X] Light fires at Grand Exchange from the logs in bank.
@@ -46,7 +51,7 @@
 - [X] 35-40 Willow shortbow (u)
 - [X] 40-50 Willow longbow (u)
 - [X] 50-55 Maple shortbow (u)
-- [X] 55-70 Maple longbow (u) + stringing
+- [X] 55-70 Maple longbow (u) + stringing (HIGHLY EXPERIMENTAL!)
 
 **Crafting**
 - [X] 1-12 Beer glass

@@ -2,9 +2,11 @@ package Woodcutting;
 
 import org.powbot.api.Condition;
 import org.powbot.api.rt4.Bank;
+import org.powbot.api.rt4.Constants;
 import org.powbot.api.rt4.Game;
 import org.powbot.api.rt4.Inventory;
 import org.powbot.api.rt4.Players;
+import org.powbot.api.rt4.Skills;
 import org.powbot.dax.api.DaxWalker;
 import org.powbot.dax.teleports.Teleport;
 
@@ -21,6 +23,12 @@ public class GetAxe extends Task {
     }
     @Override
     public void execute() {
+        if (Skills.realLevel(Constants.SKILLS_WOODCUTTING) >= 70) {
+            mMain.State = "Woodcutting done!";
+            SkillData.SetSkillDone();
+            mMain.taskRunning.set(false);
+        }
+
         if (Bank.nearest().tile().distanceTo(Players.local()) > 5) {
             mMain.State = "Get/Upgrade axe - GoToBank";
             DaxWalker.blacklistTeleports(Teleport.CASTLE_WARS_MINIGAME, Teleport.SOUL_WARS_MINIGAME, Teleport.CLAN_WARS_MINIGAME);

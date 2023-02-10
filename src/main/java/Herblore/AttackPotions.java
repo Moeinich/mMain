@@ -13,6 +13,7 @@ import org.powbot.mobile.script.ScriptManager;
 
 import Helpers.InteractionsHelper;
 import Helpers.ItemList;
+import Helpers.SkillData;
 import Helpers.Task;
 import script.mMain;
 
@@ -29,6 +30,7 @@ public class AttackPotions extends Task {
     public void execute() {
         if (Skills.realLevel(Constants.SKILLS_HERBLORE) < 3) {
             mMain.State = "Druidic ritual not done";
+            SkillData.HerbloreDone = true;
             mMain.taskRunning.set(false);
         }
 
@@ -53,7 +55,7 @@ public class AttackPotions extends Task {
     private void GetEyes() {
         InteractionsHelper interactionsHelper = new InteractionsHelper();
         mMain.State = "Grabbing eyes";
-        if (Inventory.stream().id(ToolID).count() == 0) {
+        if (Inventory.stream().id(ToolID).isEmpty()) {
             interactionsHelper.DepositAndWithdraw(ToolID, 14);
         }
 
@@ -61,7 +63,12 @@ public class AttackPotions extends Task {
     private void GetUnfinishedPotions() {
         InteractionsHelper interactionsHelper = new InteractionsHelper();
         mMain.State = "Grabbing Guam pot(unf)";
-        if (Bank.stream().id(CombineWithItemID).isNotEmpty() && Inventory.stream().id(ToolID).isNotEmpty()) {
+        if (!Bank.opened()) {
+            Bank.open();
+            Condition.wait( () -> Bank.opened(), 500, 50);
+        }
+        if (Inventory.stream().id(ToolID).isNotEmpty()) {
+            Bank.depositAllExcept(ToolID);
             interactionsHelper.WithdrawItem(CombineWithItemID, 14);
             Bank.close();
             Condition.wait( () -> !Bank.opened(), 500, 50);

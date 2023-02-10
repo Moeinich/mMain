@@ -71,8 +71,10 @@ public class FruitStall extends Task {
 
     @Override
     public void execute() {
-        if (Skills.realLevel(Constants.SKILLS_THIEVING) == 60) {
+        if (Skills.realLevel(Constants.SKILLS_THIEVING) >= 60) {
+            mMain.State = "Thieving done!";
             SkillData.SetSkillDone();
+            mMain.taskRunning.set(false);
         }
 
         //We need to check hosidius favor!

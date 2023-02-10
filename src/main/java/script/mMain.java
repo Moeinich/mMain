@@ -8,6 +8,7 @@ import org.powbot.api.script.ScriptConfiguration;
 import org.powbot.api.script.ScriptManifest;
 import org.powbot.api.script.paint.Paint;
 import org.powbot.api.script.paint.PaintBuilder;
+import org.powbot.api.script.paint.TrackSkillOption;
 import org.powbot.mobile.script.ScriptManager;
 import org.powbot.mobile.service.ScriptUploader;
 
@@ -30,9 +31,9 @@ import Helpers.SkillData;
 @ScriptConfiguration.List(
         {
                 @ScriptConfiguration(
-                        name =  "Skill",
+                        name =  "Mode",
                         description = "Which skill would you like to do?",
-                        defaultValue = "Mining",
+                        defaultValue = "Progressive",
                         allowedValues = {"Progressive", "Mining", "Fishing", "Woodcutting", "Cooking", "Firemaking", "Smithing", "Thieving", "Crafting", "Fletching", "Agility", "Herblore"},
                         optionType = OptionType.STRING
                 )
@@ -56,7 +57,7 @@ public class mMain extends AbstractScript {
 
     @Override
     public void onStart() {
-        String skill = getOption("Skill");
+        String skill = getOption("Mode");
         RunningSkill = "Determining...";
         State = "Starting...";
         InteractionsHelper.cameraCheck();
@@ -64,21 +65,21 @@ public class mMain extends AbstractScript {
         Paint p;
         if (skill.equals("Progressive")) {
             p = new PaintBuilder()
-                    .addString("Skill: ", () -> skill)
+                    .addString("Mode: ", () -> skill)
                     .addString("Running: ", () -> RunningSkill)
                     .addString("Skill Time left: ", () -> Stopwatch.timeLeft() / 1000 / 60 + " min")
                     .addString("State: ", () -> State)
-                    .trackSkill(Skill.Mining)
-                    .trackSkill(Skill.Fishing)
-                    .trackSkill(Skill.Woodcutting)
-                    .trackSkill(Skill.Cooking)
-                    .trackSkill(Skill.Firemaking)
-                    .trackSkill(Skill.Smithing)
-                    .trackSkill(Skill.Thieving)
-                    .trackSkill(Skill.Crafting)
-                    .trackSkill(Skill.Fletching)
-                    .trackSkill(Skill.Herblore)
-                    .trackSkill(Skill.Agility)
+                    .trackSkill(Skill.Mining, TrackSkillOption.LevelProgressBar)
+                    .trackSkill(Skill.Fishing, TrackSkillOption.LevelProgressBar)
+                    .trackSkill(Skill.Woodcutting, TrackSkillOption.LevelProgressBar)
+                    .trackSkill(Skill.Cooking, TrackSkillOption.LevelProgressBar)
+                    .trackSkill(Skill.Firemaking, TrackSkillOption.LevelProgressBar)
+                    .trackSkill(Skill.Smithing, TrackSkillOption.LevelProgressBar)
+                    .trackSkill(Skill.Thieving, TrackSkillOption.LevelProgressBar)
+                    .trackSkill(Skill.Crafting, TrackSkillOption.LevelProgressBar)
+                    .trackSkill(Skill.Fletching, TrackSkillOption.LevelProgressBar)
+                    .trackSkill(Skill.Herblore, TrackSkillOption.LevelProgressBar)
+                    .trackSkill(Skill.Agility, TrackSkillOption.LevelProgressBar)
                     .x(40)
                     .y(300)
                     .build();
@@ -142,7 +143,7 @@ public class mMain extends AbstractScript {
         var startAgility = new Agility.StartAgility();
         var startHerblore = new Herblore.StartHerblore();
 
-        String skill = getOption("Skill");
+        String skill = getOption("Mode");
 
         switch (skill) {
             case "Progressive":
@@ -167,7 +168,7 @@ public class mMain extends AbstractScript {
                     if (!runtime.isRunning()) {
                         if (!mMain.ShouldBank) {
                             mMain.ShouldBank = true;
-                        } else runtime.reset(Random.nextInt(5, 10 * 1000 * 60));
+                        } else runtime.reset(Random.nextInt(10, 20 * 1000 * 60));
                     }
                     final int taskIndex = ThreadLocalRandom.current().nextInt(tasks.size());
                     final CountDownLatch countdownLatch = new CountDownLatch(1);

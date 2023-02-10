@@ -5,6 +5,7 @@ import org.powbot.api.rt4.Constants;
 import org.powbot.api.rt4.Movement;
 import org.powbot.api.rt4.Npc;
 import org.powbot.api.rt4.Npcs;
+import org.powbot.api.rt4.Objects;
 import org.powbot.api.rt4.Players;
 import org.powbot.api.rt4.Skills;
 
@@ -20,7 +21,7 @@ public class AlKharidFishing extends Task {
     }
     @Override
     public void execute() {
-        if (!SkillData.AlKharidFishingSpot1.contains(Players.local()) || !SkillData.AlKharidFishingSpot2.contains(Players.local())) {
+        if (!SkillData.AlKharidFishingSpot1.contains(Players.local()) && !SkillData.AlKharidFishingSpot2.contains(Players.local())) {
             mMain.State = "Walk to fishing area";
             PlayerHelper.WalkToTile(SkillData.movementFishing());
         }
@@ -29,8 +30,9 @@ public class AlKharidFishing extends Task {
             mMain.State = "Do fishing";
             Npc AlKharidFishingSpot = Npcs.stream().name("Fishing spot").nearest().first();
             if (AlKharidFishingSpot.inViewport() && Players.local().animation() == -1) {
-                AlKharidFishingSpot.interact("Small Net", "Fishing Spot");
-                Condition.wait(() -> Players.local().animation() == -1, 150, 50);
+                if (AlKharidFishingSpot.interact("Small Net", "Fishing Spot")) {
+                    Condition.wait(() -> Players.local().animation() == -1, 2500, 50);
+                }
             }
         }
     }

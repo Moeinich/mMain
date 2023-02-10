@@ -118,10 +118,10 @@ public class SkillData {
 
     //Fishing
     public static final Area AlKharidFishingSpot1 = new Area(
-            new Tile(3264, 3150), new Tile(3270,3145)
+            new Tile(3262, 3154, 0), new Tile(3274, 3143, 0)
     );
     public static final Area AlKharidFishingSpot2 = new Area(
-            new Tile(3273, 3142), new Tile(3280,3137)
+            new Tile(3273, 3142, 0), new Tile(3282, 3135, 0)
     );
     public static final Area BarbarianVillageFishingArea = new Area(
             new Tile(3101, 3422), new Tile(3109,3436)
@@ -195,7 +195,7 @@ public class SkillData {
 
     //Cooking
     public static final Area cookingAreaEdgeville = new Area (
-            new Tile(3099, 3483, 0), new Tile(3075, 3505, 0)
+            new Tile(3098, 3484, 0), new Tile(3076, 3506, 0)
     );
     public static final Area StoveAreaEdgeville = new Area (
             new Tile(3077,3496), new Tile(3081,3491)
@@ -314,7 +314,25 @@ public class SkillData {
 
     //Draynor
     public static final Area DraynorFloorArea = new Area (
-            new Tile(3079, 3248, 0), new Tile(3107, 3283, 0)
+            new Tile(3081, 3268, 0),
+            new Tile(3079, 3262, 0),
+            new Tile(3079, 3254, 0),
+            new Tile(3079, 3248, 0),
+            new Tile(3085, 3246, 0),
+            new Tile(3088, 3246, 0),
+            new Tile(3088, 3240, 0),
+            new Tile(3096, 3240, 0),
+            new Tile(3098, 3240, 0),
+            new Tile(3098, 3247, 0),
+            new Tile(3103, 3247, 0),
+            new Tile(3106, 3249, 0),
+            new Tile(3109, 3257, 0),
+            new Tile(3111, 3265, 0),
+            new Tile(3107, 3270, 0),
+            new Tile(3107, 3278, 0),
+            new Tile(3108, 3285, 0),
+            new Tile(3094, 3286, 0),
+            new Tile(3082, 3280, 0)
     );
     public static final Area DraynorTopArea = new Area (
             new Tile(3084, 3283, 3), new Tile(3105, 3253, 3)
