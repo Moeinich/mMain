@@ -195,40 +195,74 @@ public class mMain extends AbstractScript {
                 //in case you want to do x skill only.
 
             case "Mining":
-                startMining.Mining();
+                if (SkillData.MiningDone = true) {
+                    ScriptManager.INSTANCE.stop();
+                } else startMining.Mining();
                 break;
+
             case "Combat":
-                startCombat.Combat();
+                if (SkillData.FishingDone = true) {
+                    ScriptManager.INSTANCE.stop();
+                } else startCombat.Combat();
                 break;
+
             case "Fishing":
-                startFishing.Fishing();
+                if (SkillData.FishingDone = true) {
+                    ScriptManager.INSTANCE.stop();
+                } else startFishing.Fishing();
                 break;
+
             case "Woodcutting":
-                startWoodcutting.Woodcutting();
+                if (SkillData.WoodcuttingDone = true) {
+                    ScriptManager.INSTANCE.stop();
+                } else startWoodcutting.Woodcutting();
                 break;
+
             case "Cooking":
-                startCooking.Cooking();
+                if (SkillData.CookingDone = true) {
+                    ScriptManager.INSTANCE.stop();
+                } else startCooking.Cooking();
                 break;
             case "Firemaking":
-                startFiremaking.Firemaking();
+                if (SkillData.FiremakingDone = true) {
+                    ScriptManager.INSTANCE.stop();
+                } else startFiremaking.Firemaking();
                 break;
+
             case "Smithing":
-                startSmithing.Smithing();
+                if (SkillData.SmithingDone = true) {
+                    ScriptManager.INSTANCE.stop();
+                } else startSmithing.Smithing();
                 break;
+
             case "Thieving":
-                startThieving.Thieving();
+                if (SkillData.ThievingDone = true) {
+                    ScriptManager.INSTANCE.stop();
+                } else startThieving.Thieving();
                 break;
+
             case "Crafting":
-                startCrafting.Crafting();
+                if (SkillData.CraftingDone = true) {
+                    ScriptManager.INSTANCE.stop();
+                } else startCrafting.Crafting();
                 break;
+
             case "Fletching":
-                startFletching.Fletching();
+                if (SkillData.FletchingDone = true) {
+                    ScriptManager.INSTANCE.stop();
+                } else startFletching.Fletching();
                 break;
+
             case "Agility":
-                startAgility.Agility();
+                if (SkillData.AgilityDone = true) {
+                    ScriptManager.INSTANCE.stop();
+                } else startAgility.Agility();
                 break;
+
             case "Herblore":
-                startHerblore.Herblore();
+                if (SkillData.HerbloreDone = true) {
+                    ScriptManager.INSTANCE.stop();
+                } else startHerblore.Herblore();
                 break;
         }
     }
