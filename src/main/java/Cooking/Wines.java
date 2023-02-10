@@ -1,4 +1,4 @@
-package Fletching;
+package Cooking;
 
 import org.powbot.api.Condition;
 import org.powbot.api.rt4.Bank;
@@ -13,15 +13,15 @@ import Helpers.ItemList;
 import Helpers.Task;
 import script.mMain;
 
-public class OakLongbow extends Task {
-    int CombineWithItemID = ItemList.OAK_LOGS_1521;
-    int ToolID = ItemList.KNIFE_946;
+public class Wines extends Task {
+    int CombineWithItemID = ItemList.GRAPES_1987;
+    int ToolID = ItemList.JUG_OF_WATER_1937;
     int WidgetID = 270;
-    int ComponentID = 16;
+    int ComponentID = 14;
 
     @Override
     public boolean activate() {
-        return Skills.realLevel(Constants.SKILLS_FLETCHING) >= 25 && Skills.realLevel(Constants.SKILLS_FLETCHING) <= 34;
+        return Skills.realLevel(Constants.SKILLS_COOKING) >= 35;
     }
 
     @Override
@@ -31,8 +31,8 @@ public class OakLongbow extends Task {
             bank();
         }
         if (Game.tab(Game.Tab.INVENTORY) && !Bank.opened() && Inventory.stream().id(CombineWithItemID, ToolID).isNotEmpty()) {
-            mMain.State = "Fletch loop";
-            fletch();
+            mMain.State = "craft loop";
+            craft();
         }
         if (ScriptManager.INSTANCE.isStopping()) {
             ScriptManager.INSTANCE.stop();
@@ -47,8 +47,8 @@ public class OakLongbow extends Task {
     private void checkTool() {
         InteractionsHelper interactionsHelper = new InteractionsHelper();
         mMain.State = "Checking tool..";
-        if (Inventory.stream().id(ToolID).count() == 0) {
-            interactionsHelper.DepositAndWithdraw(ToolID, 1);
+        if (Inventory.stream().id(ToolID).isEmpty()) {
+            interactionsHelper.DepositAndWithdraw(ToolID, 14);
         }
 
     }
@@ -65,7 +65,7 @@ public class OakLongbow extends Task {
             Condition.wait( () -> !Bank.opened(), 500, 20);
         }
     }
-    private void fletch() {
+    private void craft() {
         while (Inventory.stream().id(CombineWithItemID).count() >= 1) {
             InteractionsHelper interactionsHelper = new InteractionsHelper();
             interactionsHelper.CombineItems(ToolID, CombineWithItemID, WidgetID, ComponentID);

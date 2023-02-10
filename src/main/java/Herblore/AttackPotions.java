@@ -69,11 +69,6 @@ public class AttackPotions extends Task {
             Bank.close();
             Condition.wait( () -> !Bank.opened(), 500, 20);
         }
-        else {
-            mMain.State = "Out of materials, switching..";
-            Bank.close();
-            mMain.taskRunning.set(false); //Stop if we dont have materials!
-        }
     }
     private void craft() {
         while (Inventory.stream().id(CombineWithItemID).count() >= 1) {

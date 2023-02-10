@@ -14,6 +14,7 @@ public class StartCooking {
         if (cookingTasks.isEmpty()) {
             cookingTasks.add(new CookingDone());
             cookingTasks.add(new Sardines());
+            cookingTasks.add(new Wines());
         }
 
         for (Task task : cookingTasks) {
