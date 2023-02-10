@@ -165,9 +165,9 @@ public class mMain extends AbstractScript {
                 if (taskRunning.compareAndSet(false, true)) {
                     final Stopwatch runtime = new Stopwatch();
                     if (!runtime.isRunning()) {
-                        if (mMain.ShouldBank = false) {
+                        if (!mMain.ShouldBank) {
                             mMain.ShouldBank = true;
-                        } else runtime.reset(Random.nextInt(44, 120 * 1000 * 60));
+                        } else runtime.reset(Random.nextInt(5, 10 * 1000 * 60));
                     }
                     final int taskIndex = ThreadLocalRandom.current().nextInt(tasks.size());
                     final CountDownLatch countdownLatch = new CountDownLatch(1);
