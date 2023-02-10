@@ -12,6 +12,7 @@ public class StartAgility {
     public void Agility() {
         mMain.RunningSkill = "Agility";
         if (agilityTasks.isEmpty()) {
+            agilityTasks.add(new AgilityDone());
             agilityTasks.add(new WalkToAgilityObstacles());
             agilityTasks.add(new GnomeCourse());
             agilityTasks.add(new DraynorCourse());

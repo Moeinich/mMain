@@ -13,7 +13,14 @@ public class DropOres extends Task {
     public static final String[] badItems = {
             "Copper ore",
             "Tin ore",
-            "Iron ore"};
+            "Iron ore",
+            "Coal",
+            "Uncut sapphire",
+            "Uncut emerald",
+            "Uncut ruby",
+            "Uncut diamond"
+    };
+
     @Override
     public boolean activate() {
         return Inventory.isFull();

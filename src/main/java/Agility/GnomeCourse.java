@@ -8,7 +8,6 @@ import org.powbot.api.rt4.Movement;
 import org.powbot.api.rt4.Objects;
 import org.powbot.api.rt4.Players;
 import org.powbot.api.rt4.Skills;
-import org.powbot.api.rt4.Widgets;
 import org.powbot.api.rt4.walking.model.Skill;
 
 import Helpers.PlayerHelper;

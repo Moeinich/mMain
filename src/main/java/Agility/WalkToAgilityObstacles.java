@@ -14,7 +14,7 @@ public class WalkToAgilityObstacles extends Task {
     @Override
     public boolean activate() {
         //Gnome course
-        if ( Skills.realLevel(Constants.SKILLS_AGILITY) <= 9
+        if (Skills.realLevel(Constants.SKILLS_AGILITY) <= 9
                 && !SkillData.GnomeObstacleLowerArea.contains(Players.local())
                 && !SkillData.GnomeObstacleAreaMidFloor.contains(Players.local())
                 && !SkillData.GnomeObstacleAreaTopFloor.contains(Players.local()) )
@@ -30,7 +30,8 @@ public class WalkToAgilityObstacles extends Task {
             return true;
         }
         //Varrock
-        if (Skills.realLevel(Constants.SKILLS_AGILITY) >= 30 && Skills.realLevel(Constants.SKILLS_AGILITY) <= 80
+        if (!SkillData.AgilityDone
+                && Skills.realLevel(Constants.SKILLS_AGILITY) >= 30 && Skills.realLevel(Constants.SKILLS_AGILITY) <= 80
                 && !SkillData.VarrockFloorArea.contains(Players.local())
                 && !SkillData.VarrockFirstArea.contains(Players.local())
                 && !SkillData.VarrockMidArea.contains(Players.local())
@@ -45,6 +46,7 @@ public class WalkToAgilityObstacles extends Task {
     public void execute() {
         if (Skills.realLevel(Constants.SKILLS_AGILITY) >= 99) {
             mMain.taskRunning.set(false);
+            SkillData.AgilityDone = true;
         }
         mMain.State = "Going to Agility course";
         PlayerHelper.WalkToTile(SkillData.movementAgility());

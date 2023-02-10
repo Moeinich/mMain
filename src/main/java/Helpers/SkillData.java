@@ -2,12 +2,64 @@ package Helpers;
 
 import org.powbot.api.Area;
 import org.powbot.api.Tile;
-import org.powbot.api.rt4.*;
+import org.powbot.api.rt4.Bank;
+import org.powbot.api.rt4.Constants;
+import org.powbot.api.rt4.Skills;
 import org.powbot.api.rt4.walking.model.Skill;
 
 import Firemaking.GoFiremaking;
+import script.mMain;
 
 public class SkillData {
+    //Skill finished
+    public static Boolean MiningDone = false;
+    public static Boolean FishingDone = false;
+    public static Boolean WoodcuttingDone = false;
+    public static Boolean CookingDone = false;
+    public static Boolean FiremakingDone = false;
+    public static Boolean SmithingDone = false;
+    public static Boolean ThievingDone = false;
+    public static Boolean CraftingDone = false;
+    public static Boolean FletchingDone = false;
+    public static Boolean AgilityDone = false;
+    public static Boolean HerbloreDone = false;
+
+    public void runningSkill() {
+        if (mMain.RunningSkill.equals("Mining")) {
+            MiningDone = true;
+        }
+        if (mMain.RunningSkill.equals("Fishing")) {
+            FishingDone = true;
+        }
+        if (mMain.RunningSkill.equals("Woodcutting")) {
+            WoodcuttingDone = true;
+        }
+        if (mMain.RunningSkill.equals("Cooking")) {
+            CookingDone = true;
+        }
+        if (mMain.RunningSkill.equals("Firemaking")) {
+            FiremakingDone = true;
+        }
+        if (mMain.RunningSkill.equals("Smithing")) {
+            SmithingDone = true;
+        }
+        if (mMain.RunningSkill.equals("Thieving")) {
+            ThievingDone = true;
+        }
+        if (mMain.RunningSkill.equals("Crafting")) {
+            CraftingDone = true;
+        }
+        if (mMain.RunningSkill.equals("Fletching")) {
+            FletchingDone = true;
+        }
+        if (mMain.RunningSkill.equals("Agility")) {
+            AgilityDone = true;
+        }
+        if (mMain.RunningSkill.equals("Herblore")) {
+            HerbloreDone = true;
+        }
+    }
+
     public static final int[] p2p = {302, 303, 304, 305, 306, 307, 309, 310, 311, 312, 313, 314, 315, 317, 318, 319, 320, 321, 322, 323};
 
     //Mining
@@ -110,19 +162,19 @@ public class SkillData {
         if (Bank.stream().id(ItemList.STEEL_AXE_1353, ItemList.MITHRIL_AXE_1355, ItemList.ADAMANT_AXE_1357, ItemList.RUNE_AXE_1359).isEmpty()) {
             return ItemList.BRONZE_AXE_1351;
         }
-        if (Skills.realLevel(Constants.SKILLS_WOODCUTTING) >41) {
+        if (Skills.realLevel(Constants.SKILLS_WOODCUTTING) >= 41) {
             return ItemList.RUNE_AXE_1359;
         }
-        if (Skills.realLevel(Constants.SKILLS_WOODCUTTING) >= 31) {
+        if (Skills.realLevel(Constants.SKILLS_WOODCUTTING) >= 31 && Skills.realLevel(Constants.SKILLS_WOODCUTTING) <= 40) {
             return ItemList.ADAMANT_AXE_1357;
         }
-        if (Skills.realLevel(Constants.SKILLS_WOODCUTTING) >= 21) {
+        if (Skills.realLevel(Constants.SKILLS_WOODCUTTING) >= 21 && Skills.realLevel(Constants.SKILLS_WOODCUTTING) <= 30) {
             return ItemList.MITHRIL_AXE_1355;
         }
-        if (Skills.realLevel(Constants.SKILLS_WOODCUTTING) >= 6) {
+        if (Skills.realLevel(Constants.SKILLS_WOODCUTTING) >= 6 && Skills.realLevel(Constants.SKILLS_WOODCUTTING) <= 20) {
             return ItemList.STEEL_AXE_1353;
         }
-        if (Skills.realLevel(Constants.SKILLS_WOODCUTTING) < 6) {
+        if (Skills.realLevel(Constants.SKILLS_WOODCUTTING) < 6 && Skills.realLevel(Constants.SKILLS_WOODCUTTING) <= 5) {
             return ItemList.BRONZE_AXE_1351;
         }
         return 0;

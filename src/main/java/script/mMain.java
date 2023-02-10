@@ -21,7 +21,7 @@ import Helpers.InteractionsHelper;
 @ScriptManifest(
         name = "mMain",
         description = "Progressively levels different skills",
-        version = "0.0.8"
+        version = "0.0.9"
 )
 @ScriptConfiguration.List(
         {
