@@ -1,6 +1,9 @@
 package script;
 
 import org.powbot.api.Random;
+import org.powbot.api.rt4.Component;
+import org.powbot.api.rt4.Components;
+import org.powbot.api.rt4.Widgets;
 import org.powbot.api.rt4.walking.model.Skill;
 import org.powbot.api.script.AbstractScript;
 import org.powbot.api.script.OptionType;
@@ -22,11 +25,12 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 import Helpers.InteractionsHelper;
 import Helpers.SkillData;
+import MeleeCombat.StartMelee;
 
 @ScriptManifest(
         name = "mMain",
         description = "Progressively levels different skills",
-        version = "0.0.10"
+        version = "0.0.11"
 )
 @ScriptConfiguration.List(
         {
@@ -136,7 +140,7 @@ public class mMain extends AbstractScript {
         var startCooking = new Cooking.StartCooking();
         var startFiremaking = new Firemaking.StartFiremaking();
         var startSmithing = new Smithing.StartSmithing();
-        var startCombat = new Combat.StartCombat();
+        var startCombat = new StartMelee();
         var startThieving = new Thieving.StartThieving();
         var startCrafting = new Crafting.StartCrafting();
         var startFletching = new Fletching.startFletching();
@@ -168,7 +172,7 @@ public class mMain extends AbstractScript {
                     if (!runtime.isRunning()) {
                         if (!mMain.ShouldBank) {
                             mMain.ShouldBank = true;
-                        } else runtime.reset(Random.nextInt(10, 20 * 1000 * 60));
+                        } else runtime.reset(Random.nextInt(20, 30 * 1000 * 60));
                     }
                     final int taskIndex = ThreadLocalRandom.current().nextInt(tasks.size());
                     final CountDownLatch countdownLatch = new CountDownLatch(1);
@@ -196,72 +200,72 @@ public class mMain extends AbstractScript {
                 //in case you want to do x skill only.
 
             case "Mining":
-                if (SkillData.MiningDone == true) {
+                if (SkillData.MiningDone) {
                     ScriptManager.INSTANCE.stop();
                 } else startMining.Mining();
                 break;
 
-            case "Combat":
-                if (SkillData.FishingDone == true) {
+            case "MeleeCombat":
+                if (SkillData.MeleeCombatDone) {
                     ScriptManager.INSTANCE.stop();
                 } else startCombat.Combat();
                 break;
 
             case "Fishing":
-                if (SkillData.FishingDone == true) {
+                if (SkillData.FishingDone) {
                     ScriptManager.INSTANCE.stop();
                 } else startFishing.Fishing();
                 break;
 
             case "Woodcutting":
-                if (SkillData.WoodcuttingDone == true) {
+                if (SkillData.WoodcuttingDone) {
                     ScriptManager.INSTANCE.stop();
                 } else startWoodcutting.Woodcutting();
                 break;
 
             case "Cooking":
-                if (SkillData.CookingDone == true) {
+                if (SkillData.CookingDone) {
                     ScriptManager.INSTANCE.stop();
                 } else startCooking.Cooking();
                 break;
             case "Firemaking":
-                if (SkillData.FiremakingDone == true) {
+                if (SkillData.FiremakingDone) {
                     ScriptManager.INSTANCE.stop();
                 } else startFiremaking.Firemaking();
                 break;
 
             case "Smithing":
-                if (SkillData.SmithingDone == true) {
+                if (SkillData.SmithingDone) {
                     ScriptManager.INSTANCE.stop();
                 } else startSmithing.Smithing();
                 break;
 
             case "Thieving":
-                if (SkillData.ThievingDone == true) {
+                if (SkillData.ThievingDone) {
                     ScriptManager.INSTANCE.stop();
                 } else startThieving.Thieving();
                 break;
 
             case "Crafting":
-                if (SkillData.CraftingDone == true) {
+                if (SkillData.CraftingDone) {
                     ScriptManager.INSTANCE.stop();
                 } else startCrafting.Crafting();
                 break;
 
             case "Fletching":
-                if (SkillData.FletchingDone == true) {
+                if (SkillData.FletchingDone) {
                     ScriptManager.INSTANCE.stop();
                 } else startFletching.Fletching();
                 break;
 
             case "Agility":
-                if (SkillData.AgilityDone == true) {
+                if (SkillData.AgilityDone) {
                     ScriptManager.INSTANCE.stop();
                 } else startAgility.Agility();
                 break;
 
             case "Herblore":
-                if (SkillData.HerbloreDone == true) {
+                if (SkillData.HerbloreDone) {
                     ScriptManager.INSTANCE.stop();
                 } else startHerblore.Herblore();
                 break;

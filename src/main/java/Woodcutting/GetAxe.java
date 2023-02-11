@@ -8,7 +8,6 @@ import org.powbot.api.rt4.Inventory;
 import org.powbot.api.rt4.Players;
 import org.powbot.api.rt4.Skills;
 import org.powbot.dax.api.DaxWalker;
-import org.powbot.dax.teleports.Teleport;
 
 import Helpers.InteractionsHelper;
 import Helpers.SkillData;
@@ -19,7 +18,7 @@ public class GetAxe extends Task {
 
     @Override
     public boolean activate() {
-        return Game.tab(Game.Tab.INVENTORY) && Inventory.stream().id(SkillData.withdrawAxe()).isEmpty();
+        return Game.tab(Game.Tab.INVENTORY) && Inventory.stream().id(SkillData.wcAxes).isEmpty();
     }
     @Override
     public void execute() {
@@ -30,12 +29,11 @@ public class GetAxe extends Task {
         }
 
         if (Bank.nearest().tile().distanceTo(Players.local()) > 5) {
-            mMain.State = "Get/Upgrade axe - GoToBank";
-            DaxWalker.blacklistTeleports(Teleport.CASTLE_WARS_MINIGAME, Teleport.SOUL_WARS_MINIGAME, Teleport.CLAN_WARS_MINIGAME);
+            mMain.State = "Get axe - GoToBank";
             DaxWalker.walkToBank();
         }
-        if (!Bank.opened()) {
-            mMain.State = "Get/Upgrade axe - Withdraw";
+        if (!Bank.opened() && Inventory.stream().id(SkillData.wcAxes).isEmpty()) {
+            mMain.State = "Get axe - Withdraw";
             if (Bank.open()) {
                 InteractionsHelper interactionsHelper = new InteractionsHelper();
                 interactionsHelper.DepositAndWithdraw(SkillData.withdrawAxe(), 1);

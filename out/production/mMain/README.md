@@ -29,7 +29,7 @@
 - [ ] Crafting Bronze Warhammers to reach 15 smithing for iron bars
 - [X] Iron bars
 
-**Combat:**
+**MeleeCombat:**
 - [X] Seagull low-cb *(Needs testing)*
 - [ ] Minotaur, Stronghold of Security
 - [X] Food usage *(Needs testing)*

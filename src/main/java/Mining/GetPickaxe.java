@@ -2,12 +2,10 @@ package Mining;
 
 
 import org.powbot.api.Condition;
-import org.powbot.api.Locatable;
 import org.powbot.api.rt4.Bank;
 import org.powbot.api.rt4.Constants;
 import org.powbot.api.rt4.Game;
 import org.powbot.api.rt4.Inventory;
-import org.powbot.api.rt4.Movement;
 import org.powbot.api.rt4.Players;
 import org.powbot.api.rt4.Skills;
 import org.powbot.dax.api.DaxWalker;
@@ -35,15 +33,13 @@ return Game.tab(Game.Tab.INVENTORY) && Inventory.stream().id(SkillData.pickaxes)
             DaxWalker.walkToBank();
         }
         if (!Bank.opened()) {
-            mMain.State = "Open bank";
-            Bank.open();
-        }
-        if (Bank.opened()) {
-            mMain.State = "Get pickaxe";
-            InteractionsHelper interactionsHelper = new InteractionsHelper();
-            interactionsHelper.DepositAndWithdraw(SkillData.withdrawPickaxe(), 1);
-            Bank.close();
-            Condition.wait( () -> !Bank.opened(), 250, 50);
+            mMain.State = "Get pickaxe - Withdraw";
+            if (Bank.open()) {
+                InteractionsHelper interactionsHelper = new InteractionsHelper();
+                interactionsHelper.DepositAndWithdraw(SkillData.withdrawPickaxe(), 1);
+                Bank.close();
+                Condition.wait( () -> !Bank.opened(), 250, 50);
+            }
         }
     }
 }

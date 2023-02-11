@@ -1,4 +1,4 @@
-package Combat;
+package MeleeCombat;
 
 import org.powbot.api.rt4.Combat;
 

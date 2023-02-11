@@ -14,6 +14,7 @@ public class SkillData {
     //Skill finished
     public static Boolean MiningDone = false;
     public static Boolean FishingDone = false;
+    public static Boolean MeleeCombatDone = false;
     public static Boolean WoodcuttingDone = false;
     public static Boolean CookingDone = false;
     public static Boolean FiremakingDone = false;
@@ -35,7 +36,8 @@ public class SkillData {
                 && CraftingDone
                 && FletchingDone
                 && AgilityDone
-                && HerbloreDone;
+                && HerbloreDone
+                && MeleeCombatDone;
     }
     public static void SetSkillDone() {
         if (mMain.RunningSkill.equals("Mining")) {
@@ -70,6 +72,9 @@ public class SkillData {
         }
         if (mMain.RunningSkill.equals("Herblore")) {
             HerbloreDone = true;
+        }
+        if (mMain.RunningSkill.equals("Melee combat")) {
+            MeleeCombatDone = true;
         }
     }
 
@@ -192,6 +197,8 @@ public class SkillData {
         }
         return 0;
     }
+    public static int[] wcAxes = {ItemList.BRONZE_AXE_1351, ItemList.STEEL_AXE_1353, ItemList.MITHRIL_AXE_1355, ItemList.ADAMANT_AXE_1357, ItemList.RUNE_AXE_1359};
+
 
     //Cooking
     public static final Area cookingAreaEdgeville = new Area (
@@ -452,4 +459,12 @@ public class SkillData {
         }
         return null;
     }
+
+    //Range
+    public static final Area RangeSafespot = new Area(
+            new Tile(2922, 3293, 0), new Tile(2925, 3292, 0)
+    );
+    public static final Area CowArea = new Area(
+            new Tile(2926, 3288, 0), new Tile(2914, 3292, 0)
+    );
 }

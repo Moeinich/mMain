@@ -17,7 +17,9 @@ public class InteractionsHelper {
 
     public void WithdrawItem(int ItemName, int Amount) {
         if (!Bank.opened() && Bank.inViewport()) {
-            Bank.open();
+            if (Bank.open()) {
+                Condition.wait( () -> Bank.opened(), 200, 50);
+            }
         }
         if (Bank.stream().id(ItemName).isEmpty()) {
             mMain.State = "We ran out of " + ItemName;
@@ -31,7 +33,9 @@ public class InteractionsHelper {
     }
     public void DepositAndWithdraw(int item, int amount) {
         if (!Bank.opened() && Bank.inViewport()) {
-            Bank.open();
+            if (Bank.open()) {
+                Condition.wait( () -> Bank.opened(), 200, 50);
+            }
         }
         if (Bank.stream().id(item).isEmpty()) {
             mMain.State = "We ran out of " + item;

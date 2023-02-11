@@ -5,12 +5,17 @@ import org.powbot.api.Condition;
 import org.powbot.api.Locatable;
 import org.powbot.api.Tile;
 import org.powbot.api.rt4.Bank;
+import org.powbot.api.rt4.Combat;
+import org.powbot.api.rt4.Constants;
 import org.powbot.api.rt4.GroundItem;
 import org.powbot.api.rt4.GroundItems;
 import org.powbot.api.rt4.Inventory;
 import org.powbot.api.rt4.Item;
 import org.powbot.api.rt4.Movement;
+import org.powbot.api.rt4.Npc;
+import org.powbot.api.rt4.Npcs;
 import org.powbot.api.rt4.Players;
+import org.powbot.api.rt4.Skills;
 import org.powbot.api.rt4.Widgets;
 import org.powbot.dax.api.DaxWalker;
 import org.powbot.dax.teleports.Teleport;
@@ -56,8 +61,12 @@ public class PlayerHelper {
         DaxWalker.walkTo(place);
     }
     public static void EnableRun() {
-            mMain.State = "Enable run..";
-            Widgets.widget(160).component(29).click();
-            Condition.wait( () -> Movement.running(), 150, 50);
-        }
+        mMain.State = "Enable run..";
+        Widgets.widget(160).component(29).click();
+        Condition.wait( () -> Movement.running(), 150, 50);
+    }
+    public void SetAttackMode(Combat.Style style) {
+        System.out.print("Setting combat mode to " + style);
+        Combat.style(style);
+    }
 }
