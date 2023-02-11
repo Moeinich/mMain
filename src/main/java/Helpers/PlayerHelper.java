@@ -52,7 +52,7 @@ public class PlayerHelper {
         }
     }
     public static void WalkToTile(Tile place) {
-        DaxWalker.blacklistTeleports(Teleport.CASTLE_WARS_MINIGAME, Teleport.SOUL_WARS_MINIGAME, Teleport.CLAN_WARS_MINIGAME, Teleport.LAST_MAN_STANDING_MINIGAME);
+        DaxWalker.blacklistTeleports(Teleport.CASTLE_WARS_MINIGAME, Teleport.SOUL_WARS_MINIGAME, Teleport.CLAN_WARS_MINIGAME, Teleport.LAST_MAN_STANDING_MINIGAME, Teleport.BURTHROPE_GAMES_ROOM_MINIGAME);
         DaxWalker.walkTo(place);
     }
     public static void EnableRun() {
