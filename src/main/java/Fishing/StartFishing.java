@@ -5,7 +5,6 @@ import org.powbot.mobile.script.ScriptManager;
 
 import java.util.ArrayList;
 
-import Helpers.GoToBank;
 import Helpers.Task;
 import script.mMain;
 
@@ -15,7 +14,6 @@ public class StartFishing {
         mMain.RunningSkill = "Fishing";
         if (fishingTasks.isEmpty()) {
             fishingTasks.add(new FishingDone());
-            fishingTasks.add(new GoToBank());
             fishingTasks.add(new GetFishingEquipment());
             fishingTasks.add(new DropFish());
             fishingTasks.add(new AlKharidFishing());

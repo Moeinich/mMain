@@ -28,6 +28,10 @@ public class GetFishingEquipment extends Task {
     }
     @Override
     public void execute() {
+        mMain.State = "Go to bank";
+        if (Bank.nearest().tile().distanceTo(Players.local()) > 4) {
+            DaxWalker.walkToBank();
+        }
 
         if (Bank.nearest().tile().distanceTo(Players.local()) <= 6 && Bank.inViewport() && !Bank.opened()) {
             mMain.State = "Get equipment";
