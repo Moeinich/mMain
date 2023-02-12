@@ -65,6 +65,9 @@ public class PlayerHelper {
             DaxWalker.walkTo(place);
         }
     }
+    public static void WithinArea(Area area) {
+        area.contains(Players.local());
+    }
     public static void EnableRun() {
         mMain.State = "Enable run..";
         Widgets.widget(160).component(29).click();

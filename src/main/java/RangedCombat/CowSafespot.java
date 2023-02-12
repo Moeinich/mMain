@@ -57,15 +57,14 @@ public class CowSafespot extends Task {
     }
 
     private void ShouldFight() {
-        Npc cow = Npcs.stream().name("Cow").within(SkillData.CowArea).nearest().first();
-        Npc calf = Npcs.stream().name("Cow calf").within(SkillData.CowArea).nearest().first();
-
         if (SkillData.RangeSafespot.contains(Players.local()) && !Players.local().healthBarVisible()) {
+            Npc cow = Npcs.stream().name("Cow").within(SkillData.CowArea).nearest().first();
             if (cow.inViewport() && cow.interact("Attack", "Cow")) {
-                Condition.wait(() -> !cow.healthBarVisible(),900,20);
+                Condition.wait(() -> !cow.isRendered(),900,20);
             }
+            Npc calf = Npcs.stream().name("Cow calf").within(SkillData.CowArea).nearest().first();
             if (!cow.inViewport() && calf.inViewport() && calf.interact("Attack", "Cow")) {
-                Condition.wait(() -> !calf.healthBarVisible(),900,20);
+                Condition.wait(() -> !calf.isRendered(),900,20);
             }
         }
     }
