@@ -67,6 +67,11 @@ public class CanifisCourse extends Task {
             }
         }
 
+        if (SkillData.CanifisObstacle1Bug.contains(Players.local())) {
+            mMain.State = "Stuck due to RS bug";
+            Movement.moveTo(SkillData.CanifisObstacle2MoveTo.getRandomTile());
+        }
+
         if (SkillData.CanifisObstacle2.contains(Players.local())) {
             GroundItem groundItem = GroundItems.stream().within(5).name("Mark of grace").nearest().first();
             if (groundItem.inViewport()) {
@@ -114,6 +119,10 @@ public class CanifisCourse extends Task {
         }
 
         if (SkillData.CanifisObstacle5.contains(Players.local())) {
+            GroundItem groundItem = GroundItems.stream().within(5).name("Mark of grace").nearest().first();
+            if (groundItem.inViewport()) {
+                LootMarks();
+            }
             GameObject CanifisObstacle5 = Objects.stream().within(10).id(14846).nearest().first();
             if (CanifisObstacle5.inViewport()) {
                 mMain.State = "Handle obstacle 5";
@@ -169,12 +178,12 @@ public class CanifisCourse extends Task {
                 mMain.State = "Handle obstacle 8";
                 CurrentXP = Skills.experience(Skill.Agility);
                 if (CanifisObstacle8.interact("Jump", "Gap")) {
-                    Condition.wait( () -> (CurrentXP != Skills.experience(Skill.Agility) || SkillData.CanifisFloorArea.contains(Players.local())), 400, 50);
+                    Condition.wait( () -> (CurrentXP != Skills.experience(Skill.Agility)), 400, 50);
                 }
             }
         }
 
-        GameObject CanifisObstacle1 = Objects.stream().within(10).id(14843).nearest().first();
+        GameObject CanifisObstacle1 = Objects.stream().within(8).id(14843).nearest().first();
         if (!CanifisObstacle1.inViewport() && SkillData.CanifisFloorArea.contains(Players.local())) {
             mMain.State = "Move to Canifis start";
             Movement.moveTo(SkillData.CanifisStart.getRandomTile());

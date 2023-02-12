@@ -24,7 +24,7 @@ public class VarrockCourse extends Task {
     int CurrentXP = Skills.experience(Skill.Agility);
 
     public boolean activate() {
-        return Skills.realLevel(Constants.SKILLS_AGILITY) >= 30 && Skills.realLevel(Constants.SKILLS_AGILITY) <= 80;
+        return Skills.realLevel(Constants.SKILLS_AGILITY) >= 30 && Skills.realLevel(Constants.SKILLS_AGILITY) <= 39;
     }
     @Override
     public void execute() {

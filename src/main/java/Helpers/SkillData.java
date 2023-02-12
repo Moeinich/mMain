@@ -470,17 +470,19 @@ public class SkillData {
             new Tile(3464, 3513, 3), new Tile(3529, 3457, 3)
     );
 
+    public static final Area CanifisObstacle2MoveTo = new Area (
+            new Tile(3504, 3497, 2), new Tile(3507, 3496, 2)
+    );
     public static final Area CanifisObstacle7MoveTo = new Area (
             new Tile(3499, 3477, 3), new Tile(3504, 3474, 3)
     );
 
+    public static final Area CanifisObstacle1Bug = new Area (
+            new Tile(3505, 3489, 2), new Tile(3505, 3489, 2)
+    );
+
     public static final Area CanifisStart = new Area (
-            new Tile(3510, 3485, 0),
-            new Tile(3509, 3490, 0),
-            new Tile(3503, 3490, 0),
-            new Tile(3503, 3483, 0),
-            new Tile(3507, 3483, 0),
-            new Tile(3508, 3484, 0)
+            new Tile(3504, 3488, 0), new Tile(3507, 3486, 0)
     );
 
     public static final Area CanifisObstacle1 = new Area (
