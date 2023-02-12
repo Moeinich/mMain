@@ -17,6 +17,7 @@ public class StartAgility {
             agilityTasks.add(new GnomeCourse());
             agilityTasks.add(new DraynorCourse());
             agilityTasks.add(new VarrockCourse());
+            agilityTasks.add(new CanifisCourse());
         }
 
         for (Task task : agilityTasks) {

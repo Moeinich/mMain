@@ -448,6 +448,65 @@ public class SkillData {
             new Tile(3236, 3410, 3), new Tile(3240, 3415, 3)
     );
 
+    //Canifis
+    public static final Area CanifisFloorArea = new Area (
+            new Tile(3469, 3511, 0), new Tile(3520, 3464, 0)
+    );
+
+    public static final Area CanifisFirstArea = new Area (
+            new Tile(3464, 3513, 1), new Tile(3529, 3457, 1)
+    );
+
+    public static final Area CanifisMidArea = new Area (
+            new Tile(3464, 3513, 2), new Tile(3529, 3457, 2)
+    );
+
+    public static final Area CanifisTopArea = new Area (
+            new Tile(3464, 3513, 3), new Tile(3529, 3457, 3)
+    );
+
+    public static final Area CanifisObstacle7MoveTo = new Area (
+            new Tile(3499, 3477, 3), new Tile(3504, 3474, 3)
+    );
+
+    public static final Area CanifisStart = new Area (
+            new Tile(3510, 3485, 0),
+            new Tile(3509, 3490, 0),
+            new Tile(3503, 3490, 0),
+            new Tile(3503, 3483, 0),
+            new Tile(3507, 3483, 0),
+            new Tile(3508, 3484, 0)
+    );
+
+    public static final Area CanifisObstacle1 = new Area (
+            new Tile(3502, 3490, 0), new Tile(3512, 3484, 0)
+    );
+
+    public static final Area CanifisObstacle2 = new Area (
+            new Tile(3502, 3499, 2), new Tile(3512, 3490, 2)
+    );
+
+    public static final Area CanifisObstacle3 = new Area (
+            new Tile(3495, 3508, 2), new Tile(3505, 3502, 2)
+    );
+    public static final Area CanifisObstacle4 = new Area (
+            new Tile(3493, 3506, 2), new Tile(3484, 3497, 2)
+    );
+    public static final Area CanifisObstacle5 = new Area (
+            new Tile(3479, 3499, 3), new Tile(3473, 3491, 3)
+    );
+    public static final Area CanifisObstacle6 = new Area (
+            new Tile(3476, 3488, 2), new Tile(3485, 3480, 2)
+    );
+
+    public static final Area CanifisObstacle7 = new Area (
+            new Tile(3486, 3480, 3), new Tile(3505, 3467, 3)
+    );
+
+    public static final Area CanifisObstacle8 = new Area (
+            new Tile(3507, 3484, 2), new Tile(3516, 3473, 2)
+    );
+
     public static Tile movementAgility(){
         if (Skills.realLevel(Constants.SKILLS_AGILITY) <= 9) {
             return GnomeStartArea.getRandomTile();
@@ -455,8 +514,11 @@ public class SkillData {
         if (Skills.realLevel(Constants.SKILLS_AGILITY) >= 10 && Skills.realLevel(Constants.SKILLS_AGILITY) <= 29) {
             return DraynorStart.getRandomTile();
         }
-        if (Skills.realLevel(Constants.SKILLS_AGILITY) >= 30 && Skills.realLevel(Constants.SKILLS_AGILITY) <= 80) {
+        if (Skills.realLevel(Constants.SKILLS_AGILITY) >= 30 && Skills.realLevel(Constants.SKILLS_AGILITY) <= 39) {
             return VarrockStart.getRandomTile();
+        }
+        if (Skills.realLevel(Constants.SKILLS_AGILITY) >= 40 && Skills.realLevel(Constants.SKILLS_AGILITY) <= 80) {
+            return CanifisStart.getRandomTile();
         }
         return null;
     }

@@ -30,12 +30,22 @@ public class WalkToAgilityObstacles extends Task {
         }
         //Varrock
         if (!SkillData.AgilityDone
-                && Skills.realLevel(Constants.SKILLS_AGILITY) >= 30 && Skills.realLevel(Constants.SKILLS_AGILITY) <= 80
+                && Skills.realLevel(Constants.SKILLS_AGILITY) >= 30 && Skills.realLevel(Constants.SKILLS_AGILITY) <= 39
                 && !SkillData.VarrockFloorArea.contains(Players.local())
                 && !SkillData.VarrockFirstArea.contains(Players.local())
                 && !SkillData.VarrockMidArea.contains(Players.local())
                 && !SkillData.VarrockTopArea.contains(Players.local())
                 && !SkillData.VarrockGhostArea.contains(Players.local()) )
+        {
+            return true;
+        }
+        //Canifis
+        if (!SkillData.AgilityDone
+                && Skills.realLevel(Constants.SKILLS_AGILITY) >= 40 && Skills.realLevel(Constants.SKILLS_AGILITY) <= 80
+                && !SkillData.CanifisFloorArea.contains(Players.local())
+                && !SkillData.CanifisFirstArea.contains(Players.local())
+                && !SkillData.CanifisMidArea.contains(Players.local())
+                && !SkillData.CanifisTopArea.contains(Players.local()) )
         {
             return true;
         }
