@@ -5,32 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c7dd1c8c-f10c-49ed-8219-521bd6f55188" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Helpers/CombatHelper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/RangedCombat/RangeData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.4/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/checksums/checksums.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.4/dependencies-accessors/dependencies-accessors.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/dependencies-accessors/dependencies-accessors.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.4/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/executionHistory/executionHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.4/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.4/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.4/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.4/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/fileHashes/resourceHashesCache.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Agility/StartAgility.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Agility/StartAgility.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Agility/WalkToAgilityObstacles.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Agility/WalkToAgilityObstacles.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Helpers/CombatData.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Helpers/SkillData.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Helpers/SkillData.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/RangedCombat/CowSafespot.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/RangedCombat/CowSafespot.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/RangedCombat/StartRanged.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/RangedCombat/StartRanged.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/script/mMain$Stopwatch.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/script/mMain$Stopwatch.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/script/mMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/script/mMain.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Agility/WalkToAgilityObstacles.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Agility/WalkToAgilityObstacles.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Helpers/CombatData.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Helpers/SkillData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Helpers/SkillData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/RangedCombat/CowSafespot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/RangedCombat/CowSafespot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/RangedCombat/StartRanged.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/RangedCombat/StartRanged.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/script/mMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/script/mMain.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,11 +85,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Application.script.mMain" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">

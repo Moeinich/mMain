@@ -13,6 +13,7 @@ import org.powbot.api.rt4.Players;
 import org.powbot.api.rt4.Skills;
 import org.powbot.dax.api.DaxWalker;
 import org.powbot.dax.teleports.Teleport;
+import org.powbot.mobile.script.ScriptManager;
 
 import Helpers.CombatHelper;
 import Helpers.PlayerHelper;
@@ -83,6 +84,14 @@ public class CowSafespot extends Task {
                 }
                 if (Bank.open()) {
                     for (var itemId : missingEquipment(RangeData.RangeEquipment())) {
+                        if (Bank.stream().id(itemId).isEmpty()) {
+                            if (mMain.RunningSkill.equals("Progressive")) {
+                                mMain.State = "We ran out of " + itemId;
+                                SkillData.SetSkillDone();
+                                Bank.close();
+                                mMain.taskRunning.set(false); //Skip task on progressive
+                            } else ScriptManager.INSTANCE.stop();
+                        }
                         Bank.withdraw(itemId, Bank.Amount.ALL);
                         Condition.wait(() -> CombatHelper.gotItems(itemId), 100,10);
                     }
