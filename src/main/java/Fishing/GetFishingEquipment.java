@@ -28,12 +28,8 @@ public class GetFishingEquipment extends Task {
     }
     @Override
     public void execute() {
-        mMain.State = "Go to bank";
-        if (Bank.nearest().tile().distanceTo(Players.local()) < 4) {
-            DaxWalker.walkToBank();
-        }
 
-        if (Bank.nearest().tile().distanceTo(Players.local()) > 4 && Bank.inViewport() && !Bank.opened()) {
+        if (Bank.nearest().tile().distanceTo(Players.local()) <= 6 && Bank.inViewport() && !Bank.opened()) {
             mMain.State = "Get equipment";
             InteractionsHelper interactionsHelper = new InteractionsHelper();
             if (Skills.realLevel(Constants.SKILLS_FISHING) <= 19) {
