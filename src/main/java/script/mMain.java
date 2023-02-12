@@ -1,9 +1,6 @@
 package script;
 
 import org.powbot.api.Random;
-import org.powbot.api.rt4.Component;
-import org.powbot.api.rt4.Components;
-import org.powbot.api.rt4.Widgets;
 import org.powbot.api.rt4.walking.model.Skill;
 import org.powbot.api.script.AbstractScript;
 import org.powbot.api.script.OptionType;
@@ -37,7 +34,7 @@ import MeleeCombat.StartMelee;
                 @ScriptConfiguration(
                         name =  "Mode",
                         description = "Which skill would you like to do?",
-                        defaultValue = "Progressive",
+                        defaultValue = "Firemaking",
                         allowedValues = {"Progressive", "Mining", "Fishing", "Woodcutting", "Cooking", "Firemaking", "Smithing", "Thieving", "Crafting", "Fletching", "Agility", "Herblore"},
                         optionType = OptionType.STRING
                 )

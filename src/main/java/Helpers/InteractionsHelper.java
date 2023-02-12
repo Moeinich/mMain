@@ -8,6 +8,7 @@ import org.powbot.api.rt4.Game;
 import org.powbot.api.rt4.GameObject;
 import org.powbot.api.rt4.Inventory;
 import org.powbot.api.rt4.Item;
+import org.powbot.api.rt4.Players;
 import org.powbot.api.rt4.Widgets;
 import org.powbot.mobile.script.ScriptManager;
 
@@ -52,7 +53,7 @@ public class InteractionsHelper {
     public void CombineItems(int RequiredItemID, int CombineWithItemID, int WidgetID, int ComponentID) {
         int timer = 0;
         int initialCount = (int) Inventory.stream().id(CombineWithItemID).count();
-        while (!ScriptManager.INSTANCE.isStopping() && Inventory.stream().id(CombineWithItemID).isNotEmpty()) {
+        while (!ScriptManager.INSTANCE.isStopping() && Inventory.stream().id(CombineWithItemID).isNotEmpty() && Inventory.stream().id(RequiredItemID).isNotEmpty()) {
             mMain.State = "Combining.. ";
             int currentCount = (int) Inventory.stream().id(CombineWithItemID).count();
             if (currentCount >= initialCount) {
@@ -126,7 +127,7 @@ public class InteractionsHelper {
     }
 
     public static void cameraCheck() {
-        if (Game.tab(Game.Tab.SETTINGS) && Camera.getZoom() > 4) {
+        if (Game.tab(Game.Tab.SETTINGS) && Players.local().isRendered() && Camera.getZoom() > 4) {
             Camera.moveZoomSlider(Camera.ZOOM_MAX);
             Condition.wait( () -> Camera.getZoom() < 3, 250, 50);
         }

@@ -37,8 +37,9 @@ public class TeaStall extends Task {
     public void dropItems() {
         mMain.State = "Dropping Tea!";
         List<Item> itemsToDrop = Inventory.stream().name(badItems).list();
-        Inventory.drop(itemsToDrop);
-        Condition.wait(() -> itemsToDrop.isEmpty(), 20, 50);
+        if (Inventory.drop(itemsToDrop)) {
+            Condition.wait(() -> itemsToDrop.isEmpty(), 250, 50);
+        }
     }
     public boolean shouldThieve() {
         return !Inventory.isFull();

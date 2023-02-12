@@ -7,7 +7,7 @@ import org.powbot.api.rt4.Constants;
 import org.powbot.api.rt4.Skills;
 import org.powbot.api.rt4.walking.model.Skill;
 
-import Firemaking.GoFiremaking;
+import Firemaking.DoFiremaking;
 import script.mMain;
 
 public class SkillData {
@@ -157,9 +157,10 @@ public class SkillData {
     public static final Area willowTreeLocation = new Area (
             new Tile(3056,3255), new Tile(3064, 3249)
     );
-    public static final Area teakLocation = new Area (
+    public static final Area teakArea = new Area (
             new Tile(2185,2987), new Tile(2185, 2991)
     );
+    public static final Tile teakLocation = new Tile (2185,2989);
 
     public static Tile movementWoodcutting(){
         if (Skills.realLevel(Constants.SKILLS_WOODCUTTING) <= 14) {
@@ -172,7 +173,7 @@ public class SkillData {
             return willowTreeLocation.getRandomTile();
         }
         if (Skills.realLevel(Constants.SKILLS_WOODCUTTING) >= 35) {
-            return teakLocation.getRandomTile();
+            return teakLocation;
         }
         return null;
     }
@@ -209,27 +210,27 @@ public class SkillData {
     );
 
     //Firemaking
-    public static final Tile firemakingGE1 = new Tile(3196,3489);
-    public static final Tile firemakingGE2 = new Tile(3196,3490);
-    public static final Tile firemakingGE3 = new Tile(3196,3491);
+    public static final Tile firemakingLane1 = new Tile(3032,3360);
+    public static final Tile firemakingLane2 = new Tile(3032,3361);
+    public static final Tile firemakingLane3 = new Tile(3032,3362);
 
     public static int[] logs = {ItemList.LOGS_1511, ItemList.OAK_LOGS_1521, ItemList.WILLOW_LOGS_1519};
 
-    public static final Area firemakingArea = new Area (
-            new Tile(3195, 3491, 0), new Tile(3198, 3487, 0)
+    public static final Area firemakingStartArea = new Area (
+            new Tile(3032, 3360, 0), new Tile(3032, 3362, 0)
     );
     public static final Area doFiremakingArea = new Area (
-            new Tile(3196, 3488, 0), new Tile(3168, 3491, 0)
+            new Tile(3032, 3362, 0), new Tile(3005, 3360, 0)
     );
     public static Tile moveToFiremakingSpot(){
-        if (GoFiremaking.fmSpot == 1) {
-            return firemakingGE1;
+        if (DoFiremaking.fmSpot == 1) {
+            return firemakingLane1;
         }
-        if (GoFiremaking.fmSpot == 2) {
-            return firemakingGE2;
+        if (DoFiremaking.fmSpot == 2) {
+            return firemakingLane2;
         }
-        if (GoFiremaking.fmSpot == 3) {
-            return firemakingGE3;
+        if (DoFiremaking.fmSpot == 3) {
+            return firemakingLane3;
         }
         return null;
     }
@@ -286,7 +287,7 @@ public class SkillData {
     //Agility
     //Gnome
     public static final Area GnomeStartArea = new Area (
-            new Tile(2472, 3436, 0), new Tile(2476, 3438, 0)
+            new Tile(2474, 3438, 0), new Tile(2477, 3437, 0)
     );
     public static final Area GnomeObstacleLowerArea = new Area (
             new Tile(2468, 3441, 0), new Tile(2491, 3413, 0)

@@ -2,6 +2,7 @@ package Fishing;
 
 import org.powbot.api.Condition;
 import org.powbot.api.rt4.Constants;
+import org.powbot.api.rt4.Inventory;
 import org.powbot.api.rt4.Movement;
 import org.powbot.api.rt4.Npc;
 import org.powbot.api.rt4.Npcs;
@@ -17,7 +18,7 @@ import script.mMain;
 public class AlKharidFishing extends Task {
     @Override
     public boolean activate() {
-        return  Skills.realLevel(Constants.SKILLS_FISHING) <= 19;
+        return  Skills.realLevel(Constants.SKILLS_FISHING) <= 19 && Inventory.stream().name("Small fishing net").isNotEmpty();
     }
     @Override
     public void execute() {

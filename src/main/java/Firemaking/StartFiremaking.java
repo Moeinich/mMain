@@ -13,10 +13,7 @@ public class StartFiremaking {
         mMain.RunningSkill = "Firemaking";
         if (firemakingTasks.isEmpty()) {
             firemakingTasks.add(new FiremakingDone());
-            firemakingTasks.add(new WithdrawTinderbox());
-            firemakingTasks.add(new WithdrawLogs());
-            firemakingTasks.add(new FiremakingBanking());
-            firemakingTasks.add(new GoFiremaking());
+            firemakingTasks.add(new GetMaterials());
             firemakingTasks.add(new DoFiremaking());
         }
 

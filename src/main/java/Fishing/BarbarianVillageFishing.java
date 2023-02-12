@@ -2,6 +2,7 @@ package Fishing;
 
 import org.powbot.api.Condition;
 import org.powbot.api.rt4.Constants;
+import org.powbot.api.rt4.Inventory;
 import org.powbot.api.rt4.Movement;
 import org.powbot.api.rt4.Npc;
 import org.powbot.api.rt4.Npcs;
@@ -16,7 +17,7 @@ import script.mMain;
 public class BarbarianVillageFishing extends Task {
     @Override
     public boolean activate() {
-        return  Skills.realLevel(Constants.SKILLS_FISHING) >= 20;
+        return  Skills.realLevel(Constants.SKILLS_FISHING) >= 20 && Inventory.stream().name("Fly fishing rod").isNotEmpty() && Inventory.stream().name("Feather").isNotEmpty();
     }
     @Override
     public void execute() {

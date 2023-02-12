@@ -57,8 +57,13 @@ public class PlayerHelper {
         }
     }
     public static void WalkToTile(Tile place) {
-        DaxWalker.blacklistTeleports(Teleport.CASTLE_WARS_MINIGAME, Teleport.SOUL_WARS_MINIGAME, Teleport.CLAN_WARS_MINIGAME, Teleport.LAST_MAN_STANDING_MINIGAME, Teleport.BURTHROPE_GAMES_ROOM_MINIGAME);
-        DaxWalker.walkTo(place);
+        if (place.tile().distanceTo(Players.local()) <= 8) {
+            Movement.step(place);
+            Condition.wait( () -> !Players.local().inMotion(), 900, 100);
+        } else if (place.tile().distanceTo(Players.local()) > 8){
+            DaxWalker.blacklistTeleports(Teleport.SOUL_WARS_MINIGAME, Teleport.CLAN_WARS_MINIGAME, Teleport.LAST_MAN_STANDING_MINIGAME, Teleport.BURTHROPE_GAMES_ROOM_MINIGAME);
+            DaxWalker.walkTo(place);
+        }
     }
     public static void EnableRun() {
         mMain.State = "Enable run..";

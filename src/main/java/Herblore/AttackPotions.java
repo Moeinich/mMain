@@ -75,7 +75,7 @@ public class AttackPotions extends Task {
         }
     }
     private void craft() {
-        while (Inventory.stream().id(CombineWithItemID).count() >= 1) {
+        while (Inventory.stream().id(CombineWithItemID).isNotEmpty() && Inventory.stream().id(ToolID).isNotEmpty()) {
             InteractionsHelper interactionsHelper = new InteractionsHelper();
             interactionsHelper.CombineItems(ToolID, CombineWithItemID, WidgetID, ComponentID);
         }

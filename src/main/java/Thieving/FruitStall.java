@@ -62,7 +62,9 @@ public class FruitStall extends Task {
     public void dropItems() {
         mMain.State = "Dropping Tea!";
         List<Item> itemsToDrop = Inventory.stream().name(badItems).list();
-        Inventory.drop(itemsToDrop);
+        if (Inventory.drop(itemsToDrop)) {
+            Condition.wait(() -> itemsToDrop.isEmpty(), 20, 50);
+        }
     }
     public boolean shouldThieve() {
         return !Inventory.isFull();
@@ -102,14 +104,14 @@ public class FruitStall extends Task {
                     Movement.step(SkillData.movementThieving());
                 }
             } else if (Players.local().animation() == -1) { // Not currently thieving
-                if (Players.stream().within(SkillData.fruitStallArea).count() >= 2) {
+                if (Players.stream().within(SkillData.fruitStallArea).count() != 1) {
                     int[] p2p = SkillData.p2p;
                     int randomWorld = p2p[Random.nextInt(0, p2p.length - 1)];
                     World world = new World(2, randomWorld, 1, World.Type.MEMBERS, World.Server.RUNE_SCAPE, World.Specialty.NONE);
                     world.hop();
                 }
                 GameObject fruitStall = Objects.stream().within(2).id(STALL_ID).nearest().first();
-                if (fruitStall.valid()) {
+                if (fruitStall.valid() && Players.stream().within(SkillData.fruitStallArea).count() == 1) {
                     if (!fruitStall.inViewport()) { // Need to turn camera to the stall
                         mMain.State = "Turning camera to tea stall";
                         Camera.turnTo(fruitStall);
