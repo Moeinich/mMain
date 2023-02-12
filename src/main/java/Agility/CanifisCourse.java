@@ -62,7 +62,7 @@ public class CanifisCourse extends Task {
                 mMain.State = "Handle obstacle 1";
                 CurrentXP = Skills.experience(Skill.Agility);
                 if (CanifisObstacle1.interact("Climb", "Tall tree")) {
-                    Condition.wait( () -> (CurrentXP != Skills.experience(Skill.Agility)), 400, 50);
+                    Condition.wait( () -> (CurrentXP != Skills.experience(Skill.Agility) || SkillData.CanifisObstacle1Bug.contains(Players.local())), 400, 50);
                 }
             }
         }
