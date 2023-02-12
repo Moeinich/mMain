@@ -56,8 +56,9 @@ public class WalkToAgilityObstacles extends Task {
         if (Skills.realLevel(Constants.SKILLS_AGILITY) >= 70) {
             mMain.taskRunning.set(false);
             SkillData.SetSkillDone();
+        } else {
+            mMain.State = "Going to Agility course";
+            PlayerHelper.WalkToTile(SkillData.movementAgility());
         }
-        mMain.State = "Going to Agility course";
-        PlayerHelper.WalkToTile(SkillData.movementAgility());
     }
 }

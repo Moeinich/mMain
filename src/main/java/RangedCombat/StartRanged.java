@@ -1,9 +1,12 @@
 package RangedCombat;
 
+import org.powbot.api.rt4.Constants;
+import org.powbot.api.rt4.Skills;
 import org.powbot.mobile.script.ScriptManager;
 
 import java.util.ArrayList;
 
+import Helpers.SkillData;
 import Helpers.Task;
 import Helpers.EatFood;
 import script.mMain;
@@ -11,6 +14,12 @@ import script.mMain;
 public class StartRanged {
     private ArrayList<Task> rangedTask = new ArrayList<>();
     public void Ranged() {
+        if (Skills.realLevel(Constants.SKILLS_RANGE) >= 30) {
+            mMain.State = "Range done!";
+            SkillData.SetSkillDone();
+            mMain.taskRunning.set(false);
+        }
+
         mMain.RunningSkill = "Ranged combat";
         if (rangedTask.isEmpty()) {
             rangedTask.add(new EatFood());

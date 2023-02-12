@@ -27,15 +27,15 @@ import MeleeCombat.StartMelee;
 @ScriptManifest(
         name = "mMain",
         description = "Progressively levels different skills",
-        version = "0.0.11"
+        version = "0.0.12"
 )
 @ScriptConfiguration.List(
         {
                 @ScriptConfiguration(
                         name =  "Mode",
                         description = "Which skill would you like to do?",
-                        defaultValue = "Firemaking",
-                        allowedValues = {"Progressive", "Mining", "Fishing", "Woodcutting", "Cooking", "Firemaking", "Smithing", "Thieving", "Crafting", "Fletching", "Agility", "Herblore"},
+                        defaultValue = "Ranged",
+                        allowedValues = {"Progressive", "Mining", "Fishing", "Woodcutting", "Cooking", "Firemaking", "Smithing", "Thieving", "Crafting", "Fletching", "Agility", "Herblore", "Ranged"},
                         optionType = OptionType.STRING
                 )
         }
@@ -81,6 +81,8 @@ public class mMain extends AbstractScript {
                     .trackSkill(Skill.Fletching, TrackSkillOption.LevelProgressBar)
                     .trackSkill(Skill.Herblore, TrackSkillOption.LevelProgressBar)
                     .trackSkill(Skill.Agility, TrackSkillOption.LevelProgressBar)
+                    .trackSkill(Skill.Ranged, TrackSkillOption.LevelProgressBar)
+                    .trackSkill(Skill.Defence, TrackSkillOption.LevelProgressBar)
                     .x(40)
                     .y(300)
                     .build();
@@ -99,6 +101,8 @@ public class mMain extends AbstractScript {
                     .trackSkill(Skill.Fletching)
                     .trackSkill(Skill.Herblore)
                     .trackSkill(Skill.Agility)
+                    .trackSkill(Skill.Ranged)
+                    .trackSkill(Skill.Defence)
                     .x(40)
                     .y(300)
                     .build();
@@ -143,6 +147,7 @@ public class mMain extends AbstractScript {
         var startFletching = new Fletching.startFletching();
         var startAgility = new Agility.StartAgility();
         var startHerblore = new Herblore.StartHerblore();
+        var startRanged = new RangedCombat.StartRanged();
 
         String skill = getOption("Mode");
 
@@ -265,6 +270,12 @@ public class mMain extends AbstractScript {
                 if (SkillData.HerbloreDone) {
                     ScriptManager.INSTANCE.stop();
                 } else startHerblore.Herblore();
+                break;
+
+            case "Ranged":
+                if (SkillData.RangeCombatDone) {
+                    ScriptManager.INSTANCE.stop();
+                } else startRanged.Ranged();
                 break;
         }
     }
