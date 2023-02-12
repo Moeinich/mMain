@@ -45,19 +45,19 @@ public class CowSafespot extends Task {
             GetEquipment();
         }
 
-        if (!CombatHelper.needEquipment(RangeData.RangeEquipment()) && !SkillData.RangeSafespot.contains(Players.local())) {
+        if (!CombatHelper.needEquipment(RangeData.RangeEquipment()) && !PlayerHelper.WithinArea(SkillData.RangeSafespot)) {
             mMain.State = "Go safespot";
             PlayerHelper.WalkToTile(SkillData.RangeSafespot.getRandomTile());
         }
 
-        if (SkillData.RangeSafespot.contains(Players.local())) {
+        if (PlayerHelper.WithinArea(SkillData.RangeSafespot)) {
             mMain.State = "Fighting..";
             ShouldFight();
         }
     }
 
     private void ShouldFight() {
-        if (SkillData.RangeSafespot.contains(Players.local()) && !Players.local().healthBarVisible()) {
+        if (PlayerHelper.WithinArea(SkillData.RangeSafespot) && !Players.local().healthBarVisible()) {
             Npc cow = Npcs.stream().name("Cow").within(SkillData.CowArea).nearest().first();
             if (cow.inViewport() && cow.interact("Attack", "Cow")) {
                 Condition.wait(() -> !cow.isRendered(),900,20);

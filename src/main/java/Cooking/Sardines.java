@@ -24,7 +24,7 @@ public class Sardines extends Task {
     }
     @Override
     public void execute() {
-        if (!SkillData.cookingAreaEdgeville.contains(Players.local())) {
+        if (!PlayerHelper.WithinArea(SkillData.cookingAreaEdgeville)) {
             mMain.State = "Move to edgeville";
             MoveToEdgeville();
         }
@@ -40,10 +40,10 @@ public class Sardines extends Task {
     }
     private void ShouldBank() {
         mMain.State = "Get raw fish";
-        if (!SkillData.edgevilleBank.contains(Players.local())) {
+        if (!PlayerHelper.WithinArea(SkillData.edgevilleBank)) {
             PlayerHelper.WalkToTile(SkillData.edgevilleBank.getRandomTile());
         }
-        if (SkillData.edgevilleBank.contains(Players.local()) && !Bank.opened() && Bank.inViewport()) {
+        if (PlayerHelper.WithinArea(SkillData.edgevilleBank) && !Bank.opened() && Bank.inViewport()) {
             Bank.open();
             InteractionsHelper interactionsHelper = new InteractionsHelper();
             interactionsHelper.DepositAndWithdraw(ItemList.RAW_SARDINE_327, 28);
@@ -51,10 +51,10 @@ public class Sardines extends Task {
     }
     private void ShouldCook() {
         mMain.State = "Do cooking";
-        if (!SkillData.StoveAreaEdgeville.contains(Players.local())) {
+        if (!PlayerHelper.WithinArea(SkillData.StoveAreaEdgeville)) {
             PlayerHelper.WalkToTile(SkillData.StoveAreaEdgeville.getRandomTile());
         }
-        if (SkillData.StoveAreaEdgeville.contains(Players.local())) {
+        if (PlayerHelper.WithinArea(SkillData.StoveAreaEdgeville)) {
             GameObject cookingStove = Objects.stream().id(12269).first();
             InteractionsHelper interactionsHelper = new InteractionsHelper();
             interactionsHelper.InteractWithGameobject(ItemList.RAW_SARDINE_327, cookingStove, 270, 14, "Cook", "Stove");

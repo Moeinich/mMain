@@ -2,20 +2,15 @@ package Helpers;
 
 import org.powbot.api.Area;
 import org.powbot.api.Condition;
-import org.powbot.api.Locatable;
 import org.powbot.api.Tile;
 import org.powbot.api.rt4.Bank;
 import org.powbot.api.rt4.Combat;
-import org.powbot.api.rt4.Constants;
 import org.powbot.api.rt4.GroundItem;
 import org.powbot.api.rt4.GroundItems;
 import org.powbot.api.rt4.Inventory;
 import org.powbot.api.rt4.Item;
 import org.powbot.api.rt4.Movement;
-import org.powbot.api.rt4.Npc;
-import org.powbot.api.rt4.Npcs;
 import org.powbot.api.rt4.Players;
-import org.powbot.api.rt4.Skills;
 import org.powbot.api.rt4.Widgets;
 import org.powbot.dax.api.DaxWalker;
 import org.powbot.dax.teleports.Teleport;
@@ -65,8 +60,9 @@ public class PlayerHelper {
             DaxWalker.walkTo(place);
         }
     }
-    public static void WithinArea(Area area) {
-        area.contains(Players.local());
+
+    public static boolean WithinArea(Area area) {
+        return area.contains(Players.local());
     }
     public static void EnableRun() {
         mMain.State = "Enable run..";

@@ -1,7 +1,6 @@
 package Agility;
 
 import org.powbot.api.rt4.Constants;
-import org.powbot.api.rt4.Players;
 import org.powbot.api.rt4.Skills;
 
 import Helpers.PlayerHelper;
@@ -14,38 +13,38 @@ public class WalkToAgilityObstacles extends Task {
     public boolean activate() {
         //Gnome course
         if (Skills.realLevel(Constants.SKILLS_AGILITY) <= 9
-                && !SkillData.GnomeObstacleLowerArea.contains(Players.local())
-                && !SkillData.GnomeObstacleAreaMidFloor.contains(Players.local())
-                && !SkillData.GnomeObstacleAreaTopFloor.contains(Players.local()) )
+                && !PlayerHelper.WithinArea(SkillData.GnomeObstacleLowerArea)
+                && !PlayerHelper.WithinArea(SkillData.GnomeObstacleAreaMidFloor)
+                && !PlayerHelper.WithinArea(SkillData.GnomeObstacleAreaTopFloor))
         {
             return true;
         }
         //Draynor
         if (Skills.realLevel(Constants.SKILLS_AGILITY) >= 10 && Skills.realLevel(Constants.SKILLS_AGILITY) <= 29
-                && !SkillData.DraynorFloorArea.contains(Players.local())
-                && !SkillData.DraynorTopArea.contains(Players.local())
-                && !SkillData.DraynorCrateArea.contains(Players.local()) )
+                && !PlayerHelper.WithinArea(SkillData.DraynorFloorArea)
+                && !PlayerHelper.WithinArea(SkillData.DraynorTopArea)
+                && !PlayerHelper.WithinArea(SkillData.DraynorCrateArea))
         {
             return true;
         }
         //Varrock
         if (!SkillData.AgilityDone
                 && Skills.realLevel(Constants.SKILLS_AGILITY) >= 30 && Skills.realLevel(Constants.SKILLS_AGILITY) <= 39
-                && !SkillData.VarrockFloorArea.contains(Players.local())
-                && !SkillData.VarrockFirstArea.contains(Players.local())
-                && !SkillData.VarrockMidArea.contains(Players.local())
-                && !SkillData.VarrockTopArea.contains(Players.local())
-                && !SkillData.VarrockGhostArea.contains(Players.local()) )
+                && !PlayerHelper.WithinArea(SkillData.VarrockFloorArea)
+                && !PlayerHelper.WithinArea(SkillData.VarrockFirstArea)
+                && !PlayerHelper.WithinArea(SkillData.VarrockMidArea)
+                && !PlayerHelper.WithinArea(SkillData.VarrockTopArea)
+                && !PlayerHelper.WithinArea(SkillData.VarrockGhostArea))
         {
             return true;
         }
         //Canifis
         if (!SkillData.AgilityDone
                 && Skills.realLevel(Constants.SKILLS_AGILITY) >= 40 && Skills.realLevel(Constants.SKILLS_AGILITY) <= 80
-                && !SkillData.CanifisFloorArea.contains(Players.local())
-                && !SkillData.CanifisFirstArea.contains(Players.local())
-                && !SkillData.CanifisMidArea.contains(Players.local())
-                && !SkillData.CanifisTopArea.contains(Players.local()) )
+                && !PlayerHelper.WithinArea(SkillData.CanifisFloorArea)
+                && !PlayerHelper.WithinArea(SkillData.CanifisFirstArea)
+                && !PlayerHelper.WithinArea(SkillData.CanifisMidArea)
+                && !PlayerHelper.WithinArea(SkillData.CanifisTopArea))
         {
             return true;
         }
