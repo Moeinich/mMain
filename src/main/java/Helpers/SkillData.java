@@ -88,7 +88,7 @@ public class SkillData {
         }
     }
 
-    public static final int[] p2p = {302, 303, 304, 305, 306, 307, 309, 310, 311, 312, 313, 314, 315, 317, 318, 319, 320, 321, 322, 323};
+    public static final int[] p2p = {477, 478, 480, 484, 485, 486, 487, 488, 489, 490, 491, 492, 493, 494, 495, 496, 497};
 
     //Mining
     public static Tile miningCopperLocation = new Tile(3287,3366);

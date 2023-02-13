@@ -33,7 +33,7 @@ public class IronOres extends Task {
             if (Players.stream().within(SkillData.miningIronArea).count() != 1) {
                 int[] p2p = SkillData.p2p;
                 int randomWorld = p2p[Random.nextInt(0, p2p.length - 1)];
-                World world = new World(2, randomWorld, 1, World.Type.MEMBERS, World.Server.RUNE_SCAPE, World.Specialty.NONE);
+                World world = new World(randomWorld, randomWorld, 1, World.Type.MEMBERS, World.Server.RUNE_SCAPE, World.Specialty.NONE);
                 world.hop();
             }
             if (Players.local().animation() == -1 && Players.stream().within(SkillData.miningIronArea).count() == 1) {

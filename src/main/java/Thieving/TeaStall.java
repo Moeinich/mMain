@@ -48,44 +48,65 @@ public class TeaStall extends Task {
 
     @Override
     public boolean execute() {
-        if (shouldDropItems()) {
-            dropItems();
+        //Stop when thieving is done!
+        if (Skills.realLevel(Constants.SKILLS_THIEVING) >= 60) {
+            mMain.State = "Thieving done!";
+            SkillData.SetSkillDone();
+            mMain.taskRunning.set(false);
         }
-        else if (shouldThieve()) {
-            if (!Game.tab(Game.Tab.INVENTORY)) {
-                Condition.wait(() -> Game.tab(Game.Tab.INVENTORY), 250, 10);
+        //Go to thieving spot
+        if (!Players.local().tile().equals(SkillData.movementThieving()) && !(SkillData.movementThieving().tile().distanceTo(Players.local()) < 3)) {
+            WalkToSpot();
+        }
+        //World hop check
+        if (PlayerHelper.WithinArea(SkillData.teaStallArea) && Players.stream().within(SkillData.teaStallArea).count() != 1) {
+            ShouldWorldhop();
+        }
+        //Thieving loop
+        if (Players.stream().within(SkillData.teaStallArea).count() == 1) {
+            if (shouldDropItems() && PlayerHelper.WithinArea(SkillData.teaStallArea)) {
+                dropItems();
             }
-            if (!Players.local().tile().equals(SkillData.movementThieving()) && !(SkillData.movementThieving().tile().distanceTo(Players.local()) < 3)) { // Need to move to our thieving spot
-                mMain.State = "Walking to Thieving spot";
-                PlayerHelper.WalkToTile(SkillData.movementThieving());
-                Condition.wait(() -> SkillData.movementThieving().tile().distanceTo(Players.local()) < 3, 150, 20);
-                if (SkillData.movementThieving().tile().distanceTo(Players.local()) < 3) {
-                    Movement.step(SkillData.movementThieving());
-                }
-            } else if (Players.local().animation() == -1) { // Not currently thieving
-                if (Players.stream().within(SkillData.teaStallArea).count() != 1) {
-                    int[] p2p = SkillData.p2p;
-                    int randomWorld = p2p[Random.nextInt(0, p2p.length - 1)];
-                    World world = new World(2, randomWorld, 1, World.Type.MEMBERS, World.Server.RUNE_SCAPE, World.Specialty.NONE);
-                    world.hop();
-                }
-
-                GameObject teaStall = Objects.stream().within(2).id(STALL_ID).nearest().first();
-                if (teaStall.valid() && Players.stream().within(SkillData.teaStallArea).count() == 1) {
-                    if (!teaStall.inViewport()) { // Need to turn camera to the stall
-                        mMain.State = "Turning camera to tea stall";
-                        Camera.turnTo(teaStall);
-                        Condition.wait(() -> teaStall.inViewport(), 250, 10);
-                    } else { // Tea stall isn't null and in view
-                        mMain.State = "Stealing tea from stall";
-                        teaStall.interact("Steal-from");
-                        Condition.wait(() -> !teaStall.valid(), 150, 50); // Turns into "market stall" (id:634) after you steal from it
-                    }
-                } else {
-                    mMain.State = "Waiting for stall to restock";
-                }
+            else if (Inventory.isEmpty() && PlayerHelper.WithinArea(SkillData.teaStallArea)) {
+                ShouldThieve();
             }
         }
         return false;
+    }
+    private void ShouldThieve() {
+        if (!Game.tab(Game.Tab.INVENTORY)) {
+            Condition.wait(() -> Game.tab(Game.Tab.INVENTORY), 250, 10);
+        }
+        GameObject teaStall = Objects.stream().within(2).id(STALL_ID).nearest().first();
+        if (teaStall.valid() && Players.stream().within(SkillData.teaStallArea).count() == 1) {
+            if (!teaStall.inViewport()) { // Need to turn camera to the stall
+                mMain.State = "Turning camera to tea stall";
+                Camera.turnTo(teaStall);
+                Condition.wait(() -> teaStall.inViewport(), 250, 10);
+            } else { // Fruit stall isn't null and in view
+                mMain.State = "Stealing fruit from stall";
+                teaStall.interact("Steal-from");
+                Condition.wait(() -> !teaStall.valid(), 30, 45); // Turns into "market stall" (id:27537) after you steal from it
+            }
+        } else {
+            mMain.State = "Waiting for stall to restock";
+        }
+    }
+    private void ShouldWorldhop() {
+        mMain.State = "Worldhopping";
+        int[] p2p = SkillData.p2p;
+        int randomWorld = p2p[Random.nextInt(0, p2p.length - 1)];
+        World world = new World(randomWorld, randomWorld, 1, World.Type.MEMBERS, World.Server.RUNE_SCAPE, World.Specialty.NONE);
+        world.hop();
+    }
+    private void WalkToSpot() {
+        if (!Players.local().tile().equals(SkillData.movementThieving()) && !(SkillData.movementThieving().tile().distanceTo(Players.local()) < 3)) { // Need to move to our thieving spot
+            mMain.State = "Walking to Thieving spot";
+            PlayerHelper.WalkToTile(SkillData.movementThieving());
+            Condition.wait(() -> SkillData.movementThieving().tile().distanceTo(Players.local()) < 3, 150, 20);
+            if (SkillData.movementThieving().tile().distanceTo(Players.local()) < 3) {
+                Movement.step(SkillData.movementThieving());
+            }
+        }
     }
 }

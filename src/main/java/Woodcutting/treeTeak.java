@@ -1,12 +1,14 @@
 package Woodcutting;
 
 import org.powbot.api.Condition;
+import org.powbot.api.Random;
 import org.powbot.api.rt4.Constants;
 import org.powbot.api.rt4.GameObject;
 import org.powbot.api.rt4.Movement;
 import org.powbot.api.rt4.Objects;
 import org.powbot.api.rt4.Players;
 import org.powbot.api.rt4.Skills;
+import org.powbot.api.rt4.World;
 
 import Helpers.PlayerHelper;
 import Helpers.SkillData;
@@ -28,6 +30,13 @@ public class treeTeak extends Task {
         }
 
         if (PlayerHelper.WithinArea(SkillData.teakArea) && Players.local().animation() == -1) {
+            if (Players.stream().within(SkillData.teakArea).count() != 1) {
+                int[] p2p = SkillData.p2p;
+                int randomWorld = p2p[Random.nextInt(0, p2p.length - 1)];
+                World world = new World(randomWorld, randomWorld, 1, World.Type.MEMBERS, World.Server.RUNE_SCAPE, World.Specialty.NONE);
+                world.hop();
+            }
+
             GameObject treeTeak = Objects.stream().within(SkillData.teakArea).id(SkillData.teakTreeID).nearest().first();
             mMain.State = "Cutting teaks";
             if (treeTeak.interact("Chop down", "Teak")) {
