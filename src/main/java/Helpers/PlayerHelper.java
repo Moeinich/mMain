@@ -70,7 +70,7 @@ public class PlayerHelper {
     }
 
     public static boolean onTile(Tile tile) {
-        return tile.equals(Players.local());
+        return tile.equals(Players.local().tile());
     }
 
     public static void EnableRun() {
