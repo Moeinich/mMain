@@ -286,9 +286,9 @@ public class mMain extends AbstractScript {
                 break;
 
             case "Magic":
-                if (SkillData.RangeCombatDone) {
+                if (SkillData.MagicCombatDone) {
                     ScriptManager.INSTANCE.stop();
-                } else startRanged.Ranged();
+                } else startMagic.Magic();
                 break;
         }
     }

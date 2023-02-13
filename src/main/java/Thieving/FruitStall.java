@@ -93,12 +93,14 @@ public class FruitStall extends Task {
         if (PlayerHelper.WithinArea(SkillData.fruitStallArea) && Players.stream().within(SkillData.fruitStallArea).count() != 1) {
             ShouldWorldhop();
         }
-        //Should we drop items?
-        if (shouldDropItems() && PlayerHelper.WithinArea(SkillData.fruitStallArea)) {
-            dropItems();
-        }
-        else if (KOUREND_FAVOR.hosidiusFavorValue >= 20 && Inventory.isEmpty() && PlayerHelper.WithinArea(SkillData.fruitStallArea)) {
-            ShouldThieve();
+        //Thieving loop
+        if (Players.stream().within(SkillData.fruitStallArea).count() == 1) {
+            if (shouldDropItems() && PlayerHelper.WithinArea(SkillData.fruitStallArea)) {
+                dropItems();
+            }
+            else if (KOUREND_FAVOR.hosidiusFavorValue >= 20 && Inventory.isEmpty() && PlayerHelper.WithinArea(SkillData.fruitStallArea)) {
+                ShouldThieve();
+            }
         }
         return false;
     }
