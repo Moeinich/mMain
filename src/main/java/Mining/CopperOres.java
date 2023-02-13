@@ -22,7 +22,7 @@ public class CopperOres extends Task {
     }
 
     @Override
-    public void execute() {
+    public boolean execute() {
         if (!SkillData.miningCopperLocation.equals(Players.local().tile())) {
             mMain.State = "Go to copper area";
             if (SkillData.movementMining().distanceTo(Players.local()) < 3) {
@@ -45,5 +45,6 @@ public class CopperOres extends Task {
                 }
             }
         }
+        return false;
     }
 }

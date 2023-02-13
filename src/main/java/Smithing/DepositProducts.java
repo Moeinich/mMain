@@ -22,8 +22,9 @@ public class DepositProducts extends Task {
 
 
     @Override
-    public void execute() {
+    public boolean execute() {
         mMain.State = "Deposit products";
         Bank.depositInventory();
+        return false;
     }
 }

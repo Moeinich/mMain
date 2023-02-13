@@ -9,8 +9,9 @@ public class CraftingDone extends Task {
         return SkillData.CraftingDone;
     }
     @Override
-    public void execute() {
+    public boolean execute() {
         mMain.State = "Crafting done!";
         mMain.taskRunning.set(false);
+        return false;
     }
 }

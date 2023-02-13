@@ -18,7 +18,7 @@ public class treeNormal extends Task {
         return Skills.realLevel(Constants.SKILLS_WOODCUTTING) <= 14;
     }
     @Override
-    public void execute() {
+    public boolean execute() {
         if (!PlayerHelper.WithinArea(SkillData.normalTreeLocation)) {
             mMain.State = "Go to noob trees";
             PlayerHelper.WalkToTile(SkillData.movementWoodcutting());
@@ -31,5 +31,6 @@ public class treeNormal extends Task {
                 Condition.wait(() -> Objects.stream().at(treeNormal.tile()).id(SkillData.normalTreeID).isEmpty(), 500, 50);
             }
         }
+        return false;
     }
 }

@@ -21,7 +21,7 @@ public class GetPickaxe extends Task {
 return Game.tab(Game.Tab.INVENTORY) && Inventory.stream().id(SkillData.pickaxes).isEmpty();}
 
     @Override
-    public void execute() {
+    public boolean execute() {
         if (Skills.realLevel(Constants.SKILLS_MINING) >= 70) {
             mMain.State = "Mining done!";
             SkillData.SetSkillDone();
@@ -41,5 +41,6 @@ return Game.tab(Game.Tab.INVENTORY) && Inventory.stream().id(SkillData.pickaxes)
                 Condition.wait( () -> !Bank.opened(), 250, 50);
             }
         }
+        return false;
     }
 }

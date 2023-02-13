@@ -9,8 +9,9 @@ public class MiningDone extends Task {
         return SkillData.MiningDone;
     }
     @Override
-    public void execute() {
+    public boolean execute() {
         mMain.State = "Mining done!";
         mMain.taskRunning.set(false);
+        return false;
     }
 }

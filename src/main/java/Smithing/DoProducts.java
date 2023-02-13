@@ -15,7 +15,7 @@ public class DoProducts extends Task {
 
 
     @Override
-    public void execute() {
+    public boolean execute() {
         mMain.State = "Do products";
         GameObject anvilVarrockWest = Objects.stream().id(2097).first();
         Component anvilWidgetBronzeWarhammer = Widgets.widget(312).component(16);
@@ -34,5 +34,6 @@ public class DoProducts extends Task {
 
         //Wait.
         Condition.wait(() -> Players.local().animation() == -1, 2000,50);
+        return false;
     }
 }

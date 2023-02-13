@@ -3,10 +3,8 @@ package Fishing;
 import org.powbot.api.Condition;
 import org.powbot.api.rt4.Constants;
 import org.powbot.api.rt4.Inventory;
-import org.powbot.api.rt4.Movement;
 import org.powbot.api.rt4.Npc;
 import org.powbot.api.rt4.Npcs;
-import org.powbot.api.rt4.Objects;
 import org.powbot.api.rt4.Players;
 import org.powbot.api.rt4.Skills;
 
@@ -21,7 +19,7 @@ public class AlKharidFishing extends Task {
         return  Skills.realLevel(Constants.SKILLS_FISHING) <= 19 && Inventory.stream().name("Small fishing net").isNotEmpty();
     }
     @Override
-    public void execute() {
+    public boolean execute() {
         if (!PlayerHelper.WithinArea(SkillData.AlKharidFishingSpot1) && !PlayerHelper.WithinArea(SkillData.AlKharidFishingSpot2)) {
             mMain.State = "Walk to fishing area";
             PlayerHelper.WalkToTile(SkillData.movementFishing());
@@ -36,5 +34,6 @@ public class AlKharidFishing extends Task {
                 }
             }
         }
+        return false;
     }
 }

@@ -25,7 +25,7 @@ public class Longbow extends Task {
     }
 
     @Override
-    public void execute() {
+    public boolean execute() {
         mMain.State ="LB LOOP!";
         if (Game.tab(Game.Tab.INVENTORY) && (Inventory.stream().id(ToolID).isEmpty() || Inventory.stream().id(CombineWithItemID).isEmpty())) {
             mMain.State = "Banking loop";
@@ -38,6 +38,7 @@ public class Longbow extends Task {
         if (ScriptManager.INSTANCE.isStopping()) {
             ScriptManager.INSTANCE.stop();
         }
+        return false;
     }
 
     private void bank() {

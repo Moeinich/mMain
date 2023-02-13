@@ -29,7 +29,7 @@ public class MapleLongbow extends Task {
     }
 
     @Override
-    public void execute() {
+    public boolean execute() {
         if (Game.tab(Game.Tab.INVENTORY) && !Bank.opened() && Inventory.stream().id(CombineWithItemID).isNotEmpty()) {
             mMain.State = "Fletching bows";
             fletch();
@@ -55,6 +55,7 @@ public class MapleLongbow extends Task {
         if (ScriptManager.INSTANCE.isStopping()) {
             ScriptManager.INSTANCE.stop();
         }
+        return false;
     }
 
     private void BankForFletching() {

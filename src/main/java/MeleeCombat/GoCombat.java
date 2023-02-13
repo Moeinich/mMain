@@ -13,8 +13,9 @@ public class GoCombat extends Task {
         return !SkillData.Seagull_area.contains(Players.local());
     }
     @Override
-    public void execute() {
+    public boolean execute() {
         mMain.State = "Go to cb area";
         Movement.builder(SkillData.Seagull_area.getRandomTile()).setRunMin(45).setRunMax(75).move();
+        return false;
     }
 }

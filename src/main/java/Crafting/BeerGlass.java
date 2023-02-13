@@ -25,7 +25,7 @@ public class BeerGlass extends Task {
     }
 
     @Override
-    public void execute() {
+    public boolean execute() {
         if (Game.tab(Game.Tab.INVENTORY) && (Inventory.stream().id(ToolID).isEmpty() || Inventory.stream().id(CombineWithItemID).isEmpty())) {
             mMain.State = "Banking loop";
             bank();
@@ -37,6 +37,7 @@ public class BeerGlass extends Task {
         if (ScriptManager.INSTANCE.isStopping()) {
             ScriptManager.INSTANCE.stop();
         }
+        return false;
     }
 
     private void bank() {

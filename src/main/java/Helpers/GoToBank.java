@@ -16,7 +16,7 @@ public class GoToBank extends Task{
         return Bank.nearest().tile().distanceTo(Players.local()) > 5;
     }
     @Override
-    public void execute() {
+    public boolean execute() {
         if (Inventory.stream().name("Coin pouch").isNotEmpty()) {
             Item CoinPouch = Inventory.stream().name("Coin pouch").first();
             mMain.State = "Opening pouches";
@@ -29,5 +29,6 @@ public class GoToBank extends Task{
             DaxWalker.blacklistTeleports(Teleport.CASTLE_WARS_MINIGAME, Teleport.SOUL_WARS_MINIGAME, Teleport.CLAN_WARS_MINIGAME);
             DaxWalker.walkToBank();
         }
+        return false;
     }
 }

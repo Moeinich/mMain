@@ -10,7 +10,6 @@ import org.powbot.mobile.script.ScriptManager;
 
 import Helpers.InteractionsHelper;
 import Helpers.ItemList;
-import Helpers.SkillData;
 import Helpers.Task;
 import script.mMain;
 
@@ -26,7 +25,7 @@ public class UnpoweredOrb extends Task {
     }
 
     @Override
-    public void execute() {
+    public boolean execute() {
         if (Game.tab(Game.Tab.INVENTORY) && (Inventory.stream().id(ToolID).isEmpty() || Inventory.stream().id(CombineWithItemID).isEmpty())) {
             mMain.State = "Banking loop";
             bank();
@@ -38,6 +37,7 @@ public class UnpoweredOrb extends Task {
         if (ScriptManager.INSTANCE.isStopping()) {
             ScriptManager.INSTANCE.stop();
         }
+        return false;
     }
 
     private void bank() {

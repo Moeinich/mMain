@@ -14,10 +14,11 @@ public class DropLogs extends Task {
         return Inventory.isFull();
     }
     @Override
-    public void execute() {
+    public boolean execute() {
         mMain.State = "Dropping..";
         String[] badItems = {"Logs", "Oak logs", "Willow logs", "Teak logs"};
         List<Item> itemsToDrop = Inventory.stream().name(badItems).list();
         Inventory.drop(itemsToDrop);
+        return false;
     }
 }

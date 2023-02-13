@@ -3,7 +3,6 @@ package Woodcutting;
 import org.powbot.api.Condition;
 import org.powbot.api.rt4.Constants;
 import org.powbot.api.rt4.GameObject;
-import org.powbot.api.rt4.Movement;
 import org.powbot.api.rt4.Objects;
 import org.powbot.api.rt4.Players;
 import org.powbot.api.rt4.Skills;
@@ -19,7 +18,7 @@ public class treeWillow extends Task {
     }
 
     @Override
-    public void execute() {
+    public boolean execute() {
         if (!PlayerHelper.WithinArea(SkillData.willowTreeLocation)) {
             mMain.State = "Go to Willow trees";
             PlayerHelper.WalkToTile(SkillData.movementWoodcutting());
@@ -31,5 +30,6 @@ public class treeWillow extends Task {
                 Condition.wait(() -> Objects.stream().at(treeWillow.tile()).id(SkillData.willowTreeID).isEmpty(), 500, 50);
             }
         }
+        return false;
     }
 }

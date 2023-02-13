@@ -19,7 +19,7 @@ public class WithdrawMaterials extends Task {
 
 
     @Override
-    public void execute() {
+    public boolean execute() {
         mMain.State = "Withdraw materials";
 
         //Withdraw Ores for bars!
@@ -40,5 +40,6 @@ public class WithdrawMaterials extends Task {
         if (Bank.stream().id(SkillData.bronzeBar).first().stackSize() >= 28 && Skills.realLevel(Constants.SKILLS_SMITHING) >= 9) {
             Bank.withdraw(SkillData.bronzeBar, 28);
         }
+        return false;
     }
 }

@@ -1,7 +1,6 @@
 package Woodcutting;
 
 import org.powbot.api.Condition;
-import org.powbot.api.rt4.Bank;
 import org.powbot.api.rt4.Constants;
 import org.powbot.api.rt4.GameObject;
 import org.powbot.api.rt4.Movement;
@@ -20,7 +19,7 @@ public class treeTeak extends Task {
     }
 
     @Override
-    public void execute() {
+    public boolean execute() {
         if (!PlayerHelper.WithinArea(SkillData.teakArea)) {
             mMain.State = "Go to Teak trees";
             if (SkillData.teakLocation.distanceTo(Players.local()) < 10) {
@@ -35,5 +34,6 @@ public class treeTeak extends Task {
                 Condition.wait(() -> Objects.stream().at(treeTeak.tile()).id(SkillData.teakTreeID).isEmpty(), 500, 50);
             }
         }
+        return false;
     }
 }

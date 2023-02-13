@@ -9,8 +9,9 @@ public class WoodcuttingDone extends Task {
         return SkillData.WoodcuttingDone;
     }
     @Override
-    public void execute() {
+    public boolean execute() {
         mMain.State = "Woodcutting done!";
         mMain.taskRunning.set(false);
+        return false;
     }
 }

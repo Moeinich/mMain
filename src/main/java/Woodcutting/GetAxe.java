@@ -21,7 +21,7 @@ public class GetAxe extends Task {
         return Game.tab(Game.Tab.INVENTORY) && Inventory.stream().id(SkillData.wcAxes).isEmpty();
     }
     @Override
-    public void execute() {
+    public boolean execute() {
         if (Skills.realLevel(Constants.SKILLS_WOODCUTTING) >= 70) {
             mMain.State = "Woodcutting done!";
             SkillData.SetSkillDone();
@@ -41,5 +41,6 @@ public class GetAxe extends Task {
                 Condition.wait( () -> !Bank.opened(), 250, 50);
             }
         }
+        return false;
     }
 }

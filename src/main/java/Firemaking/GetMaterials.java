@@ -20,7 +20,7 @@ public class GetMaterials extends Task {
         return Inventory.stream().id(SkillData.logs).isEmpty() || Inventory.stream().id(ItemList.TINDERBOX_590).isEmpty();
     }
     @Override
-    public void execute() {
+    public boolean execute() {
         if (Skills.realLevel(Constants.SKILLS_FIREMAKING) >= 70) {
             mMain.State = "Firemaking done!";
             SkillData.SetSkillDone();
@@ -47,5 +47,6 @@ public class GetMaterials extends Task {
                 Bank.close();
             }
         }
+        return false;
     }
 }

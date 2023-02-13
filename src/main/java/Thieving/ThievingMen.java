@@ -25,7 +25,7 @@ public class ThievingMen extends Task {
     }
 
     @Override
-    public void execute() {
+    public boolean execute() {
         if (!Game.tab(Game.Tab.INVENTORY)) {
             Condition.wait(() -> Game.tab(Game.Tab.INVENTORY), 250, 10);
         }
@@ -36,6 +36,7 @@ public class ThievingMen extends Task {
         if (Skills.realLevel(Constants.SKILLS_THIEVING) <= 4 && CoinPouch.stackSize() <= triggerCount) {
             ShouldThieve();
         }
+        return false;
     }
     private void ShouldOpenPouches() {
         if (Inventory.stream().name("Coin pouch").isNotEmpty()) {

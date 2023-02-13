@@ -9,8 +9,9 @@ public class CookingDone extends Task {
         return SkillData.CookingDone;
     }
     @Override
-    public void execute() {
+    public boolean execute() {
         mMain.State = "Cooking done!";
         mMain.taskRunning.set(false);
+        return false;
     }
 }

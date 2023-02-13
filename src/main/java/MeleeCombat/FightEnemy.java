@@ -19,9 +19,10 @@ public class FightEnemy extends Task {
         return SkillData.Seagull_area.contains(Players.local()) && !Players.local().healthBarVisible();
     }
     @Override
-    public void execute() {
+    public boolean execute() {
         if (seagull.inViewport() && seagull.interact("Attack", npcName)) {
             Condition.wait(() -> !seagull.valid(),900,20);
         }
+        return false;
     }
 }

@@ -20,7 +20,7 @@ public class SmithingBanking extends Task {
 
 
     @Override
-    public void execute() {
+    public boolean execute() {
         mMain.State = "Banking";
         Locatable nearestBank = Bank.nearest();
 
@@ -29,5 +29,6 @@ public class SmithingBanking extends Task {
         } else {
             Movement.builder(nearestBank).setRunMin(45).setRunMax(75).move();
         }
+        return false;
     }
 }

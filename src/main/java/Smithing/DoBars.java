@@ -14,7 +14,7 @@ public class DoBars extends Task {
     }
 
     @Override
-    public void execute() {
+    public boolean execute() {
         mMain.State = "Do bars";
         Component furnaceWidgetCopper = Widgets.widget(270).component(14);
         Component furnaceWidgetIron = Widgets.widget(270).component(15);
@@ -31,5 +31,6 @@ public class DoBars extends Task {
             furnaceWidgetIron.click();
         }
         Condition.wait(() -> Players.local().animation() == -1, 2000,50);
+        return false;
     }
 }

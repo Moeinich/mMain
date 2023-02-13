@@ -27,7 +27,7 @@ import MeleeCombat.StartMelee;
 @ScriptManifest(
         name = "mMain",
         description = "Progressively levels different skills",
-        version = "0.0.12"
+        version = "0.0.13"
 )
 @ScriptConfiguration.List(
         {
@@ -35,7 +35,7 @@ import MeleeCombat.StartMelee;
                         name =  "Mode",
                         description = "Which skill would you like to do?",
                         defaultValue = "Ranged",
-                        allowedValues = {"Progressive", "Mining", "Fishing", "Woodcutting", "Cooking", "Firemaking", "Smithing", "Thieving", "Crafting", "Fletching", "Agility", "Herblore", "Ranged"},
+                        allowedValues = {"Progressive", "Mining", "Fishing", "Woodcutting", "Cooking", "Firemaking", "Smithing", "Thieving", "Crafting", "Fletching", "Agility", "Herblore", "Ranged", "Magic"},
                         optionType = OptionType.STRING
                 )
         }
@@ -83,6 +83,7 @@ public class mMain extends AbstractScript {
                     .trackSkill(Skill.Agility, TrackSkillOption.LevelProgressBar)
                     .trackSkill(Skill.Ranged, TrackSkillOption.LevelProgressBar)
                     .trackSkill(Skill.Defence, TrackSkillOption.LevelProgressBar)
+                    .trackSkill(Skill.Magic, TrackSkillOption.LevelProgressBar)
                     .x(40)
                     .y(300)
                     .build();
@@ -103,6 +104,7 @@ public class mMain extends AbstractScript {
                     .trackSkill(Skill.Agility)
                     .trackSkill(Skill.Ranged)
                     .trackSkill(Skill.Defence)
+                    .trackSkill(Skill.Magic)
                     .x(40)
                     .y(300)
                     .build();
@@ -148,6 +150,7 @@ public class mMain extends AbstractScript {
         var startAgility = new Agility.StartAgility();
         var startHerblore = new Herblore.StartHerblore();
         var startRanged = new RangedCombat.StartRanged();
+        var startMagic = new MagicCombat.StartMagic();
 
         String skill = getOption("Mode");
 
@@ -273,6 +276,12 @@ public class mMain extends AbstractScript {
                 break;
 
             case "Ranged":
+                if (SkillData.RangeCombatDone) {
+                    ScriptManager.INSTANCE.stop();
+                } else startRanged.Ranged();
+                break;
+
+            case "Magic":
                 if (SkillData.RangeCombatDone) {
                     ScriptManager.INSTANCE.stop();
                 } else startRanged.Ranged();

@@ -9,9 +9,7 @@ import org.powbot.api.rt4.GroundItems;
 import org.powbot.api.rt4.Inventory;
 import org.powbot.api.rt4.Movement;
 import org.powbot.api.rt4.Objects;
-import org.powbot.api.rt4.Players;
 import org.powbot.api.rt4.Skills;
-import org.powbot.api.rt4.Widgets;
 import org.powbot.api.rt4.walking.model.Skill;
 
 import Helpers.ItemList;
@@ -27,7 +25,7 @@ public class DraynorCourse extends Task {
         return Skills.realLevel(Constants.SKILLS_AGILITY) >= 10 && Skills.realLevel(Constants.SKILLS_AGILITY) <= 29;
     }
     @Override
-    public void execute() {
+    public boolean execute() {
         if (Game.tab(Game.Tab.INVENTORY) && Inventory.stream().action("Eat").isEmpty()) {
             mMain.State = "Get food";
             PlayerHelper playerHelper = new PlayerHelper();
@@ -43,6 +41,7 @@ public class DraynorCourse extends Task {
         if (Inventory.stream().id(ItemList.CAKE_1891, ItemList._23_CAKE_1893, ItemList.SLICE_OF_CAKE_1895).isNotEmpty()) {
             ShouldRunObstacle();
         }
+        return false;
     }
     public void LootMarks() {
         PlayerHelper playerHelper = new PlayerHelper();

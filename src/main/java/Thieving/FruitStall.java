@@ -8,7 +8,6 @@ import org.powbot.api.rt4.Game;
 import org.powbot.api.rt4.GameObject;
 import org.powbot.api.rt4.Inventory;
 import org.powbot.api.rt4.Item;
-import org.powbot.api.rt4.Movement;
 import org.powbot.api.rt4.Objects;
 import org.powbot.api.rt4.Players;
 import org.powbot.api.rt4.Skills;
@@ -17,7 +16,6 @@ import org.powbot.api.rt4.World;
 
 import java.util.List;
 
-import Helpers.PlayerHelper;
 import Helpers.SkillData;
 import Helpers.Task;
 import script.mMain;
@@ -63,22 +61,19 @@ public class FruitStall extends Task {
         mMain.State = "Dropping Tea!";
         List<Item> itemsToDrop = Inventory.stream().name(badItems).list();
         if (Inventory.drop(itemsToDrop)) {
-            Condition.wait(() -> itemsToDrop.isEmpty(), 20, 50);
+            Condition.wait(itemsToDrop::isEmpty, 20, 50);
         }
-    }
-    public boolean shouldThieve() {
-        return !Inventory.isFull();
     }
 
 
     @Override
-    public void execute() {
+    public boolean execute() {
+        //Stop when thieving is done!
         if (Skills.realLevel(Constants.SKILLS_THIEVING) >= 60) {
             mMain.State = "Thieving done!";
             SkillData.SetSkillDone();
             mMain.taskRunning.set(false);
         }
-
         //We need to check hosidius favor!
         if (!KOUREND_FAVOR.checkedFavor) {
             mMain.State = "Checking favor!" + KOUREND_FAVOR.hosidiusFavorValue;
@@ -88,43 +83,46 @@ public class FruitStall extends Task {
         if (KOUREND_FAVOR.hosidiusFavorValue <= 19) {
             mMain.taskRunning.set(false);
         }
-
+        //World hop check
+        if (Players.stream().within(SkillData.fruitStallArea).count() != 1) {
+            ShouldWorldhop();
+        }
+        //Should we drop items?
         if (shouldDropItems()) {
             dropItems();
         }
-        else if (shouldThieve() && KOUREND_FAVOR.hosidiusFavorValue >= 20) {
-            if (!Game.tab(Game.Tab.INVENTORY)) {
-                Condition.wait(() -> Game.tab(Game.Tab.INVENTORY), 250, 10);
+        else if (KOUREND_FAVOR.hosidiusFavorValue >= 20 && Inventory.isEmpty() && Players.stream().within(SkillData.fruitStallArea).count() == 1) {
+            ShouldThieve();
+        }
+        return false;
+    }
+
+    public void ShouldThieve() {
+        if (!Game.tab(Game.Tab.INVENTORY)) {
+            Condition.wait(() -> Game.tab(Game.Tab.INVENTORY), 250, 10);
+        }
+        GameObject fruitStall = Objects.stream().within(2).id(STALL_ID).nearest().first();
+        if (fruitStall.valid() && Players.stream().within(SkillData.fruitStallArea).count() == 1) {
+            if (!fruitStall.inViewport()) { // Need to turn camera to the stall
+                mMain.State = "Turning camera to tea stall";
+                Camera.turnTo(fruitStall);
+                Condition.wait(() -> fruitStall.inViewport(), 250, 10);
+            } else { // Fruit stall isn't null and in view
+                mMain.State = "Stealing fruit from stall";
+                fruitStall.interact("Steal-from");
+                Condition.wait(() -> !fruitStall.valid(), 30, 45); // Turns into "market stall" (id:27537) after you steal from it
             }
-            if (!(SkillData.movementThieving().tile().distanceTo(Players.local()) < 3)) { // Need to move to our thieving spot
-                mMain.State = "Walking to Thieving spot";
-                PlayerHelper.WalkToTile(SkillData.movementThieving());
-                Condition.wait(() -> SkillData.movementThieving().tile().distanceTo(Players.local()) < 3, 150, 20);
-                if (SkillData.movementThieving().tile().distanceTo(Players.local()) < 3) {
-                    Movement.step(SkillData.movementThieving());
-                }
-            } else if (Players.local().animation() == -1) { // Not currently thieving
-                if (Players.stream().within(SkillData.fruitStallArea).count() != 1) {
-                    int[] p2p = SkillData.p2p;
-                    int randomWorld = p2p[Random.nextInt(0, p2p.length - 1)];
-                    World world = new World(2, randomWorld, 1, World.Type.MEMBERS, World.Server.RUNE_SCAPE, World.Specialty.NONE);
-                    world.hop();
-                }
-                GameObject fruitStall = Objects.stream().within(2).id(STALL_ID).nearest().first();
-                if (fruitStall.valid() && Players.stream().within(SkillData.fruitStallArea).count() == 1) {
-                    if (!fruitStall.inViewport()) { // Need to turn camera to the stall
-                        mMain.State = "Turning camera to tea stall";
-                        Camera.turnTo(fruitStall);
-                        Condition.wait(() -> fruitStall.inViewport(), 250, 10);
-                    } else { // Tea stall isn't null and in view
-                        mMain.State = "Stealing fruit from stall";
-                        fruitStall.interact("Steal-from");
-                        Condition.wait(() -> !fruitStall.valid(), 30, 45); // Turns into "market stall" (id:27537) after you steal from it
-                    }
-                } else {
-                    mMain.State = "Waiting for stall to restock";
-                }
-            }
+        } else {
+            mMain.State = "Waiting for stall to restock";
+        }
+    }
+    public void ShouldWorldhop() {
+        mMain.State = "Worldhopping";
+        if (Players.stream().within(SkillData.fruitStallArea).count() != 1) {
+            int[] p2p = SkillData.p2p;
+            int randomWorld = p2p[Random.nextInt(0, p2p.length - 1)];
+            World world = new World(2, randomWorld, 1, World.Type.MEMBERS, World.Server.RUNE_SCAPE, World.Specialty.NONE);
+            world.hop();
         }
     }
 }

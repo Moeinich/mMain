@@ -18,7 +18,7 @@ public class DoFiremaking extends Task {
         return Inventory.stream().id(SkillData.logs).isNotEmpty() && Inventory.stream().id(ItemList.TINDERBOX_590).isNotEmpty();
     }
     @Override
-    public void execute() {
+    public boolean execute() {
         if (Game.tab(Game.Tab.INVENTORY)) {
             if (!PlayerHelper.WithinArea(SkillData.firemakingStartArea) && Inventory.stream().id(SkillData.logs).count() >= 27) {
                 mMain.State = "Go to lane " + fmSpot;
@@ -42,5 +42,6 @@ public class DoFiremaking extends Task {
                 }
             }
         }
+        return false;
     }
 }

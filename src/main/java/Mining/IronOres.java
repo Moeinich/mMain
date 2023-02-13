@@ -21,7 +21,7 @@ public class IronOres extends Task {
     }
 
     @Override
-    public void execute() {
+    public boolean execute() {
         if (!SkillData.miningIronLocation.equals(Players.local().tile())) {
             mMain.State = "Go to iron area";
             if (SkillData.movementMining().distanceTo(Players.local()) < 3) {
@@ -44,5 +44,6 @@ public class IronOres extends Task {
                 }
             }
         }
+        return false;
     }
 }

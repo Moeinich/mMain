@@ -1,14 +1,12 @@
 package Herblore;
 
 import org.powbot.api.Condition;
-import org.powbot.api.Locatable;
 import org.powbot.api.rt4.Bank;
 import org.powbot.api.rt4.Constants;
 import org.powbot.api.rt4.Game;
 import org.powbot.api.rt4.Inventory;
 import org.powbot.api.rt4.Players;
 import org.powbot.api.rt4.Skills;
-import org.powbot.api.rt4.Varpbits;
 import org.powbot.mobile.script.ScriptManager;
 
 import Helpers.InteractionsHelper;
@@ -27,7 +25,7 @@ public class AttackPotions extends Task {
         return  Bank.nearest().tile().distanceTo(Players.local()) < 10;
     }
     @Override
-    public void execute() {
+    public boolean execute() {
         if (Skills.realLevel(Constants.SKILLS_HERBLORE) < 3) {
             mMain.State = "Druidic ritual not done";
             SkillData.HerbloreDone = true;
@@ -45,6 +43,7 @@ public class AttackPotions extends Task {
         if (ScriptManager.INSTANCE.isStopping()) {
             ScriptManager.INSTANCE.stop();
         }
+        return false;
     }
 
     private void bank() {

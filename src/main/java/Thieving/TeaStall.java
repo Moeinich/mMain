@@ -47,7 +47,7 @@ public class TeaStall extends Task {
 
 
     @Override
-    public void execute() {
+    public boolean execute() {
         if (shouldDropItems()) {
             dropItems();
         }
@@ -86,5 +86,6 @@ public class TeaStall extends Task {
                 }
             }
         }
+        return false;
     }
 }

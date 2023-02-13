@@ -6,7 +6,6 @@ import org.powbot.api.rt4.Constants;
 import org.powbot.api.rt4.GameObject;
 import org.powbot.api.rt4.Movement;
 import org.powbot.api.rt4.Objects;
-import org.powbot.api.rt4.Players;
 import org.powbot.api.rt4.Skills;
 import org.powbot.api.rt4.walking.model.Skill;
 
@@ -23,11 +22,12 @@ public class GnomeCourse extends Task {
         return Skills.realLevel(Constants.SKILLS_AGILITY) <= 9;
     }
     @Override
-    public void execute() {
+    public boolean execute() {
         if (!Movement.running() && Movement.energyLevel() > 30) {
             PlayerHelper.EnableRun();
         } else ShouldRunObstacle();
-        }
+        return false;
+    }
     public void ShouldRunObstacle() {
         if (PlayerHelper.WithinArea(SkillData.GnomeObstacle1Area)) {
             GameObject GnomeObstacle1ID = Objects.stream().within(20).id(23145).nearest().first();

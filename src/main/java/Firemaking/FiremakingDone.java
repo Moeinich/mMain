@@ -9,8 +9,9 @@ public class FiremakingDone extends Task {
         return SkillData.FiremakingDone;
     }
     @Override
-    public void execute() {
+    public boolean execute() {
         mMain.State = "Firemaking done!";
         mMain.taskRunning.set(false);
+        return false;
     }
 }

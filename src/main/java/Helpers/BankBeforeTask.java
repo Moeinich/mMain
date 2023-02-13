@@ -17,7 +17,7 @@ public class BankBeforeTask extends Task {
         } else return false;
     }
     @Override
-    public void execute() {
+    public boolean execute() {
         if (Game.tab(Game.Tab.INVENTORY) && Inventory.isEmpty()) {
             mMain.State = "Inventory empty, moving on.. ";
             if (Bank.open()) {
@@ -44,5 +44,6 @@ public class BankBeforeTask extends Task {
                 }
             }
         }
+        return false;
     }
 }

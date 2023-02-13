@@ -9,8 +9,9 @@ public class AgilityDone extends Task {
         return SkillData.AgilityDone;
     }
     @Override
-    public void execute() {
+    public boolean execute() {
             mMain.State = "Agility done!";
             mMain.taskRunning.set(false);
+        return false;
     }
 }

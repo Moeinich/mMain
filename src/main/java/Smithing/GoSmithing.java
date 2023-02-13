@@ -21,7 +21,7 @@ public class GoSmithing extends Task {
     }
 
     @Override
-    public void execute() {
+    public boolean execute() {
         mMain.State = "Go smithing";
         if (Inventory.stream().id(SkillData.smithingOres).count() == 28) {
             Movement.builder(SkillData.smithingAreaEdgeville.getRandomTile()).setRunMin(45).setRunMax(75).move();
@@ -29,5 +29,6 @@ public class GoSmithing extends Task {
         if (Inventory.stream().id(SkillData.smithingBars).count() == 27) {
             Movement.builder(SkillData.smithingTileVarrockWest).setRunMin(45).setRunMax(75).move();
         }
+        return false;
     }
 }

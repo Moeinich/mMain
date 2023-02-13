@@ -9,9 +9,7 @@ import org.powbot.api.rt4.GroundItems;
 import org.powbot.api.rt4.Inventory;
 import org.powbot.api.rt4.Movement;
 import org.powbot.api.rt4.Objects;
-import org.powbot.api.rt4.Players;
 import org.powbot.api.rt4.Skills;
-import org.powbot.api.rt4.Widgets;
 import org.powbot.api.rt4.walking.model.Skill;
 
 import Helpers.ItemList;
@@ -27,7 +25,7 @@ public class VarrockCourse extends Task {
         return Skills.realLevel(Constants.SKILLS_AGILITY) >= 30 && Skills.realLevel(Constants.SKILLS_AGILITY) <= 39;
     }
     @Override
-    public void execute() {
+    public boolean execute() {
         if (Game.tab(Game.Tab.INVENTORY) && Inventory.stream().action("Eat").isEmpty()) {
             mMain.State = "Get food";
             PlayerHelper playerHelper = new PlayerHelper();
@@ -43,6 +41,7 @@ public class VarrockCourse extends Task {
         if (Game.tab(Game.Tab.INVENTORY) && Inventory.stream().id(ItemList.CAKE_1891, ItemList._23_CAKE_1893, ItemList.SLICE_OF_CAKE_1895).isNotEmpty()) {
             ShouldRunObstacle();
         }
+        return false;
     }
     public void LootMarks() {
         PlayerHelper playerHelper = new PlayerHelper();
@@ -134,6 +133,7 @@ public class VarrockCourse extends Task {
             if (!VarrockObstacle6.inViewport()) {
                 mMain.State = "Moving to obstacle 6";
                 Movement.step(SkillData.VarrockObstacle6MoveTo.getRandomTile());
+                Condition.wait( () -> (PlayerHelper.WithinArea(SkillData.VarrockObstacle6)), 250, 50);
             }
 
             if (VarrockObstacle6.inViewport()) {
@@ -150,6 +150,7 @@ public class VarrockCourse extends Task {
             if (!VarrockObstacle7.inViewport()) {
                 mMain.State = "Moving to obstacle 7";
                 Movement.step(SkillData.VarrockObstacle7MoveTo.getRandomTile());
+                Condition.wait( () -> (PlayerHelper.WithinArea(SkillData.VarrockObstacle7)), 250, 50);
             }
             GroundItem groundItem = GroundItems.stream().within(5).name("Mark of grace").nearest().first();
             if (groundItem.inViewport()) {

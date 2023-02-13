@@ -9,8 +9,9 @@ public class FishingDone extends Task {
         return SkillData.FishingDone;
     }
     @Override
-    public void execute() {
+    public boolean execute() {
         mMain.State = "Fishing done!";
         mMain.taskRunning.set(false);
+        return false;
     }
 }

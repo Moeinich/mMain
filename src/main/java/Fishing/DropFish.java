@@ -21,9 +21,10 @@ public class DropFish extends Task {
         return Inventory.isFull();
     }
     @Override
-    public void execute() {
+    public boolean execute() {
         mMain.State = "Dropping fish!";
         List<Item> itemsToDrop = Inventory.stream().name(badItems).list();
         Inventory.drop(itemsToDrop);
+        return false;
     }
 }

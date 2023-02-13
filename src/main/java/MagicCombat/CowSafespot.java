@@ -1,11 +1,12 @@
-package RangedCombat;
+package MagicCombat;
 
 import static Helpers.CombatHelper.missingEquipment;
+import static MagicCombat.MagicHelpers.isAutoCastOpen;
 
 import org.powbot.api.Condition;
 import org.powbot.api.rt4.Bank;
-import org.powbot.api.rt4.Combat;
 import org.powbot.api.rt4.Constants;
+import org.powbot.api.rt4.Game;
 import org.powbot.api.rt4.Inventory;
 import org.powbot.api.rt4.Npc;
 import org.powbot.api.rt4.Npcs;
@@ -24,22 +25,29 @@ import script.mMain;
 public class CowSafespot extends Task {
     @Override
     public boolean activate() {
-        return Skills.realLevel(Constants.SKILLS_RANGE) <= 29 && Skills.realLevel(Constants.SKILLS_DEFENSE) <= 29;
+        return Skills.realLevel(Constants.SKILLS_MAGIC) <= 29 && Skills.realLevel(Constants.SKILLS_DEFENSE) <= 29;
     }
     @Override
     public boolean execute() {
-        if (!Combat.style(Combat.Style.DEFENSIVE)) {
-            mMain.State = "Setting cb mode";
-            PlayerHelper helper = new PlayerHelper();
-            helper.SetAttackMode(Combat.Style.DEFENSIVE);
+        if (MagicHelpers.getAutoCastSpell().getSpell() != MagicData.MagicSpell() && !MagicHelpers.isAutoCasting()) {
+            mMain.State = "Setting spell";
+            Game.tab(Game.Tab.ATTACK);
+            if (isAutoCastOpen() || MagicHelpers.openAutocastTab()) {
+                MagicHelpers.AutoCastSpell[] spellValues = MagicHelpers.AutoCastSpell.values();
+                for (MagicHelpers.AutoCastSpell spell : spellValues) {
+                    if (spell.getSpell().equals(MagicData.MagicSpell())) {
+                        MagicHelpers.setAutoCast(spell);
+                    }
+                }
+            }
         }
 
-        if (CombatHelper.needEquipment(RangeData.RangeEquipment())) {
+        if (CombatHelper.needEquipment(MagicData.MagicEquipment())) {
             mMain.State = "Need equipment!";
             GetEquipment();
         }
 
-        if (!CombatHelper.needEquipment(RangeData.RangeEquipment()) && !PlayerHelper.WithinArea(SkillData.CowSafeSpotArea)) {
+        if (!CombatHelper.needEquipment(MagicData.MagicEquipment()) && !PlayerHelper.WithinArea(SkillData.CowSafeSpotArea)) {
             mMain.State = "Go safespot";
             PlayerHelper.WalkToTile(SkillData.CowSafeSpotArea.getRandomTile());
         }
@@ -70,14 +78,14 @@ public class CowSafespot extends Task {
             DaxWalker.blacklistTeleports(Teleport.CASTLE_WARS_MINIGAME, Teleport.SOUL_WARS_MINIGAME, Teleport.CLAN_WARS_MINIGAME);
             DaxWalker.walkToBank();
         }
-        if (!CombatHelper.gotItems(missingEquipment(RangeData.RangeEquipment()))) {
+        if (!CombatHelper.gotItems(missingEquipment(MagicData.MagicEquipment()))) {
             mMain.State = "Withdraw equipment";
             if (Bank.nearest().tile().distanceTo(Players.local()) <= 5 && Bank.inViewport()) {
                 if (!Bank.opened()) {
                     Bank.open();
                 }
                 if (Bank.open()) {
-                    for (var itemId : missingEquipment(RangeData.RangeEquipment())) {
+                    for (var itemId : missingEquipment(MagicData.MagicEquipment())) {
                         if (Bank.stream().id(itemId).isEmpty()) {
                             if (mMain.RunningSkill.equals("Progressive")) {
                                 mMain.State = "We ran out of " + itemId;
@@ -90,15 +98,15 @@ public class CowSafespot extends Task {
                         Condition.wait(() -> CombatHelper.gotItems(itemId), 100,10);
                     }
                 }
-                if (CombatHelper.gotItems(missingEquipment(RangeData.RangeEquipment())))
+                if (CombatHelper.gotItems(missingEquipment(MagicData.MagicEquipment())))
                 {
                     Bank.close();
                 }
             }
         }
-        if (CombatHelper.gotItems(missingEquipment(RangeData.RangeEquipment()))) {
+        if (CombatHelper.gotItems(missingEquipment(MagicData.MagicEquipment()))) {
             mMain.State = "Equip items";
-            for (var item : missingEquipment(RangeData.RangeEquipment())) {
+            for (var item : missingEquipment(MagicData.MagicEquipment())) {
                 var itemToEquip = Inventory.stream().id(item).first();
                 if (itemToEquip != null){
                     if (itemToEquip.interact("Wield", itemToEquip.name()))

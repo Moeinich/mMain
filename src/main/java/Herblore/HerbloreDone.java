@@ -9,8 +9,9 @@ public class HerbloreDone extends Task {
         return SkillData.HerbloreDone;
     }
     @Override
-    public void execute() {
+    public boolean execute() {
         mMain.State = "Herblore done!";
         mMain.taskRunning.set(false);
+        return false;
     }
 }

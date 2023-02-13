@@ -25,6 +25,7 @@ public class SkillData {
     public static Boolean AgilityDone = false;
     public static Boolean HerbloreDone = false;
     public static Boolean RangeCombatDone = false;
+    public static Boolean MagicCombatDone = false;
 
     public static boolean AllSkillsDone() {
         return MiningDone
@@ -39,7 +40,8 @@ public class SkillData {
                 && AgilityDone
                 && HerbloreDone
                 && MeleeCombatDone
-                && RangeCombatDone;
+                && RangeCombatDone
+                && MagicCombatDone;
     }
     public static void SetSkillDone() {
         if (mMain.RunningSkill.equals("Mining")) {
@@ -79,6 +81,9 @@ public class SkillData {
             MeleeCombatDone = true;
         }
         if (mMain.RunningSkill.equals("Ranged")) {
+            RangeCombatDone = true;
+        }
+        if (mMain.RunningSkill.equals("Magic")) {
             RangeCombatDone = true;
         }
     }
@@ -534,7 +539,7 @@ public class SkillData {
     }
 
     //Range
-    public static final Area RangeSafespot = new Area(
+    public static final Area CowSafeSpotArea = new Area(
                     new Tile(2927, 3292, 0),
                     new Tile(2922, 3292, 0),
                     new Tile(2921, 3293, 0),

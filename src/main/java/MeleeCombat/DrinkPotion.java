@@ -14,7 +14,7 @@ public class DrinkPotion extends Task {
         return Skills.realLevel(Constants.SKILLS_ATTACK) + attackPotThreshold > Skills.level(Constants.SKILLS_ATTACK);
     }
     @Override
-    public void execute() {
+    public boolean execute() {
         mMain.State = "Drink potion";
         Item potion = Inventory.stream().filtered(i -> i.name().contains("Super attack")).first();
         Npc combatMonster = Npcs.stream().at(Players.local().interacting().tile()).first();
@@ -26,5 +26,6 @@ public class DrinkPotion extends Task {
                 }
             }
         }
+        return false;
     }
 }

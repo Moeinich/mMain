@@ -17,7 +17,7 @@ public class treeOak extends Task {
         return Skills.realLevel(Constants.SKILLS_WOODCUTTING) >= 15 && Skills.realLevel(Constants.SKILLS_WOODCUTTING) < 30;
     }
     @Override
-    public void execute() {
+    public boolean execute() {
         if (!PlayerHelper.WithinArea(SkillData.oakTreeLocation)) {
             mMain.State = "Go to Oak trees";
             PlayerHelper.WalkToTile(SkillData.movementWoodcutting());
@@ -29,5 +29,6 @@ public class treeOak extends Task {
                 Condition.wait(() -> Objects.stream().at(treeOak.tile()).id(SkillData.oakTreeID).isEmpty(), 500, 50);
             }
         }
+        return false;
     }
 }

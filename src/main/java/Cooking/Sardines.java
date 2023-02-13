@@ -6,7 +6,6 @@ import org.powbot.api.rt4.Game;
 import org.powbot.api.rt4.GameObject;
 import org.powbot.api.rt4.Inventory;
 import org.powbot.api.rt4.Objects;
-import org.powbot.api.rt4.Players;
 import org.powbot.api.rt4.Skills;
 
 import Helpers.InteractionsHelper;
@@ -23,7 +22,7 @@ public class Sardines extends Task {
         return Skills.realLevel(Constants.SKILLS_COOKING) <= 34;
     }
     @Override
-    public void execute() {
+    public boolean execute() {
         if (!PlayerHelper.WithinArea(SkillData.cookingAreaEdgeville)) {
             mMain.State = "Move to edgeville";
             MoveToEdgeville();
@@ -34,6 +33,7 @@ public class Sardines extends Task {
         if (Game.tab(Game.Tab.INVENTORY) && Inventory.stream().name("Raw sardine").isNotEmpty()) {
             ShouldCook();
         }
+        return false;
     }
     private void MoveToEdgeville() {
         PlayerHelper.WalkToTile(SkillData.cookingAreaEdgeville.getRandomTile());
