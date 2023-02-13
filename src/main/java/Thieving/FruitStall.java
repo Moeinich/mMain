@@ -64,24 +64,27 @@ public class FruitStall extends Task {
             SkillData.SetSkillDone();
             mMain.taskRunning.set(false);
         }
+        //Check favor
         if (!SkillData.KOUREND_FAVOR.checkedFavor) {
             CheckFavor();
         }
-        //Go to thieving spot
-        if (!Players.local().tile().equals(SkillData.movementThieving()) && !(SkillData.movementThieving().tile().distanceTo(Players.local()) < 3)) {
-            WalkToSpot();
-        }
-        //World hop check
-        if (PlayerHelper.WithinArea(SkillData.fruitStallArea) && Players.stream().within(SkillData.fruitStallArea).count() != 1) {
-            ShouldWorldhop();
-        }
-        //Thieving loop
-        if (Players.stream().within(SkillData.fruitStallArea).count() == 1) {
-            if (shouldDropItems() && PlayerHelper.WithinArea(SkillData.fruitStallArea)) {
-                dropItems();
+        if (SkillData.KOUREND_FAVOR.hosidiusFavorValue >= 20) {
+            //Go to thieving spot
+            if (!Players.local().tile().equals(SkillData.movementThieving()) && !(SkillData.movementThieving().tile().distanceTo(Players.local()) < 3)) {
+                WalkToSpot();
             }
-            else if (SkillData.KOUREND_FAVOR.hosidiusFavorValue >= 20 && Inventory.isEmpty() && PlayerHelper.WithinArea(SkillData.fruitStallArea)) {
-                ShouldThieve();
+            //World hop check
+            if (PlayerHelper.WithinArea(SkillData.fruitStallArea) && Players.stream().within(SkillData.fruitStallArea).count() != 1) {
+                ShouldWorldhop();
+            }
+            //Thieving loop
+            if (Players.stream().within(SkillData.fruitStallArea).count() == 1) {
+                if (shouldDropItems() && PlayerHelper.WithinArea(SkillData.fruitStallArea)) {
+                    dropItems();
+                }
+                else if (Inventory.isEmpty() && PlayerHelper.WithinArea(SkillData.fruitStallArea)) {
+                    ShouldThieve();
+                }
             }
         }
         return false;
