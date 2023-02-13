@@ -285,10 +285,10 @@ public class SkillData {
     public static Tile teaStallTile = new Tile(3269,3412);
     public static Tile fruitStallTile = new Tile(1796, 3607);
     public static Tile movementThieving(){
-        if (Skills.realLevel(Constants.SKILLS_THIEVING) <= 5) {
+        if (Skills.realLevel(Constants.SKILLS_THIEVING) <= 4) {
             return thievingMenArea.getRandomTile();
         }
-        if (Skills.realLevel(Constants.SKILLS_THIEVING)  > 5 && Skills.realLevel(Constants.SKILLS_THIEVING) <= 24) {
+        if (Skills.realLevel(Constants.SKILLS_THIEVING)  >= 5 && Skills.realLevel(Constants.SKILLS_THIEVING) <= 24) {
             return teaStallTile;
         }
         if (Skills.realLevel(Constants.SKILLS_THIEVING) >= 25) {
