@@ -71,9 +71,7 @@ public class mMain extends AbstractScript {
             p = new PaintBuilder()
                     .addString("Mode: ", () -> skill)
                     .addString("Running: ", () -> RunningSkill)
-                    .addString("Skill timer: ", () -> {
-                        return timerFormat.format(new Date(Stopwatch.timeLeft()));
-                    })
+                    .addString("Skill timer: ", () -> timerFormat.format(new Date(Stopwatch.timeLeft())))
                     .addString("State: ", () -> State)
                     .trackSkill(Skill.Mining, TrackSkillOption.LevelProgressBar)
                     .trackSkill(Skill.Fishing, TrackSkillOption.LevelProgressBar)
