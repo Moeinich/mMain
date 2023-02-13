@@ -152,6 +152,10 @@ public class mMain extends AbstractScript {
         var startRanged = new RangedCombat.StartRanged();
         var startMagic = new MagicCombat.StartMagic();
 
+        if (SkillData.AllSkillsDone()) {
+            ScriptManager.INSTANCE.stop();
+        }
+
         String skill = getOption("Mode");
 
         switch (skill) {
