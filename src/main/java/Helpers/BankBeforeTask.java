@@ -19,7 +19,7 @@ public class BankBeforeTask extends Task {
     @Override
     public boolean execute() {
         if (Game.tab(Game.Tab.INVENTORY) && Inventory.isEmpty()) {
-            mMain.State = "Inventory empty, moving on.. ";
+            mMain.State = "Inv empty, move on";
             if (Bank.open()) {
                 if (Bank.opened()) {
                     Condition.wait( () -> !Bank.opened(), 150, 50);
@@ -39,7 +39,7 @@ public class BankBeforeTask extends Task {
             }
             if (Bank.opened()) {
                 if(Bank.depositInventory()) {
-                    Condition.wait( () -> Inventory.isEmpty(), 150, 50);
+                    Condition.wait(Inventory::isEmpty, 150, 50);
                     Bank.close();
                 }
             }

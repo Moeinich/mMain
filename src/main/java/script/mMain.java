@@ -12,7 +12,9 @@ import org.powbot.api.script.paint.TrackSkillOption;
 import org.powbot.mobile.script.ScriptManager;
 import org.powbot.mobile.service.ScriptUploader;
 
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.Executor;
@@ -62,13 +64,16 @@ public class mMain extends AbstractScript {
         RunningSkill = "Determining...";
         State = "Starting...";
         InteractionsHelper.cameraCheck();
+        SimpleDateFormat timerFormat = new SimpleDateFormat("hh:mm:ss");
 
         Paint p;
         if (skill.equals("Progressive")) {
             p = new PaintBuilder()
                     .addString("Mode: ", () -> skill)
                     .addString("Running: ", () -> RunningSkill)
-                    .addString("Skill Time left: ", () -> Stopwatch.timeLeft() / 1000 / 60 + " min")
+                    .addString("Skill timer: ", () -> {
+                        return timerFormat.format(new Date(Stopwatch.timeLeft()));
+                    })
                     .addString("State: ", () -> State)
                     .trackSkill(Skill.Mining, TrackSkillOption.LevelProgressBar)
                     .trackSkill(Skill.Fishing, TrackSkillOption.LevelProgressBar)

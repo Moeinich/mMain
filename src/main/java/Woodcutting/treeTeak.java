@@ -9,6 +9,7 @@ import org.powbot.api.rt4.Objects;
 import org.powbot.api.rt4.Players;
 import org.powbot.api.rt4.Skills;
 import org.powbot.api.rt4.World;
+import org.powbot.dax.teleports.Teleport;
 
 import Helpers.PlayerHelper;
 import Helpers.SkillData;

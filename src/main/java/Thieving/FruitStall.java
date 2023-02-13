@@ -12,8 +12,8 @@ import org.powbot.api.rt4.Movement;
 import org.powbot.api.rt4.Objects;
 import org.powbot.api.rt4.Players;
 import org.powbot.api.rt4.Skills;
-import org.powbot.api.rt4.Varpbits;
 import org.powbot.api.rt4.World;
+import org.powbot.dax.teleports.Teleport;
 
 import java.util.List;
 
