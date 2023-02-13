@@ -23,18 +23,6 @@ import Helpers.Task;
 import script.mMain;
 
 public class FruitStall extends Task {
-    private enum KOUREND_FAVOR {
-        HOSIDIUS(4895);
-        final int var;
-        KOUREND_FAVOR(int var){
-            this.var = var;
-        }
-        public int getValue(){
-            return (int) (Varpbits.value(var) * .1);
-        }
-        public static boolean checkedFavor = false;
-        public static int hosidiusFavorValue = 0;
-    }
 
     @Override
     public boolean activate() {
@@ -76,14 +64,8 @@ public class FruitStall extends Task {
             SkillData.SetSkillDone();
             mMain.taskRunning.set(false);
         }
-        //We need to check hosidius favor!
-        if (!KOUREND_FAVOR.checkedFavor) {
-            mMain.State = "Checking favor!" + KOUREND_FAVOR.hosidiusFavorValue;
-            KOUREND_FAVOR.hosidiusFavorValue = KOUREND_FAVOR.HOSIDIUS.getValue();
-            KOUREND_FAVOR.checkedFavor = true;
-        }
-        if (KOUREND_FAVOR.hosidiusFavorValue <= 19) {
-            mMain.taskRunning.set(false);
+        if (!SkillData.KOUREND_FAVOR.checkedFavor) {
+            CheckFavor();
         }
         //Go to thieving spot
         if (!Players.local().tile().equals(SkillData.movementThieving()) && !(SkillData.movementThieving().tile().distanceTo(Players.local()) < 3)) {
@@ -98,7 +80,7 @@ public class FruitStall extends Task {
             if (shouldDropItems() && PlayerHelper.WithinArea(SkillData.fruitStallArea)) {
                 dropItems();
             }
-            else if (KOUREND_FAVOR.hosidiusFavorValue >= 20 && Inventory.isEmpty() && PlayerHelper.WithinArea(SkillData.fruitStallArea)) {
+            else if (SkillData.KOUREND_FAVOR.hosidiusFavorValue >= 20 && Inventory.isEmpty() && PlayerHelper.WithinArea(SkillData.fruitStallArea)) {
                 ShouldThieve();
             }
         }
@@ -140,5 +122,17 @@ public class FruitStall extends Task {
                 Movement.step(SkillData.movementThieving());
             }
         }
+    }
+    private void CheckFavor() {
+        //We need to check hosidius favor!
+        if (!SkillData.KOUREND_FAVOR.checkedFavor) {
+            mMain.State = "Favor: " + SkillData.KOUREND_FAVOR.hosidiusFavorValue;
+            SkillData.KOUREND_FAVOR.hosidiusFavorValue = SkillData.KOUREND_FAVOR.HOSIDIUS.getValue();
+        }
+        if (SkillData.KOUREND_FAVOR.hosidiusFavorValue <= 19) {
+            mMain.State = "Thieving done!";
+            SkillData.SetSkillDone();
+            mMain.taskRunning.set(false);
+        } else SkillData.KOUREND_FAVOR.checkedFavor = true;
     }
 }

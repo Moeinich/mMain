@@ -5,6 +5,7 @@ import org.powbot.api.Tile;
 import org.powbot.api.rt4.Bank;
 import org.powbot.api.rt4.Constants;
 import org.powbot.api.rt4.Skills;
+import org.powbot.api.rt4.Varpbits;
 import org.powbot.api.rt4.walking.model.Skill;
 
 import Firemaking.DoFiremaking;
@@ -88,6 +89,22 @@ public class SkillData {
         }
     }
 
+    public enum KOUREND_FAVOR {
+        ARCEUUS(4896),
+        HOSIDIUS(4895),
+        LOVAKENGJ(4898),
+        PISCARILIUS(4899),
+        SHAYZIEN(4894);
+        final int var;
+        KOUREND_FAVOR(int var){
+            this.var = var;
+        }
+        public int getValue(){
+            return (int) (Varpbits.value(var) * .1);
+        }
+        public static boolean checkedFavor = false;
+        public static int hosidiusFavorValue = 0;
+    }
     public static final int[] p2p = {477, 478, 480, 484, 485, 486, 487, 488, 489, 490, 491, 492, 493, 494, 495, 496, 497};
 
     //Mining
