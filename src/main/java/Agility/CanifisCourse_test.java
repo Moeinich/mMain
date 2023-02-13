@@ -67,6 +67,10 @@ public class CanifisCourse_test extends Task {
             playerHelper.ShouldEat();
         }
 
+        if (!Movement.running() && Movement.energyLevel() > 30) {
+            PlayerHelper.EnableRun();
+        }
+
         if (Game.tab(Game.Tab.INVENTORY) && Inventory.stream().id(ItemList.CAKE_1891, ItemList._23_CAKE_1893, ItemList.SLICE_OF_CAKE_1895).isNotEmpty()) {
             ShouldRunObstacle();
         }
@@ -75,9 +79,6 @@ public class CanifisCourse_test extends Task {
 
     public void ShouldRunObstacle() {
         mMain.State = "In obstacle loop";
-        if (!Movement.running() && Movement.energyLevel() > 30) {
-            PlayerHelper.EnableRun();
-        }
 
         if (SkillData.CanifisObstacle1.contains(Players.local())) {
             GameObject CanifisObstacle1 = Objects.stream().within(8).id(Obstacle.OBS_1.getId()).nearest().first();
