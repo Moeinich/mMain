@@ -8,6 +8,7 @@ import org.powbot.api.rt4.Game;
 import org.powbot.api.rt4.GameObject;
 import org.powbot.api.rt4.Inventory;
 import org.powbot.api.rt4.Item;
+import org.powbot.api.rt4.Movement;
 import org.powbot.api.rt4.Objects;
 import org.powbot.api.rt4.Players;
 import org.powbot.api.rt4.Skills;
@@ -16,6 +17,7 @@ import org.powbot.api.rt4.World;
 
 import java.util.List;
 
+import Helpers.PlayerHelper;
 import Helpers.SkillData;
 import Helpers.Task;
 import script.mMain;
@@ -83,6 +85,10 @@ public class FruitStall extends Task {
         if (KOUREND_FAVOR.hosidiusFavorValue <= 19) {
             mMain.taskRunning.set(false);
         }
+        //Go to thieving spot
+        if (!Players.local().tile().equals(SkillData.movementThieving()) && !(SkillData.movementThieving().tile().distanceTo(Players.local()) < 3)) {
+            WalkToSpot();
+        }
         //World hop check
         if (Players.stream().within(SkillData.fruitStallArea).count() != 1) {
             ShouldWorldhop();
@@ -97,7 +103,7 @@ public class FruitStall extends Task {
         return false;
     }
 
-    public void ShouldThieve() {
+    private void ShouldThieve() {
         if (!Game.tab(Game.Tab.INVENTORY)) {
             Condition.wait(() -> Game.tab(Game.Tab.INVENTORY), 250, 10);
         }
@@ -116,13 +122,23 @@ public class FruitStall extends Task {
             mMain.State = "Waiting for stall to restock";
         }
     }
-    public void ShouldWorldhop() {
+    private void ShouldWorldhop() {
         mMain.State = "Worldhopping";
         if (Players.stream().within(SkillData.fruitStallArea).count() != 1) {
             int[] p2p = SkillData.p2p;
             int randomWorld = p2p[Random.nextInt(0, p2p.length - 1)];
             World world = new World(2, randomWorld, 1, World.Type.MEMBERS, World.Server.RUNE_SCAPE, World.Specialty.NONE);
             world.hop();
+        }
+    }
+    private void WalkToSpot() {
+        if (!Players.local().tile().equals(SkillData.movementThieving()) && !(SkillData.movementThieving().tile().distanceTo(Players.local()) < 3)) { // Need to move to our thieving spot
+            mMain.State = "Walking to Thieving spot";
+            PlayerHelper.WalkToTile(SkillData.movementThieving());
+            Condition.wait(() -> SkillData.movementThieving().tile().distanceTo(Players.local()) < 3, 150, 20);
+            if (SkillData.movementThieving().tile().distanceTo(Players.local()) < 3) {
+                Movement.step(SkillData.movementThieving());
+            }
         }
     }
 }
