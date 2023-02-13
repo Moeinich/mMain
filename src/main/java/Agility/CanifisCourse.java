@@ -20,6 +20,7 @@ import Helpers.Task;
 import script.mMain;
 
 public class CanifisCourse extends Task {
+
     int CurrentXP = Skills.experience(Skill.Agility);
 
     public boolean activate() {
