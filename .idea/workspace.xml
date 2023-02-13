@@ -6,14 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="c7dd1c8c-f10c-49ed-8219-521bd6f55188" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Agility/DraynorCourse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Agility/DraynorCourse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Agility/GnomeCourse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Agility/GnomeCourse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Agility/VarrockCourse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Agility/VarrockCourse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Agility/WalkToAgilityObstacles.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Agility/WalkToAgilityObstacles.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Cooking/Sardines.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Cooking/Sardines.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Firemaking/DoFiremaking.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Firemaking/DoFiremaking.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Helpers/PlayerHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Helpers/PlayerHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/RangedCombat/CowSafespot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/RangedCombat/CowSafespot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Fishing/AlKharidFishing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Fishing/AlKharidFishing.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Fishing/BarbarianVillageFishing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Fishing/BarbarianVillageFishing.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Helpers/SkillData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Helpers/SkillData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Thieving/TeaStall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Thieving/TeaStall.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Woodcutting/treeNormal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Woodcutting/treeNormal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Woodcutting/treeOak.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Woodcutting/treeOak.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Woodcutting/treeTeak.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Woodcutting/treeTeak.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Woodcutting/treeWillow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Woodcutting/treeWillow.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

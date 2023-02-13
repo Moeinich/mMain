@@ -22,12 +22,12 @@ public class AlKharidFishing extends Task {
     }
     @Override
     public void execute() {
-        if (!SkillData.AlKharidFishingSpot1.contains(Players.local()) && !SkillData.AlKharidFishingSpot2.contains(Players.local())) {
+        if (!PlayerHelper.WithinArea(SkillData.AlKharidFishingSpot1) && !PlayerHelper.WithinArea(SkillData.AlKharidFishingSpot2)) {
             mMain.State = "Walk to fishing area";
             PlayerHelper.WalkToTile(SkillData.movementFishing());
         }
 
-        if (SkillData.AlKharidFishingSpot1.contains(Players.local()) || SkillData.AlKharidFishingSpot2.contains(Players.local())) {
+        if (PlayerHelper.WithinArea(SkillData.AlKharidFishingSpot1) || PlayerHelper.WithinArea(SkillData.AlKharidFishingSpot2)) {
             mMain.State = "Do fishing";
             Npc AlKharidFishingSpot = Npcs.stream().name("Fishing spot").nearest().first();
             if (AlKharidFishingSpot.inViewport() && Players.local().animation() == -1) {

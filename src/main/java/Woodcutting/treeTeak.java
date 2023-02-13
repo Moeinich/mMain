@@ -21,14 +21,14 @@ public class treeTeak extends Task {
 
     @Override
     public void execute() {
-        if (!SkillData.teakArea.contains(Players.local())) {
+        if (!PlayerHelper.WithinArea(SkillData.teakArea)) {
             mMain.State = "Go to Teak trees";
             if (SkillData.teakLocation.distanceTo(Players.local()) < 10) {
                 Movement.step(SkillData.teakLocation);
             } else PlayerHelper.WalkToTile(SkillData.movementWoodcutting());
         }
 
-        if (SkillData.teakArea.contains(Players.local()) && Players.local().animation() == -1) {
+        if (PlayerHelper.WithinArea(SkillData.teakArea) && Players.local().animation() == -1) {
             GameObject treeTeak = Objects.stream().within(SkillData.teakArea).id(SkillData.teakTreeID).nearest().first();
             mMain.State = "Cutting teaks";
             if (treeTeak.interact("Chop down", "Teak")) {

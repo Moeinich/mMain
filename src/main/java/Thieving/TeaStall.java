@@ -63,7 +63,7 @@ public class TeaStall extends Task {
                     Movement.step(SkillData.movementThieving());
                 }
             } else if (Players.local().animation() == -1) { // Not currently thieving
-                if (Players.stream().within(SkillData.fruitStallArea).count() >= 2) {
+                if (Players.stream().within(SkillData.teaStallArea).count() != 1) {
                     int[] p2p = SkillData.p2p;
                     int randomWorld = p2p[Random.nextInt(0, p2p.length - 1)];
                     World world = new World(2, randomWorld, 1, World.Type.MEMBERS, World.Server.RUNE_SCAPE, World.Specialty.NONE);
@@ -71,7 +71,7 @@ public class TeaStall extends Task {
                 }
 
                 GameObject teaStall = Objects.stream().within(2).id(STALL_ID).nearest().first();
-                if (teaStall.valid()) {
+                if (teaStall.valid() && Players.stream().within(SkillData.teaStallArea).count() == 1) {
                     if (!teaStall.inViewport()) { // Need to turn camera to the stall
                         mMain.State = "Turning camera to tea stall";
                         Camera.turnTo(teaStall);

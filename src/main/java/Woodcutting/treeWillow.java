@@ -20,11 +20,11 @@ public class treeWillow extends Task {
 
     @Override
     public void execute() {
-        if (!SkillData.willowTreeLocation.contains(Players.local())) {
+        if (!PlayerHelper.WithinArea(SkillData.willowTreeLocation)) {
             mMain.State = "Go to Willow trees";
             PlayerHelper.WalkToTile(SkillData.movementWoodcutting());
         }
-        if (SkillData.willowTreeLocation.contains(Players.local()) && Players.local().animation() == -1) {
+        if (PlayerHelper.WithinArea(SkillData.willowTreeLocation) && Players.local().animation() == -1) {
             GameObject treeWillow = Objects.stream().within(6).id(SkillData.willowTreeID).nearest().first();
             mMain.State = "Cutting Willows";
             if (treeWillow.interact("Chop down", "Willow")) {
