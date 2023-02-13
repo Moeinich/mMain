@@ -128,7 +128,7 @@ public class FruitStall extends Task {
         mMain.State = "Worldhopping";
         int[] p2p = SkillData.p2p;
         int randomWorld = p2p[Random.nextInt(0, p2p.length - 1)];
-        World world = new World(2, randomWorld, 1, World.Type.MEMBERS, World.Server.RUNE_SCAPE, World.Specialty.NONE);
+        World world = new World(randomWorld, randomWorld, 1, World.Type.MEMBERS, World.Server.RUNE_SCAPE, World.Specialty.NONE);
         world.hop();
     }
     private void WalkToSpot() {
