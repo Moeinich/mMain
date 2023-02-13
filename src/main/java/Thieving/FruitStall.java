@@ -126,12 +126,10 @@ public class FruitStall extends Task {
     }
     private void ShouldWorldhop() {
         mMain.State = "Worldhopping";
-        if (Players.stream().within(SkillData.fruitStallArea).count() != 1) {
-            int[] p2p = SkillData.p2p;
-            int randomWorld = p2p[Random.nextInt(0, p2p.length - 1)];
-            World world = new World(2, randomWorld, 1, World.Type.MEMBERS, World.Server.RUNE_SCAPE, World.Specialty.NONE);
-            world.hop();
-        }
+        int[] p2p = SkillData.p2p;
+        int randomWorld = p2p[Random.nextInt(0, p2p.length - 1)];
+        World world = new World(2, randomWorld, 1, World.Type.MEMBERS, World.Server.RUNE_SCAPE, World.Specialty.NONE);
+        world.hop();
     }
     private void WalkToSpot() {
         if (!Players.local().tile().equals(SkillData.movementThieving()) && !(SkillData.movementThieving().tile().distanceTo(Players.local()) < 3)) { // Need to move to our thieving spot
