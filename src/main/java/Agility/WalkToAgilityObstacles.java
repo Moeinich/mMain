@@ -13,38 +13,37 @@ public class WalkToAgilityObstacles extends Task {
     public boolean activate() {
         //Gnome course
         if (Skills.realLevel(Constants.SKILLS_AGILITY) <= 9
-                && !PlayerHelper.withinArea(SkillData.GnomeObstacleLowerArea)
-                && !PlayerHelper.withinArea(SkillData.GnomeObstacleAreaMidFloor)
-                && !PlayerHelper.withinArea(SkillData.GnomeObstacleAreaTopFloor))
+                && !PlayerHelper.withinArea(AgilityData.GnomeAreas.LOWER.getArea())
+                && !PlayerHelper.withinArea(AgilityData.GnomeAreas.MID.getArea())
+                && !PlayerHelper.withinArea(AgilityData.GnomeAreas.TOP.getArea()))
         {
             return true;
         }
         //Draynor
         if (Skills.realLevel(Constants.SKILLS_AGILITY) >= 10 && Skills.realLevel(Constants.SKILLS_AGILITY) <= 29
-                && !PlayerHelper.withinArea(SkillData.DraynorFloorArea)
-                && !PlayerHelper.withinArea(SkillData.DraynorTopArea)
-                && !PlayerHelper.withinArea(SkillData.DraynorCrateArea))
+                && !PlayerHelper.withinArea(AgilityData.DraynorAreas.FLOOR.getArea())
+                && !PlayerHelper.withinArea(AgilityData.DraynorAreas.TOP.getArea())
+                && !PlayerHelper.withinArea(AgilityData.DraynorAreas.CRATE.getArea()))
         {
             return true;
         }
         //Varrock
-        if (!SkillData.agilityDone
-                && Skills.realLevel(Constants.SKILLS_AGILITY) >= 30 && Skills.realLevel(Constants.SKILLS_AGILITY) <= 39
-                && !PlayerHelper.withinArea(SkillData.VarrockFloorArea)
-                && !PlayerHelper.withinArea(SkillData.VarrockFirstArea)
-                && !PlayerHelper.withinArea(SkillData.VarrockMidArea)
-                && !PlayerHelper.withinArea(SkillData.VarrockTopArea)
-                && !PlayerHelper.withinArea(SkillData.VarrockGhostArea))
+        if (Skills.realLevel(Constants.SKILLS_AGILITY) >= 30 && Skills.realLevel(Constants.SKILLS_AGILITY) <= 39
+                && !PlayerHelper.withinArea(AgilityData.VarrockAreas.FLOOR.getArea())
+                && !PlayerHelper.withinArea(AgilityData.VarrockAreas.FIRST.getArea())
+                && !PlayerHelper.withinArea(AgilityData.VarrockAreas.MID.getArea())
+                && !PlayerHelper.withinArea(AgilityData.VarrockAreas.TOP.getArea())
+                && !PlayerHelper.withinArea(AgilityData.VarrockAreas.GHOST.getArea()))
         {
             return true;
         }
         //Canifis
         if (!SkillData.agilityDone
                 && Skills.realLevel(Constants.SKILLS_AGILITY) >= 40 && Skills.realLevel(Constants.SKILLS_AGILITY) <= 80
-                && !PlayerHelper.withinArea(SkillData.CanifisFloorArea)
-                && !PlayerHelper.withinArea(SkillData.CanifisFirstArea)
-                && !PlayerHelper.withinArea(SkillData.CanifisMidArea)
-                && !PlayerHelper.withinArea(SkillData.CanifisTopArea))
+                && !PlayerHelper.withinArea(AgilityData.CanifisAreas.FLOOR.getArea())
+                && !PlayerHelper.withinArea(AgilityData.CanifisAreas.FIRST.getArea())
+                && !PlayerHelper.withinArea(AgilityData.CanifisAreas.MID.getArea())
+                && !PlayerHelper.withinArea(AgilityData.CanifisAreas.TOP.getArea()))
         {
             return true;
         }
@@ -57,7 +56,7 @@ public class WalkToAgilityObstacles extends Task {
             SkillData.setSkillDone();
         } else {
             mMain.State = "Going to Agility course";
-            PlayerHelper.walkToTile(SkillData.movementAgility());
+            PlayerHelper.walkToTile(AgilityData.movementAgility());
         }
         return false;
     }
