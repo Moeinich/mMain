@@ -52,6 +52,35 @@ public class AgilityHelper {
     }
 
     enum obstacleInfo implements IObstacleInfo {
+        //Gnome
+        gnome1(23145,"Walk-across","Log balance", "Handle: gnome1"),
+        gnome2(23134,"Climb-over","Obstacle net", "Handle: gnome2"),
+        gnome3(23559,"Climb","Tree branch", "Handle: gnome3"),
+        gnome4(23557,"Walk-on","Balancing rope", "Handle: gnome4"),
+        gnome5(23560,"Climb-down","Tree branch", "Handle: gnome5"),
+        gnome6(23135,"Climb-over","Obstacle net", "Handle: gnome6"),
+        gnome7(23138,"Squeeze-through","Obstacle pipe", "Handle: gnome7"),
+
+        //Draynor
+        Draynor1(11404,"Climb","Rough wall", "Handle: Draynor1"),
+        Draynor2(11405,"Cross","Tightrope", "Handle: Draynor2"),
+        Draynor3(11406,"Cross","Tightrope", "Handle: Draynor3"),
+        Draynor4(11430,"Balance","Narrow wall", "Handle: Draynor4"),
+        Draynor5(11630,"Jump-up","Wall", "Handle: Draynor5"),
+        Draynor6(11631,"Jump","Gap", "Handle: Draynor6"),
+        Draynor7(11632,"Climb-down","Crate", "Handle: Draynor7"),
+
+        //Varrock
+        Varrock1(14412,"Climb","Rough wall", "Handle: Varrock1"),
+        Varrock2(14413,"Cross","Clothes line", "Handle: Varrock2"),
+        Varrock3(14414,"Leap","Gap", "Handle: Varrock3"),
+        Varrock4(14832,"Balance","Wall", "Handle: Varrock4"),
+        Varrock5(14833,"Leap","Gap", "Handle: Varrock5"),
+        Varrock6(14834,"Leap","Gap", "Handle: Varrock6"),
+        Varrock7(14835,"Leap","Gap", "Handle: Varrock7"),
+        Varrock8(14836,"Hurdle","Ledge", "Handle: Varrock8"),
+        Varrock9(14841,"Jump-off","Edge", "Handle: Varrock9"),
+
         //Canifis
         canifis1(14843, "Climb", "Tall tree", "Handle: OBS1"),
         canifis2(14844, "Jump", "Gap", "Handle: OBS2"),
