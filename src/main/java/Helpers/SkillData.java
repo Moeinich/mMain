@@ -239,15 +239,14 @@ public class SkillData {
     //Firemaking
     public static final Tile firemakingLane1 = new Tile(3032,3360);
     public static final Tile firemakingLane2 = new Tile(3032,3361);
-    public static final Tile firemakingLane3 = new Tile(3032,3362);
 
     public static int[] logs = {ItemList.LOGS_1511, ItemList.OAK_LOGS_1521, ItemList.WILLOW_LOGS_1519};
 
     public static final Area firemakingStartArea = new Area (
-            new Tile(3032, 3360, 0), new Tile(3032, 3362, 0)
+            new Tile(3032, 3360, 0), new Tile(3032, 3361, 0)
     );
     public static final Area doFiremakingArea = new Area (
-            new Tile(3032, 3362, 0), new Tile(3005, 3360, 0)
+            new Tile(3033, 3362, 0), new Tile(3004, 3359, 0)
     );
     public static Tile moveToFiremakingSpot(){
         if (DoFiremaking.fmSpot == 1) {
@@ -255,9 +254,6 @@ public class SkillData {
         }
         if (DoFiremaking.fmSpot == 2) {
             return firemakingLane2;
-        }
-        if (DoFiremaking.fmSpot == 3) {
-            return firemakingLane3;
         }
         return null;
     }

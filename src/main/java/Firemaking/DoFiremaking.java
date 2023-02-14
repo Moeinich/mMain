@@ -30,7 +30,8 @@ public class DoFiremaking extends Task {
 
     private void walkToFMSpot() {
             mMain.State = "Go to lane " + fmSpot;
-            Movement.step(SkillData.moveToFiremakingSpot());
+            Movement.moveTo(SkillData.moveToFiremakingSpot());
+            Condition.wait( () -> !Players.local().inMotion(), 900, 100);
     }
     private void lightLogs() {
         if (Game.tab(Game.Tab.INVENTORY)) {
@@ -45,7 +46,7 @@ public class DoFiremaking extends Task {
                     mMain.State = "Switch lane";
                     fmSpot += 1;
                 }
-                if (fmSpot == 4) {
+                if (fmSpot == 3) {
                     fmSpot = 1;
                 }
         }
