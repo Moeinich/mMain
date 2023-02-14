@@ -19,13 +19,21 @@ public class DoFiremaking extends Task {
     }
     @Override
     public boolean execute() {
-        if (Game.tab(Game.Tab.INVENTORY)) {
-            if (!PlayerHelper.withinArea(SkillData.firemakingStartArea) && Inventory.stream().id(SkillData.logs).count() >= 27) {
-                mMain.State = "Go to lane " + fmSpot;
-                PlayerHelper.walkToTile(SkillData.moveToFiremakingSpot());
-            }
+        if (!PlayerHelper.withinArea(SkillData.firemakingStartArea) && Inventory.stream().id(SkillData.logs).count() >= 27) {
+            walkToFMSpot();
+        }
+        if (PlayerHelper.withinArea(SkillData.doFiremakingArea)) {
+            lightLogs();
+        }
+        return false;
+    }
 
-            if (PlayerHelper.withinArea(SkillData.doFiremakingArea)) {
+    private void walkToFMSpot() {
+            mMain.State = "Go to lane " + fmSpot;
+            PlayerHelper.walkToTile(SkillData.moveToFiremakingSpot());
+    }
+    private void lightLogs() {
+        if (Game.tab(Game.Tab.INVENTORY)) {
                 mMain.State = "Lighting.. " + "L:" + fmSpot;
                 if (Inventory.stream().id(SkillData.logs).first().interact("Use")) {
                     if (Inventory.stream().id(ItemList.TINDERBOX_590).first().interact("Use")) {
@@ -40,8 +48,6 @@ public class DoFiremaking extends Task {
                 if (fmSpot == 4) {
                     fmSpot = 1;
                 }
-            }
         }
-        return false;
     }
 }
