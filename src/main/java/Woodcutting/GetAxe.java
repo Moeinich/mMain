@@ -24,7 +24,7 @@ public class GetAxe extends Task {
     public boolean execute() {
         if (Skills.realLevel(Constants.SKILLS_WOODCUTTING) >= 70) {
             mMain.State = "Woodcutting done!";
-            SkillData.SetSkillDone();
+            SkillData.setSkillDone();
             mMain.taskRunning.set(false);
         }
 
@@ -36,7 +36,7 @@ public class GetAxe extends Task {
             mMain.State = "Get axe - Withdraw";
             if (Bank.open()) {
                 InteractionsHelper interactionsHelper = new InteractionsHelper();
-                interactionsHelper.DepositAndWithdraw(SkillData.withdrawAxe(), 1);
+                interactionsHelper.depositAndWithdraw(SkillData.withdrawAxe(), 1);
                 Bank.close();
                 Condition.wait( () -> !Bank.opened(), 250, 50);
             }

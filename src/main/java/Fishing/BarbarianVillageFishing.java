@@ -22,16 +22,16 @@ public class BarbarianVillageFishing extends Task {
     public boolean execute() {
         if (Skills.realLevel(Constants.SKILLS_FISHING) >= 70) {
             mMain.State = "Fishing done!";
-            SkillData.SetSkillDone();
+            SkillData.setSkillDone();
             mMain.taskRunning.set(false);
         }
 
-        if (!PlayerHelper.WithinArea(SkillData.BarbarianVillageFishingArea)) {
+        if (!PlayerHelper.withinArea(SkillData.BarbarianVillageFishingArea)) {
             mMain.State = "Go to fishing area";
-            PlayerHelper.WalkToTile(SkillData.movementFishing());
+            PlayerHelper.walkToTile(SkillData.movementFishing());
         }
 
-        if (PlayerHelper.WithinArea(SkillData.BarbarianVillageFishingArea)) {
+        if (PlayerHelper.withinArea(SkillData.BarbarianVillageFishingArea)) {
             mMain.State = "Do fishing";
             Npc BarbarianVillageFishingSpot = Npcs.stream().name("Rod Fishing spot").nearest().first();
             if (BarbarianVillageFishingSpot.inViewport() && Players.local().animation() == -1) {

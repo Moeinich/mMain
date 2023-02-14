@@ -51,7 +51,7 @@ public class TeaStall extends Task {
         //Stop when thieving is done!
         if (Skills.realLevel(Constants.SKILLS_THIEVING) >= 60) {
             mMain.State = "Thieving done!";
-            SkillData.SetSkillDone();
+            SkillData.setSkillDone();
             mMain.taskRunning.set(false);
         }
         //Go to thieving spot
@@ -59,15 +59,15 @@ public class TeaStall extends Task {
             WalkToSpot();
         }
         //World hop check
-        if (PlayerHelper.WithinArea(SkillData.teaStallArea) && Players.stream().within(SkillData.teaStallArea).count() != 1) {
+        if (PlayerHelper.withinArea(SkillData.teaStallArea) && Players.stream().within(SkillData.teaStallArea).count() != 1) {
             ShouldWorldhop();
         }
         //Thieving loop
         if (Players.stream().within(SkillData.teaStallArea).count() == 1) {
-            if (shouldDropItems() && PlayerHelper.WithinArea(SkillData.teaStallArea)) {
+            if (shouldDropItems() && PlayerHelper.withinArea(SkillData.teaStallArea)) {
                 dropItems();
             }
-            else if (Inventory.isEmpty() && PlayerHelper.WithinArea(SkillData.teaStallArea)) {
+            else if (Inventory.isEmpty() && PlayerHelper.withinArea(SkillData.teaStallArea)) {
                 ShouldThieve();
             }
         }
@@ -102,7 +102,7 @@ public class TeaStall extends Task {
     private void WalkToSpot() {
         if (!Players.local().tile().equals(SkillData.movementThieving()) && !(SkillData.movementThieving().tile().distanceTo(Players.local()) < 3)) { // Need to move to our thieving spot
             mMain.State = "Walking to Thieving spot";
-            PlayerHelper.WalkToTile(SkillData.movementThieving());
+            PlayerHelper.walkToTile(SkillData.movementThieving());
             Condition.wait(() -> SkillData.movementThieving().tile().distanceTo(Players.local()) < 3, 150, 20);
             if (SkillData.movementThieving().tile().distanceTo(Players.local()) < 3) {
                 Movement.step(SkillData.movementThieving());

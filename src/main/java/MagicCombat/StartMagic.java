@@ -15,7 +15,7 @@ public class StartMagic {
     public void Magic() {
         if (Skills.realLevel(Constants.SKILLS_MAGIC) >= 30) {
             mMain.State = "Magic done!";
-            SkillData.SetSkillDone();
+            SkillData.setSkillDone();
             mMain.taskRunning.set(false);
         }
 

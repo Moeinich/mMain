@@ -13,79 +13,79 @@ import script.mMain;
 
 public class SkillData {
     //Skill finished
-    public static Boolean MiningDone = false;
-    public static Boolean FishingDone = false;
-    public static Boolean MeleeCombatDone = false;
-    public static Boolean WoodcuttingDone = false;
-    public static Boolean CookingDone = false;
-    public static Boolean FiremakingDone = false;
-    public static Boolean SmithingDone = false;
-    public static Boolean ThievingDone = false;
-    public static Boolean CraftingDone = false;
-    public static Boolean FletchingDone = false;
-    public static Boolean AgilityDone = false;
-    public static Boolean HerbloreDone = false;
-    public static Boolean RangeCombatDone = false;
-    public static Boolean MagicCombatDone = false;
+    public static Boolean miningDone = false;
+    public static Boolean fishingDone = false;
+    public static Boolean meleeCombatDone = false;
+    public static Boolean woodcuttingDone = false;
+    public static Boolean cookingDone = false;
+    public static Boolean firemakingDone = false;
+    public static Boolean smithingDone = false;
+    public static Boolean thievingDone = false;
+    public static Boolean craftingDone = false;
+    public static Boolean fletchingDone = false;
+    public static Boolean agilityDone = false;
+    public static Boolean herbloreDone = false;
+    public static Boolean rangeCombatDone = false;
+    public static Boolean magicCombatDone = false;
 
-    public static boolean AllSkillsDone() {
-        return MiningDone
-                && FishingDone
-                && WoodcuttingDone
-                && CookingDone
-                && FiremakingDone
-                && SmithingDone
-                && ThievingDone
-                && CraftingDone
-                && FletchingDone
-                && AgilityDone
-                && HerbloreDone
-                && MeleeCombatDone
-                && RangeCombatDone
-                && MagicCombatDone;
+    public static boolean allSkillsDone() {
+        return miningDone
+                && fishingDone
+                && woodcuttingDone
+                && cookingDone
+                && firemakingDone
+                && smithingDone
+                && thievingDone
+                && craftingDone
+                && fletchingDone
+                && agilityDone
+                && herbloreDone
+                && meleeCombatDone
+                && rangeCombatDone
+                && magicCombatDone;
     }
-    public static void SetSkillDone() {
+    public static void setSkillDone() {
         if (mMain.RunningSkill.equals("Mining")) {
-            MiningDone = true;
+            miningDone = true;
         }
         if (mMain.RunningSkill.equals("Fishing")) {
-            FishingDone = true;
+            fishingDone = true;
         }
         if (mMain.RunningSkill.equals("Woodcutting")) {
-            WoodcuttingDone = true;
+            woodcuttingDone = true;
         }
         if (mMain.RunningSkill.equals("Cooking")) {
-            CookingDone = true;
+            cookingDone = true;
         }
         if (mMain.RunningSkill.equals("Firemaking")) {
-            FiremakingDone = true;
+            firemakingDone = true;
         }
         if (mMain.RunningSkill.equals("Smithing")) {
-            SmithingDone = true;
+            smithingDone = true;
         }
         if (mMain.RunningSkill.equals("Thieving")) {
-            ThievingDone = true;
+            thievingDone = true;
         }
         if (mMain.RunningSkill.equals("Crafting")) {
-            CraftingDone = true;
+            craftingDone = true;
         }
         if (mMain.RunningSkill.equals("Fletching")) {
-            FletchingDone = true;
+            fletchingDone = true;
         }
         if (mMain.RunningSkill.equals("Agility")) {
-            AgilityDone = true;
+            agilityDone = true;
         }
         if (mMain.RunningSkill.equals("Herblore")) {
-            HerbloreDone = true;
+            herbloreDone = true;
         }
         if (mMain.RunningSkill.equals("Melee combat")) {
-            MeleeCombatDone = true;
+            meleeCombatDone = true;
         }
         if (mMain.RunningSkill.equals("Ranged")) {
-            RangeCombatDone = true;
+            rangeCombatDone = true;
         }
         if (mMain.RunningSkill.equals("Magic")) {
-            RangeCombatDone = true;
+            rangeCombatDone = true;
         }
     }
 

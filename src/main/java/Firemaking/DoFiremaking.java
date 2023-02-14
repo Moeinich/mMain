@@ -20,17 +20,17 @@ public class DoFiremaking extends Task {
     @Override
     public boolean execute() {
         if (Game.tab(Game.Tab.INVENTORY)) {
-            if (!PlayerHelper.WithinArea(SkillData.firemakingStartArea) && Inventory.stream().id(SkillData.logs).count() >= 27) {
+            if (!PlayerHelper.withinArea(SkillData.firemakingStartArea) && Inventory.stream().id(SkillData.logs).count() >= 27) {
                 mMain.State = "Go to lane " + fmSpot;
-                PlayerHelper.WalkToTile(SkillData.moveToFiremakingSpot());
+                PlayerHelper.walkToTile(SkillData.moveToFiremakingSpot());
             }
 
-            if (PlayerHelper.WithinArea(SkillData.doFiremakingArea)) {
+            if (PlayerHelper.withinArea(SkillData.doFiremakingArea)) {
                 mMain.State = "Lighting.. " + "L:" + fmSpot;
                 if (Inventory.stream().id(SkillData.logs).first().interact("Use")) {
                     if (Inventory.stream().id(ItemList.TINDERBOX_590).first().interact("Use")) {
                         CurrentXP = Skills.experience(Skill.Firemaking);
-                        Condition.wait( () -> (CurrentXP != Skills.experience(Skill.Firemaking) || !PlayerHelper.WithinArea(SkillData.doFiremakingArea)), 500, 50);
+                        Condition.wait( () -> (CurrentXP != Skills.experience(Skill.Firemaking) || !PlayerHelper.withinArea(SkillData.doFiremakingArea)), 500, 50);
                     }
                 }
                 if (Inventory.stream().id(SkillData.logs).isEmpty()) {

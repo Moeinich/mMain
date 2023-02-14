@@ -31,13 +31,13 @@ public class CanifisCourse extends Task {
         if (Game.tab(Game.Tab.INVENTORY) && Inventory.stream().action("Eat").isEmpty()) {
             mMain.State = "Get food";
             PlayerHelper playerHelper = new PlayerHelper();
-            playerHelper.BankForFood(ItemList.CAKE_1891, 27);
+            playerHelper.bankForFood(ItemList.CAKE_1891, 27);
         }
 
         if (Skills.level(Constants.SKILLS_HITPOINTS) < 5 && Game.tab(Game.Tab.INVENTORY)) {
             mMain.State = "Eating..";
             PlayerHelper playerHelper = new PlayerHelper();
-            playerHelper.ShouldEat();
+            playerHelper.shouldEat();
         }
 
         if (Game.tab(Game.Tab.INVENTORY) && Inventory.stream().id(ItemList.CAKE_1891, ItemList._23_CAKE_1893, ItemList.SLICE_OF_CAKE_1895).isNotEmpty()) {
@@ -48,13 +48,13 @@ public class CanifisCourse extends Task {
     public void LootMarks() {
         PlayerHelper playerHelper = new PlayerHelper();
         mMain.State = "Pickup mark";
-        playerHelper.LootItems("Take", "Mark of grace");
+        playerHelper.lootItems("Take", "Mark of grace");
     }
 
     public void ShouldRunObstacle() {
         mMain.State = "In obstacle loop";
         if (!Movement.running() && Movement.energyLevel() > 30) {
-            PlayerHelper.EnableRun();
+            PlayerHelper.enableRun();
         }
 
         if (SkillData.CanifisObstacle1.contains(Players.local())) {

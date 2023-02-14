@@ -13,7 +13,6 @@ import org.powbot.api.rt4.Objects;
 import org.powbot.api.rt4.Players;
 import org.powbot.api.rt4.Skills;
 import org.powbot.api.rt4.World;
-import org.powbot.dax.teleports.Teleport;
 
 import java.util.List;
 
@@ -61,7 +60,7 @@ public class FruitStall extends Task {
         //Stop when thieving is done!
         if (Skills.realLevel(Constants.SKILLS_THIEVING) >= 60) {
             mMain.State = "Thieving done!";
-            SkillData.SetSkillDone();
+            SkillData.setSkillDone();
             mMain.taskRunning.set(false);
         }
         //Check favor
@@ -74,15 +73,15 @@ public class FruitStall extends Task {
                 WalkToSpot();
             }
             //World hop check
-            if (PlayerHelper.WithinArea(SkillData.fruitStallArea) && Players.stream().within(SkillData.fruitStallArea).count() != 1) {
+            if (PlayerHelper.withinArea(SkillData.fruitStallArea) && Players.stream().within(SkillData.fruitStallArea).count() != 1) {
                 ShouldWorldhop();
             }
             //Thieving loop
             if (Players.stream().within(SkillData.fruitStallArea).count() == 1) {
-                if (shouldDropItems() && PlayerHelper.WithinArea(SkillData.fruitStallArea)) {
+                if (shouldDropItems() && PlayerHelper.withinArea(SkillData.fruitStallArea)) {
                     dropItems();
                 }
-                else if (Inventory.isEmpty() && PlayerHelper.WithinArea(SkillData.fruitStallArea)) {
+                else if (Inventory.isEmpty() && PlayerHelper.withinArea(SkillData.fruitStallArea)) {
                     ShouldThieve();
                 }
             }
@@ -119,7 +118,7 @@ public class FruitStall extends Task {
     private void WalkToSpot() {
         if (!Players.local().tile().equals(SkillData.movementThieving()) && !(SkillData.movementThieving().tile().distanceTo(Players.local()) < 3)) { // Need to move to our thieving spot
             mMain.State = "Walking to Thieving spot";
-            PlayerHelper.WalkToTile(SkillData.movementThieving());
+            PlayerHelper.walkToTile(SkillData.movementThieving());
             Condition.wait(() -> SkillData.movementThieving().tile().distanceTo(Players.local()) < 3, 150, 20);
             if (SkillData.movementThieving().tile().distanceTo(Players.local()) < 3) {
                 Movement.step(SkillData.movementThieving());
@@ -134,7 +133,7 @@ public class FruitStall extends Task {
         }
         if (SkillData.KOUREND_FAVOR.hosidiusFavorValue <= 19) {
             mMain.State = "Thieving done!";
-            SkillData.SetSkillDone();
+            SkillData.setSkillDone();
             mMain.taskRunning.set(false);
         } else SkillData.KOUREND_FAVOR.checkedFavor = true;
     }

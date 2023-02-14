@@ -23,7 +23,7 @@ public class GetMaterials extends Task {
     public boolean execute() {
         if (Skills.realLevel(Constants.SKILLS_FIREMAKING) >= 70) {
             mMain.State = "Firemaking done!";
-            SkillData.SetSkillDone();
+            SkillData.setSkillDone();
             mMain.taskRunning.set(false);
         }
         mMain.State = "Banking";
@@ -37,13 +37,13 @@ public class GetMaterials extends Task {
         if (Bank.opened() && Inventory.stream().id(ItemList.TINDERBOX_590).isEmpty()) {
             mMain.State = "Withdraw Tinderbox";
             InteractionsHelper interactionsHelper = new InteractionsHelper();
-            interactionsHelper.DepositAndWithdraw(ItemList.TINDERBOX_590, 1);
+            interactionsHelper.depositAndWithdraw(ItemList.TINDERBOX_590, 1);
         }
         if (Bank.opened() && Inventory.stream().id(SkillData.logs).isEmpty()) {
             mMain.State = "Withdraw logs";
             if (Bank.stream().id(ItemList.LOGS_1511).isNotEmpty() || Bank.stream().id(ItemList.OAK_LOGS_1521).isNotEmpty() || Bank.stream().id(ItemList.WILLOW_LOGS_1519).isNotEmpty()) {
                 InteractionsHelper interactionsHelper = new InteractionsHelper();
-                interactionsHelper.WithdrawItem(SkillData.withdrawLogs(), 27);
+                interactionsHelper.withdrawItem(SkillData.withdrawLogs(), 27);
                 Bank.close();
             }
         }

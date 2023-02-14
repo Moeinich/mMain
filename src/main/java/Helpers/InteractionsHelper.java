@@ -16,7 +16,7 @@ import script.mMain;
 
 public class InteractionsHelper {
 
-    public void WithdrawItem(int ItemName, int Amount) {
+    public void withdrawItem(int ItemName, int Amount) {
         if (!Bank.opened() && Bank.inViewport()) {
             if (Bank.open()) {
                 Condition.wait( () -> Bank.opened(), 200, 50);
@@ -24,7 +24,7 @@ public class InteractionsHelper {
         }
         if (Bank.stream().id(ItemName).isEmpty()) {
             mMain.State = "We ran out of " + ItemName;
-            SkillData.SetSkillDone();
+            SkillData.setSkillDone();
             Bank.close();
             mMain.taskRunning.set(false); //Skip task on progressive
         } else {
@@ -32,7 +32,7 @@ public class InteractionsHelper {
             Bank.withdrawAmount(ItemName, Amount);
         }
     }
-    public void DepositAndWithdraw(int item, int amount) {
+    public void depositAndWithdraw(int item, int amount) {
         if (!Bank.opened() && Bank.inViewport()) {
             if (Bank.open()) {
                 Condition.wait( () -> Bank.opened(), 200, 50);
@@ -40,7 +40,7 @@ public class InteractionsHelper {
         }
         if (Bank.stream().id(item).isEmpty()) {
             mMain.State = "We ran out of " + item;
-            SkillData.SetSkillDone();
+            SkillData.setSkillDone();
             Bank.close();
             mMain.taskRunning.set(false);//Skip task on progressive
         } else {
@@ -50,7 +50,7 @@ public class InteractionsHelper {
         }
     }
 
-    public void CombineItems(int RequiredItemID, int CombineWithItemID, int WidgetID, int ComponentID) {
+    public void combineItems(int RequiredItemID, int CombineWithItemID, int WidgetID, int ComponentID) {
         int timer = 0;
         int initialCount = (int) Inventory.stream().id(CombineWithItemID).count();
         while (!ScriptManager.INSTANCE.isStopping() && Inventory.stream().id(CombineWithItemID).isNotEmpty() && Inventory.stream().id(RequiredItemID).isNotEmpty()) {
@@ -92,7 +92,7 @@ public class InteractionsHelper {
             Condition.sleep(randomSleep);
         }
     }
-    public void InteractWithGameobject(int RequiredItemID, GameObject Gameobject, int WidgetID, int ComponentID, String Action, String Name) {
+    public void interactWithGameobject(int RequiredItemID, GameObject Gameobject, int WidgetID, int ComponentID, String Action, String Name) {
         int timer = 0;
         int initialCount = (int) Inventory.stream().id(RequiredItemID).count();
         while (!ScriptManager.INSTANCE.isStopping() && Inventory.stream().id(RequiredItemID).isNotEmpty()) {

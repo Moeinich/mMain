@@ -25,17 +25,17 @@ public class CanifisCourse_test extends Task {
         if (Game.tab(Game.Tab.INVENTORY) && Inventory.stream().action("Eat").isEmpty()) {
             mMain.State = "Get food";
             PlayerHelper playerHelper = new PlayerHelper();
-            playerHelper.BankForFood(ItemList.CAKE_1891, 27);
+            playerHelper.bankForFood(ItemList.CAKE_1891, 27);
         }
 
         if (Skills.level(Constants.SKILLS_HITPOINTS) < 5 && Game.tab(Game.Tab.INVENTORY)) {
             mMain.State = "Eating..";
             PlayerHelper playerHelper = new PlayerHelper();
-            playerHelper.ShouldEat();
+            playerHelper.shouldEat();
         }
 
         if (!Movement.running() && Movement.energyLevel() > 30) {
-            PlayerHelper.EnableRun();
+            PlayerHelper.enableRun();
         }
 
         if (Game.tab(Game.Tab.INVENTORY) && Inventory.stream().id(ItemList.CAKE_1891, ItemList._23_CAKE_1893, ItemList.SLICE_OF_CAKE_1895).isNotEmpty()) {
@@ -46,13 +46,13 @@ public class CanifisCourse_test extends Task {
 
     public void ShouldRunObstacle() {
         if (SkillData.CanifisFloorArea.contains(Players.local())) {
-            GameObject CanifisObstacle1 = Objects.stream().within(8).id(AgilityHelper.ObstacleInfo.Canifis1.getId()).nearest().first();
+            GameObject CanifisObstacle1 = Objects.stream().within(8).id(AgilityHelper.obstacleInfo.canifis1.getId()).nearest().first();
             if (!CanifisObstacle1.inViewport()) {
                 mMain.State = "Move to Canifis start";
                 Movement.moveTo(SkillData.CanifisStart.getRandomTile());
             } else {
                 AgilityHelper helper = new AgilityHelper();
-                helper.handleObstacle(AgilityHelper.ObstacleInfo.Canifis1);
+                helper.handleObstacle(AgilityHelper.obstacleInfo.canifis1);
             }
         } else if (SkillData.CanifisObstacle1Bug.contains(Players.local())) {
             mMain.State = "Stuck due to RS bug";
@@ -61,43 +61,43 @@ public class CanifisCourse_test extends Task {
 
         if (SkillData.CanifisObstacle2.contains(Players.local())) {
             AgilityHelper helper = new AgilityHelper();
-            helper.handleObstacleWithLoot(AgilityHelper.ObstacleInfo.Canifis2);
+            helper.handleObstacleWithLoot(AgilityHelper.obstacleInfo.canifis2);
         }
 
         if (SkillData.CanifisObstacle3.contains(Players.local())) {
             AgilityHelper helper = new AgilityHelper();
-            helper.handleObstacleWithLoot(AgilityHelper.ObstacleInfo.Canifis3);
+            helper.handleObstacleWithLoot(AgilityHelper.obstacleInfo.canifis3);
         }
 
         if (SkillData.CanifisObstacle4.contains(Players.local())) {
             AgilityHelper helper = new AgilityHelper();
-            helper.handleObstacleWithLoot(AgilityHelper.ObstacleInfo.Canifis4);
+            helper.handleObstacleWithLoot(AgilityHelper.obstacleInfo.canifis4);
         }
 
         if (SkillData.CanifisObstacle5.contains(Players.local())) {
             AgilityHelper helper = new AgilityHelper();
-            helper.handleObstacleWithLoot(AgilityHelper.ObstacleInfo.Canifis5);
+            helper.handleObstacleWithLoot(AgilityHelper.obstacleInfo.canifis5);
         }
 
         if (SkillData.CanifisObstacle6.contains(Players.local())) {
             AgilityHelper helper = new AgilityHelper();
-            helper.handleObstacleWithLoot(AgilityHelper.ObstacleInfo.Canifis6);
+            helper.handleObstacleWithLoot(AgilityHelper.obstacleInfo.canifis6);
         }
 
         if (SkillData.CanifisObstacle7.contains(Players.local())) {
-            GameObject CanifisObstacle7 = Objects.stream().within(10).id(AgilityHelper.ObstacleInfo.Canifis7.getId()).nearest().first();
+            GameObject CanifisObstacle7 = Objects.stream().within(10).id(AgilityHelper.obstacleInfo.canifis7.getId()).nearest().first();
             if (!CanifisObstacle7.inViewport()) {
                 mMain.State = "Moving to obstacle 7";
                 Movement.step(SkillData.CanifisObstacle7MoveTo.getRandomTile());
             } else {
                 AgilityHelper helper = new AgilityHelper();
-                helper.handleObstacleWithLoot(AgilityHelper.ObstacleInfo.Canifis7);
+                helper.handleObstacleWithLoot(AgilityHelper.obstacleInfo.canifis7);
             }
         }
 
         if (SkillData.CanifisObstacle8.contains(Players.local())) {
             AgilityHelper helper = new AgilityHelper();
-            helper.handleObstacleWithLoot(AgilityHelper.ObstacleInfo.Canifis8);
+            helper.handleObstacleWithLoot(AgilityHelper.obstacleInfo.canifis8);
         }
     }
 }

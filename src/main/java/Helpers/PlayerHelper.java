@@ -15,20 +15,17 @@ import org.powbot.api.rt4.Widgets;
 import org.powbot.dax.api.DaxWalker;
 import org.powbot.dax.teleports.Teleport;
 
-import java.lang.reflect.Array;
-import java.util.List;
-
 import script.mMain;
 
 public class PlayerHelper {
 
-    public void ShouldEat() {
+    public void shouldEat() {
         mMain.State = "Eating food";
         Item food = Inventory.stream().action("Eat").first();
         food.interact("Eat");
         Condition.wait(() -> Players.local().animation() == -1, 250, 50);
     }
-    public void BankForFood(int FoodName, int Amount) {
+    public void bankForFood(int FoodName, int Amount) {
         mMain.State = "Bank for food";
         if (Bank.nearest().tile().distanceTo(Players.local()) > 5) {
             Movement.moveToBank();
@@ -40,21 +37,21 @@ public class PlayerHelper {
             }
             if (Bank.opened()) {
                 InteractionsHelper interactionsHelper = new InteractionsHelper();
-                interactionsHelper.DepositAndWithdraw(FoodName, Amount);
+                interactionsHelper.depositAndWithdraw(FoodName, Amount);
                 Condition.wait( () -> Inventory.stream().id(FoodName).count() >= 1, 200, 50);
                 Bank.close();
                 Condition.wait( () -> !Bank.opened(), 150, 50);
             }
         }
     }
-    public void LootItems(String Action, String ItemName) {
+    public void lootItems(String Action, String ItemName) {
         GroundItem groundItem = GroundItems.stream().within(7).name(ItemName).nearest().first();
         if (groundItem.inViewport()){
             groundItem.interact(Action, ItemName);
             Condition.wait(() -> GroundItems.stream().id(groundItem.id()).at(groundItem.tile()).isEmpty(), 300, 50);
         }
     }
-    public static void WalkToTile(Tile place, Teleport... teleportBlacklist) {
+    public static void walkToTile(Tile place, Teleport... teleportBlacklist) {
         if (place.tile().distanceTo(Players.local()) <= 8) {
             Movement.step(place);
             Condition.wait( () -> !Players.local().inMotion(), 900, 100);
@@ -65,7 +62,7 @@ public class PlayerHelper {
         DaxWalker.clearTeleportBlacklist();
     }
 
-    public static boolean WithinArea(Area area) {
+    public static boolean withinArea(Area area) {
         return area.contains(Players.local());
     }
 
@@ -73,12 +70,12 @@ public class PlayerHelper {
         return tile.equals(Players.local().tile());
     }
 
-    public static void EnableRun() {
+    public static void enableRun() {
         mMain.State = "Enable run..";
         Widgets.widget(160).component(29).click();
         Condition.wait(Movement::running, 150, 50);
     }
-    public void SetAttackMode(Combat.Style style) {
+    public void setAttackMode(Combat.Style style) {
         System.out.print("Setting combat mode to " + style);
         Combat.style(style);
     }

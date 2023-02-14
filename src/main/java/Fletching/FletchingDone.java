@@ -6,7 +6,7 @@ import script.mMain;
 
 public class FletchingDone extends Task {
     public boolean activate() {
-        return SkillData.FletchingDone;
+        return SkillData.fletchingDone;
     }
     @Override
     public boolean execute() {

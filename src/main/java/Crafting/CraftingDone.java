@@ -6,7 +6,7 @@ import script.mMain;
 
 public class CraftingDone extends Task {
     public boolean activate() {
-        return SkillData.CraftingDone;
+        return SkillData.craftingDone;
     }
     @Override
     public boolean execute() {

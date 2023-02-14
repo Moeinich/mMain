@@ -28,7 +28,7 @@ public class CopperOres extends Task {
             if (SkillData.movementMining().distanceTo(Players.local()) < 3) {
                 Movement.step(SkillData.miningCopperLocation);
             }
-            PlayerHelper.WalkToTile(SkillData.movementMining());
+            PlayerHelper.walkToTile(SkillData.movementMining());
         }
         if (SkillData.miningCopperLocation.equals(Players.local().tile())) {
             if (Players.stream().within(SkillData.miningCopperArea).count() != 1) {

@@ -23,7 +23,7 @@ public class Sardines extends Task {
     }
     @Override
     public boolean execute() {
-        if (!PlayerHelper.WithinArea(SkillData.cookingAreaEdgeville)) {
+        if (!PlayerHelper.withinArea(SkillData.cookingAreaEdgeville)) {
             mMain.State = "Move to edgeville";
             MoveToEdgeville();
         }
@@ -36,28 +36,28 @@ public class Sardines extends Task {
         return false;
     }
     private void MoveToEdgeville() {
-        PlayerHelper.WalkToTile(SkillData.cookingAreaEdgeville.getRandomTile());
+        PlayerHelper.walkToTile(SkillData.cookingAreaEdgeville.getRandomTile());
     }
     private void ShouldBank() {
         mMain.State = "Get raw fish";
-        if (!PlayerHelper.WithinArea(SkillData.edgevilleBank)) {
-            PlayerHelper.WalkToTile(SkillData.edgevilleBank.getRandomTile());
+        if (!PlayerHelper.withinArea(SkillData.edgevilleBank)) {
+            PlayerHelper.walkToTile(SkillData.edgevilleBank.getRandomTile());
         }
-        if (PlayerHelper.WithinArea(SkillData.edgevilleBank) && !Bank.opened() && Bank.inViewport()) {
+        if (PlayerHelper.withinArea(SkillData.edgevilleBank) && !Bank.opened() && Bank.inViewport()) {
             Bank.open();
             InteractionsHelper interactionsHelper = new InteractionsHelper();
-            interactionsHelper.DepositAndWithdraw(ItemList.RAW_SARDINE_327, 28);
+            interactionsHelper.depositAndWithdraw(ItemList.RAW_SARDINE_327, 28);
         }
     }
     private void ShouldCook() {
         mMain.State = "Do cooking";
-        if (!PlayerHelper.WithinArea(SkillData.StoveAreaEdgeville)) {
-            PlayerHelper.WalkToTile(SkillData.StoveAreaEdgeville.getRandomTile());
+        if (!PlayerHelper.withinArea(SkillData.StoveAreaEdgeville)) {
+            PlayerHelper.walkToTile(SkillData.StoveAreaEdgeville.getRandomTile());
         }
-        if (PlayerHelper.WithinArea(SkillData.StoveAreaEdgeville)) {
+        if (PlayerHelper.withinArea(SkillData.StoveAreaEdgeville)) {
             GameObject cookingStove = Objects.stream().id(12269).first();
             InteractionsHelper interactionsHelper = new InteractionsHelper();
-            interactionsHelper.InteractWithGameobject(ItemList.RAW_SARDINE_327, cookingStove, 270, 14, "Cook", "Stove");
+            interactionsHelper.interactWithGameobject(ItemList.RAW_SARDINE_327, cookingStove, 270, 14, "Cook", "Stove");
         }
     }
 }

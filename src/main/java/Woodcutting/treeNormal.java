@@ -19,12 +19,12 @@ public class treeNormal extends Task {
     }
     @Override
     public boolean execute() {
-        if (!PlayerHelper.WithinArea(SkillData.normalTreeLocation)) {
+        if (!PlayerHelper.withinArea(SkillData.normalTreeLocation)) {
             mMain.State = "Go to noob trees";
-            PlayerHelper.WalkToTile(SkillData.movementWoodcutting());
+            PlayerHelper.walkToTile(SkillData.movementWoodcutting());
         }
         //cut normal logs
-        if (PlayerHelper.WithinArea(SkillData.normalTreeLocation) && Players.local().animation() == -1) {
+        if (PlayerHelper.withinArea(SkillData.normalTreeLocation) && Players.local().animation() == -1) {
             GameObject treeNormal = Objects.stream().within(6).id(SkillData.normalTreeID).nearest().first();
             mMain.State = "Cutting Trees..";
             if (treeNormal.interact("Chop down", "Tree")) {

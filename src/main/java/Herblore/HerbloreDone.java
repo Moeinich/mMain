@@ -6,7 +6,7 @@ import script.mMain;
 
 public class HerbloreDone extends Task {
     public boolean activate() {
-        return SkillData.HerbloreDone;
+        return SkillData.herbloreDone;
     }
     @Override
     public boolean execute() {

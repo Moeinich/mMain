@@ -11,7 +11,7 @@ public class EatFood extends Task {
     public boolean execute() {
         if (Game.tab(Game.Tab.INVENTORY)) {
             PlayerHelper playerHelper = new PlayerHelper();
-            playerHelper.ShouldEat();
+            playerHelper.shouldEat();
         }
         return false;
     }

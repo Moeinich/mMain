@@ -27,7 +27,7 @@ public class IronOres extends Task {
             if (SkillData.movementMining().distanceTo(Players.local()) < 3) {
                 Movement.step(SkillData.miningIronLocation);
             }
-            PlayerHelper.WalkToTile(SkillData.movementMining());
+            PlayerHelper.walkToTile(SkillData.movementMining());
         }
         if (SkillData.miningIronLocation.equals(Players.local().tile())) {
             if (Players.stream().within(SkillData.miningIronArea).count() != 1) {

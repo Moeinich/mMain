@@ -57,7 +57,7 @@ public class ThievingMen extends Task {
     private void ShouldThieve() {
         if (!SkillData.thievingMenArea.contains(Players.local())) {
             mMain.State = "Going to lumbridge";
-            PlayerHelper.WalkToTile(SkillData.movementThieving());
+            PlayerHelper.walkToTile(SkillData.movementThieving());
         }
 
         Npc Man = Npcs.stream().reachable().within(SkillData.thievingMenArea).name("Man").nearest().first();

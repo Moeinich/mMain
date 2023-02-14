@@ -9,7 +9,6 @@ import org.powbot.api.rt4.Objects;
 import org.powbot.api.rt4.Players;
 import org.powbot.api.rt4.Skills;
 import org.powbot.api.rt4.World;
-import org.powbot.dax.teleports.Teleport;
 
 import Helpers.PlayerHelper;
 import Helpers.SkillData;
@@ -23,14 +22,14 @@ public class treeTeak extends Task {
 
     @Override
     public boolean execute() {
-        if (!PlayerHelper.WithinArea(SkillData.teakArea)) {
+        if (!PlayerHelper.withinArea(SkillData.teakArea)) {
             mMain.State = "Go to Teak trees";
             if (SkillData.teakLocation.distanceTo(Players.local()) < 10) {
                 Movement.step(SkillData.teakLocation);
-            } else PlayerHelper.WalkToTile(SkillData.movementWoodcutting());
+            } else PlayerHelper.walkToTile(SkillData.movementWoodcutting());
         }
 
-        if (PlayerHelper.WithinArea(SkillData.teakArea) && Players.local().animation() == -1) {
+        if (PlayerHelper.withinArea(SkillData.teakArea) && Players.local().animation() == -1) {
             if (Players.stream().within(SkillData.teakArea).count() != 1) {
                 int[] p2p = SkillData.p2p;
                 int randomWorld = p2p[Random.nextInt(0, p2p.length - 1)];

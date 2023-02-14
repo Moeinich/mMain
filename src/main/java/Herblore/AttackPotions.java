@@ -28,7 +28,7 @@ public class AttackPotions extends Task {
     public boolean execute() {
         if (Skills.realLevel(Constants.SKILLS_HERBLORE) < 3) {
             mMain.State = "Druidic ritual not done";
-            SkillData.HerbloreDone = true;
+            SkillData.herbloreDone = true;
             mMain.taskRunning.set(false);
         }
 
@@ -55,7 +55,7 @@ public class AttackPotions extends Task {
         InteractionsHelper interactionsHelper = new InteractionsHelper();
         mMain.State = "Grabbing eyes";
         if (Inventory.stream().id(ToolID).isEmpty()) {
-            interactionsHelper.DepositAndWithdraw(ToolID, 14);
+            interactionsHelper.depositAndWithdraw(ToolID, 14);
         }
 
     }
@@ -68,7 +68,7 @@ public class AttackPotions extends Task {
         }
         if (Inventory.stream().id(ToolID).isNotEmpty()) {
             Bank.depositAllExcept(ToolID);
-            interactionsHelper.WithdrawItem(CombineWithItemID, 14);
+            interactionsHelper.withdrawItem(CombineWithItemID, 14);
             Bank.close();
             Condition.wait( () -> !Bank.opened(), 500, 50);
         }
@@ -76,7 +76,7 @@ public class AttackPotions extends Task {
     private void craft() {
         while (Inventory.stream().id(CombineWithItemID).isNotEmpty() && Inventory.stream().id(ToolID).isNotEmpty()) {
             InteractionsHelper interactionsHelper = new InteractionsHelper();
-            interactionsHelper.CombineItems(ToolID, CombineWithItemID, WidgetID, ComponentID);
+            interactionsHelper.combineItems(ToolID, CombineWithItemID, WidgetID, ComponentID);
         }
     }
 }

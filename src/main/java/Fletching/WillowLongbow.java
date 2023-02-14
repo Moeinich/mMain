@@ -49,7 +49,7 @@ public class WillowLongbow extends Task {
         InteractionsHelper interactionsHelper = new InteractionsHelper();
         mMain.State = "Checking tool..";
         if (Inventory.stream().id(ToolID).isEmpty()) {
-            interactionsHelper.DepositAndWithdraw(ToolID, 1);
+            interactionsHelper.depositAndWithdraw(ToolID, 1);
         }
 
     }
@@ -62,7 +62,7 @@ public class WillowLongbow extends Task {
         }
         if (Inventory.stream().id(ToolID).isNotEmpty()) {
             Bank.depositAllExcept(ToolID);
-            interactionsHelper.WithdrawItem(CombineWithItemID, 27);
+            interactionsHelper.withdrawItem(CombineWithItemID, 27);
             Bank.close();
             Condition.wait( () -> !Bank.opened(), 500, 50);
         }
@@ -70,7 +70,7 @@ public class WillowLongbow extends Task {
     private void fletch() {
         while (Inventory.stream().id(CombineWithItemID).count() >= 1) {
             InteractionsHelper interactionsHelper = new InteractionsHelper();
-            interactionsHelper.CombineItems(ToolID, CombineWithItemID, WidgetID, ComponentID);
+            interactionsHelper.combineItems(ToolID, CombineWithItemID, WidgetID, ComponentID);
         }
     }
 }

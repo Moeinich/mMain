@@ -29,13 +29,13 @@ public class VarrockCourse extends Task {
         if (Game.tab(Game.Tab.INVENTORY) && Inventory.stream().action("Eat").isEmpty()) {
             mMain.State = "Get food";
             PlayerHelper playerHelper = new PlayerHelper();
-            playerHelper.BankForFood(ItemList.CAKE_1891, 27);
+            playerHelper.bankForFood(ItemList.CAKE_1891, 27);
         }
 
         if (Skills.level(Constants.SKILLS_HITPOINTS) < 5 && Game.tab(Game.Tab.INVENTORY)) {
             mMain.State = "Eating..";
             PlayerHelper playerHelper = new PlayerHelper();
-            playerHelper.ShouldEat();
+            playerHelper.shouldEat();
         }
 
         if (Game.tab(Game.Tab.INVENTORY) && Inventory.stream().id(ItemList.CAKE_1891, ItemList._23_CAKE_1893, ItemList.SLICE_OF_CAKE_1895).isNotEmpty()) {
@@ -46,16 +46,16 @@ public class VarrockCourse extends Task {
     public void LootMarks() {
         PlayerHelper playerHelper = new PlayerHelper();
         mMain.State = "Pickup mark";
-        playerHelper.LootItems("Take", "Mark of grace");
+        playerHelper.lootItems("Take", "Mark of grace");
     }
 
     public void ShouldRunObstacle() {
         mMain.State = "In obstacle loop";
         if (!Movement.running() && Movement.energyLevel() > 30) {
-            PlayerHelper.EnableRun();
+            PlayerHelper.enableRun();
         }
 
-        if (PlayerHelper.WithinArea(SkillData.VarrockStart)) {
+        if (PlayerHelper.withinArea(SkillData.VarrockStart)) {
             GameObject VarrockObstacle1 = Objects.stream().within(7).id(14412).nearest().first();
             if (VarrockObstacle1.inViewport()) {
                 mMain.State = "Handle obstacle 1";
@@ -66,7 +66,7 @@ public class VarrockCourse extends Task {
             }
         }
 
-        if (PlayerHelper.WithinArea(SkillData.VarrockObstacle2)) {
+        if (PlayerHelper.withinArea(SkillData.VarrockObstacle2)) {
             GroundItem groundItem = GroundItems.stream().within(5).name("Mark of grace").nearest().first();
             if (groundItem.inViewport()) {
                 mMain.State = "Pickup mark";
@@ -77,12 +77,12 @@ public class VarrockCourse extends Task {
                 mMain.State = "Handle obstacle 2";
                 CurrentXP = Skills.experience(Skill.Agility);
                 if (VarrockObstacle2.interact("Cross", "Clothes line")) {
-                    Condition.wait( () -> (CurrentXP != Skills.experience(Skill.Agility) || PlayerHelper.WithinArea(SkillData.VarrockFailArea)), 400, 50);
+                    Condition.wait( () -> (CurrentXP != Skills.experience(Skill.Agility) || PlayerHelper.withinArea(SkillData.VarrockFailArea)), 400, 50);
                 }
             }
         }
 
-        if (PlayerHelper.WithinArea(SkillData.VarrockObstacle3)) {
+        if (PlayerHelper.withinArea(SkillData.VarrockObstacle3)) {
             GroundItem groundItem = GroundItems.stream().within(5).name("Mark of grace").nearest().first();
             if (groundItem.inViewport()) {
                 LootMarks();
@@ -92,12 +92,12 @@ public class VarrockCourse extends Task {
                 mMain.State = "Handle obstacle 3";
                 CurrentXP = Skills.experience(Skill.Agility);
                 if (VarrockObstacle3.interact("Leap", "Gap")) {
-                    Condition.wait( () -> (CurrentXP != Skills.experience(Skill.Agility) || PlayerHelper.WithinArea(SkillData.VarrockFailArea)), 400, 50);
+                    Condition.wait( () -> (CurrentXP != Skills.experience(Skill.Agility) || PlayerHelper.withinArea(SkillData.VarrockFailArea)), 400, 50);
                 }
             }
         }
 
-        if (PlayerHelper.WithinArea(SkillData.VarrockObstacle4)) {
+        if (PlayerHelper.withinArea(SkillData.VarrockObstacle4)) {
             GroundItem groundItem = GroundItems.stream().within(5).name("Mark of grace").nearest().first();
             if (groundItem.inViewport()) {
                 LootMarks();
@@ -107,23 +107,23 @@ public class VarrockCourse extends Task {
                 mMain.State = "Handle obstacle 4";
                 CurrentXP = Skills.experience(Skill.Agility);
                 if (VarrockObstacle4.interact("Balance", "Wall")) {
-                    Condition.wait( () -> (CurrentXP != Skills.experience(Skill.Agility) || PlayerHelper.WithinArea(SkillData.VarrockFailArea)), 400, 50);
+                    Condition.wait( () -> (CurrentXP != Skills.experience(Skill.Agility) || PlayerHelper.withinArea(SkillData.VarrockFailArea)), 400, 50);
                 }
             }
         }
 
-        if (PlayerHelper.WithinArea(SkillData.VarrockObstacle5)) {
+        if (PlayerHelper.withinArea(SkillData.VarrockObstacle5)) {
             GameObject VarrockObstacle5 = Objects.stream().within(10).id(14833).nearest().first();
             if (VarrockObstacle5.inViewport()) {
                 mMain.State = "Handle obstacle 5";
                 CurrentXP = Skills.experience(Skill.Agility);
                 if (VarrockObstacle5.interact("Leap", "Gap")) {
-                    Condition.wait( () -> (CurrentXP != Skills.experience(Skill.Agility) || PlayerHelper.WithinArea(SkillData.VarrockFailArea)), 400, 50);
+                    Condition.wait( () -> (CurrentXP != Skills.experience(Skill.Agility) || PlayerHelper.withinArea(SkillData.VarrockFailArea)), 400, 50);
                 }
             }
         }
 
-        if (PlayerHelper.WithinArea(SkillData.VarrockObstacle6)) {
+        if (PlayerHelper.withinArea(SkillData.VarrockObstacle6)) {
             GroundItem groundItem = GroundItems.stream().within(20).name("Mark of grace").nearest().first();
             if (groundItem.inViewport()) {
                 mMain.State = "Pickup mark";
@@ -133,24 +133,24 @@ public class VarrockCourse extends Task {
             if (!VarrockObstacle6.inViewport()) {
                 mMain.State = "Moving to obstacle 6";
                 Movement.step(SkillData.VarrockObstacle6MoveTo.getRandomTile());
-                Condition.wait( () -> (PlayerHelper.WithinArea(SkillData.VarrockObstacle6)), 250, 50);
+                Condition.wait( () -> (PlayerHelper.withinArea(SkillData.VarrockObstacle6)), 250, 50);
             }
 
             if (VarrockObstacle6.inViewport()) {
                 mMain.State = "Handle obstacle 6";
                 CurrentXP = Skills.experience(Skill.Agility);
                 if (VarrockObstacle6.interact("Leap", "Gap")) {
-                    Condition.wait( () -> (CurrentXP != Skills.experience(Skill.Agility) || PlayerHelper.WithinArea(SkillData.VarrockFailArea)), 400, 50);
+                    Condition.wait( () -> (CurrentXP != Skills.experience(Skill.Agility) || PlayerHelper.withinArea(SkillData.VarrockFailArea)), 400, 50);
                 }
             }
         }
 
-        if (PlayerHelper.WithinArea(SkillData.VarrockObstacle7)) {
+        if (PlayerHelper.withinArea(SkillData.VarrockObstacle7)) {
             GameObject VarrockObstacle7 = Objects.stream().within(20).id(14835).nearest().first();
             if (!VarrockObstacle7.inViewport()) {
                 mMain.State = "Moving to obstacle 7";
                 Movement.step(SkillData.VarrockObstacle7MoveTo.getRandomTile());
-                Condition.wait( () -> (PlayerHelper.WithinArea(SkillData.VarrockObstacle7)), 250, 50);
+                Condition.wait( () -> (PlayerHelper.withinArea(SkillData.VarrockObstacle7)), 250, 50);
             }
             GroundItem groundItem = GroundItems.stream().within(5).name("Mark of grace").nearest().first();
             if (groundItem.inViewport()) {
@@ -160,12 +160,12 @@ public class VarrockCourse extends Task {
                 mMain.State = "Handle obstacle 7";
                 CurrentXP = Skills.experience(Skill.Agility);
                 if (VarrockObstacle7.interact("Leap", "Gap")) {
-                    Condition.wait( () -> (CurrentXP != Skills.experience(Skill.Agility) || PlayerHelper.WithinArea(SkillData.VarrockFailArea)), 400, 50);
+                    Condition.wait( () -> (CurrentXP != Skills.experience(Skill.Agility) || PlayerHelper.withinArea(SkillData.VarrockFailArea)), 400, 50);
                 }
             }
         }
 
-        if (PlayerHelper.WithinArea(SkillData.VarrockObstacle8)) {
+        if (PlayerHelper.withinArea(SkillData.VarrockObstacle8)) {
             GroundItem groundItem = GroundItems.stream().within(10).name("Mark of grace").nearest().first();
             if (groundItem.inViewport()) {
                 LootMarks();
@@ -175,12 +175,12 @@ public class VarrockCourse extends Task {
                 mMain.State = "Handle obstacle 8";
                 CurrentXP = Skills.experience(Skill.Agility);
                 if (VarrockObstacle8.interact("Hurdle", "Ledge")) {
-                    Condition.wait( () -> (CurrentXP != Skills.experience(Skill.Agility) || PlayerHelper.WithinArea(SkillData.VarrockFailArea)), 400, 50);
+                    Condition.wait( () -> (CurrentXP != Skills.experience(Skill.Agility) || PlayerHelper.withinArea(SkillData.VarrockFailArea)), 400, 50);
                 }
             }
         }
 
-        if (PlayerHelper.WithinArea(SkillData.VarrockObstacle9)) {
+        if (PlayerHelper.withinArea(SkillData.VarrockObstacle9)) {
             GroundItem groundItem = GroundItems.stream().within(5).name("Mark of grace").nearest().first();
             if (groundItem.inViewport()) {
                 LootMarks();
@@ -190,13 +190,13 @@ public class VarrockCourse extends Task {
                 mMain.State = "Handle obstacle 9";
                 CurrentXP = Skills.experience(Skill.Agility);
                 if (VarrockObstacle9.interact("Jump-off", "Edge")) {
-                    Condition.wait( () -> (CurrentXP != Skills.experience(Skill.Agility) || PlayerHelper.WithinArea(SkillData.VarrockFailArea)), 400, 50);
+                    Condition.wait( () -> (CurrentXP != Skills.experience(Skill.Agility) || PlayerHelper.withinArea(SkillData.VarrockFailArea)), 400, 50);
                 }
             }
         }
 
         GameObject VarrockObstacle1 = Objects.stream().within(7).id(14412).nearest().first();
-        if (!VarrockObstacle1.inViewport() && PlayerHelper.WithinArea(SkillData.VarrockFailArea)) {
+        if (!VarrockObstacle1.inViewport() && PlayerHelper.withinArea(SkillData.VarrockFailArea)) {
             mMain.State = "Move to Varrock start";
             Movement.moveTo(SkillData.VarrockStart.getRandomTile());
         }

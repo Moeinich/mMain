@@ -24,7 +24,7 @@ return Game.tab(Game.Tab.INVENTORY) && Inventory.stream().id(SkillData.pickaxes)
     public boolean execute() {
         if (Skills.realLevel(Constants.SKILLS_MINING) >= 70) {
             mMain.State = "Mining done!";
-            SkillData.SetSkillDone();
+            SkillData.setSkillDone();
             mMain.taskRunning.set(false);
         }
 
@@ -36,7 +36,7 @@ return Game.tab(Game.Tab.INVENTORY) && Inventory.stream().id(SkillData.pickaxes)
             mMain.State = "Get pickaxe - Withdraw";
             if (Bank.open()) {
                 InteractionsHelper interactionsHelper = new InteractionsHelper();
-                interactionsHelper.DepositAndWithdraw(SkillData.withdrawPickaxe(), 1);
+                interactionsHelper.depositAndWithdraw(SkillData.withdrawPickaxe(), 1);
                 Bank.close();
                 Condition.wait( () -> !Bank.opened(), 250, 50);
             }

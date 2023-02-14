@@ -31,7 +31,7 @@ public class CowSafespot extends Task {
         if (!Combat.style(Combat.Style.DEFENSIVE)) {
             mMain.State = "Setting cb mode";
             PlayerHelper helper = new PlayerHelper();
-            helper.SetAttackMode(Combat.Style.DEFENSIVE);
+            helper.setAttackMode(Combat.Style.DEFENSIVE);
         }
 
         if (CombatHelper.needEquipment(RangeData.RangeEquipment())) {
@@ -39,12 +39,12 @@ public class CowSafespot extends Task {
             GetEquipment();
         }
 
-        if (!CombatHelper.needEquipment(RangeData.RangeEquipment()) && !PlayerHelper.WithinArea(SkillData.CowSafeSpotArea)) {
+        if (!CombatHelper.needEquipment(RangeData.RangeEquipment()) && !PlayerHelper.withinArea(SkillData.CowSafeSpotArea)) {
             mMain.State = "Go safespot";
-            PlayerHelper.WalkToTile(SkillData.CowSafeSpotArea.getRandomTile());
+            PlayerHelper.walkToTile(SkillData.CowSafeSpotArea.getRandomTile());
         }
 
-        if (PlayerHelper.WithinArea(SkillData.CowSafeSpotArea)) {
+        if (PlayerHelper.withinArea(SkillData.CowSafeSpotArea)) {
             mMain.State = "Fighting..";
             ShouldFight();
         }
@@ -52,7 +52,7 @@ public class CowSafespot extends Task {
     }
 
     private void ShouldFight() {
-        if (PlayerHelper.WithinArea(SkillData.CowSafeSpotArea) && !Players.local().healthBarVisible()) {
+        if (PlayerHelper.withinArea(SkillData.CowSafeSpotArea) && !Players.local().healthBarVisible()) {
             Npc cow = Npcs.stream().name("Cow").within(SkillData.CowArea).nearest().first();
             if (cow.inViewport() && cow.interact("Attack", "Cow")) {
                 Condition.wait(() -> !cow.isRendered(),900,20);
@@ -81,7 +81,7 @@ public class CowSafespot extends Task {
                         if (Bank.stream().id(itemId).isEmpty()) {
                             if (mMain.RunningSkill.equals("Progressive")) {
                                 mMain.State = "We ran out of " + itemId;
-                                SkillData.SetSkillDone();
+                                SkillData.setSkillDone();
                                 Bank.close();
                                 mMain.taskRunning.set(false); //Skip task on progressive
                             } else ScriptManager.INSTANCE.stop();

@@ -24,12 +24,12 @@ public class GnomeCourse extends Task {
     @Override
     public boolean execute() {
         if (!Movement.running() && Movement.energyLevel() > 30) {
-            PlayerHelper.EnableRun();
+            PlayerHelper.enableRun();
         } else ShouldRunObstacle();
         return false;
     }
     public void ShouldRunObstacle() {
-        if (PlayerHelper.WithinArea(SkillData.GnomeObstacle1Area)) {
+        if (PlayerHelper.withinArea(SkillData.GnomeObstacle1Area)) {
             GameObject GnomeObstacle1ID = Objects.stream().within(20).id(23145).nearest().first();
             if (GnomeObstacle1ID.inViewport()) {
                 mMain.State = "Handle obstacle 1";
@@ -40,7 +40,7 @@ public class GnomeCourse extends Task {
             }
         }
 
-        if (PlayerHelper.WithinArea(SkillData.GnomeObstacle2Area)) {
+        if (PlayerHelper.withinArea(SkillData.GnomeObstacle2Area)) {
             GameObject GnomeObstacle2ID = Objects.stream().within(5).id(23134).nearest().first();
             if (GnomeObstacle2ID.inViewport()) {
                 mMain.State = "Handle obstacle 2";
@@ -50,7 +50,7 @@ public class GnomeCourse extends Task {
                 }
             }
         }
-        if (PlayerHelper.WithinArea(SkillData.GnomeObstacle3Area)) {
+        if (PlayerHelper.withinArea(SkillData.GnomeObstacle3Area)) {
             GameObject GnomeObstacle3ID = Objects.stream().within(5).id(23559).nearest().first();
             if (GnomeObstacle3ID.inViewport()) {
                 mMain.State = "Handle obstacle 3";
@@ -61,7 +61,7 @@ public class GnomeCourse extends Task {
             }
         }
 
-        if (PlayerHelper.WithinArea(SkillData.GnomeObstacle4Area)) {
+        if (PlayerHelper.withinArea(SkillData.GnomeObstacle4Area)) {
             GameObject GnomeObstacle4ID = Objects.stream().within(5).id(23557).nearest().first();
             if (GnomeObstacle4ID.inViewport()) {
                 mMain.State = "Handle obstacle 4";
@@ -72,7 +72,7 @@ public class GnomeCourse extends Task {
             }
         }
 
-        if (PlayerHelper.WithinArea(SkillData.GnomeObstacle5Area)) {
+        if (PlayerHelper.withinArea(SkillData.GnomeObstacle5Area)) {
             GameObject GnomeObstacle5ID = Objects.stream().within(5).id(23560).nearest().first();
             if (GnomeObstacle5ID.inViewport()) {
                 mMain.State = "Handle obstacle 5";
@@ -83,7 +83,7 @@ public class GnomeCourse extends Task {
             }
         }
 
-        if (PlayerHelper.WithinArea(SkillData.GnomeObstacle6Area)) {
+        if (PlayerHelper.withinArea(SkillData.GnomeObstacle6Area)) {
             GameObject GnomeObstacle6ID = Objects.stream().within(10).id(23135).nearest().first();
             if (GnomeObstacle6ID.inViewport()) {
                 mMain.State = "Handle obstacle 6";
@@ -96,7 +96,7 @@ public class GnomeCourse extends Task {
             }
         }
 
-        if (PlayerHelper.WithinArea(SkillData.GnomeObstacle7Area)) {
+        if (PlayerHelper.withinArea(SkillData.GnomeObstacle7Area)) {
             GameObject GnomeObstacle7ID = Objects.stream().within(20).id(23138).nearest().first();
             if (GnomeObstacle7ID.inViewport()) {
                 mMain.State = "Handle obstacle 7";

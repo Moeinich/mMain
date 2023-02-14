@@ -8,7 +8,6 @@ import java.util.ArrayList;
 
 import Helpers.SkillData;
 import Helpers.Task;
-import Helpers.EatFood;
 import script.mMain;
 
 public class StartRanged {
@@ -16,7 +15,7 @@ public class StartRanged {
     public void Ranged() {
         if (Skills.realLevel(Constants.SKILLS_RANGE) >= 30) {
             mMain.State = "Range done!";
-            SkillData.SetSkillDone();
+            SkillData.setSkillDone();
             mMain.taskRunning.set(false);
         }
 
