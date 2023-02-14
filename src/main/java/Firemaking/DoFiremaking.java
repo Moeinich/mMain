@@ -30,7 +30,7 @@ public class DoFiremaking extends Task {
 
     private void walkToFMSpot() {
             mMain.State = "Go to lane " + fmSpot;
-            PlayerHelper.walkToTile(SkillData.moveToFiremakingSpot());
+            Movement.step(SkillData.moveToFiremakingSpot());
     }
     private void lightLogs() {
         if (Game.tab(Game.Tab.INVENTORY)) {
