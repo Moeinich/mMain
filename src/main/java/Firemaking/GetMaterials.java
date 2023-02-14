@@ -2,18 +2,15 @@ package Firemaking;
 
 import org.powbot.api.Condition;
 import org.powbot.api.Locatable;
-import org.powbot.api.rt4.Constants;
-import org.powbot.api.rt4.Movement;
-import org.powbot.api.rt4.Players;
 import org.powbot.api.rt4.Bank;
 import org.powbot.api.rt4.Inventory;
-import org.powbot.api.rt4.Skills;
-import org.powbot.api.rt4.walking.model.Skill;
+import org.powbot.api.rt4.Movement;
+import org.powbot.api.rt4.Players;
 
 import Helpers.InteractionsHelper;
 import Helpers.ItemList;
-import Helpers.Task;
 import Helpers.SkillData;
+import Helpers.Task;
 import script.mMain;
 
 public class GetMaterials extends Task {
