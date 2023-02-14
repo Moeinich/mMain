@@ -78,7 +78,7 @@ public class SkillData {
         if (mMain.RunningSkill.equals("Herblore")) {
             herbloreDone = true;
         }
-        if (mMain.RunningSkill.equals("Melee combat")) {
+        if (mMain.RunningSkill.equals("Melee")) {
             meleeCombatDone = true;
         }
         if (mMain.RunningSkill.equals("Ranged")) {
