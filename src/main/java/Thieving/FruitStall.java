@@ -57,12 +57,6 @@ public class FruitStall extends Task {
 
     @Override
     public boolean execute() {
-        //Stop when thieving is done!
-        if (Skills.realLevel(Constants.SKILLS_THIEVING) >= 60) {
-            mMain.State = "Thieving done!";
-            SkillData.setSkillDone();
-            mMain.taskRunning.set(false);
-        }
         //Check favor
         if (!SkillData.KOUREND_FAVOR.checkedFavor) {
             CheckFavor();

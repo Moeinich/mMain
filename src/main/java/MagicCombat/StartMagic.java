@@ -13,13 +13,13 @@ import script.mMain;
 public class StartMagic {
     private ArrayList<Task> MagicTasks = new ArrayList<>();
     public void Magic() {
+        mMain.RunningSkill = "Magic";
         if (Skills.realLevel(Constants.SKILLS_MAGIC) >= 30) {
             mMain.State = "Magic done!";
             SkillData.setSkillDone();
             mMain.taskRunning.set(false);
         }
 
-        mMain.RunningSkill = "Magic";
         if (MagicTasks.isEmpty()) {
             MagicTasks.add(new CowSafespot());
         }

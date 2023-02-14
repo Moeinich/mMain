@@ -1,10 +1,13 @@
 package Herblore;
 
+import org.powbot.api.rt4.Constants;
+import org.powbot.api.rt4.Skills;
 import org.powbot.mobile.script.ScriptManager;
 
 import java.util.ArrayList;
 
 import Helpers.GoToBank;
+import Helpers.SkillData;
 import Helpers.Task;
 import script.mMain;
 
@@ -12,8 +15,12 @@ public class StartHerblore {
     private ArrayList<Task> HerbloreTasks = new ArrayList<>();
     public void Herblore() {
         mMain.RunningSkill = "Herblore";
+        if (Skills.realLevel(Constants.SKILLS_HERBLORE) >= 70) {
+            mMain.State = "Herblore done!";
+            SkillData.setSkillDone();
+            mMain.taskRunning.set(false);
+        }
         if (HerbloreTasks.isEmpty()) {
-            HerbloreTasks.add(new HerbloreDone());
             HerbloreTasks.add(new GoToBank());
             HerbloreTasks.add(new AttackPotions());
         }

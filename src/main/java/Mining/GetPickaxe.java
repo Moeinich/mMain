@@ -22,12 +22,6 @@ return Game.tab(Game.Tab.INVENTORY) && Inventory.stream().id(SkillData.pickaxes)
 
     @Override
     public boolean execute() {
-        if (Skills.realLevel(Constants.SKILLS_MINING) >= 70) {
-            mMain.State = "Mining done!";
-            SkillData.setSkillDone();
-            mMain.taskRunning.set(false);
-        }
-
         if (Bank.nearest().tile().distanceTo(Players.local()) > 5) {
             mMain.State = "Moving to bank";
             DaxWalker.walkToBank();

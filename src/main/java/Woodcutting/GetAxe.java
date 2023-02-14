@@ -22,12 +22,6 @@ public class GetAxe extends Task {
     }
     @Override
     public boolean execute() {
-        if (Skills.realLevel(Constants.SKILLS_WOODCUTTING) >= 70) {
-            mMain.State = "Woodcutting done!";
-            SkillData.setSkillDone();
-            mMain.taskRunning.set(false);
-        }
-
         if (Bank.nearest().tile().distanceTo(Players.local()) > 5) {
             mMain.State = "Get axe - GoToBank";
             DaxWalker.walkToBank();

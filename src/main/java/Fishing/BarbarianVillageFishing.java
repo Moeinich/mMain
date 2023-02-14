@@ -20,12 +20,6 @@ public class BarbarianVillageFishing extends Task {
     }
     @Override
     public boolean execute() {
-        if (Skills.realLevel(Constants.SKILLS_FISHING) >= 70) {
-            mMain.State = "Fishing done!";
-            SkillData.setSkillDone();
-            mMain.taskRunning.set(false);
-        }
-
         if (!PlayerHelper.withinArea(SkillData.BarbarianVillageFishingArea)) {
             mMain.State = "Go to fishing area";
             PlayerHelper.walkToTile(SkillData.movementFishing());

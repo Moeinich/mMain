@@ -13,13 +13,12 @@ import script.mMain;
 public class StartRanged {
     private ArrayList<Task> rangedTask = new ArrayList<>();
     public void Ranged() {
+        mMain.RunningSkill = "Ranged";
         if (Skills.realLevel(Constants.SKILLS_RANGE) >= 30) {
             mMain.State = "Range done!";
             SkillData.setSkillDone();
             mMain.taskRunning.set(false);
         }
-
-        mMain.RunningSkill = "Ranged";
         if (rangedTask.isEmpty()) {
             rangedTask.add(new CowSafespot());
         }
