@@ -1,5 +1,6 @@
 package Firemaking;
 
+import org.powbot.api.Condition;
 import org.powbot.api.Locatable;
 import org.powbot.api.rt4.Constants;
 import org.powbot.api.rt4.Movement;
@@ -7,6 +8,7 @@ import org.powbot.api.rt4.Players;
 import org.powbot.api.rt4.Bank;
 import org.powbot.api.rt4.Inventory;
 import org.powbot.api.rt4.Skills;
+import org.powbot.api.rt4.walking.model.Skill;
 
 import Helpers.InteractionsHelper;
 import Helpers.ItemList;
@@ -21,11 +23,6 @@ public class GetMaterials extends Task {
     }
     @Override
     public boolean execute() {
-        if (Skills.realLevel(Constants.SKILLS_FIREMAKING) >= 70) {
-            mMain.State = "Firemaking done!";
-            SkillData.setSkillDone();
-            mMain.taskRunning.set(false);
-        }
         mMain.State = "Banking";
         Locatable nearestBank = Bank.nearest();
         if (Bank.inViewport() && nearestBank.tile().distanceTo(Players.local()) < 4) {
@@ -44,6 +41,7 @@ public class GetMaterials extends Task {
             if (Bank.stream().id(ItemList.LOGS_1511).isNotEmpty() || Bank.stream().id(ItemList.OAK_LOGS_1521).isNotEmpty() || Bank.stream().id(ItemList.WILLOW_LOGS_1519).isNotEmpty()) {
                 InteractionsHelper interactionsHelper = new InteractionsHelper();
                 interactionsHelper.withdrawItem(SkillData.withdrawLogs(), 27);
+                Condition.wait( () -> (Inventory.stream().id(SkillData.logs).isNotEmpty()), 250, 50);
                 Bank.close();
             }
         }
