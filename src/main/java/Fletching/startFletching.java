@@ -14,9 +14,9 @@ import script.mMain;
 public class startFletching {
     private ArrayList<Task> fletchingTasks = new ArrayList<>();
     public void Fletching() {
-        mMain.RunningSkill = "Fletching";
+        mMain.runningSkill = "Fletching";
         if (Skills.realLevel(Constants.SKILLS_FLETCHING) >= 70) {
-            mMain.State = "Fletching done!";
+            mMain.state = "Fletching done!";
             SkillData.setSkillDone();
             mMain.taskRunning.set(false);
         }

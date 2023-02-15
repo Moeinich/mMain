@@ -19,12 +19,12 @@ public class treeOak extends Task {
     @Override
     public boolean execute() {
         if (!PlayerHelper.withinArea(SkillData.oakTreeLocation)) {
-            mMain.State = "Go to Oak trees";
+            mMain.state = "Go to Oak trees";
             PlayerHelper.walkToTile(SkillData.movementWoodcutting());
         }
         if (PlayerHelper.withinArea(SkillData.oakTreeLocation) && Players.local().animation() == -1) {
             GameObject treeOak = Objects.stream().within(6).id(SkillData.oakTreeID).nearest().first();
-            mMain.State = "Cutting Oaks";
+            mMain.state = "Cutting Oaks";
             if (treeOak.interact("Chop down", "Oak")) {
                 Condition.wait(() -> Objects.stream().at(treeOak.tile()).id(SkillData.oakTreeID).isEmpty(), 500, 50);
             }

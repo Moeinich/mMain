@@ -27,11 +27,11 @@ public class Wines extends Task {
     @Override
     public boolean execute() {
         if (Game.tab(Game.Tab.INVENTORY) && (Inventory.stream().id(ToolID).isEmpty() || Inventory.stream().id(CombineWithItemID).isEmpty())) {
-            mMain.State = "Banking loop";
+            mMain.state = "Banking loop";
             bank();
         }
         if (Game.tab(Game.Tab.INVENTORY) && !Bank.opened() && Inventory.stream().id(CombineWithItemID, ToolID).isNotEmpty()) {
-            mMain.State = "craft loop";
+            mMain.state = "craft loop";
             craft();
         }
         if (ScriptManager.INSTANCE.isStopping()) {
@@ -47,7 +47,7 @@ public class Wines extends Task {
 
     private void checkTool() {
         InteractionsHelper interactionsHelper = new InteractionsHelper();
-        mMain.State = "Get jugs";
+        mMain.state = "Get jugs";
         if (Inventory.stream().id(ToolID).isEmpty()) {
             interactionsHelper.depositAndWithdraw(ToolID, 14);
         }
@@ -55,7 +55,7 @@ public class Wines extends Task {
     }
     private void withdrawItems() {
         InteractionsHelper interactionsHelper = new InteractionsHelper();
-        mMain.State = "Withdraw items";
+        mMain.state = "Withdraw items";
         if (Bank.stream().id(CombineWithItemID).isNotEmpty()) {
             interactionsHelper.withdrawItem(CombineWithItemID, 14);
             Bank.close();

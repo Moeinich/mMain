@@ -24,7 +24,7 @@ public class Sardines extends Task {
     @Override
     public boolean execute() {
         if (!PlayerHelper.withinArea(SkillData.cookingAreaEdgeville)) {
-            mMain.State = "Move to edgeville";
+            mMain.state = "Move to edgeville";
             MoveToEdgeville();
         }
         if (Game.tab(Game.Tab.INVENTORY) && Inventory.stream().name("Raw sardine").isEmpty()) {
@@ -39,7 +39,7 @@ public class Sardines extends Task {
         PlayerHelper.walkToTile(SkillData.cookingAreaEdgeville.getRandomTile());
     }
     private void ShouldBank() {
-        mMain.State = "Get raw fish";
+        mMain.state = "Get raw fish";
         if (!PlayerHelper.withinArea(SkillData.edgevilleBank)) {
             PlayerHelper.walkToTile(SkillData.edgevilleBank.getRandomTile());
         }
@@ -50,7 +50,7 @@ public class Sardines extends Task {
         }
     }
     private void ShouldCook() {
-        mMain.State = "Do cooking";
+        mMain.state = "Do cooking";
         if (!PlayerHelper.withinArea(SkillData.StoveAreaEdgeville)) {
             PlayerHelper.walkToTile(SkillData.StoveAreaEdgeville.getRandomTile());
         }

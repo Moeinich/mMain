@@ -12,24 +12,24 @@ import script.mMain;
 
 public class BankBeforeTask extends Task {
     public boolean activate() {
-        if(mMain.ShouldBank == true) {
+        if(mMain.shouldBank == true) {
             return true;
         } else return false;
     }
     @Override
     public boolean execute() {
         if (Game.tab(Game.Tab.INVENTORY) && Inventory.isEmpty()) {
-            mMain.State = "Inv empty, move on";
+            mMain.state = "Inv empty, move on";
             if (Bank.open()) {
                 if (Bank.opened()) {
                     Condition.wait( () -> !Bank.opened(), 150, 50);
                 }
             }
-            mMain.ShouldBank = false;
+            mMain.shouldBank = false;
         }
 
         if (Bank.nearest().tile().distanceTo(Players.local()) > 5 && Inventory.isNotEmpty()) {
-        mMain.State = "Bank before task";
+        mMain.state = "Bank before task";
         DaxWalker.blacklistTeleports(Teleport.CASTLE_WARS_MINIGAME, Teleport.SOUL_WARS_MINIGAME, Teleport.CLAN_WARS_MINIGAME);
         DaxWalker.walkToBank();
         }

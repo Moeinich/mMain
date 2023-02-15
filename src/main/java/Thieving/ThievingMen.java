@@ -40,7 +40,7 @@ public class ThievingMen extends Task {
     }
     private void ShouldOpenPouches() {
         if (Inventory.stream().name("Coin pouch").isNotEmpty()) {
-            mMain.State = "Opening pouches";
+            mMain.state = "Opening pouches";
             Item CoinPouch = Inventory.stream().name("Coin pouch").first();
             if (CoinPouch.interact("Open-all", "Coin pouch") && !Players.local().inMotion()) {
                 Condition.wait( () -> Inventory.stream().name("Coin pouch").isEmpty(), 200,50);
@@ -56,13 +56,13 @@ public class ThievingMen extends Task {
     }
     private void ShouldThieve() {
         if (!SkillData.thievingMenArea.contains(Players.local())) {
-            mMain.State = "Going to lumbridge";
+            mMain.state = "Going to lumbridge";
             PlayerHelper.walkToTile(SkillData.movementThieving());
         }
 
         Npc Man = Npcs.stream().reachable().within(SkillData.thievingMenArea).name("Man").nearest().first();
         if (Man.inViewport() && Players.local().animation() == -1) {
-            mMain.State = "Thieving men";
+            mMain.state = "Thieving men";
             if (Man.interact("Pickpocket", "Man")) {
                 Condition.wait( () -> !Players.local().inMotion(), 200, 50);
             }

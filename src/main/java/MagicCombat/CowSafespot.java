@@ -30,7 +30,7 @@ public class CowSafespot extends Task {
     @Override
     public boolean execute() {
         if (MagicHelpers.getAutoCastSpell().getSpell() != MagicData.MagicSpell() && !MagicHelpers.isAutoCasting()) {
-            mMain.State = "Setting spell";
+            mMain.state = "Setting spell";
             Game.tab(Game.Tab.ATTACK);
             if (isAutoCastOpen() || MagicHelpers.openAutocastTab()) {
                 MagicHelpers.AutoCastSpell[] spellValues = MagicHelpers.AutoCastSpell.values();
@@ -43,17 +43,17 @@ public class CowSafespot extends Task {
         }
 
         if (CombatHelper.needEquipment(MagicData.MagicEquipment())) {
-            mMain.State = "Need equipment!";
+            mMain.state = "Need equipment!";
             GetEquipment();
         }
 
         if (!CombatHelper.needEquipment(MagicData.MagicEquipment()) && !PlayerHelper.withinArea(SkillData.CowSafeSpotArea)) {
-            mMain.State = "Go safespot";
+            mMain.state = "Go safespot";
             PlayerHelper.walkToTile(SkillData.CowSafeSpotArea.getRandomTile());
         }
 
         if (PlayerHelper.withinArea(SkillData.CowSafeSpotArea)) {
-            mMain.State = "Fighting..";
+            mMain.state = "Fighting..";
             ShouldFight();
         }
         return false;
@@ -74,12 +74,12 @@ public class CowSafespot extends Task {
 
     private void GetEquipment() {
         if (Bank.nearest().tile().distanceTo(Players.local()) > 5) {
-            mMain.State = "Walking to bank";
+            mMain.state = "Walking to bank";
             DaxWalker.blacklistTeleports(Teleport.CASTLE_WARS_MINIGAME, Teleport.SOUL_WARS_MINIGAME, Teleport.CLAN_WARS_MINIGAME);
             DaxWalker.walkToBank();
         }
         if (!CombatHelper.gotItems(missingEquipment(MagicData.MagicEquipment()))) {
-            mMain.State = "Withdraw equipment";
+            mMain.state = "Withdraw equipment";
             if (Bank.nearest().tile().distanceTo(Players.local()) <= 5 && Bank.inViewport()) {
                 if (!Bank.opened()) {
                     Bank.open();
@@ -87,8 +87,8 @@ public class CowSafespot extends Task {
                 if (Bank.open()) {
                     for (var itemId : missingEquipment(MagicData.MagicEquipment())) {
                         if (Bank.stream().id(itemId).isEmpty()) {
-                            if (mMain.RunningSkill.equals("Progressive")) {
-                                mMain.State = "We ran out of " + itemId;
+                            if (mMain.runningSkill.equals("Progressive")) {
+                                mMain.state = "We ran out of " + itemId;
                                 SkillData.setSkillDone();
                                 Bank.close();
                                 mMain.taskRunning.set(false); //Skip task on progressive
@@ -105,7 +105,7 @@ public class CowSafespot extends Task {
             }
         }
         if (CombatHelper.gotItems(missingEquipment(MagicData.MagicEquipment()))) {
-            mMain.State = "Equip items";
+            mMain.state = "Equip items";
             for (var item : missingEquipment(MagicData.MagicEquipment())) {
                 var itemToEquip = Inventory.stream().id(item).first();
                 if (itemToEquip != null){

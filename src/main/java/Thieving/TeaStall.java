@@ -35,7 +35,7 @@ public class TeaStall extends Task {
     }
 
     public void dropItems() {
-        mMain.State = "Dropping Tea!";
+        mMain.state = "Dropping Tea!";
         List<Item> itemsToDrop = Inventory.stream().name(badItems).list();
         if (Inventory.drop(itemsToDrop)) {
             Condition.wait(() -> itemsToDrop.isEmpty(), 250, 50);
@@ -50,7 +50,7 @@ public class TeaStall extends Task {
     public boolean execute() {
         //Stop when thieving is done!
         if (Skills.realLevel(Constants.SKILLS_THIEVING) >= 60) {
-            mMain.State = "Thieving done!";
+            mMain.state = "Thieving done!";
             SkillData.setSkillDone();
             mMain.taskRunning.set(false);
         }
@@ -80,20 +80,20 @@ public class TeaStall extends Task {
         GameObject teaStall = Objects.stream().within(2).id(STALL_ID).nearest().first();
         if (teaStall.valid() && Players.stream().within(SkillData.teaStallArea).count() == 1) {
             if (!teaStall.inViewport()) { // Need to turn camera to the stall
-                mMain.State = "Turning camera to tea stall";
+                mMain.state = "Turning camera to tea stall";
                 Camera.turnTo(teaStall);
                 Condition.wait(() -> teaStall.inViewport(), 250, 10);
             } else { // Fruit stall isn't null and in view
-                mMain.State = "Stealing fruit from stall";
+                mMain.state = "Stealing fruit from stall";
                 teaStall.interact("Steal-from");
                 Condition.wait(() -> !teaStall.valid(), 30, 45); // Turns into "market stall" (id:27537) after you steal from it
             }
         } else {
-            mMain.State = "Waiting for stall to restock";
+            mMain.state = "Waiting for stall to restock";
         }
     }
     private void ShouldWorldhop() {
-        mMain.State = "Worldhopping";
+        mMain.state = "Worldhopping";
         int[] p2p = SkillData.p2p;
         int randomWorld = p2p[Random.nextInt(0, p2p.length - 1)];
         World world = new World(randomWorld, randomWorld, 1, World.Type.MEMBERS, World.Server.RUNE_SCAPE, World.Specialty.NONE);
@@ -101,7 +101,7 @@ public class TeaStall extends Task {
     }
     private void WalkToSpot() {
         if (!Players.local().tile().equals(SkillData.movementThieving()) && !(SkillData.movementThieving().tile().distanceTo(Players.local()) < 3)) { // Need to move to our thieving spot
-            mMain.State = "Walking to Thieving spot";
+            mMain.state = "Walking to Thieving spot";
             PlayerHelper.walkToTile(SkillData.movementThieving());
             Condition.wait(() -> SkillData.movementThieving().tile().distanceTo(Players.local()) < 3, 150, 20);
             if (SkillData.movementThieving().tile().distanceTo(Players.local()) < 3) {

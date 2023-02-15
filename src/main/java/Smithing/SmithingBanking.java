@@ -21,7 +21,7 @@ public class SmithingBanking extends Task {
 
     @Override
     public boolean execute() {
-        mMain.State = "Banking";
+        mMain.state = "Banking";
         Locatable nearestBank = Bank.nearest();
 
         if (Bank.inViewport() && nearestBank.tile().distanceTo(Players.local()) < 4) {

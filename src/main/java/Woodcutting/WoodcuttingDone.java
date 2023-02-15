@@ -10,7 +10,7 @@ public class WoodcuttingDone extends Task {
     }
     @Override
     public boolean execute() {
-        mMain.State = "Woodcutting done!";
+        mMain.state = "Woodcutting done!";
         mMain.taskRunning.set(false);
         return false;
     }

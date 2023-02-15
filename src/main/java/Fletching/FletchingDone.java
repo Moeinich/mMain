@@ -10,7 +10,7 @@ public class FletchingDone extends Task {
     }
     @Override
     public boolean execute() {
-        mMain.State = "Fletching done!";
+        mMain.state = "Fletching done!";
         mMain.taskRunning.set(false);
         return false;
     }

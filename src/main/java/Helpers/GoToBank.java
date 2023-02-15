@@ -19,13 +19,13 @@ public class GoToBank extends Task{
     public boolean execute() {
         if (Inventory.stream().name("Coin pouch").isNotEmpty()) {
             Item CoinPouch = Inventory.stream().name("Coin pouch").first();
-            mMain.State = "Opening pouches";
+            mMain.state = "Opening pouches";
             if (CoinPouch.interact("Open-all", "Coin pouch") && !Players.local().inMotion()) {
                 Condition.wait( () -> Inventory.stream().name("Coin pouch").isEmpty(), 200,50);
             }
         }
         if (Bank.nearest().tile().distanceTo(Players.local()) > 5) {
-            mMain.State = "Walking to bank";
+            mMain.state = "Walking to bank";
             DaxWalker.blacklistTeleports(Teleport.CASTLE_WARS_MINIGAME, Teleport.SOUL_WARS_MINIGAME, Teleport.CLAN_WARS_MINIGAME);
             DaxWalker.walkToBank();
         }

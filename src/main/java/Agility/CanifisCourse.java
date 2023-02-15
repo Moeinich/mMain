@@ -21,13 +21,13 @@ public class CanifisCourse extends Task {
     @Override
     public boolean execute() {
         if (Game.tab(Game.Tab.INVENTORY) && Inventory.stream().action("Eat").isEmpty()) {
-            mMain.State = "Get food";
+            mMain.state = "Get food";
             PlayerHelper playerHelper = new PlayerHelper();
             playerHelper.bankForFood(ItemList.CAKE_1891, 27);
         }
 
         if (Skills.level(Constants.SKILLS_HITPOINTS) < 5 && Game.tab(Game.Tab.INVENTORY)) {
-            mMain.State = "Eating..";
+            mMain.state = "Eating..";
             PlayerHelper playerHelper = new PlayerHelper();
             playerHelper.shouldEat();
         }
@@ -46,14 +46,14 @@ public class CanifisCourse extends Task {
         if (PlayerHelper.withinArea(AgilityData.CanifisAreas.FLOOR.getArea())) {
             GameObject CanifisObstacle1 = Objects.stream().within(8).id(AgilityData.obstacleInfo.canifis1.getId()).nearest().first();
             if (!CanifisObstacle1.inViewport()) {
-                mMain.State = "Move to Canifis start";
+                mMain.state = "Move to Canifis start";
                 Movement.moveTo(AgilityData.CanifisAreas.START.getArea().getRandomTile());
             } else {
                 AgilityHelper helper = new AgilityHelper();
                 helper.handleObstacle(AgilityData.obstacleInfo.canifis1);
             }
         } else if (PlayerHelper.withinArea(AgilityData.CanifisAreas.OBSTACLE_1_BUG.getArea())) {
-            mMain.State = "Stuck due to RS bug";
+            mMain.state = "Stuck due to RS bug";
             Movement.moveTo(AgilityData.CanifisAreas.OBSTACLE_2_MOVE_TO.getArea().getRandomTile());
         }
 
@@ -85,7 +85,7 @@ public class CanifisCourse extends Task {
         if (PlayerHelper.withinArea(AgilityData.CanifisAreas.OBSTACLE_7.getArea())) {
             GameObject CanifisObstacle7 = Objects.stream().within(10).id(AgilityData.obstacleInfo.canifis7.getId()).nearest().first();
             if (!CanifisObstacle7.inViewport()) {
-                mMain.State = "Moving to obstacle 7";
+                mMain.state = "Moving to obstacle 7";
                 Movement.step(AgilityData.CanifisAreas.OBSTACLE_7_MOVE_TO.getArea().getRandomTile());
             } else {
                 AgilityHelper helper = new AgilityHelper();

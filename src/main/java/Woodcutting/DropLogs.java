@@ -15,7 +15,7 @@ public class DropLogs extends Task {
     }
     @Override
     public boolean execute() {
-        mMain.State = "Dropping..";
+        mMain.state = "Dropping..";
         String[] badItems = {"Logs", "Oak logs", "Willow logs", "Teak logs"};
         List<Item> itemsToDrop = Inventory.stream().name(badItems).list();
         Inventory.drop(itemsToDrop);

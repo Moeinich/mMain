@@ -29,13 +29,13 @@ public class DoFiremaking extends Task {
     }
 
     private void walkToFMSpot() {
-            mMain.State = "Go to lane " + fmSpot;
+            mMain.state = "Go to lane " + fmSpot;
             Movement.moveTo(SkillData.moveToFiremakingSpot());
             Condition.wait( () -> !Players.local().inMotion(), 900, 100);
     }
     private void lightLogs() {
         if (Game.tab(Game.Tab.INVENTORY)) {
-                mMain.State = "Lighting.. " + "L:" + fmSpot;
+                mMain.state = "Lighting.. " + "L:" + fmSpot;
                 if (Inventory.stream().id(SkillData.logs).first().interact("Use")) {
                     if (Inventory.stream().id(ItemList.TINDERBOX_590).first().interact("Use")) {
                         CurrentXP = Skills.experience(Skill.Firemaking);
@@ -43,7 +43,7 @@ public class DoFiremaking extends Task {
                     }
                 }
                 if (Inventory.stream().id(SkillData.logs).isEmpty()) {
-                    mMain.State = "Switch lane";
+                    mMain.state = "Switch lane";
                     fmSpot += 1;
                 }
                 if (fmSpot == 3) {

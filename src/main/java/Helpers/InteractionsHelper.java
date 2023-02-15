@@ -23,7 +23,7 @@ public class InteractionsHelper {
             }
         }
         if (Bank.stream().id(ItemName).isEmpty()) {
-            mMain.State = "We ran out of " + ItemName;
+            mMain.state = "We ran out of " + ItemName;
             SkillData.setSkillDone();
             Bank.close();
             mMain.taskRunning.set(false); //Skip task on progressive
@@ -39,7 +39,7 @@ public class InteractionsHelper {
             }
         }
         if (Bank.stream().id(item).isEmpty()) {
-            mMain.State = "We ran out of " + item;
+            mMain.state = "We ran out of " + item;
             SkillData.setSkillDone();
             Bank.close();
             mMain.taskRunning.set(false);//Skip task on progressive
@@ -54,7 +54,7 @@ public class InteractionsHelper {
         int timer = 0;
         int initialCount = (int) Inventory.stream().id(CombineWithItemID).count();
         while (!ScriptManager.INSTANCE.isStopping() && Inventory.stream().id(CombineWithItemID).isNotEmpty() && Inventory.stream().id(RequiredItemID).isNotEmpty()) {
-            mMain.State = "Combining.. ";
+            mMain.state = "Combining.. ";
             int currentCount = (int) Inventory.stream().id(CombineWithItemID).count();
             if (currentCount >= initialCount) {
                 timer += 1;

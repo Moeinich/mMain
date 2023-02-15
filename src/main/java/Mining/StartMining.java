@@ -14,9 +14,9 @@ import script.mMain;
 public class StartMining {
     private ArrayList<Task> miningTasks = new ArrayList<>();
     public void Mining() {
-        mMain.RunningSkill = "Mining";
+        mMain.runningSkill = "Mining";
         if (Skills.realLevel(Constants.SKILLS_MINING) >= 70) {
-            mMain.State = "Mining done!";
+            mMain.state = "Mining done!";
             SkillData.setSkillDone();
             mMain.taskRunning.set(false);
         }

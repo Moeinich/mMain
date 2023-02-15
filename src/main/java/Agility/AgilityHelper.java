@@ -18,7 +18,7 @@ public class AgilityHelper {
     public void handleObstacle(IObstacleInfo obstacleInfo) {
         GameObject obstacleObject = Objects.stream().within(10).id(obstacleInfo.getId()).nearest().first();
         if (obstacleObject.inViewport()) {
-            mMain.State = obstacleInfo.getDescription();
+            mMain.state = obstacleInfo.getDescription();
             if (obstacleObject.interact(obstacleInfo.getAction(), obstacleInfo.getName())) {
                 Condition.wait( () -> (CurrentXP != Skills.experience(Skill.Agility) || Players.local().healthBarVisible()), 400, 50);
             }
@@ -29,13 +29,13 @@ public class AgilityHelper {
         GroundItem groundItem = GroundItems.stream().within(5).name(obstacleInfo.getLoot()).nearest().first();
         if (groundItem.inViewport()) {
             PlayerHelper playerHelper = new PlayerHelper();
-            mMain.State = "Pickup mark";
+            mMain.state = "Pickup mark";
             playerHelper.lootItems("Take", "Mark of grace");
         }
 
         GameObject obstacleObject = Objects.stream().within(10).id(obstacleInfo.getId()).nearest().first();
         if (obstacleObject.inViewport()) {
-            mMain.State = obstacleInfo.getDescription();
+            mMain.state = obstacleInfo.getDescription();
             if (obstacleObject.interact(obstacleInfo.getAction(), obstacleInfo.getName())) {
                 Condition.wait( () -> (CurrentXP != Skills.experience(Skill.Agility) || Players.local().healthBarVisible()), 400, 50);
             }

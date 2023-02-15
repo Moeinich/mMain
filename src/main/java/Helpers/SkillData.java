@@ -45,46 +45,46 @@ public class SkillData {
                 && magicCombatDone;
     }
     public static void setSkillDone() {
-        if (mMain.RunningSkill.equals("Mining")) {
+        if (mMain.runningSkill.equals("Mining")) {
             miningDone = true;
         }
-        if (mMain.RunningSkill.equals("Fishing")) {
+        if (mMain.runningSkill.equals("Fishing")) {
             fishingDone = true;
         }
-        if (mMain.RunningSkill.equals("Woodcutting")) {
+        if (mMain.runningSkill.equals("Woodcutting")) {
             woodcuttingDone = true;
         }
-        if (mMain.RunningSkill.equals("Cooking")) {
+        if (mMain.runningSkill.equals("Cooking")) {
             cookingDone = true;
         }
-        if (mMain.RunningSkill.equals("Firemaking")) {
+        if (mMain.runningSkill.equals("Firemaking")) {
             firemakingDone = true;
         }
-        if (mMain.RunningSkill.equals("Smithing")) {
+        if (mMain.runningSkill.equals("Smithing")) {
             smithingDone = true;
         }
-        if (mMain.RunningSkill.equals("Thieving")) {
+        if (mMain.runningSkill.equals("Thieving")) {
             thievingDone = true;
         }
-        if (mMain.RunningSkill.equals("Crafting")) {
+        if (mMain.runningSkill.equals("Crafting")) {
             craftingDone = true;
         }
-        if (mMain.RunningSkill.equals("Fletching")) {
+        if (mMain.runningSkill.equals("Fletching")) {
             fletchingDone = true;
         }
-        if (mMain.RunningSkill.equals("Agility")) {
+        if (mMain.runningSkill.equals("Agility")) {
             agilityDone = true;
         }
-        if (mMain.RunningSkill.equals("Herblore")) {
+        if (mMain.runningSkill.equals("Herblore")) {
             herbloreDone = true;
         }
-        if (mMain.RunningSkill.equals("Melee")) {
+        if (mMain.runningSkill.equals("Melee")) {
             meleeCombatDone = true;
         }
-        if (mMain.RunningSkill.equals("Ranged")) {
+        if (mMain.runningSkill.equals("Ranged")) {
             rangeCombatDone = true;
         }
-        if (mMain.RunningSkill.equals("Magic")) {
+        if (mMain.runningSkill.equals("Magic")) {
             rangeCombatDone = true;
         }
     }

@@ -3,11 +3,9 @@ package Mining;
 
 import org.powbot.api.Condition;
 import org.powbot.api.rt4.Bank;
-import org.powbot.api.rt4.Constants;
 import org.powbot.api.rt4.Game;
 import org.powbot.api.rt4.Inventory;
 import org.powbot.api.rt4.Players;
-import org.powbot.api.rt4.Skills;
 import org.powbot.dax.api.DaxWalker;
 
 import Helpers.InteractionsHelper;
@@ -23,11 +21,11 @@ return Game.tab(Game.Tab.INVENTORY) && Inventory.stream().id(SkillData.pickaxes)
     @Override
     public boolean execute() {
         if (Bank.nearest().tile().distanceTo(Players.local()) > 5) {
-            mMain.State = "Moving to bank";
+            mMain.state = "Moving to bank";
             DaxWalker.walkToBank();
         }
         if (!Bank.opened()) {
-            mMain.State = "Get pickaxe - Withdraw";
+            mMain.state = "Get pickaxe - Withdraw";
             if (Bank.open()) {
                 InteractionsHelper interactionsHelper = new InteractionsHelper();
                 interactionsHelper.depositAndWithdraw(SkillData.withdrawPickaxe(), 1);

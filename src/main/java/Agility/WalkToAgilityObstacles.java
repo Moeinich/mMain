@@ -55,7 +55,7 @@ public class WalkToAgilityObstacles extends Task {
             mMain.taskRunning.set(false);
             SkillData.setSkillDone();
         } else {
-            mMain.State = "Going to Agility course";
+            mMain.state = "Going to Agility course";
             PlayerHelper.walkToTile(AgilityData.movementAgility());
         }
         return false;

@@ -15,7 +15,7 @@ public class DoBars extends Task {
 
     @Override
     public boolean execute() {
-        mMain.State = "Do bars";
+        mMain.state = "Do bars";
         Component furnaceWidgetCopper = Widgets.widget(270).component(14);
         Component furnaceWidgetIron = Widgets.widget(270).component(15);
         GameObject furnaceEdgeville = Objects.stream().id(16469).first();

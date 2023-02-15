@@ -13,9 +13,9 @@ import java.util.ArrayList;
 public class StartCooking {
     private ArrayList<Task> cookingTasks = new ArrayList<>();
     public void Cooking() {
-        mMain.RunningSkill = "Cooking";
+        mMain.runningSkill = "Cooking";
         if (Skills.realLevel(Constants.SKILLS_COOKING) >= 70) {
-            mMain.State = "Cooking done!";
+            mMain.state = "Cooking done!";
             SkillData.setSkillDone();
             mMain.taskRunning.set(false);
         }

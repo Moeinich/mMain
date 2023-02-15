@@ -16,7 +16,7 @@ public class DoProducts extends Task {
 
     @Override
     public boolean execute() {
-        mMain.State = "Do products";
+        mMain.state = "Do products";
         GameObject anvilVarrockWest = Objects.stream().id(2097).first();
         Component anvilWidgetBronzeWarhammer = Widgets.widget(312).component(16);
 

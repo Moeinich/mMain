@@ -14,9 +14,9 @@ import java.util.ArrayList;
 public class StartMelee {
     private ArrayList<Task> meleeTask = new ArrayList<>();
     public void Combat() {
-        mMain.RunningSkill = "Melee";
+        mMain.runningSkill = "Melee";
         if (Skills.realLevel(Constants.SKILLS_STRENGTH) >= 70 && Skills.realLevel(Constants.SKILLS_ATTACK) >= 70 && Skills.realLevel(Constants.SKILLS_DEFENSE) >= 70) {
-            mMain.State = "Melee done!";
+            mMain.state = "Melee done!";
             SkillData.setSkillDone();
             mMain.taskRunning.set(false);
         }

@@ -23,7 +23,7 @@ public class treeTeak extends Task {
     @Override
     public boolean execute() {
         if (!PlayerHelper.withinArea(SkillData.teakArea)) {
-            mMain.State = "Go to Teak trees";
+            mMain.state = "Go to Teak trees";
             if (SkillData.teakLocation.distanceTo(Players.local()) < 10) {
                 Movement.step(SkillData.teakLocation);
             } else PlayerHelper.walkToTile(SkillData.movementWoodcutting());
@@ -38,7 +38,7 @@ public class treeTeak extends Task {
             }
 
             GameObject treeTeak = Objects.stream().within(SkillData.teakArea).id(SkillData.teakTreeID).nearest().first();
-            mMain.State = "Cutting teaks";
+            mMain.state = "Cutting teaks";
             if (treeTeak.interact("Chop down", "Teak")) {
                 Condition.wait(() -> Objects.stream().at(treeTeak.tile()).id(SkillData.teakTreeID).isEmpty(), 500, 50);
             }

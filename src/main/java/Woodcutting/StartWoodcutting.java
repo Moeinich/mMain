@@ -13,9 +13,9 @@ import java.util.ArrayList;
 public class StartWoodcutting {
     private ArrayList<Task> woodcuttingTasks = new ArrayList<>();
     public void Woodcutting() {
-        mMain.RunningSkill = "Woodcutting";
+        mMain.runningSkill = "Woodcutting";
         if (Skills.realLevel(Constants.SKILLS_WOODCUTTING) >= 70) {
-            mMain.State = "Woodcutting done!";
+            mMain.state = "Woodcutting done!";
             SkillData.setSkillDone();
             mMain.taskRunning.set(false);
         }

@@ -13,9 +13,9 @@ import script.mMain;
 public class StartAgility {
     private ArrayList<Task> agilityTasks = new ArrayList<>();
     public void Agility() {
-        mMain.RunningSkill = "Agility";
+        mMain.runningSkill = "Agility";
         if (Skills.realLevel(Constants.SKILLS_AGILITY) >= 70) {
-            mMain.State = "Agility done!";
+            mMain.state = "Agility done!";
             SkillData.setSkillDone();
             mMain.taskRunning.set(false);
         }

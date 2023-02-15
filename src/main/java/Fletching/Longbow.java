@@ -26,13 +26,13 @@ public class Longbow extends Task {
 
     @Override
     public boolean execute() {
-        mMain.State ="LB LOOP!";
+        mMain.state ="LB LOOP!";
         if (Game.tab(Game.Tab.INVENTORY) && (Inventory.stream().id(ToolID).isEmpty() || Inventory.stream().id(CombineWithItemID).isEmpty())) {
-            mMain.State = "Banking loop";
+            mMain.state = "Banking loop";
             bank();
         }
         if (Game.tab(Game.Tab.INVENTORY) && !Bank.opened() && Inventory.stream().id(CombineWithItemID).isNotEmpty()) {
-            mMain.State = "craft loop";
+            mMain.state = "craft loop";
             fletch();
         }
         if (ScriptManager.INSTANCE.isStopping()) {
@@ -48,7 +48,7 @@ public class Longbow extends Task {
 
     private void checkTool() {
         InteractionsHelper interactionsHelper = new InteractionsHelper();
-        mMain.State = "Checking tool..";
+        mMain.state = "Checking tool..";
         if (Inventory.stream().id(ToolID).isEmpty()) {
             interactionsHelper.depositAndWithdraw(ToolID, 1);
         }
@@ -56,7 +56,7 @@ public class Longbow extends Task {
     }
     private void withdrawItems() {
         InteractionsHelper interactionsHelper = new InteractionsHelper();
-        mMain.State = "Withdraw items";
+        mMain.state = "Withdraw items";
         if (!Bank.opened()) {
             Bank.open();
             Condition.wait( () -> Bank.opened(), 500, 50);

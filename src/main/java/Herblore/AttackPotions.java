@@ -27,17 +27,17 @@ public class AttackPotions extends Task {
     @Override
     public boolean execute() {
         if (Skills.realLevel(Constants.SKILLS_HERBLORE) < 3) {
-            mMain.State = "Druidic ritual not done";
+            mMain.state = "Druidic ritual not done";
             SkillData.herbloreDone = true;
             mMain.taskRunning.set(false);
         }
 
         if (Skills.realLevel(Constants.SKILLS_HERBLORE) >= 3 && Game.tab(Game.Tab.INVENTORY) && (Inventory.stream().id(ToolID).isEmpty() || Inventory.stream().id(CombineWithItemID).isEmpty())) {
-            mMain.State = "Banking loop";
+            mMain.state = "Banking loop";
             bank();
         }
         if (Skills.realLevel(Constants.SKILLS_HERBLORE) >= 3 && Game.tab(Game.Tab.INVENTORY) && !Bank.opened() && Inventory.stream().id(CombineWithItemID, ToolID).isNotEmpty()) {
-            mMain.State = "craft loop";
+            mMain.state = "craft loop";
             craft();
         }
         if (ScriptManager.INSTANCE.isStopping()) {
@@ -53,7 +53,7 @@ public class AttackPotions extends Task {
 
     private void GetEyes() {
         InteractionsHelper interactionsHelper = new InteractionsHelper();
-        mMain.State = "Grabbing eyes";
+        mMain.state = "Grabbing eyes";
         if (Inventory.stream().id(ToolID).isEmpty()) {
             interactionsHelper.depositAndWithdraw(ToolID, 14);
         }
@@ -61,7 +61,7 @@ public class AttackPotions extends Task {
     }
     private void GetUnfinishedPotions() {
         InteractionsHelper interactionsHelper = new InteractionsHelper();
-        mMain.State = "Grabbing Guam pot(unf)";
+        mMain.state = "Grabbing Guam pot(unf)";
         if (!Bank.opened()) {
             Bank.open();
             Condition.wait( () -> Bank.opened(), 500, 50);

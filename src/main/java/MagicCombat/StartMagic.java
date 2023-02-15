@@ -13,9 +13,9 @@ import script.mMain;
 public class StartMagic {
     private ArrayList<Task> MagicTasks = new ArrayList<>();
     public void Magic() {
-        mMain.RunningSkill = "Magic";
+        mMain.runningSkill = "Magic";
         if (Skills.realLevel(Constants.SKILLS_MAGIC) >= 30) {
-            mMain.State = "Magic done!";
+            mMain.state = "Magic done!";
             SkillData.setSkillDone();
             mMain.taskRunning.set(false);
         }

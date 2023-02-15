@@ -24,7 +24,7 @@ public class CopperOres extends Task {
     @Override
     public boolean execute() {
         if (!SkillData.miningCopperLocation.equals(Players.local().tile())) {
-            mMain.State = "Go to copper area";
+            mMain.state = "Go to copper area";
             if (SkillData.movementMining().distanceTo(Players.local()) < 3) {
                 Movement.step(SkillData.miningCopperLocation);
             }
@@ -38,7 +38,7 @@ public class CopperOres extends Task {
                 world.hop();
             }
             if (Players.local().animation() == -1 && Players.stream().within(SkillData.miningCopperArea).count() == 1) {
-                mMain.State = "Mining...";
+                mMain.state = "Mining...";
                 GameObject copperOre = Objects.stream().within(1).id(11161,11360).nearest().first();
                 if (copperOre.interact("Mine", "Rocks")) {
                     Condition.wait(() -> Objects.stream().at(copperOre.tile()).id(11161,11360).isEmpty(), 150, 50);

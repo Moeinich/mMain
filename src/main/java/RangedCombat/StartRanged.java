@@ -13,9 +13,9 @@ import script.mMain;
 public class StartRanged {
     private ArrayList<Task> rangedTask = new ArrayList<>();
     public void Ranged() {
-        mMain.RunningSkill = "Ranged";
+        mMain.runningSkill = "Ranged";
         if (Skills.realLevel(Constants.SKILLS_RANGE) >= 30) {
-            mMain.State = "Range done!";
+            mMain.state = "Range done!";
             SkillData.setSkillDone();
             mMain.taskRunning.set(false);
         }

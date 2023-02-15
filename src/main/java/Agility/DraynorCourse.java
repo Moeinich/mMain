@@ -21,13 +21,13 @@ public class DraynorCourse extends Task {
     @Override
     public boolean execute() {
         if (Game.tab(Game.Tab.INVENTORY) && Inventory.stream().action("Eat").isEmpty()) {
-            mMain.State = "Get food";
+            mMain.state = "Get food";
             PlayerHelper playerHelper = new PlayerHelper();
             playerHelper.bankForFood(ItemList.CAKE_1891, 27);
         }
 
         if (Skills.level(Constants.SKILLS_HITPOINTS) < 5 && Game.tab(Game.Tab.INVENTORY)) {
-            mMain.State = "Eating..";
+            mMain.state = "Eating..";
             PlayerHelper playerHelper = new PlayerHelper();
             playerHelper.shouldEat();
         }
@@ -46,7 +46,7 @@ public class DraynorCourse extends Task {
         if (PlayerHelper.withinArea(AgilityData.DraynorAreas.FLOOR.getArea())) {
             GameObject DraynorObstacle1 = Objects.stream().within(8).id(AgilityData.obstacleInfo.draynor1.getId()).nearest().first();
             if (!DraynorObstacle1.inViewport()) {
-                mMain.State = "Move to draynor start";
+                mMain.state = "Move to draynor start";
                 Movement.moveTo(AgilityData.DraynorAreas.START.getArea().getRandomTile());
             } else {
                 AgilityHelper helper = new AgilityHelper();

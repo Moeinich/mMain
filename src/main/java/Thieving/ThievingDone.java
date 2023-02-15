@@ -10,7 +10,7 @@ public class ThievingDone extends Task {
     }
     @Override
     public boolean execute() {
-        mMain.State = "Thieving done!";
+        mMain.state = "Thieving done!";
         mMain.taskRunning.set(false);
         return false;
     }

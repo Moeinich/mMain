@@ -51,17 +51,17 @@ public class mMain extends AbstractScript {
     public static void main(String[] args) {
         new ScriptUploader().uploadAndStart("mMain", "Account", "emulator-5554", true, true);
     }
-    public static String RunningSkill;
-    public static String State;
-    public static Boolean ShouldBank = true;
+    public static String runningSkill;
+    public static String state;
+    public static Boolean shouldBank = true;
     Executor taskHandler = Executors.newSingleThreadExecutor();
     public static final AtomicBoolean taskRunning = new AtomicBoolean(false);
 
     @Override
     public void onStart() {
         String skill = getOption("Mode");
-        RunningSkill = "Determining...";
-        State = "Starting...";
+        runningSkill = "Determining...";
+        state = "Starting...";
         InteractionsHelper.cameraCheck();
         SimpleDateFormat timerFormat = new SimpleDateFormat("hh:mm:ss");
 
@@ -69,9 +69,9 @@ public class mMain extends AbstractScript {
         if (skill.equals("Progressive")) {
             p = new PaintBuilder()
                     .addString("Mode: ", () -> skill)
-                    .addString("Running: ", () -> RunningSkill)
+                    .addString("Running: ", () -> runningSkill)
                     .addString("Skill timer: ", () -> timerFormat.format(new Date(Stopwatch.timeLeft())))
-                    .addString("State: ", () -> State)
+                    .addString("State: ", () -> state)
                     .trackSkill(Skill.Mining, TrackSkillOption.LevelProgressBar)
                     .trackSkill(Skill.Fishing, TrackSkillOption.LevelProgressBar)
                     .trackSkill(Skill.Woodcutting, TrackSkillOption.LevelProgressBar)
@@ -92,7 +92,7 @@ public class mMain extends AbstractScript {
         } else {
             p = new PaintBuilder()
                     .addString("Skill: ", () -> skill)
-                    .addString("State: ", () -> State)
+                    .addString("State: ", () -> state)
                     .trackSkill(Skill.Mining)
                     .trackSkill(Skill.Fishing)
                     .trackSkill(Skill.Woodcutting)
@@ -183,8 +183,8 @@ public class mMain extends AbstractScript {
                 if (taskRunning.compareAndSet(false, true)) {
                     final Stopwatch runtime = new Stopwatch();
                     if (!runtime.isRunning()) {
-                        if (!mMain.ShouldBank) {
-                            mMain.ShouldBank = true;
+                        if (!mMain.shouldBank) {
+                            mMain.shouldBank = true;
                         } else runtime.reset(Random.nextInt(20, 30 * 1000 * 60));
                     }
                     final int taskIndex = ThreadLocalRandom.current().nextInt(tasks.size());

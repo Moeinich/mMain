@@ -21,12 +21,12 @@ public class BarbarianVillageFishing extends Task {
     @Override
     public boolean execute() {
         if (!PlayerHelper.withinArea(SkillData.BarbarianVillageFishingArea)) {
-            mMain.State = "Go to fishing area";
+            mMain.state = "Go to fishing area";
             PlayerHelper.walkToTile(SkillData.movementFishing());
         }
 
         if (PlayerHelper.withinArea(SkillData.BarbarianVillageFishingArea)) {
-            mMain.State = "Do fishing";
+            mMain.state = "Do fishing";
             Npc BarbarianVillageFishingSpot = Npcs.stream().name("Rod Fishing spot").nearest().first();
             if (BarbarianVillageFishingSpot.inViewport() && Players.local().animation() == -1) {
                 BarbarianVillageFishingSpot.interact("Lure", "Rod Fishing spot");

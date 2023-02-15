@@ -10,7 +10,7 @@ public class FiremakingDone extends Task {
     }
     @Override
     public boolean execute() {
-        mMain.State = "Firemaking done!";
+        mMain.state = "Firemaking done!";
         mMain.taskRunning.set(false);
         return false;
     }

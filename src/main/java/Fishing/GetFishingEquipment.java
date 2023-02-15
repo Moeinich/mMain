@@ -28,13 +28,13 @@ public class GetFishingEquipment extends Task {
     }
     @Override
     public boolean execute() {
-        mMain.State = "Go to bank";
+        mMain.state = "Go to bank";
         if (Bank.nearest().tile().distanceTo(Players.local()) > 4) {
             DaxWalker.walkToBank();
         }
 
         if (Bank.nearest().tile().distanceTo(Players.local()) <= 6 && Bank.inViewport() && !Bank.opened()) {
-            mMain.State = "Get equipment";
+            mMain.state = "Get equipment";
             InteractionsHelper interactionsHelper = new InteractionsHelper();
             if (Skills.realLevel(Constants.SKILLS_FISHING) <= 19) {
                 interactionsHelper.depositAndWithdraw(ItemList.SMALL_FISHING_NET_303, 1);

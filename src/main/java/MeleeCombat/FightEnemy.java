@@ -15,7 +15,7 @@ public class FightEnemy extends Task {
 
     @Override
     public boolean activate() {
-        mMain.State = "Fight enemy";
+        mMain.state = "Fight enemy";
         return SkillData.Seagull_area.contains(Players.local()) && !Players.local().healthBarVisible();
     }
     @Override

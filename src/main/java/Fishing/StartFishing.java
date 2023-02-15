@@ -14,9 +14,9 @@ import script.mMain;
 public class StartFishing {
     private ArrayList<Task> fishingTasks = new ArrayList<>();
     public void Fishing() {
-        mMain.RunningSkill = "Fishing";
+        mMain.runningSkill = "Fishing";
         if (Skills.realLevel(Constants.SKILLS_FISHING) >= 70) {
-            mMain.State = "Fishing done!";
+            mMain.state = "Fishing done!";
             SkillData.setSkillDone();
             mMain.taskRunning.set(false);
         }

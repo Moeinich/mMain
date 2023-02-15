@@ -23,7 +23,7 @@ public class DepositProducts extends Task {
 
     @Override
     public boolean execute() {
-        mMain.State = "Deposit products";
+        mMain.state = "Deposit products";
         Bank.depositInventory();
         return false;
     }

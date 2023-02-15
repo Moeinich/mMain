@@ -20,13 +20,13 @@ public class treeNormal extends Task {
     @Override
     public boolean execute() {
         if (!PlayerHelper.withinArea(SkillData.normalTreeLocation)) {
-            mMain.State = "Go to noob trees";
+            mMain.state = "Go to noob trees";
             PlayerHelper.walkToTile(SkillData.movementWoodcutting());
         }
         //cut normal logs
         if (PlayerHelper.withinArea(SkillData.normalTreeLocation) && Players.local().animation() == -1) {
             GameObject treeNormal = Objects.stream().within(6).id(SkillData.normalTreeID).nearest().first();
-            mMain.State = "Cutting Trees..";
+            mMain.state = "Cutting Trees..";
             if (treeNormal.interact("Chop down", "Tree")) {
                 Condition.wait(() -> Objects.stream().at(treeNormal.tile()).id(SkillData.normalTreeID).isEmpty(), 500, 50);
             }

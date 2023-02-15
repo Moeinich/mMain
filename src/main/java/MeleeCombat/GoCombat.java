@@ -14,7 +14,7 @@ public class GoCombat extends Task {
     }
     @Override
     public boolean execute() {
-        mMain.State = "Go to cb area";
+        mMain.state = "Go to cb area";
         Movement.builder(SkillData.Seagull_area.getRandomTile()).setRunMin(45).setRunMax(75).move();
         return false;
     }

@@ -14,9 +14,9 @@ import script.mMain;
 public class StartCrafting {
     private ArrayList<Task> craftingTasks = new ArrayList<>();
     public void Crafting() {
-        mMain.RunningSkill = "Crafting";
+        mMain.runningSkill = "Crafting";
         if (Skills.realLevel(Constants.SKILLS_CRAFTING) >= 70) {
-            mMain.State = "Crafting done!";
+            mMain.state = "Crafting done!";
             SkillData.setSkillDone();
             mMain.taskRunning.set(false);
         }

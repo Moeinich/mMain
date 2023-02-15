@@ -14,9 +14,9 @@ import script.mMain;
 public class StartThieving {
     private ArrayList<Task> thievingTasks = new ArrayList<>();
     public void Thieving() {
-        mMain.RunningSkill = "Thieving";
+        mMain.runningSkill = "Thieving";
         if (Skills.realLevel(Constants.SKILLS_THIEVING) >= 60) {
-            mMain.State = "Thieving done!";
+            mMain.state = "Thieving done!";
             SkillData.setSkillDone();
             mMain.taskRunning.set(false);
         }

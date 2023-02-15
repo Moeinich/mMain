@@ -23,7 +23,7 @@ public class IronOres extends Task {
     @Override
     public boolean execute() {
         if (!SkillData.miningIronLocation.equals(Players.local().tile())) {
-            mMain.State = "Go to iron area";
+            mMain.state = "Go to iron area";
             if (SkillData.movementMining().distanceTo(Players.local()) < 3) {
                 Movement.step(SkillData.miningIronLocation);
             }
@@ -37,7 +37,7 @@ public class IronOres extends Task {
                 world.hop();
             }
             if (Players.local().animation() == -1 && Players.stream().within(SkillData.miningIronArea).count() == 1) {
-                mMain.State = "Mining...";
+                mMain.state = "Mining...";
                 GameObject ironOre = Objects.stream().within(1).id(11364, 11365).nearest().first();
                 if (ironOre.interact("Mine", "Rocks")) {
                     Condition.wait(() -> Objects.stream().at(ironOre.tile()).id(11364, 11365).isEmpty(), 150, 50);

@@ -14,9 +14,9 @@ import script.mMain;
 public class StartHerblore {
     private ArrayList<Task> HerbloreTasks = new ArrayList<>();
     public void Herblore() {
-        mMain.RunningSkill = "Herblore";
+        mMain.runningSkill = "Herblore";
         if (Skills.realLevel(Constants.SKILLS_HERBLORE) >= 70) {
-            mMain.State = "Herblore done!";
+            mMain.state = "Herblore done!";
             SkillData.setSkillDone();
             mMain.taskRunning.set(false);
         }

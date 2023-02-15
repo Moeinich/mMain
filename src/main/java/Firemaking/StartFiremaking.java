@@ -13,9 +13,9 @@ import script.mMain;
 public class StartFiremaking {
     private ArrayList<Task> firemakingTasks = new ArrayList<>();
     public void Firemaking() {
-        mMain.RunningSkill = "Firemaking";
+        mMain.runningSkill = "Firemaking";
         if (Skills.realLevel(Constants.SKILLS_FIREMAKING) >= 70) {
-            mMain.State = "Firemaking done!";
+            mMain.state = "Firemaking done!";
             SkillData.setSkillDone();
             mMain.taskRunning.set(false);
         }

@@ -20,13 +20,13 @@ import script.mMain;
 public class PlayerHelper {
 
     public void shouldEat() {
-        mMain.State = "Eating food";
+        mMain.state = "Eating food";
         Item food = Inventory.stream().action("Eat").first();
         food.interact("Eat");
         Condition.wait(() -> Players.local().animation() == -1, 250, 50);
     }
     public void bankForFood(int FoodName, int Amount) {
-        mMain.State = "Bank for food";
+        mMain.state = "Bank for food";
         if (Bank.nearest().tile().distanceTo(Players.local()) > 5) {
             Movement.moveToBank();
         }
@@ -71,7 +71,7 @@ public class PlayerHelper {
     }
 
     public static void enableRun() {
-        mMain.State = "Enable run..";
+        mMain.state = "Enable run..";
         Widgets.widget(160).component(29).click();
         Condition.wait(Movement::running, 150, 50);
     }

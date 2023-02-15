@@ -29,23 +29,23 @@ public class CowSafespot extends Task {
     @Override
     public boolean execute() {
         if (!Combat.style(Combat.Style.DEFENSIVE)) {
-            mMain.State = "Setting cb mode";
+            mMain.state = "Setting cb mode";
             PlayerHelper helper = new PlayerHelper();
             helper.setAttackMode(Combat.Style.DEFENSIVE);
         }
 
         if (CombatHelper.needEquipment(RangeData.RangeEquipment())) {
-            mMain.State = "Need equipment!";
+            mMain.state = "Need equipment!";
             GetEquipment();
         }
 
         if (!CombatHelper.needEquipment(RangeData.RangeEquipment()) && !PlayerHelper.withinArea(SkillData.CowSafeSpotArea)) {
-            mMain.State = "Go safespot";
+            mMain.state = "Go safespot";
             PlayerHelper.walkToTile(SkillData.CowSafeSpotArea.getRandomTile());
         }
 
         if (PlayerHelper.withinArea(SkillData.CowSafeSpotArea)) {
-            mMain.State = "Fighting..";
+            mMain.state = "Fighting..";
             ShouldFight();
         }
         return false;
@@ -66,12 +66,12 @@ public class CowSafespot extends Task {
 
     private void GetEquipment() {
         if (Bank.nearest().tile().distanceTo(Players.local()) > 5) {
-            mMain.State = "Walking to bank";
+            mMain.state = "Walking to bank";
             DaxWalker.blacklistTeleports(Teleport.CASTLE_WARS_MINIGAME, Teleport.SOUL_WARS_MINIGAME, Teleport.CLAN_WARS_MINIGAME);
             DaxWalker.walkToBank();
         }
         if (!CombatHelper.gotItems(missingEquipment(RangeData.RangeEquipment()))) {
-            mMain.State = "Withdraw equipment";
+            mMain.state = "Withdraw equipment";
             if (Bank.nearest().tile().distanceTo(Players.local()) <= 5 && Bank.inViewport()) {
                 if (!Bank.opened()) {
                     Bank.open();
@@ -79,8 +79,8 @@ public class CowSafespot extends Task {
                 if (Bank.open()) {
                     for (var itemId : missingEquipment(RangeData.RangeEquipment())) {
                         if (Bank.stream().id(itemId).isEmpty()) {
-                            if (mMain.RunningSkill.equals("Progressive")) {
-                                mMain.State = "We ran out of " + itemId;
+                            if (mMain.runningSkill.equals("Progressive")) {
+                                mMain.state = "We ran out of " + itemId;
                                 SkillData.setSkillDone();
                                 Bank.close();
                                 mMain.taskRunning.set(false); //Skip task on progressive
@@ -97,7 +97,7 @@ public class CowSafespot extends Task {
             }
         }
         if (CombatHelper.gotItems(missingEquipment(RangeData.RangeEquipment()))) {
-            mMain.State = "Equip items";
+            mMain.state = "Equip items";
             for (var item : missingEquipment(RangeData.RangeEquipment())) {
                 var itemToEquip = Inventory.stream().id(item).first();
                 if (itemToEquip != null){

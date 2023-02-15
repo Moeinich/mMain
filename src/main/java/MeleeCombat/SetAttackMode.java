@@ -12,7 +12,7 @@ public class SetAttackMode extends Task {
     }
     @Override
     public boolean execute() {
-        mMain.State = "Setting cb mode";
+        mMain.state = "Setting cb mode";
         System.out.print("Setting combat mode to defensive!");
         Combat.style(Combat.Style.DEFENSIVE);
         return false;
