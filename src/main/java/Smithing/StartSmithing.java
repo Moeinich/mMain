@@ -13,9 +13,9 @@ import java.util.ArrayList;
 public class StartSmithing {
     private ArrayList<Task> smithingTasks = new ArrayList<>();
     public void Smithing() {
-        mMain.RunningSkill = "Smithing";
+        mMain.runningSkill = "Smithing";
         if (Skills.realLevel(Constants.SKILLS_SMITHING) >= 70) {
-            mMain.State = "Smithing done!";
+            mMain.state = "Smithing done!";
             SkillData.setSkillDone();
             mMain.taskRunning.set(false);
         }

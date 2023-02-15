@@ -10,7 +10,7 @@ public class MiningDone extends Task {
     }
     @Override
     public boolean execute() {
-        mMain.State = "Mining done!";
+        mMain.state = "Mining done!";
         mMain.taskRunning.set(false);
         return false;
     }
