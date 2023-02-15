@@ -38,7 +38,7 @@ public class IronOres extends Task {
             }
             if (Players.local().animation() == -1 && Players.stream().within(SkillData.miningIronArea).count() == 1) {
                 mMain.state = "Mining...";
-                GameObject ironOre = Objects.stream().within(1).id(11364, 11365).nearest().first();
+                GameObject ironOre = PlayerHelper.nearestGameObject(1,11364,11365);
                 if (ironOre.interact("Mine", "Rocks")) {
                     Condition.wait(() -> Objects.stream().at(ironOre.tile()).id(11364, 11365).isEmpty(), 150, 50);
                 }

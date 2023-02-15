@@ -44,7 +44,7 @@ public class CanifisCourse extends Task {
 
     public void ShouldRunObstacle() {
         if (PlayerHelper.withinArea(AgilityData.CanifisAreas.FLOOR.getArea())) {
-            GameObject CanifisObstacle1 = Objects.stream().within(8).id(AgilityData.obstacleInfo.canifis1.getId()).nearest().first();
+            GameObject CanifisObstacle1 = PlayerHelper.nearestGameObject(8, AgilityData.obstacleInfo.canifis1.getId());
             if (!CanifisObstacle1.inViewport()) {
                 mMain.state = "Move to Canifis start";
                 Movement.moveTo(AgilityData.CanifisAreas.START.getArea().getRandomTile());
@@ -83,7 +83,7 @@ public class CanifisCourse extends Task {
         }
 
         if (PlayerHelper.withinArea(AgilityData.CanifisAreas.OBSTACLE_7.getArea())) {
-            GameObject CanifisObstacle7 = Objects.stream().within(10).id(AgilityData.obstacleInfo.canifis7.getId()).nearest().first();
+            GameObject CanifisObstacle7 = PlayerHelper.nearestGameObject(10, AgilityData.obstacleInfo.canifis7.getId());
             if (!CanifisObstacle7.inViewport()) {
                 mMain.state = "Moving to obstacle 7";
                 Movement.step(AgilityData.CanifisAreas.OBSTACLE_7_MOVE_TO.getArea().getRandomTile());

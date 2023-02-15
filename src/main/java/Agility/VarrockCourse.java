@@ -44,7 +44,7 @@ public class VarrockCourse extends Task {
 
     public void ShouldRunObstacle() {
         if (PlayerHelper.withinArea(AgilityData.VarrockAreas.FLOOR.getArea())) {
-            GameObject VarrockObstacle1 = Objects.stream().within(8).id(AgilityData.obstacleInfo.varrock1.getId()).nearest().first();
+            GameObject VarrockObstacle1 = PlayerHelper.nearestGameObject(8, AgilityData.obstacleInfo.varrock1.getId());
             if (!VarrockObstacle1.inViewport()) {
                 mMain.state = "Move to Canifis start";
                 Movement.moveTo(AgilityData.VarrockAreas.START.getArea().getRandomTile());
@@ -70,8 +70,8 @@ public class VarrockCourse extends Task {
             helper.handleObstacleWithLoot(AgilityData.obstacleInfo.varrock5);
         }
         if (PlayerHelper.withinArea(AgilityData.VarrockAreas.OBSTACLE_6.getArea())) {
-            GameObject VarrockObstacle1 = Objects.stream().within(8).id(AgilityData.obstacleInfo.varrock6.getId()).nearest().first();
-            if (!VarrockObstacle1.inViewport()) {
+            GameObject VarrockObstacle6 = PlayerHelper.nearestGameObject(8, AgilityData.obstacleInfo.varrock6.getId());
+            if (!VarrockObstacle6.inViewport()) {
                 mMain.state = "Move to Canifis start";
                 Movement.moveTo(AgilityData.VarrockAreas.OBSTACLE_6_MOVETO.getArea().getRandomTile());
             } else {
@@ -80,8 +80,8 @@ public class VarrockCourse extends Task {
             }
         }
         if (PlayerHelper.withinArea(AgilityData.VarrockAreas.OBSTACLE_7.getArea())) {
-            GameObject VarrockObstacle1 = Objects.stream().within(8).id(AgilityData.obstacleInfo.varrock7.getId()).nearest().first();
-            if (!VarrockObstacle1.inViewport()) {
+            GameObject VarrockObstacle7 = PlayerHelper.nearestGameObject(8, AgilityData.obstacleInfo.varrock7.getId());
+            if (!VarrockObstacle7.inViewport()) {
                 mMain.state = "Move to Canifis start";
                 Movement.moveTo(AgilityData.VarrockAreas.OBSTACLE_7_MOVETO.getArea().getRandomTile());
             } else {

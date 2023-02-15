@@ -55,7 +55,7 @@ public class Sardines extends Task {
             PlayerHelper.walkToTile(SkillData.StoveAreaEdgeville.getRandomTile());
         }
         if (PlayerHelper.withinArea(SkillData.StoveAreaEdgeville)) {
-            GameObject cookingStove = Objects.stream().id(12269).first();
+            GameObject cookingStove = PlayerHelper.nearestGameObject(10, 12269);
             InteractionsHelper interactionsHelper = new InteractionsHelper();
             interactionsHelper.interactWithGameobject(ItemList.RAW_SARDINE_327, cookingStove, 270, 14, "Cook", "Stove");
         }

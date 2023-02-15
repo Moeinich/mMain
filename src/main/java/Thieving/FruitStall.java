@@ -9,7 +9,6 @@ import org.powbot.api.rt4.GameObject;
 import org.powbot.api.rt4.Inventory;
 import org.powbot.api.rt4.Item;
 import org.powbot.api.rt4.Movement;
-import org.powbot.api.rt4.Objects;
 import org.powbot.api.rt4.Players;
 import org.powbot.api.rt4.Skills;
 import org.powbot.api.rt4.World;
@@ -87,7 +86,7 @@ public class FruitStall extends Task {
         if (!Game.tab(Game.Tab.INVENTORY)) {
             Condition.wait(() -> Game.tab(Game.Tab.INVENTORY), 250, 10);
         }
-        GameObject fruitStall = Objects.stream().within(2).id(STALL_ID).nearest().first();
+        GameObject fruitStall = PlayerHelper.nearestGameObject(STALL_ID);
         if (fruitStall.valid() && Players.stream().within(SkillData.fruitStallArea).count() == 1) {
             if (!fruitStall.inViewport()) { // Need to turn camera to the stall
                 mMain.state = "Turning camera to tea stall";

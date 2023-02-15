@@ -60,7 +60,7 @@ public class ThievingMen extends Task {
             PlayerHelper.walkToTile(SkillData.movementThieving());
         }
 
-        Npc Man = Npcs.stream().reachable().within(SkillData.thievingMenArea).name("Man").nearest().first();
+        Npc Man = PlayerHelper.nearestNpc(SkillData.thievingMenArea,"Man");
         if (Man.inViewport() && Players.local().animation() == -1) {
             mMain.state = "Thieving men";
             if (Man.interact("Pickpocket", "Man")) {

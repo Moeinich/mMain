@@ -8,7 +8,6 @@ import org.powbot.api.rt4.Combat;
 import org.powbot.api.rt4.Constants;
 import org.powbot.api.rt4.Inventory;
 import org.powbot.api.rt4.Npc;
-import org.powbot.api.rt4.Npcs;
 import org.powbot.api.rt4.Players;
 import org.powbot.api.rt4.Skills;
 import org.powbot.dax.api.DaxWalker;
@@ -53,12 +52,12 @@ public class CowSafespot extends Task {
 
     private void ShouldFight() {
         if (PlayerHelper.withinArea(SkillData.CowSafeSpotArea) && !Players.local().healthBarVisible()) {
-            Npc cow = Npcs.stream().name("Cow").within(SkillData.CowArea).nearest().first();
+            Npc cow = PlayerHelper.nearestNpc(SkillData.CowArea, "Cow");
             if (cow.inViewport() && cow.interact("Attack", "Cow")) {
                 Condition.wait(() -> !cow.isRendered(),900,20);
             }
-            Npc calf = Npcs.stream().name("Cow calf").within(SkillData.CowArea).nearest().first();
-            if (!cow.inViewport() && calf.inViewport() && calf.interact("Attack", "Cow")) {
+            Npc calf = PlayerHelper.nearestNpc(SkillData.CowArea, "Cow calf");
+            if (!cow.inViewport() && calf.inViewport() && calf.interact("Attack", "Cow calf")) {
                 Condition.wait(() -> !calf.isRendered(),900,20);
             }
         }

@@ -24,7 +24,7 @@ public class treeWillow extends Task {
             PlayerHelper.walkToTile(SkillData.movementWoodcutting());
         }
         if (PlayerHelper.withinArea(SkillData.willowTreeLocation) && Players.local().animation() == -1) {
-            GameObject treeWillow = Objects.stream().within(6).id(SkillData.willowTreeID).nearest().first();
+            GameObject treeWillow = PlayerHelper.nearestGameObject("Willow");
             mMain.state = "Cutting Willows";
             if (treeWillow.interact("Chop down", "Willow")) {
                 Condition.wait(() -> Objects.stream().at(treeWillow.tile()).id(SkillData.willowTreeID).isEmpty(), 500, 50);

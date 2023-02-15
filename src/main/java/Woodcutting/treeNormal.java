@@ -25,7 +25,7 @@ public class treeNormal extends Task {
         }
         //cut normal logs
         if (PlayerHelper.withinArea(SkillData.normalTreeLocation) && Players.local().animation() == -1) {
-            GameObject treeNormal = Objects.stream().within(6).id(SkillData.normalTreeID).nearest().first();
+            GameObject treeNormal = PlayerHelper.nearestGameObject("Tree");
             mMain.state = "Cutting Trees..";
             if (treeNormal.interact("Chop down", "Tree")) {
                 Condition.wait(() -> Objects.stream().at(treeNormal.tile()).id(SkillData.normalTreeID).isEmpty(), 500, 50);

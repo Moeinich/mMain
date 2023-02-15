@@ -23,7 +23,7 @@ public class treeOak extends Task {
             PlayerHelper.walkToTile(SkillData.movementWoodcutting());
         }
         if (PlayerHelper.withinArea(SkillData.oakTreeLocation) && Players.local().animation() == -1) {
-            GameObject treeOak = Objects.stream().within(6).id(SkillData.oakTreeID).nearest().first();
+            GameObject treeOak = PlayerHelper.nearestGameObject("Oak");
             mMain.state = "Cutting Oaks";
             if (treeOak.interact("Chop down", "Oak")) {
                 Condition.wait(() -> Objects.stream().at(treeOak.tile()).id(SkillData.oakTreeID).isEmpty(), 500, 50);

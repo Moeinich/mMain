@@ -9,7 +9,6 @@ import org.powbot.api.rt4.GameObject;
 import org.powbot.api.rt4.Inventory;
 import org.powbot.api.rt4.Item;
 import org.powbot.api.rt4.Movement;
-import org.powbot.api.rt4.Objects;
 import org.powbot.api.rt4.Players;
 import org.powbot.api.rt4.Skills;
 import org.powbot.api.rt4.World;
@@ -17,8 +16,8 @@ import org.powbot.api.rt4.World;
 import java.util.List;
 
 import Helpers.PlayerHelper;
-import Helpers.Task;
 import Helpers.SkillData;
+import Helpers.Task;
 import script.mMain;
 
 public class TeaStall extends Task {
@@ -77,7 +76,7 @@ public class TeaStall extends Task {
         if (!Game.tab(Game.Tab.INVENTORY)) {
             Condition.wait(() -> Game.tab(Game.Tab.INVENTORY), 250, 10);
         }
-        GameObject teaStall = Objects.stream().within(2).id(STALL_ID).nearest().first();
+        GameObject teaStall = PlayerHelper.nearestGameObject(5, STALL_ID);
         if (teaStall.valid() && Players.stream().within(SkillData.teaStallArea).count() == 1) {
             if (!teaStall.inViewport()) { // Need to turn camera to the stall
                 mMain.state = "Turning camera to tea stall";

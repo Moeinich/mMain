@@ -74,7 +74,7 @@ public class mMain extends AbstractScript {
 
         if (skill.equals("Progressive")) {
             builder.addString("Running: ", () -> runningSkill)
-                    .addString("Skill timer: ", () -> timerFormat.format(new Date(Stopwatch.timeLeft())))
+                    .addString("Skill timer: ", () -> timerFormat.format(new Date(Stopwatch.timeLeft())));
         }
         builder.trackSkill(Skill.Mining, TrackSkillOption.LevelProgressBar)
                 .trackSkill(Skill.Fishing, TrackSkillOption.LevelProgressBar)

@@ -5,11 +5,15 @@ import org.powbot.api.Condition;
 import org.powbot.api.Tile;
 import org.powbot.api.rt4.Bank;
 import org.powbot.api.rt4.Combat;
+import org.powbot.api.rt4.GameObject;
 import org.powbot.api.rt4.GroundItem;
 import org.powbot.api.rt4.GroundItems;
 import org.powbot.api.rt4.Inventory;
 import org.powbot.api.rt4.Item;
 import org.powbot.api.rt4.Movement;
+import org.powbot.api.rt4.Npc;
+import org.powbot.api.rt4.Npcs;
+import org.powbot.api.rt4.Objects;
 import org.powbot.api.rt4.Players;
 import org.powbot.api.rt4.Widgets;
 import org.powbot.dax.api.DaxWalker;
@@ -78,5 +82,18 @@ public class PlayerHelper {
     public void setAttackMode(Combat.Style style) {
         System.out.print("Setting combat mode to " + style);
         Combat.style(style);
+    }
+    public static GameObject nearestGameObject(String... name) {
+        return Objects.stream().name(name).nearest().first();
+    }
+
+    public static GameObject nearestGameObject(int withinTiles, int... ids) {
+        return Objects.stream().within(withinTiles).id(ids).nearest().first();
+    }
+    public static Npc nearestNpc(String... names) {
+        return Npcs.stream().reachable().name(names).nearest().first();
+    }
+    public static Npc nearestNpc(Area withinArea, String... names) {
+        return Npcs.stream().reachable().within(withinArea).name(names).nearest().first();
     }
 }

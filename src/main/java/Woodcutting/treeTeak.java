@@ -37,7 +37,7 @@ public class treeTeak extends Task {
                 world.hop();
             }
 
-            GameObject treeTeak = Objects.stream().within(SkillData.teakArea).id(SkillData.teakTreeID).nearest().first();
+            GameObject treeTeak = PlayerHelper.nearestGameObject("Teak");
             mMain.state = "Cutting teaks";
             if (treeTeak.interact("Chop down", "Teak")) {
                 Condition.wait(() -> Objects.stream().at(treeTeak.tile()).id(SkillData.teakTreeID).isEmpty(), 500, 50);

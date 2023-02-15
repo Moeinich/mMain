@@ -39,7 +39,7 @@ public class CopperOres extends Task {
             }
             if (Players.local().animation() == -1 && Players.stream().within(SkillData.miningCopperArea).count() == 1) {
                 mMain.state = "Mining...";
-                GameObject copperOre = Objects.stream().within(1).id(11161,11360).nearest().first();
+                GameObject copperOre = PlayerHelper.nearestGameObject(1,11161,11360);
                 if (copperOre.interact("Mine", "Rocks")) {
                     Condition.wait(() -> Objects.stream().at(copperOre.tile()).id(11161,11360).isEmpty(), 150, 50);
                 }

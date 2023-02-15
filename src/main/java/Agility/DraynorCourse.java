@@ -44,7 +44,7 @@ public class DraynorCourse extends Task {
 
     public void ShouldRunObstacle() {
         if (PlayerHelper.withinArea(AgilityData.DraynorAreas.FLOOR.getArea())) {
-            GameObject DraynorObstacle1 = Objects.stream().within(8).id(AgilityData.obstacleInfo.draynor1.getId()).nearest().first();
+            GameObject DraynorObstacle1 = PlayerHelper.nearestGameObject(8, AgilityData.obstacleInfo.draynor1.getId());
             if (!DraynorObstacle1.inViewport()) {
                 mMain.state = "Move to draynor start";
                 Movement.moveTo(AgilityData.DraynorAreas.START.getArea().getRandomTile());

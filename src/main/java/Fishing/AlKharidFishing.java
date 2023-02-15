@@ -4,7 +4,6 @@ import org.powbot.api.Condition;
 import org.powbot.api.rt4.Constants;
 import org.powbot.api.rt4.Inventory;
 import org.powbot.api.rt4.Npc;
-import org.powbot.api.rt4.Npcs;
 import org.powbot.api.rt4.Players;
 import org.powbot.api.rt4.Skills;
 
@@ -27,7 +26,7 @@ public class AlKharidFishing extends Task {
 
         if (PlayerHelper.withinArea(SkillData.AlKharidFishingSpot1) || PlayerHelper.withinArea(SkillData.AlKharidFishingSpot2)) {
             mMain.state = "Do fishing";
-            Npc AlKharidFishingSpot = Npcs.stream().name("Fishing spot").nearest().first();
+            Npc AlKharidFishingSpot = PlayerHelper.nearestNpc("Fishing spot");
             if (AlKharidFishingSpot.inViewport() && Players.local().animation() == -1) {
                 if (AlKharidFishingSpot.interact("Small Net", "Fishing Spot")) {
                     Condition.wait(() -> Players.local().animation() == -1, 2500, 50);

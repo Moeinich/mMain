@@ -27,7 +27,7 @@ public class BarbarianVillageFishing extends Task {
 
         if (PlayerHelper.withinArea(SkillData.BarbarianVillageFishingArea)) {
             mMain.state = "Do fishing";
-            Npc BarbarianVillageFishingSpot = Npcs.stream().name("Rod Fishing spot").nearest().first();
+            Npc BarbarianVillageFishingSpot = PlayerHelper.nearestNpc("Rod Fishing spot");
             if (BarbarianVillageFishingSpot.inViewport() && Players.local().animation() == -1) {
                 BarbarianVillageFishingSpot.interact("Lure", "Rod Fishing spot");
                 Condition.wait(() -> Npcs.stream().at(BarbarianVillageFishingSpot.tile()).isEmpty(), 150, 50);

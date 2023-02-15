@@ -13,13 +13,13 @@ import Helpers.PlayerHelper;
 import script.mMain;
 
 public class AgilityHelper {
-    int CurrentXP = Skills.experience(Skill.Agility);
 
     public void handleObstacle(IObstacleInfo obstacleInfo) {
-        GameObject obstacleObject = Objects.stream().within(10).id(obstacleInfo.getId()).nearest().first();
+        GameObject obstacleObject = PlayerHelper.nearestGameObject(10, obstacleInfo.getId());
         if (obstacleObject.inViewport()) {
             mMain.state = obstacleInfo.getDescription();
             if (obstacleObject.interact(obstacleInfo.getAction(), obstacleInfo.getName())) {
+                int CurrentXP = Skills.experience(Skill.Agility);
                 Condition.wait( () -> (CurrentXP != Skills.experience(Skill.Agility) || Players.local().healthBarVisible()), 400, 50);
             }
         }
@@ -33,10 +33,11 @@ public class AgilityHelper {
             playerHelper.lootItems("Take", "Mark of grace");
         }
 
-        GameObject obstacleObject = Objects.stream().within(10).id(obstacleInfo.getId()).nearest().first();
+        GameObject obstacleObject = PlayerHelper.nearestGameObject(10, obstacleInfo.getId());
         if (obstacleObject.inViewport()) {
             mMain.state = obstacleInfo.getDescription();
             if (obstacleObject.interact(obstacleInfo.getAction(), obstacleInfo.getName())) {
+                int CurrentXP = Skills.experience(Skill.Agility);
                 Condition.wait( () -> (CurrentXP != Skills.experience(Skill.Agility) || Players.local().healthBarVisible()), 400, 50);
             }
         }
