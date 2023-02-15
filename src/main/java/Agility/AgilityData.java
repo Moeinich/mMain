@@ -49,7 +49,6 @@ public class AgilityData {
         private final String action;
         private final String name;
         private final String state;
-        private final String getLoot = "Marks of grace";
 
         obstacleInfo(int id, String action, String name, String state) {
             this.id = id;
@@ -62,6 +61,7 @@ public class AgilityData {
             return id;
         }
         public String getLoot() {
+            String getLoot = "Marks of grace";
             return getLoot;
         }
 
@@ -94,7 +94,6 @@ public class AgilityData {
         OBSTACLE_5(new Area (new Tile(2483, 3420, 2), new Tile(2488, 3418, 2))),
         OBSTACLE_6(new Area (new Tile(2489, 3417, 0), new Tile(2481, 3425, 0))),
         OBSTACLE_7(new Area (new Tile(2489, 3427, 0), new Tile(2482, 3431, 0)));
-
 
         private final Area area;
 

@@ -21,7 +21,6 @@ public class StartMining {
             mMain.taskRunning.set(false);
         }
         if (miningTasks.isEmpty()) {
-            miningTasks.add(new MiningDone());
             miningTasks.add(new GetPickaxe());
             miningTasks.add(new DropOres());
             miningTasks.add(new CopperOres());

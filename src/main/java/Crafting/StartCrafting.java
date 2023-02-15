@@ -21,7 +21,6 @@ public class StartCrafting {
             mMain.taskRunning.set(false);
         }
         if (craftingTasks.isEmpty()) {
-            craftingTasks.add(new CraftingDone());
             craftingTasks.add(new GoToBank());
             craftingTasks.add(new BeerGlass());
             craftingTasks.add(new EmptyOilLamp());

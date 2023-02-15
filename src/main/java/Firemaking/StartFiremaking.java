@@ -20,7 +20,6 @@ public class StartFiremaking {
             mMain.taskRunning.set(false);
         }
         if (firemakingTasks.isEmpty()) {
-            firemakingTasks.add(new FiremakingDone());
             firemakingTasks.add(new GetMaterials());
             firemakingTasks.add(new DoFiremaking());
         }

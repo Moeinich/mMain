@@ -21,7 +21,6 @@ public class startFletching {
             mMain.taskRunning.set(false);
         }
         if (fletchingTasks.isEmpty()) {
-            fletchingTasks.add(new FletchingDone());
             fletchingTasks.add(new GoToBank());
             fletchingTasks.add(new ArrowShafts());
             fletchingTasks.add(new Longbow());
