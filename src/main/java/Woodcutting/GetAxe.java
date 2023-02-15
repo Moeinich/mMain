@@ -16,10 +16,11 @@ public class GetAxe extends Task {
 
     @Override
     public boolean activate() {
-        return Game.tab(Game.Tab.INVENTORY) && Inventory.stream().id(SkillData.wcAxes).isEmpty();
+        return Inventory.stream().id(SkillData.wcAxes).isEmpty();
     }
     @Override
     public boolean execute() {
+        Game.tab(Game.Tab.INVENTORY);
         if (Bank.nearest().tile().distanceTo(Players.local()) > 5) {
             mMain.state = "Get axe - GoToBank";
             DaxWalker.walkToBank();
