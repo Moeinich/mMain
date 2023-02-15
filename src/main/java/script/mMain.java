@@ -1,5 +1,6 @@
 package script;
 
+import org.powbot.api.Notifications;
 import org.powbot.api.Random;
 import org.powbot.api.rt4.walking.model.Skill;
 import org.powbot.api.script.AbstractScript;
@@ -51,6 +52,7 @@ public class mMain extends AbstractScript {
     public static void main(String[] args) {
         new ScriptUploader().uploadAndStart("mMain", "Account", "emulator-5554", true, true);
     }
+
     public static String runningSkill;
     public static String state;
     public static Boolean shouldBank = true;
@@ -64,53 +66,31 @@ public class mMain extends AbstractScript {
         state = "Starting...";
         InteractionsHelper.cameraCheck();
         SimpleDateFormat timerFormat = new SimpleDateFormat("hh:mm:ss");
+        Notifications.showNotification("Notification test!");
 
-        Paint p;
+        PaintBuilder builder = new PaintBuilder()
+                .addString("Mode: ", () -> skill)
+                .addString("State: ", () -> state);
+
         if (skill.equals("Progressive")) {
-            p = new PaintBuilder()
-                    .addString("Mode: ", () -> skill)
-                    .addString("Running: ", () -> runningSkill)
+            builder.addString("Running: ", () -> runningSkill)
                     .addString("Skill timer: ", () -> timerFormat.format(new Date(Stopwatch.timeLeft())))
-                    .addString("State: ", () -> state)
-                    .trackSkill(Skill.Mining, TrackSkillOption.LevelProgressBar)
-                    .trackSkill(Skill.Fishing, TrackSkillOption.LevelProgressBar)
-                    .trackSkill(Skill.Woodcutting, TrackSkillOption.LevelProgressBar)
-                    .trackSkill(Skill.Cooking, TrackSkillOption.LevelProgressBar)
-                    .trackSkill(Skill.Firemaking, TrackSkillOption.LevelProgressBar)
-                    .trackSkill(Skill.Smithing, TrackSkillOption.LevelProgressBar)
-                    .trackSkill(Skill.Thieving, TrackSkillOption.LevelProgressBar)
-                    .trackSkill(Skill.Crafting, TrackSkillOption.LevelProgressBar)
-                    .trackSkill(Skill.Fletching, TrackSkillOption.LevelProgressBar)
-                    .trackSkill(Skill.Herblore, TrackSkillOption.LevelProgressBar)
-                    .trackSkill(Skill.Agility, TrackSkillOption.LevelProgressBar)
-                    .trackSkill(Skill.Ranged, TrackSkillOption.LevelProgressBar)
-                    .trackSkill(Skill.Defence, TrackSkillOption.LevelProgressBar)
-                    .trackSkill(Skill.Magic, TrackSkillOption.LevelProgressBar)
-                    .x(40)
-                    .y(300)
-                    .build();
-        } else {
-            p = new PaintBuilder()
-                    .addString("Skill: ", () -> skill)
-                    .addString("State: ", () -> state)
-                    .trackSkill(Skill.Mining)
-                    .trackSkill(Skill.Fishing)
-                    .trackSkill(Skill.Woodcutting)
-                    .trackSkill(Skill.Cooking)
-                    .trackSkill(Skill.Firemaking)
-                    .trackSkill(Skill.Smithing)
-                    .trackSkill(Skill.Thieving)
-                    .trackSkill(Skill.Crafting)
-                    .trackSkill(Skill.Fletching)
-                    .trackSkill(Skill.Herblore)
-                    .trackSkill(Skill.Agility)
-                    .trackSkill(Skill.Ranged)
-                    .trackSkill(Skill.Defence)
-                    .trackSkill(Skill.Magic)
-                    .x(40)
-                    .y(300)
-                    .build();
         }
+        builder.trackSkill(Skill.Mining, TrackSkillOption.LevelProgressBar)
+                .trackSkill(Skill.Fishing, TrackSkillOption.LevelProgressBar)
+                .trackSkill(Skill.Woodcutting, TrackSkillOption.LevelProgressBar)
+                .trackSkill(Skill.Cooking, TrackSkillOption.LevelProgressBar)
+                .trackSkill(Skill.Firemaking, TrackSkillOption.LevelProgressBar)
+                .trackSkill(Skill.Smithing, TrackSkillOption.LevelProgressBar)
+                .trackSkill(Skill.Thieving, TrackSkillOption.LevelProgressBar)
+                .trackSkill(Skill.Crafting, TrackSkillOption.LevelProgressBar)
+                .trackSkill(Skill.Fletching, TrackSkillOption.LevelProgressBar)
+                .trackSkill(Skill.Herblore, TrackSkillOption.LevelProgressBar)
+                .trackSkill(Skill.Agility, TrackSkillOption.LevelProgressBar)
+                .trackSkill(Skill.Ranged, TrackSkillOption.LevelProgressBar)
+                .trackSkill(Skill.Defence, TrackSkillOption.LevelProgressBar)
+                .trackSkill(Skill.Magic, TrackSkillOption.LevelProgressBar);
+        Paint p = builder.x(40).y(300).build();
         addPaint(p);
     }
 
