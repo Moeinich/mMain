@@ -70,7 +70,7 @@ public class TeaStall extends Task {
         if (!Game.tab(Game.Tab.INVENTORY)) {
             Condition.wait(() -> Game.tab(Game.Tab.INVENTORY), 250, 10);
         }
-        GameObject teaStall = PlayerHelper.nearestGameObject(5, STALL_ID);
+        GameObject teaStall = PlayerHelper.nearestGameObject(2, STALL_ID);
         if (teaStall.valid() && Players.stream().within(SkillData.teaStallArea).count() == 1) {
             if (!teaStall.inViewport()) { // Need to turn camera to the stall
                 mMain.state = "Turning camera";

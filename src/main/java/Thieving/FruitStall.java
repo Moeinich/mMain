@@ -84,7 +84,7 @@ public class FruitStall extends Task {
         if (!Game.tab(Game.Tab.INVENTORY)) {
             Condition.wait(() -> Game.tab(Game.Tab.INVENTORY), 250, 10);
         }
-        GameObject fruitStall = PlayerHelper.nearestGameObject(STALL_ID);
+        GameObject fruitStall = PlayerHelper.nearestGameObject(2, STALL_ID);
         if (fruitStall.valid() && Players.stream().within(SkillData.fruitStallArea).count() == 1) {
             if (!fruitStall.inViewport()) { // Need to turn camera to the stall
                 mMain.state = "Turning camera";
