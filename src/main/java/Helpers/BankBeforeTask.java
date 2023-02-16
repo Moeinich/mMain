@@ -28,7 +28,7 @@ public class BankBeforeTask extends Task {
             mMain.shouldBank = false;
         }
 
-        if (Bank.nearest().tile().distanceTo(Players.local()) > 5 && Inventory.isNotEmpty()) {
+        if (Bank.nearest().tile().distanceTo(Players.local()) > 5 && Inventory.isNotEmpty() && mMain.shouldBank) {
         mMain.state = "Bank before task";
         DaxWalker.blacklistTeleports(Teleport.CASTLE_WARS_MINIGAME, Teleport.SOUL_WARS_MINIGAME, Teleport.CLAN_WARS_MINIGAME);
         DaxWalker.walkToBank();

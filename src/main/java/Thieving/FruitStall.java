@@ -87,16 +87,16 @@ public class FruitStall extends Task {
         GameObject fruitStall = PlayerHelper.nearestGameObject(STALL_ID);
         if (fruitStall.valid() && Players.stream().within(SkillData.fruitStallArea).count() == 1) {
             if (!fruitStall.inViewport()) { // Need to turn camera to the stall
-                mMain.state = "Turning camera to tea stall";
+                mMain.state = "Turning camera";
                 Camera.turnTo(fruitStall);
                 Condition.wait(() -> fruitStall.inViewport(), 250, 10);
             } else { // Fruit stall isn't null and in view
-                mMain.state = "Stealing fruit from stall";
+                mMain.state = "Stealing fruit";
                 fruitStall.interact("Steal-from");
                 Condition.wait(() -> !fruitStall.valid(), 30, 45); // Turns into "market stall" (id:27537) after you steal from it
             }
         } else {
-            mMain.state = "Waiting for stall to restock";
+            mMain.state = "Awaiting restock";
         }
     }
     private void ShouldWorldhop() {
