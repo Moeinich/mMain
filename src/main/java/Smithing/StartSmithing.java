@@ -20,12 +20,7 @@ public class StartSmithing {
             mMain.taskRunning.set(false);
         }
         if (smithingTasks.isEmpty()) {
-            smithingTasks.add(new WithdrawMaterials());
-            smithingTasks.add(new DepositProducts());
-            smithingTasks.add(new SmithingBanking());
             smithingTasks.add(new GoSmithing());
-            smithingTasks.add(new DoBars());
-            smithingTasks.add(new DoProducts());
         }
 
         for (Task task : smithingTasks) {

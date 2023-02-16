@@ -16,6 +16,8 @@ import org.powbot.dax.teleports.Teleport;
 import org.powbot.mobile.script.ScriptManager;
 
 import Helpers.CombatHelper;
+import Helpers.InteractionsHelper;
+import Helpers.ItemList;
 import Helpers.PlayerHelper;
 import Helpers.SkillData;
 import Helpers.Task;
@@ -28,6 +30,22 @@ public class CowSafespot extends Task {
     }
     @Override
     public boolean execute() {
+        if (CombatHelper.needEquipment(MagicData.MagicEquipment())) {
+            if (CombatHelper.needEquipment(MagicData.MagicEquipment())) {
+                mMain.State = "Need equipment!";
+                GetEquipment();
+            }
+        }
+        if (Skills.realLevel(Constants.SKILLS_MAGIC) <= 12 && Inventory.stream().id(MagicData.windStrikeRunes).isEmpty()) {
+            InteractionsHelper.depositAndWithdraw(MagicData.windStrikeRunes, 10000);
+            Bank.close();
+        }
+        if (Skills.realLevel(Constants.SKILLS_MAGIC) <= 12 && Inventory.stream().id(MagicData.fireStrikeRunes).isEmpty()) {
+            InteractionsHelper.depositAndWithdraw(ItemList.AIR_RUNE_556, 10000);
+            InteractionsHelper.withdrawItem(ItemList.MIND_RUNE_558, 10000);
+            Bank.close();
+        }
+
         if (MagicHelpers.getAutoCastSpell().getSpell() != MagicData.MagicSpell() && !MagicHelpers.isAutoCasting()) {
             mMain.state = "Setting spell";
             Game.tab(Game.Tab.ATTACK);
@@ -41,11 +59,14 @@ public class CowSafespot extends Task {
             }
         }
 
+<<<<<<< Updated upstream
         if (CombatHelper.needEquipment(MagicData.MagicEquipment())) {
             mMain.state = "Need equipment!";
             GetEquipment();
         }
 
+=======
+>>>>>>> Stashed changes
         if (!CombatHelper.needEquipment(MagicData.MagicEquipment()) && !PlayerHelper.withinArea(SkillData.CowSafeSpotArea)) {
             mMain.state = "Go safespot";
             PlayerHelper.walkToTile(SkillData.CowSafeSpotArea.getRandomTile());
@@ -78,12 +99,19 @@ public class CowSafespot extends Task {
             DaxWalker.walkToBank();
         }
         if (!CombatHelper.gotItems(missingEquipment(MagicData.MagicEquipment()))) {
+<<<<<<< Updated upstream
             mMain.state = "Withdraw equipment";
+=======
+            mMain.State = "Open bank";
+>>>>>>> Stashed changes
             if (Bank.nearest().tile().distanceTo(Players.local()) <= 5 && Bank.inViewport()) {
                 if (!Bank.opened()) {
                     Bank.open();
+                    Condition.wait(() -> !Bank.opened(),900,20);
                 }
                 if (Bank.open()) {
+                    mMain.State = "Withdraw equipment";
+                    Bank.depositEquipment();
                     for (var itemId : missingEquipment(MagicData.MagicEquipment())) {
                         if (Bank.stream().id(itemId).isEmpty()) {
                             if (mMain.runningSkill.equals("Progressive")) {
