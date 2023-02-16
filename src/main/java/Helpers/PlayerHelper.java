@@ -91,9 +91,9 @@ public class PlayerHelper {
         return Objects.stream().within(withinTiles).id(ids).nearest().first();
     }
     public static Npc nearestNpc(String... names) {
-        return Npcs.stream().reachable().name(names).nearest().first();
+        return Npcs.stream().name(names).nearest().first();
     }
     public static Npc nearestNpc(Area withinArea, String... names) {
-        return Npcs.stream().reachable().within(withinArea).name(names).nearest().first();
+        return Npcs.stream().within(withinArea).name(names).nearest().first();
     }
 }
