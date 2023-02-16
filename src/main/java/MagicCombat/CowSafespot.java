@@ -78,13 +78,9 @@ public class CowSafespot extends Task {
 
     private void ShouldFight() {
         if (PlayerHelper.withinArea(SkillData.CowSafeSpotArea) && !Players.local().healthBarVisible()) {
-            Npc cow = PlayerHelper.nearestNpc(SkillData.CowArea, "Cow");
-            if (cow.inViewport() && cow.interact("Attack", "Cow")) {
+            Npc cow = PlayerHelper.nearestNpc(SkillData.CowArea, "Cow", "Cow calf");
+            if (cow.inViewport() && cow.interact("Attack")) {
                 Condition.wait(() -> !cow.isRendered(),900,20);
-            }
-            Npc calf = PlayerHelper.nearestNpc(SkillData.CowArea, "Cow calf");
-            if (!cow.inViewport() && calf.inViewport() && calf.interact("Attack", "Cow calf")) {
-                Condition.wait(() -> !calf.isRendered(),900,20);
             }
         }
     }

@@ -6,6 +6,7 @@ import org.powbot.mobile.script.ScriptManager;
 
 import java.util.ArrayList;
 
+import Helpers.BankBeforeTask;
 import Helpers.SkillData;
 import Helpers.Task;
 import script.mMain;
@@ -20,6 +21,7 @@ public class StartRanged {
             mMain.taskRunning.set(false);
         }
         if (rangedTask.isEmpty()) {
+            rangedTask.add(new BankBeforeTask());
             rangedTask.add(new CowSafespot());
         }
 

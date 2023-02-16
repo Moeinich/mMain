@@ -6,6 +6,7 @@ import org.powbot.mobile.script.ScriptManager;
 
 import java.util.ArrayList;
 
+import Helpers.BankBeforeTask;
 import Helpers.SkillData;
 import Helpers.Task;
 import script.mMain;
@@ -21,6 +22,7 @@ public class StartMagic {
         }
 
         if (MagicTasks.isEmpty()) {
+            MagicTasks.add(new BankBeforeTask());
             MagicTasks.add(new CowSafespot());
         }
 
