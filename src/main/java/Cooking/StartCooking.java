@@ -1,5 +1,6 @@
 package Cooking;
 
+import Helpers.GoToBank;
 import Helpers.SkillData;
 import Helpers.Task;
 import script.mMain;
@@ -20,6 +21,7 @@ public class StartCooking {
             mMain.taskRunning.set(false);
         }
         if (cookingTasks.isEmpty()) {
+            cookingTasks.add(new GoToBank());
             cookingTasks.add(new Sardines());
             cookingTasks.add(new Wines());
         }

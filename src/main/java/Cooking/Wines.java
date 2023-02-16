@@ -31,7 +31,7 @@ public class Wines extends Task {
             bank();
         }
         if (Game.tab(Game.Tab.INVENTORY) && !Bank.opened() && Inventory.stream().id(CombineWithItemID, ToolID).isNotEmpty()) {
-            mMain.state = "craft loop";
+            mMain.state = "Craft loop";
             craft();
         }
         if (ScriptManager.INSTANCE.isStopping()) {
