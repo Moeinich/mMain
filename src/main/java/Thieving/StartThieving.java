@@ -21,7 +21,7 @@ public class StartThieving {
             mMain.taskRunning.set(false);
         }
         if (thievingTasks.isEmpty()) {
-            //thievingTasks.add(new BankBeforeTask());
+            thievingTasks.add(new BankBeforeTask());
             thievingTasks.add(new ThievingMen());
             thievingTasks.add(new TeaStall());
             thievingTasks.add(new FruitStall());
