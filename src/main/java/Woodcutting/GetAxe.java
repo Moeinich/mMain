@@ -28,8 +28,7 @@ public class GetAxe extends Task {
         if (!Bank.opened() && Inventory.stream().id(SkillData.wcAxes).isEmpty()) {
             mMain.state = "Get axe - Withdraw";
             if (Bank.open()) {
-                InteractionsHelper interactionsHelper = new InteractionsHelper();
-                interactionsHelper.depositAndWithdraw(SkillData.withdrawAxe(), 1);
+                InteractionsHelper.depositAndWithdraw(SkillData.withdrawAxe(), 1);
                 Bank.close();
                 Condition.wait( () -> !Bank.opened(), 250, 50);
             }

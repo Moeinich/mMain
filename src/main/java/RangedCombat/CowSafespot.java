@@ -51,13 +51,17 @@ public class CowSafespot extends Task {
     }
 
     private void ShouldFight() {
-        if (PlayerHelper.withinArea(SkillData.CowSafeSpotArea) && !Players.local().healthBarVisible()) {
-            Npc cow = PlayerHelper.nearestNpc(SkillData.CowArea, "Cow");
-            if (cow.inViewport() && cow.interact("Attack", "Cow")) {
+        Npc cow = PlayerHelper.nearestNpc(SkillData.CowArea, "Cow");
+        if (cow.inViewport()) {
+            mMain.state = "Interacting with cow..";
+            if (cow.interact("Attack", "Cow")) {
                 Condition.wait(() -> !cow.isRendered(),900,20);
             }
+        }
+        if (!cow.inViewport()) {
+            mMain.state = "Interacting with calf..";
             Npc calf = PlayerHelper.nearestNpc(SkillData.CowArea, "Cow calf");
-            if (!cow.inViewport() && calf.inViewport() && calf.interact("Attack", "Cow calf")) {
+            if (calf.inViewport() && calf.interact("Attack", "Cow calf")) {
                 Condition.wait(() -> !calf.isRendered(),900,20);
             }
         }
@@ -70,12 +74,15 @@ public class CowSafespot extends Task {
             DaxWalker.walkToBank();
         }
         if (!CombatHelper.gotItems(missingEquipment(RangeData.RangeEquipment()))) {
-            mMain.state = "Withdraw equipment";
             if (Bank.nearest().tile().distanceTo(Players.local()) <= 5 && Bank.inViewport()) {
+                mMain.state = "Open bank";
                 if (!Bank.opened()) {
                     Bank.open();
                 }
                 if (Bank.open()) {
+                    mMain.state = "Withdraw equipment";
+                    Bank.depositEquipment();
+                    Bank.depositInventory();
                     for (var itemId : missingEquipment(RangeData.RangeEquipment())) {
                         if (Bank.stream().id(itemId).isEmpty()) {
                             if (mMain.runningSkill.equals("Progressive")) {

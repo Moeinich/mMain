@@ -46,11 +46,10 @@ public class FruitStall extends Task {
     }
 
     public void dropItems() {
-        mMain.state = "Dropping Tea!";
+        mMain.state = "Dropping";
         List<Item> itemsToDrop = Inventory.stream().name(badItems).list();
-        if (Inventory.drop(itemsToDrop)) {
-            Condition.wait(itemsToDrop::isEmpty, 20, 50);
-        }
+        Inventory.drop(itemsToDrop);
+        Condition.wait(itemsToDrop::isEmpty, 20, 50);
     }
 
 
@@ -71,10 +70,9 @@ public class FruitStall extends Task {
             }
             //Thieving loop
             if (Players.stream().within(SkillData.fruitStallArea).count() == 1) {
-                if (shouldDropItems() && PlayerHelper.withinArea(SkillData.fruitStallArea)) {
+                if (shouldDropItems()) {
                     dropItems();
-                }
-                else if (Inventory.isEmpty() && PlayerHelper.withinArea(SkillData.fruitStallArea)) {
+                } else if (!Inventory.isFull()) {
                     ShouldThieve();
                 }
             }

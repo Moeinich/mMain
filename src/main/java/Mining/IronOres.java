@@ -23,11 +23,12 @@ public class IronOres extends Task {
     @Override
     public boolean execute() {
         if (!SkillData.miningIronLocation.equals(Players.local().tile())) {
-            mMain.state = "Go to iron area";
+            mMain.state = "Go to copper area";
             if (SkillData.movementMining().distanceTo(Players.local()) < 3) {
                 Movement.step(SkillData.miningIronLocation);
+            } else if (SkillData.movementMining().distanceTo(Players.local()) >= 4) {
+                PlayerHelper.walkToTile(SkillData.movementMining());
             }
-            PlayerHelper.walkToTile(SkillData.movementMining());
         }
         if (SkillData.miningIronLocation.equals(Players.local().tile())) {
             if (Players.stream().within(SkillData.miningIronArea).count() != 1) {

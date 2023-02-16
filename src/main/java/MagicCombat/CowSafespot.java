@@ -6,6 +6,7 @@ import static MagicCombat.MagicHelpers.isAutoCastOpen;
 import org.powbot.api.Condition;
 import org.powbot.api.rt4.Bank;
 import org.powbot.api.rt4.Constants;
+import org.powbot.api.rt4.Equipment;
 import org.powbot.api.rt4.Game;
 import org.powbot.api.rt4.Inventory;
 import org.powbot.api.rt4.Npc;
@@ -95,8 +96,8 @@ public class CowSafespot extends Task {
             DaxWalker.walkToBank();
         }
         if (!CombatHelper.gotItems(missingEquipment(MagicData.MagicEquipment()))) {
-            mMain.state = "Open bank";
             if (Bank.nearest().tile().distanceTo(Players.local()) <= 5 && Bank.inViewport()) {
+                mMain.state = "Open bank";
                 if (!Bank.opened()) {
                     Bank.open();
                     Condition.wait(() -> !Bank.opened(),900,20);
@@ -104,6 +105,7 @@ public class CowSafespot extends Task {
                 if (Bank.open()) {
                     mMain.state = "Withdraw equipment";
                     Bank.depositEquipment();
+                    Bank.depositInventory();
                     for (var itemId : missingEquipment(MagicData.MagicEquipment())) {
                         if (Bank.stream().id(itemId).isEmpty()) {
                             if (mMain.runningSkill.equals("Progressive")) {

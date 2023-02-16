@@ -52,31 +52,28 @@ public class AttackPotions extends Task {
     }
 
     private void GetEyes() {
-        InteractionsHelper interactionsHelper = new InteractionsHelper();
         mMain.state = "Grabbing eyes";
         if (Inventory.stream().id(ToolID).isEmpty()) {
-            interactionsHelper.depositAndWithdraw(ToolID, 14);
+            InteractionsHelper.depositAndWithdraw(ToolID, 14);
         }
 
     }
     private void GetUnfinishedPotions() {
-        InteractionsHelper interactionsHelper = new InteractionsHelper();
         mMain.state = "Grabbing Guam pot(unf)";
         if (!Bank.opened()) {
             Bank.open();
-            Condition.wait( () -> Bank.opened(), 500, 50);
+            Condition.wait(Bank::opened, 500, 50);
         }
         if (Inventory.stream().id(ToolID).isNotEmpty()) {
             Bank.depositAllExcept(ToolID);
-            interactionsHelper.withdrawItem(CombineWithItemID, 14);
+            InteractionsHelper.withdrawItem(CombineWithItemID, 14);
             Bank.close();
             Condition.wait( () -> !Bank.opened(), 500, 50);
         }
     }
     private void craft() {
         while (Inventory.stream().id(CombineWithItemID).isNotEmpty() && Inventory.stream().id(ToolID).isNotEmpty()) {
-            InteractionsHelper interactionsHelper = new InteractionsHelper();
-            interactionsHelper.combineItems(ToolID, CombineWithItemID, WidgetID, ComponentID);
+            InteractionsHelper.combineItems(ToolID, CombineWithItemID, WidgetID, ComponentID);
         }
     }
 }

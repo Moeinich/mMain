@@ -20,7 +20,6 @@ public class StartWoodcutting {
             mMain.taskRunning.set(false);
         }
         if (woodcuttingTasks.isEmpty()) {
-            woodcuttingTasks.add(new WoodcuttingDone());
             woodcuttingTasks.add(new GetAxe());
             woodcuttingTasks.add(new DropLogs());
             woodcuttingTasks.add(new treeNormal());

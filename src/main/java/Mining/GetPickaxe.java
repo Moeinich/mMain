@@ -28,8 +28,7 @@ return Inventory.stream().id(SkillData.pickaxes).isEmpty();}
         if (!Bank.opened()) {
             mMain.state = "Get pickaxe - Withdraw";
             if (Bank.open()) {
-                InteractionsHelper interactionsHelper = new InteractionsHelper();
-                interactionsHelper.depositAndWithdraw(SkillData.withdrawPickaxe(), 1);
+                InteractionsHelper.depositAndWithdraw(SkillData.withdrawPickaxe(), 1);
                 Bank.close();
                 Condition.wait( () -> !Bank.opened(), 250, 50);
             }

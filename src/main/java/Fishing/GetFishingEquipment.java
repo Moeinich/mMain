@@ -35,19 +35,18 @@ public class GetFishingEquipment extends Task {
 
         if (Bank.nearest().tile().distanceTo(Players.local()) <= 6 && Bank.inViewport() && !Bank.opened()) {
             mMain.state = "Get equipment";
-            InteractionsHelper interactionsHelper = new InteractionsHelper();
             if (Skills.realLevel(Constants.SKILLS_FISHING) <= 19) {
-                interactionsHelper.depositAndWithdraw(ItemList.SMALL_FISHING_NET_303, 1);
+                InteractionsHelper.depositAndWithdraw(ItemList.SMALL_FISHING_NET_303, 1);
                 Bank.close();
                 Condition.wait( () -> !Bank.opened(), 250, 50);
             }
             if (Skills.realLevel(Constants.SKILLS_FISHING) >= 20) {
                 if (Inventory.stream().id(ItemList.FLY_FISHING_ROD_309).count() == 0) {
-                    interactionsHelper.depositAndWithdraw(ItemList.FLY_FISHING_ROD_309, 1);
+                    InteractionsHelper.depositAndWithdraw(ItemList.FLY_FISHING_ROD_309, 1);
                     Condition.wait( () -> Inventory.stream().name("Fly fishing rod").isNotEmpty(),150, 50);
                 }
                 if (Inventory.stream().id(ItemList.FEATHER_314).count() == 0) {
-                    interactionsHelper.withdrawItem(ItemList.FEATHER_314, 5000);
+                    InteractionsHelper.withdrawItem(ItemList.FEATHER_314, 5000);
                     Condition.wait( () -> Inventory.stream().name("Feather").isNotEmpty(),150, 50);
                 }
                 Bank.close();

@@ -36,7 +36,7 @@ import Helpers.SkillData;
                 @ScriptConfiguration(
                         name =  "Mode",
                         description = "Which skill would you like to do?",
-                        defaultValue = "Magic",
+                        defaultValue = "Ranged",
                         allowedValues = {"Progressive", "Mining", "Fishing", "Woodcutting", "Cooking", "Firemaking", "Smithing", "Thieving", "Crafting", "Fletching", "Agility", "Herblore", "Ranged", "Magic"},
                         optionType = OptionType.STRING
                 )
@@ -65,8 +65,8 @@ public class mMain extends AbstractScript {
         runningSkill = "Determining...";
         state = "Starting...";
         InteractionsHelper.cameraCheck();
-        SimpleDateFormat timerFormat = new SimpleDateFormat("hh:mm:ss");
-        Notifications.showNotification("Notification test!");
+        SimpleDateFormat timerFormat = new SimpleDateFormat("mm:ss");
+        Notifications.showNotification("mMain starting " + skill);
 
         PaintBuilder builder = new PaintBuilder()
                 .addString("Mode: ", () -> skill)
@@ -74,7 +74,7 @@ public class mMain extends AbstractScript {
 
         if (skill.equals("Progressive")) {
             builder.addString("Running: ", () -> runningSkill)
-                    .addString("Skill timer: ", () -> timerFormat.format(new Date(Stopwatch.timeLeft())));
+                    .addString("Skill switch: ", () -> timerFormat.format(new Date(Stopwatch.timeLeft())));
         }
         builder.trackSkill(Skill.Mining, TrackSkillOption.LevelProgressBar)
                 .trackSkill(Skill.Fishing, TrackSkillOption.LevelProgressBar)
@@ -150,9 +150,10 @@ public class mMain extends AbstractScript {
                         startFishing::Fishing,
                         startFletching::Fletching,
                         startHerblore::Herblore,
-                        startMagic::Magic,
+                        //startMagic::Magic,
                         startMining::Mining,
                         startRanged::Ranged,
+                        startSmithing::Smithing,
                         startThieving::Thieving,
                         startWoodcutting::Woodcutting
                         // Add future skills to this tasklist!
@@ -165,19 +166,15 @@ public class mMain extends AbstractScript {
                     if (!runtime.isRunning()) {
                         if (!mMain.shouldBank) {
                             mMain.shouldBank = true;
-                        } else runtime.reset(Random.nextInt(20, 30 * 1000 * 60));
+                        } else runtime.reset(Random.nextInt(40, 55 * 1000 * 60));
                     }
                     final int taskIndex = ThreadLocalRandom.current().nextInt(tasks.size());
                     final CountDownLatch countdownLatch = new CountDownLatch(1);
                     taskHandler.execute(() -> {
                         try {
-                            while(!runtime.hasFinished() && taskRunning.get()) {
+                            while(!runtime.hasFinished() && taskRunning.get() && !ScriptManager.INSTANCE.isStopping()) {
                                 countdownLatch.await();
                                 tasks.get(taskIndex).run();
-                                if (ScriptManager.INSTANCE.isStopping()) {
-                                    ScriptManager.INSTANCE.stop();
-                                    break;
-                                }
                             }
                         } catch (InterruptedException e) {
                             e.printStackTrace();

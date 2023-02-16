@@ -235,6 +235,7 @@ public class SkillData {
     public static final Area StoveAreaEdgeville = new Area (
             new Tile(3077,3496), new Tile(3081,3491)
     );
+    public static Area edgevilleBank = new Area(new Tile(3091, 3499, 0), new Tile(3098, 3488, 0));
 
     //Firemaking
     public static final Tile firemakingLane1 = new Tile(3032,3360);
@@ -269,21 +270,6 @@ public class SkillData {
         }
         return 0;
     }
-
-    //Smithing
-    public static int[] copperBarOres = {ItemList.COPPER_ORE_436, ItemList.TIN_ORE_438};
-    public static int[] ironBarOres = {ItemList.IRON_ORE_440};
-    public static int[] smithingOres = {ItemList.COPPER_ORE_436, ItemList.TIN_ORE_438, ItemList.IRON_ORE_440};
-    public static int[] smithingBars = {ItemList.BRONZE_BAR_2349, ItemList.IRON_BAR_2351};
-    public static int[] bronzeWarhammer = {ItemList.BRONZE_WARHAMMER_1337};
-    public static int copperOre = ItemList.COPPER_ORE_436;
-    public static int tinOre = ItemList.TIN_ORE_438;
-    public static int ironOre = ItemList.IRON_ORE_440;
-    public static int bronzeBar = ItemList.BRONZE_BAR_2349;
-    public static Area smithingAreaEdgeville = new Area(new Tile(3109, 3499, 0), new Tile(3108, 3498, 0));
-    public static Tile smithingTileVarrockWest = new Tile(3188,3427);
-    public static Area edgevilleBank = new Area(new Tile(3091, 3499, 0), new Tile(3098, 3488, 0));
-    public static Area varrockWestBank = new Area(new Tile(3180, 3447, 0), new Tile(3190, 3433, 0));
 
     //Thieving
     public static final Area thievingMenArea = new Area (

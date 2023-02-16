@@ -62,11 +62,8 @@ public class InteractionsHelper {
                     Item Tool = Inventory.stream().id(RequiredItemID).first();
                     Item CombineWithID = Inventory.stream().id(CombineWithItemID).first();
 
-                    if (Inventory.stream().id(CombineWithItemID).isNotEmpty() && Game.tab(Game.Tab.INVENTORY)) {
-                        if (ScriptManager.INSTANCE.isStopping()) {
-                            ScriptManager.INSTANCE.stop();
-                        }
-                        if (Inventory.selectedItem().id() != RequiredItemID && !Widgets.widget(WidgetID).valid()) {
+                    if (Inventory.stream().id(CombineWithItemID).isNotEmpty()) {
+                        if (Inventory.selectedItem().id() != RequiredItemID) {
                             Tool.interact("Use");
                             Condition.wait( () -> Inventory.selectedItem().id() == RequiredItemID, 150, 20);
                         }
@@ -95,24 +92,22 @@ public class InteractionsHelper {
     public static void interactWithGameobject(int RequiredItemID, GameObject Gameobject, int WidgetID, int ComponentID, String Action, String Name) {
         int timer = 0;
         int initialCount = (int) Inventory.stream().id(RequiredItemID).count();
-        while (!ScriptManager.INSTANCE.isStopping() && Inventory.stream().id(RequiredItemID).isNotEmpty()) {
+        while (!ScriptManager.INSTANCE.isStopping() && Inventory.stream().id(RequiredItemID).count() > 2) {
             int currentCount = (int) Inventory.stream().id(RequiredItemID).count();
             if (currentCount >= initialCount) {
                 timer += 1;
                 if (timer >= 3) {
-                    if (Inventory.stream().id(RequiredItemID).isNotEmpty() && Game.tab(Game.Tab.INVENTORY)) {
-                        if (ScriptManager.INSTANCE.isStopping()) {
-                            ScriptManager.INSTANCE.stop();
-                        }
-                        if (Inventory.selectedItem().id() != RequiredItemID && !Widgets.widget(WidgetID).valid()) {
+                    if (Inventory.stream().id(RequiredItemID).count() > 2) {
+                        if (Inventory.selectedItem().id() != RequiredItemID) {
                             Gameobject.interact(Action, Name);
+                            Condition.wait( () -> Widgets.widget(WidgetID).valid(), 300, 50);
                         }
                         if (Widgets.widget(WidgetID).valid()) {
                             Widgets.widget(WidgetID).component(ComponentID).click();
                             Condition.wait( () -> !Widgets.widget(WidgetID).valid(), 300, 100);
                         }
                     }
-                    if (Inventory.stream().id(RequiredItemID).isEmpty()) {
+                    if (Inventory.stream().id(RequiredItemID).count() > 2) {
                         break;
                     }
                     timer = 0;
@@ -121,7 +116,7 @@ public class InteractionsHelper {
                 initialCount = currentCount;
                 timer = 0;
             }
-            int randomSleep = Random.nextInt(800, 1000);
+            int randomSleep = Random.nextInt(900, 1000);
             Condition.sleep(randomSleep);
         }
     }

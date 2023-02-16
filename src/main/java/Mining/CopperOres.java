@@ -27,9 +27,11 @@ public class CopperOres extends Task {
             mMain.state = "Go to copper area";
             if (SkillData.movementMining().distanceTo(Players.local()) < 3) {
                 Movement.step(SkillData.miningCopperLocation);
+            } else if (SkillData.movementMining().distanceTo(Players.local()) >= 4) {
+                PlayerHelper.walkToTile(SkillData.movementMining());
             }
-            PlayerHelper.walkToTile(SkillData.movementMining());
         }
+
         if (SkillData.miningCopperLocation.equals(Players.local().tile())) {
             if (Players.stream().within(SkillData.miningCopperArea).count() != 1) {
                 int[] p2p = SkillData.p2p;

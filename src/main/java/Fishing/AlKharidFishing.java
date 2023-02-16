@@ -1,6 +1,7 @@
 package Fishing;
 
 import org.powbot.api.Condition;
+import org.powbot.api.rt4.Camera;
 import org.powbot.api.rt4.Constants;
 import org.powbot.api.rt4.Inventory;
 import org.powbot.api.rt4.Npc;
@@ -28,6 +29,7 @@ public class AlKharidFishing extends Task {
             mMain.state = "Do fishing";
             Npc AlKharidFishingSpot = PlayerHelper.nearestNpc("Fishing spot");
             if (AlKharidFishingSpot.inViewport() && Players.local().animation() == -1) {
+                Camera.turnTo(AlKharidFishingSpot);
                 if (AlKharidFishingSpot.interact("Small Net", "Fishing Spot")) {
                     Condition.wait(() -> Players.local().animation() == -1, 2500, 50);
                 }

@@ -18,7 +18,6 @@ import script.mMain;
 public class Sardines extends Task {
     @Override
     public boolean activate() {
-        System.out.print("Activate deposit fish");
         return Skills.realLevel(Constants.SKILLS_COOKING) <= 34;
     }
     @Override
@@ -45,8 +44,7 @@ public class Sardines extends Task {
         }
         if (PlayerHelper.withinArea(SkillData.edgevilleBank) && !Bank.opened() && Bank.inViewport()) {
             Bank.open();
-            InteractionsHelper interactionsHelper = new InteractionsHelper();
-            interactionsHelper.depositAndWithdraw(ItemList.RAW_SARDINE_327, 28);
+            InteractionsHelper.depositAndWithdraw(ItemList.RAW_SARDINE_327, 28);
         }
     }
     private void ShouldCook() {
@@ -56,8 +54,7 @@ public class Sardines extends Task {
         }
         if (PlayerHelper.withinArea(SkillData.StoveAreaEdgeville)) {
             GameObject cookingStove = PlayerHelper.nearestGameObject(10, 12269);
-            InteractionsHelper interactionsHelper = new InteractionsHelper();
-            interactionsHelper.interactWithGameobject(ItemList.RAW_SARDINE_327, cookingStove, 270, 14, "Cook", "Stove");
+            InteractionsHelper.interactWithGameobject(ItemList.RAW_SARDINE_327, cookingStove, 270, 14, "Cook", "Stove");
         }
     }
 }

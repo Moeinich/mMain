@@ -34,16 +34,11 @@ public class TeaStall extends Task {
     }
 
     public void dropItems() {
-        mMain.state = "Dropping Tea!";
+        mMain.state = "Dropping";
         List<Item> itemsToDrop = Inventory.stream().name(badItems).list();
-        if (Inventory.drop(itemsToDrop)) {
-            Condition.wait(() -> itemsToDrop.isEmpty(), 250, 50);
-        }
+        Inventory.drop(itemsToDrop);
+        Condition.wait(itemsToDrop::isEmpty, 20, 50);
     }
-    public boolean shouldThieve() {
-        return !Inventory.isFull();
-    }
-
 
     @Override
     public boolean execute() {
@@ -63,10 +58,9 @@ public class TeaStall extends Task {
         }
         //Thieving loop
         if (Players.stream().within(SkillData.teaStallArea).count() == 1) {
-            if (shouldDropItems() && PlayerHelper.withinArea(SkillData.teaStallArea)) {
+            if (shouldDropItems()) {
                 dropItems();
-            }
-            else if (Inventory.isEmpty() && PlayerHelper.withinArea(SkillData.teaStallArea)) {
+            } else if (!Inventory.isFull()) {
                 ShouldThieve();
             }
         }

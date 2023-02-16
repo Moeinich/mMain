@@ -63,3 +63,9 @@ Let pow close level up messages. Please have these items on ur account:
 **Agility**
 - [X] 1-10 Gnome course
 - [X] 10-? Draynor course
+
+**Smithing**
+- [X] 1-5 Bronze daggers
+- [X] 5-18 Bronze scimitars
+- [X] 18-33 Bronze platebodies
+- [X] 33-? Iron platebodies

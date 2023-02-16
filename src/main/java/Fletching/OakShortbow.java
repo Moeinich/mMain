@@ -46,23 +46,21 @@ public class OakShortbow extends Task {
     }
 
     private void checkTool() {
-        InteractionsHelper interactionsHelper = new InteractionsHelper();
         mMain.state = "Checking tool..";
         if (Inventory.stream().id(ToolID).isEmpty()) {
-            interactionsHelper.depositAndWithdraw(ToolID, 1);
+            InteractionsHelper.depositAndWithdraw(ToolID, 1);
         }
 
     }
     private void withdrawItems() {
-        InteractionsHelper interactionsHelper = new InteractionsHelper();
         mMain.state = "Withdraw items";
         if (!Bank.opened()) {
             Bank.open();
-            Condition.wait( () -> Bank.opened(), 500, 50);
+            Condition.wait(Bank::opened, 500, 50);
         }
         if (Inventory.stream().id(ToolID).isNotEmpty()) {
             Bank.depositAllExcept(ToolID);
-            interactionsHelper.withdrawItem(CombineWithItemID, 27);
+            InteractionsHelper.withdrawItem(CombineWithItemID, 27);
             Bank.close();
             Condition.wait( () -> !Bank.opened(), 500, 50);
         }
@@ -73,7 +71,6 @@ public class OakShortbow extends Task {
         }
     }
     public void CombineItems(int ToolID, int CombineWithItemID, int WidgetID, int ComponentID) {
-        InteractionsHelper interactionsHelper = new InteractionsHelper();
-        interactionsHelper.combineItems(ToolID, CombineWithItemID, WidgetID, ComponentID);
+        InteractionsHelper.combineItems(ToolID, CombineWithItemID, WidgetID, ComponentID);
     }
 }

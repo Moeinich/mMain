@@ -34,7 +34,7 @@ public class MagicHelpers {
         }
 
         if (Game.tab(Game.Tab.ATTACK) && Widgets.component(593, 26).interact("Choose spell")) {
-            return Condition.wait((Callable<Boolean>) () -> isAutoCastOpen());
+            return Condition.wait((Callable<Boolean>) MagicHelpers::isAutoCastOpen);
         }
 
         return false;
@@ -56,7 +56,7 @@ public class MagicHelpers {
     }
 
     public static boolean setAutoCast(AutoCastSpell spell) {
-        Component component = Widgets.component(WIDGET_AUTOCAST, WIDGET_AUTOCAST_SPELLS_COMPONENT, spell.component);
+        Component component = Widgets.component(WIDGET_AUTOCAST, WIDGET_AUTOCAST_SPELLS_COMPONENT, spell.getComponent());
         if (component == Component.Companion.getNil() || spell == AutoCastSpell.NONE) {
             return false;
         }
@@ -77,9 +77,9 @@ public class MagicHelpers {
         EARTH_BOLT(Magic.Spell.EARTH_BOLT, 15, 7),
         FIRE_BOLT(Magic.Spell.FIRE_BOLT, 17, 8);
 
-        private Magic.Spell spell;
-        private int varpbitValue;
-        private int component;
+        private final Magic.Spell spell;
+        private final int varpbitValue;
+        private final int component;
 
         AutoCastSpell(Magic.Spell spell, int varpbitValue, int component) {
             this.spell = spell;

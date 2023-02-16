@@ -63,45 +63,40 @@ public class MapleLongbow extends Task {
         withdrawItems();
     }
     private void BankForStringing() {
-        InteractionsHelper interactionsHelper = new InteractionsHelper();
-        interactionsHelper.depositAndWithdraw(BowID, 14);
-        interactionsHelper.withdrawItem(BowStringID, 14);
+        InteractionsHelper.depositAndWithdraw(BowID, 14);
+        InteractionsHelper.withdrawItem(BowStringID, 14);
         Bank.close();
         Condition.wait( () -> !Bank.opened(), 500, 50);
     }
 
     private void checkTool() {
-        InteractionsHelper interactionsHelper = new InteractionsHelper();
         mMain.state = "Checking tool..";
         if (Inventory.stream().id(ToolID).isEmpty()) {
-            interactionsHelper.depositAndWithdraw(ToolID, 1);
+            InteractionsHelper.depositAndWithdraw(ToolID, 1);
         }
 
     }
     private void withdrawItems() {
-        InteractionsHelper interactionsHelper = new InteractionsHelper();
         mMain.state = "Withdraw items";
         if (!Bank.opened()) {
             Bank.open();
-            Condition.wait( () -> Bank.opened(), 500, 50);
+            Condition.wait(Bank::opened, 500, 50);
         }
         if (Inventory.stream().id(ToolID).isNotEmpty()) {
             Bank.depositAllExcept(ToolID);
-            interactionsHelper.withdrawItem(CombineWithItemID, 27);
+            InteractionsHelper.withdrawItem(CombineWithItemID, 27);
             Bank.close();
             Condition.wait( () -> !Bank.opened(), 500, 50);
         }
     }
     private void fletch() {
         while (Inventory.stream().id(CombineWithItemID).count() >= 1) {
-            InteractionsHelper interactionsHelper = new InteractionsHelper();
-            interactionsHelper.combineItems(ToolID, CombineWithItemID, WidgetID, ComponentID);
+            InteractionsHelper.combineItems(ToolID, CombineWithItemID, WidgetID, ComponentID);
         }
     }
     private void stringing() {
         while (Inventory.stream().id(BowStringID).count() >= 1) {
-            InteractionsHelper interactionsHelper = new InteractionsHelper();
-            interactionsHelper.combineItems(BowID, BowStringID, WidgetID, StringComponentID);
+            InteractionsHelper.combineItems(BowID, BowStringID, WidgetID, StringComponentID);
         }
     }
 }

@@ -21,6 +21,10 @@ public class StartSmithing {
         }
         if (smithingTasks.isEmpty()) {
             smithingTasks.add(new GoSmithing());
+            smithingTasks.add(new bronzeDagger());
+            smithingTasks.add(new bronzeScimitar());
+            smithingTasks.add(new bronzePlatebody());
+            smithingTasks.add(new ironPlatebody());
         }
 
         for (Task task : smithingTasks) {
