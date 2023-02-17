@@ -36,7 +36,7 @@ public class VarrockCourse extends Task {
             PlayerHelper.enableRun();
         }
 
-        if (Game.tab(Game.Tab.INVENTORY) && Inventory.stream().id(ItemList.CAKE_1891, ItemList._23_CAKE_1893, ItemList.SLICE_OF_CAKE_1895).isNotEmpty()) {
+        if (Game.tab(Game.Tab.INVENTORY) && Inventory.stream().action("Eat").isNotEmpty()) {
             ShouldRunObstacle();
         }
         return false;
@@ -45,8 +45,8 @@ public class VarrockCourse extends Task {
     public void ShouldRunObstacle() {
         if (PlayerHelper.withinArea(AgilityData.VarrockAreas.FLOOR.getArea())) {
             GameObject VarrockObstacle1 = PlayerHelper.nearestGameObject(8, AgilityData.obstacleInfo.varrock1.getId());
-            if (!VarrockObstacle1.inViewport()) {
-                mMain.state = "Move to Canifis start";
+            if (!PlayerHelper.withinArea(AgilityData.VarrockAreas.START.getArea())) {
+                mMain.state = "Move to Varrock start";
                 Movement.moveTo(AgilityData.VarrockAreas.START.getArea().getRandomTile());
             } else {
                 AgilityHelper helper = new AgilityHelper();
@@ -72,8 +72,8 @@ public class VarrockCourse extends Task {
         if (PlayerHelper.withinArea(AgilityData.VarrockAreas.OBSTACLE_6.getArea())) {
             GameObject VarrockObstacle6 = PlayerHelper.nearestGameObject(8, AgilityData.obstacleInfo.varrock6.getId());
             if (!VarrockObstacle6.inViewport()) {
-                mMain.state = "Move to Canifis start";
-                Movement.moveTo(AgilityData.VarrockAreas.OBSTACLE_6_MOVETO.getArea().getRandomTile());
+                mMain.state = "Move to Varrock OBS6";
+                Movement.step(AgilityData.VarrockAreas.OBSTACLE_6_MOVETO.getArea().getRandomTile());
             } else {
                 AgilityHelper helper = new AgilityHelper();
                 helper.handleObstacleWithLoot(AgilityData.obstacleInfo.varrock6);
@@ -82,8 +82,8 @@ public class VarrockCourse extends Task {
         if (PlayerHelper.withinArea(AgilityData.VarrockAreas.OBSTACLE_7.getArea())) {
             GameObject VarrockObstacle7 = PlayerHelper.nearestGameObject(8, AgilityData.obstacleInfo.varrock7.getId());
             if (!VarrockObstacle7.inViewport()) {
-                mMain.state = "Move to Canifis start";
-                Movement.moveTo(AgilityData.VarrockAreas.OBSTACLE_7_MOVETO.getArea().getRandomTile());
+                mMain.state = "Move to Varrock OBS7";
+                Movement.step(AgilityData.VarrockAreas.OBSTACLE_7_MOVETO.getArea().getRandomTile());
             } else {
                 AgilityHelper helper = new AgilityHelper();
                 helper.handleObstacleWithLoot(AgilityData.obstacleInfo.varrock7);

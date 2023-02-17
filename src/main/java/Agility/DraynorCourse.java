@@ -36,7 +36,7 @@ public class DraynorCourse extends Task {
             PlayerHelper.enableRun();
         }
 
-        if (Inventory.stream().id(ItemList.CAKE_1891, ItemList._23_CAKE_1893, ItemList.SLICE_OF_CAKE_1895).isNotEmpty()) {
+        if (Game.tab(Game.Tab.INVENTORY) && Inventory.stream().action("Eat").isNotEmpty()) {
             ShouldRunObstacle();
         }
         return false;
@@ -44,8 +44,7 @@ public class DraynorCourse extends Task {
 
     public void ShouldRunObstacle() {
         if (PlayerHelper.withinArea(AgilityData.DraynorAreas.FLOOR.getArea())) {
-            GameObject DraynorObstacle1 = PlayerHelper.nearestGameObject(8, AgilityData.obstacleInfo.draynor1.getId());
-            if (!DraynorObstacle1.inViewport()) {
+            if (!PlayerHelper.withinArea(AgilityData.DraynorAreas.START.getArea())) {
                 mMain.state = "Move to draynor start";
                 Movement.moveTo(AgilityData.DraynorAreas.START.getArea().getRandomTile());
             } else {

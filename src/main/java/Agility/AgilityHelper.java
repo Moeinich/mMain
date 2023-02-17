@@ -25,11 +25,10 @@ public class AgilityHelper {
     }
 
     public void handleObstacleWithLoot(IObstacleInfo obstacleInfo) {
-        GroundItem groundItem = GroundItems.stream().within(5).name(obstacleInfo.getLoot()).nearest().first();
+        GroundItem groundItem = GroundItems.stream().within(10).name(obstacleInfo.getLoot()).nearest().first();
         if (groundItem.inViewport()) {
-            PlayerHelper playerHelper = new PlayerHelper();
             mMain.state = "Pickup mark";
-            playerHelper.lootItems("Take", "Mark of grace");
+            PlayerHelper.lootItems("Take", "Mark of grace");
         }
 
         GameObject obstacleObject = PlayerHelper.nearestGameObject(10, obstacleInfo.getId());

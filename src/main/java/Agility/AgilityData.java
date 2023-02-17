@@ -61,8 +61,7 @@ public class AgilityData {
             return id;
         }
         public String getLoot() {
-            String getLoot = "Marks of grace";
-            return getLoot;
+            return "Marks of grace";
         }
 
         public String getAction() {
@@ -112,7 +111,7 @@ public class AgilityData {
         FLOOR(new Area (new Tile(3081, 3268, 0), new Tile(3079, 3262, 0), new Tile(3079, 3254, 0), new Tile(3079, 3248, 0), new Tile(3085, 3246, 0), new Tile(3088, 3246, 0), new Tile(3088, 3240, 0), new Tile(3096, 3240, 0), new Tile(3098, 3240, 0), new Tile(3098, 3247, 0), new Tile(3103, 3247, 0), new Tile(3106, 3249, 0), new Tile(3109, 3257, 0), new Tile(3111, 3265, 0), new Tile(3107, 3270, 0), new Tile(3107, 3278, 0), new Tile(3108, 3285, 0), new Tile(3094, 3286, 0), new Tile(3082, 3280, 0))),
         TOP(new Area (new Tile(3084, 3283, 3), new Tile(3105, 3253, 3))),
         CRATE(new Area (new Tile(3101, 3262, 1), new Tile(3103, 3260, 1))),
-        START(new Area (new Tile(3101, 3262, 1), new Tile(3103, 3260, 1))),
+        START(new Area(new Tile(3103, 3281, 0), new Tile(3105, 3277, 0))),
         OBSTACLE_2(new Area (new Tile(3102, 3277, 3), new Tile(3097, 3281, 3))),
         OBSTACLE_3(new Area (new Tile(3089, 3276, 3), new Tile(3091, 3276, 3), new Tile(3090, 3273, 3), new Tile(3089, 3273, 3), new Tile(3088, 3274, 3), new Tile(3088, 3276, 3))),
         OBSTACLE_4(new Area (new Tile(3089, 3268, 3), new Tile(3094, 3265, 3))),

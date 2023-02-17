@@ -36,7 +36,7 @@ public class CanifisCourse extends Task {
             PlayerHelper.enableRun();
         }
 
-        if (Game.tab(Game.Tab.INVENTORY) && Inventory.stream().id(ItemList.CAKE_1891, ItemList._23_CAKE_1893, ItemList.SLICE_OF_CAKE_1895).isNotEmpty()) {
+        if (Game.tab(Game.Tab.INVENTORY) && Inventory.stream().action("Eat").isNotEmpty()) {
             ShouldRunObstacle();
         }
         return false;
@@ -44,8 +44,7 @@ public class CanifisCourse extends Task {
 
     public void ShouldRunObstacle() {
         if (PlayerHelper.withinArea(AgilityData.CanifisAreas.FLOOR.getArea())) {
-            GameObject CanifisObstacle1 = PlayerHelper.nearestGameObject(8, AgilityData.obstacleInfo.canifis1.getId());
-            if (!CanifisObstacle1.inViewport()) {
+            if (!PlayerHelper.withinArea(AgilityData.CanifisAreas.START.getArea())) {
                 mMain.state = "Move to Canifis start";
                 Movement.moveTo(AgilityData.CanifisAreas.START.getArea().getRandomTile());
             } else {

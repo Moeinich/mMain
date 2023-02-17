@@ -132,12 +132,13 @@ public class InteractionsHelper {
 
 
 
-    private static void waitForXpToStopIncreasing(AtomicBoolean actionsPerformed, long wait) {
+    private static void waitForXpToStopIncreasing(AtomicBoolean doActions, long wait) {
         while (!ScriptManager.INSTANCE.isStopping() && Skills.timeSinceExpGained() < wait) {
-            if (!actionsPerformed.get()) {
+            mMain.state = "Time since xp: " + Skills.timeSinceExpGained();
+            if (Skills.timeSinceExpGained() > wait) {
+                mMain.state = "Done waiting";
+                doActions.set(true);
                 break;
-            } else {
-                actionsPerformed.set(false);
             }
             int randomSleep = Random.nextInt(300, 700);
             Condition.sleep(randomSleep);
@@ -145,8 +146,9 @@ public class InteractionsHelper {
     }
 
     public static void combineItemsTest(int RequiredItemID, int CombineWithItemID, int WidgetID, int ComponentID, long wait) {
-        AtomicBoolean actionsPerformed = new AtomicBoolean(false);
-        if (!actionsPerformed.get()) {
+        mMain.state = "Combining..";
+        AtomicBoolean doActions = new AtomicBoolean(true);
+        if (doActions.get()) {
             Item Tool = Inventory.stream().id(RequiredItemID).first();
             Item CombineWithID = Inventory.stream().id(CombineWithItemID).first();
 
@@ -162,25 +164,25 @@ public class InteractionsHelper {
                 Widgets.widget(WidgetID).component(ComponentID).click();
                 Condition.wait(() -> !Widgets.widget(WidgetID).valid(), 150, 20);
             }
-            actionsPerformed.set(true);
+            doActions.set(false);
         }
-        if (actionsPerformed.get()) {
-            waitForXpToStopIncreasing(actionsPerformed, wait);
+        if (!doActions.get()) {
+            waitForXpToStopIncreasing(doActions, wait);
         }
     }
     public static void interactWithGameobjectTest(int RequiredItemID, GameObject Gameobject, int WidgetID, int ComponentID, String Action, String Name, long wait) {
-        AtomicBoolean actionsPerformed = new AtomicBoolean(false);
-        if (!actionsPerformed.get()) {
+        AtomicBoolean doActions = new AtomicBoolean(true);
+        if (doActions.get()) {
             Gameobject.interact(Action, Name);
             Condition.wait( () -> Widgets.widget(WidgetID).valid(), 300, 50);
             if (Widgets.widget(WidgetID).valid()) {
                 Widgets.widget(WidgetID).component(ComponentID).click();
                 Condition.wait( () -> !Widgets.widget(WidgetID).valid(), 300, 100);
             }
-            actionsPerformed.set(true);
+            doActions.set(false);
         }
-        if (actionsPerformed.get()) {
-            waitForXpToStopIncreasing(actionsPerformed, wait);
+        if (!doActions.get()) {
+            waitForXpToStopIncreasing(doActions, wait);
         }
     }
 }

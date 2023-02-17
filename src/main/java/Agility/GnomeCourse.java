@@ -23,6 +23,9 @@ public class GnomeCourse extends Task {
     }
     public void ShouldRunObstacle() {
         if (PlayerHelper.withinArea(AgilityData.GnomeAreas.OBSTACLE_1.getArea()) || PlayerHelper.withinArea(AgilityData.GnomeAreas.END.getArea())) {
+            if (PlayerHelper.withinArea(AgilityData.GnomeAreas.END.getArea())) {
+                Movement.step(AgilityData.GnomeAreas.OBSTACLE_1.getArea().getRandomTile());
+            }
             AgilityHelper helper = new AgilityHelper();
             helper.handleObstacle(AgilityData.obstacleInfo.gnome1);
         }
