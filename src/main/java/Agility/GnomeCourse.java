@@ -1,5 +1,6 @@
 package Agility;
 
+import org.powbot.api.Condition;
 import org.powbot.api.rt4.Constants;
 import org.powbot.api.rt4.Movement;
 import org.powbot.api.rt4.Skills;
@@ -21,7 +22,7 @@ public class GnomeCourse extends Task {
         return false;
     }
     public void ShouldRunObstacle() {
-        if (PlayerHelper.withinArea(AgilityData.GnomeAreas.OBSTACLE_1.getArea())) {
+        if (PlayerHelper.withinArea(AgilityData.GnomeAreas.OBSTACLE_1.getArea()) || PlayerHelper.withinArea(AgilityData.GnomeAreas.END.getArea())) {
             AgilityHelper helper = new AgilityHelper();
             helper.handleObstacle(AgilityData.obstacleInfo.gnome1);
         }
@@ -44,6 +45,7 @@ public class GnomeCourse extends Task {
         if (PlayerHelper.withinArea(AgilityData.GnomeAreas.OBSTACLE_6.getArea())) {
             AgilityHelper helper = new AgilityHelper();
             helper.handleObstacle(AgilityData.obstacleInfo.gnome6);
+            Condition.wait( () -> PlayerHelper.withinArea(AgilityData.GnomeAreas.OBSTACLE_7.getArea()), 250, 50);
         }
         if (PlayerHelper.withinArea(AgilityData.GnomeAreas.OBSTACLE_7.getArea())) {
             AgilityHelper helper = new AgilityHelper();

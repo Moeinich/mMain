@@ -58,7 +58,7 @@ public class bronzePlatebody extends Task {
         }
         if (PlayerHelper.withinArea(smithingData.anvilArea)) {
             GameObject anvil = PlayerHelper.nearestGameObject(1, 2097);
-            InteractionsHelper.interactWithGameobject(ItemList.BRONZE_BAR_2349, anvil, 312, 22, "Smith", "Anvil");
+            InteractionsHelper.interactWithGameobject(ItemList.BRONZE_BAR_2349, anvil, 312, 22, "Smith", "Anvil", 5);
         }
     }
 }

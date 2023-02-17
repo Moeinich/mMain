@@ -4,7 +4,6 @@ import org.powbot.api.Condition;
 import org.powbot.api.rt4.GameObject;
 import org.powbot.api.rt4.GroundItem;
 import org.powbot.api.rt4.GroundItems;
-import org.powbot.api.rt4.Objects;
 import org.powbot.api.rt4.Players;
 import org.powbot.api.rt4.Skills;
 import org.powbot.api.rt4.walking.model.Skill;

@@ -87,6 +87,7 @@ public class AgilityData {
         LOWER(new Area (new Tile(2468, 3441, 0), new Tile(2491, 3413, 0))),
         MID(new Area (new Tile(2469, 3425, 1), new Tile(2477, 3421, 1))),
         TOP(new Area (new Tile(2470, 3423, 2), new Tile(2490, 3416, 2))),
+        END (new Area(new Tile(2488, 3436, 0), new Tile(2482, 3439, 0))),
         OBSTACLE_1(new Area (new Tile(2472, 3436, 0), new Tile(2488, 3440, 0))),
         OBSTACLE_2(new Area (new Tile(2471, 3429, 0), new Tile(2477, 3427, 0))),
         OBSTACLE_3(new Area (new Tile(2476, 3424, 1), new Tile(2471, 3422, 1))),

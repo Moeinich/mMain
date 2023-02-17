@@ -58,7 +58,7 @@ public class bronzeScimitar extends Task {
         }
         if (PlayerHelper.withinArea(smithingData.anvilArea)) {
             GameObject anvil = PlayerHelper.nearestGameObject(1, 2097);
-            InteractionsHelper.interactWithGameobject(ItemList.BRONZE_BAR_2349, anvil, 312, 11, "Smith", "Anvil");
+            InteractionsHelper.interactWithGameobject(ItemList.BRONZE_BAR_2349, anvil, 312, 11, "Smith", "Anvil", 2);
         }
     }
 }

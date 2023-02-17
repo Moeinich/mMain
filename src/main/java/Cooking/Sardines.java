@@ -5,7 +5,6 @@ import org.powbot.api.rt4.Constants;
 import org.powbot.api.rt4.Game;
 import org.powbot.api.rt4.GameObject;
 import org.powbot.api.rt4.Inventory;
-import org.powbot.api.rt4.Objects;
 import org.powbot.api.rt4.Skills;
 
 import Helpers.InteractionsHelper;
@@ -54,7 +53,7 @@ public class Sardines extends Task {
         }
         if (PlayerHelper.withinArea(SkillData.StoveAreaEdgeville)) {
             GameObject cookingStove = PlayerHelper.nearestGameObject(10, 12269);
-            InteractionsHelper.interactWithGameobject(ItemList.RAW_SARDINE_327, cookingStove, 270, 14, "Cook", "Stove");
+            InteractionsHelper.interactWithGameobject(ItemList.RAW_SARDINE_327, cookingStove, 270, 14, "Cook", "Stove", 1);
         }
     }
 }

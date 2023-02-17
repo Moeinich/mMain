@@ -179,7 +179,7 @@ public class SkillData {
             new Tile(3074,3274), new Tile(3086, 3263)
     );
     public static final Area oakTreeLocation = new Area (
-            new Tile(3099,3245), new Tile(3104, 3240)
+            new Tile(3060, 3272, 0), new Tile(3040, 3261, 0)
     );
     public static final Area willowTreeLocation = new Area (
             new Tile(3056,3255), new Tile(3064, 3249)
