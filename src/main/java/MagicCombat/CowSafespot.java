@@ -6,7 +6,6 @@ import static MagicCombat.MagicHelpers.isAutoCastOpen;
 import org.powbot.api.Condition;
 import org.powbot.api.rt4.Bank;
 import org.powbot.api.rt4.Constants;
-import org.powbot.api.rt4.Equipment;
 import org.powbot.api.rt4.Game;
 import org.powbot.api.rt4.Inventory;
 import org.powbot.api.rt4.Npc;
@@ -40,8 +39,7 @@ public class CowSafespot extends Task {
         if (Inventory.stream().id(MagicData.windStrikeRunes).isEmpty() && Skills.realLevel(Constants.SKILLS_MAGIC) <= 12) {
             InteractionsHelper.depositAndWithdraw(MagicData.windStrikeRunes, 10000);
             Bank.close();
-        }
-        if (Inventory.stream().id(MagicData.fireStrikeRunes).isEmpty() && Skills.realLevel(Constants.SKILLS_MAGIC) <= 12) {
+        } else if (Inventory.stream().id(MagicData.fireStrikeRunes).isEmpty() && Skills.realLevel(Constants.SKILLS_MAGIC) >= 13) {
             InteractionsHelper.depositAndWithdraw(ItemList.AIR_RUNE_556, 10000);
             InteractionsHelper.withdrawItem(ItemList.MIND_RUNE_558, 10000);
             Bank.close();
@@ -96,7 +94,7 @@ public class CowSafespot extends Task {
                 mMain.state = "Open bank";
                 if (!Bank.opened()) {
                     Bank.open();
-                    Condition.wait(() -> !Bank.opened(),900,20);
+                    Condition.wait(() -> !Bank.opened(),150,20);
                 }
                 if (Bank.open()) {
                     mMain.state = "Withdraw equipment";
@@ -111,8 +109,8 @@ public class CowSafespot extends Task {
                                 mMain.taskRunning.set(false); //Skip task on progressive
                             } else ScriptManager.INSTANCE.stop();
                         }
-                        Bank.withdraw(itemId, Bank.Amount.ALL);
-                        Condition.wait(() -> CombatHelper.gotItems(itemId), 100,10);
+                        Bank.withdraw(itemId, 1);
+                        Condition.wait(() -> Inventory.stream().id(itemId).isNotEmpty(), 250,10);
                     }
                 }
                 if (CombatHelper.gotItems(missingEquipment(MagicData.MagicEquipment())))
@@ -128,14 +126,11 @@ public class CowSafespot extends Task {
                 if (itemToEquip != null){
                     if (itemToEquip.interact("Wield", itemToEquip.name()))
                     {
-                        Condition.wait(() -> CombatHelper.hasEquipped(item), 100, 10);
+                        Condition.wait(() -> CombatHelper.hasEquipped(item), 250, 10);
+                    } else {
+                        if (itemToEquip.interact("Wear", itemToEquip.name())) {
+                            Condition.wait(() -> CombatHelper.hasEquipped(item), 250, 10);
                     }
-                    else
-                    {
-                        if (itemToEquip.interact("Wear", itemToEquip.name()))
-                        {
-                            Condition.wait(() -> CombatHelper.hasEquipped(item), 100, 10);
-                        }
                     }
                 }
             }

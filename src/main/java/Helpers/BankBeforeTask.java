@@ -20,11 +20,6 @@ public class BankBeforeTask extends Task {
     public boolean execute() {
         if (Game.tab(Game.Tab.INVENTORY) && Inventory.isEmpty()) {
             mMain.state = "Inv empty, move on";
-            if (Bank.opened()) {
-                if (Bank.close()) {
-                    Condition.wait( () -> !Bank.opened(), 150, 50);
-                }
-            }
             mMain.shouldBank = false;
         }
 

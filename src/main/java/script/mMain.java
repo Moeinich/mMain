@@ -29,14 +29,14 @@ import Helpers.SkillData;
 @ScriptManifest(
         name = "mMain",
         description = "Progressively levels different skills",
-        version = "0.1.17"
+        version = "0.1.18"
 )
 @ScriptConfiguration.List(
         {
                 @ScriptConfiguration(
                         name =  "Mode",
                         description = "Which skill would you like to do?",
-                        defaultValue = "Thieving",
+                        defaultValue = "Progressive",
                         allowedValues = {"Progressive", "Mining", "Fishing", "Woodcutting", "Cooking", "Firemaking", "Smithing", "Thieving", "Crafting", "Fletching", "Agility", "Herblore", "Ranged", "Magic"},
                         optionType = OptionType.STRING
                 )

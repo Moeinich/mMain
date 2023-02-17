@@ -15,6 +15,7 @@ import org.powbot.dax.teleports.Teleport;
 import org.powbot.mobile.script.ScriptManager;
 
 import Helpers.CombatHelper;
+import Helpers.ItemList;
 import Helpers.PlayerHelper;
 import Helpers.SkillData;
 import Helpers.Task;
@@ -70,6 +71,7 @@ public class CowSafespot extends Task {
                 mMain.state = "Open bank";
                 if (!Bank.opened()) {
                     Bank.open();
+                    Condition.wait(Bank::opened, 100,10);
                 }
                 if (Bank.open()) {
                     mMain.state = "Withdraw equipment";
@@ -84,8 +86,14 @@ public class CowSafespot extends Task {
                                 mMain.taskRunning.set(false); //Skip task on progressive
                             } else ScriptManager.INSTANCE.stop();
                         }
-                        Bank.withdraw(itemId, Bank.Amount.ALL);
-                        Condition.wait(() -> CombatHelper.gotItems(itemId), 100,10);
+                        if (itemId == ItemList.IRON_ARROW_884 || itemId == ItemList.MITHRIL_DART_809) {
+                            System.out.println("Withdrawing all of " + itemId + " ammo");
+                            Bank.withdraw(itemId, Bank.Amount.ALL);
+                            Condition.wait(() -> Inventory.stream().id(itemId).isNotEmpty(), 250,10);
+                        }
+                        System.out.println("Withdrawing item " + itemId);
+                        Bank.withdraw(itemId, 1);
+                        Condition.wait(() -> Inventory.stream().id(itemId).isNotEmpty(), 250,10);
                     }
                 }
                 if (CombatHelper.gotItems(missingEquipment(RangeData.RangeEquipment())))
@@ -99,15 +107,12 @@ public class CowSafespot extends Task {
             for (var item : missingEquipment(RangeData.RangeEquipment())) {
                 var itemToEquip = Inventory.stream().id(item).first();
                 if (itemToEquip != null){
-                    if (itemToEquip.interact("Wield", itemToEquip.name()))
-                    {
-                        Condition.wait(() -> CombatHelper.hasEquipped(item), 100, 10);
+                    if (itemToEquip.interact("Wield", itemToEquip.name())) {
+                        Condition.wait(() -> CombatHelper.hasEquipped(item), 250, 10);
                     }
-                    else
-                    {
-                        if (itemToEquip.interact("Wear", itemToEquip.name()))
-                        {
-                            Condition.wait(() -> CombatHelper.hasEquipped(item), 100, 10);
+                    else {
+                        if (itemToEquip.interact("Wear", itemToEquip.name())) {
+                            Condition.wait(() -> CombatHelper.hasEquipped(item), 250, 10);
                         }
                     }
                 }
