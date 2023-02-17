@@ -12,9 +12,7 @@ import script.mMain;
 
 public class BankBeforeTask extends Task {
     public boolean activate() {
-        if(mMain.shouldBank == true) {
-            return true;
-        } else return false;
+        return mMain.shouldBank;
     }
     @Override
     public boolean execute() {
@@ -23,19 +21,21 @@ public class BankBeforeTask extends Task {
             mMain.shouldBank = false;
         }
 
-        if (Bank.nearest().tile().distanceTo(Players.local()) > 5 && Inventory.isNotEmpty() && mMain.shouldBank) {
-        mMain.state = "Bank before task";
-        DaxWalker.blacklistTeleports(Teleport.CASTLE_WARS_MINIGAME, Teleport.SOUL_WARS_MINIGAME, Teleport.CLAN_WARS_MINIGAME);
-        DaxWalker.walkToBank();
-        }
-        if (Bank.nearest().tile().distanceTo(Players.local()) <= 5) {
-            if (!Bank.opened() && Bank.inViewport()) {
-                Bank.open();
+        if (Inventory.isNotEmpty() && mMain.shouldBank) {
+            if (Bank.nearest().tile().distanceTo(Players.local()) > 5) {
+                mMain.state = "Bank before task";
+                DaxWalker.blacklistTeleports(Teleport.CASTLE_WARS_MINIGAME, Teleport.SOUL_WARS_MINIGAME, Teleport.CLAN_WARS_MINIGAME);
+                DaxWalker.walkToBank();
             }
-            if (Bank.opened()) {
-                if(Bank.depositInventory()) {
-                    Condition.wait(Inventory::isEmpty, 150, 50);
-                    Bank.close();
+            if (Bank.nearest().tile().distanceTo(Players.local()) <= 5) {
+                if (!Bank.opened() && Bank.inViewport()) {
+                    Bank.open();
+                }
+                if (Bank.opened()) {
+                    if(Bank.depositInventory()) {
+                        Condition.wait(Inventory::isEmpty, 150, 50);
+                        Bank.close();
+                    }
                 }
             }
         }
