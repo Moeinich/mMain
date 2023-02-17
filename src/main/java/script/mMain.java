@@ -151,6 +151,7 @@ public class mMain extends AbstractScript {
                         startFletching::Fletching,
                         startHerblore::Herblore,
                         //startMagic::Magic,
+                        //startMelee::Melee,
                         startMining::Mining,
                         startRanged::Ranged,
                         startSmithing::Smithing,
@@ -229,10 +230,10 @@ public class mMain extends AbstractScript {
                     ScriptManager.INSTANCE.stop();
                 } else startMagic.Magic();
                 break;
-            case "MeleeCombat":
+            case "Melee":
                 if (SkillData.meleeCombatDone) {
                     ScriptManager.INSTANCE.stop();
-                } else startMelee.Combat();
+                } else startMelee.Melee();
                 break;
             case "Mining":
                 if (SkillData.miningDone) {
