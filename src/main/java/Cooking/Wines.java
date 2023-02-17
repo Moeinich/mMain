@@ -5,7 +5,9 @@ import org.powbot.api.rt4.Bank;
 import org.powbot.api.rt4.Constants;
 import org.powbot.api.rt4.Game;
 import org.powbot.api.rt4.Inventory;
+import org.powbot.api.rt4.Players;
 import org.powbot.api.rt4.Skills;
+import org.powbot.dax.api.DaxWalker;
 import org.powbot.mobile.script.ScriptManager;
 
 import Helpers.InteractionsHelper;
@@ -26,6 +28,10 @@ public class Wines extends Task {
 
     @Override
     public boolean execute() {
+        mMain.state = "Go to bank";
+        if (Bank.nearest().tile().distanceTo(Players.local()) > 4) {
+            DaxWalker.walkToBank();
+        }
         if (Game.tab(Game.Tab.INVENTORY) && (Inventory.stream().id(ToolID).isEmpty() || Inventory.stream().id(CombineWithItemID).isEmpty())) {
             mMain.state = "Banking loop";
             bank();

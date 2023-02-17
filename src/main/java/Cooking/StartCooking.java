@@ -21,7 +21,6 @@ public class StartCooking {
             mMain.taskRunning.set(false);
         }
         if (cookingTasks.isEmpty()) {
-            cookingTasks.add(new GoToBank());
             cookingTasks.add(new Sardines());
             cookingTasks.add(new Wines());
         }
