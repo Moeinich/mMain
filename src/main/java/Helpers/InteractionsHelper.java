@@ -130,12 +130,10 @@ public class InteractionsHelper {
         }
     }
 
-
-
-    private static void waitForXpToStopIncreasing(AtomicBoolean doActions, long wait) {
-        while (!ScriptManager.INSTANCE.isStopping() && Skills.timeSinceExpGained() < wait) {
+    private static void waitForXpToStopIncreasing(AtomicBoolean doActions, long waitForXP) {
+        while (!ScriptManager.INSTANCE.isStopping() && Skills.timeSinceExpGained() < waitForXP) {
             mMain.state = "Time since xp: " + Skills.timeSinceExpGained();
-            if (Skills.timeSinceExpGained() > wait) {
+            if (Skills.timeSinceExpGained() > waitForXP) {
                 mMain.state = "Done waiting";
                 doActions.set(true);
                 break;
@@ -145,7 +143,7 @@ public class InteractionsHelper {
         }
     }
 
-    public static void combineItemsTest(int RequiredItemID, int CombineWithItemID, int WidgetID, int ComponentID, long wait) {
+    public static void combineItemsTest(int RequiredItemID, int CombineWithItemID, int WidgetID, int ComponentID, long waitForXP) {
         mMain.state = "Combining..";
         AtomicBoolean doActions = new AtomicBoolean(true);
         if (doActions.get()) {
@@ -167,10 +165,10 @@ public class InteractionsHelper {
             doActions.set(false);
         }
         if (!doActions.get()) {
-            waitForXpToStopIncreasing(doActions, wait);
+            waitForXpToStopIncreasing(doActions, waitForXP);
         }
     }
-    public static void interactWithGameobjectTest(int RequiredItemID, GameObject Gameobject, int WidgetID, int ComponentID, String Action, String Name, long wait) {
+    public static void interactWithGameobjectTest(int RequiredItemID, GameObject Gameobject, int WidgetID, int ComponentID, String Action, String Name, long waitForXP) {
         AtomicBoolean doActions = new AtomicBoolean(true);
         if (doActions.get()) {
             Gameobject.interact(Action, Name);
@@ -182,7 +180,7 @@ public class InteractionsHelper {
             doActions.set(false);
         }
         if (!doActions.get()) {
-            waitForXpToStopIncreasing(doActions, wait);
+            waitForXpToStopIncreasing(doActions, waitForXP);
         }
     }
 }
