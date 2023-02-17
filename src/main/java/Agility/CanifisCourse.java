@@ -6,6 +6,7 @@ import org.powbot.api.rt4.GameObject;
 import org.powbot.api.rt4.Inventory;
 import org.powbot.api.rt4.Movement;
 import org.powbot.api.rt4.Objects;
+import org.powbot.api.rt4.Players;
 import org.powbot.api.rt4.Skills;
 
 import Helpers.ItemList;
@@ -26,7 +27,7 @@ public class CanifisCourse extends Task {
             playerHelper.bankForFood(ItemList.CAKE_1891, 27);
         }
 
-        if (Skills.level(Constants.SKILLS_HITPOINTS) < 5 && Game.tab(Game.Tab.INVENTORY)) {
+        if (Players.local().healthPercent() < 60 && Game.tab(Game.Tab.INVENTORY)) {
             mMain.state = "Eating..";
             PlayerHelper playerHelper = new PlayerHelper();
             playerHelper.shouldEat();
