@@ -1,6 +1,7 @@
 package Woodcutting;
 
 import org.powbot.api.Condition;
+import org.powbot.api.rt4.Chat;
 import org.powbot.api.rt4.Constants;
 import org.powbot.api.rt4.GameObject;
 import org.powbot.api.rt4.Objects;
@@ -24,10 +25,10 @@ public class treeWillow extends Task {
             PlayerHelper.walkToTile(SkillData.movementWoodcutting());
         }
         if (PlayerHelper.withinArea(SkillData.willowTreeLocation) && Players.local().animation() == -1) {
-            GameObject treeWillow = PlayerHelper.nearestGameObject("Willow");
+            GameObject treeWillow = PlayerHelper.nearestGameObject(SkillData.willowTreeLocation, "Willow");
             mMain.state = "Cutting Willows";
             if (treeWillow.interact("Chop down", "Willow")) {
-                Condition.wait(() -> Objects.stream().at(treeWillow.tile()).id(SkillData.willowTreeID).isEmpty(), 500, 50);
+                Condition.wait(() -> Objects.stream().at(treeWillow.tile()).id(SkillData.willowTreeID).isEmpty() || Chat.canContinue(), 500, 50);
             }
         }
         return false;

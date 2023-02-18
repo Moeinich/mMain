@@ -4,8 +4,6 @@ import org.powbot.api.Condition;
 import org.powbot.api.rt4.Bank;
 import org.powbot.api.rt4.Camera;
 import org.powbot.api.rt4.Chat;
-import org.powbot.api.rt4.Component;
-import org.powbot.api.rt4.Components;
 import org.powbot.api.rt4.Game;
 import org.powbot.api.rt4.GameObject;
 import org.powbot.api.rt4.Inventory;
@@ -13,8 +11,6 @@ import org.powbot.api.rt4.Item;
 import org.powbot.api.rt4.Players;
 import org.powbot.api.rt4.Widgets;
 import org.powbot.mobile.script.ScriptManager;
-
-import java.util.concurrent.atomic.AtomicBoolean;
 
 import script.mMain;
 
@@ -32,7 +28,7 @@ public class InteractionsHelper {
             Bank.close();
             mMain.taskRunning.set(false); //Skip task on progressive
         } else {
-            Bank.withdrawAmount(ItemName, Amount);
+            Bank.withdraw(ItemName, Amount);
             Condition.wait( () -> Inventory.stream().id(ItemName).isNotEmpty(), 150, 10);
         }
     }

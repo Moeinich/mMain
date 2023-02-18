@@ -13,14 +13,17 @@ import org.powbot.api.script.paint.TrackSkillOption;
 import org.powbot.mobile.script.ScriptManager;
 import org.powbot.mobile.service.ScriptUploader;
 
-import java.text.SimpleDateFormat;
+import java.time.Duration;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import Helpers.InteractionsHelper;
@@ -29,7 +32,7 @@ import Helpers.SkillData;
 @ScriptManifest(
         name = "mMain",
         description = "Progressively levels different skills",
-        version = "0.1.18"
+        version = "0.1.19"
 )
 @ScriptConfiguration.List(
         {
@@ -53,11 +56,14 @@ public class mMain extends AbstractScript {
         new ScriptUploader().uploadAndStart("mMain", "Account", "emulator-5554", true, true);
     }
 
+    final int MIN_TIME_LIMIT = 1200000;
+    final int MAX_TIME_LIMIT = 3400000;
     public static String runningSkill;
     public static String state;
     public static Boolean shouldBank = true;
     Executor taskHandler = Executors.newSingleThreadExecutor();
     public static final AtomicBoolean taskRunning = new AtomicBoolean(false);
+
 
     @Override
     public void onStart() {
@@ -65,8 +71,14 @@ public class mMain extends AbstractScript {
         runningSkill = "Determining...";
         state = "Starting...";
         InteractionsHelper.cameraCheck();
-        SimpleDateFormat timerFormat = new SimpleDateFormat("mm:ss");
         Notifications.showNotification("mMain starting " + skill);
+
+        final DateTimeFormatter TIMER_FORMAT = DateTimeFormatter.ofPattern("mm:ss");
+        ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();
+
+        final Duration[] remainingDuration = {Duration.ofMillis(Stopwatch.timeLeft())};
+        final LocalTime[] remainingTime = {LocalTime.MIDNIGHT.plus(remainingDuration[0])};
+        final String[] formattedTime = {TIMER_FORMAT.format(remainingTime[0])};
 
         PaintBuilder builder = new PaintBuilder()
                 .addString("Mode: ", () -> skill)
@@ -74,7 +86,7 @@ public class mMain extends AbstractScript {
 
         if (skill.equals("Progressive")) {
             builder.addString("Running: ", () -> runningSkill)
-                    .addString("Skill switch: ", () -> timerFormat.format(new Date(Stopwatch.timeLeft())));
+            .addString("Skill switch: ", () -> formattedTime[0]);
         }
         builder.trackSkill(Skill.Mining, TrackSkillOption.LevelProgressBar)
                 .trackSkill(Skill.Fishing, TrackSkillOption.LevelProgressBar)
@@ -92,8 +104,13 @@ public class mMain extends AbstractScript {
                 .trackSkill(Skill.Magic, TrackSkillOption.LevelProgressBar);
         Paint p = builder.x(40).y(300).build();
         addPaint(p);
-    }
 
+        executor.scheduleAtFixedRate(() -> {
+            remainingDuration[0] = Duration.ofMillis(Stopwatch.timeLeft());
+            remainingTime[0] = LocalTime.MIDNIGHT.plus(remainingDuration[0]);
+            formattedTime[0] = TIMER_FORMAT.format(remainingTime[0]);
+        }, 1, 1, TimeUnit.SECONDS);
+    }
     public static class Stopwatch {
         private static long stopTime;
         private boolean running;
@@ -162,12 +179,13 @@ public class mMain extends AbstractScript {
                 if (SkillData.allSkillsDone()) {
                     ScriptManager.INSTANCE.stop();
                 }
+
                 if (taskRunning.compareAndSet(false, true)) {
                     final Stopwatch runtime = new Stopwatch();
                     if (!runtime.isRunning()) {
                         if (!mMain.shouldBank) {
                             mMain.shouldBank = true;
-                        } else runtime.reset(Random.nextInt(40, 55 * 1000 * 60));
+                        } else runtime.reset(Random.nextInt(MIN_TIME_LIMIT, MAX_TIME_LIMIT));
                     }
                     final int taskIndex = ThreadLocalRandom.current().nextInt(tasks.size());
                     final CountDownLatch countdownLatch = new CountDownLatch(1);

@@ -1,6 +1,7 @@
 package Woodcutting;
 
 import org.powbot.api.Condition;
+import org.powbot.api.rt4.Chat;
 import org.powbot.api.rt4.Constants;
 import org.powbot.api.rt4.GameObject;
 import org.powbot.api.rt4.Objects;
@@ -25,10 +26,10 @@ public class treeNormal extends Task {
         }
         //cut normal logs
         if (PlayerHelper.withinArea(SkillData.normalTreeLocation) && Players.local().animation() == -1) {
-            GameObject treeNormal = PlayerHelper.nearestGameObject("Tree");
+            GameObject treeNormal = PlayerHelper.nearestGameObject(SkillData.normalTreeLocation,"Tree");
             mMain.state = "Cutting Trees..";
             if (treeNormal.interact("Chop down", "Tree")) {
-                Condition.wait(() -> Objects.stream().at(treeNormal.tile()).id(SkillData.normalTreeID).isEmpty(), 500, 50);
+                Condition.wait(() -> Objects.stream().at(treeNormal.tile()).id(SkillData.normalTreeID).isEmpty() || Chat.canContinue(), 500, 50);
             }
         }
         return false;

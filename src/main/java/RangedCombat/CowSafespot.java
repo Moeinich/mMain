@@ -11,10 +11,9 @@ import org.powbot.api.rt4.Npc;
 import org.powbot.api.rt4.Players;
 import org.powbot.api.rt4.Skills;
 import org.powbot.dax.api.DaxWalker;
-import org.powbot.dax.teleports.Teleport;
-import org.powbot.mobile.script.ScriptManager;
 
 import Helpers.CombatHelper;
+import Helpers.InteractionsHelper;
 import Helpers.ItemList;
 import Helpers.PlayerHelper;
 import Helpers.SkillData;
@@ -63,7 +62,6 @@ public class CowSafespot extends Task {
     private void GetEquipment() {
         if (Bank.nearest().tile().distanceTo(Players.local()) > 5) {
             mMain.state = "Walking to bank";
-            DaxWalker.blacklistTeleports(Teleport.CASTLE_WARS_MINIGAME, Teleport.SOUL_WARS_MINIGAME, Teleport.CLAN_WARS_MINIGAME);
             DaxWalker.walkToBank();
         }
         if (!CombatHelper.gotItems(missingEquipment(RangeData.RangeEquipment()))) {
@@ -78,26 +76,18 @@ public class CowSafespot extends Task {
                     Bank.depositEquipment();
                     Bank.depositInventory();
                     for (var itemId : missingEquipment(RangeData.RangeEquipment())) {
-                        if (Bank.stream().id(itemId).isEmpty()) {
-                            if (mMain.runningSkill.equals("Progressive")) {
-                                mMain.state = "We ran out of " + itemId;
-                                SkillData.setSkillDone();
-                                Bank.close();
-                                mMain.taskRunning.set(false); //Skip task on progressive
-                            } else ScriptManager.INSTANCE.stop();
-                        }
                         if (itemId == ItemList.IRON_ARROW_884 || itemId == ItemList.MITHRIL_DART_809) {
                             System.out.println("Withdrawing all of " + itemId + " ammo");
-                            Bank.withdraw(itemId, Bank.Amount.ALL);
+                            InteractionsHelper.withdrawItem(itemId, 10000);
+                            Condition.wait(() -> Inventory.stream().id(itemId).isNotEmpty(), 250,10);
+                        } else {
+                            System.out.println("Withdrawing item " + itemId);
+                            InteractionsHelper.withdrawItem(itemId, 1);
                             Condition.wait(() -> Inventory.stream().id(itemId).isNotEmpty(), 250,10);
                         }
-                        System.out.println("Withdrawing item " + itemId);
-                        Bank.withdraw(itemId, 1);
-                        Condition.wait(() -> Inventory.stream().id(itemId).isNotEmpty(), 250,10);
                     }
                 }
-                if (CombatHelper.gotItems(missingEquipment(RangeData.RangeEquipment())))
-                {
+                if (CombatHelper.gotItems(missingEquipment(RangeData.RangeEquipment()))) {
                     Bank.close();
                 }
             }

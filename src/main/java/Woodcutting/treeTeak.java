@@ -2,6 +2,7 @@ package Woodcutting;
 
 import org.powbot.api.Condition;
 import org.powbot.api.Random;
+import org.powbot.api.rt4.Chat;
 import org.powbot.api.rt4.Constants;
 import org.powbot.api.rt4.GameObject;
 import org.powbot.api.rt4.Movement;
@@ -37,10 +38,10 @@ public class treeTeak extends Task {
                 world.hop();
             }
 
-            GameObject treeTeak = PlayerHelper.nearestGameObject("Teak");
+            GameObject treeTeak = PlayerHelper.nearestGameObject(SkillData.teakArea, "Teak");
             mMain.state = "Cutting teaks";
             if (treeTeak.interact("Chop down", "Teak")) {
-                Condition.wait(() -> Objects.stream().at(treeTeak.tile()).id(SkillData.teakTreeID).isEmpty(), 500, 50);
+                Condition.wait(() -> Objects.stream().at(treeTeak.tile()).id(SkillData.teakTreeID).isEmpty() || Chat.canContinue(), 500, 50);
             }
         }
         return false;

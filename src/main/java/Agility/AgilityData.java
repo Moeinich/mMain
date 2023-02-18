@@ -60,9 +60,6 @@ public class AgilityData {
         public int getId() {
             return id;
         }
-        public String getLoot() {
-            return "Marks of grace";
-        }
 
         public String getAction() {
             return action;

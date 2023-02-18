@@ -13,8 +13,7 @@ public class MagicData {
     public static int[] MedMage = {ItemList.ZAMORAK_ROBE_1035, ItemList.ZAMORAK_ROBE_1033, ItemList.BLUE_WIZARD_HAT_579, ItemList.STAFF_OF_FIRE_1387, ItemList.AMULET_OF_GLORY_1704, ItemList.COMBAT_BRACELET_11126, ItemList.RED_CAPE_1007};
 
     //Runes!
-    public static int windStrikeRunes = ItemList.MIND_RUNE_558;
-    public static int[] fireStrikeRunes = {ItemList.AIR_RUNE_556, ItemList.FIRE_RUNE_554};
+    public static int[] Runes = {ItemList.AIR_RUNE_556, ItemList.MIND_RUNE_558};
 
     public static int[] MagicEquipment() {
         if (Skills.realLevel(Constants.SKILLS_MAGIC) <= 12) {

@@ -86,7 +86,13 @@ public class PlayerHelper {
     public static GameObject nearestGameObject(String... name) {
         return Objects.stream().name(name).nearest().first();
     }
+    public static GameObject nearestGameObject(Area withinTiles, String... name) {
+        return Objects.stream().within(withinTiles).name(name).nearest().first();
+    }
 
+    public static GameObject nearestGameObject(Area withinTiles, int... ids) {
+        return Objects.stream().within(withinTiles).id(ids).nearest().first();
+    }
     public static GameObject nearestGameObject(int withinTiles, int... ids) {
         return Objects.stream().within(withinTiles).id(ids).nearest().first();
     }
@@ -95,5 +101,11 @@ public class PlayerHelper {
     }
     public static Npc nearestNpc(Area withinArea, String... names) {
         return Npcs.stream().within(withinArea).name(names).nearest().first();
+    }
+    public static boolean hasItem(int... itemID) {
+        return Inventory.stream().id(itemID).isNotEmpty();
+    }
+    public static boolean hasItem(String... itemID) {
+        return Inventory.stream().name(itemID).isNotEmpty();
     }
 }

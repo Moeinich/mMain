@@ -1,6 +1,7 @@
 package Woodcutting;
 
 import org.powbot.api.Condition;
+import org.powbot.api.rt4.Chat;
 import org.powbot.api.rt4.Constants;
 import org.powbot.api.rt4.GameObject;
 import org.powbot.api.rt4.Objects;
@@ -23,10 +24,10 @@ public class treeOak extends Task {
             PlayerHelper.walkToTile(SkillData.movementWoodcutting());
         }
         if (PlayerHelper.withinArea(SkillData.oakTreeLocation) && Players.local().animation() == -1) {
-            GameObject treeOak = PlayerHelper.nearestGameObject("Oak");
+            GameObject treeOak = PlayerHelper.nearestGameObject(SkillData.oakTreeLocation, "Oak");
             mMain.state = "Cutting Oaks";
             if (treeOak.interact("Chop down", "Oak")) {
-                Condition.wait(() -> Objects.stream().at(treeOak.tile()).id(SkillData.oakTreeID).isEmpty(), 500, 50);
+                Condition.wait(() -> Objects.stream().at(treeOak.tile()).id(SkillData.oakTreeID).isEmpty() || Chat.canContinue(), 500, 50);
             }
         }
         return false;
