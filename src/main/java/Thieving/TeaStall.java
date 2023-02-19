@@ -15,8 +15,8 @@ import org.powbot.api.rt4.World;
 
 import java.util.List;
 
-import Helpers.PlayerHelper;
-import Helpers.SkillData;
+import Helpers.playerHelper;
+import Helpers.skillData;
 import Helpers.Task;
 import script.mMain;
 
@@ -45,19 +45,19 @@ public class TeaStall extends Task {
         //Stop when thieving is done!
         if (Skills.realLevel(Constants.SKILLS_THIEVING) >= 60) {
             mMain.state = "Thieving done!";
-            SkillData.setSkillDone();
+            skillData.setSkillDone();
             mMain.taskRunning.set(false);
         }
         //Go to thieving spot
-        if (!Players.local().tile().equals(SkillData.movementThieving()) && !(SkillData.movementThieving().tile().distanceTo(Players.local()) < 3)) {
+        if (!Players.local().tile().equals(thievingData.movementThieving()) && !(thievingData.movementThieving().tile().distanceTo(Players.local()) < 3)) {
             WalkToSpot();
         }
         //World hop check
-        if (PlayerHelper.withinArea(SkillData.teaStallArea) && Players.stream().within(SkillData.teaStallArea).count() != 1) {
+        if (playerHelper.withinArea(thievingData.teaStallArea) && Players.stream().within(thievingData.teaStallArea).count() != 1) {
             ShouldWorldhop();
         }
         //Thieving loop
-        if (Players.stream().within(SkillData.teaStallArea).count() == 1) {
+        if (Players.stream().within(thievingData.teaStallArea).count() == 1) {
             if (shouldDropItems()) {
                 dropItems();
             } else if (!Inventory.isFull()) {
@@ -70,8 +70,8 @@ public class TeaStall extends Task {
         if (!Game.tab(Game.Tab.INVENTORY)) {
             Condition.wait(() -> Game.tab(Game.Tab.INVENTORY), 250, 10);
         }
-        GameObject teaStall = PlayerHelper.nearestGameObject(2, STALL_ID);
-        if (teaStall.valid() && Players.stream().within(SkillData.teaStallArea).count() == 1) {
+        GameObject teaStall = playerHelper.nearestGameObject(2, STALL_ID);
+        if (teaStall.valid() && Players.stream().within(thievingData.teaStallArea).count() == 1) {
             if (!teaStall.inViewport()) { // Need to turn camera to the stall
                 mMain.state = "Turning camera";
                 Camera.turnTo(teaStall);
@@ -87,18 +87,18 @@ public class TeaStall extends Task {
     }
     private void ShouldWorldhop() {
         mMain.state = "Worldhopping";
-        int[] p2p = SkillData.p2p;
+        int[] p2p = skillData.p2p;
         int randomWorld = p2p[Random.nextInt(0, p2p.length - 1)];
         World world = new World(randomWorld, randomWorld, 1, World.Type.MEMBERS, World.Server.RUNE_SCAPE, World.Specialty.NONE);
         world.hop();
     }
     private void WalkToSpot() {
-        if (!Players.local().tile().equals(SkillData.movementThieving()) && !(SkillData.movementThieving().tile().distanceTo(Players.local()) < 3)) { // Need to move to our thieving spot
+        if (!Players.local().tile().equals(thievingData.movementThieving()) && !(thievingData.movementThieving().tile().distanceTo(Players.local()) < 3)) { // Need to move to our thieving spot
             mMain.state = "Walking to Thieving spot";
-            PlayerHelper.walkToTile(SkillData.movementThieving());
-            Condition.wait(() -> SkillData.movementThieving().tile().distanceTo(Players.local()) < 3, 150, 20);
-            if (SkillData.movementThieving().tile().distanceTo(Players.local()) < 3) {
-                Movement.step(SkillData.movementThieving());
+            playerHelper.walkToTile(thievingData.movementThieving());
+            Condition.wait(() -> thievingData.movementThieving().tile().distanceTo(Players.local()) < 3, 150, 20);
+            if (thievingData.movementThieving().tile().distanceTo(Players.local()) < 3) {
+                Movement.step(thievingData.movementThieving());
             }
         }
     }

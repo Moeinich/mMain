@@ -21,33 +21,26 @@ import org.powbot.dax.teleports.Teleport;
 
 import script.mMain;
 
-public class PlayerHelper {
+public class playerHelper {
 
-    public void shouldEat() {
+    public static void shouldEat() {
         mMain.state = "Eating food";
         Item food = Inventory.stream().action("Eat").first();
         food.interact("Eat");
         Condition.wait(() -> Players.local().animation() == -1, 250, 50);
     }
-    public void bankForFood(int FoodName, int Amount) {
+    public static void bankForFood(int foodName, int amount) {
         mMain.state = "Bank for food";
         if (Bank.nearest().tile().distanceTo(Players.local()) > 5) {
             Movement.moveToBank();
         }
         if (Bank.nearest().tile().distanceTo(Players.local()) <= 5) {
-            if (!Bank.opened()) {
-                Bank.open();
-                Condition.wait(Bank::opened, 200, 50);
-            }
-            if (Bank.opened()) {
-                InteractionsHelper interactionsHelper = new InteractionsHelper();
-                interactionsHelper.depositAndWithdraw(FoodName, Amount);
-                Condition.wait( () -> Inventory.stream().id(FoodName).count() >= 1, 200, 50);
-                Bank.close();
-                Condition.wait( () -> !Bank.opened(), 150, 50);
-            }
+            interactionHelper.depositAndWithdraw(foodName, amount);
+            Bank.close();
+            Condition.wait( () -> !Bank.opened(), 150, 50);
         }
     }
+
     public static void lootItems(String Action, String ItemName) {
         GroundItem groundItem = GroundItems.stream().within(7).name(ItemName).nearest().first();
         if (groundItem.inViewport()){
@@ -79,7 +72,7 @@ public class PlayerHelper {
         Widgets.widget(160).component(29).click();
         Condition.wait(Movement::running, 150, 50);
     }
-    public void setAttackMode(Combat.Style style) {
+    public static void setAttackMode(Combat.Style style) {
         System.out.print("Setting combat mode to " + style);
         Combat.style(style);
     }
@@ -96,16 +89,19 @@ public class PlayerHelper {
     public static GameObject nearestGameObject(int withinTiles, int... ids) {
         return Objects.stream().within(withinTiles).id(ids).nearest().first();
     }
-    public static Npc nearestNpc(String... names) {
-        return Npcs.stream().name(names).nearest().first();
+    public static Npc nearestNpc(String... npcName) {
+        return Npcs.stream().name(npcName).nearest().first();
     }
-    public static Npc nearestNpc(Area withinArea, String... names) {
-        return Npcs.stream().within(withinArea).name(names).nearest().first();
+    public static Npc nearestNpc(Area withinArea, String... npcName) {
+        return Npcs.stream().within(withinArea).name(npcName).nearest().first();
+    }
+    public static Npc nearestCombatNpc(Area withinArea, String... npcName) {
+        return Npcs.stream().within(withinArea).name(npcName).filter(n -> n.healthPercent() == 100).nearest().first();
     }
     public static boolean hasItem(int... itemID) {
         return Inventory.stream().id(itemID).isNotEmpty();
     }
-    public static boolean hasItem(String... itemID) {
-        return Inventory.stream().name(itemID).isNotEmpty();
+    public static boolean hasItem(String... itemName) {
+        return Inventory.stream().name(itemName).isNotEmpty();
     }
 }

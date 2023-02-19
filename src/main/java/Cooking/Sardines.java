@@ -7,10 +7,10 @@ import org.powbot.api.rt4.GameObject;
 import org.powbot.api.rt4.Inventory;
 import org.powbot.api.rt4.Skills;
 
-import Helpers.InteractionsHelper;
+import Helpers.interactionHelper;
 import Helpers.ItemList;
-import Helpers.PlayerHelper;
-import Helpers.SkillData;
+import Helpers.playerHelper;
+import Helpers.skillData;
 import Helpers.Task;
 import script.mMain;
 
@@ -21,7 +21,7 @@ public class Sardines extends Task {
     }
     @Override
     public boolean execute() {
-        if (!PlayerHelper.withinArea(SkillData.cookingAreaEdgeville)) {
+        if (!playerHelper.withinArea(cookingData.cookingAreaEdgeville)) {
             mMain.state = "Move to edgeville";
             MoveToEdgeville();
         }
@@ -34,26 +34,26 @@ public class Sardines extends Task {
         return false;
     }
     private void MoveToEdgeville() {
-        PlayerHelper.walkToTile(SkillData.cookingAreaEdgeville.getRandomTile());
+        playerHelper.walkToTile(cookingData.cookingAreaEdgeville.getRandomTile());
     }
     private void ShouldBank() {
         mMain.state = "Get raw fish";
-        if (!PlayerHelper.withinArea(SkillData.edgevilleBank)) {
-            PlayerHelper.walkToTile(SkillData.edgevilleBank.getRandomTile());
+        if (!playerHelper.withinArea(skillData.edgevilleBank)) {
+            playerHelper.walkToTile(skillData.edgevilleBank.getRandomTile());
         }
-        if (PlayerHelper.withinArea(SkillData.edgevilleBank) && !Bank.opened() && Bank.inViewport()) {
+        if (playerHelper.withinArea(skillData.edgevilleBank) && !Bank.opened() && Bank.inViewport()) {
             Bank.open();
-            InteractionsHelper.depositAndWithdraw(ItemList.RAW_SARDINE_327, 28);
+            interactionHelper.depositAndWithdraw(ItemList.RAW_SARDINE_327, 28);
         }
     }
     private void ShouldCook() {
         mMain.state = "Do cooking";
-        if (!PlayerHelper.withinArea(SkillData.StoveAreaEdgeville)) {
-            PlayerHelper.walkToTile(SkillData.StoveAreaEdgeville.getRandomTile());
+        if (!playerHelper.withinArea(cookingData.StoveAreaEdgeville)) {
+            playerHelper.walkToTile(cookingData.StoveAreaEdgeville.getRandomTile());
         }
-        if (PlayerHelper.withinArea(SkillData.StoveAreaEdgeville)) {
-            GameObject cookingStove = PlayerHelper.nearestGameObject(10, 12269);
-            InteractionsHelper.interactWithGameobject(ItemList.RAW_SARDINE_327, cookingStove, 270, 14, "Cook", "Stove", 1);
+        if (playerHelper.withinArea(cookingData.StoveAreaEdgeville)) {
+            GameObject cookingStove = playerHelper.nearestGameObject(10, 12269);
+            interactionHelper.interactWithGameobject(ItemList.RAW_SARDINE_327, cookingStove, 270, 14, "Cook", "Stove", 1);
         }
     }
 }

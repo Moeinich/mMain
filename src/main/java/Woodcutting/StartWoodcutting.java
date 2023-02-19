@@ -1,6 +1,6 @@
 package Woodcutting;
 
-import Helpers.SkillData;
+import Helpers.skillData;
 import Helpers.Task;
 import script.mMain;
 
@@ -16,7 +16,7 @@ public class StartWoodcutting {
         mMain.runningSkill = "Woodcutting";
         if (Skills.realLevel(Constants.SKILLS_WOODCUTTING) >= 70) {
             mMain.state = "Woodcutting done!";
-            SkillData.setSkillDone();
+            skillData.setSkillDone();
             mMain.taskRunning.set(false);
         }
         if (woodcuttingTasks.isEmpty()) {

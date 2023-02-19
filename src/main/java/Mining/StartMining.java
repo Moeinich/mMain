@@ -7,7 +7,7 @@ import org.powbot.mobile.script.ScriptManager;
 
 import java.util.ArrayList;
 
-import Helpers.SkillData;
+import Helpers.skillData;
 import Helpers.Task;
 import script.mMain;
 
@@ -17,7 +17,7 @@ public class StartMining {
         mMain.runningSkill = "Mining";
         if (Skills.realLevel(Constants.SKILLS_MINING) >= 70) {
             mMain.state = "Mining done!";
-            SkillData.setSkillDone();
+            skillData.setSkillDone();
             mMain.taskRunning.set(false);
         }
         if (miningTasks.isEmpty()) {

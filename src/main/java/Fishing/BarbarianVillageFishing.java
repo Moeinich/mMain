@@ -8,8 +8,7 @@ import org.powbot.api.rt4.Npcs;
 import org.powbot.api.rt4.Players;
 import org.powbot.api.rt4.Skills;
 
-import Helpers.PlayerHelper;
-import Helpers.SkillData;
+import Helpers.playerHelper;
 import Helpers.Task;
 import script.mMain;
 
@@ -20,14 +19,14 @@ public class BarbarianVillageFishing extends Task {
     }
     @Override
     public boolean execute() {
-        if (!PlayerHelper.withinArea(SkillData.BarbarianVillageFishingArea)) {
+        if (!playerHelper.withinArea(fishingData.BarbarianVillageFishingArea)) {
             mMain.state = "Go to fishing area";
-            PlayerHelper.walkToTile(SkillData.movementFishing());
+            playerHelper.walkToTile(fishingData.movementFishing());
         }
 
-        if (PlayerHelper.withinArea(SkillData.BarbarianVillageFishingArea)) {
+        if (playerHelper.withinArea(fishingData.BarbarianVillageFishingArea)) {
             mMain.state = "Do fishing";
-            Npc BarbarianVillageFishingSpot = PlayerHelper.nearestNpc("Rod Fishing spot");
+            Npc BarbarianVillageFishingSpot = playerHelper.nearestNpc("Rod Fishing spot");
             if (BarbarianVillageFishingSpot.inViewport() && Players.local().animation() == -1) {
                 BarbarianVillageFishingSpot.interact("Lure", "Rod Fishing spot");
                 Condition.wait(() -> Npcs.stream().at(BarbarianVillageFishingSpot.tile()).isEmpty(), 150, 50);

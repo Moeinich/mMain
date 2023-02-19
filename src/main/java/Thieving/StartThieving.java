@@ -6,9 +6,9 @@ import org.powbot.mobile.script.ScriptManager;
 
 import java.util.ArrayList;
 
-import Helpers.SkillData;
+import Helpers.skillData;
 import Helpers.Task;
-import Helpers.BankBeforeTask;
+import Helpers.bankBeforeTask;
 import script.mMain;
 
 public class StartThieving {
@@ -17,11 +17,11 @@ public class StartThieving {
         mMain.runningSkill = "Thieving";
         if (Skills.realLevel(Constants.SKILLS_THIEVING) >= 60) {
             mMain.state = "Thieving done!";
-            SkillData.setSkillDone();
+            skillData.setSkillDone();
             mMain.taskRunning.set(false);
         }
         if (thievingTasks.isEmpty()) {
-            thievingTasks.add(new BankBeforeTask());
+            thievingTasks.add(new bankBeforeTask());
             thievingTasks.add(new ThievingMen());
             thievingTasks.add(new TeaStall());
             thievingTasks.add(new FruitStall());

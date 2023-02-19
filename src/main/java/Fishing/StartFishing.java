@@ -7,7 +7,7 @@ import org.powbot.mobile.script.ScriptManager;
 
 import java.util.ArrayList;
 
-import Helpers.SkillData;
+import Helpers.skillData;
 import Helpers.Task;
 import script.mMain;
 
@@ -17,7 +17,7 @@ public class StartFishing {
         mMain.runningSkill = "Fishing";
         if (Skills.realLevel(Constants.SKILLS_FISHING) >= 70) {
             mMain.state = "Fishing done!";
-            SkillData.setSkillDone();
+            skillData.setSkillDone();
             mMain.taskRunning.set(false);
         }
         if (fishingTasks.isEmpty()) {

@@ -6,8 +6,8 @@ import org.powbot.mobile.script.ScriptManager;
 
 import java.util.ArrayList;
 
-import Helpers.GoToBank;
-import Helpers.SkillData;
+import Helpers.goToBank;
+import Helpers.skillData;
 import Helpers.Task;
 import script.mMain;
 
@@ -17,11 +17,11 @@ public class StartCrafting {
         mMain.runningSkill = "Crafting";
         if (Skills.realLevel(Constants.SKILLS_CRAFTING) >= 70) {
             mMain.state = "Crafting done!";
-            SkillData.setSkillDone();
+            skillData.setSkillDone();
             mMain.taskRunning.set(false);
         }
         if (craftingTasks.isEmpty()) {
-            craftingTasks.add(new GoToBank());
+            craftingTasks.add(new goToBank());
             craftingTasks.add(new BeerGlass());
             craftingTasks.add(new EmptyOilLamp());
             craftingTasks.add(new Vial());

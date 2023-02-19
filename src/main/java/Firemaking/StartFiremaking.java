@@ -6,7 +6,7 @@ import org.powbot.mobile.script.ScriptManager;
 
 import java.util.ArrayList;
 
-import Helpers.SkillData;
+import Helpers.skillData;
 import Helpers.Task;
 import script.mMain;
 
@@ -14,13 +14,13 @@ public class StartFiremaking {
     private ArrayList<Task> firemakingTasks = new ArrayList<>();
     public void Firemaking() {
         mMain.runningSkill = "Firemaking";
-        if (Skills.realLevel(Constants.SKILLS_FIREMAKING) >= 70) {
+        if (Skills.realLevel(Constants.SKILLS_FIREMAKING) >= 50) {
             mMain.state = "Firemaking done!";
-            SkillData.setSkillDone();
+            skillData.setSkillDone();
             mMain.taskRunning.set(false);
         }
         if (firemakingTasks.isEmpty()) {
-            firemakingTasks.add(new GetMaterials());
+            firemakingTasks.add(new getLogs());
             firemakingTasks.add(new DoFiremaking());
         }
 

@@ -10,7 +10,7 @@ import org.powbot.dax.teleports.Teleport;
 
 import script.mMain;
 
-public class GoToBank extends Task{
+public class goToBank extends Task{
     @Override
     public boolean activate() {
         return Bank.nearest().tile().distanceTo(Players.local()) > 5;

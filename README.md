@@ -4,44 +4,37 @@
 
 **Things to note:**
 Let pow close level up messages. Please have these items on ur account:
-- 1600 sardines
-- 
+- Have ShoppingList items on ur account.
 
 **Progressive:**
 - [X] Do a proper timer to switch between tasks
-- [ ] Make skills work with skill switching. (In progress)
+- [X] Make skills work with skill switching.
 
-**Woodcutting:**
-- [X] Normal trees: 1-15
-- [X] Oaks: 15-30
-- [X] Willows: 30-?
-- [X] Withdraw axe depending on wc level.
-
-**Fishing:**
-- [X] Train to level 20 in Al Kharid
-- [X] Train from 20-? at Barbarian Village.
-- [X] Swap fishing gear along the way
+**Agility**
+- [X] 1-10 Gnome course
+- [X] 10-30 Draynor course
+- [X] 30-40 Varrock course
+- [X] 40-60 Canifis course
 
 **Cooking:**
 - [X] Sardines 1-35
 - [X] Wines to 70
 
+**Crafting**
+- [X] 1-12 Beer glass
+- [X] 12-33 Empty Oil Lamp
+- [X] 33-42 Vial
+- [X] 42-46 Empty fishbowl
+- [X] 46-? Unpowered Orbs.
+
 **Firemaking**
-- [X] Light fires at Grand Exchange from the logs in bank.
+- [X] Light fires at Falador from the logs in bank.
 - [X] Progressively switch to higher tiers of logs depending on fm level
 
-**Mining:**
-- [X] Mines Copper & Tin to level 14 at varrock
-- [X] Mines Iron from 15-infinity at Lova
-- [X] Withdraw Pickaxe depending on mining level
-  
-**Thieving**
-- [X] 1-5 Men in lumbridge
-- [X] 5-25 Tea stalls varrock
-- [X] 25-60 fruit stalls
-
-**Herblore**
-- [X] 1-45 Attack potions
+**Fishing:**
+- [X] Train to level 20 in Al Kharid
+- [X] Train from 20-? at Barbarian Village.
+- [X] Swap fishing gear along the way
 
 **Fletching**
 - [X] 1-10 Arrow shafts
@@ -53,19 +46,40 @@ Let pow close level up messages. Please have these items on ur account:
 - [X] 50-55 Maple shortbow (u)
 - [X] 55-70 Maple longbow (u) + stringing (HIGHLY EXPERIMENTAL!)
 
-**Crafting**
-- [X] 1-12 Beer glass
-- [X] 12-33 Empty Oil Lamp
-- [X] 33-42 Vial
-- [X] 42-46 Empty fishbowl
-- [X] 46-? Unpowered Orbs.
+**Herblore**
+- [X] 1-45 Attack potions
 
-**Agility**
-- [X] 1-10 Gnome course
-- [X] 10-? Draynor course
+**Magic**
+- [X] 1-30 Safespot cows
+- [X] Switches gear along the way
+
+**Melee**
+- [X] 1-15 Seagulls
+- [X] 15-30 cows
+
+**Mining:**
+- [X] Mines Copper & Tin to level 14 at varrock
+- [X] Mines Iron from 15-infinity at Lova
+- [X] Withdraw Pickaxe depending on mining level
+
+**Ranged**
+- [X] 1-30 Safespot cows
+- [X] Switches gear along the way
 
 **Smithing**
 - [X] 1-5 Bronze daggers
 - [X] 5-18 Bronze scimitars
 - [X] 18-33 Bronze platebodies
 - [X] 33-? Iron platebodies
+
+**Thieving**
+- [X] 1-5 Men in lumbridge
+- [X] 5-25 Tea stalls varrock
+- [X] 25-60 fruit stalls
+
+**Woodcutting:**
+- [X] Normal trees: 1-15
+- [X] Oaks: 15-30
+- [X] Willows: 30-35
+- [X] Teaks: 35-70
+- [X] Withdraw axe depending on wc level.

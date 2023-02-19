@@ -10,9 +10,9 @@ import org.powbot.api.rt4.Movement;
 import org.powbot.api.rt4.Players;
 import org.powbot.api.rt4.Skills;
 
-import Helpers.InteractionsHelper;
+import Helpers.interactionHelper;
 import Helpers.ItemList;
-import Helpers.PlayerHelper;
+import Helpers.playerHelper;
 import Helpers.Task;
 import script.mMain;
 
@@ -34,31 +34,31 @@ public class ironPlatebody extends Task {
     }
     private void ShouldBank() {
         mMain.state = "Get bars";
-        if (!PlayerHelper.withinArea(smithingData.varrockWestBank)) {
+        if (!playerHelper.withinArea(smithingData.varrockWestBank)) {
             Movement.step(smithingData.varrockWestBankTile);
         }
-        if (PlayerHelper.withinArea(smithingData.varrockWestBank)) {
+        if (playerHelper.withinArea(smithingData.varrockWestBank)) {
             if (!Bank.opened() && Bank.inViewport()) {
                 Bank.open();
             }
             if (Inventory.stream().name("Hammer").isEmpty()) {
-                InteractionsHelper.depositAndWithdraw(ItemList.HAMMER_2347, 1);
+                interactionHelper.depositAndWithdraw(ItemList.HAMMER_2347, 1);
             } else {
                 Bank.depositAllExcept("Hammer", "Iron bar");
-                InteractionsHelper.withdrawItem(ItemList.IRON_BAR_2351, 27);
+                interactionHelper.withdrawItem(ItemList.IRON_BAR_2351, 27);
                 Bank.close();
             }
         }
     }
     private void ShouldSmith() {
         mMain.state = "Smith platebodies";
-        if (!PlayerHelper.withinArea(smithingData.anvilArea)) {
+        if (!playerHelper.withinArea(smithingData.anvilArea)) {
             Movement.step(smithingData.smithingTile);
             Condition.wait( () -> smithingData.smithingTile.equals(Players.local().tile()), 250, 50);
         }
-        if (PlayerHelper.withinArea(smithingData.anvilArea)) {
-            GameObject anvil = PlayerHelper.nearestGameObject(1, 2097);
-            InteractionsHelper.interactWithGameobject(ItemList.IRON_BAR_2351, anvil, 312, 22, "Smith", "Anvil", 5);
+        if (playerHelper.withinArea(smithingData.anvilArea)) {
+            GameObject anvil = playerHelper.nearestGameObject(1, 2097);
+            interactionHelper.interactWithGameobject(ItemList.IRON_BAR_2351, anvil, 312, 22, "Smith", "Anvil", 5);
         }
     }
 }

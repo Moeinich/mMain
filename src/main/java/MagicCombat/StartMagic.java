@@ -6,8 +6,8 @@ import org.powbot.mobile.script.ScriptManager;
 
 import java.util.ArrayList;
 
-import Helpers.BankBeforeTask;
-import Helpers.SkillData;
+import Helpers.bankBeforeTask;
+import Helpers.skillData;
 import Helpers.Task;
 import script.mMain;
 
@@ -17,12 +17,12 @@ public class StartMagic {
         mMain.runningSkill = "Magic";
         if (Skills.realLevel(Constants.SKILLS_MAGIC) >= 30) {
             mMain.state = "Magic done!";
-            SkillData.setSkillDone();
+            skillData.setSkillDone();
             mMain.taskRunning.set(false);
         }
 
         if (MagicTasks.isEmpty()) {
-            MagicTasks.add(new BankBeforeTask());
+            MagicTasks.add(new bankBeforeTask());
             MagicTasks.add(new CowSafespot());
         }
 

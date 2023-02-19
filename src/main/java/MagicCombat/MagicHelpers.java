@@ -55,15 +55,14 @@ public class MagicHelpers {
         return AutoCastSpell.NONE;
     }
 
-    public static boolean setAutoCast(AutoCastSpell spell) {
+    public static void setAutoCast(AutoCastSpell spell) {
         Component component = Widgets.component(WIDGET_AUTOCAST, WIDGET_AUTOCAST_SPELLS_COMPONENT, spell.getComponent());
         if (component == Component.Companion.getNil() || spell == AutoCastSpell.NONE) {
-            return false;
+            return;
         }
         if (component.click()) {
-            return Condition.wait((Callable<Boolean>) () -> getAutoCastSpell() == spell);
+            Condition.wait(() -> getAutoCastSpell() == spell, 150, 10);
         }
-        return false;
     }
 
     public enum AutoCastSpell {

@@ -1,6 +1,6 @@
 package Smithing;
 
-import Helpers.SkillData;
+import Helpers.skillData;
 import Helpers.Task;
 import script.mMain;
 
@@ -16,7 +16,7 @@ public class StartSmithing {
         mMain.runningSkill = "Smithing";
         if (Skills.realLevel(Constants.SKILLS_SMITHING) >= 70) {
             mMain.state = "Smithing done!";
-            SkillData.setSkillDone();
+            skillData.setSkillDone();
             mMain.taskRunning.set(false);
         }
         if (smithingTasks.isEmpty()) {

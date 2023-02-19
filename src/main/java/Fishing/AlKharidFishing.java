@@ -8,8 +8,7 @@ import org.powbot.api.rt4.Npc;
 import org.powbot.api.rt4.Players;
 import org.powbot.api.rt4.Skills;
 
-import Helpers.PlayerHelper;
-import Helpers.SkillData;
+import Helpers.playerHelper;
 import Helpers.Task;
 import script.mMain;
 
@@ -20,14 +19,14 @@ public class AlKharidFishing extends Task {
     }
     @Override
     public boolean execute() {
-        if (!PlayerHelper.withinArea(SkillData.AlKharidFishingSpot1) && !PlayerHelper.withinArea(SkillData.AlKharidFishingSpot2)) {
+        if (!playerHelper.withinArea(fishingData.AlKharidFishingSpot1) && !playerHelper.withinArea(fishingData.AlKharidFishingSpot2)) {
             mMain.state = "Walk to fishing area";
-            PlayerHelper.walkToTile(SkillData.movementFishing());
+            playerHelper.walkToTile(fishingData.movementFishing());
         }
 
-        if (PlayerHelper.withinArea(SkillData.AlKharidFishingSpot1) || PlayerHelper.withinArea(SkillData.AlKharidFishingSpot2)) {
+        if (playerHelper.withinArea(fishingData.AlKharidFishingSpot1) || playerHelper.withinArea(fishingData.AlKharidFishingSpot2)) {
             mMain.state = "Do fishing";
-            Npc AlKharidFishingSpot = PlayerHelper.nearestNpc("Fishing spot");
+            Npc AlKharidFishingSpot = playerHelper.nearestNpc("Fishing spot");
             if (AlKharidFishingSpot.inViewport() && Players.local().animation() == -1) {
                 Camera.turnTo(AlKharidFishingSpot);
                 if (AlKharidFishingSpot.interact("Small Net", "Fishing Spot")) {

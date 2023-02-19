@@ -10,8 +10,8 @@ import org.powbot.api.rt4.Players;
 import org.powbot.api.rt4.Skills;
 import org.powbot.api.rt4.World;
 
-import Helpers.PlayerHelper;
-import Helpers.SkillData;
+import Helpers.playerHelper;
+import Helpers.skillData;
 import Helpers.Task;
 import script.mMain;
 
@@ -23,25 +23,25 @@ public class CopperOres extends Task {
 
     @Override
     public boolean execute() {
-        if (!SkillData.miningCopperLocation.equals(Players.local().tile())) {
+        if (!miningData.miningCopperLocation.equals(Players.local().tile())) {
             mMain.state = "Go to copper area";
-            if (SkillData.movementMining().distanceTo(Players.local()) < 3) {
-                Movement.step(SkillData.miningCopperLocation);
-            } else if (SkillData.movementMining().distanceTo(Players.local()) >= 4) {
-                PlayerHelper.walkToTile(SkillData.movementMining());
+            if (miningData.movementMining().distanceTo(Players.local()) < 3) {
+                Movement.step(miningData.miningCopperLocation);
+            } else if (miningData.movementMining().distanceTo(Players.local()) >= 4) {
+                playerHelper.walkToTile(miningData.movementMining());
             }
         }
 
-        if (SkillData.miningCopperLocation.equals(Players.local().tile())) {
-            if (Players.stream().within(SkillData.miningCopperArea).count() != 1) {
-                int[] p2p = SkillData.p2p;
+        if (miningData.miningCopperLocation.equals(Players.local().tile())) {
+            if (Players.stream().within(miningData.miningCopperArea).count() != 1) {
+                int[] p2p = skillData.p2p;
                 int randomWorld = p2p[Random.nextInt(0, p2p.length - 1)];
                 World world = new World(randomWorld, randomWorld, 1, World.Type.MEMBERS, World.Server.RUNE_SCAPE, World.Specialty.NONE);
                 world.hop();
             }
-            if (Players.local().animation() == -1 && Players.stream().within(SkillData.miningCopperArea).count() == 1) {
+            if (Players.local().animation() == -1 && Players.stream().within(miningData.miningCopperArea).count() == 1) {
                 mMain.state = "Mining...";
-                GameObject copperOre = PlayerHelper.nearestGameObject(1,11161,11360);
+                GameObject copperOre = playerHelper.nearestGameObject(1,11161,11360);
                 if (copperOre.interact("Mine", "Rocks")) {
                     Condition.wait(() -> Objects.stream().at(copperOre.tile()).id(11161,11360).isEmpty(), 150, 50);
                 }

@@ -5,9 +5,8 @@ import org.powbot.api.rt4.*;
 import org.powbot.api.rt4.walking.model.Skill;
 
 import Helpers.ItemList;
-import Helpers.PlayerHelper;
+import Helpers.playerHelper;
 import Helpers.Task;
-import Helpers.SkillData;
 import script.mMain;
 
 public class DoFiremaking extends Task {
@@ -15,14 +14,14 @@ public class DoFiremaking extends Task {
     int CurrentXP = Skills.experience(Skill.Firemaking);
     @Override
     public boolean activate() {
-        return Inventory.stream().id(SkillData.logs).isNotEmpty() && Inventory.stream().id(ItemList.TINDERBOX_590).isNotEmpty();
+        return Inventory.stream().id(firemakingData.logs).isNotEmpty() && Inventory.stream().id(ItemList.TINDERBOX_590).isNotEmpty();
     }
     @Override
     public boolean execute() {
-        if (!PlayerHelper.withinArea(SkillData.firemakingStartArea) && Inventory.stream().id(SkillData.logs).count() >= 27) {
+        if (!playerHelper.withinArea(firemakingData.firemakingStartArea) && Inventory.stream().id(firemakingData.logs).count() >= 27) {
             walkToFMSpot();
         }
-        if (PlayerHelper.withinArea(SkillData.doFiremakingArea)) {
+        if (playerHelper.withinArea(firemakingData.doFiremakingArea)) {
             lightLogs();
         }
         return false;
@@ -30,19 +29,19 @@ public class DoFiremaking extends Task {
 
     private void walkToFMSpot() {
             mMain.state = "Go to lane " + fmSpot;
-            Movement.moveTo(SkillData.moveToFiremakingSpot());
+            Movement.moveTo(firemakingData.moveToFiremakingSpot());
             Condition.wait( () -> !Players.local().inMotion(), 900, 100);
     }
     private void lightLogs() {
         if (Game.tab(Game.Tab.INVENTORY)) {
                 mMain.state = "Lighting.. " + "L:" + fmSpot;
-                if (Inventory.stream().id(SkillData.logs).first().interact("Use")) {
+                if (Inventory.stream().id(firemakingData.logs).first().interact("Use")) {
                     if (Inventory.stream().id(ItemList.TINDERBOX_590).first().interact("Use")) {
                         CurrentXP = Skills.experience(Skill.Firemaking);
-                        Condition.wait( () -> (CurrentXP != Skills.experience(Skill.Firemaking) || !PlayerHelper.withinArea(SkillData.doFiremakingArea)), 500, 50);
+                        Condition.wait( () -> (CurrentXP != Skills.experience(Skill.Firemaking) || !playerHelper.withinArea(firemakingData.doFiremakingArea)), 500, 50);
                     }
                 }
-                if (Inventory.stream().id(SkillData.logs).isEmpty()) {
+                if (Inventory.stream().id(firemakingData.logs).isEmpty()) {
                     mMain.state = "Switch lane";
                     fmSpot += 1;
                 }

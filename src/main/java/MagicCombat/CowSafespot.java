@@ -1,24 +1,20 @@
 package MagicCombat;
 
-import static Helpers.CombatHelper.missingEquipment;
 import static MagicCombat.MagicHelpers.isAutoCastOpen;
 
 import org.powbot.api.Condition;
 import org.powbot.api.rt4.Bank;
 import org.powbot.api.rt4.Constants;
 import org.powbot.api.rt4.Game;
-import org.powbot.api.rt4.Inventory;
-import org.powbot.api.rt4.Magic;
 import org.powbot.api.rt4.Npc;
 import org.powbot.api.rt4.Players;
 import org.powbot.api.rt4.Skills;
-import org.powbot.dax.api.DaxWalker;
 
-import Helpers.CombatHelper;
-import Helpers.InteractionsHelper;
+import Helpers.combatHelper;
+import Helpers.interactionHelper;
 import Helpers.ItemList;
-import Helpers.PlayerHelper;
-import Helpers.SkillData;
+import Helpers.playerHelper;
+import Helpers.skillData;
 import Helpers.Task;
 import script.mMain;
 
@@ -30,93 +26,55 @@ public class CowSafespot extends Task {
     @Override
     public boolean execute() {
         //Get equipment
-        if (CombatHelper.needEquipment(MagicData.MagicEquipment())) {
-                mMain.state = "Need equipment!";
-                GetEquipment();
+        if (combatHelper.needEquipment(MagicData.MagicEquipment())) {
+                mMain.state = "Need equipment";
+                combatHelper.gearUp(MagicData.MagicEquipment());
         }
-        if (!CombatHelper.needEquipment(MagicData.MagicEquipment()) && !PlayerHelper.hasItem(MagicData.Runes) && Skills.realLevel(Constants.SKILLS_MAGIC) <= 12) {
+        if (!combatHelper.needEquipment(MagicData.MagicEquipment()) && !playerHelper.hasItem(MagicData.Runes)) {
             mMain.state = "Getting runes";
-            InteractionsHelper.depositAndWithdraw(ItemList.AIR_RUNE_556, 10000);
-            InteractionsHelper.withdrawItem(ItemList.MIND_RUNE_558, 10000);
-            Condition.wait( () -> PlayerHelper.hasItem(ItemList.MIND_RUNE_558, ItemList.AIR_RUNE_556), 150, 50);
+            if (!Bank.opened()) {
+                Bank.open();
+                Condition.wait(Bank::open, 250, 5);
+            }
+            interactionHelper.depositAndWithdraw(ItemList.AIR_RUNE_556, 2000);
+            interactionHelper.withdrawItem(ItemList.MIND_RUNE_558, 2000);
+            Condition.wait( () -> playerHelper.hasItem(ItemList.MIND_RUNE_558, ItemList.AIR_RUNE_556), 150, 50);
             Bank.close();
         }
 
         //Set autocast spell
-        if (MagicHelpers.getAutoCastSpell().getSpell() != MagicData.MagicSpell() && !MagicHelpers.isAutoCasting() && PlayerHelper.hasItem(MagicData.Runes)) {
+        if (MagicHelpers.getAutoCastSpell().getSpell() != MagicData.MagicSpell() && !MagicHelpers.isAutoCasting() && playerHelper.hasItem(MagicData.Runes)) {
             mMain.state = "Setting spell";
             Game.tab(Game.Tab.ATTACK);
             if (isAutoCastOpen() || MagicHelpers.openAutocastTab()) {
                 MagicHelpers.AutoCastSpell[] spellValues = MagicHelpers.AutoCastSpell.values();
                 for (MagicHelpers.AutoCastSpell spell : spellValues) {
-                    if (spell.getSpell().equals(MagicData.MagicSpell())) {
+                    if (spell.getSpell() != null && spell.getSpell().equals(MagicData.MagicSpell())) {
+                        System.out.println("Set autocast spell");
                         MagicHelpers.setAutoCast(spell);
                     }
                 }
             }
         }
 
-        if (PlayerHelper.hasItem(ItemList.MIND_RUNE_558, ItemList.AIR_RUNE_556) && !CombatHelper.needEquipment(MagicData.MagicEquipment()) && !PlayerHelper.withinArea(SkillData.CowSafeSpotArea)) {
+        if (playerHelper.hasItem(ItemList.MIND_RUNE_558, ItemList.AIR_RUNE_556) && !combatHelper.needEquipment(MagicData.MagicEquipment()) && !playerHelper.withinArea(skillData.CowSafeSpotArea)) {
             mMain.state = "Go safespot";
-            PlayerHelper.walkToTile(SkillData.CowSafeSpotArea.getRandomTile());
+            playerHelper.walkToTile(skillData.CowSafeSpotArea.getRandomTile());
         }
 
-        if (PlayerHelper.withinArea(SkillData.CowSafeSpotArea)) {
-            mMain.state = "Fighting..";
+        if (playerHelper.withinArea(skillData.CowSafeSpotArea) && MagicHelpers.getAutoCastSpell().getSpell() == MagicData.MagicSpell()) {
             ShouldFight();
         }
         return false;
     }
 
     private void ShouldFight() {
-        if (PlayerHelper.withinArea(SkillData.CowSafeSpotArea) && !Players.local().healthBarVisible()) {
-            Npc cow = PlayerHelper.nearestNpc(SkillData.CowArea, "Cow", "Cow calf");
+        if (playerHelper.withinArea(skillData.CowSafeSpotArea) && !Players.local().healthBarVisible()) {
+            Npc cow = playerHelper.nearestCombatNpc(skillData.CowArea, "Cow", "Cow calf");
+            mMain.state = "Attack";
             if (cow.inViewport() && cow.interact("Attack")) {
-                Condition.wait(() -> !cow.isRendered(),900,20);
-            }
-        }
-    }
-
-    private void GetEquipment() {
-        if (Bank.nearest().tile().distanceTo(Players.local()) > 5) {
-            mMain.state = "Walking to bank";
-            DaxWalker.walkToBank();
-        }
-        if (!CombatHelper.gotItems(missingEquipment(MagicData.MagicEquipment()))) {
-            if (Bank.nearest().tile().distanceTo(Players.local()) <= 5 && Bank.inViewport()) {
-                mMain.state = "Open bank";
-                if (!Bank.opened()) {
-                    Bank.open();
-                    Condition.wait(() -> !Bank.opened(),150,20);
-                }
-                if (Bank.open()) {
-                    mMain.state = "Withdraw equipment";
-                    Bank.depositEquipment();
-                    Bank.depositInventory();
-                    for (var itemId : missingEquipment(MagicData.MagicEquipment())) {
-                        InteractionsHelper.withdrawItem(itemId, 1);
-                        Condition.wait(() -> Inventory.stream().id(itemId).isNotEmpty(), 250,10);
-                    }
-                    if (CombatHelper.gotItems(missingEquipment(MagicData.MagicEquipment()))) {
-                        Bank.close();
-                    }
-                }
-            }
-        }
-        if (CombatHelper.gotItems(missingEquipment(MagicData.MagicEquipment()))) {
-            mMain.state = "Equip items";
-            for (var item : missingEquipment(MagicData.MagicEquipment())) {
-                var itemToEquip = Inventory.stream().id(item).first();
-                if (itemToEquip != null){
-                    if (itemToEquip.interact("Wield", itemToEquip.name()))
-                    {
-                        Condition.wait(() -> CombatHelper.hasEquipped(item), 250, 10);
-                    } else {
-                        if (itemToEquip.interact("Wear", itemToEquip.name())) {
-                            Condition.wait(() -> CombatHelper.hasEquipped(item), 250, 10);
-                        }
-                    }
-                }
+                mMain.state = "Waiting for kill";
+                Condition.wait(() -> cow.healthPercent() == 0,900,20);
             }
         }
     }

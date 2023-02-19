@@ -1,7 +1,6 @@
 package Cooking;
 
-import Helpers.GoToBank;
-import Helpers.SkillData;
+import Helpers.skillData;
 import Helpers.Task;
 import script.mMain;
 
@@ -17,7 +16,7 @@ public class StartCooking {
         mMain.runningSkill = "Cooking";
         if (Skills.realLevel(Constants.SKILLS_COOKING) >= 70) {
             mMain.state = "Cooking done!";
-            SkillData.setSkillDone();
+            skillData.setSkillDone();
             mMain.taskRunning.set(false);
         }
         if (cookingTasks.isEmpty()) {

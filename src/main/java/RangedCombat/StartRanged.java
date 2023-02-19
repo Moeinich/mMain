@@ -6,8 +6,8 @@ import org.powbot.mobile.script.ScriptManager;
 
 import java.util.ArrayList;
 
-import Helpers.BankBeforeTask;
-import Helpers.SkillData;
+import Helpers.bankBeforeTask;
+import Helpers.skillData;
 import Helpers.Task;
 import script.mMain;
 
@@ -17,11 +17,11 @@ public class StartRanged {
         mMain.runningSkill = "Ranged";
         if (Skills.realLevel(Constants.SKILLS_RANGE) >= 30) {
             mMain.state = "Range done!";
-            SkillData.setSkillDone();
+            skillData.setSkillDone();
             mMain.taskRunning.set(false);
         }
         if (rangedTask.isEmpty()) {
-            rangedTask.add(new BankBeforeTask());
+            rangedTask.add(new bankBeforeTask());
             rangedTask.add(new CowSafespot());
         }
 

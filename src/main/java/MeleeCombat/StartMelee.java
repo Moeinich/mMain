@@ -4,9 +4,10 @@ import org.powbot.api.rt4.Constants;
 import org.powbot.api.rt4.Skills;
 import org.powbot.mobile.script.ScriptManager;
 
-import Helpers.EatFood;
-import Helpers.SkillData;
+import Helpers.eatFood;
+import Helpers.skillData;
 import Helpers.Task;
+import Helpers.getFood;
 import script.mMain;
 
 import java.util.ArrayList;
@@ -17,15 +18,17 @@ public class StartMelee {
         mMain.runningSkill = "Melee";
         if (Skills.realLevel(Constants.SKILLS_STRENGTH) >= 70 && Skills.realLevel(Constants.SKILLS_ATTACK) >= 70 && Skills.realLevel(Constants.SKILLS_DEFENSE) >= 70) {
             mMain.state = "Melee done!";
-            SkillData.setSkillDone();
+            skillData.setSkillDone();
             mMain.taskRunning.set(false);
         }
         if (meleeTask.isEmpty()) {
-            meleeTask.add(new EatFood());
-            meleeTask.add(new SetAttackMode());
-            meleeTask.add(new DrinkPotion());
-            meleeTask.add(new GoCombat());
-            meleeTask.add(new FightEnemy());
+            //meleeTask.add(new BankBeforeTask());
+            meleeTask.add(new getEquipment());
+            meleeTask.add(new getFood());
+            meleeTask.add(new eatFood());
+            meleeTask.add(new setAttackStyle());
+            meleeTask.add(new Goblins());
+            meleeTask.add(new Cows());
         }
 
         for (Task task : meleeTask) {

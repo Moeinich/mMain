@@ -6,7 +6,7 @@ import org.powbot.mobile.script.ScriptManager;
 
 import java.util.ArrayList;
 
-import Helpers.SkillData;
+import Helpers.skillData;
 import Helpers.Task;
 import script.mMain;
 
@@ -16,7 +16,7 @@ public class StartAgility {
         mMain.runningSkill = "Agility";
         if (Skills.realLevel(Constants.SKILLS_AGILITY) >= 70) {
             mMain.state = "Agility done!";
-            SkillData.setSkillDone();
+            skillData.setSkillDone();
             mMain.taskRunning.set(false);
         }
         if (agilityTasks.isEmpty()) {

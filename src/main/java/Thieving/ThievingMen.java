@@ -10,8 +10,7 @@ import org.powbot.api.rt4.Npc;
 import org.powbot.api.rt4.Players;
 import org.powbot.api.rt4.Skills;
 
-import Helpers.PlayerHelper;
-import Helpers.SkillData;
+import Helpers.playerHelper;
 import Helpers.Task;
 import script.mMain;
 
@@ -54,12 +53,12 @@ public class ThievingMen extends Task {
         }
     }
     private void ShouldThieve() {
-        if (!SkillData.thievingMenArea.contains(Players.local())) {
+        if (!thievingData.thievingMenArea.contains(Players.local())) {
             mMain.state = "Going to lumbridge";
-            PlayerHelper.walkToTile(SkillData.movementThieving());
+            playerHelper.walkToTile(thievingData.movementThieving());
         }
 
-        Npc Man = PlayerHelper.nearestNpc(SkillData.thievingMenArea,"Man");
+        Npc Man = playerHelper.nearestNpc(thievingData.thievingMenArea,"Man");
         if (Man.inViewport() && Players.local().animation() == -1) {
             mMain.state = "Thieving men";
             if (Man.interact("Pickpocket", "Man")) {

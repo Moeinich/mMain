@@ -8,8 +8,7 @@ import org.powbot.api.rt4.Objects;
 import org.powbot.api.rt4.Players;
 import org.powbot.api.rt4.Skills;
 
-import Helpers.PlayerHelper;
-import Helpers.SkillData;
+import Helpers.playerHelper;
 import Helpers.Task;
 import script.mMain;
 
@@ -20,16 +19,16 @@ public class treeNormal extends Task {
     }
     @Override
     public boolean execute() {
-        if (!PlayerHelper.withinArea(SkillData.normalTreeLocation)) {
+        if (!playerHelper.withinArea(woodcuttingData.normalTreeLocation)) {
             mMain.state = "Go to noob trees";
-            PlayerHelper.walkToTile(SkillData.movementWoodcutting());
+            playerHelper.walkToTile(woodcuttingData.movementWoodcutting());
         }
         //cut normal logs
-        if (PlayerHelper.withinArea(SkillData.normalTreeLocation) && Players.local().animation() == -1) {
-            GameObject treeNormal = PlayerHelper.nearestGameObject(SkillData.normalTreeLocation,"Tree");
+        if (playerHelper.withinArea(woodcuttingData.normalTreeLocation) && Players.local().animation() == -1) {
+            GameObject treeNormal = playerHelper.nearestGameObject(woodcuttingData.normalTreeLocation,"Tree");
             mMain.state = "Cutting Trees..";
             if (treeNormal.interact("Chop down", "Tree")) {
-                Condition.wait(() -> Objects.stream().at(treeNormal.tile()).id(SkillData.normalTreeID).isEmpty() || Chat.canContinue(), 500, 50);
+                Condition.wait(() -> Objects.stream().at(treeNormal.tile()).id(woodcuttingData.normalTreeID).isEmpty() || Chat.canContinue(), 500, 50);
             }
         }
         return false;

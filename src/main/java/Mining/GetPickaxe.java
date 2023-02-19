@@ -8,15 +8,14 @@ import org.powbot.api.rt4.Inventory;
 import org.powbot.api.rt4.Players;
 import org.powbot.dax.api.DaxWalker;
 
-import Helpers.InteractionsHelper;
-import Helpers.SkillData;
+import Helpers.interactionHelper;
 import Helpers.Task;
 import script.mMain;
 
 public class GetPickaxe extends Task {
     @Override
     public boolean activate() {
-return Inventory.stream().id(SkillData.pickaxes).isEmpty();}
+return Inventory.stream().id(miningData.pickaxes).isEmpty();}
 
     @Override
     public boolean execute() {
@@ -28,7 +27,7 @@ return Inventory.stream().id(SkillData.pickaxes).isEmpty();}
         if (!Bank.opened()) {
             mMain.state = "Get pickaxe - Withdraw";
             if (Bank.open()) {
-                InteractionsHelper.depositAndWithdraw(SkillData.withdrawPickaxe(), 1);
+                interactionHelper.depositAndWithdraw(miningData.withdrawPickaxe(), 1);
                 Bank.close();
                 Condition.wait( () -> !Bank.opened(), 250, 50);
             }

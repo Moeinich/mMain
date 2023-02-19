@@ -8,8 +8,7 @@ import org.powbot.api.rt4.Objects;
 import org.powbot.api.rt4.Players;
 import org.powbot.api.rt4.Skills;
 
-import Helpers.PlayerHelper;
-import Helpers.SkillData;
+import Helpers.playerHelper;
 import Helpers.Task;
 import script.mMain;
 
@@ -19,15 +18,15 @@ public class treeOak extends Task {
     }
     @Override
     public boolean execute() {
-        if (!PlayerHelper.withinArea(SkillData.oakTreeLocation)) {
+        if (!playerHelper.withinArea(woodcuttingData.oakTreeLocation)) {
             mMain.state = "Go to Oak trees";
-            PlayerHelper.walkToTile(SkillData.movementWoodcutting());
+            playerHelper.walkToTile(woodcuttingData.movementWoodcutting());
         }
-        if (PlayerHelper.withinArea(SkillData.oakTreeLocation) && Players.local().animation() == -1) {
-            GameObject treeOak = PlayerHelper.nearestGameObject(SkillData.oakTreeLocation, "Oak");
+        if (playerHelper.withinArea(woodcuttingData.oakTreeLocation) && Players.local().animation() == -1) {
+            GameObject treeOak = playerHelper.nearestGameObject(woodcuttingData.oakTreeLocation, "Oak");
             mMain.state = "Cutting Oaks";
             if (treeOak.interact("Chop down", "Oak")) {
-                Condition.wait(() -> Objects.stream().at(treeOak.tile()).id(SkillData.oakTreeID).isEmpty() || Chat.canContinue(), 500, 50);
+                Condition.wait(() -> Objects.stream().at(treeOak.tile()).id(woodcuttingData.oakTreeID).isEmpty() || Chat.canContinue(), 500, 50);
             }
         }
         return false;
