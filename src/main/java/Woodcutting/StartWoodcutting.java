@@ -15,7 +15,7 @@ import script.mMain;
 public class StartWoodcutting {
     public void Woodcutting() {
         mMain.runningSkill = "Woodcutting";
-        if (Skills.realLevel(Constants.SKILLS_WOODCUTTING) >= 70) {
+        if (Skills.realLevel(Constants.SKILLS_WOODCUTTING) >= 70 || skillData.woodcuttingDone) {
             mMain.state = "Woodcutting done!";
             skillData.setSkillDone();
             mMain.taskRunning.set(false);

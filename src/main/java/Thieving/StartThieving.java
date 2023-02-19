@@ -22,7 +22,7 @@ import script.mMain;
 public class StartThieving {
     public void Thieving() {
         mMain.runningSkill = "Thieving";
-        if (Skills.realLevel(Constants.SKILLS_THIEVING) >= 60) {
+        if (Skills.realLevel(Constants.SKILLS_THIEVING) >= 60 || skillData.thievingDone) {
             mMain.state = "Thieving done!";
             skillData.setSkillDone();
             mMain.taskRunning.set(false);

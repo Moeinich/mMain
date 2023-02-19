@@ -22,7 +22,7 @@ import script.mMain;
 public class StartMagic {
     public void Magic() {
         mMain.runningSkill = "Magic";
-        if (Skills.realLevel(Constants.SKILLS_MAGIC) >= 30) {
+        if (Skills.realLevel(Constants.SKILLS_MAGIC) >= 30 || skillData.magicCombatDone) {
             mMain.state = "Magic done!";
             skillData.setSkillDone();
             mMain.taskRunning.set(false);

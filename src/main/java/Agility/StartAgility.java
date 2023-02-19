@@ -17,7 +17,7 @@ import script.mMain;
 public class StartAgility {
     public void Agility() {
         mMain.runningSkill = "Agility";
-        if (Skills.realLevel(Constants.SKILLS_AGILITY) >= 70) {
+        if (Skills.realLevel(Constants.SKILLS_AGILITY) >= 70 || skillData.agilityDone) {
             mMain.state = "Agility done!";
             skillData.setSkillDone();
             mMain.taskRunning.set(false);

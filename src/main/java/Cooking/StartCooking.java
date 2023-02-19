@@ -17,7 +17,7 @@ import java.util.List;
 public class StartCooking {
     public void Cooking() {
         mMain.runningSkill = "Cooking";
-        if (Skills.realLevel(Constants.SKILLS_COOKING) >= 70) {
+        if (Skills.realLevel(Constants.SKILLS_COOKING) >= 70 || skillData.cookingDone) {
             mMain.state = "Cooking done!";
             skillData.setSkillDone();
             mMain.taskRunning.set(false);

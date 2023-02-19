@@ -21,7 +21,7 @@ import java.util.List;
 public class StartSmithing {
     public void Smithing() {
         mMain.runningSkill = "Smithing";
-        if (Skills.realLevel(Constants.SKILLS_SMITHING) >= 70) {
+        if (Skills.realLevel(Constants.SKILLS_SMITHING) >= 70 || skillData.smithingDone) {
             mMain.state = "Smithing done!";
             skillData.setSkillDone();
             mMain.taskRunning.set(false);

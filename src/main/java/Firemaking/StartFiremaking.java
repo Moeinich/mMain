@@ -17,7 +17,7 @@ import script.mMain;
 public class StartFiremaking {
     public void Firemaking() {
         mMain.runningSkill = "Firemaking";
-        if (Skills.realLevel(Constants.SKILLS_FIREMAKING) >= 50) {
+        if (Skills.realLevel(Constants.SKILLS_FIREMAKING) >= 50 || skillData.firemakingDone) {
             mMain.state = "Firemaking done!";
             skillData.setSkillDone();
             mMain.taskRunning.set(false);

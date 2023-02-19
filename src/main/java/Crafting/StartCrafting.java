@@ -17,7 +17,7 @@ import script.mMain;
 public class StartCrafting {
     public void Crafting() {
         mMain.runningSkill = "Crafting";
-        if (Skills.realLevel(Constants.SKILLS_CRAFTING) >= 70) {
+        if (Skills.realLevel(Constants.SKILLS_CRAFTING) >= 70 || skillData.craftingDone) {
             mMain.state = "Crafting done!";
             skillData.setSkillDone();
             mMain.taskRunning.set(false);

@@ -22,7 +22,7 @@ import script.mMain;
 public class StartHerblore {
     public void Herblore() {
         mMain.runningSkill = "Herblore";
-        if (Skills.realLevel(Constants.SKILLS_HERBLORE) >= 70) {
+        if (Skills.realLevel(Constants.SKILLS_HERBLORE) >= 70 || skillData.herbloreDone) {
             mMain.state = "Herblore done!";
             skillData.setSkillDone();
             mMain.taskRunning.set(false);

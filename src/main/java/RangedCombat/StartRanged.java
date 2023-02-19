@@ -16,7 +16,7 @@ import script.mMain;
 public class StartRanged {
     public void Ranged() {
         mMain.runningSkill = "Ranged";
-        if (Skills.realLevel(Constants.SKILLS_RANGE) >= 30) {
+        if (Skills.realLevel(Constants.SKILLS_RANGE) >= 30 || skillData.rangeCombatDone) {
             mMain.state = "Range done!";
             skillData.setSkillDone();
             mMain.taskRunning.set(false);

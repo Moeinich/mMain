@@ -5,70 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c7dd1c8c-f10c-49ed-8219-521bd6f55188" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Helpers/questVarpbits.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Smithing/steelPlatebody.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.4/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/checksums/checksums.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.4/dependencies-accessors/dependencies-accessors.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/dependencies-accessors/dependencies-accessors.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.4/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/executionHistory/executionHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.4/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.4/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.4/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.4/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/fileHashes/resourceHashesCache.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShoppingList" beforeDir="false" afterPath="$PROJECT_DIR$/ShoppingList" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Agility/AgilityHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Agility/AgilityHelper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Agility/CanifisCourse.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Agility/CanifisCourse.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Agility/DraynorCourse.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Agility/DraynorCourse.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Agility/StartAgility.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Agility/StartAgility.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Agility/VarrockCourse.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Agility/VarrockCourse.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Cooking/startCooking.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Cooking/startCooking.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Crafting/startCrafting.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Crafting/startCrafting.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Firemaking/getLogs.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Firemaking/getLogs.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Firemaking/startFiremaking.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Firemaking/startFiremaking.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Fishing/startFishing.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Fishing/startFishing.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Fletching/startFletching.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Fletching/startFletching.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Helpers/CombatHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Helpers/CombatHelper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Helpers/SkillData$KOUREND_FAVOR.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Helpers/SkillData$KOUREND_FAVOR.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Helpers/SkillData.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Helpers/SkillData.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Helpers/interactionHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Helpers/interactionHelper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Herblore/AttackPotions.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Herblore/AttackPotions.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Herblore/StartHerblore.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Herblore/StartHerblore.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/MagicCombat/StartMagic.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/MagicCombat/StartMagic.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/MeleeCombat/StartMelee.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/MeleeCombat/StartMelee.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Mining/startMining.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Mining/startMining.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/RangedCombat/StartRanged.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/RangedCombat/StartRanged.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Smithing/startSmithing.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Smithing/startSmithing.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Thieving/startThieving.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Thieving/startThieving.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Woodcutting/startWoodcutting.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Woodcutting/startWoodcutting.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/script/mMain$Stopwatch.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/script/mMain$Stopwatch.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/script/mMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/script/mMain.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Agility/AgilityHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Agility/AgilityHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Agility/CanifisCourse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Agility/CanifisCourse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Agility/DraynorCourse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Agility/DraynorCourse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Agility/StartAgility.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Agility/StartAgility.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Agility/VarrockCourse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Agility/VarrockCourse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Cooking/StartCooking.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Cooking/StartCooking.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Crafting/StartCrafting.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Crafting/StartCrafting.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Firemaking/StartFiremaking.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Firemaking/StartFiremaking.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Firemaking/getLogs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Firemaking/getLogs.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Fishing/StartFishing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Fishing/StartFishing.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Fletching/startFletching.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Fletching/startFletching.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Helpers/combatHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Helpers/combatHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Helpers/interactionHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Helpers/interactionHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Helpers/skillData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Helpers/skillData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Herblore/AttackPotions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Herblore/AttackPotions.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Herblore/StartHerblore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Herblore/StartHerblore.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/MagicCombat/StartMagic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MagicCombat/StartMagic.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/MeleeCombat/StartMelee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MeleeCombat/StartMelee.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Mining/StartMining.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Mining/StartMining.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/RangedCombat/StartRanged.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/RangedCombat/StartRanged.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Smithing/StartSmithing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Smithing/StartSmithing.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Smithing/ironPlatebody.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Smithing/ironPlatebody.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Thieving/StartThieving.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Thieving/StartThieving.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Woodcutting/StartWoodcutting.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Woodcutting/StartWoodcutting.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/script/mMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/script/mMain.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

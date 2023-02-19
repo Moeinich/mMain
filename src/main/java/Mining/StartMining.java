@@ -22,7 +22,7 @@ import script.mMain;
 public class StartMining {
     public void Mining() {
         mMain.runningSkill = "Mining";
-        if (Skills.realLevel(Constants.SKILLS_MINING) >= 70) {
+        if (Skills.realLevel(Constants.SKILLS_MINING) >= 70 || skillData.miningDone) {
             mMain.state = "Mining done!";
             skillData.setSkillDone();
             mMain.taskRunning.set(false);
