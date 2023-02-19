@@ -32,7 +32,7 @@ public class Cows extends Task {
             mMain.state = "Attack";
             if (cow.healthPercent() == 100 && cow.inViewport() && cow.interact("Attack")) {
                 mMain.state = "Waiting for kill";
-                Condition.wait(() -> cow.healthPercent() == 0,900,20);
+                Condition.wait(() -> cow.healthPercent() == 0,1500,20);
             }
         }
         return false;

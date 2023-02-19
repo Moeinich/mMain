@@ -33,7 +33,7 @@ Let pow close level up messages. Please have these items on ur account:
 
 **Fishing:**
 - [X] Train to level 20 in Al Kharid
-- [X] Train from 20-? at Barbarian Village.
+- [X] Train from 20-70 at Barbarian Village.
 - [X] Swap fishing gear along the way
 
 **Fletching**
@@ -47,19 +47,20 @@ Let pow close level up messages. Please have these items on ur account:
 - [X] 55-70 Maple longbow (u) + stringing (HIGHLY EXPERIMENTAL!)
 
 **Herblore**
-- [X] 1-45 Attack potions
+- [X] 3-45 Attack potions
 
 **Magic**
 - [X] 1-30 Safespot cows
 - [X] Switches gear along the way
 
 **Melee**
-- [X] 1-15 Seagulls
-- [X] 15-30 cows
+- [X] 1-15 Goblins
+- [X] 15-30 Cows
+- [X] Switches gear along the way
 
 **Mining:**
 - [X] Mines Copper & Tin to level 14 at varrock
-- [X] Mines Iron from 15-infinity at Lova
+- [X] Mines Iron from 15-70 at Lova
 - [X] Withdraw Pickaxe depending on mining level
 
 **Ranged**
@@ -70,7 +71,7 @@ Let pow close level up messages. Please have these items on ur account:
 - [X] 1-5 Bronze daggers
 - [X] 5-18 Bronze scimitars
 - [X] 18-33 Bronze platebodies
-- [X] 33-? Iron platebodies
+- [X] 33-70 Iron platebodies
 
 **Thieving**
 - [X] 1-5 Men in lumbridge

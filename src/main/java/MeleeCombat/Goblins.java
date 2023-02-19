@@ -33,7 +33,7 @@ public class Goblins extends Task {
             mMain.state = "Attack";
             if (goblin.healthPercent() == 100 && goblin.inViewport() && goblin.interact("Attack")) {
                 mMain.state = "Waiting for kill";
-                Condition.wait(() -> goblin.healthPercent() == 0,900,20);
+                Condition.wait(() -> goblin.healthPercent() == 0,1500,20);
             }
         }
         return false;
