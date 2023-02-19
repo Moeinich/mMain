@@ -5,6 +5,7 @@ import org.powbot.api.Random;
 import org.powbot.api.rt4.walking.model.Skill;
 import org.powbot.api.script.AbstractScript;
 import org.powbot.api.script.OptionType;
+import org.powbot.api.script.ScriptCategory;
 import org.powbot.api.script.ScriptConfiguration;
 import org.powbot.api.script.ScriptManifest;
 import org.powbot.api.script.paint.Paint;
@@ -32,7 +33,8 @@ import Helpers.skillData;
 @ScriptManifest(
         name = "mMain",
         description = "Progressively levels different skills",
-        version = "0.2.0"
+        version = "0.2.0",
+        category = ScriptCategory.Other
 )
 @ScriptConfiguration.List(
         {
