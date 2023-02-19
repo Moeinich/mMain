@@ -10,24 +10,24 @@ import org.powbot.api.rt4.Movement;
 import org.powbot.api.rt4.Players;
 import org.powbot.api.rt4.Skills;
 
-import Helpers.interactionHelper;
 import Helpers.ItemList;
-import Helpers.playerHelper;
 import Helpers.Task;
+import Helpers.interactionHelper;
+import Helpers.playerHelper;
 import script.mMain;
 
-public class ironPlatebody extends Task {
+public class steelPlatebody extends Task {
     @Override
     public boolean activate() {
-        return Skills.realLevel(Constants.SKILLS_SMITHING) >= 33 && Skills.realLevel(Constants.SKILLS_SMITHING) <= 47;
+        return Skills.realLevel(Constants.SKILLS_SMITHING) >= 48;
     }
 
     @Override
     public boolean execute() {
-        if (Game.tab(Game.Tab.INVENTORY) && Inventory.stream().name("Iron bar").count() <= 4 || Inventory.stream().name("Hammer").isEmpty()) {
+        if (Game.tab(Game.Tab.INVENTORY) && Inventory.stream().name("Steel bar").count() <= 4 || Inventory.stream().name("Hammer").isEmpty()) {
             ShouldBank();
         }
-        if (Game.tab(Game.Tab.INVENTORY) && Inventory.stream().name("Iron bar").count() >= 5) {
+        if (Game.tab(Game.Tab.INVENTORY) && Inventory.stream().name("Steel bar").count() >= 5) {
             ShouldSmith();
         }
         return false;
@@ -39,13 +39,16 @@ public class ironPlatebody extends Task {
         }
         if (playerHelper.withinArea(smithingData.varrockWestBank)) {
             if (!Bank.opened() && Bank.inViewport()) {
+                System.out.println("opening bank");
                 Bank.open();
             }
             if (Inventory.stream().name("Hammer").isEmpty()) {
+                System.out.println("Deposit and withdraw everythinh and get a hammer");
                 interactionHelper.depositAndWithdraw(ItemList.HAMMER_2347, 1);
             } else {
-                Bank.depositAllExcept("Hammer", "Iron bar");
-                interactionHelper.withdrawItem(ItemList.IRON_BAR_2351, 27);
+                Bank.depositAllExcept("Hammer", "Steel bar");
+                System.out.println("Withdraw steel bars");
+                interactionHelper.withdrawItem(ItemList.STEEL_BAR_2353, 27);
                 Bank.close();
             }
         }
@@ -58,7 +61,7 @@ public class ironPlatebody extends Task {
         }
         if (playerHelper.withinArea(smithingData.anvilArea)) {
             GameObject anvil = playerHelper.nearestGameObject(1, 2097);
-            interactionHelper.interactWithGameobject(ItemList.IRON_BAR_2351, anvil, 312, 22, "Smith", "Anvil", 5);
+            interactionHelper.interactWithGameobject(ItemList.STEEL_BAR_2353, anvil, 312, 22, "Smith", "Anvil", 5);
         }
     }
 }

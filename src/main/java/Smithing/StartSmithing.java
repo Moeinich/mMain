@@ -2,6 +2,12 @@ package Smithing;
 
 import Helpers.skillData;
 import Helpers.Task;
+import Woodcutting.DropLogs;
+import Woodcutting.GetAxe;
+import Woodcutting.treeNormal;
+import Woodcutting.treeOak;
+import Woodcutting.treeTeak;
+import Woodcutting.treeWillow;
 import script.mMain;
 
 import org.powbot.api.rt4.Constants;
@@ -9,9 +15,10 @@ import org.powbot.api.rt4.Skills;
 import org.powbot.mobile.script.ScriptManager;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class StartSmithing {
-    private ArrayList<Task> smithingTasks = new ArrayList<>();
     public void Smithing() {
         mMain.runningSkill = "Smithing";
         if (Skills.realLevel(Constants.SKILLS_SMITHING) >= 70) {
@@ -19,13 +26,15 @@ public class StartSmithing {
             skillData.setSkillDone();
             mMain.taskRunning.set(false);
         }
-        if (smithingTasks.isEmpty()) {
-            smithingTasks.add(new GoSmithing());
-            smithingTasks.add(new bronzeDagger());
-            smithingTasks.add(new bronzeScimitar());
-            smithingTasks.add(new bronzePlatebody());
-            smithingTasks.add(new ironPlatebody());
-        }
+
+        List<Task> smithingTasks = Arrays.asList(
+                new GoSmithing(),
+                new bronzeDagger(),
+                new bronzeScimitar(),
+                new bronzePlatebody(),
+                new ironPlatebody(),
+                new steelPlatebody()
+        );
 
         for (Task task : smithingTasks) {
             if (task.activate()) {

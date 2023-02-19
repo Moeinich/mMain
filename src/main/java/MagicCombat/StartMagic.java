@@ -5,14 +5,21 @@ import org.powbot.api.rt4.Skills;
 import org.powbot.mobile.script.ScriptManager;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import Helpers.bankBeforeTask;
 import Helpers.skillData;
 import Helpers.Task;
+import Woodcutting.DropLogs;
+import Woodcutting.GetAxe;
+import Woodcutting.treeNormal;
+import Woodcutting.treeOak;
+import Woodcutting.treeTeak;
+import Woodcutting.treeWillow;
 import script.mMain;
 
 public class StartMagic {
-    private ArrayList<Task> MagicTasks = new ArrayList<>();
     public void Magic() {
         mMain.runningSkill = "Magic";
         if (Skills.realLevel(Constants.SKILLS_MAGIC) >= 30) {
@@ -21,12 +28,12 @@ public class StartMagic {
             mMain.taskRunning.set(false);
         }
 
-        if (MagicTasks.isEmpty()) {
-            MagicTasks.add(new bankBeforeTask());
-            MagicTasks.add(new CowSafespot());
-        }
+        List<Task> magicTasks = Arrays.asList(
+                new bankBeforeTask(),
+                new CowSafespot()
+        );
 
-        for (Task task : MagicTasks) {
+        for (Task task : magicTasks) {
             if (task.activate()) {
                 task.execute();
                 if (ScriptManager.INSTANCE.isStopping()) {

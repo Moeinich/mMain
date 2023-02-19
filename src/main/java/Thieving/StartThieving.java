@@ -5,14 +5,21 @@ import org.powbot.api.rt4.Skills;
 import org.powbot.mobile.script.ScriptManager;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import Helpers.skillData;
 import Helpers.Task;
 import Helpers.bankBeforeTask;
+import Woodcutting.DropLogs;
+import Woodcutting.GetAxe;
+import Woodcutting.treeNormal;
+import Woodcutting.treeOak;
+import Woodcutting.treeTeak;
+import Woodcutting.treeWillow;
 import script.mMain;
 
 public class StartThieving {
-    private ArrayList<Task> thievingTasks = new ArrayList<>();
     public void Thieving() {
         mMain.runningSkill = "Thieving";
         if (Skills.realLevel(Constants.SKILLS_THIEVING) >= 60) {
@@ -20,12 +27,13 @@ public class StartThieving {
             skillData.setSkillDone();
             mMain.taskRunning.set(false);
         }
-        if (thievingTasks.isEmpty()) {
-            thievingTasks.add(new bankBeforeTask());
-            thievingTasks.add(new ThievingMen());
-            thievingTasks.add(new TeaStall());
-            thievingTasks.add(new FruitStall());
-        }
+
+        List<Task> thievingTasks = Arrays.asList(
+                new bankBeforeTask(),
+                new ThievingMen(),
+                new TeaStall(),
+                new FruitStall()
+        );
 
         for (Task task : thievingTasks) {
             if (task.activate()) {

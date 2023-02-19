@@ -46,9 +46,14 @@ public class combatHelper {
                     Bank.depositEquipment();
                     Bank.depositInventory();
                     for (var itemId : missingEquipment(equipment)) {
-                        System.out.println("Withdrawing item " + itemId);
-                        interactionHelper.withdrawItem(itemId, 1);
-                        Condition.wait(() -> Inventory.stream().id(itemId).isNotEmpty(), 250,10);
+                        if (itemId == ItemList.IRON_ARROW_884 || itemId == ItemList.MITHRIL_DART_809) {
+                            interactionHelper.withdrawItem(itemId, 1000);
+                        } else {
+                            System.out.println("Withdrawing item " + itemId);
+                            interactionHelper.withdrawItem(itemId, 1);
+                            Condition.wait(() -> Inventory.stream().id(itemId).isNotEmpty(), 250,10);
+
+                        }
                     }
                 }
             }

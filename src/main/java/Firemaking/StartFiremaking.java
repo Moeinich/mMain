@@ -5,13 +5,16 @@ import org.powbot.api.rt4.Skills;
 import org.powbot.mobile.script.ScriptManager;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
+import Helpers.goToBank;
 import Helpers.skillData;
 import Helpers.Task;
+import Herblore.AttackPotions;
 import script.mMain;
 
 public class StartFiremaking {
-    private ArrayList<Task> firemakingTasks = new ArrayList<>();
     public void Firemaking() {
         mMain.runningSkill = "Firemaking";
         if (Skills.realLevel(Constants.SKILLS_FIREMAKING) >= 50) {
@@ -19,10 +22,11 @@ public class StartFiremaking {
             skillData.setSkillDone();
             mMain.taskRunning.set(false);
         }
-        if (firemakingTasks.isEmpty()) {
-            firemakingTasks.add(new getLogs());
-            firemakingTasks.add(new DoFiremaking());
-        }
+
+        List<Task> firemakingTasks = Arrays.asList(
+                new getLogs(),
+                new DoFiremaking()
+        );
 
         for (Task task : firemakingTasks) {
             if (task.activate()) {

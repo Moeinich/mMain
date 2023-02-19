@@ -44,7 +44,7 @@ import Helpers.skillData;
                         defaultValue = "Progressive",
                         allowedValues = {"Progressive", "Mining", "Fishing", "Woodcutting", "Cooking", "Firemaking", "Smithing", "Thieving", "Crafting", "Fletching", "Agility", "Herblore", "Ranged", "Magic"},
                         optionType = OptionType.STRING
-                )
+                 )
         }
 )
 
@@ -59,7 +59,7 @@ public class mMain extends AbstractScript {
     }
 
     final int MIN_TIME_LIMIT = 1200000;
-    final int MAX_TIME_LIMIT = 3400000;
+    final int MAX_TIME_LIMIT = 3600000;
     public static String runningSkill;
     public static String state;
     public static Boolean shouldBank = true;
@@ -163,40 +163,45 @@ public class mMain extends AbstractScript {
 
         switch (skill) {
             case "Progressive":
-                List<Runnable> tasks = Arrays.asList(
-                        startAgility::Agility,
-                        startCooking::Cooking,
-                        startCrafting::Crafting,
-                        startFiremaking::Firemaking,
-                        startFishing::Fishing,
-                        startFletching::Fletching,
-                        startHerblore::Herblore,
-                        startMagic::Magic,
-                        startMelee::Melee,
-                        startMining::Mining,
-                        startRanged::Ranged,
-                        startSmithing::Smithing,
-                        startThieving::Thieving,
-                        startWoodcutting::Woodcutting
-                        // Add future skills to this tasklist!
-                );
                 if (skillData.allSkillsDone()) {
                     ScriptManager.INSTANCE.stop();
                 }
 
+                final CountDownLatch taskLatch = new CountDownLatch(1);
                 if (taskRunning.compareAndSet(false, true)) {
                     final Stopwatch runtime = new Stopwatch();
                     if (!runtime.isRunning()) {
                         if (!mMain.shouldBank) {
                             mMain.shouldBank = true;
-                        } else runtime.reset(Random.nextInt(MIN_TIME_LIMIT, MAX_TIME_LIMIT));
+                        } else {
+                            runtime.reset(Random.nextInt(MIN_TIME_LIMIT, MAX_TIME_LIMIT));
+                        }
                     }
+
+                    List<Runnable> tasks = Arrays.asList(
+                            startAgility::Agility,
+                            startCooking::Cooking,
+                            startCrafting::Crafting,
+                            startFiremaking::Firemaking,
+                            startFishing::Fishing,
+                            startFletching::Fletching,
+                            startHerblore::Herblore,
+                            startMagic::Magic,
+                            startMelee::Melee,
+                            startMining::Mining,
+                            startRanged::Ranged,
+                            startSmithing::Smithing,
+                            startThieving::Thieving,
+                            startWoodcutting::Woodcutting
+                            //Add future skills to this tasklist!
+                    );
+
                     final int taskIndex = ThreadLocalRandom.current().nextInt(tasks.size());
-                    final CountDownLatch countdownLatch = new CountDownLatch(1);
+
                     taskHandler.execute(() -> {
                         try {
-                            while(!runtime.hasFinished() && taskRunning.get() && !ScriptManager.INSTANCE.isStopping()) {
-                                countdownLatch.await();
+                            while(!ScriptManager.INSTANCE.isStopping() && !runtime.hasFinished() && taskRunning.get()) {
+                                taskLatch.await(); // Wait for previous task to complete
                                 tasks.get(taskIndex).run();
                             }
                         } catch (InterruptedException e) {
@@ -205,7 +210,8 @@ public class mMain extends AbstractScript {
                             taskRunning.set(false);
                         }
                     });
-                    countdownLatch.countDown();
+
+                    taskLatch.countDown(); // Signal that previous task has completed
                 }
                 break;
 

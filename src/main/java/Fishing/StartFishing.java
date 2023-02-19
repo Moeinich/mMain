@@ -6,13 +6,16 @@ import org.powbot.mobile.script.ScriptManager;
 
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
+import Helpers.goToBank;
 import Helpers.skillData;
 import Helpers.Task;
+import Herblore.AttackPotions;
 import script.mMain;
 
 public class StartFishing {
-    private ArrayList<Task> fishingTasks = new ArrayList<>();
     public void Fishing() {
         mMain.runningSkill = "Fishing";
         if (Skills.realLevel(Constants.SKILLS_FISHING) >= 70) {
@@ -20,12 +23,13 @@ public class StartFishing {
             skillData.setSkillDone();
             mMain.taskRunning.set(false);
         }
-        if (fishingTasks.isEmpty()) {
-            fishingTasks.add(new GetFishingEquipment());
-            fishingTasks.add(new DropFish());
-            fishingTasks.add(new AlKharidFishing());
-            fishingTasks.add(new BarbarianVillageFishing());
-        }
+
+        List<Task> fishingTasks = Arrays.asList(
+                new GetFishingEquipment(),
+                new DropFish(),
+                new AlKharidFishing(),
+                new BarbarianVillageFishing()
+        );
 
         for (Task task : fishingTasks) {
             if (task.activate()) {

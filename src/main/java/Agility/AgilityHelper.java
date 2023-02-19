@@ -19,7 +19,7 @@ public class AgilityHelper {
             mMain.state = obstacleInfo.getDescription();
             if (obstacleObject.interact(obstacleInfo.getAction(), obstacleInfo.getName())) {
                 int CurrentXP = Skills.experience(Skill.Agility);
-                Condition.wait( () -> (CurrentXP != Skills.experience(Skill.Agility) || Players.local().healthBarVisible()), 400, 50);
+                Condition.wait( () -> (CurrentXP != Skills.experience(Skill.Agility) || Players.local().healthBarVisible()), 700, 10);
             }
         }
     }
@@ -36,7 +36,7 @@ public class AgilityHelper {
             mMain.state = obstacleInfo.getDescription();
             if (obstacleObject.interact(obstacleInfo.getAction(), obstacleInfo.getName())) {
                 int CurrentXP = Skills.experience(Skill.Agility);
-                Condition.wait( () -> (CurrentXP != Skills.experience(Skill.Agility) || Players.local().healthBarVisible()), 400, 50);
+                Condition.wait( () -> (CurrentXP != Skills.experience(Skill.Agility) || Players.local().healthBarVisible()), 700, 10);
             }
         }
     }

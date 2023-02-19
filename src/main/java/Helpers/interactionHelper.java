@@ -23,9 +23,8 @@ public class interactionHelper {
             }
         }
         if (Bank.stream().id(ItemName).first().stackSize() < Amount) {
-            mMain.state = "We ran out of " + ItemName;
+            mMain.state = "We ran out of " + ItemName + Bank.stream().id(ItemName).first().stackSize();
             skillData.setSkillDone();
-            Bank.close();
             mMain.taskRunning.set(false); //Skip task on progressive
         } else {
             Bank.withdraw(ItemName, Amount);
@@ -39,9 +38,8 @@ public class interactionHelper {
             }
         }
         if (Bank.stream().id(item).first().stackSize() < amount) {
-            mMain.state = "We ran out of " + item;
+            mMain.state = "We ran out of " + item + Bank.stream().id(item).first().stackSize();
             skillData.setSkillDone();
-            Bank.close();
             mMain.taskRunning.set(false);//Skip task on progressive
         } else {
             Bank.depositInventory();

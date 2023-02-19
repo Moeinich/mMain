@@ -1,17 +1,18 @@
 package Woodcutting;
 
-import Helpers.skillData;
-import Helpers.Task;
-import script.mMain;
-
 import org.powbot.api.rt4.Constants;
 import org.powbot.api.rt4.Skills;
 import org.powbot.mobile.script.ScriptManager;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import Helpers.Task;
+import Helpers.skillData;
+import script.mMain;
 
 public class StartWoodcutting {
-    private ArrayList<Task> woodcuttingTasks = new ArrayList<>();
     public void Woodcutting() {
         mMain.runningSkill = "Woodcutting";
         if (Skills.realLevel(Constants.SKILLS_WOODCUTTING) >= 70) {
@@ -19,14 +20,15 @@ public class StartWoodcutting {
             skillData.setSkillDone();
             mMain.taskRunning.set(false);
         }
-        if (woodcuttingTasks.isEmpty()) {
-            woodcuttingTasks.add(new GetAxe());
-            woodcuttingTasks.add(new DropLogs());
-            woodcuttingTasks.add(new treeNormal());
-            woodcuttingTasks.add(new treeOak());
-            woodcuttingTasks.add(new treeWillow());
-            woodcuttingTasks.add(new treeTeak());
-        }
+
+        List<Task> woodcuttingTasks = Arrays.asList(
+                new GetAxe(),
+                new DropLogs(),
+                new treeNormal(),
+                new treeOak(),
+                new treeWillow(),
+                new treeTeak()
+        );
 
         for (Task task : woodcuttingTasks) {
             if (task.activate()) {

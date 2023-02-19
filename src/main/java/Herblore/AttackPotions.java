@@ -60,10 +60,6 @@ public class AttackPotions extends Task {
     }
     private void GetUnfinishedPotions() {
         mMain.state = "Grabbing Guam pot(unf)";
-        if (!Bank.opened()) {
-            Bank.open();
-            Condition.wait(Bank::opened, 500, 50);
-        }
         if (Inventory.stream().id(ToolID).isNotEmpty()) {
             Bank.depositAllExcept(ToolID);
             interactionHelper.withdrawItem(CombineWithItemID, 14);

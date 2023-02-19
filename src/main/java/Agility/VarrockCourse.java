@@ -3,6 +3,8 @@ package Agility;
 import org.powbot.api.rt4.Constants;
 import org.powbot.api.rt4.Game;
 import org.powbot.api.rt4.GameObject;
+import org.powbot.api.rt4.GroundItem;
+import org.powbot.api.rt4.GroundItems;
 import org.powbot.api.rt4.Inventory;
 import org.powbot.api.rt4.Movement;
 import org.powbot.api.rt4.Players;
@@ -44,7 +46,6 @@ public class VarrockCourse extends Task {
 
     public void ShouldRunObstacle() {
         if (playerHelper.withinArea(AgilityData.VarrockAreas.FLOOR.getArea())) {
-            GameObject VarrockObstacle1 = playerHelper.nearestGameObject(8, AgilityData.obstacleInfo.varrock1.getId());
             if (!playerHelper.withinArea(AgilityData.VarrockAreas.START.getArea())) {
                 mMain.state = "Move to Varrock start";
                 Movement.moveTo(AgilityData.VarrockAreas.START.getArea().getRandomTile());
@@ -71,7 +72,11 @@ public class VarrockCourse extends Task {
         }
         if (playerHelper.withinArea(AgilityData.VarrockAreas.OBSTACLE_6.getArea())) {
             GameObject VarrockObstacle6 = playerHelper.nearestGameObject(8, AgilityData.obstacleInfo.varrock6.getId());
-            if (!VarrockObstacle6.inViewport()) {
+            GroundItem groundItem = GroundItems.stream().within(10).name("Mark of grace").nearest().first();
+            if (groundItem.inViewport()) {
+                mMain.state = "Pickup mark";
+                playerHelper.lootItems("Take", "Mark of grace");
+            } else if (!VarrockObstacle6.inViewport()) {
                 mMain.state = "Move to Varrock OBS6";
                 Movement.step(AgilityData.VarrockAreas.OBSTACLE_6_MOVETO.getArea().getRandomTile());
             } else {

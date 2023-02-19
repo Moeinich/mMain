@@ -5,14 +5,16 @@ import org.powbot.api.rt4.Skills;
 import org.powbot.mobile.script.ScriptManager;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import Helpers.goToBank;
 import Helpers.skillData;
 import Helpers.Task;
+import Herblore.AttackPotions;
 import script.mMain;
 
 public class startFletching {
-    private ArrayList<Task> fletchingTasks = new ArrayList<>();
     public void Fletching() {
         mMain.runningSkill = "Fletching";
         if (Skills.realLevel(Constants.SKILLS_FLETCHING) >= 70) {
@@ -20,17 +22,18 @@ public class startFletching {
             skillData.setSkillDone();
             mMain.taskRunning.set(false);
         }
-        if (fletchingTasks.isEmpty()) {
-            fletchingTasks.add(new goToBank());
-            fletchingTasks.add(new ArrowShafts());
-            fletchingTasks.add(new Longbow());
-            fletchingTasks.add(new OakShortbow());
-            fletchingTasks.add(new OakLongbow());
-            fletchingTasks.add(new WillowShortbow());
-            fletchingTasks.add(new WillowLongbow());
-            fletchingTasks.add(new MapleShortbow());
-            fletchingTasks.add(new MapleLongbow());
-        }
+
+        List<Task> fletchingTasks = Arrays.asList(
+                new goToBank(),
+                new ArrowShafts(),
+                new Longbow(),
+                new OakShortbow(),
+                new OakLongbow(),
+                new WillowShortbow(),
+                new WillowLongbow(),
+                new MapleShortbow(),
+                new MapleLongbow()
+        );
 
         for (Task task : fletchingTasks) {
             if (task.activate()) {

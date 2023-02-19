@@ -21,13 +21,11 @@ public class DraynorCourse extends Task {
     public boolean execute() {
         if (Game.tab(Game.Tab.INVENTORY) && Inventory.stream().action("Eat").isEmpty()) {
             mMain.state = "Get food";
-            playerHelper playerHelper = new playerHelper();
             playerHelper.bankForFood(ItemList.CAKE_1891, 27);
         }
 
         if (Players.local().healthPercent() < 60 && Game.tab(Game.Tab.INVENTORY)) {
             mMain.state = "Eating..";
-            playerHelper playerHelper = new playerHelper();
             playerHelper.shouldEat();
         }
 

@@ -7,10 +7,13 @@ import org.powbot.api.rt4.Inventory;
 import org.powbot.api.rt4.Movement;
 import org.powbot.api.rt4.Players;
 import org.powbot.api.rt4.Skills;
+import org.powbot.api.rt4.Varpbits;
 
 import Helpers.ItemList;
 import Helpers.playerHelper;
 import Helpers.Task;
+import Helpers.questVarpbits;
+import Helpers.skillData;
 import script.mMain;
 
 public class CanifisCourse extends Task {
@@ -20,15 +23,20 @@ public class CanifisCourse extends Task {
     }
     @Override
     public boolean execute() {
+        if (Varpbits.varpbit(questVarpbits.PRIEST_IN_PERIL.getQuestVarbit()) != questVarpbits.PRIEST_IN_PERIL.getFinishedValue()) {
+            System.out.println("Priest in Peril not done, blacklisting agility.");
+            mMain.state = "PiP not done";
+            skillData.setSkillDone();
+            mMain.taskRunning.set(false);
+        }
+
         if (Game.tab(Game.Tab.INVENTORY) && Inventory.stream().action("Eat").isEmpty()) {
             mMain.state = "Get food";
-            playerHelper playerHelper = new playerHelper();
             playerHelper.bankForFood(ItemList.CAKE_1891, 27);
         }
 
         if (Players.local().healthPercent() < 60 && Game.tab(Game.Tab.INVENTORY)) {
             mMain.state = "Eating..";
-            playerHelper playerHelper = new playerHelper();
             playerHelper.shouldEat();
         }
 

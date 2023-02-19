@@ -84,6 +84,8 @@ public class skillData {
         }
     }
 
+
+
     public enum KOUREND_FAVOR {
         ARCEUUS(4896),
         HOSIDIUS(4895),
