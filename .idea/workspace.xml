@@ -14,14 +14,17 @@
       <change beforePath="$PROJECT_DIR$/.gradle/7.4/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShoppingList" beforeDir="false" afterPath="$PROJECT_DIR$/ShoppingList" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Fishing/AlKharidFishing.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Fishing/AlKharidFishing.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Fishing/BarbarianVillageFishing.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Fishing/BarbarianVillageFishing.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/MeleeCombat/Goblins.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/MeleeCombat/Goblins.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/MeleeCombat/StartMelee.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/MeleeCombat/StartMelee.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/script/mMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/script/mMain.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/MeleeCombat/Cows.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MeleeCombat/Cows.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/MeleeCombat/Goblins.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MeleeCombat/Goblins.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Fishing/AlKharidFishing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Fishing/AlKharidFishing.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Fishing/BarbarianVillageFishing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Fishing/BarbarianVillageFishing.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Helpers/combatHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Helpers/combatHelper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/MeleeCombat/StartMelee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MeleeCombat/StartMelee.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/script/mMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/script/mMain.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

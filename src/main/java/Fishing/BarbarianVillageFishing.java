@@ -2,6 +2,7 @@ package Fishing;
 
 import org.powbot.api.Condition;
 import org.powbot.api.rt4.Constants;
+import org.powbot.api.rt4.Game;
 import org.powbot.api.rt4.Inventory;
 import org.powbot.api.rt4.Npc;
 import org.powbot.api.rt4.Npcs;
@@ -28,8 +29,9 @@ public class BarbarianVillageFishing extends Task {
             mMain.state = "Do fishing";
             Npc BarbarianVillageFishingSpot = playerHelper.nearestNpc("Rod Fishing spot");
             if (BarbarianVillageFishingSpot.inViewport() && Players.local().animation() == -1) {
-                BarbarianVillageFishingSpot.interact("Lure", "Rod Fishing spot");
-                Condition.wait(() -> Npcs.stream().at(BarbarianVillageFishingSpot.tile()).isEmpty(), 150, 50);
+                if (BarbarianVillageFishingSpot.interact("Lure", "Rod Fishing spot")) {
+                    Condition.wait(() -> Npcs.stream().at(BarbarianVillageFishingSpot.tile()).isEmpty(), 150, 50);
+                }
             }
         }
         return false;

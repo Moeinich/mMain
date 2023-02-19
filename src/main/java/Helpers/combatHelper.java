@@ -74,11 +74,4 @@ public class combatHelper {
             }
         }
     }
-    public static boolean someoneAttackingPlayer() {
-        var npcAttackingPlayer = Npcs.stream().interactingWithMe().first();
-        return npcAttackingPlayer != null;
-    }
-    public static boolean isInCombat() {
-        return Players.local().inCombat();
-    }
 }
