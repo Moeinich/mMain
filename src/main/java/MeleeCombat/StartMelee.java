@@ -4,6 +4,7 @@ import org.powbot.api.rt4.Constants;
 import org.powbot.api.rt4.Skills;
 import org.powbot.mobile.script.ScriptManager;
 
+import Helpers.bankBeforeTask;
 import Helpers.eatFood;
 import Helpers.skillData;
 import Helpers.Task;
@@ -22,7 +23,7 @@ public class StartMelee {
             mMain.taskRunning.set(false);
         }
         if (meleeTask.isEmpty()) {
-            //meleeTask.add(new BankBeforeTask());
+            meleeTask.add(new bankBeforeTask());
             meleeTask.add(new getEquipment());
             meleeTask.add(new getFood());
             meleeTask.add(new eatFood());
