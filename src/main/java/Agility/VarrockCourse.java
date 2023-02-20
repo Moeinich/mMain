@@ -86,7 +86,11 @@ public class VarrockCourse extends Task {
         }
         if (playerHelper.withinArea(AgilityData.VarrockAreas.OBSTACLE_7.getArea())) {
             GameObject VarrockObstacle7 = playerHelper.nearestGameObject(8, AgilityData.obstacleInfo.varrock7.getId());
-            if (!VarrockObstacle7.inViewport()) {
+            GroundItem groundItem = GroundItems.stream().within(10).name("Mark of grace").nearest().first();
+            if (groundItem.inViewport()) {
+                mMain.state = "Pickup mark";
+                playerHelper.lootItems("Take", "Mark of grace");
+            } else if (!VarrockObstacle7.inViewport()) {
                 mMain.state = "Move to Varrock OBS7";
                 Movement.step(AgilityData.VarrockAreas.OBSTACLE_7_MOVETO.getArea().getRandomTile());
             } else {

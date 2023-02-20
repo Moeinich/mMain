@@ -22,7 +22,9 @@ import java.util.List;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import Helpers.interactionHelper;
@@ -74,8 +76,8 @@ public class mMain extends AbstractScript {
         interactionHelper.cameraCheck();
         Notifications.showNotification("mMain starting " + skill);
 
-        final DateTimeFormatter TIMER_FORMAT = DateTimeFormatter.ofPattern("hh:mm:ss");
-        //ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();
+        final DateTimeFormatter TIMER_FORMAT = DateTimeFormatter.ofPattern("mm:ss");
+        ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();
 
         final Duration[] remainingDuration = {Duration.ofMillis(runtime.timeLeft())};
         final LocalTime[] remainingTime = {LocalTime.MIDNIGHT.plus(remainingDuration[0])};
@@ -108,11 +110,11 @@ public class mMain extends AbstractScript {
         Paint p = builder.x(40).y(300).build();
         addPaint(p);
 
-        /*executor.scheduleAtFixedRate(() -> {
+        executor.scheduleAtFixedRate(() -> {
             remainingDuration[0] = Duration.ofMillis(runtime.timeLeft());
             remainingTime[0] = LocalTime.MIDNIGHT.plus(remainingDuration[0]);
             formattedTime[0] = TIMER_FORMAT.format(remainingTime[0]);
-        }, 0, 1, TimeUnit.SECONDS);*/
+        }, 0, 1, TimeUnit.SECONDS);
     }
     public static class Stopwatch {
         private long stopTime;
@@ -156,7 +158,6 @@ public class mMain extends AbstractScript {
         if (skillData.allSkillsDone()) {
             ScriptManager.INSTANCE.stop();
         }
-
         String skill = getOption("Mode");
 
         switch (skill) {

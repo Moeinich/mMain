@@ -95,7 +95,13 @@ public class combatHelper {
                 System.out.println("Item already equipped");
                 continue;
             }
-            if (itemToEquip.interact("Wear", itemToEquip.name())) {
+            String interactionType = null;
+            if (itemToEquip.actions().contains("Wear")) {
+                interactionType = "Wear";
+            } else if (itemToEquip.actions().contains("Wield")) {
+                interactionType = "Wield";
+            }
+            if (interactionType != null && itemToEquip.interact(interactionType, itemToEquip.name())) {
                 System.out.println("Equipped missing item");
                 Condition.wait(() -> combatHelper.hasEquipped(item.getId()), 250, 10);
             }

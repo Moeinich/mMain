@@ -46,7 +46,7 @@ public class GetFishingEquipment extends Task {
                     Condition.wait( () -> Inventory.stream().name("Fly fishing rod").isNotEmpty(),150, 50);
                 }
                 if (Inventory.stream().id(ItemList.FEATHER_314).count() == 0) {
-                    interactionHelper.withdrawItem(ItemList.FEATHER_314, 5000);
+                    interactionHelper.withdrawItem(ItemList.FEATHER_314, 2000);
                     Condition.wait( () -> Inventory.stream().name("Feather").isNotEmpty(),150, 50);
                 }
                 Bank.close();
