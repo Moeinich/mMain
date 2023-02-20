@@ -15,36 +15,42 @@ import org.powbot.mobile.script.ScriptManager;
 import script.mMain;
 
 public class interactionHelper {
-    public static void withdrawItem(int ItemName, int Amount) {
+    public static void withdrawItem(int itemID, int Amount) {
         if (!Bank.opened() && Bank.inViewport()) {
             if (Bank.open()) {
                 Condition.wait(Bank::opened, 150, 10);
             }
         }
-        if (Bank.stream().id(ItemName).first().stackSize() < Amount) {
-            mMain.state = "We ran out of " + ItemName;
+        if (Bank.stream().id(itemID).first().stackSize() < Amount) {
+            mMain.state = "We ran out of " + itemID;
+            System.out.println("We ran out of items");
             skillData.setSkillDone();
+            System.out.println("Skill was set to done");
             mMain.taskRunning.set(false); //Skip task on progressive
+            System.out.println("taskRunning was set false");
         } else {
-            Bank.withdraw(ItemName, Amount);
-            Condition.wait( () -> Inventory.stream().id(ItemName).isNotEmpty(), 150, 10);
+            Bank.withdraw(itemID, Amount);
+            Condition.wait( () -> Inventory.stream().id(itemID).isNotEmpty(), 150, 10);
         }
     }
-    public static void depositAndWithdraw(int item, int amount) {
+    public static void depositAndWithdraw(int itemID, int amount) {
         if (!Bank.opened() && Bank.inViewport()) {
             if (Bank.open()) {
                 Condition.wait(Bank::opened, 150, 10);
             }
         }
-        if (Bank.stream().id(item).first().stackSize() < amount) {
-            mMain.state = "We ran out of " + item;
+        if (Bank.stream().id(itemID).first().stackSize() < amount) {
+            mMain.state = "We ran out of " + itemID;
+            System.out.println("We ran out of items");
             skillData.setSkillDone();
-            mMain.taskRunning.set(false);//Skip task on progressive
+            System.out.println("Skill was set to done");
+            mMain.taskRunning.set(false); //Skip task on progressive
+            System.out.println("taskRunning was set false");
         } else {
             Bank.depositInventory();
             Condition.wait(Inventory::isEmpty, 150, 10);
-            Bank.withdraw(item, amount);
-            Condition.wait( () -> Inventory.stream().id(item).isNotEmpty(), 150, 10);
+            Bank.withdraw(itemID, amount);
+            Condition.wait( () -> Inventory.stream().id(itemID).isNotEmpty(), 150, 10);
         }
     }
 

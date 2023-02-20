@@ -29,13 +29,14 @@ public class CowSafespot extends Task {
             combatHelper.gearUp(RangeData.RangeEquipment());
         }
 
-        if (!combatHelper.needEquipment(RangeData.RangeEquipment()) && !playerHelper.withinArea(skillData.CowSafeSpotArea)) {
-            mMain.state = "Go safespot";
-            playerHelper.walkToTile(skillData.CowSafeSpotArea.getRandomTile());
-        }
-
-        if (playerHelper.withinArea(skillData.CowSafeSpotArea)) {
-            ShouldFight();
+        if (!combatHelper.needEquipment(RangeData.RangeEquipment())) {
+            if (!playerHelper.withinArea(skillData.CowSafeSpotArea)) {
+                mMain.state = "Go safespot";
+                playerHelper.walkToTile(skillData.CowSafeSpotArea.getRandomTile());
+            }
+            if (playerHelper.withinArea(skillData.CowSafeSpotArea)) {
+                ShouldFight();
+            }
         }
         return false;
     }

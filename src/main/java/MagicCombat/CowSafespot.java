@@ -37,8 +37,9 @@ public class CowSafespot extends Task {
                 Condition.wait(Bank::open, 250, 5);
             }
             interactionHelper.depositAndWithdraw(ItemList.AIR_RUNE_556, 2000);
+            Condition.wait( () -> playerHelper.hasItem(ItemList.AIR_RUNE_556), 150, 50);
             interactionHelper.withdrawItem(ItemList.MIND_RUNE_558, 2000);
-            Condition.wait( () -> playerHelper.hasItem(ItemList.MIND_RUNE_558, ItemList.AIR_RUNE_556), 150, 50);
+            Condition.wait( () -> playerHelper.hasItem(ItemList.MIND_RUNE_558), 150, 50);
             Bank.close();
         }
 
@@ -56,14 +57,14 @@ public class CowSafespot extends Task {
                 }
             }
         }
-
-        if (playerHelper.hasItem(ItemList.MIND_RUNE_558, ItemList.AIR_RUNE_556) && !combatHelper.needEquipment(MagicData.MagicEquipment()) && !playerHelper.withinArea(skillData.CowSafeSpotArea)) {
-            mMain.state = "Go safespot";
-            playerHelper.walkToTile(skillData.CowSafeSpotArea.getRandomTile());
-        }
-
-        if (playerHelper.withinArea(skillData.CowSafeSpotArea) && MagicHelpers.getAutoCastSpell().getSpell() == MagicData.MagicSpell()) {
-            ShouldFight();
+        if (playerHelper.hasItem(MagicData.Runes) && !combatHelper.needEquipment(MagicData.MagicEquipment()) && MagicHelpers.getAutoCastSpell().getSpell() == MagicData.MagicSpell()) {
+            if (!playerHelper.withinArea(skillData.CowSafeSpotArea)) {
+                mMain.state = "Go safespot";
+                playerHelper.walkToTile(skillData.CowSafeSpotArea.getRandomTile());
+            }
+            if (playerHelper.withinArea(skillData.CowSafeSpotArea)) {
+                ShouldFight();
+            }
         }
         return false;
     }

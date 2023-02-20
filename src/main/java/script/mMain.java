@@ -137,7 +137,6 @@ public class mMain extends AbstractScript {
         }
     }
 
-
     @Override
     public void poll() {
         var startAgility = new Agility.StartAgility();
@@ -168,7 +167,8 @@ public class mMain extends AbstractScript {
 
                 final CountDownLatch taskLatch = new CountDownLatch(1);
                 if (taskRunning.compareAndSet(false, true)) {
-                    if (runtime.timeLeft() <= 0) {
+                    System.out.println("taskRunning was set true.");
+                    if (runtime.timeLeft() <= 0 || taskRunning.get()) {
                         if (!mMain.shouldBank) {
                             mMain.shouldBank = true;
                         } else {
@@ -194,12 +194,11 @@ public class mMain extends AbstractScript {
                             //Add future skills to this tasklist!
                     );
 
-                    final int taskIndex = ThreadLocalRandom.current().nextInt(tasks.size());
-
                     taskHandler.execute(() -> {
                         try {
                             while(!ScriptManager.INSTANCE.isStopping() && !runtime.hasFinished() && taskRunning.get()) {
                                 taskLatch.await(); // Wait for previous task to complete
+                                final int taskIndex = ThreadLocalRandom.current().nextInt(tasks.size());
                                 tasks.get(taskIndex).run();
                             }
                         } catch (InterruptedException e) {
