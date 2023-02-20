@@ -22,9 +22,7 @@ import java.util.List;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ThreadLocalRandom;
-import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import Helpers.interactionHelper;
@@ -65,6 +63,7 @@ public class mMain extends AbstractScript {
     public static Boolean shouldBank = true;
     Executor taskHandler = Executors.newSingleThreadExecutor();
     public static final AtomicBoolean taskRunning = new AtomicBoolean(false);
+    private final Stopwatch runtime = new Stopwatch();
 
 
     @Override
@@ -75,10 +74,10 @@ public class mMain extends AbstractScript {
         interactionHelper.cameraCheck();
         Notifications.showNotification("mMain starting " + skill);
 
-        final DateTimeFormatter TIMER_FORMAT = DateTimeFormatter.ofPattern("mm:ss");
-        ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();
+        final DateTimeFormatter TIMER_FORMAT = DateTimeFormatter.ofPattern("hh:mm:ss");
+        //ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();
 
-        final Duration[] remainingDuration = {Duration.ofMillis(Stopwatch.timeLeft())};
+        final Duration[] remainingDuration = {Duration.ofMillis(runtime.timeLeft())};
         final LocalTime[] remainingTime = {LocalTime.MIDNIGHT.plus(remainingDuration[0])};
         final String[] formattedTime = {TIMER_FORMAT.format(remainingTime[0])};
 
@@ -109,34 +108,33 @@ public class mMain extends AbstractScript {
         Paint p = builder.x(40).y(300).build();
         addPaint(p);
 
-        executor.scheduleAtFixedRate(() -> {
-            remainingDuration[0] = Duration.ofMillis(Stopwatch.timeLeft());
+        /*executor.scheduleAtFixedRate(() -> {
+            remainingDuration[0] = Duration.ofMillis(runtime.timeLeft());
             remainingTime[0] = LocalTime.MIDNIGHT.plus(remainingDuration[0]);
             formattedTime[0] = TIMER_FORMAT.format(remainingTime[0]);
-        }, 1, 1, TimeUnit.SECONDS);
+        }, 0, 1, TimeUnit.SECONDS);*/
     }
     public static class Stopwatch {
-        private static long stopTime;
-        private boolean running;
+        private long stopTime;
 
         public Stopwatch() {
             stopTime = 0;
         }
+
         public void reset(long time) {
             long startTime = System.currentTimeMillis();
             stopTime = startTime + time;
-            running = true;
         }
-        public static long timeLeft() {
+
+        public long timeLeft() {
             return (stopTime - System.currentTimeMillis());
         }
+
         public boolean hasFinished() {
             return System.currentTimeMillis() >= stopTime;
         }
-        public boolean isRunning() {
-            return running;
-        }
     }
+
 
     @Override
     public void poll() {
@@ -169,8 +167,7 @@ public class mMain extends AbstractScript {
 
                 final CountDownLatch taskLatch = new CountDownLatch(1);
                 if (taskRunning.compareAndSet(false, true)) {
-                    final Stopwatch runtime = new Stopwatch();
-                    if (!runtime.isRunning()) {
+                    if (runtime.timeLeft() <= 0) {
                         if (!mMain.shouldBank) {
                             mMain.shouldBank = true;
                         } else {
@@ -210,7 +207,6 @@ public class mMain extends AbstractScript {
                             taskRunning.set(false);
                         }
                     });
-
                     taskLatch.countDown(); // Signal that previous task has completed
                 }
                 break;

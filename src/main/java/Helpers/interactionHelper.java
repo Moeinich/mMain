@@ -15,7 +15,6 @@ import org.powbot.mobile.script.ScriptManager;
 import script.mMain;
 
 public class interactionHelper {
-
     public static void withdrawItem(int ItemName, int Amount) {
         if (!Bank.opened() && Bank.inViewport()) {
             if (Bank.open()) {
@@ -23,7 +22,7 @@ public class interactionHelper {
             }
         }
         if (Bank.stream().id(ItemName).first().stackSize() < Amount) {
-            mMain.state = "We ran out of " + ItemName + Bank.stream().id(ItemName).first().stackSize();
+            mMain.state = "We ran out of " + ItemName;
             skillData.setSkillDone();
             mMain.taskRunning.set(false); //Skip task on progressive
         } else {
@@ -38,7 +37,7 @@ public class interactionHelper {
             }
         }
         if (Bank.stream().id(item).first().stackSize() < amount) {
-            mMain.state = "We ran out of " + item + Bank.stream().id(item).first().stackSize();
+            mMain.state = "We ran out of " + item;
             skillData.setSkillDone();
             mMain.taskRunning.set(false);//Skip task on progressive
         } else {
@@ -92,7 +91,7 @@ public class interactionHelper {
             if (Widgets.widget(WidgetID).valid()) {
                 System.out.println("Click widget");
                 Widgets.widget(WidgetID).component(ComponentID).click();
-                if(Condition.wait(() -> !Widgets.widget(WidgetID).valid(), 150, 20)){
+                if(Condition.wait(() -> !Widgets.widget(WidgetID).valid(), 500, 20)){
                     System.out.println("Widget no longer valid");
                     Condition.wait(()-> Inventory.stream().id(RequiredItemID).count() < Count || Chat.canContinue(), 1000, 80);
                     System.out.println("CombineWithItem is empty or leveled up");
