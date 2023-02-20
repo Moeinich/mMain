@@ -166,13 +166,14 @@ public class mMain extends AbstractScript {
                 }
 
                 final CountDownLatch taskLatch = new CountDownLatch(1);
-                if (taskRunning.compareAndSet(false, true)) {
-                    System.out.println("taskRunning was set true.");
-                    if (runtime.timeLeft() <= 0 || taskRunning.get()) {
+                if (taskRunning.compareAndSet(false, true) || runtime.timeLeft() <= 0) {
+                    if (runtime.timeLeft() <= 0 || !taskRunning.get()) {
                         if (!mMain.shouldBank) {
                             mMain.shouldBank = true;
+                            System.out.println("shouldBank set true");
                         } else {
                             runtime.reset(Random.nextInt(MIN_TIME_LIMIT, MAX_TIME_LIMIT));
+                            System.out.println("Runtime reset");
                         }
                     }
 
@@ -193,12 +194,12 @@ public class mMain extends AbstractScript {
                             startWoodcutting::Woodcutting
                             //Add future skills to this tasklist!
                     );
-
+                    final int taskIndex = ThreadLocalRandom.current().nextInt(0, tasks.size());
+                    System.out.println("Task changed: " + taskIndex);
                     taskHandler.execute(() -> {
                         try {
                             while(!ScriptManager.INSTANCE.isStopping() && !runtime.hasFinished() && taskRunning.get()) {
                                 taskLatch.await(); // Wait for previous task to complete
-                                final int taskIndex = ThreadLocalRandom.current().nextInt(tasks.size());
                                 tasks.get(taskIndex).run();
                             }
                         } catch (InterruptedException e) {
