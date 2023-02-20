@@ -39,12 +39,15 @@ public class ironPlatebody extends Task {
         }
         if (playerHelper.withinArea(smithingData.varrockWestBank)) {
             if (!Bank.opened() && Bank.inViewport()) {
+                System.out.println("opening bank");
                 Bank.open();
             }
             if (Inventory.stream().name("Hammer").isEmpty()) {
+                System.out.println("Deposit and withdraw everythinh and get a hammer");
                 interactionHelper.depositAndWithdraw(ItemList.HAMMER_2347, 1);
             } else {
                 Bank.depositAllExcept("Hammer", "Iron bar");
+                System.out.println("Withdraw Iron bars");
                 interactionHelper.withdrawItem(ItemList.IRON_BAR_2351, 27);
                 Bank.close();
             }
