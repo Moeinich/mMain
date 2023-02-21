@@ -7,6 +7,7 @@ import org.powbot.api.rt4.Component;
 import org.powbot.api.rt4.Constants;
 import org.powbot.api.rt4.Game;
 import org.powbot.api.rt4.Movement;
+import org.powbot.api.rt4.Npc;
 import org.powbot.api.rt4.Players;
 import org.powbot.api.rt4.Skills;
 import org.powbot.api.rt4.Varpbits;
@@ -34,16 +35,29 @@ public class Crabs extends Task {
     @Override
     public boolean execute() {
         if (!Combat.autoRetaliate()) {
-            EnableAutoRetaliate();
-            //Combat.autoRetaliate();
+            mMain.state = "Toggle auto retaliate";
+            System.out.println("Toggle auto retaliate");
+            Combat.autoRetaliate();
         }
 
         if (System.currentTimeMillis() - lastCombatTime > resetTime && playerHelper.atTile(meleeData.crabLocation)) {
+            mMain.state = "Reset";
+            System.out.println("Resetting crabs");
             resetCrabs();
+            resetTime = Random.nextInt(4000, 10000);
         }
 
         if (!playerHelper.atTile(meleeData.crabLocation)) {
+            mMain.state = "Walk to crabs";
+            System.out.println("We are away from crab location, walking to crabs!");
             walkToCrabs();
+        }
+
+        if (playerHelper.atTile(meleeData.crabLocation) && !Combat.inMultiCombat()) {
+            mMain.state = "Do an attack";
+            attackCrab();
+        } else {
+            Condition.wait(Combat::inMultiCombat,1500,70);
         }
         return false;
     }
@@ -78,5 +92,14 @@ public class Crabs extends Task {
             Movement.moveTo(meleeData.crabLocation);
         }
         Condition.wait(() -> playerHelper.atTile(meleeData.crabLocation), 400, 10);
+    }
+    public void attackCrab() {
+        System.out.println("Streaming for a cow or cow calf");
+        Npc crab = playerHelper.nearestCombatNpc(meleeData.cowArea, "Sand crab");
+        mMain.state = "Attack";
+        if (crab.healthPercent() == 100 && crab.inViewport() && crab.interact("Attack")) {
+            mMain.state = "Waiting for idle";
+            Condition.wait(() -> crab.healthPercent() == 0,1500,70);
+        }
     }
 }
