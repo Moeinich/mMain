@@ -4,27 +4,25 @@ import org.powbot.api.rt4.Constants;
 import org.powbot.api.rt4.Skills;
 import org.powbot.mobile.script.ScriptManager;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import Helpers.goToBank;
-import Helpers.skillData;
+import Helpers.GoToBank;
+import Helpers.SkillData;
 import Helpers.Task;
-import Herblore.AttackPotions;
 import script.mMain;
 
-public class startFletching {
+public class StartFletching {
     public void Fletching() {
         mMain.runningSkill = "Fletching";
-        if (Skills.realLevel(Constants.SKILLS_FLETCHING) >= 70 || skillData.fletchingDone) {
+        if (Skills.realLevel(Constants.SKILLS_FLETCHING) >= 70 || SkillData.fletchingDone) {
             mMain.state = "Fletching done!";
-            skillData.setSkillDone();
+            SkillData.setSkillDone();
             mMain.taskRunning.set(false);
         }
 
         List<Task> fletchingTasks = Arrays.asList(
-                new goToBank(),
+                new GoToBank(),
                 new ArrowShafts(),
                 new Longbow(),
                 new OakShortbow(),

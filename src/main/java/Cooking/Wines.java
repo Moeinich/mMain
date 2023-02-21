@@ -10,7 +10,7 @@ import org.powbot.api.rt4.Skills;
 import org.powbot.dax.api.DaxWalker;
 import org.powbot.mobile.script.ScriptManager;
 
-import Helpers.interactionHelper;
+import Helpers.InteractionsHelper;
 import Helpers.ItemList;
 import Helpers.Task;
 import script.mMain;
@@ -52,26 +52,26 @@ public class Wines extends Task {
     }
 
     private void checkTool() {
-        interactionHelper interactionHelper = new interactionHelper();
+        InteractionsHelper InteractionsHelper = new InteractionsHelper();
         mMain.state = "Get jugs";
         if (Inventory.stream().id(ToolID).isEmpty()) {
-            interactionHelper.depositAndWithdraw(ToolID, 14);
+            InteractionsHelper.depositAndWithdraw(ToolID, 14);
         }
 
     }
     private void withdrawItems() {
-        interactionHelper interactionHelper = new interactionHelper();
+        InteractionsHelper InteractionsHelper = new InteractionsHelper();
         mMain.state = "Withdraw items";
         if (Bank.stream().id(CombineWithItemID).isNotEmpty()) {
-            interactionHelper.withdrawItem(CombineWithItemID, 14);
+            InteractionsHelper.withdrawItem(CombineWithItemID, 14);
             Bank.close();
             Condition.wait( () -> !Bank.opened(), 500, 50);
         }
     }
     private void craft() {
         while (Inventory.stream().id(CombineWithItemID).count() >= 1) {
-            interactionHelper interactionHelper = new interactionHelper();
-            interactionHelper.combineItems(ToolID, CombineWithItemID, WidgetID, ComponentID);
+            InteractionsHelper InteractionsHelper = new InteractionsHelper();
+            InteractionsHelper.combineItems(ToolID, CombineWithItemID, WidgetID, ComponentID);
         }
     }
 }

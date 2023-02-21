@@ -4,32 +4,25 @@ import org.powbot.api.rt4.Constants;
 import org.powbot.api.rt4.Skills;
 import org.powbot.mobile.script.ScriptManager;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import Helpers.skillData;
+import Helpers.SkillData;
 import Helpers.Task;
-import Helpers.bankBeforeTask;
-import Woodcutting.DropLogs;
-import Woodcutting.GetAxe;
-import Woodcutting.treeNormal;
-import Woodcutting.treeOak;
-import Woodcutting.treeTeak;
-import Woodcutting.treeWillow;
+import Helpers.BankBeforeTask;
 import script.mMain;
 
 public class StartThieving {
     public void Thieving() {
         mMain.runningSkill = "Thieving";
-        if (Skills.realLevel(Constants.SKILLS_THIEVING) >= 60 || skillData.thievingDone) {
+        if (Skills.realLevel(Constants.SKILLS_THIEVING) >= 60 || SkillData.thievingDone) {
             mMain.state = "Thieving done!";
-            skillData.setSkillDone();
+            SkillData.setSkillDone();
             mMain.taskRunning.set(false);
         }
 
         List<Task> thievingTasks = Arrays.asList(
-                new bankBeforeTask(),
+                new BankBeforeTask(),
                 new ThievingMen(),
                 new TeaStall(),
                 new FruitStall()

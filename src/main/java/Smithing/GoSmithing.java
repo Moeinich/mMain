@@ -1,12 +1,12 @@
 package Smithing;
 
-import Helpers.playerHelper;
+import Helpers.PlayerHelper;
 import Helpers.Task;
 
 public class GoSmithing extends Task {
     @Override
     public boolean activate() {
-        if (!playerHelper.withinArea(smithingData.smithingArea)) {
+        if (!PlayerHelper.withinArea(SmithingData.smithingArea)) {
             return true;
         }
         return false;
@@ -14,7 +14,7 @@ public class GoSmithing extends Task {
 
     @Override
     public boolean execute() {
-        playerHelper.walkToTile(smithingData.smithingArea.getRandomTile());
+        PlayerHelper.walkToTile(SmithingData.smithingArea.getRandomTile());
         return false;
     }
 }

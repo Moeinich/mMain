@@ -6,7 +6,7 @@ import org.powbot.api.rt4.walking.model.Skill;
 
 import Helpers.ItemList;
 
-public class miningData {
+public class MiningData {
     //Mining
     public static Tile miningCopperLocation = new Tile(3287,3366);
     public static Area miningCopperArea = new Area(new Tile(3286, 3367, 0), new Tile(3288, 3365, 0));

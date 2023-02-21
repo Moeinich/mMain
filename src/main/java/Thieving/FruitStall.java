@@ -15,8 +15,8 @@ import org.powbot.api.rt4.World;
 
 import java.util.List;
 
-import Helpers.playerHelper;
-import Helpers.skillData;
+import Helpers.PlayerHelper;
+import Helpers.SkillData;
 import Helpers.Task;
 import script.mMain;
 
@@ -56,20 +56,20 @@ public class FruitStall extends Task {
     @Override
     public boolean execute() {
         //Check favor
-        if (!skillData.KOUREND_FAVOR.checkedFavor) {
+        if (!SkillData.KOUREND_FAVOR.checkedFavor) {
             CheckFavor();
         }
-        if (skillData.KOUREND_FAVOR.hosidiusFavorValue >= 20) {
+        if (SkillData.KOUREND_FAVOR.hosidiusFavorValue >= 20) {
             //Go to thieving spot
-            if (!Players.local().tile().equals(thievingData.movementThieving()) && !(thievingData.movementThieving().tile().distanceTo(Players.local()) < 3)) {
+            if (!Players.local().tile().equals(ThievingData.movementThieving()) && !(ThievingData.movementThieving().tile().distanceTo(Players.local()) < 3)) {
                 WalkToSpot();
             }
             //World hop check
-            if (playerHelper.withinArea(thievingData.fruitStallArea) && Players.stream().within(thievingData.fruitStallArea).count() != 1) {
+            if (PlayerHelper.withinArea(ThievingData.fruitStallArea) && Players.stream().within(ThievingData.fruitStallArea).count() != 1) {
                 ShouldWorldhop();
             }
             //Thieving loop
-            if (Players.stream().within(thievingData.fruitStallArea).count() == 1) {
+            if (Players.stream().within(ThievingData.fruitStallArea).count() == 1) {
                 if (shouldDropItems()) {
                     dropItems();
                 } else if (!Inventory.isFull()) {
@@ -84,8 +84,8 @@ public class FruitStall extends Task {
         if (!Game.tab(Game.Tab.INVENTORY)) {
             Condition.wait(() -> Game.tab(Game.Tab.INVENTORY), 250, 10);
         }
-        GameObject fruitStall = playerHelper.nearestGameObject(2, STALL_ID);
-        if (fruitStall.valid() && Players.stream().within(thievingData.fruitStallArea).count() == 1) {
+        GameObject fruitStall = PlayerHelper.nearestGameObject(2, STALL_ID);
+        if (fruitStall.valid() && Players.stream().within(ThievingData.fruitStallArea).count() == 1) {
             if (!fruitStall.inViewport()) { // Need to turn camera to the stall
                 mMain.state = "Turning camera";
                 Camera.turnTo(fruitStall);
@@ -101,31 +101,31 @@ public class FruitStall extends Task {
     }
     private void ShouldWorldhop() {
         mMain.state = "Worldhopping";
-        int[] p2p = skillData.p2p;
+        int[] p2p = SkillData.p2p;
         int randomWorld = p2p[Random.nextInt(0, p2p.length - 1)];
         World world = new World(randomWorld, randomWorld, 1, World.Type.MEMBERS, World.Server.RUNE_SCAPE, World.Specialty.NONE);
         world.hop();
     }
     private void WalkToSpot() {
-        if (!Players.local().tile().equals(thievingData.movementThieving()) && !(thievingData.movementThieving().tile().distanceTo(Players.local()) < 3)) { // Need to move to our thieving spot
+        if (!Players.local().tile().equals(ThievingData.movementThieving()) && !(ThievingData.movementThieving().tile().distanceTo(Players.local()) < 3)) { // Need to move to our thieving spot
             mMain.state = "Walking to Thieving spot";
-            playerHelper.walkToTile(thievingData.movementThieving());
-            Condition.wait(() -> thievingData.movementThieving().tile().distanceTo(Players.local()) < 3, 150, 20);
-            if (thievingData.movementThieving().tile().distanceTo(Players.local()) < 3) {
-                Movement.step(thievingData.movementThieving());
+            PlayerHelper.walkToTile(ThievingData.movementThieving());
+            Condition.wait(() -> ThievingData.movementThieving().tile().distanceTo(Players.local()) < 3, 150, 20);
+            if (ThievingData.movementThieving().tile().distanceTo(Players.local()) < 3) {
+                Movement.step(ThievingData.movementThieving());
             }
         }
     }
     private void CheckFavor() {
         //We need to check hosidius favor!
-        if (!skillData.KOUREND_FAVOR.checkedFavor) {
-            mMain.state = "Favor: " + skillData.KOUREND_FAVOR.hosidiusFavorValue;
-            skillData.KOUREND_FAVOR.hosidiusFavorValue = skillData.KOUREND_FAVOR.HOSIDIUS.getValue();
+        if (!SkillData.KOUREND_FAVOR.checkedFavor) {
+            mMain.state = "Favor: " + SkillData.KOUREND_FAVOR.hosidiusFavorValue;
+            SkillData.KOUREND_FAVOR.hosidiusFavorValue = SkillData.KOUREND_FAVOR.HOSIDIUS.getValue();
         }
-        if (skillData.KOUREND_FAVOR.hosidiusFavorValue <= 19) {
+        if (SkillData.KOUREND_FAVOR.hosidiusFavorValue <= 19) {
             mMain.state = "Thieving done!";
-            skillData.setSkillDone();
+            SkillData.setSkillDone();
             mMain.taskRunning.set(false);
-        } else skillData.KOUREND_FAVOR.checkedFavor = true;
+        } else SkillData.KOUREND_FAVOR.checkedFavor = true;
     }
 }

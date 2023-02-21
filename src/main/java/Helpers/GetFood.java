@@ -5,7 +5,7 @@ import org.powbot.api.rt4.Inventory;
 
 import script.mMain;
 
-public class getFood extends Task{
+public class GetFood extends Task{
     public boolean activate() {
         return Game.tab(Game.Tab.INVENTORY) && Inventory.stream().action("Eat").isEmpty();
     }
@@ -13,7 +13,7 @@ public class getFood extends Task{
     @Override
     public boolean execute() {
         mMain.state = "Get food";
-        playerHelper.bankForFood(ItemList.CAKE_1891, 15);
+        PlayerHelper.bankForFood(ItemList.CAKE_1891, 15);
         return false;
     }
 }

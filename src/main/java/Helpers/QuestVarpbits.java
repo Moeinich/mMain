@@ -1,6 +1,6 @@
 package Helpers;
 
-public class questVarpbits {
+public class QuestVarpbits {
     public static class Quest {
         private final String questName;
         private int questVarbit;

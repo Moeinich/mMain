@@ -1,25 +1,22 @@
 package Cooking;
 
-import Helpers.goToBank;
-import Helpers.skillData;
+import Helpers.SkillData;
 import Helpers.Task;
-import Herblore.AttackPotions;
 import script.mMain;
 
 import org.powbot.api.rt4.Constants;
 import org.powbot.api.rt4.Skills;
 import org.powbot.mobile.script.ScriptManager;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class StartCooking {
     public void Cooking() {
         mMain.runningSkill = "Cooking";
-        if (Skills.realLevel(Constants.SKILLS_COOKING) >= 70 || skillData.cookingDone) {
+        if (Skills.realLevel(Constants.SKILLS_COOKING) >= 70 || SkillData.cookingDone) {
             mMain.state = "Cooking done!";
-            skillData.setSkillDone();
+            SkillData.setSkillDone();
             mMain.taskRunning.set(false);
         }
 

@@ -5,26 +5,19 @@ import org.powbot.api.rt4.Constants;
 import org.powbot.api.rt4.Skills;
 import org.powbot.mobile.script.ScriptManager;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import Helpers.skillData;
+import Helpers.SkillData;
 import Helpers.Task;
-import Woodcutting.DropLogs;
-import Woodcutting.GetAxe;
-import Woodcutting.treeNormal;
-import Woodcutting.treeOak;
-import Woodcutting.treeTeak;
-import Woodcutting.treeWillow;
 import script.mMain;
 
 public class StartMining {
     public void Mining() {
         mMain.runningSkill = "Mining";
-        if (Skills.realLevel(Constants.SKILLS_MINING) >= 70 || skillData.miningDone) {
+        if (Skills.realLevel(Constants.SKILLS_MINING) >= 70 || SkillData.miningDone) {
             mMain.state = "Mining done!";
-            skillData.setSkillDone();
+            SkillData.setSkillDone();
             mMain.taskRunning.set(false);
         }
 

@@ -21,7 +21,7 @@ import org.powbot.dax.teleports.Teleport;
 
 import script.mMain;
 
-public class playerHelper {
+public class PlayerHelper {
 
     public static void shouldEat() {
         mMain.state = "Eating food";
@@ -35,7 +35,7 @@ public class playerHelper {
             Movement.moveToBank();
         }
         if (Bank.nearest().tile().distanceTo(Players.local()) <= 5) {
-            interactionHelper.depositAndWithdraw(foodName, amount);
+            InteractionsHelper.depositAndWithdraw(foodName, amount);
             Bank.close();
             Condition.wait( () -> !Bank.opened(), 150, 50);
         }

@@ -7,7 +7,7 @@ import org.powbot.api.rt4.Inventory;
 import org.powbot.api.rt4.Players;
 import org.powbot.dax.api.DaxWalker;
 
-import Helpers.interactionHelper;
+import Helpers.InteractionsHelper;
 import Helpers.Task;
 import script.mMain;
 
@@ -15,7 +15,7 @@ public class GetAxe extends Task {
 
     @Override
     public boolean activate() {
-        return Inventory.stream().id(woodcuttingData.wcAxes).isEmpty();
+        return Inventory.stream().id(WoodcuttingData.wcAxes).isEmpty();
     }
     @Override
     public boolean execute() {
@@ -24,10 +24,10 @@ public class GetAxe extends Task {
             mMain.state = "Get axe - GoToBank";
             DaxWalker.walkToBank();
         }
-        if (!Bank.opened() && Inventory.stream().id(woodcuttingData.wcAxes).isEmpty()) {
+        if (!Bank.opened() && Inventory.stream().id(WoodcuttingData.wcAxes).isEmpty()) {
             mMain.state = "Get axe - Withdraw";
             if (Bank.open()) {
-                interactionHelper.depositAndWithdraw(woodcuttingData.withdrawAxe(), 1);
+                InteractionsHelper.depositAndWithdraw(WoodcuttingData.withdrawAxe(), 1);
                 Bank.close();
                 Condition.wait( () -> !Bank.opened(), 250, 50);
             }

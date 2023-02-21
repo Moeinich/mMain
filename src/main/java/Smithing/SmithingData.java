@@ -4,7 +4,7 @@ import org.powbot.api.Area;
 import org.powbot.api.Tile;
 
 
-public class smithingData {
+public class SmithingData {
     public static final Area smithingArea = new Area(new Tile(3177,3439,0), new Tile(3192,3419,0));
     public static final Area varrockWestBank = new Area(new Tile(3180, 3433, 0), new Tile(3185, 3437, 0));
     public static final Tile varrockWestBankTile = new Tile(3185, 3436, 0);

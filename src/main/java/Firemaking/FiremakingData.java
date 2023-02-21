@@ -7,7 +7,7 @@ import org.powbot.api.rt4.Skills;
 
 import Helpers.ItemList;
 
-public class firemakingData {
+public class FiremakingData {
     //Firemaking
     public static final Tile firemakingLane1 = new Tile(3032,3360);
     public static final Tile firemakingLane2 = new Tile(3032,3361);

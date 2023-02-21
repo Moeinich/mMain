@@ -14,7 +14,7 @@ import org.powbot.mobile.script.ScriptManager;
 
 import script.mMain;
 
-public class interactionHelper {
+public class InteractionsHelper {
     public static void withdrawItem(int itemID, int Amount) {
         if (!Bank.opened() && Bank.inViewport()) {
             if (Bank.open()) {
@@ -24,7 +24,7 @@ public class interactionHelper {
         if (Bank.stream().id(itemID).first().stackSize() < Amount) {
             mMain.state = "We ran out of " + itemID;
             System.out.println("We ran out of items");
-            skillData.setSkillDone();
+            SkillData.setSkillDone();
             System.out.println("Skill was set to done");
             mMain.taskRunning.set(false); //Skip task on progressive
             System.out.println("taskRunning was set false");
@@ -42,7 +42,7 @@ public class interactionHelper {
         if (Bank.stream().id(itemID).first().stackSize() < amount) {
             mMain.state = "We ran out of " + itemID;
             System.out.println("We ran out of items");
-            skillData.setSkillDone();
+            SkillData.setSkillDone();
             System.out.println("Skill was set to done");
             mMain.taskRunning.set(false); //Skip task on progressive
             System.out.println("taskRunning was set false");

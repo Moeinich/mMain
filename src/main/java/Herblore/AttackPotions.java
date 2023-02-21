@@ -9,9 +9,9 @@ import org.powbot.api.rt4.Players;
 import org.powbot.api.rt4.Skills;
 import org.powbot.mobile.script.ScriptManager;
 
-import Helpers.interactionHelper;
+import Helpers.InteractionsHelper;
 import Helpers.ItemList;
-import Helpers.skillData;
+import Helpers.SkillData;
 import Helpers.Task;
 import script.mMain;
 
@@ -28,7 +28,7 @@ public class AttackPotions extends Task {
     public boolean execute() {
         if (Skills.realLevel(Constants.SKILLS_HERBLORE) < 3) {
             mMain.state = "Druidic ritual not done";
-            skillData.herbloreDone = true;
+            SkillData.herbloreDone = true;
             mMain.taskRunning.set(false);
         }
 
@@ -54,7 +54,7 @@ public class AttackPotions extends Task {
     private void GetEyes() {
         mMain.state = "Grabbing eyes";
         if (Inventory.stream().id(ToolID).isEmpty()) {
-            interactionHelper.depositAndWithdraw(ToolID, 14);
+            InteractionsHelper.depositAndWithdraw(ToolID, 14);
         }
 
     }
@@ -62,14 +62,14 @@ public class AttackPotions extends Task {
         mMain.state = "Grabbing Guam pot(unf)";
         if (Inventory.stream().id(ToolID).isNotEmpty()) {
             Bank.depositAllExcept(ToolID);
-            interactionHelper.withdrawItem(CombineWithItemID, 14);
+            InteractionsHelper.withdrawItem(CombineWithItemID, 14);
             Bank.close();
             Condition.wait( () -> !Bank.opened(), 500, 50);
         }
     }
     private void craft() {
         while (Inventory.stream().id(CombineWithItemID).isNotEmpty() && Inventory.stream().id(ToolID).isNotEmpty()) {
-            interactionHelper.combineItems(ToolID, CombineWithItemID, WidgetID, ComponentID);
+            InteractionsHelper.combineItems(ToolID, CombineWithItemID, WidgetID, ComponentID);
         }
     }
 }

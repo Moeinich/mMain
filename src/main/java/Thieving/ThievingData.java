@@ -5,7 +5,7 @@ import org.powbot.api.Tile;
 import org.powbot.api.rt4.Constants;
 import org.powbot.api.rt4.Skills;
 
-public class thievingData {
+public class ThievingData {
     //Thieving
     public static final Area thievingMenArea = new Area (
             new Tile(3225, 3209, 0), new Tile(3212, 3228, 0)

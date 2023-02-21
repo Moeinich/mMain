@@ -6,7 +6,7 @@ import org.powbot.api.rt4.Varpbits;
 
 import script.mMain;
 
-public class skillData {
+public class SkillData {
     //Skill finished
     public static Boolean miningDone = false;
     public static Boolean fishingDone = false;

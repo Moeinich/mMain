@@ -10,7 +10,7 @@ import org.powbot.dax.teleports.Teleport;
 
 import script.mMain;
 
-public class bankBeforeTask extends Task {
+public class BankBeforeTask extends Task {
     public boolean activate() {
         return mMain.shouldBank;
     }

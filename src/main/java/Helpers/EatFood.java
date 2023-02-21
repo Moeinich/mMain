@@ -2,7 +2,7 @@ package Helpers;
 
 import org.powbot.api.rt4.*;
 
-public class eatFood extends Task {
+public class EatFood extends Task {
     @Override
     public boolean activate() {
         return Players.local().healthPercent() < 50;
@@ -10,7 +10,7 @@ public class eatFood extends Task {
     @Override
     public boolean execute() {
         if (Game.tab(Game.Tab.INVENTORY)) {
-            playerHelper.shouldEat();
+            PlayerHelper.shouldEat();
         }
         return false;
     }

@@ -7,10 +7,7 @@ import org.powbot.api.rt4.Npc;
 import org.powbot.api.rt4.Players;
 import org.powbot.api.rt4.Skills;
 
-import java.util.concurrent.Callable;
-
-import Helpers.combatHelper;
-import Helpers.playerHelper;
+import Helpers.PlayerHelper;
 import Helpers.Task;
 import script.mMain;
 
@@ -22,14 +19,14 @@ public class Goblins extends Task {
 
     @Override
     public boolean execute() {
-        if (!meleeData.goblinArea.contains(Players.local())) {
+        if (!MeleeData.goblinArea.contains(Players.local())) {
             mMain.state = "Go to goblins";
             System.out.println("Going to goblins");
-            Movement.moveTo(meleeData.goblinArea.getRandomTile());
+            Movement.moveTo(MeleeData.goblinArea.getRandomTile());
         }
-        if (meleeData.goblinArea.contains(Players.local())) {
+        if (MeleeData.goblinArea.contains(Players.local())) {
             System.out.println("Streaming for a goblin npc");
-            Npc goblin = playerHelper.nearestCombatNpc(meleeData.goblinArea, "Goblin");
+            Npc goblin = PlayerHelper.nearestCombatNpc(MeleeData.goblinArea, "Goblin");
             mMain.state = "Attack";
             if (goblin.healthPercent() == 100 && goblin.inViewport() && goblin.interact("Attack")) {
                 mMain.state = "Waiting for kill";

@@ -8,26 +8,26 @@ import org.powbot.api.rt4.Objects;
 import org.powbot.api.rt4.Players;
 import org.powbot.api.rt4.Skills;
 
-import Helpers.playerHelper;
+import Helpers.PlayerHelper;
 import Helpers.Task;
 import script.mMain;
 
-public class treeWillow extends Task {
+public class TreeWillow extends Task {
     public boolean activate() {
         return Skills.realLevel(Constants.SKILLS_WOODCUTTING) >= 30 && Skills.realLevel(Constants.SKILLS_WOODCUTTING) < 35;
     }
 
     @Override
     public boolean execute() {
-        if (!playerHelper.withinArea(woodcuttingData.willowTreeLocation)) {
+        if (!PlayerHelper.withinArea(WoodcuttingData.willowTreeLocation)) {
             mMain.state = "Go to Willow trees";
-            playerHelper.walkToTile(woodcuttingData.movementWoodcutting());
+            PlayerHelper.walkToTile(WoodcuttingData.movementWoodcutting());
         }
-        if (playerHelper.withinArea(woodcuttingData.willowTreeLocation) && Players.local().animation() == -1) {
-            GameObject treeWillow = playerHelper.nearestGameObject(woodcuttingData.willowTreeLocation, "Willow");
+        if (PlayerHelper.withinArea(WoodcuttingData.willowTreeLocation) && Players.local().animation() == -1) {
+            GameObject treeWillow = PlayerHelper.nearestGameObject(WoodcuttingData.willowTreeLocation, "Willow");
             mMain.state = "Cutting Willows";
             if (treeWillow.interact("Chop down", "Willow")) {
-                Condition.wait(() -> Objects.stream().at(treeWillow.tile()).id(woodcuttingData.willowTreeID).isEmpty() || Chat.canContinue(), 500, 50);
+                Condition.wait(() -> Objects.stream().at(treeWillow.tile()).id(WoodcuttingData.willowTreeID).isEmpty() || Chat.canContinue(), 500, 50);
             }
         }
         return false;

@@ -8,8 +8,8 @@ import org.powbot.api.rt4.Skills;
 
 import Helpers.ItemList;
 
-public class meleeData {
-    public static int[] lowMelee = {ItemList.IRON_PLATEBODY_1115,
+public class MeleeData {
+    public static int[] ironArmor = {ItemList.IRON_PLATEBODY_1115,
             ItemList.IRON_PLATELEGS_1067,
             ItemList.IRON_BOOTS_4121,
             ItemList.IRON_KITESHIELD_1191,
@@ -18,7 +18,7 @@ public class meleeData {
             ItemList.AMULET_OF_GLORY_1704,
             ItemList.COMBAT_BRACELET_11126,
             ItemList.RED_CAPE_1007};
-    public static int[] medAddyScim = {ItemList.ADAMANT_PLATEBODY_1123,
+    public static int[] addyArmor = {ItemList.ADAMANT_PLATEBODY_1123,
             ItemList.ADAMANT_PLATELEGS_1073,
             ItemList.ADAMANT_BOOTS_4129,
             ItemList.ADAMANT_KITESHIELD_1199,
@@ -27,7 +27,7 @@ public class meleeData {
             ItemList.AMULET_OF_GLORY_1704,
             ItemList.COMBAT_BRACELET_11126,
             ItemList.RED_CAPE_1007};
-    public static int[] medRuneScim = {ItemList.ADAMANT_PLATEBODY_1123,
+    public static int[] addyRuneScim = {ItemList.ADAMANT_PLATEBODY_1123,
             ItemList.ADAMANT_PLATELEGS_1073,
             ItemList.ADAMANT_BOOTS_4129,
             ItemList.ADAMANT_KITESHIELD_1199,
@@ -36,7 +36,7 @@ public class meleeData {
             ItemList.AMULET_OF_GLORY_1704,
             ItemList.COMBAT_BRACELET_11126,
             ItemList.RED_CAPE_1007};
-    public static int[] highMelee = {ItemList.ADAMANT_PLATEBODY_1123,
+    public static int[] addyGraniteHammer = {ItemList.ADAMANT_PLATEBODY_1123,
             ItemList.ADAMANT_PLATELEGS_1073,
             ItemList.ADAMANT_BOOTS_4129,
             ItemList.ADAMANT_KITESHIELD_1199,
@@ -48,20 +48,20 @@ public class meleeData {
 
     public static int[] meleeEquipment() {
         if (Skills.realLevel(Constants.SKILLS_ATTACK) <= 29 && Skills.realLevel(Constants.SKILLS_DEFENSE) <= 29 && Skills.realLevel(Constants.SKILLS_STRENGTH) <= 29) {
-            return lowMelee;
+            return ironArmor;
         }
         if (Skills.realLevel(Constants.SKILLS_ATTACK) >= 30 && Skills.realLevel(Constants.SKILLS_DEFENSE) >= 30 && Skills.realLevel(Constants.SKILLS_STRENGTH) >= 30
         && Skills.realLevel(Constants.SKILLS_ATTACK) <= 39 && Skills.realLevel(Constants.SKILLS_DEFENSE) <= 49 && Skills.realLevel(Constants.SKILLS_STRENGTH) <= 39) {
-            return medAddyScim;
+            return addyArmor;
         }
         if (Skills.realLevel(Constants.SKILLS_ATTACK) >= 40 && Skills.realLevel(Constants.SKILLS_DEFENSE) >= 40 && Skills.realLevel(Constants.SKILLS_STRENGTH) >= 40
                 && Skills.realLevel(Constants.SKILLS_ATTACK) <= 49 && Skills.realLevel(Constants.SKILLS_DEFENSE) <= 49 && Skills.realLevel(Constants.SKILLS_STRENGTH) <= 49) {
-            return medRuneScim;
+            return addyRuneScim;
         }
         if (Skills.realLevel(Constants.SKILLS_ATTACK) >= 50 && Skills.realLevel(Constants.SKILLS_DEFENSE) >= 30 && Skills.realLevel(Constants.SKILLS_STRENGTH) <= 50) {
-            return highMelee;
+            return addyGraniteHammer;
         }
-        return lowMelee;
+        return ironArmor;
     }
 
     public static final Area goblinArea = new Area(new Tile(3152, 3294, 0), new Tile(3134, 3310, 0));
@@ -104,84 +104,25 @@ public class meleeData {
             new Tile(3185, 3314, 0),
             new Tile(3184, 3314, 0)
     );
-    public static final Tile crabLocation = new Tile(3657, 3874, 0);
-    public static final Tile crabResetLocation = new Tile(3669, 3829, 0);
+    public static final Tile crabLocation = new Tile(1773,3461,0);
+    public static final Tile crabResetLocation = new Tile(1761, 3456, 0);
+    public static final Tile crabWorldhop = new Tile(1775, 3475, 0);
+
+    public static final Area crabArea = new Area(new Tile(1772, 3460, 0), new Tile(1774, 3462, 0));
     public static Combat.Style AttackStyle() {
-        //Train to 10
-        if (Skills.realLevel(Constants.SKILLS_STRENGTH) <= 9) {
-            return Combat.Style.AGGRESSIVE;
-        }
-        if (Skills.realLevel(Constants.SKILLS_ATTACK) <= 9) {
-            return Combat.Style.ACCURATE;
-        }
-        if (Skills.realLevel(Constants.SKILLS_DEFENSE) <= 9) {
-            return Combat.Style.DEFENSIVE;
-        }
-
-        //Train from 10-15
-        if (Skills.realLevel(Constants.SKILLS_STRENGTH) >= 10 && Skills.realLevel(Constants.SKILLS_STRENGTH) <= 14) {
-            return Combat.Style.AGGRESSIVE;
-        }
-        if (Skills.realLevel(Constants.SKILLS_ATTACK) >= 10 && Skills.realLevel(Constants.SKILLS_ATTACK) <= 14) {
-            return Combat.Style.ACCURATE;
-        }
-        if (Skills.realLevel(Constants.SKILLS_DEFENSE) >= 10 && Skills.realLevel(Constants.SKILLS_STRENGTH) <= 14) {
-            return Combat.Style.DEFENSIVE;
-        }
-
-        //Train from 15-30
-        if (Skills.realLevel(Constants.SKILLS_STRENGTH) >= 15 && Skills.realLevel(Constants.SKILLS_STRENGTH) <= 29) {
-            return Combat.Style.AGGRESSIVE;
-        }
-        if (Skills.realLevel(Constants.SKILLS_ATTACK) >= 15 && Skills.realLevel(Constants.SKILLS_ATTACK) <= 29) {
-            return Combat.Style.ACCURATE;
-        }
-        if (Skills.realLevel(Constants.SKILLS_DEFENSE) >= 15 && Skills.realLevel(Constants.SKILLS_STRENGTH) <= 29) {
-            return Combat.Style.DEFENSIVE;
-        }
-
-        //Train from 30-40
-        if (Skills.realLevel(Constants.SKILLS_STRENGTH) >= 30 && Skills.realLevel(Constants.SKILLS_STRENGTH) <= 39) {
-            return Combat.Style.AGGRESSIVE;
-        }
-        if (Skills.realLevel(Constants.SKILLS_ATTACK) >= 30 && Skills.realLevel(Constants.SKILLS_ATTACK) <= 39) {
-            return Combat.Style.ACCURATE;
-        }
-        if (Skills.realLevel(Constants.SKILLS_DEFENSE) >= 30 && Skills.realLevel(Constants.SKILLS_STRENGTH) <= 39) {
-            return Combat.Style.DEFENSIVE;
-        }
-
-        //Train from 40-50
-        if (Skills.realLevel(Constants.SKILLS_STRENGTH) >= 40 && Skills.realLevel(Constants.SKILLS_STRENGTH) <= 49) {
-            return Combat.Style.AGGRESSIVE;
-        }
-        if (Skills.realLevel(Constants.SKILLS_ATTACK) >= 40 && Skills.realLevel(Constants.SKILLS_ATTACK) <= 49) {
-            return Combat.Style.ACCURATE;
-        }
-        if (Skills.realLevel(Constants.SKILLS_DEFENSE) >= 40 && Skills.realLevel(Constants.SKILLS_STRENGTH) <= 49) {
-            return Combat.Style.DEFENSIVE;
-        }
-
-        //Train from 50-60
-        if (Skills.realLevel(Constants.SKILLS_STRENGTH) >= 50 && Skills.realLevel(Constants.SKILLS_STRENGTH) <= 59) {
-            return Combat.Style.AGGRESSIVE;
-        }
-        if (Skills.realLevel(Constants.SKILLS_ATTACK) >= 50 && Skills.realLevel(Constants.SKILLS_ATTACK) <= 59) {
-            return Combat.Style.ACCURATE;
-        }
-        if (Skills.realLevel(Constants.SKILLS_DEFENSE) >= 50 && Skills.realLevel(Constants.SKILLS_STRENGTH) <= 59) {
-            return Combat.Style.DEFENSIVE;
-        }
-
-        //Train from 60-70
-        if (Skills.realLevel(Constants.SKILLS_STRENGTH) >= 60 && Skills.realLevel(Constants.SKILLS_STRENGTH) <= 69) {
-            return Combat.Style.AGGRESSIVE;
-        }
-        if (Skills.realLevel(Constants.SKILLS_ATTACK) >= 60 && Skills.realLevel(Constants.SKILLS_ATTACK) <= 69) {
-            return Combat.Style.ACCURATE;
-        }
-        if (Skills.realLevel(Constants.SKILLS_DEFENSE) >= 60 && Skills.realLevel(Constants.SKILLS_STRENGTH) <= 69) {
-            return Combat.Style.DEFENSIVE;
+        int lowLevel, highLevel;
+        for (int i = 10; i <= 70; i += 10) {
+            lowLevel = i;
+            highLevel = i + 9;
+            if (Skills.realLevel(Constants.SKILLS_STRENGTH) >= lowLevel && Skills.realLevel(Constants.SKILLS_STRENGTH) <= highLevel) {
+                return Combat.Style.AGGRESSIVE;
+            }
+            if (Skills.realLevel(Constants.SKILLS_ATTACK) >= lowLevel && Skills.realLevel(Constants.SKILLS_ATTACK) <= highLevel) {
+                return Combat.Style.ACCURATE;
+            }
+            if (Skills.realLevel(Constants.SKILLS_DEFENSE) >= lowLevel && Skills.realLevel(Constants.SKILLS_DEFENSE) <= highLevel) {
+                return Combat.Style.DEFENSIVE;
+            }
         }
         return Combat.Style.AGGRESSIVE;
     }

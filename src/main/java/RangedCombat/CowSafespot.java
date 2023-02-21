@@ -5,10 +5,11 @@ import org.powbot.api.rt4.Combat;
 import org.powbot.api.rt4.Constants;
 import org.powbot.api.rt4.Npc;
 import org.powbot.api.rt4.Skills;
+import org.powbot.api.rt4.walking.model.Skill;
 
-import Helpers.combatHelper;
-import Helpers.playerHelper;
-import Helpers.skillData;
+import Helpers.CombatHelper;
+import Helpers.PlayerHelper;
+import Helpers.SkillData;
 import Helpers.Task;
 import script.mMain;
 
@@ -19,22 +20,24 @@ public class CowSafespot extends Task {
     }
     @Override
     public boolean execute() {
-        if (!Combat.style(Combat.Style.DEFENSIVE)) {
-            mMain.state = "Setting cb mode";
-            playerHelper.setAttackMode(Combat.Style.DEFENSIVE);
-        }
-
-        if (combatHelper.needEquipment(RangeData.RangeEquipment())) {
-            mMain.state = "Need equipment!";
-            combatHelper.gearUp(RangeData.RangeEquipment());
-        }
-
-        if (!combatHelper.needEquipment(RangeData.RangeEquipment())) {
-            if (!playerHelper.withinArea(skillData.CowSafeSpotArea)) {
-                mMain.state = "Go safespot";
-                playerHelper.walkToTile(skillData.CowSafeSpotArea.getRandomTile());
+        if (Skills.realLevel(Skill.Defence) < 30) {
+            if (!Combat.style(Combat.Style.DEFENSIVE)) {
+                mMain.state = "Setting cb mode";
+                PlayerHelper.setAttackMode(Combat.Style.DEFENSIVE);
             }
-            if (playerHelper.withinArea(skillData.CowSafeSpotArea)) {
+        } else if (Skills.realLevel(Skill.Defence) >= 30) {
+            Combat.style(Combat.Style.AGGRESSIVE);
+        }
+
+        if (CombatHelper.needEquipment(RangeData.RangeEquipment())) {
+            mMain.state = "Need equipment!";
+            CombatHelper.gearUp(RangeData.RangeEquipment());
+        } else {
+            if (!PlayerHelper.withinArea(SkillData.CowSafeSpotArea)) {
+                mMain.state = "Go safespot";
+                PlayerHelper.walkToTile(SkillData.CowSafeSpotArea.getRandomTile());
+            }
+            if (PlayerHelper.withinArea(SkillData.CowSafeSpotArea)) {
                 ShouldFight();
             }
         }
@@ -42,7 +45,7 @@ public class CowSafespot extends Task {
     }
 
     private void ShouldFight() {
-        Npc cow = playerHelper.nearestCombatNpc(skillData.CowArea, "Cow", "Cow calf");
+        Npc cow = PlayerHelper.nearestCombatNpc(SkillData.CowArea, "Cow", "Cow calf");
         mMain.state = "Attack";
         if (cow.inViewport()) {
             if (cow.interact("Attack")) {

@@ -27,13 +27,14 @@ import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-import Helpers.interactionHelper;
-import Helpers.skillData;
+import Fletching.StartFletching;
+import Helpers.InteractionsHelper;
+import Helpers.SkillData;
 
 @ScriptManifest(
         name = "mMain",
         description = "Progressively levels different skills",
-        version = "0.2.0",
+        version = "0.2.1",
         category = ScriptCategory.Other
 )
 @ScriptConfiguration.List(
@@ -41,8 +42,8 @@ import Helpers.skillData;
                 @ScriptConfiguration(
                         name =  "Mode",
                         description = "Which skill would you like to do?",
-                        defaultValue = "Progressive",
-                        allowedValues = {"Progressive", "Mining", "Fishing", "Woodcutting", "Cooking", "Firemaking", "Smithing", "Thieving", "Crafting", "Fletching", "Agility", "Herblore", "Ranged", "Magic"},
+                        defaultValue = "Melee",
+                        allowedValues = {"Progressive", "Mining", "Fishing", "Woodcutting", "Cooking", "Firemaking", "Smithing", "Thieving", "Crafting", "Fletching", "Agility", "Herblore", "Ranged", "Magic", "Melee"},
                         optionType = OptionType.STRING
                  )
         }
@@ -58,8 +59,8 @@ public class mMain extends AbstractScript {
         new ScriptUploader().uploadAndStart("mMain", "Account", "emulator-5554", true, true);
     }
 
-    final int MIN_TIME_LIMIT = 1200000;
-    final int MAX_TIME_LIMIT = 3600000;
+    final int MIN_TIME_LIMIT = 3600000;
+    final int MAX_TIME_LIMIT = 5400000;
     public static String runningSkill;
     public static String state;
     public static Boolean shouldBank = true;
@@ -73,7 +74,7 @@ public class mMain extends AbstractScript {
         String skill = getOption("Mode");
         runningSkill = "Determining...";
         state = "Starting...";
-        interactionHelper.cameraCheck();
+        InteractionsHelper.cameraCheck();
         Notifications.showNotification("mMain starting " + skill);
 
         final DateTimeFormatter TIMER_FORMAT = DateTimeFormatter.ofPattern("mm:ss");
@@ -144,7 +145,7 @@ public class mMain extends AbstractScript {
         var startCrafting = new Crafting.StartCrafting();
         var startFiremaking = new Firemaking.StartFiremaking();
         var startFishing = new Fishing.StartFishing();
-        var startFletching = new Fletching.startFletching();
+        var startFletching = new StartFletching();
         var startHerblore = new Herblore.StartHerblore();
         var startMagic = new MagicCombat.StartMagic();
         var startMelee = new MeleeCombat.StartMelee();
@@ -154,14 +155,14 @@ public class mMain extends AbstractScript {
         var startThieving = new Thieving.StartThieving();
         var startWoodcutting = new Woodcutting.StartWoodcutting();
 
-        if (skillData.allSkillsDone()) {
+        if (SkillData.allSkillsDone()) {
             ScriptManager.INSTANCE.stop();
         }
         String skill = getOption("Mode");
 
         switch (skill) {
             case "Progressive":
-                if (skillData.allSkillsDone()) {
+                if (SkillData.allSkillsDone()) {
                     ScriptManager.INSTANCE.stop();
                 }
 
@@ -216,72 +217,72 @@ public class mMain extends AbstractScript {
                 //in case you want to do x skill only.
 
             case "Agility":
-                if (skillData.agilityDone) {
+                if (SkillData.agilityDone) {
                     ScriptManager.INSTANCE.stop();
                 } else startAgility.Agility();
                 break;
             case "Cooking":
-                if (skillData.cookingDone) {
+                if (SkillData.cookingDone) {
                     ScriptManager.INSTANCE.stop();
                 } else startCooking.Cooking();
                 break;
             case "Crafting":
-                if (skillData.craftingDone) {
+                if (SkillData.craftingDone) {
                     ScriptManager.INSTANCE.stop();
                 } else startCrafting.Crafting();
                 break;
             case "Firemaking":
-                if (skillData.firemakingDone) {
+                if (SkillData.firemakingDone) {
                     ScriptManager.INSTANCE.stop();
                 } else startFiremaking.Firemaking();
                 break;
             case "Fishing":
-                if (skillData.fishingDone) {
+                if (SkillData.fishingDone) {
                     ScriptManager.INSTANCE.stop();
                 } else startFishing.Fishing();
                 break;
             case "Fletching":
-                if (skillData.fletchingDone) {
+                if (SkillData.fletchingDone) {
                     ScriptManager.INSTANCE.stop();
                 } else startFletching.Fletching();
                 break;
             case "Herblore":
-                if (skillData.herbloreDone) {
+                if (SkillData.herbloreDone) {
                     ScriptManager.INSTANCE.stop();
                 } else startHerblore.Herblore();
                 break;
             case "Magic":
-                if (skillData.magicCombatDone) {
+                if (SkillData.magicCombatDone) {
                     ScriptManager.INSTANCE.stop();
                 } else startMagic.Magic();
                 break;
             case "Melee":
-                if (skillData.meleeCombatDone) {
+                if (SkillData.meleeCombatDone) {
                     ScriptManager.INSTANCE.stop();
                 } else startMelee.Melee();
                 break;
             case "Mining":
-                if (skillData.miningDone) {
+                if (SkillData.miningDone) {
                     ScriptManager.INSTANCE.stop();
                 } else startMining.Mining();
                 break;
             case "Ranged":
-                if (skillData.rangeCombatDone) {
+                if (SkillData.rangeCombatDone) {
                     ScriptManager.INSTANCE.stop();
                 } else startRanged.Ranged();
                 break;
             case "Smithing":
-                if (skillData.smithingDone) {
+                if (SkillData.smithingDone) {
                     ScriptManager.INSTANCE.stop();
                 } else startSmithing.Smithing();
                 break;
             case "Thieving":
-                if (skillData.thievingDone) {
+                if (SkillData.thievingDone) {
                     ScriptManager.INSTANCE.stop();
                 } else startThieving.Thieving();
                 break;
             case "Woodcutting":
-                if (skillData.woodcuttingDone) {
+                if (SkillData.woodcuttingDone) {
                     ScriptManager.INSTANCE.stop();
                 } else startWoodcutting.Woodcutting();
                 break;

@@ -7,11 +7,9 @@ import org.powbot.api.rt4.GroundItem;
 import org.powbot.api.rt4.GroundItems;
 import org.powbot.api.rt4.Inventory;
 import org.powbot.api.rt4.Movement;
-import org.powbot.api.rt4.Players;
 import org.powbot.api.rt4.Skills;
 
-import Helpers.ItemList;
-import Helpers.playerHelper;
+import Helpers.PlayerHelper;
 import Helpers.Task;
 import script.mMain;
 
@@ -22,20 +20,8 @@ public class VarrockCourse extends Task {
     }
     @Override
     public boolean execute() {
-        if (Game.tab(Game.Tab.INVENTORY) && Inventory.stream().action("Eat").isEmpty()) {
-            mMain.state = "Get food";
-            playerHelper playerHelper = new playerHelper();
-            playerHelper.bankForFood(ItemList.CAKE_1891, 27);
-        }
-
-        if (Players.local().healthPercent() < 60 && Game.tab(Game.Tab.INVENTORY)) {
-            mMain.state = "Eating..";
-            playerHelper playerHelper = new playerHelper();
-            playerHelper.shouldEat();
-        }
-
         if (!Movement.running() && Movement.energyLevel() > 30) {
-            playerHelper.enableRun();
+            PlayerHelper.enableRun();
         }
 
         if (Game.tab(Game.Tab.INVENTORY) && Inventory.stream().action("Eat").isNotEmpty()) {
@@ -45,8 +31,8 @@ public class VarrockCourse extends Task {
     }
 
     public void ShouldRunObstacle() {
-        if (playerHelper.withinArea(AgilityData.VarrockAreas.FLOOR.getArea())) {
-            if (!playerHelper.withinArea(AgilityData.VarrockAreas.START.getArea())) {
+        if (PlayerHelper.withinArea(AgilityData.VarrockAreas.FLOOR.getArea())) {
+            if (!PlayerHelper.withinArea(AgilityData.VarrockAreas.START.getArea())) {
                 mMain.state = "Move to Varrock start";
                 Movement.moveTo(AgilityData.VarrockAreas.START.getArea().getRandomTile());
             } else {
@@ -54,28 +40,28 @@ public class VarrockCourse extends Task {
                 helper.handleObstacle(AgilityData.obstacleInfo.varrock1);
             }
         }
-        if (playerHelper.withinArea(AgilityData.VarrockAreas.OBSTACLE_2.getArea())) {
+        if (PlayerHelper.withinArea(AgilityData.VarrockAreas.OBSTACLE_2.getArea())) {
             AgilityHelper helper = new AgilityHelper();
             helper.handleObstacleWithLoot(AgilityData.obstacleInfo.varrock2);
         }
-        if (playerHelper.withinArea(AgilityData.VarrockAreas.OBSTACLE_3.getArea())) {
+        if (PlayerHelper.withinArea(AgilityData.VarrockAreas.OBSTACLE_3.getArea())) {
             AgilityHelper helper = new AgilityHelper();
             helper.handleObstacleWithLoot(AgilityData.obstacleInfo.varrock3);
         }
-        if (playerHelper.withinArea(AgilityData.VarrockAreas.OBSTACLE_4.getArea())) {
+        if (PlayerHelper.withinArea(AgilityData.VarrockAreas.OBSTACLE_4.getArea())) {
             AgilityHelper helper = new AgilityHelper();
             helper.handleObstacleWithLoot(AgilityData.obstacleInfo.varrock4);
         }
-        if (playerHelper.withinArea(AgilityData.VarrockAreas.OBSTACLE_5.getArea())) {
+        if (PlayerHelper.withinArea(AgilityData.VarrockAreas.OBSTACLE_5.getArea())) {
             AgilityHelper helper = new AgilityHelper();
             helper.handleObstacleWithLoot(AgilityData.obstacleInfo.varrock5);
         }
-        if (playerHelper.withinArea(AgilityData.VarrockAreas.OBSTACLE_6.getArea())) {
-            GameObject VarrockObstacle6 = playerHelper.nearestGameObject(8, AgilityData.obstacleInfo.varrock6.getId());
+        if (PlayerHelper.withinArea(AgilityData.VarrockAreas.OBSTACLE_6.getArea())) {
+            GameObject VarrockObstacle6 = PlayerHelper.nearestGameObject(8, AgilityData.obstacleInfo.varrock6.getId());
             GroundItem groundItem = GroundItems.stream().within(10).name("Mark of grace").nearest().first();
             if (groundItem.inViewport()) {
                 mMain.state = "Pickup mark";
-                playerHelper.lootItems("Take", "Mark of grace");
+                PlayerHelper.lootItems("Take", "Mark of grace");
             } else if (!VarrockObstacle6.inViewport()) {
                 mMain.state = "Move to Varrock OBS6";
                 Movement.step(AgilityData.VarrockAreas.OBSTACLE_6_MOVETO.getArea().getRandomTile());
@@ -84,12 +70,12 @@ public class VarrockCourse extends Task {
                 helper.handleObstacleWithLoot(AgilityData.obstacleInfo.varrock6);
             }
         }
-        if (playerHelper.withinArea(AgilityData.VarrockAreas.OBSTACLE_7.getArea())) {
-            GameObject VarrockObstacle7 = playerHelper.nearestGameObject(8, AgilityData.obstacleInfo.varrock7.getId());
+        if (PlayerHelper.withinArea(AgilityData.VarrockAreas.OBSTACLE_7.getArea())) {
+            GameObject VarrockObstacle7 = PlayerHelper.nearestGameObject(8, AgilityData.obstacleInfo.varrock7.getId());
             GroundItem groundItem = GroundItems.stream().within(10).name("Mark of grace").nearest().first();
             if (groundItem.inViewport()) {
                 mMain.state = "Pickup mark";
-                playerHelper.lootItems("Take", "Mark of grace");
+                PlayerHelper.lootItems("Take", "Mark of grace");
             } else if (!VarrockObstacle7.inViewport()) {
                 mMain.state = "Move to Varrock OBS7";
                 Movement.step(AgilityData.VarrockAreas.OBSTACLE_7_MOVETO.getArea().getRandomTile());
@@ -99,11 +85,11 @@ public class VarrockCourse extends Task {
             }
         }
 
-        if (playerHelper.withinArea(AgilityData.VarrockAreas.OBSTACLE_8.getArea())) {
+        if (PlayerHelper.withinArea(AgilityData.VarrockAreas.OBSTACLE_8.getArea())) {
             AgilityHelper helper = new AgilityHelper();
             helper.handleObstacleWithLoot(AgilityData.obstacleInfo.varrock8);
         }
-        if (playerHelper.withinArea(AgilityData.VarrockAreas.OBSTACLE_9.getArea())) {
+        if (PlayerHelper.withinArea(AgilityData.VarrockAreas.OBSTACLE_9.getArea())) {
             AgilityHelper helper = new AgilityHelper();
             helper.handleObstacleWithLoot(AgilityData.obstacleInfo.varrock9);
         }

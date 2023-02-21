@@ -8,16 +8,19 @@ import org.powbot.api.rt4.Constants;
 import org.powbot.api.rt4.Game;
 import org.powbot.api.rt4.Movement;
 import org.powbot.api.rt4.Npc;
+import org.powbot.api.rt4.Npcs;
 import org.powbot.api.rt4.Players;
 import org.powbot.api.rt4.Skills;
 import org.powbot.api.rt4.Varpbits;
 import org.powbot.api.rt4.Widget;
 import org.powbot.api.rt4.Widgets;
+import org.powbot.api.rt4.World;
 
 import java.util.concurrent.ThreadLocalRandom;
 
 import Helpers.Task;
-import Helpers.playerHelper;
+import Helpers.PlayerHelper;
+import Helpers.SkillData;
 import script.mMain;
 
 public class Crabs extends Task {
@@ -29,7 +32,7 @@ public class Crabs extends Task {
 
     @Override
     public boolean activate() {
-        return Skills.realLevel(Constants.SKILLS_STRENGTH) >= 40 && Skills.realLevel(Constants.SKILLS_ATTACK) >= 40 && Skills.realLevel(Constants.SKILLS_DEFENSE) >= 40;
+        return Skills.realLevel(Constants.SKILLS_STRENGTH) >= 30 && Skills.realLevel(Constants.SKILLS_ATTACK) >= 30 && Skills.realLevel(Constants.SKILLS_DEFENSE) >= 30;
     }
 
     @Override
@@ -39,25 +42,38 @@ public class Crabs extends Task {
             System.out.println("Toggle auto retaliate");
             Combat.autoRetaliate();
         }
-
-        if (System.currentTimeMillis() - lastCombatTime > resetTime && playerHelper.atTile(meleeData.crabLocation)) {
-            mMain.state = "Reset";
-            System.out.println("Resetting crabs");
-            resetCrabs();
-            resetTime = Random.nextInt(4000, 10000);
-        }
-
-        if (!playerHelper.atTile(meleeData.crabLocation)) {
-            mMain.state = "Walk to crabs";
-            System.out.println("We are away from crab location, walking to crabs!");
-            walkToCrabs();
-        }
-
-        if (playerHelper.atTile(meleeData.crabLocation) && !Combat.inMultiCombat()) {
-            mMain.state = "Do an attack";
-            attackCrab();
+        if (Players.stream().filter(player -> player.tile().equals(MeleeData.crabLocation) && !player.equals(Players.local())).isNotEmpty()) {
+            mMain.state = "Worldhopping";
+            Movement.moveTo(MeleeData.crabWorldhop);
+            Condition.sleep(Random.nextInt(10000, 12000));
+            int[] p2p = SkillData.p2p;
+            int randomWorld = p2p[Random.nextInt(0, p2p.length - 1)];
+            World world = new World(randomWorld, randomWorld, 1, World.Type.MEMBERS, World.Server.RUNE_SCAPE, World.Specialty.NONE);
+            world.hop();
+        } else if (PlayerHelper.atTile(MeleeData.crabLocation)) {
+            if (Npcs.stream().interactingWithMe().isNotEmpty()) {
+                lastCombatTime = System.currentTimeMillis();
+            } else if (System.currentTimeMillis() - lastCombatTime > resetTime) {
+                mMain.state = "Reset";
+                System.out.println("Resetting crabs");
+                resetCrabs();
+                resetTime = Random.nextInt(4000, 10000);
+                System.out.println("resetTime has been randomized to: " + resetTime + "ms");
+            } else {
+                Npc crab = PlayerHelper.nearestCombatNpc(MeleeData.crabArea, "Sand crab");
+                if (crab.inViewport()) {
+                    mMain.state = "Do an attack";
+                    if (crab.interact("Attack")) {
+                        mMain.state = "Waiting for idle";
+                        System.out.println("Attacked crab");
+                        Condition.wait( () -> crab.healthPercent() == 0, 500, 50);
+                    }
+                }
+            }
         } else {
-            Condition.wait(Combat::inMultiCombat,1500,70);
+            mMain.state = "Walk to crabs";
+            System.out.println("We are not at crab tile, walking to crabs!");
+            walkToCrabs();
         }
         return false;
     }
@@ -77,29 +93,20 @@ public class Crabs extends Task {
     public void resetCrabs() {
         mMain.state = "Walk to reset spot";
         System.out.println("Resetting crabs!");
-        Movement.moveTo(meleeData.crabResetLocation);
+        Movement.moveTo(MeleeData.crabResetLocation);
         resetTime = ThreadLocalRandom.current().nextInt(4000, 10000);
     }
     public void walkToCrabs() {
         mMain.state = "Walk to crabs";
-        int distance = (int) meleeData.crabLocation.tile().distanceTo(Players.local());
+        int distance = (int) MeleeData.crabLocation.tile().distanceTo(Players.local());
         if (distance >= 1 && distance <= 5) {
             System.out.println("We are still not on tile, step to tile");
-            Movement.step(meleeData.crabLocation);
-            Condition.wait(() -> playerHelper.atTile(meleeData.crabLocation), 400, 10);
+            Movement.step(MeleeData.crabLocation);
+            Condition.wait(() -> PlayerHelper.atTile(MeleeData.crabLocation), 600, 10);
         } else {
             System.out.println("Move to crab location tile");
-            Movement.moveTo(meleeData.crabLocation);
+            Movement.moveTo(MeleeData.crabLocation);
         }
-        Condition.wait(() -> playerHelper.atTile(meleeData.crabLocation), 400, 10);
-    }
-    public void attackCrab() {
-        System.out.println("Streaming for a cow or cow calf");
-        Npc crab = playerHelper.nearestCombatNpc(meleeData.cowArea, "Sand crab");
-        mMain.state = "Attack";
-        if (crab.healthPercent() == 100 && crab.inViewport() && crab.interact("Attack")) {
-            mMain.state = "Waiting for idle";
-            Condition.wait(() -> crab.healthPercent() == 0,1500,70);
-        }
+        Condition.wait(() -> PlayerHelper.atTile(MeleeData.crabLocation), 600, 10);
     }
 }

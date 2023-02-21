@@ -8,7 +8,7 @@ import org.powbot.api.rt4.Skills;
 
 import Helpers.ItemList;
 
-public class woodcuttingData {
+public class WoodcuttingData {
     public static final Area normalTreeLocation = new Area (
             new Tile(3074,3274), new Tile(3086, 3263)
     );

@@ -4,27 +4,25 @@ import org.powbot.api.rt4.Constants;
 import org.powbot.api.rt4.Skills;
 import org.powbot.mobile.script.ScriptManager;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import Helpers.goToBank;
-import Helpers.skillData;
+import Helpers.GoToBank;
+import Helpers.SkillData;
 import Helpers.Task;
-import Herblore.AttackPotions;
 import script.mMain;
 
 public class StartCrafting {
     public void Crafting() {
         mMain.runningSkill = "Crafting";
-        if (Skills.realLevel(Constants.SKILLS_CRAFTING) >= 70 || skillData.craftingDone) {
+        if (Skills.realLevel(Constants.SKILLS_CRAFTING) >= 70 || SkillData.craftingDone) {
             mMain.state = "Crafting done!";
-            skillData.setSkillDone();
+            SkillData.setSkillDone();
             mMain.taskRunning.set(false);
         }
 
         List<Task> craftingTasks = Arrays.asList(
-                new goToBank(),
+                new GoToBank(),
                 new BeerGlass(),
                 new EmptyOilLamp(),
                 new Vial(),

@@ -5,22 +5,19 @@ import org.powbot.api.rt4.Skills;
 import org.powbot.mobile.script.ScriptManager;
 
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import Helpers.goToBank;
-import Helpers.skillData;
+import Helpers.SkillData;
 import Helpers.Task;
-import Herblore.AttackPotions;
 import script.mMain;
 
 public class StartFishing {
     public void Fishing() {
         mMain.runningSkill = "Fishing";
-        if (Skills.realLevel(Constants.SKILLS_FISHING) >= 70 || skillData.fishingDone) {
+        if (Skills.realLevel(Constants.SKILLS_FISHING) >= 70 || SkillData.fishingDone) {
             mMain.state = "Fishing done!";
-            skillData.setSkillDone();
+            SkillData.setSkillDone();
             mMain.taskRunning.set(false);
         }
 

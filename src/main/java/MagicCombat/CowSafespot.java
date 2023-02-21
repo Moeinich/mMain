@@ -10,11 +10,11 @@ import org.powbot.api.rt4.Npc;
 import org.powbot.api.rt4.Players;
 import org.powbot.api.rt4.Skills;
 
-import Helpers.combatHelper;
-import Helpers.interactionHelper;
+import Helpers.CombatHelper;
+import Helpers.InteractionsHelper;
 import Helpers.ItemList;
-import Helpers.playerHelper;
-import Helpers.skillData;
+import Helpers.PlayerHelper;
+import Helpers.SkillData;
 import Helpers.Task;
 import script.mMain;
 
@@ -26,25 +26,24 @@ public class CowSafespot extends Task {
     @Override
     public boolean execute() {
         //Get equipment
-        if (combatHelper.needEquipment(MagicData.MagicEquipment())) {
-                mMain.state = "Need equipment";
-                combatHelper.gearUp(MagicData.MagicEquipment());
-        }
-        if (!combatHelper.needEquipment(MagicData.MagicEquipment()) && !playerHelper.hasItem(MagicData.Runes)) {
+        if (CombatHelper.needEquipment(MagicData.MagicEquipment())) {
+            mMain.state = "Need equipment";
+            CombatHelper.gearUp(MagicData.MagicEquipment());
+        } else if (!CombatHelper.needEquipment(MagicData.MagicEquipment()) && !PlayerHelper.hasItem(MagicData.Runes)) {
             mMain.state = "Getting runes";
             if (!Bank.opened()) {
                 Bank.open();
                 Condition.wait(Bank::open, 250, 5);
             }
-            interactionHelper.depositAndWithdraw(ItemList.AIR_RUNE_556, 2000);
-            Condition.wait( () -> playerHelper.hasItem(ItemList.AIR_RUNE_556), 150, 50);
-            interactionHelper.withdrawItem(ItemList.MIND_RUNE_558, 2000);
-            Condition.wait( () -> playerHelper.hasItem(ItemList.MIND_RUNE_558), 150, 50);
+            InteractionsHelper.depositAndWithdraw(ItemList.AIR_RUNE_556, 2000);
+            Condition.wait(() -> PlayerHelper.hasItem(ItemList.AIR_RUNE_556), 150, 50);
+            InteractionsHelper.withdrawItem(ItemList.MIND_RUNE_558, 2000);
+            Condition.wait(() -> PlayerHelper.hasItem(ItemList.MIND_RUNE_558), 150, 50);
             Bank.close();
         }
 
         //Set autocast spell
-        if (MagicHelpers.getAutoCastSpell().getSpell() != MagicData.MagicSpell() && !MagicHelpers.isAutoCasting() && playerHelper.hasItem(MagicData.Runes)) {
+        if (MagicHelpers.getAutoCastSpell().getSpell() != MagicData.MagicSpell() && !MagicHelpers.isAutoCasting() && PlayerHelper.hasItem(MagicData.Runes)) {
             mMain.state = "Setting spell";
             Game.tab(Game.Tab.ATTACK);
             if (isAutoCastOpen() || MagicHelpers.openAutocastTab()) {
@@ -53,25 +52,29 @@ public class CowSafespot extends Task {
                     if (spell.getSpell() != null && spell.getSpell().equals(MagicData.MagicSpell())) {
                         System.out.println("Set autocast spell");
                         MagicHelpers.setAutoCast(spell);
+                        break; // exit loop once spell is set
                     }
                 }
             }
         }
-        if (playerHelper.hasItem(MagicData.Runes) && !combatHelper.needEquipment(MagicData.MagicEquipment()) && MagicHelpers.getAutoCastSpell().getSpell() == MagicData.MagicSpell()) {
-            if (!playerHelper.withinArea(skillData.CowSafeSpotArea)) {
+
+        if (PlayerHelper.hasItem(MagicData.Runes) && !CombatHelper.needEquipment(MagicData.MagicEquipment()) && MagicHelpers.getAutoCastSpell().getSpell() == MagicData.MagicSpell()) {
+            if (!PlayerHelper.withinArea(SkillData.CowSafeSpotArea)) {
                 mMain.state = "Go safespot";
-                playerHelper.walkToTile(skillData.CowSafeSpotArea.getRandomTile());
+                PlayerHelper.walkToTile(SkillData.CowSafeSpotArea.getRandomTile());
             }
-            if (playerHelper.withinArea(skillData.CowSafeSpotArea)) {
+            if (PlayerHelper.withinArea(SkillData.CowSafeSpotArea)) {
                 ShouldFight();
             }
         }
+
         return false;
     }
 
+
     private void ShouldFight() {
-        if (playerHelper.withinArea(skillData.CowSafeSpotArea) && !Players.local().healthBarVisible()) {
-            Npc cow = playerHelper.nearestCombatNpc(skillData.CowArea, "Cow", "Cow calf");
+        if (PlayerHelper.withinArea(SkillData.CowSafeSpotArea) && !Players.local().healthBarVisible()) {
+            Npc cow = PlayerHelper.nearestCombatNpc(SkillData.CowArea, "Cow", "Cow calf");
             mMain.state = "Attack";
             if (cow.inViewport() && cow.interact("Attack")) {
                 mMain.state = "Waiting for kill";

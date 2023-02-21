@@ -4,40 +4,33 @@ import org.powbot.api.rt4.Constants;
 import org.powbot.api.rt4.Skills;
 import org.powbot.mobile.script.ScriptManager;
 
-import Helpers.bankBeforeTask;
-import Helpers.eatFood;
-import Helpers.skillData;
-import Helpers.Task;
-import Helpers.getFood;
-import Woodcutting.DropLogs;
-import Woodcutting.GetAxe;
-import Woodcutting.treeNormal;
-import Woodcutting.treeOak;
-import Woodcutting.treeTeak;
-import Woodcutting.treeWillow;
-import script.mMain;
-
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+import Helpers.Task;
+import Helpers.EatFood;
+import Helpers.GetFood;
+import Helpers.SkillData;
+import script.mMain;
 
 public class StartMelee {
     public void Melee() {
         mMain.runningSkill = "Melee";
-        if (Skills.realLevel(Constants.SKILLS_STRENGTH) >= 40 && Skills.realLevel(Constants.SKILLS_ATTACK) >= 40 && Skills.realLevel(Constants.SKILLS_DEFENSE) >= 40 || skillData.meleeCombatDone) {
+        if (Skills.realLevel(Constants.SKILLS_STRENGTH) >= 40 && Skills.realLevel(Constants.SKILLS_ATTACK) >= 40 && Skills.realLevel(Constants.SKILLS_DEFENSE) >= 40 || SkillData.meleeCombatDone) {
             mMain.state = "Melee done!";
-            skillData.setSkillDone();
+            SkillData.setSkillDone();
             mMain.taskRunning.set(false);
         }
 
         List<Task> meleeTasks = Arrays.asList(
-                new bankBeforeTask(),
-                new getEquipment(),
-                new getFood(),
-                new eatFood(),
-                new setAttackStyle(),
+                //new bankBeforeTask(),
+                new GetEquipment(),
+                new GetFood(),
+                new EatFood(),
+                new SetAttackStyle(),
                 new Goblins(),
-                new Cows()
+                new Cows(),
+                new Crabs()
         );
 
         for (Task task : meleeTasks) {

@@ -12,7 +12,7 @@ import java.util.Arrays;
 
 import script.mMain;
 
-public class combatHelper {
+public class CombatHelper {
     public static boolean hasEquipped(int id) {
         return Equipment.stream().id(id).isNotEmpty();
     }
@@ -37,12 +37,12 @@ public class combatHelper {
             DaxWalker.walkToBank();
         }
 
-        if (!combatHelper.gotItems(missingEquipment(equipment))) {
+        if (!CombatHelper.gotItems(missingEquipment(equipment))) {
             System.out.println("Start withdrawing equipment");
             openBankAndWithdrawItems(equipment);
         }
 
-        if (combatHelper.gotItems(missingEquipment(equipment))) {
+        if (CombatHelper.gotItems(missingEquipment(equipment))) {
             System.out.println("Start equipping equipment");
             equipMissingItems(equipment);
         }
@@ -63,11 +63,11 @@ public class combatHelper {
                 for (var itemId : missingEquipment(equipment)) {
                     if (itemId == ItemList.IRON_ARROW_884 || itemId == ItemList.MITHRIL_DART_809) {
                         System.out.println("Withdraw ammo");
-                        interactionHelper.withdrawItem(itemId, 1000);
+                        InteractionsHelper.withdrawItem(itemId, 1000);
                         Condition.wait(() -> Inventory.stream().id(itemId).isNotEmpty(), WAIT_TIMEOUT, WAIT_RETRIES);
                     } else {
                         System.out.println("Withdrawing item " + itemId);
-                        interactionHelper.withdrawItem(itemId, 1);
+                        InteractionsHelper.withdrawItem(itemId, 1);
                         Condition.wait(() -> Inventory.stream().id(itemId).isNotEmpty(), WAIT_TIMEOUT, WAIT_RETRIES);
                     }
                 }
@@ -81,7 +81,7 @@ public class combatHelper {
         }
         Item[] missingItems = Inventory.stream()
                 .id(equipment)
-                .filter(item -> !combatHelper.hasEquipped(item.id()))
+                .filter(item -> !CombatHelper.hasEquipped(item.id()))
                 .list()
                 .toArray(new Item[0]);
         if (missingItems.length == 0) {
@@ -103,7 +103,7 @@ public class combatHelper {
             }
             if (interactionType != null && itemToEquip.interact(interactionType, itemToEquip.name())) {
                 System.out.println("Equipped missing item");
-                Condition.wait(() -> combatHelper.hasEquipped(item.getId()), 250, 10);
+                Condition.wait(() -> CombatHelper.hasEquipped(item.getId()), 250, 10);
             }
         }
     }

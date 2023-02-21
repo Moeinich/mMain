@@ -4,7 +4,7 @@ import org.powbot.api.Area;
 import org.powbot.api.Tile;
 import org.powbot.api.rt4.walking.model.Skill;
 
-public class fishingData {
+public class FishingData {
     //Fishing
     public static final Area AlKharidFishingSpot1 = new Area(
             new Tile(3262, 3154, 0), new Tile(3274, 3143, 0)

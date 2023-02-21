@@ -8,7 +8,7 @@ import org.powbot.api.rt4.Inventory;
 import org.powbot.api.rt4.Skills;
 import org.powbot.mobile.script.ScriptManager;
 
-import Helpers.interactionHelper;
+import Helpers.InteractionsHelper;
 import Helpers.ItemList;
 import Helpers.Task;
 import script.mMain;
@@ -48,7 +48,7 @@ public class OakShortbow extends Task {
     private void checkTool() {
         mMain.state = "Checking tool..";
         if (Inventory.stream().id(ToolID).isEmpty()) {
-            interactionHelper.depositAndWithdraw(ToolID, 1);
+            InteractionsHelper.depositAndWithdraw(ToolID, 1);
         }
 
     }
@@ -60,7 +60,7 @@ public class OakShortbow extends Task {
         }
         if (Inventory.stream().id(ToolID).isNotEmpty()) {
             Bank.depositAllExcept(ToolID);
-            interactionHelper.withdrawItem(CombineWithItemID, 27);
+            InteractionsHelper.withdrawItem(CombineWithItemID, 27);
             Bank.close();
             Condition.wait( () -> !Bank.opened(), 500, 50);
         }
@@ -71,6 +71,6 @@ public class OakShortbow extends Task {
         }
     }
     public void CombineItems(int ToolID, int CombineWithItemID, int WidgetID, int ComponentID) {
-        interactionHelper.combineItems(ToolID, CombineWithItemID, WidgetID, ComponentID);
+        InteractionsHelper.combineItems(ToolID, CombineWithItemID, WidgetID, ComponentID);
     }
 }

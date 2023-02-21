@@ -10,7 +10,7 @@ import org.powbot.api.rt4.Skills;
 import org.powbot.api.rt4.walking.model.Skill;
 import org.powbot.dax.api.DaxWalker;
 
-import Helpers.interactionHelper;
+import Helpers.InteractionsHelper;
 import Helpers.ItemList;
 import Helpers.Task;
 import script.mMain;
@@ -36,17 +36,17 @@ public class GetFishingEquipment extends Task {
         if (Bank.nearest().tile().distanceTo(Players.local()) <= 6 && Bank.inViewport() && !Bank.opened()) {
             mMain.state = "Get equipment";
             if (Skills.realLevel(Constants.SKILLS_FISHING) <= 19) {
-                interactionHelper.depositAndWithdraw(ItemList.SMALL_FISHING_NET_303, 1);
+                InteractionsHelper.depositAndWithdraw(ItemList.SMALL_FISHING_NET_303, 1);
                 Bank.close();
                 Condition.wait( () -> !Bank.opened(), 250, 50);
             }
             if (Skills.realLevel(Constants.SKILLS_FISHING) >= 20) {
                 if (Inventory.stream().id(ItemList.FLY_FISHING_ROD_309).count() == 0) {
-                    interactionHelper.depositAndWithdraw(ItemList.FLY_FISHING_ROD_309, 1);
+                    InteractionsHelper.depositAndWithdraw(ItemList.FLY_FISHING_ROD_309, 1);
                     Condition.wait( () -> Inventory.stream().name("Fly fishing rod").isNotEmpty(),150, 50);
                 }
                 if (Inventory.stream().id(ItemList.FEATHER_314).count() == 0) {
-                    interactionHelper.withdrawItem(ItemList.FEATHER_314, 2000);
+                    InteractionsHelper.withdrawItem(ItemList.FEATHER_314, 2000);
                     Condition.wait( () -> Inventory.stream().name("Feather").isNotEmpty(),150, 50);
                 }
                 Bank.close();
