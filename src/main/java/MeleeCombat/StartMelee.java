@@ -24,7 +24,7 @@ import java.util.List;
 public class StartMelee {
     public void Melee() {
         mMain.runningSkill = "Melee";
-        if (Skills.realLevel(Constants.SKILLS_STRENGTH) >= 30 && Skills.realLevel(Constants.SKILLS_ATTACK) >= 30 && Skills.realLevel(Constants.SKILLS_DEFENSE) >= 30 || skillData.meleeCombatDone) {
+        if (Skills.realLevel(Constants.SKILLS_STRENGTH) >= 40 && Skills.realLevel(Constants.SKILLS_ATTACK) >= 40 && Skills.realLevel(Constants.SKILLS_DEFENSE) >= 40 || skillData.meleeCombatDone) {
             mMain.state = "Melee done!";
             skillData.setSkillDone();
             mMain.taskRunning.set(false);

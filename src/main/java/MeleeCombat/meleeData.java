@@ -104,6 +104,8 @@ public class meleeData {
             new Tile(3185, 3314, 0),
             new Tile(3184, 3314, 0)
     );
+    public static final Tile crabLocation = new Tile(3657, 3874, 0);
+    public static final Tile crabResetLocation = new Tile(3669, 3829, 0);
     public static Combat.Style AttackStyle() {
         //Train to 10
         if (Skills.realLevel(Constants.SKILLS_STRENGTH) <= 9) {

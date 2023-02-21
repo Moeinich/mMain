@@ -16,7 +16,8 @@ import script.mMain;
 public class Cows extends Task {
     @Override
     public boolean activate() {
-        return Skills.realLevel(Constants.SKILLS_STRENGTH) >= 15 && Skills.realLevel(Constants.SKILLS_ATTACK) >= 15 && Skills.realLevel(Constants.SKILLS_DEFENSE) >= 15;
+        return Skills.realLevel(Constants.SKILLS_STRENGTH) >= 15 && Skills.realLevel(Constants.SKILLS_ATTACK) >= 15 && Skills.realLevel(Constants.SKILLS_DEFENSE) >= 15
+                && Skills.realLevel(Constants.SKILLS_STRENGTH) <= 39 && Skills.realLevel(Constants.SKILLS_ATTACK) <= 39 && Skills.realLevel(Constants.SKILLS_DEFENSE) <= 39;
     }
 
     @Override

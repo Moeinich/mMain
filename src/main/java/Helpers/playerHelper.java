@@ -62,11 +62,9 @@ public class playerHelper {
     public static boolean withinArea(Area area) {
         return area.contains(Players.local());
     }
-
-    public static boolean onTile(Tile tile) {
-        return tile.equals(Players.local().tile());
+    public static boolean atTile(Tile tile) {
+        return Players.local().tile().equals(tile);
     }
-
     public static void enableRun() {
         mMain.state = "Enable run..";
         Widgets.widget(160).component(29).click();
