@@ -73,7 +73,7 @@ public class VarrockCourse extends Task {
         if (PlayerHelper.withinArea(AgilityData.VarrockAreas.OBSTACLE_7.getArea())) {
             GameObject VarrockObstacle7 = PlayerHelper.nearestGameObject(8, AgilityData.obstacleInfo.varrock7.getId());
             GroundItem groundItem = GroundItems.stream().within(10).name("Mark of grace").nearest().first();
-            if (groundItem.inViewport()) {
+            if (groundItem.reachable()) {
                 mMain.state = "Pickup mark";
                 PlayerHelper.lootItems("Take", "Mark of grace");
             } else if (!VarrockObstacle7.inViewport()) {

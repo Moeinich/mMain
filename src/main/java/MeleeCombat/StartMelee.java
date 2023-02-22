@@ -25,9 +25,9 @@ public class StartMelee {
         List<Task> meleeTasks = Arrays.asList(
                 //new bankBeforeTask(),
                 new GetEquipment(),
+                new SetAttackStyle(),
                 new GetFood(),
                 new EatFood(),
-                new SetAttackStyle(),
                 new Goblins(),
                 new Cows(),
                 new Crabs()

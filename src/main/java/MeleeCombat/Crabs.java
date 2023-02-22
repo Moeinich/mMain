@@ -2,18 +2,12 @@ package MeleeCombat;
 
 import org.powbot.api.Condition;
 import org.powbot.api.Random;
-import org.powbot.api.rt4.Combat;
-import org.powbot.api.rt4.Component;
 import org.powbot.api.rt4.Constants;
-import org.powbot.api.rt4.Game;
 import org.powbot.api.rt4.Movement;
 import org.powbot.api.rt4.Npc;
 import org.powbot.api.rt4.Npcs;
 import org.powbot.api.rt4.Players;
 import org.powbot.api.rt4.Skills;
-import org.powbot.api.rt4.Varpbits;
-import org.powbot.api.rt4.Widget;
-import org.powbot.api.rt4.Widgets;
 import org.powbot.api.rt4.World;
 import org.powbot.api.rt4.Worlds;
 
@@ -23,9 +17,6 @@ import Helpers.Task;
 import script.mMain;
 
 public class Crabs extends Task {
-    int autoRetaliateWidget = 201;
-    int autoRetaliateComponent = 1;
-    int autoRetaliateVarp = 172;
     long lastCombatTime = System.currentTimeMillis();
     int resetTime = Random.nextInt(4000, 10000);
     boolean shouldHopWorld = false;
@@ -37,26 +28,26 @@ public class Crabs extends Task {
 
     @Override
     public boolean execute() {
-        if (!Combat.autoRetaliate()) {
-            EnableAutoRetaliate();
-        }
-        if (shouldHopWorld) {
-            Movement.moveTo(MeleeData.crabWorldhop);
-            Condition.sleep(Random.nextInt(10000, 12000));
-            World initialWorld = Worlds.current();
-            int randomWorld = SkillData.p2p[Random.nextInt(0, SkillData.p2p.length - 1)];
-            World world = new World(randomWorld, randomWorld, 1, World.Type.MEMBERS, World.Server.RUNE_SCAPE, World.Specialty.NONE);
-            world.hop();
-            Condition.wait(() -> Worlds.current() != initialWorld, 4000, 10);
-            shouldHopWorld = false;
-        }
 
-        if (Players.stream().filter(player -> player.tile().equals(MeleeData.crabLocation) && !player.equals(Players.local())).isNotEmpty()) {
+
+        if (Players.stream().filter(player -> player.tile().equals(MeleeData.crabLocation) && !player.equals(Players.local()))
+                .isNotEmpty()) {
             mMain.state = "Worldhopping";
-            shouldHopWorld = true;
+            if (!PlayerHelper.atTile(MeleeData.crabWorldhop)) {
+                System.out.println("Move to world hop area");
+                Movement.moveTo(MeleeData.crabWorldhop);
+                Condition.sleep(Random.nextInt(10000, 12000));
+            } else {
+                System.out.println("World hop");
+                int randomWorld = SkillData.p2p[Random.nextInt(0, SkillData.p2p.length - 1)];
+                System.out.println(randomWorld);
+                World world = new World(randomWorld, randomWorld, 1, World.Type.MEMBERS, World.Server.RUNE_SCAPE, World.Specialty.NONE);
+                world.hop();
+            }
         } else if (PlayerHelper.atTile(MeleeData.crabLocation)) {
             if (Npcs.stream().interactingWithMe().isNotEmpty()) {
                 lastCombatTime = System.currentTimeMillis();
+                mMain.state = "Sleeping..";
                 Condition.sleep(Random.nextInt(1000, 3500));
             } else if (System.currentTimeMillis() - lastCombatTime > resetTime) {
                 Npc crab = PlayerHelper.nearestCombatNpc(MeleeData.crabArea, "Sand crab");
@@ -82,19 +73,6 @@ public class Crabs extends Task {
             walkToCrabs();
         }
         return false;
-    }
-
-    public void EnableAutoRetaliate() {
-        if (Game.tab(Game.Tab.ATTACK)) {
-            Widget widget = Widgets.widget(autoRetaliateWidget);
-            if (widget.valid()) {
-                Component autoRetaliateComp = widget.component(autoRetaliateComponent);
-                if (autoRetaliateComp.visible()) {
-                    autoRetaliateComp.click();
-                    Condition.wait(() -> Varpbits.varpbit(autoRetaliateVarp) == 1, 200, 10);
-                }
-            }
-        }
     }
     public boolean resetCrabs() {
         mMain.state = "Walk to reset spot";

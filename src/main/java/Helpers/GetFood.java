@@ -7,7 +7,7 @@ import script.mMain;
 
 public class GetFood extends Task{
     public boolean activate() {
-        return Game.tab(Game.Tab.INVENTORY) && Inventory.stream().action("Eat").isEmpty();
+        return Inventory.stream().action("Eat").isEmpty();
     }
 
     @Override
