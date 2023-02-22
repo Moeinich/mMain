@@ -105,7 +105,7 @@ public class MeleeData {
             new Tile(3184, 3314, 0)
     );
     public static final Tile crabLocation = new Tile(1773,3461,0);
-    public static final Area crabResetArea = new Area(new Tile(1759, 3498, 0), new Tile(1766, 3493, 0));
+    public static final Area crabResetArea = new Area(new Tile(1759, 3504, 0), new Tile(1768, 3498, 0));
     public static final Tile crabWorldhop = new Tile(1775, 3475, 0);
 
     public static final Area crabArea = new Area(new Tile(1772, 3460, 0), new Tile(1774, 3462, 0));

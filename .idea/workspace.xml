@@ -6,8 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="c7dd1c8c-f10c-49ed-8219-521bd6f55188" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.gradle/7.4/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/checksums/checksums.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.4/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/checksums/md5-checksums.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.4/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/checksums/sha1-checksums.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.4/dependencies-accessors/dependencies-accessors.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/dependencies-accessors/dependencies-accessors.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.4/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.4/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/executionHistory/executionHistory.lock" afterDir="false" />
@@ -16,14 +14,17 @@
       <change beforePath="$PROJECT_DIR$/.gradle/7.4/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Agility/AgilityHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Agility/AgilityHelper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Agility/VarrockCourse.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Agility/VarrockCourse.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/Helpers/SkillData.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/Helpers/SkillData.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/MeleeCombat/Crabs.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/MeleeCombat/Crabs.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/MeleeCombat/StartMelee.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/MeleeCombat/StartMelee.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Agility/VarrockCourse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Agility/VarrockCourse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Agility/AgilityHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Agility/AgilityHelper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Helpers/GetFood.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Helpers/GetFood.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Helpers/InteractionsHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Helpers/InteractionsHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Helpers/SkillData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Helpers/SkillData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/MeleeCombat/Crabs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MeleeCombat/Crabs.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/MeleeCombat/SetAttackStyle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MeleeCombat/SetAttackStyle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/MeleeCombat/StartMelee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MeleeCombat/StartMelee.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/MeleeCombat/MeleeData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MeleeCombat/MeleeData.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

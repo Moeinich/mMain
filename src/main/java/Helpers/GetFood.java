@@ -13,7 +13,11 @@ public class GetFood extends Task{
     @Override
     public boolean execute() {
         mMain.state = "Get food";
-        PlayerHelper.bankForFood(ItemList.CAKE_1891, 15);
-        return false;
+        if (Game.tab(Game.Tab.INVENTORY)) {
+            if (Inventory.stream().action("Eat").isEmpty()) {
+                PlayerHelper.bankForFood(ItemList.CAKE_1891, 15);
+                return false;
+            }
+        } return false;
     }
 }
