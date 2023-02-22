@@ -15,12 +15,11 @@ import org.powbot.api.rt4.Varpbits;
 import org.powbot.api.rt4.Widget;
 import org.powbot.api.rt4.Widgets;
 import org.powbot.api.rt4.World;
+import org.powbot.api.rt4.Worlds;
 
-import java.util.concurrent.ThreadLocalRandom;
-
-import Helpers.Task;
 import Helpers.PlayerHelper;
 import Helpers.SkillData;
+import Helpers.Task;
 import script.mMain;
 
 public class Crabs extends Task {
@@ -29,6 +28,7 @@ public class Crabs extends Task {
     int autoRetaliateVarp = 172;
     long lastCombatTime = System.currentTimeMillis();
     int resetTime = Random.nextInt(4000, 10000);
+    boolean shouldHopWorld = false;
 
     @Override
     public boolean activate() {
@@ -38,35 +38,41 @@ public class Crabs extends Task {
     @Override
     public boolean execute() {
         if (!Combat.autoRetaliate()) {
-            mMain.state = "Toggle auto retaliate";
-            System.out.println("Toggle auto retaliate");
-            Combat.autoRetaliate();
+            EnableAutoRetaliate();
         }
-        if (Players.stream().filter(player -> player.tile().equals(MeleeData.crabLocation) && !player.equals(Players.local())).isNotEmpty()) {
-            mMain.state = "Worldhopping";
+        if (shouldHopWorld) {
             Movement.moveTo(MeleeData.crabWorldhop);
             Condition.sleep(Random.nextInt(10000, 12000));
-            int[] p2p = SkillData.p2p;
-            int randomWorld = p2p[Random.nextInt(0, p2p.length - 1)];
+            World initialWorld = Worlds.current();
+            int randomWorld = SkillData.p2p[Random.nextInt(0, SkillData.p2p.length - 1)];
             World world = new World(randomWorld, randomWorld, 1, World.Type.MEMBERS, World.Server.RUNE_SCAPE, World.Specialty.NONE);
             world.hop();
+            Condition.wait(() -> Worlds.current() != initialWorld, 4000, 10);
+            shouldHopWorld = false;
+        }
+
+        if (Players.stream().filter(player -> player.tile().equals(MeleeData.crabLocation) && !player.equals(Players.local())).isNotEmpty()) {
+            mMain.state = "Worldhopping";
+            shouldHopWorld = true;
         } else if (PlayerHelper.atTile(MeleeData.crabLocation)) {
             if (Npcs.stream().interactingWithMe().isNotEmpty()) {
                 lastCombatTime = System.currentTimeMillis();
+                Condition.sleep(Random.nextInt(1000, 3500));
             } else if (System.currentTimeMillis() - lastCombatTime > resetTime) {
-                mMain.state = "Reset";
-                System.out.println("Resetting crabs");
-                resetCrabs();
-                resetTime = Random.nextInt(4000, 10000);
-                System.out.println("resetTime has been randomized to: " + resetTime + "ms");
-            } else {
                 Npc crab = PlayerHelper.nearestCombatNpc(MeleeData.crabArea, "Sand crab");
                 if (crab.inViewport()) {
                     mMain.state = "Do an attack";
                     if (crab.interact("Attack")) {
                         mMain.state = "Waiting for idle";
                         System.out.println("Attacked crab");
-                        Condition.wait( () -> crab.healthPercent() == 0, 500, 50);
+                        lastCombatTime = System.currentTimeMillis();
+                    }
+                } else {
+                    mMain.state = "Reset";
+                    System.out.println("Resetting crabs");
+                    if(resetCrabs()) {
+                        resetTime = Random.nextInt(4000, 10000);
+                        System.out.println("resetTime has been randomized to: " + resetTime + "ms");
                     }
                 }
             }
@@ -90,11 +96,11 @@ public class Crabs extends Task {
             }
         }
     }
-    public void resetCrabs() {
+    public boolean resetCrabs() {
         mMain.state = "Walk to reset spot";
         System.out.println("Resetting crabs!");
-        Movement.moveTo(MeleeData.crabResetLocation);
-        resetTime = ThreadLocalRandom.current().nextInt(4000, 10000);
+        Movement.moveTo(MeleeData.crabResetArea.getRandomTile());
+        return PlayerHelper.withinArea(MeleeData.crabResetArea);
     }
     public void walkToCrabs() {
         mMain.state = "Walk to crabs";
