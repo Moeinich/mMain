@@ -36,18 +36,18 @@ public class MeleeData {
             ItemList.AMULET_OF_GLORY_1704,
             ItemList.COMBAT_BRACELET_11126,
             ItemList.RED_CAPE_1007};
-    public static int[] addyGraniteHammer = {ItemList.ADAMANT_PLATEBODY_1123,
-            ItemList.ADAMANT_PLATELEGS_1073,
-            ItemList.ADAMANT_BOOTS_4129,
-            ItemList.ADAMANT_KITESHIELD_1199,
-            ItemList.ADAMANT_FULL_HELM_1161,
+    public static int[] addyGraniteHammer = {ItemList.RUNE_CHAINBODY_1113,
+            ItemList.RUNE_PLATELEGS_1079,
+            ItemList.RUNE_BOOTS_4131,
+            ItemList.RUNE_KITESHIELD_1201,
+            ItemList.RUNE_FULL_HELM_1163,
             ItemList.GRANITE_HAMMER_21742,
             ItemList.AMULET_OF_GLORY_1704,
             ItemList.COMBAT_BRACELET_11126,
             ItemList.RED_CAPE_1007};
 
     public static int[] meleeEquipment() {
-        if (Skills.realLevel(Constants.SKILLS_ATTACK) >= 50 && Skills.realLevel(Constants.SKILLS_DEFENSE) >= 30 && Skills.realLevel(Constants.SKILLS_STRENGTH) >= 50) {
+        if (Skills.realLevel(Constants.SKILLS_ATTACK) >= 50 && Skills.realLevel(Constants.SKILLS_DEFENSE) >= 50 && Skills.realLevel(Constants.SKILLS_STRENGTH) >= 50) {
             return addyGraniteHammer;
         }
         if (Skills.realLevel(Constants.SKILLS_ATTACK) >= 40 && Skills.realLevel(Constants.SKILLS_DEFENSE) >= 30 && Skills.realLevel(Constants.SKILLS_STRENGTH) >= 30
