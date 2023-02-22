@@ -34,7 +34,7 @@ import Helpers.SkillData;
 @ScriptManifest(
         name = "mMain",
         description = "Progressively levels different skills",
-        version = "0.2.1",
+        version = "0.2.2",
         category = ScriptCategory.Other
 )
 @ScriptConfiguration.List(
@@ -56,7 +56,7 @@ public class mMain extends AbstractScript {
     //adb.exe forward tcp:61666 tcp:61666
 
     public static void main(String[] args) {
-        new ScriptUploader().uploadAndStart("mMain", "Account", "emulator-5554", true, true);
+        new ScriptUploader().uploadAndStart("mMain", "CharlesWilliams7155@outlook.com", "emulator-5554", true, true);
     }
 
     final int MIN_TIME_LIMIT = 3600000;

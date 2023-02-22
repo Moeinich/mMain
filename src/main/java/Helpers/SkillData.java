@@ -102,7 +102,7 @@ public class SkillData {
         public static boolean checkedFavor = false;
         public static int hosidiusFavorValue = 0;
     }
-    public static final int[] p2p = {544, 543, 542, 535, 534, 531, 525, 524, 523, 522, 521, 520, 519, 518, 517, 516, 515, 514, 513, 512, 511, 510, 509, 508, 507, 506, 505, 496, 495, 494, 493, 492, 491, 490, 489, 488, 487, 486, 485, 484, 482, 481, 480, 477, 478, 497};
+    public static final int[] p2p = {544, 543, 535, 534, 531, 525, 524, 523, 522, 521, 520, 519, 518, 517, 516, 515, 514, 513, 512, 511, 510, 509, 508, 507, 506, 505, 496, 495, 494, 493, 492, 491, 490, 489, 488, 487, 486, 485, 484, 482, 481, 480, 477, 478, 497};
     //Shared areas
     public static final Area CowSafeSpotArea = new Area(
                     new Tile(2927, 3292, 0),

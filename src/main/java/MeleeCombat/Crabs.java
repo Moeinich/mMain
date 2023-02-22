@@ -16,6 +16,7 @@ import Helpers.Task;
 import script.mMain;
 
 public class Crabs extends Task {
+    boolean shouldReset = false;
     @Override
     public boolean activate() {
         return Skills.realLevel(Constants.SKILLS_STRENGTH) >= 30 && Skills.realLevel(Constants.SKILLS_ATTACK) >= 30 && Skills.realLevel(Constants.SKILLS_DEFENSE) >= 30;
@@ -40,7 +41,7 @@ public class Crabs extends Task {
         } else if (PlayerHelper.atTile(MeleeData.crabLocation)) {
             if (Npcs.stream().interactingWithMe().isNotEmpty()) {
                 mMain.state = "Sleeping..";
-                Condition.sleep(Random.nextInt(70000, 110000));
+                Condition.sleep(Random.nextInt(30000, 72000));
             }
             Npc crab = PlayerHelper.nearestCombatNpc(MeleeData.crabArea, "Sand crab");
             if (crab.inViewport()) {
@@ -52,12 +53,14 @@ public class Crabs extends Task {
             } else if (!crab.inViewport() && Npcs.stream().interactingWithMe().isEmpty()){
                 mMain.state = "Reset";
                 System.out.println("Resetting crabs");
+                shouldReset = true;
                 if(resetCrabs()) {
                     Condition.wait( () -> PlayerHelper.atTile(MeleeData.crabResetArea.getRandomTile()), 500, 30);
                     System.out.println("Reset crab succesful");
+                    shouldReset = false;
                 }
             }
-        } else {
+        } else if (!shouldReset) {
             if (PlayerHelper.withinArea(MeleeData.crabArea)) {
                 Movement.step(MeleeData.crabLocation);
             } else {

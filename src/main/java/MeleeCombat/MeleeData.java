@@ -47,19 +47,15 @@ public class MeleeData {
             ItemList.RED_CAPE_1007};
 
     public static int[] meleeEquipment() {
-        if (Skills.realLevel(Constants.SKILLS_ATTACK) <= 29 && Skills.realLevel(Constants.SKILLS_DEFENSE) <= 29 && Skills.realLevel(Constants.SKILLS_STRENGTH) <= 29) {
-            return ironArmor;
+        if (Skills.realLevel(Constants.SKILLS_ATTACK) >= 50 && Skills.realLevel(Constants.SKILLS_DEFENSE) >= 30 && Skills.realLevel(Constants.SKILLS_STRENGTH) >= 50) {
+            return addyGraniteHammer;
         }
-        if (Skills.realLevel(Constants.SKILLS_ATTACK) >= 30 && Skills.realLevel(Constants.SKILLS_DEFENSE) >= 30 && Skills.realLevel(Constants.SKILLS_STRENGTH) >= 30
-        && Skills.realLevel(Constants.SKILLS_ATTACK) <= 39 && Skills.realLevel(Constants.SKILLS_DEFENSE) <= 49 && Skills.realLevel(Constants.SKILLS_STRENGTH) <= 39) {
-            return addyArmor;
-        }
-        if (Skills.realLevel(Constants.SKILLS_ATTACK) >= 40 && Skills.realLevel(Constants.SKILLS_DEFENSE) >= 40 && Skills.realLevel(Constants.SKILLS_STRENGTH) >= 40
+        if (Skills.realLevel(Constants.SKILLS_ATTACK) >= 40 && Skills.realLevel(Constants.SKILLS_DEFENSE) >= 30 && Skills.realLevel(Constants.SKILLS_STRENGTH) >= 30
                 && Skills.realLevel(Constants.SKILLS_ATTACK) <= 49 && Skills.realLevel(Constants.SKILLS_DEFENSE) <= 49 && Skills.realLevel(Constants.SKILLS_STRENGTH) <= 49) {
             return addyRuneScim;
         }
-        if (Skills.realLevel(Constants.SKILLS_ATTACK) >= 50 && Skills.realLevel(Constants.SKILLS_DEFENSE) >= 30 && Skills.realLevel(Constants.SKILLS_STRENGTH) <= 50) {
-            return addyGraniteHammer;
+        if (Skills.realLevel(Constants.SKILLS_ATTACK) >= 30 && Skills.realLevel(Constants.SKILLS_DEFENSE) >= 30 && Skills.realLevel(Constants.SKILLS_STRENGTH) >= 30) {
+            return addyArmor;
         }
         return ironArmor;
     }
@@ -67,47 +63,19 @@ public class MeleeData {
     public static final Area goblinArea = new Area(new Tile(3152, 3294, 0), new Tile(3134, 3310, 0));
 
     public static final Area cowArea = new Area(
-            new Tile(3184, 3314, 0),
-            new Tile(3179, 3314, 0),
-            new Tile(3178, 3316, 0),
-            new Tile(3175, 3316, 0),
-            new Tile(3170, 3316, 0),
-            new Tile(3168, 3319, 0),
-            new Tile(3164, 3319, 0),
-            new Tile(3160, 3315, 0),
-            new Tile(3155, 3315, 0),
-            new Tile(3154, 3317, 0),
-            new Tile(3153, 3329, 0),
-            new Tile(3154, 3331, 0),
-            new Tile(3154, 3334, 0),
-            new Tile(3153, 3335, 0),
-            new Tile(3153, 3338, 0),
-            new Tile(3152, 3339, 0),
-            new Tile(3152, 3342, 0),
-            new Tile(3153, 3344, 0),
-            new Tile(3153, 3346, 0),
-            new Tile(3160, 3345, 0),
-            new Tile(3166, 3342, 0),
-            new Tile(3174, 3342, 0),
-            new Tile(3180, 3341, 0),
-            new Tile(3185, 3339, 0),
-            new Tile(3190, 3335, 0),
-            new Tile(3196, 3332, 0),
-            new Tile(3201, 3328, 0),
-            new Tile(3202, 3321, 0),
-            new Tile(3205, 3315, 0),
-            new Tile(3207, 3310, 0),
-            new Tile(3200, 3308, 0),
-            new Tile(3196, 3308, 0),
-            new Tile(3192, 3309, 0),
-            new Tile(3190, 3310, 0),
-            new Tile(3185, 3314, 0),
-            new Tile(3184, 3314, 0)
+            new Tile(3184, 3314, 0), new Tile(3179, 3314, 0), new Tile(3178, 3316, 0), new Tile(3175, 3316, 0),
+            new Tile(3170, 3316, 0), new Tile(3168, 3319, 0), new Tile(3164, 3319, 0), new Tile(3160, 3315, 0),
+            new Tile(3155, 3315, 0), new Tile(3154, 3317, 0), new Tile(3153, 3329, 0), new Tile(3154, 3331, 0),
+            new Tile(3154, 3334, 0), new Tile(3153, 3335, 0), new Tile(3153, 3338, 0), new Tile(3152, 3339, 0),
+            new Tile(3152, 3342, 0), new Tile(3153, 3344, 0), new Tile(3153, 3346, 0), new Tile(3160, 3345, 0),
+            new Tile(3166, 3342, 0), new Tile(3174, 3342, 0), new Tile(3180, 3341, 0), new Tile(3185, 3339, 0),
+            new Tile(3190, 3335, 0), new Tile(3196, 3332, 0), new Tile(3201, 3328, 0), new Tile(3202, 3321, 0),
+            new Tile(3205, 3315, 0), new Tile(3207, 3310, 0), new Tile(3200, 3308, 0), new Tile(3196, 3308, 0),
+            new Tile(3192, 3309, 0), new Tile(3190, 3310, 0), new Tile(3185, 3314, 0), new Tile(3184, 3314, 0)
     );
     public static final Tile crabLocation = new Tile(1773,3461,0);
     public static final Area crabResetArea = new Area(new Tile(1759, 3504, 0), new Tile(1768, 3498, 0));
     public static final Tile crabWorldhop = new Tile(1775, 3475, 0);
-
     public static final Area crabArea = new Area(new Tile(1772, 3460, 0), new Tile(1774, 3462, 0));
     public static Combat.Style AttackStyle() {
         int lowLevel, highLevel;

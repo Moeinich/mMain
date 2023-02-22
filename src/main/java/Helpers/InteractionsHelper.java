@@ -55,11 +55,9 @@ public class InteractionsHelper {
     }
 
     public static void cameraCheck() {
-        if (Camera.getZoom() > 4) {
-            if (Game.tab(Game.Tab.SETTINGS) && Players.local().isRendered()) {
+        if (Game.tab(Game.Tab.SETTINGS) && Players.local().isRendered() && Camera.getZoom() > 4) {
                 Camera.moveZoomSlider(Camera.ZOOM_MAX);
                 Condition.wait( () -> Camera.getZoom() < 3, 250, 50);
-            }
         }
     }
 
