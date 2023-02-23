@@ -15,13 +15,13 @@ import org.powbot.mobile.script.ScriptManager;
 import script.mMain;
 
 public class InteractionsHelper {
-    public static void withdrawItem(int itemID, int Amount) {
+    public static void withdrawItem(int itemID, int amount) {
         if (!Bank.opened() && Bank.inViewport()) {
             if (Bank.open()) {
                 Condition.wait(Bank::opened, 150, 10);
             }
         }
-        if (Bank.stream().id(itemID).first().stackSize() < Amount) {
+        if (Bank.stream().id(itemID).first().stackSize() < amount) {
             mMain.state = "We ran out of " + itemID;
             System.out.println("We ran out of items");
             SkillData.setSkillDone();
@@ -29,7 +29,8 @@ public class InteractionsHelper {
             mMain.taskRunning.set(false); //Skip task on progressive
             System.out.println("taskRunning was set false");
         } else {
-            Bank.withdraw(itemID, Amount);
+            System.out.println("Withdrawing " + itemID + " amount:" + amount);
+            Bank.withdraw(itemID, amount);
             Condition.wait( () -> Inventory.stream().id(itemID).isNotEmpty(), 150, 10);
         }
     }
@@ -49,6 +50,7 @@ public class InteractionsHelper {
         } else {
             Bank.depositInventory();
             Condition.wait(Inventory::isEmpty, 150, 10);
+            System.out.println("Withdrawing " + itemID + " amount:" + amount);
             Bank.withdraw(itemID, amount);
             Condition.wait( () -> Inventory.stream().id(itemID).isNotEmpty(), 150, 10);
         }
@@ -56,6 +58,7 @@ public class InteractionsHelper {
 
     public static void cameraCheck() {
         if (Game.tab(Game.Tab.SETTINGS) && Players.local().isRendered() && Camera.getZoom() > 4) {
+            System.out.println("Moving camera slider");
                 Camera.moveZoomSlider(Camera.ZOOM_MAX);
                 Condition.wait( () -> Camera.getZoom() < 3, 250, 50);
         }

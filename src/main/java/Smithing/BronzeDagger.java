@@ -42,9 +42,11 @@ public class BronzeDagger extends Task {
                 Bank.open();
             }
             if (Inventory.stream().name("Hammer").isEmpty()) {
+                System.out.print("Getting hammer");
                 InteractionsHelper.depositAndWithdraw(ItemList.HAMMER_2347, 1);
             } else {
                 Bank.depositAllExcept("Hammer", "Bronze bar");
+                System.out.print("Getting bronze bars");
                 InteractionsHelper.withdrawItem(ItemList.BRONZE_BAR_2349, 27);
                 Bank.close();
             }
@@ -52,11 +54,11 @@ public class BronzeDagger extends Task {
     }
     private void ShouldSmith() {
         mMain.state = "Smith daggers";
-        if (!PlayerHelper.withinArea(SmithingData.anvilArea)) {
+        if (!PlayerHelper.atTile(SmithingData.smithingTile)) {
             Movement.step(SmithingData.smithingTile);
-            Condition.wait( () -> SmithingData.smithingTile.equals(Players.local().tile()), 250, 50);
+            Condition.wait( () -> SmithingData.smithingTile.equals(Players.local().tile()), 250, 10);
         }
-        if (PlayerHelper.withinArea(SmithingData.anvilArea)) {
+        if (PlayerHelper.atTile(SmithingData.smithingTile)) {
             GameObject anvil = PlayerHelper.nearestGameObject(1, 2097);
             InteractionsHelper.interactWithGameobject(ItemList.BRONZE_BAR_2349, anvil, 312, 9, "Smith", "Anvil", 2);
         }

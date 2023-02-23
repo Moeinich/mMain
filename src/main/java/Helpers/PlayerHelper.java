@@ -26,15 +26,18 @@ public class PlayerHelper {
     public static void shouldEat() {
         mMain.state = "Eating food";
         Item food = Inventory.stream().action("Eat").first();
+        System.out.println("Eating food");
         food.interact("Eat");
         Condition.wait(() -> Players.local().animation() == -1, 250, 50);
     }
     public static void bankForFood(int foodName, int amount) {
         mMain.state = "Bank for food";
         if (Bank.nearest().tile().distanceTo(Players.local()) > 5) {
+            System.out.println("Moving to bank to grab food");
             Movement.moveToBank();
         }
         if (Bank.nearest().tile().distanceTo(Players.local()) <= 5) {
+            System.out.println("Withdrawing food " + foodName + " amount:" + amount);
             InteractionsHelper.depositAndWithdraw(foodName, amount);
             Bank.close();
             Condition.wait( () -> !Bank.opened(), 150, 50);
@@ -44,15 +47,18 @@ public class PlayerHelper {
     public static void lootItems(String Action, String ItemName) {
         GroundItem groundItem = GroundItems.stream().within(7).name(ItemName).nearest().first();
         if (groundItem.inViewport()){
+            System.out.println("Looting grounditem " + ItemName);
             groundItem.interact(Action, ItemName);
             Condition.wait(() -> GroundItems.stream().id(groundItem.id()).at(groundItem.tile()).isEmpty(), 300, 50);
         }
     }
     public static void walkToTile(Tile place, Teleport... teleportBlacklist) {
         if (place.tile().distanceTo(Players.local()) <= 8) {
+            System.out.println("We are still too far away from tile, stepping");
             Movement.step(place);
             Condition.wait( () -> !Players.local().inMotion(), 900, 100);
         } else if (place.tile().distanceTo(Players.local()) > 8){
+            System.out.println("Walking to tile");
             DaxWalker.blacklistTeleports(teleportBlacklist);
             DaxWalker.walkTo(place);
         }

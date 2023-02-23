@@ -42,7 +42,7 @@ import Helpers.SkillData;
                 @ScriptConfiguration(
                         name =  "Mode",
                         description = "Which skill would you like to do?",
-                        defaultValue = "Melee",
+                        defaultValue = "Progressive",
                         allowedValues = {"Progressive", "Mining", "Fishing", "Woodcutting", "Cooking", "Firemaking", "Smithing", "Thieving", "Crafting", "Fletching", "Agility", "Herblore", "Ranged", "Magic", "Melee"},
                         optionType = OptionType.STRING
                  )
@@ -77,7 +77,7 @@ public class mMain extends AbstractScript {
         InteractionsHelper.cameraCheck();
         Notifications.showNotification("mMain starting " + skill);
 
-        final DateTimeFormatter TIMER_FORMAT = DateTimeFormatter.ofPattern("mm:ss");
+        final DateTimeFormatter TIMER_FORMAT = DateTimeFormatter.ofPattern("HH:mm:ss");
         ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();
 
         final Duration[] remainingDuration = {Duration.ofMillis(runtime.timeLeft())};
