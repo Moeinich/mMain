@@ -16,12 +16,6 @@ import script.mMain;
 public class StartAgility {
     public void Agility() {
         mMain.runningSkill = "Agility";
-        if (Skills.realLevel(Constants.SKILLS_AGILITY) >= 70 || SkillData.agilityDone) {
-            mMain.state = "Agility done!";
-            SkillData.setSkillDone();
-            mMain.taskRunning.set(false);
-        }
-
         List<Task> agilityTasks = Arrays.asList(
                 new GetFood(),
                 new EatFood(),
@@ -33,6 +27,11 @@ public class StartAgility {
         );
 
         for (Task task : agilityTasks) {
+            if (Skills.realLevel(Constants.SKILLS_AGILITY) >= 70 || SkillData.agilityDone) {
+                mMain.state = "Agility done!";
+                SkillData.setSkillDone();
+                mMain.taskRunning.set(false);
+            }
             if (task.activate()) {
                 task.execute();
                 if (ScriptManager.INSTANCE.isStopping()) {

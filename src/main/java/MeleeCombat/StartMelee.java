@@ -17,12 +17,6 @@ import script.mMain;
 public class StartMelee {
     public void Melee() {
         mMain.runningSkill = "Melee";
-        if (Skills.realLevel(Constants.SKILLS_STRENGTH) >= 40 && Skills.realLevel(Constants.SKILLS_ATTACK) >= 40 && Skills.realLevel(Constants.SKILLS_DEFENSE) >= 40 || SkillData.meleeCombatDone) {
-            mMain.state = "Melee done!";
-            SkillData.setSkillDone();
-            mMain.taskRunning.set(false);
-        }
-
         List<Task> meleeTasks = Arrays.asList(
                 new BankBeforeTask(),
                 new GetEquipment(),
@@ -35,6 +29,11 @@ public class StartMelee {
         );
 
         for (Task task : meleeTasks) {
+            if (Skills.realLevel(Constants.SKILLS_STRENGTH) >= 70 && Skills.realLevel(Constants.SKILLS_ATTACK) >= 70 && Skills.realLevel(Constants.SKILLS_DEFENSE) >= 70 || SkillData.meleeCombatDone) {
+                mMain.state = "Melee done!";
+                SkillData.setSkillDone();
+                mMain.taskRunning.set(false);
+            }
             if (task.activate()) {
                 task.execute();
                 if (ScriptManager.INSTANCE.isStopping()) {

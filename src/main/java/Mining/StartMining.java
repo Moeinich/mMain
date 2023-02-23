@@ -15,12 +15,6 @@ import script.mMain;
 public class StartMining {
     public void Mining() {
         mMain.runningSkill = "Mining";
-        if (Skills.realLevel(Constants.SKILLS_MINING) >= 70 || SkillData.miningDone) {
-            mMain.state = "Mining done!";
-            SkillData.setSkillDone();
-            mMain.taskRunning.set(false);
-        }
-
         List<Task> miningTasks = Arrays.asList(
                 new GetPickaxe(),
                 new DropOres(),
@@ -29,6 +23,11 @@ public class StartMining {
         );
 
         for (Task task : miningTasks) {
+            if (Skills.realLevel(Constants.SKILLS_MINING) >= 70 || SkillData.miningDone) {
+                mMain.state = "Mining done!";
+                SkillData.setSkillDone();
+                mMain.taskRunning.set(false);
+            }
             if (task.activate()) {
                 task.execute();
                 if (ScriptManager.INSTANCE.isStopping()) {

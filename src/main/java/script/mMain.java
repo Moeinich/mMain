@@ -34,7 +34,7 @@ import Helpers.SkillData;
 @ScriptManifest(
         name = "mMain",
         description = "Progressively levels different skills",
-        version = "0.2.2",
+        version = "0.2.3",
         category = ScriptCategory.Other
 )
 @ScriptConfiguration.List(

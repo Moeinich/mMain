@@ -14,14 +14,18 @@ import script.mMain;
 public class Cows extends Task {
     @Override
     public boolean activate() {
-        return Skills.realLevel(Constants.SKILLS_STRENGTH) >= 15 && Skills.realLevel(Constants.SKILLS_STRENGTH) <= 29
-                && Skills.realLevel(Constants.SKILLS_ATTACK) >= 15 && Skills.realLevel(Constants.SKILLS_ATTACK) <= 29
-                && Skills.realLevel(Constants.SKILLS_DEFENSE) >= 15 && Skills.realLevel(Constants.SKILLS_DEFENSE) <= 29;
+        return Skills.realLevel(Constants.SKILLS_STRENGTH) <= 29
+                && Skills.realLevel(Constants.SKILLS_ATTACK) <= 29
+                && Skills.realLevel(Constants.SKILLS_DEFENSE) <= 29;
 
     }
 
     @Override
     public boolean execute() {
+        if (!Movement.running() && Movement.energyLevel() > 30) {
+            PlayerHelper.enableRun();
+        }
+
         if (!MeleeData.cowArea.contains(Players.local())) {
             mMain.state = "Go to cows";
             System.out.println("Going to cows");
@@ -33,7 +37,7 @@ public class Cows extends Task {
             mMain.state = "Attack";
             if (cow.healthPercent() == 100 && cow.inViewport() && cow.interact("Attack")) {
                 mMain.state = "Waiting for kill";
-                Condition.wait(() -> cow.healthPercent() == 0,1500,20);
+                Condition.wait(() -> cow.healthPercent() == 0 || Players.local().healthPercent() < 60,1500,20);
             }
         }
         return false;

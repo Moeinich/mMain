@@ -15,12 +15,6 @@ import script.mMain;
 public class StartCrafting {
     public void Crafting() {
         mMain.runningSkill = "Crafting";
-        if (Skills.realLevel(Constants.SKILLS_CRAFTING) >= 70 || SkillData.craftingDone) {
-            mMain.state = "Crafting done!";
-            SkillData.setSkillDone();
-            mMain.taskRunning.set(false);
-        }
-
         List<Task> craftingTasks = Arrays.asList(
                 new GoToBank(),
                 new BeerGlass(),
@@ -31,6 +25,11 @@ public class StartCrafting {
         );
 
         for (Task task : craftingTasks) {
+            if (Skills.realLevel(Constants.SKILLS_CRAFTING) >= 70 || SkillData.craftingDone) {
+                mMain.state = "Crafting done!";
+                SkillData.setSkillDone();
+                mMain.taskRunning.set(false);
+            }
             if (task.activate()) {
                 task.execute();
                 if (ScriptManager.INSTANCE.isStopping()) {

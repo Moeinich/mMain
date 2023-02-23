@@ -16,6 +16,11 @@ public class BankBeforeTask extends Task {
     }
     @Override
     public boolean execute() {
+        if (mMain.runningSkill.equals("Melee") && Inventory.stream().action("Eat").isNotEmpty()) {
+            mMain.state = "We have food already";
+            mMain.shouldBank = false;
+        }
+
         if (Game.tab(Game.Tab.INVENTORY) && Inventory.isEmpty()) {
             mMain.state = "Inv empty, move on";
             mMain.shouldBank = false;

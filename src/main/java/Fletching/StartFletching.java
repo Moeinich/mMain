@@ -15,12 +15,6 @@ import script.mMain;
 public class StartFletching {
     public void Fletching() {
         mMain.runningSkill = "Fletching";
-        if (Skills.realLevel(Constants.SKILLS_FLETCHING) >= 70 || SkillData.fletchingDone) {
-            mMain.state = "Fletching done!";
-            SkillData.setSkillDone();
-            mMain.taskRunning.set(false);
-        }
-
         List<Task> fletchingTasks = Arrays.asList(
                 new GoToBank(),
                 new ArrowShafts(),
@@ -34,6 +28,11 @@ public class StartFletching {
         );
 
         for (Task task : fletchingTasks) {
+            if (Skills.realLevel(Constants.SKILLS_FLETCHING) >= 70 || SkillData.fletchingDone) {
+                mMain.state = "Fletching done!";
+                SkillData.setSkillDone();
+                mMain.taskRunning.set(false);
+            }
             if (task.activate()) {
                 task.execute();
                 if (ScriptManager.INSTANCE.isStopping()) {

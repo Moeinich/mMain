@@ -30,7 +30,7 @@ public class DoFiremaking extends Task {
     private void walkToFMSpot() {
             mMain.state = "Go to lane " + fmSpot;
             Movement.moveTo(FiremakingData.moveToFiremakingSpot());
-            Condition.wait( () -> !Players.local().inMotion(), 900, 100);
+            Condition.wait( () -> !Players.local().inMotion(), 900, 40);
     }
     private void lightLogs() {
         if (Game.tab(Game.Tab.INVENTORY)) {

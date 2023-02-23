@@ -18,6 +18,7 @@ public class SetAttackStyle extends Task {
 
     @Override
     public boolean activate() {
+        System.out.println("Switching attack style to " + MeleeData.AttackStyle());
         return Combat.style() != MeleeData.AttackStyle() || !Combat.autoRetaliate();
     }
 

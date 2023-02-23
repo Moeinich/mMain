@@ -19,6 +19,10 @@ public class Goblins extends Task {
 
     @Override
     public boolean execute() {
+        if (!Movement.running() && Movement.energyLevel() > 30) {
+            PlayerHelper.enableRun();
+        }
+
         if (!MeleeData.goblinArea.contains(Players.local())) {
             mMain.state = "Go to goblins";
             System.out.println("Going to goblins");
@@ -30,7 +34,7 @@ public class Goblins extends Task {
             mMain.state = "Attack";
             if (goblin.healthPercent() == 100 && goblin.inViewport() && goblin.interact("Attack")) {
                 mMain.state = "Waiting for kill";
-                Condition.wait(() -> goblin.healthPercent() == 0,1500,20);
+                Condition.wait(() -> goblin.healthPercent() == 0 || Players.local().healthPercent() < 50,1500,20);
             }
         }
         return false;

@@ -19,7 +19,9 @@ public class Crabs extends Task {
     boolean shouldReset = false;
     @Override
     public boolean activate() {
-        return Skills.realLevel(Constants.SKILLS_STRENGTH) >= 30 && Skills.realLevel(Constants.SKILLS_ATTACK) >= 30 && Skills.realLevel(Constants.SKILLS_DEFENSE) >= 30;
+        return Skills.realLevel(Constants.SKILLS_STRENGTH) >= 30
+                && Skills.realLevel(Constants.SKILLS_ATTACK) >= 30
+                && Skills.realLevel(Constants.SKILLS_DEFENSE) >= 30;
     }
 
     @Override

@@ -15,12 +15,6 @@ import script.mMain;
 public class StartFishing {
     public void Fishing() {
         mMain.runningSkill = "Fishing";
-        if (Skills.realLevel(Constants.SKILLS_FISHING) >= 70 || SkillData.fishingDone) {
-            mMain.state = "Fishing done!";
-            SkillData.setSkillDone();
-            mMain.taskRunning.set(false);
-        }
-
         List<Task> fishingTasks = Arrays.asList(
                 new GetFishingEquipment(),
                 new DropFish(),
@@ -29,6 +23,11 @@ public class StartFishing {
         );
 
         for (Task task : fishingTasks) {
+            if (Skills.realLevel(Constants.SKILLS_FISHING) >= 70 || SkillData.fishingDone) {
+                mMain.state = "Fishing done!";
+                SkillData.setSkillDone();
+                mMain.taskRunning.set(false);
+            }
             if (task.activate()) {
                 task.execute();
                 if (ScriptManager.INSTANCE.isStopping()) {

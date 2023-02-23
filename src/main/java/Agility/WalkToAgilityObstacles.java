@@ -20,7 +20,7 @@ public class WalkToAgilityObstacles extends Task {
             return true;
         }
         //Draynor
-        if (Skills.realLevel(Constants.SKILLS_AGILITY) >= 10 && Skills.realLevel(Constants.SKILLS_AGILITY) <= 29
+        if (Skills.realLevel(Constants.SKILLS_AGILITY) <= 29
                 && !PlayerHelper.withinArea(AgilityData.DraynorAreas.FLOOR.getArea())
                 && !PlayerHelper.withinArea(AgilityData.DraynorAreas.TOP.getArea())
                 && !PlayerHelper.withinArea(AgilityData.DraynorAreas.CRATE.getArea()))
@@ -28,7 +28,7 @@ public class WalkToAgilityObstacles extends Task {
             return true;
         }
         //Varrock
-        if (Skills.realLevel(Constants.SKILLS_AGILITY) >= 30 && Skills.realLevel(Constants.SKILLS_AGILITY) <= 39
+        if (Skills.realLevel(Constants.SKILLS_AGILITY) <= 39
                 && !PlayerHelper.withinArea(AgilityData.VarrockAreas.FLOOR.getArea())
                 && !PlayerHelper.withinArea(AgilityData.VarrockAreas.FIRST.getArea())
                 && !PlayerHelper.withinArea(AgilityData.VarrockAreas.MID.getArea())

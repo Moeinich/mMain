@@ -6,6 +6,7 @@ import org.powbot.api.rt4.Game;
 import org.powbot.api.rt4.GameObject;
 import org.powbot.api.rt4.Inventory;
 import org.powbot.api.rt4.Skills;
+import org.powbot.api.rt4.walking.model.Skill;
 
 import Helpers.InteractionsHelper;
 import Helpers.ItemList;
@@ -34,7 +35,8 @@ public class Sardines extends Task {
         return false;
     }
     private void MoveToEdgeville() {
-        PlayerHelper.walkToTile(CookingData.cookingAreaEdgeville.getRandomTile());
+        System.out.println("Move to edgeville bank");
+        PlayerHelper.walkToTile(SkillData.edgevilleBank.getRandomTile());
     }
     private void ShouldBank() {
         mMain.state = "Get raw fish";

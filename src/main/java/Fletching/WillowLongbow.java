@@ -56,7 +56,7 @@ public class WillowLongbow extends Task {
         mMain.state = "Withdraw items";
         if (!Bank.opened()) {
             Bank.open();
-            Condition.wait(Bank::opened, 500, 50);
+            Condition.wait(Bank::opened, 150, 50);
         }
         if (Inventory.stream().id(ToolID).isNotEmpty()) {
             Bank.depositAllExcept(ToolID);

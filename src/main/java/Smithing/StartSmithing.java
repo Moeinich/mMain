@@ -14,12 +14,6 @@ import java.util.List;
 public class StartSmithing {
     public void Smithing() {
         mMain.runningSkill = "Smithing";
-        if (Skills.realLevel(Constants.SKILLS_SMITHING) >= 70 || SkillData.smithingDone) {
-            mMain.state = "Smithing done!";
-            SkillData.setSkillDone();
-            mMain.taskRunning.set(false);
-        }
-
         List<Task> smithingTasks = Arrays.asList(
                 new GoSmithing(),
                 new BronzeDagger(),
@@ -30,6 +24,11 @@ public class StartSmithing {
         );
 
         for (Task task : smithingTasks) {
+            if (Skills.realLevel(Constants.SKILLS_SMITHING) >= 70 || SkillData.smithingDone) {
+                mMain.state = "Smithing done!";
+                SkillData.setSkillDone();
+                mMain.taskRunning.set(false);
+            }
             if (task.activate()) {
                 task.execute();
                 if (ScriptManager.INSTANCE.isStopping()) {

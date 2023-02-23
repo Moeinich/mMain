@@ -6,6 +6,9 @@ import org.powbot.api.rt4.Combat;
 import org.powbot.api.rt4.Constants;
 import org.powbot.api.rt4.Skills;
 
+import java.util.Arrays;
+import java.util.List;
+
 import Helpers.ItemList;
 
 public class MeleeData {
@@ -77,21 +80,92 @@ public class MeleeData {
     public static final Area crabResetArea = new Area(new Tile(1759, 3504, 0), new Tile(1768, 3498, 0));
     public static final Tile crabWorldhop = new Tile(1775, 3475, 0);
     public static final Area crabArea = new Area(new Tile(1772, 3460, 0), new Tile(1774, 3462, 0));
+
     public static Combat.Style AttackStyle() {
-        int lowLevel, highLevel;
-        for (int i = 10; i <= 70; i += 10) {
-            lowLevel = i;
-            highLevel = i + 9;
-            if (Skills.realLevel(Constants.SKILLS_STRENGTH) >= lowLevel && Skills.realLevel(Constants.SKILLS_STRENGTH) <= highLevel) {
+        int strengthLevel = Skills.realLevel(Constants.SKILLS_STRENGTH);
+        int attackLevel = Skills.realLevel(Constants.SKILLS_ATTACK);
+        int defenseLevel = Skills.realLevel(Constants.SKILLS_DEFENSE);
+
+        List<Integer> skillLevels = Arrays.asList(5, 10, 15, 20, 30, 40, 50, 60, 70, 80);
+        for (int level : skillLevels) {
+            if (strengthLevel < level) {
                 return Combat.Style.AGGRESSIVE;
-            }
-            if (Skills.realLevel(Constants.SKILLS_ATTACK) >= lowLevel && Skills.realLevel(Constants.SKILLS_ATTACK) <= highLevel) {
+            } else if (attackLevel < level) {
                 return Combat.Style.ACCURATE;
-            }
-            if (Skills.realLevel(Constants.SKILLS_DEFENSE) >= lowLevel && Skills.realLevel(Constants.SKILLS_DEFENSE) <= highLevel) {
+            } else if (defenseLevel < level) {
                 return Combat.Style.DEFENSIVE;
             }
         }
+
         return Combat.Style.AGGRESSIVE;
     }
+
+    /*public static Combat.Style AttackStyle() {
+        int strengthLevel = Skills.realLevel(Constants.SKILLS_STRENGTH);
+        int attackLevel = Skills.realLevel(Constants.SKILLS_ATTACK);
+        int defenseLevel = Skills.realLevel(Constants.SKILLS_DEFENSE);
+
+        //Level to 10
+        if (strengthLevel < 10) {
+            return Combat.Style.AGGRESSIVE;
+        } else if (attackLevel < 10) {
+            return Combat.Style.ACCURATE;
+        } else if (defenseLevel < 10) {
+            return Combat.Style.DEFENSIVE;
+        }
+        //Level to 20
+        else if (strengthLevel < 20) {
+            return Combat.Style.AGGRESSIVE;
+        } else if (attackLevel < 20) {
+            return Combat.Style.ACCURATE;
+        } else if (defenseLevel < 20) {
+            return Combat.Style.DEFENSIVE;
+        }
+        //Level to 30
+        else if (strengthLevel < 30) {
+            return Combat.Style.AGGRESSIVE;
+        } else if (attackLevel < 30) {
+            return Combat.Style.ACCURATE;
+        } else if (defenseLevel < 30) {
+            return Combat.Style.DEFENSIVE;
+        }
+
+        //Level to 40
+        else if (strengthLevel < 40) {
+            return Combat.Style.AGGRESSIVE;
+        } else if (attackLevel < 40) {
+            return Combat.Style.ACCURATE;
+        } else if (defenseLevel < 40) {
+            return Combat.Style.DEFENSIVE;
+        }
+
+        //Level to 50
+        else if (strengthLevel < 50) {
+            return Combat.Style.AGGRESSIVE;
+        } else if (attackLevel < 50) {
+            return Combat.Style.ACCURATE;
+        } else if (defenseLevel < 50) {
+            return Combat.Style.DEFENSIVE;
+        }
+
+        //Level to 60
+        else if (strengthLevel < 60) {
+            return Combat.Style.AGGRESSIVE;
+        } else if (attackLevel < 60) {
+            return Combat.Style.ACCURATE;
+        } else if (defenseLevel < 60) {
+            return Combat.Style.DEFENSIVE;
+        }
+
+        //Level to 70
+        else if (strengthLevel < 70) {
+            return Combat.Style.AGGRESSIVE;
+        } else if (attackLevel < 70) {
+            return Combat.Style.ACCURATE;
+        } else if (defenseLevel < 70) {
+            return Combat.Style.DEFENSIVE;
+        }
+
+        return Combat.Style.AGGRESSIVE;
+    }*/
 }

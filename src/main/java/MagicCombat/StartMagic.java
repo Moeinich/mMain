@@ -15,18 +15,17 @@ import script.mMain;
 public class StartMagic {
     public void Magic() {
         mMain.runningSkill = "Magic";
-        if (Skills.realLevel(Constants.SKILLS_MAGIC) >= 30 || SkillData.magicCombatDone) {
-            mMain.state = "Magic done!";
-            SkillData.setSkillDone();
-            mMain.taskRunning.set(false);
-        }
-
         List<Task> magicTasks = Arrays.asList(
                 new BankBeforeTask(),
                 new CowSafespot()
         );
 
         for (Task task : magicTasks) {
+            if (Skills.realLevel(Constants.SKILLS_MAGIC) >= 30 || SkillData.magicCombatDone) {
+                mMain.state = "Magic done!";
+                SkillData.setSkillDone();
+                mMain.taskRunning.set(false);
+            }
             if (task.activate()) {
                 task.execute();
                 if (ScriptManager.INSTANCE.isStopping()) {

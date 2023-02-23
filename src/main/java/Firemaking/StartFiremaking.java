@@ -14,18 +14,17 @@ import script.mMain;
 public class StartFiremaking {
     public void Firemaking() {
         mMain.runningSkill = "Firemaking";
-        if (Skills.realLevel(Constants.SKILLS_FIREMAKING) >= 50 || SkillData.firemakingDone) {
-            mMain.state = "Firemaking done!";
-            SkillData.setSkillDone();
-            mMain.taskRunning.set(false);
-        }
-
         List<Task> firemakingTasks = Arrays.asList(
                 new GetLogs(),
                 new DoFiremaking()
         );
 
         for (Task task : firemakingTasks) {
+            if (Skills.realLevel(Constants.SKILLS_FIREMAKING) >= 50 || SkillData.firemakingDone) {
+                mMain.state = "Firemaking done!";
+                SkillData.setSkillDone();
+                mMain.taskRunning.set(false);
+            }
             if (task.activate()) {
                 task.execute();
                 if (ScriptManager.INSTANCE.isStopping()) {

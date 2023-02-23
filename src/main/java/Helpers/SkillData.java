@@ -117,6 +117,6 @@ public class SkillData {
     public static final Area CowArea = new Area(
             new Tile(2926, 3288, 0), new Tile(2914, 3292, 0)
     );
-    public static Area edgevilleBank = new Area(new Tile(3091, 3499, 0), new Tile(3098, 3488, 0));
+    public static Area edgevilleBank = new Area(new Tile(3091, 3488, 0), new Tile(3094, 3493, 0));
 
 }
