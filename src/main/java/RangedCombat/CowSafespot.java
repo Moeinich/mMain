@@ -16,7 +16,7 @@ import script.mMain;
 public class CowSafespot extends Task {
     @Override
     public boolean activate() {
-        return Skills.realLevel(Constants.SKILLS_RANGE) <= 29 && Skills.realLevel(Constants.SKILLS_DEFENSE) <= 29;
+        return Skills.realLevel(Constants.SKILLS_RANGE) <= 29 || Skills.realLevel(Constants.SKILLS_DEFENSE) <= 29;
     }
     @Override
     public boolean execute() {

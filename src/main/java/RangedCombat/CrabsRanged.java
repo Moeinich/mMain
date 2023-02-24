@@ -1,7 +1,8 @@
-package MeleeCombat;
+package RangedCombat;
 
 import org.powbot.api.Condition;
 import org.powbot.api.Random;
+import org.powbot.api.rt4.Combat;
 import org.powbot.api.rt4.Constants;
 import org.powbot.api.rt4.Movement;
 import org.powbot.api.rt4.Npc;
@@ -10,22 +11,34 @@ import org.powbot.api.rt4.Players;
 import org.powbot.api.rt4.Skills;
 import org.powbot.api.rt4.World;
 
+import Helpers.CombatHelper;
 import Helpers.PlayerHelper;
 import Helpers.SkillData;
 import Helpers.Task;
+import MeleeCombat.MeleeData;
 import script.mMain;
 
-public class Crabs extends Task {
+public class CrabsRanged extends Task {
     boolean shouldReset = false;
+    long lastCombatTime = System.currentTimeMillis();
+    long resetTime = Random.nextInt(8000, 12000);
     @Override
     public boolean activate() {
-        return Skills.realLevel(Constants.SKILLS_STRENGTH) >= 30
-                && Skills.realLevel(Constants.SKILLS_ATTACK) >= 30
+        return Skills.realLevel(Constants.SKILLS_RANGE) >= 30
                 && Skills.realLevel(Constants.SKILLS_DEFENSE) >= 30;
     }
 
     @Override
     public boolean execute() {
+        if (!Combat.style(Combat.Style.AGGRESSIVE)) {
+            mMain.state = "Setting cb mode";
+            PlayerHelper.setAttackMode(Combat.Style.AGGRESSIVE);
+        }
+        if (CombatHelper.needEquipment(RangeData.RangeEquipment())) {
+            mMain.state = "Need equipment!";
+            CombatHelper.gearUp(RangeData.RangeEquipment());
+        }
+
         if (Players.stream().filter(player -> player.tile().equals(MeleeData.crabLocation) && !player.equals(Players.local()))
                 .isNotEmpty()) {
             mMain.state = "Worldhopping";
@@ -43,7 +56,8 @@ public class Crabs extends Task {
         } else if (PlayerHelper.atTile(MeleeData.crabLocation)) {
             if (Npcs.stream().interactingWithMe().isNotEmpty()) {
                 mMain.state = "Sleeping..";
-                Condition.sleep(Random.nextInt(30000, 72000));
+                lastCombatTime = System.currentTimeMillis();
+                Condition.sleep(Random.nextInt(2000, 9000));
             }
             Npc crab = PlayerHelper.nearestCombatNpc(MeleeData.crabArea, "Sand crab");
             if (crab.inViewport()) {
@@ -52,13 +66,16 @@ public class Crabs extends Task {
                     mMain.state = "Waiting for idle";
                     System.out.println("Attacked crab");
                 }
-            } else if (!crab.inViewport() && Npcs.stream().interactingWithMe().isEmpty()){
+            } else if (lastCombatTime > resetTime && Npcs.stream().interactingWithMe().isEmpty()){
                 mMain.state = "Reset";
                 System.out.println("Resetting crabs");
                 shouldReset = true;
                 if(resetCrabs()) {
                     Condition.wait( () -> PlayerHelper.atTile(MeleeData.crabResetArea.getRandomTile()), 500, 30);
                     System.out.println("Reset crab succesful");
+                    lastCombatTime = System.currentTimeMillis();
+                    resetTime = Random.nextInt(5000, 10000);
+                    System.out.println("lastCombatTime + resetTime has been set");
                     shouldReset = false;
                 }
             }

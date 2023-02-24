@@ -61,7 +61,7 @@ public class SteelPlatebody extends Task {
         }
         if (PlayerHelper.atTile(SmithingData.smithingTile)) {
             GameObject anvil = PlayerHelper.nearestGameObject(1, 2097);
-            InteractionsHelper.interactWithGameobject(ItemList.STEEL_BAR_2353, anvil, 312, 22, "Smith", "Anvil", 5);
+            InteractionsHelper.interactWithGameobject(ItemList.STEEL_BAR_2353, anvil, 312, 22, "Smith", 5);
         }
     }
 }

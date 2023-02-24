@@ -55,7 +55,7 @@ public class Sardines extends Task {
         }
         if (PlayerHelper.withinArea(CookingData.StoveAreaEdgeville)) {
             GameObject cookingStove = PlayerHelper.nearestGameObject(10, 12269);
-            InteractionsHelper.interactWithGameobject(ItemList.RAW_SARDINE_327, cookingStove, 270, 14, "Cook", "Stove", 1);
+            InteractionsHelper.interactWithGameobject(ItemList.RAW_SARDINE_327, cookingStove, 270, 14, "Cook", 1);
         }
     }
 }

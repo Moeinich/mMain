@@ -60,7 +60,7 @@ public class BronzePlatebody extends Task {
         }
         if (PlayerHelper.atTile(SmithingData.smithingTile)) {
             GameObject anvil = PlayerHelper.nearestGameObject(1, 2097);
-            InteractionsHelper.interactWithGameobject(ItemList.BRONZE_BAR_2349, anvil, 312, 22, "Smith", "Anvil", 5);
+            InteractionsHelper.interactWithGameobject(ItemList.BRONZE_BAR_2349, anvil, 312, 22, "Smith", 5);
         }
     }
 }

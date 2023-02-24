@@ -21,7 +21,7 @@ public class StartMagic {
         );
 
         for (Task task : magicTasks) {
-            if (Skills.realLevel(Constants.SKILLS_MAGIC) >= 30 || SkillData.magicCombatDone) {
+            if (Skills.realLevel(Constants.SKILLS_MAGIC) >= 55 || SkillData.magicCombatDone) {
                 mMain.state = "Magic done!";
                 SkillData.setSkillDone();
                 mMain.taskRunning.set(false);

@@ -60,7 +60,7 @@ public class BronzeDagger extends Task {
         }
         if (PlayerHelper.atTile(SmithingData.smithingTile)) {
             GameObject anvil = PlayerHelper.nearestGameObject(1, 2097);
-            InteractionsHelper.interactWithGameobject(ItemList.BRONZE_BAR_2349, anvil, 312, 9, "Smith", "Anvil", 2);
+            InteractionsHelper.interactWithGameobject(ItemList.BRONZE_BAR_2349, anvil, 312, 9, "Smith", 2);
         }
     }
 }

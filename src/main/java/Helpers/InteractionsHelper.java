@@ -64,45 +64,45 @@ public class InteractionsHelper {
         }
     }
 
-    public static void combineItems(int RequiredItemID, int CombineWithItemID, int WidgetID, int ComponentID) {
+    public static void combineItems(int requiredItemID, int combineWithItemID, int widgetID, int componentID) {
         mMain.state = "Combining..";
         if (!ScriptManager.INSTANCE.isStopping()) {
-            Item Tool = Inventory.stream().id(RequiredItemID).first();
-            Item CombineWithID = Inventory.stream().id(CombineWithItemID).first();
+            Item Tool = Inventory.stream().id(requiredItemID).first();
+            Item CombineWithID = Inventory.stream().id(combineWithItemID).first();
 
-            if (Inventory.selectedItem().id() != RequiredItemID && !Widgets.widget(WidgetID).valid()) {
+            if (Inventory.selectedItem().id() != requiredItemID && !Widgets.widget(widgetID).valid()) {
                 System.out.println("Use tool");
                 Tool.interact("Use");
-                Condition.wait(() -> Inventory.selectedItem().id() == RequiredItemID, 150, 20);
+                Condition.wait(() -> Inventory.selectedItem().id() == requiredItemID, 150, 20);
             }
-            if (Inventory.selectedItem().id() == RequiredItemID) {
+            if (Inventory.selectedItem().id() == requiredItemID) {
                 System.out.println("Use tool on combine item");
                 CombineWithID.interact("Use");
-                Condition.wait(() -> Widgets.widget(WidgetID).valid(), 500, 20);
+                Condition.wait(() -> Widgets.widget(widgetID).valid(), 500, 20);
                 System.out.println("Widget valid!");
             }
-            if (Widgets.widget(WidgetID).valid()) {
+            if (Widgets.widget(widgetID).valid()) {
                 System.out.println("Click component");
-                Widgets.widget(WidgetID).component(ComponentID).click();
-                if(Condition.wait(() -> !Widgets.widget(WidgetID).valid(), 150, 20)){
+                Widgets.widget(widgetID).component(componentID).click();
+                if(Condition.wait(() -> !Widgets.widget(widgetID).valid(), 150, 20)){
                     System.out.println("Widget no longer valid");
-                    Condition.wait(()-> Inventory.stream().id(CombineWithItemID).isEmpty() || Chat.canContinue(), 1000, 80);
+                    Condition.wait(()-> Inventory.stream().id(combineWithItemID).isEmpty() || Chat.canContinue(), 1000, 80);
                     System.out.println("CombineWithItem is empty or leveled up");
                 }
             }
         }
     }
-    public static void interactWithGameobject(int RequiredItemID, GameObject Gameobject, int WidgetID, int ComponentID, String Action, String Name, int Count) {
+    public static void interactWithGameobject(int requiredItemID, GameObject gameObject, int widgetID, int componentID, String action, int count) {
         if (!ScriptManager.INSTANCE.isStopping()) {
             System.out.println("Interact with gameobject");
-            Gameobject.interact(Action, Name);
-            Condition.wait( () -> Widgets.widget(WidgetID).valid(), 300, 50);
-            if (Widgets.widget(WidgetID).valid()) {
+            gameObject.interact(action);
+            Condition.wait( () -> Widgets.widget(widgetID).valid(), 300, 50);
+            if (Widgets.widget(widgetID).valid()) {
                 System.out.println("Click widget");
-                Widgets.widget(WidgetID).component(ComponentID).click();
-                if(Condition.wait(() -> !Widgets.widget(WidgetID).valid(), 500, 20)){
+                Widgets.widget(widgetID).component(componentID).click();
+                if(Condition.wait(() -> !Widgets.widget(widgetID).valid(), 500, 20)){
                     System.out.println("Widget no longer valid");
-                    Condition.wait(()-> Inventory.stream().id(RequiredItemID).count() < Count || Chat.canContinue(), 1000, 80);
+                    Condition.wait(()-> Inventory.stream().id(requiredItemID).count() < count || Chat.canContinue(), 1000, 80);
                     System.out.println("CombineWithItem is empty or leveled up");
                 }
             }
