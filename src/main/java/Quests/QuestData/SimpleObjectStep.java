@@ -11,12 +11,12 @@ public class SimpleObjectStep extends WalkToInteractiveStep<GameObject> {
     private final String[] conversation;
     private final Supplier<GameObject> interactive;
     private final Function<GameObject, Boolean> interaction;
-    private final Boolean interactionWait;
+    private final Function<GameObject, Boolean> interactionWait;
     private final String stepName;
     private final Supplier<Boolean> shouldExecute;
     private final boolean forceWeb;
 
-    public SimpleObjectStep(Tile noInteractableTile, String[] conversation, Supplier<GameObject> interactive, Function<GameObject, Boolean> interaction, Boolean interactionWait, String stepName, QuestInformation questInformation, Supplier<Boolean> shouldExecute, boolean forceWeb) {
+    public SimpleObjectStep(Tile noInteractableTile, String[] conversation, Supplier<GameObject> interactive, Function<GameObject, Boolean> interaction, Function<GameObject, Boolean> interactionWait, String stepName, QuestInformation questInformation, Supplier<Boolean> shouldExecute, boolean forceWeb) {
         super(noInteractableTile, conversation, forceWeb, questInformation);
         this.conversation = conversation != null ? conversation : new String[0];
         this.interactive = interactive;
@@ -27,6 +27,7 @@ public class SimpleObjectStep extends WalkToInteractiveStep<GameObject> {
         this.noInteractableTile = noInteractableTile != null ? noInteractableTile : new Tile(0, 0);
         this.forceWeb = forceWeb;
     }
+
 
     public boolean shouldExecute() {
         return shouldExecute.get();

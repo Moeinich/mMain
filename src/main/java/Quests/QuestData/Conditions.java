@@ -63,7 +63,7 @@ public class Conditions {
     }
 
     public static Callable<Boolean> waitUntilComponentAppears(int widget, int component) {
-        return Widgets.component(widget, component).visible();
+        return () -> Widgets.component(widget, component).visible();
     }
 
     public static Callable<Boolean> waitUntilComponentAppears(int widget, int component, int subComponent) {
