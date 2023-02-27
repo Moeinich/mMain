@@ -20,6 +20,7 @@ public class SkillData {
     public static Boolean fletchingDone = false;
     public static Boolean agilityDone = false;
     public static Boolean herbloreDone = false;
+    public static Boolean huntingDone = false;
     public static Boolean rangeCombatDone = false;
     public static Boolean magicCombatDone = false;
 
@@ -72,6 +73,9 @@ public class SkillData {
         }
         if (mMain.runningSkill.equals("Herblore")) {
             herbloreDone = true;
+        }
+        if (mMain.runningSkill.equals("Hunter")) {
+        huntingDone = true;
         }
         if (mMain.runningSkill.equals("Melee")) {
             meleeCombatDone = true;

@@ -7,6 +7,7 @@ import org.powbot.api.rt4.walking.model.Skill;
 import Helpers.ItemList;
 import Helpers.PlayerHelper;
 import Helpers.Task;
+import Quests.QuestData.Conditions;
 import script.mMain;
 
 public class DoFiremaking extends Task {
@@ -37,8 +38,7 @@ public class DoFiremaking extends Task {
                 mMain.state = "Lighting.. " + "L:" + fmSpot;
                 if (Inventory.stream().id(FiremakingData.logs).first().interact("Use")) {
                     if (Inventory.stream().id(ItemList.TINDERBOX_590).first().interact("Use")) {
-                        CurrentXP = Skills.experience(Skill.Firemaking);
-                        Condition.wait( () -> (CurrentXP != Skills.experience(Skill.Firemaking) || !PlayerHelper.withinArea(FiremakingData.doFiremakingArea)), 500, 50);
+                        Condition.wait( () -> (Conditions.expGained(Skill.Firemaking) || !PlayerHelper.withinArea(FiremakingData.doFiremakingArea)), 500, 50);
                     }
                 }
                 if (Inventory.stream().id(FiremakingData.logs).isEmpty()) {

@@ -1,4 +1,4 @@
-package Helpers;
+package Quests.QuestData;
 
 public class QuestVarpbits {
     public static class Quest {

@@ -1,6 +1,7 @@
 package Agility;
 
 import org.powbot.api.Condition;
+import org.powbot.api.rt4.Constants;
 import org.powbot.api.rt4.GameObject;
 import org.powbot.api.rt4.GroundItem;
 import org.powbot.api.rt4.GroundItems;
@@ -9,6 +10,7 @@ import org.powbot.api.rt4.Skills;
 import org.powbot.api.rt4.walking.model.Skill;
 
 import Helpers.PlayerHelper;
+import Quests.QuestData.Conditions;
 import script.mMain;
 
 public class AgilityHelper {
@@ -18,8 +20,7 @@ public class AgilityHelper {
         if (obstacleObject.inViewport()) {
             mMain.state = obstacleInfo.getDescription();
             if (obstacleObject.interact(obstacleInfo.getAction(), obstacleInfo.getName())) {
-                int CurrentXP = Skills.experience(Skill.Agility);
-                Condition.wait( () -> (CurrentXP != Skills.experience(Skill.Agility) || Players.local().healthBarVisible()), 700, 10);
+                Condition.wait( () -> (Conditions.expGained(Skill.Agility) || Players.local().healthBarVisible()), 700, 10);
             }
         }
     }
@@ -35,8 +36,7 @@ public class AgilityHelper {
         if (obstacleObject.inViewport()) {
             mMain.state = obstacleInfo.getDescription();
             if (obstacleObject.interact(obstacleInfo.getAction(), obstacleInfo.getName())) {
-                int CurrentXP = Skills.experience(Skill.Agility);
-                Condition.wait( () -> (CurrentXP != Skills.experience(Skill.Agility) || Players.local().healthBarVisible()), 700, 10);
+                Condition.wait( () -> (Conditions.expGained(Skill.Agility) || Players.local().healthBarVisible()), 700, 10);
             }
         }
     }

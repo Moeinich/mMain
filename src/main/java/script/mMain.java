@@ -43,7 +43,7 @@ import Helpers.SkillData;
                         name =  "Mode",
                         description = "Which skill would you like to do?",
                         defaultValue = "Progressive",
-                        allowedValues = {"Progressive", "Mining", "Fishing", "Woodcutting", "Cooking", "Firemaking", "Smithing", "Thieving", "Crafting", "Fletching", "Agility", "Herblore", "Ranged", "Magic", "Melee"},
+                        allowedValues = {"Progressive", "Mining", "Fishing", "Woodcutting", "Cooking", "Firemaking", "Smithing", "Thieving", "Crafting", "Fletching", "Agility", "Herblore", "Hunter", "Ranged", "Magic", "Melee"},
                         optionType = OptionType.STRING
                  )
         }
@@ -102,6 +102,7 @@ public class mMain extends AbstractScript {
                 .trackSkill(Skill.Crafting, TrackSkillOption.LevelProgressBar)
                 .trackSkill(Skill.Fletching, TrackSkillOption.LevelProgressBar)
                 .trackSkill(Skill.Herblore, TrackSkillOption.LevelProgressBar)
+                .trackSkill(Skill.Hunter, TrackSkillOption.LevelProgressBar)
                 .trackSkill(Skill.Agility, TrackSkillOption.LevelProgressBar)
                 .trackSkill(Skill.Ranged, TrackSkillOption.LevelProgressBar)
                 .trackSkill(Skill.Magic, TrackSkillOption.LevelProgressBar)
@@ -147,6 +148,7 @@ public class mMain extends AbstractScript {
         var startFishing = new Fishing.StartFishing();
         var startFletching = new StartFletching();
         var startHerblore = new Herblore.StartHerblore();
+        var startHunter = new Hunter.StartHunter();
         var startMagic = new MagicCombat.StartMagic();
         var startMelee = new MeleeCombat.StartMelee();
         var startMining = new Mining.StartMining();
@@ -250,6 +252,11 @@ public class mMain extends AbstractScript {
                 if (SkillData.herbloreDone) {
                     ScriptManager.INSTANCE.stop();
                 } else startHerblore.Herblore();
+                break;
+            case "Hunter":
+                if (SkillData.huntingDone) {
+                    ScriptManager.INSTANCE.stop();
+                } else startHunter.Hunter();
                 break;
             case "Magic":
                 if (SkillData.magicCombatDone) {

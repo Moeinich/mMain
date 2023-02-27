@@ -12,8 +12,6 @@ import java.util.List;
 import Helpers.ItemList;
 
 public class MeleeData {
-    public static long lastInteractionTime;
-    public static long interactionTimeRandomizer;
     public static int[] ironArmor = {ItemList.IRON_PLATEBODY_1115,
             ItemList.IRON_PLATELEGS_1067,
             ItemList.IRON_BOOTS_4121,
@@ -78,10 +76,6 @@ public class MeleeData {
             new Tile(3205, 3315, 0), new Tile(3207, 3310, 0), new Tile(3200, 3308, 0), new Tile(3196, 3308, 0),
             new Tile(3192, 3309, 0), new Tile(3190, 3310, 0), new Tile(3185, 3314, 0), new Tile(3184, 3314, 0)
     );
-    public static final Tile crabLocation = new Tile(1773,3461,0);
-    public static final Area crabResetArea = new Area(new Tile(1759, 3504, 0), new Tile(1768, 3498, 0));
-    public static final Tile crabWorldhop = new Tile(1775, 3475, 0);
-    public static final Area crabArea = new Area(new Tile(1772, 3460, 0), new Tile(1774, 3462, 0));
 
     public static Combat.Style AttackStyle() {
         int strengthLevel = Skills.realLevel(Constants.SKILLS_STRENGTH);

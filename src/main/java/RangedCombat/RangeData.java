@@ -7,10 +7,6 @@ import org.powbot.api.rt4.Skills;
 import Helpers.ItemList;
 
 public class RangeData {
-    //For crabs:
-    public static long lastInteractionTime;
-    public static long interactionTimeRandomizer;
-
     //Range setups!
     public static int[] LowRangedSetup = {ItemList.IRON_ARROW_884, ItemList.SHORTBOW_841, ItemList.AMULET_OF_GLORY_1704, ItemList.COMBAT_BRACELET_11126, ItemList.RED_CAPE_1007};
     public static int[] LowPlusRangedSetup = {ItemList.MITHRIL_DART_809, ItemList.AMULET_OF_GLORY_1704, ItemList.COMBAT_BRACELET_11126, ItemList.RED_CAPE_1007};

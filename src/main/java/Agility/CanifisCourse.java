@@ -10,7 +10,7 @@ import org.powbot.api.rt4.Varpbits;
 
 import Helpers.PlayerHelper;
 import Helpers.Task;
-import Helpers.QuestVarpbits;
+import Quests.QuestData.QuestVarpbits;
 import Helpers.SkillData;
 import script.mMain;
 

@@ -84,3 +84,7 @@ Let pow close level up messages. Please have these items on ur account:
 - [X] Willows: 30-35
 - [X] Teaks: 35-70
 - [X] Withdraw axe depending on wc level.
+
+**Thank you's** 
+- OpenQuester by PTYB
+- Developer chat in PowBot
