@@ -12,6 +12,8 @@ import java.util.List;
 import Helpers.ItemList;
 
 public class MeleeData {
+    public static long lastInteractionTime;
+    public static long interactionTimeRandomizer;
     public static int[] ironArmor = {ItemList.IRON_PLATEBODY_1115,
             ItemList.IRON_PLATELEGS_1067,
             ItemList.IRON_BOOTS_4121,
@@ -39,7 +41,7 @@ public class MeleeData {
             ItemList.AMULET_OF_GLORY_1704,
             ItemList.COMBAT_BRACELET_11126,
             ItemList.RED_CAPE_1007};
-    public static int[] addyGraniteHammer = {ItemList.RUNE_CHAINBODY_1113,
+    public static int[] runeGraniteHammer = {ItemList.RUNE_CHAINBODY_1113,
             ItemList.RUNE_PLATELEGS_1079,
             ItemList.RUNE_BOOTS_4131,
             ItemList.RUNE_KITESHIELD_1201,
@@ -50,8 +52,8 @@ public class MeleeData {
             ItemList.RED_CAPE_1007};
 
     public static int[] meleeEquipment() {
-        if (Skills.realLevel(Constants.SKILLS_ATTACK) >= 50 && Skills.realLevel(Constants.SKILLS_DEFENSE) >= 50 && Skills.realLevel(Constants.SKILLS_STRENGTH) >= 50) {
-            return addyGraniteHammer;
+        if (Skills.realLevel(Constants.SKILLS_ATTACK) >= 50 && Skills.realLevel(Constants.SKILLS_DEFENSE) >= 40 && Skills.realLevel(Constants.SKILLS_STRENGTH) >= 50) {
+            return runeGraniteHammer;
         }
         if (Skills.realLevel(Constants.SKILLS_ATTACK) >= 40 && Skills.realLevel(Constants.SKILLS_DEFENSE) >= 30 && Skills.realLevel(Constants.SKILLS_STRENGTH) >= 30
                 && Skills.realLevel(Constants.SKILLS_ATTACK) <= 49 && Skills.realLevel(Constants.SKILLS_DEFENSE) <= 49 && Skills.realLevel(Constants.SKILLS_STRENGTH) <= 49) {
@@ -99,73 +101,4 @@ public class MeleeData {
 
         return Combat.Style.AGGRESSIVE;
     }
-
-    /*public static Combat.Style AttackStyle() {
-        int strengthLevel = Skills.realLevel(Constants.SKILLS_STRENGTH);
-        int attackLevel = Skills.realLevel(Constants.SKILLS_ATTACK);
-        int defenseLevel = Skills.realLevel(Constants.SKILLS_DEFENSE);
-
-        //Level to 10
-        if (strengthLevel < 10) {
-            return Combat.Style.AGGRESSIVE;
-        } else if (attackLevel < 10) {
-            return Combat.Style.ACCURATE;
-        } else if (defenseLevel < 10) {
-            return Combat.Style.DEFENSIVE;
-        }
-        //Level to 20
-        else if (strengthLevel < 20) {
-            return Combat.Style.AGGRESSIVE;
-        } else if (attackLevel < 20) {
-            return Combat.Style.ACCURATE;
-        } else if (defenseLevel < 20) {
-            return Combat.Style.DEFENSIVE;
-        }
-        //Level to 30
-        else if (strengthLevel < 30) {
-            return Combat.Style.AGGRESSIVE;
-        } else if (attackLevel < 30) {
-            return Combat.Style.ACCURATE;
-        } else if (defenseLevel < 30) {
-            return Combat.Style.DEFENSIVE;
-        }
-
-        //Level to 40
-        else if (strengthLevel < 40) {
-            return Combat.Style.AGGRESSIVE;
-        } else if (attackLevel < 40) {
-            return Combat.Style.ACCURATE;
-        } else if (defenseLevel < 40) {
-            return Combat.Style.DEFENSIVE;
-        }
-
-        //Level to 50
-        else if (strengthLevel < 50) {
-            return Combat.Style.AGGRESSIVE;
-        } else if (attackLevel < 50) {
-            return Combat.Style.ACCURATE;
-        } else if (defenseLevel < 50) {
-            return Combat.Style.DEFENSIVE;
-        }
-
-        //Level to 60
-        else if (strengthLevel < 60) {
-            return Combat.Style.AGGRESSIVE;
-        } else if (attackLevel < 60) {
-            return Combat.Style.ACCURATE;
-        } else if (defenseLevel < 60) {
-            return Combat.Style.DEFENSIVE;
-        }
-
-        //Level to 70
-        else if (strengthLevel < 70) {
-            return Combat.Style.AGGRESSIVE;
-        } else if (attackLevel < 70) {
-            return Combat.Style.ACCURATE;
-        } else if (defenseLevel < 70) {
-            return Combat.Style.DEFENSIVE;
-        }
-
-        return Combat.Style.AGGRESSIVE;
-    }*/
 }

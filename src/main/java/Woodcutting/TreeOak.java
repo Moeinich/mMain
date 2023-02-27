@@ -4,6 +4,7 @@ import org.powbot.api.Condition;
 import org.powbot.api.rt4.Chat;
 import org.powbot.api.rt4.Constants;
 import org.powbot.api.rt4.GameObject;
+import org.powbot.api.rt4.Inventory;
 import org.powbot.api.rt4.Objects;
 import org.powbot.api.rt4.Players;
 import org.powbot.api.rt4.Skills;
@@ -26,7 +27,9 @@ public class TreeOak extends Task {
             GameObject treeOak = PlayerHelper.nearestGameObject(WoodcuttingData.oakTreeLocation, "Oak");
             mMain.state = "Cutting Oaks";
             if (treeOak.interact("Chop down", "Oak")) {
-                Condition.wait(() -> Objects.stream().at(treeOak.tile()).id(WoodcuttingData.oakTreeID).isEmpty() || Chat.canContinue(), 500, 50);
+                System.out.println("Clicked oak");
+                Condition.wait(() -> Objects.stream().at(treeOak.tile()).id(WoodcuttingData.oakTreeID).isEmpty() || Chat.canContinue() || Inventory.isFull(), 500, 50);
+                System.out.println("Oak gone, leveled up or inventory full");
             }
         }
         return false;

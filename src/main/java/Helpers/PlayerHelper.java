@@ -83,15 +83,15 @@ public class PlayerHelper {
     public static GameObject nearestGameObject(String... name) {
         return Objects.stream().name(name).nearest().first();
     }
-    public static GameObject nearestGameObject(Area withinTiles, String... name) {
-        return Objects.stream().within(withinTiles).name(name).nearest().first();
+    public static GameObject nearestGameObject(Area withinArea, String... name) {
+        return Objects.stream().within(withinArea).name(name).nearest().first();
     }
 
-    public static GameObject nearestGameObject(Area withinTiles, int... ids) {
-        return Objects.stream().within(withinTiles).id(ids).nearest().first();
+    public static GameObject nearestGameObject(Area withinArea, int... ids) {
+        return Objects.stream().within(withinArea).id(ids).nearest().first();
     }
-    public static GameObject nearestGameObject(int withinTiles, int... ids) {
-        return Objects.stream().within(withinTiles).id(ids).nearest().first();
+    public static GameObject nearestGameObject(int radius, int... ids) {
+        return Objects.stream().within(radius).id(ids).nearest().first();
     }
     public static Npc nearestNpc(String... npcName) {
         return Npcs.stream().name(npcName).nearest().first();

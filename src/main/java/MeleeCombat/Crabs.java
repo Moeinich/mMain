@@ -17,6 +17,7 @@ import script.mMain;
 
 public class Crabs extends Task {
     boolean shouldReset = false;
+
     @Override
     public boolean activate() {
         return Skills.realLevel(Constants.SKILLS_STRENGTH) >= 30
@@ -41,28 +42,38 @@ public class Crabs extends Task {
                 world.hop();
             }
         } else if (PlayerHelper.atTile(MeleeData.crabLocation)) {
-            if (Npcs.stream().interactingWithMe().isNotEmpty()) {
+            if (MeleeData.lastInteractionTime < MeleeData.interactionTimeRandomizer) {
+                System.out.println("Sleeping...");
+                System.out.println("next interaction time: " + (MeleeData.interactionTimeRandomizer - MeleeData.lastInteractionTime) + "ms");
                 mMain.state = "Sleeping..";
-                Condition.sleep(Random.nextInt(30000, 72000));
-            }
-            Npc crab = PlayerHelper.nearestCombatNpc(MeleeData.crabArea, "Sand crab");
-            if (crab.inViewport()) {
-                mMain.state = "Do an attack";
-                if (crab.interact("Attack")) {
-                    mMain.state = "Waiting for idle";
-                    System.out.println("Attacked crab");
+                MeleeData.lastInteractionTime = System.currentTimeMillis();
+                Condition.sleep(Random.nextInt(5000, 15000));
+            } else {
+                Npc crab = PlayerHelper.nearestCombatNpc(MeleeData.crabArea, "Sand crab");
+                Npc sandyRocks = PlayerHelper.nearestCombatNpc(MeleeData.crabArea, "Sandy rocks");
+                if (crab.inViewport()) {
+                    mMain.state = "Do an attack";
+                    if (crab.interact("Attack")) {
+                        System.out.println("Attacked crab");
+                        MeleeData.lastInteractionTime = System.currentTimeMillis();
+                        MeleeData.interactionTimeRandomizer = MeleeData.lastInteractionTime + Random.nextInt(90000, 180000);
+                        Condition.sleep(Random.nextInt(500, 1000));
+                    }
                 }
-            } else if (!crab.inViewport() && Npcs.stream().interactingWithMe().isEmpty()){
-                mMain.state = "Reset";
-                System.out.println("Resetting crabs");
-                shouldReset = true;
-                if(resetCrabs()) {
-                    Condition.wait( () -> PlayerHelper.atTile(MeleeData.crabResetArea.getRandomTile()), 500, 30);
-                    System.out.println("Reset crab succesful");
-                    shouldReset = false;
+                if (sandyRocks.inViewport() && Npcs.stream().interactingWithMe().isEmpty()) {
+                    mMain.state = "Reset";
+                    System.out.println("Resetting crabs");
+                    shouldReset = true;
+                    if (resetCrabs()) {
+                        Condition.wait(() -> PlayerHelper.atTile(MeleeData.crabResetArea.getRandomTile()), 500, 30);
+                        System.out.println("Reset crab successful");
+                        MeleeData.lastInteractionTime = System.currentTimeMillis();
+                        MeleeData.interactionTimeRandomizer = MeleeData.lastInteractionTime + Random.nextInt(90000, 180000);
+                        shouldReset = false;
+                    }
                 }
             }
-        } else if (!shouldReset) {
+        }  else if (!shouldReset) {
             if (PlayerHelper.withinArea(MeleeData.crabArea)) {
                 Movement.step(MeleeData.crabLocation);
             } else {

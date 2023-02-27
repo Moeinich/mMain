@@ -41,12 +41,12 @@ public class GetFishingEquipment extends Task {
                 Condition.wait( () -> !Bank.opened(), 250, 50);
             }
             if (Skills.realLevel(Constants.SKILLS_FISHING) >= 20) {
-                if (Inventory.stream().id(ItemList.FLY_FISHING_ROD_309).count() == 0) {
+                if (Inventory.stream().id(ItemList.FLY_FISHING_ROD_309).isEmpty()) {
                     InteractionsHelper.depositAndWithdraw(ItemList.FLY_FISHING_ROD_309, 1);
                     Condition.wait( () -> Inventory.stream().name("Fly fishing rod").isNotEmpty(),150, 50);
                 }
-                if (Inventory.stream().id(ItemList.FEATHER_314).count() == 0) {
-                    InteractionsHelper.withdrawItem(ItemList.FEATHER_314, 2000);
+                if (Inventory.stream().id(ItemList.FEATHER_314).isEmpty()) {
+                    InteractionsHelper.withdrawItem(ItemList.FEATHER_314, -1);
                     Condition.wait( () -> Inventory.stream().name("Feather").isNotEmpty(),150, 50);
                 }
                 Bank.close();

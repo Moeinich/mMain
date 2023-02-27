@@ -2,8 +2,8 @@ package Woodcutting;
 
 import org.powbot.api.Area;
 import org.powbot.api.Tile;
-import org.powbot.api.rt4.Bank;
 import org.powbot.api.rt4.Constants;
+import org.powbot.api.rt4.Inventory;
 import org.powbot.api.rt4.Skills;
 
 import Helpers.ItemList;
@@ -46,24 +46,23 @@ public class WoodcuttingData {
     }
 
     public static int withdrawAxe() {
-        if (Bank.stream().id(ItemList.STEEL_AXE_1353, ItemList.MITHRIL_AXE_1355, ItemList.ADAMANT_AXE_1357, ItemList.RUNE_AXE_1359).isEmpty()) {
-            return ItemList.BRONZE_AXE_1351;
-        }
+        int currentAxeId = Inventory.stream().id(WoodcuttingData.wcAxes).first().getId();
+        int newAxeId;
         if (Skills.realLevel(Constants.SKILLS_WOODCUTTING) >= 41) {
-            return ItemList.RUNE_AXE_1359;
+            newAxeId = ItemList.RUNE_AXE_1359;
+        } else if (Skills.realLevel(Constants.SKILLS_WOODCUTTING) >= 31) {
+            newAxeId = ItemList.ADAMANT_AXE_1357;
+        } else if (Skills.realLevel(Constants.SKILLS_WOODCUTTING) >= 21) {
+            newAxeId = ItemList.MITHRIL_AXE_1355;
+        } else if (Skills.realLevel(Constants.SKILLS_WOODCUTTING) >= 6) {
+            newAxeId = ItemList.STEEL_AXE_1353;
+        } else {
+            newAxeId = ItemList.BRONZE_AXE_1351;
         }
-        if (Skills.realLevel(Constants.SKILLS_WOODCUTTING) >= 31 && Skills.realLevel(Constants.SKILLS_WOODCUTTING) <= 40) {
-            return ItemList.ADAMANT_AXE_1357;
+
+        if (currentAxeId != newAxeId) {
+            return newAxeId;
         }
-        if (Skills.realLevel(Constants.SKILLS_WOODCUTTING) >= 21 && Skills.realLevel(Constants.SKILLS_WOODCUTTING) <= 30) {
-            return ItemList.MITHRIL_AXE_1355;
-        }
-        if (Skills.realLevel(Constants.SKILLS_WOODCUTTING) >= 6 && Skills.realLevel(Constants.SKILLS_WOODCUTTING) <= 20) {
-            return ItemList.STEEL_AXE_1353;
-        }
-        if (Skills.realLevel(Constants.SKILLS_WOODCUTTING) < 6 && Skills.realLevel(Constants.SKILLS_WOODCUTTING) <= 5) {
-            return ItemList.BRONZE_AXE_1351;
-        }
-        return 0;
+        return currentAxeId;
     }
 }

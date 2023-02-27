@@ -15,11 +15,11 @@ import script.mMain;
 public class GetPickaxe extends Task {
     @Override
     public boolean activate() {
-return Inventory.stream().id(MiningData.pickaxes).isEmpty();}
+        return Players.local().isRendered() && Inventory.stream().id(MiningData.withdrawPickaxe()).isEmpty();
+    }
 
     @Override
     public boolean execute() {
-        Game.tab(Game.Tab.INVENTORY);
         if (Bank.nearest().tile().distanceTo(Players.local()) > 5) {
             mMain.state = "Moving to bank";
             DaxWalker.walkToBank();

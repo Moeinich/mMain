@@ -18,7 +18,6 @@ public class SetAttackStyle extends Task {
 
     @Override
     public boolean activate() {
-        System.out.println("Switching attack style to " + MeleeData.AttackStyle());
         return Combat.style() != MeleeData.AttackStyle() || !Combat.autoRetaliate();
     }
 
@@ -28,7 +27,7 @@ public class SetAttackStyle extends Task {
             EnableAutoRetaliate();
             Condition.wait(Combat::autoRetaliate, 350, 10);
         }
-
+        System.out.println("Switching attack style to " + MeleeData.AttackStyle());
         mMain.state = "Set style";
         Combat.style(MeleeData.AttackStyle());
         return false;

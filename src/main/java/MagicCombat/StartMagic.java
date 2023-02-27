@@ -17,6 +17,8 @@ public class StartMagic {
         mMain.runningSkill = "Magic";
         List<Task> magicTasks = Arrays.asList(
                 new BankBeforeTask(),
+                new GetMagicEquipment(),
+                new SetAutoCastSpell(),
                 new CowSafespot()
         );
 

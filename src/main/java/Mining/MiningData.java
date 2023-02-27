@@ -2,9 +2,13 @@ package Mining;
 
 import org.powbot.api.Area;
 import org.powbot.api.Tile;
+import org.powbot.api.rt4.Constants;
+import org.powbot.api.rt4.Inventory;
+import org.powbot.api.rt4.Skills;
 import org.powbot.api.rt4.walking.model.Skill;
 
 import Helpers.ItemList;
+import Woodcutting.WoodcuttingData;
 
 public class MiningData {
     //Mining
@@ -25,21 +29,23 @@ public class MiningData {
     }
 
     public static int withdrawPickaxe() {
-        if (Skill.Mining.realLevel() < 11) {
-            return ItemList.BRONZE_PICKAXE_1265;
+        int currentAxeId = Inventory.stream().id(WoodcuttingData.wcAxes).first().getId();
+        int newAxeId;
+        if (Skills.realLevel(Constants.SKILLS_MINING) >= 41) {
+            newAxeId = ItemList.RUNE_PICKAXE_1275;
+        } else if (Skills.realLevel(Constants.SKILLS_MINING) >= 31) {
+            newAxeId = ItemList.ADAMANT_PICKAXE_1271;
+        } else if (Skills.realLevel(Constants.SKILLS_MINING) >= 21) {
+            newAxeId = ItemList.MITHRIL_PICKAXE_1273;
+        } else if (Skills.realLevel(Constants.SKILLS_MINING) >= 6) {
+            newAxeId = ItemList.STEEL_PICKAXE_1269;
+        } else {
+            newAxeId = ItemList.BRONZE_PICKAXE_1265;
         }
-        if (Skill.Mining.realLevel() >= 11 && Skill.Mining.realLevel() < 21) {
-            return ItemList.BLACK_PICKAXE_12297;
+
+        if (currentAxeId != newAxeId) {
+            return newAxeId;
         }
-        if (Skill.Mining.realLevel() >= 21 && Skill.Mining.realLevel() < 31) {
-            return ItemList.MITHRIL_PICKAXE_1273;
-        }
-        if (Skill.Mining.realLevel() >= 31 && Skill.Mining.realLevel() < 41) {
-            return ItemList.ADAMANT_PICKAXE_1271;
-        }
-        if (Skill.Mining.realLevel() > 41) {
-            return ItemList.RUNE_PICKAXE_1275;
-        }
-        else return ItemList.BRONZE_PICKAXE_1265;
+        return currentAxeId;
     }
 }

@@ -15,16 +15,15 @@ public class GetAxe extends Task {
 
     @Override
     public boolean activate() {
-        return Inventory.stream().id(WoodcuttingData.wcAxes).isEmpty();
+        return Players.local().isRendered() && Inventory.stream().id(WoodcuttingData.withdrawAxe()).isEmpty();
     }
     @Override
     public boolean execute() {
-        Game.tab(Game.Tab.INVENTORY);
         if (Bank.nearest().tile().distanceTo(Players.local()) > 5) {
             mMain.state = "Get axe - GoToBank";
             DaxWalker.walkToBank();
         }
-        if (!Bank.opened() && Inventory.stream().id(WoodcuttingData.wcAxes).isEmpty()) {
+        if (!Bank.opened() && Inventory.stream().id(WoodcuttingData.withdrawAxe()).isEmpty()) {
             mMain.state = "Get axe - Withdraw";
             if (Bank.open()) {
                 InteractionsHelper.depositAndWithdraw(WoodcuttingData.withdrawAxe(), 1);

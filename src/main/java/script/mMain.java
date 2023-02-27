@@ -34,7 +34,7 @@ import Helpers.SkillData;
 @ScriptManifest(
         name = "mMain",
         description = "Progressively levels different skills",
-        version = "0.2.3",
+        version = "0.2.4",
         category = ScriptCategory.Other
 )
 @ScriptConfiguration.List(
@@ -200,7 +200,7 @@ public class mMain extends AbstractScript {
                     taskHandler.execute(() -> {
                         try {
                             while(!ScriptManager.INSTANCE.isStopping() && !runtime.hasFinished() && taskRunning.get()) {
-                                taskLatch.await(); // Wait for previous task to complete
+                                taskLatch.await(); // Wait for task to complete
                                 tasks.get(taskIndex).run();
                             }
                         } catch (InterruptedException e) {
@@ -209,7 +209,7 @@ public class mMain extends AbstractScript {
                             taskRunning.set(false);
                         }
                     });
-                    taskLatch.countDown(); // Signal that previous task has completed
+                    taskLatch.countDown(); // Signal that task has completed
                 }
                 break;
 

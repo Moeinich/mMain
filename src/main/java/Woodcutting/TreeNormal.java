@@ -20,7 +20,7 @@ public class TreeNormal extends Task {
     @Override
     public boolean execute() {
         if (!PlayerHelper.withinArea(WoodcuttingData.normalTreeLocation)) {
-            mMain.state = "Go to noob trees";
+            mMain.state = "Go to trees";
             PlayerHelper.walkToTile(WoodcuttingData.movementWoodcutting());
         }
         //cut normal logs
@@ -28,7 +28,9 @@ public class TreeNormal extends Task {
             GameObject treeNormal = PlayerHelper.nearestGameObject(WoodcuttingData.normalTreeLocation,"Tree");
             mMain.state = "Cutting Trees..";
             if (treeNormal.interact("Chop down", "Tree")) {
+                System.out.println("Clicked tree");
                 Condition.wait(() -> Objects.stream().at(treeNormal.tile()).id(WoodcuttingData.normalTreeID).isEmpty() || Chat.canContinue(), 500, 50);
+                System.out.println("Tree gone, leveled up or inventory full");
             }
         }
         return false;

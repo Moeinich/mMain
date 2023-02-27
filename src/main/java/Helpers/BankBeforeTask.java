@@ -39,6 +39,7 @@ public class BankBeforeTask extends Task {
                 if (Bank.opened()) {
                     if(Bank.depositInventory()) {
                         Condition.wait(Inventory::isEmpty, 150, 50);
+                        Bank.depositEquipment();
                         Bank.close();
                     }
                 }

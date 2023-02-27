@@ -17,6 +17,7 @@ public class StartRanged {
         mMain.runningSkill = "Ranged";
         List<Task> rangeTasks = Arrays.asList(
                 new BankBeforeTask(),
+                new GetRangeEquipment(),
                 new CowSafespot(),
                 new CrabsRanged()
         );

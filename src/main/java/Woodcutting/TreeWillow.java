@@ -4,6 +4,7 @@ import org.powbot.api.Condition;
 import org.powbot.api.rt4.Chat;
 import org.powbot.api.rt4.Constants;
 import org.powbot.api.rt4.GameObject;
+import org.powbot.api.rt4.Inventory;
 import org.powbot.api.rt4.Objects;
 import org.powbot.api.rt4.Players;
 import org.powbot.api.rt4.Skills;
@@ -27,7 +28,9 @@ public class TreeWillow extends Task {
             GameObject treeWillow = PlayerHelper.nearestGameObject(WoodcuttingData.willowTreeLocation, "Willow");
             mMain.state = "Cutting Willows";
             if (treeWillow.interact("Chop down", "Willow")) {
-                Condition.wait(() -> Objects.stream().at(treeWillow.tile()).id(WoodcuttingData.willowTreeID).isEmpty() || Chat.canContinue(), 500, 50);
+                System.out.println("Clicked willow");
+                Condition.wait(() -> Objects.stream().at(treeWillow.tile()).id(WoodcuttingData.willowTreeID).isEmpty() || Chat.canContinue() || Inventory.isFull(), 500, 50);
+                System.out.println("Willow gone, leveled up or inventory full");
             }
         }
         return false;

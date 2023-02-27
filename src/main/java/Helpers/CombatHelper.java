@@ -32,7 +32,6 @@ public class CombatHelper {
 
     public static void gearUp(int[] equipment) {
         if (Bank.nearest().tile().distanceTo(Players.local()) > DISTANCE_TO_BANK_THRESHOLD) {
-            mMain.state = "Walking to bank";
             System.out.println("We are missing gear, walking to bank.");
             DaxWalker.walkToBank();
         }
@@ -63,7 +62,7 @@ public class CombatHelper {
                 for (var itemId : missingEquipment(equipment)) {
                     if (itemId == ItemList.IRON_ARROW_884 || itemId == ItemList.MITHRIL_DART_809) {
                         System.out.println("Withdraw ammo");
-                        InteractionsHelper.withdrawItem(itemId, 1000);
+                        InteractionsHelper.withdrawItem(itemId, -1);
                         Condition.wait(() -> Inventory.stream().id(itemId).isNotEmpty(), WAIT_TIMEOUT, WAIT_RETRIES);
                     } else {
                         System.out.println("Withdrawing item " + itemId);

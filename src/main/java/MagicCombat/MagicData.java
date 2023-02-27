@@ -15,7 +15,7 @@ public class MagicData {
     //Runes!
     public static int[] Runes = {ItemList.AIR_RUNE_556, ItemList.MIND_RUNE_558};
 
-    public static int[] MagicEquipment() {
+    public static int[] magicEquipment() {
         if (Skills.realLevel(Constants.SKILLS_MAGIC) <= 12) {
             return LowMage;
         }

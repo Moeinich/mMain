@@ -20,8 +20,7 @@ import script.mMain;
 
 public class CrabsRanged extends Task {
     boolean shouldReset = false;
-    long lastCombatTime = System.currentTimeMillis();
-    long resetTime = Random.nextInt(8000, 12000);
+
     @Override
     public boolean activate() {
         return Skills.realLevel(Constants.SKILLS_RANGE) >= 30
@@ -33,10 +32,6 @@ public class CrabsRanged extends Task {
         if (!Combat.style(Combat.Style.AGGRESSIVE)) {
             mMain.state = "Setting cb mode";
             PlayerHelper.setAttackMode(Combat.Style.AGGRESSIVE);
-        }
-        if (CombatHelper.needEquipment(RangeData.RangeEquipment())) {
-            mMain.state = "Need equipment!";
-            CombatHelper.gearUp(RangeData.RangeEquipment());
         }
 
         if (Players.stream().filter(player -> player.tile().equals(MeleeData.crabLocation) && !player.equals(Players.local()))
@@ -54,29 +49,35 @@ public class CrabsRanged extends Task {
                 world.hop();
             }
         } else if (PlayerHelper.atTile(MeleeData.crabLocation)) {
-            if (Npcs.stream().interactingWithMe().isNotEmpty()) {
+            if (RangeData.lastInteractionTime < RangeData.interactionTimeRandomizer) {
+                System.out.println("Sleeping...");
+                System.out.println("next interaction time: " + (RangeData.interactionTimeRandomizer - RangeData.lastInteractionTime) + "ms");
                 mMain.state = "Sleeping..";
-                lastCombatTime = System.currentTimeMillis();
-                Condition.sleep(Random.nextInt(2000, 9000));
-            }
-            Npc crab = PlayerHelper.nearestCombatNpc(MeleeData.crabArea, "Sand crab");
-            if (crab.inViewport()) {
-                mMain.state = "Do an attack";
-                if (crab.interact("Attack")) {
-                    mMain.state = "Waiting for idle";
-                    System.out.println("Attacked crab");
+                RangeData.lastInteractionTime = System.currentTimeMillis();
+                Condition.sleep(Random.nextInt(5000, 15000));
+            } else {
+                Npc crab = PlayerHelper.nearestCombatNpc(MeleeData.crabArea, "Sand crab");
+                Npc sandyRocks = PlayerHelper.nearestCombatNpc(MeleeData.crabArea, "Sandy rocks");
+                if (crab.inViewport()) {
+                    mMain.state = "Do an attack";
+                    if (crab.interact("Attack")) {
+                        System.out.println("Attacked crab");
+                        RangeData.lastInteractionTime = System.currentTimeMillis();
+                        RangeData.interactionTimeRandomizer = RangeData.lastInteractionTime + Random.nextInt(90000, 180000);
+                        Condition.sleep(Random.nextInt(500, 1000));
+                    }
                 }
-            } else if (lastCombatTime > resetTime && Npcs.stream().interactingWithMe().isEmpty()){
-                mMain.state = "Reset";
-                System.out.println("Resetting crabs");
-                shouldReset = true;
-                if(resetCrabs()) {
-                    Condition.wait( () -> PlayerHelper.atTile(MeleeData.crabResetArea.getRandomTile()), 500, 30);
-                    System.out.println("Reset crab succesful");
-                    lastCombatTime = System.currentTimeMillis();
-                    resetTime = Random.nextInt(5000, 10000);
-                    System.out.println("lastCombatTime + resetTime has been set");
-                    shouldReset = false;
+                if (sandyRocks.inViewport() && Npcs.stream().interactingWithMe().isEmpty()) {
+                    mMain.state = "Reset";
+                    System.out.println("Resetting crabs");
+                    shouldReset = true;
+                    if (resetCrabs()) {
+                        Condition.wait(() -> PlayerHelper.atTile(MeleeData.crabResetArea.getRandomTile()), 500, 30);
+                        System.out.println("Reset crab successful");
+                        RangeData.lastInteractionTime = System.currentTimeMillis();
+                        RangeData.interactionTimeRandomizer = RangeData.lastInteractionTime + Random.nextInt(90000, 180000);
+                        shouldReset = false;
+                    }
                 }
             }
         } else if (!shouldReset) {

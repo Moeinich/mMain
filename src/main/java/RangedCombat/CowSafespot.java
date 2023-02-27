@@ -28,18 +28,12 @@ public class CowSafespot extends Task {
         } else if (Skills.realLevel(Skill.Defence) >= 30) {
             Combat.style(Combat.Style.AGGRESSIVE);
         }
-
-        if (CombatHelper.needEquipment(RangeData.RangeEquipment())) {
-            mMain.state = "Need equipment!";
-            CombatHelper.gearUp(RangeData.RangeEquipment());
-        } else {
-            if (!PlayerHelper.withinArea(SkillData.CowSafeSpotArea)) {
-                mMain.state = "Go safespot";
-                PlayerHelper.walkToTile(SkillData.CowSafeSpotArea.getRandomTile());
-            }
-            if (PlayerHelper.withinArea(SkillData.CowSafeSpotArea)) {
-                ShouldFight();
-            }
+        if (!PlayerHelper.withinArea(SkillData.CowSafeSpotArea)) {
+            mMain.state = "Go safespot";
+            PlayerHelper.walkToTile(SkillData.CowSafeSpotArea.getRandomTile());
+        }
+        if (PlayerHelper.withinArea(SkillData.CowSafeSpotArea)) {
+            ShouldFight();
         }
         return false;
     }

@@ -15,8 +15,8 @@ public class Cows extends Task {
     @Override
     public boolean activate() {
         return Skills.realLevel(Constants.SKILLS_STRENGTH) <= 29
-                && Skills.realLevel(Constants.SKILLS_ATTACK) <= 29
-                && Skills.realLevel(Constants.SKILLS_DEFENSE) <= 29;
+                || Skills.realLevel(Constants.SKILLS_ATTACK) <= 29
+                || Skills.realLevel(Constants.SKILLS_DEFENSE) <= 29;
 
     }
 
@@ -37,7 +37,7 @@ public class Cows extends Task {
             mMain.state = "Attack";
             if (cow.healthPercent() == 100 && cow.inViewport() && cow.interact("Attack")) {
                 mMain.state = "Waiting for kill";
-                Condition.wait(() -> cow.healthPercent() == 0 || Players.local().healthPercent() < 60,1500,20);
+                Condition.wait(() -> cow.healthPercent() == 0 || Players.local().healthPercent() < 50,1500,20);
             }
         }
         return false;

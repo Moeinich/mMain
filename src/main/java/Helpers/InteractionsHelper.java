@@ -15,33 +15,39 @@ import org.powbot.mobile.script.ScriptManager;
 import script.mMain;
 
 public class InteractionsHelper {
-    public static void withdrawItem(int itemID, int amount) {
+    public static void withdrawItem(int itemId, int specifiedAmount) {
         if (!Bank.opened() && Bank.inViewport()) {
             if (Bank.open()) {
                 Condition.wait(Bank::opened, 150, 10);
             }
         }
-        if (Bank.stream().id(itemID).first().stackSize() < amount) {
-            mMain.state = "We ran out of " + itemID;
+        if (Bank.stream().id(itemId).first().stackSize() < specifiedAmount || Bank.stream().id(itemId).isEmpty()) {
+            mMain.state = "We ran out of " + itemId;
             System.out.println("We ran out of items");
             SkillData.setSkillDone();
             System.out.println("Skill was set to done");
             mMain.taskRunning.set(false); //Skip task on progressive
             System.out.println("taskRunning was set false");
         } else {
-            System.out.println("Withdrawing " + itemID + " amount:" + amount);
-            Bank.withdraw(itemID, amount);
-            Condition.wait( () -> Inventory.stream().id(itemID).isNotEmpty(), 150, 10);
+            System.out.println("Withdrawing " + itemId + " amount:" + specifiedAmount);
+            if (specifiedAmount == -1) {
+                Bank.withdraw(itemId, Bank.Amount.ALL);
+                Condition.wait(() -> Inventory.stream().id(itemId).count() == specifiedAmount, 150, 10);
+            } else {
+                Bank.withdraw(itemId, specifiedAmount);
+                Condition.wait(() -> Inventory.stream().id(itemId).isNotEmpty(), 150, 10);
+            }
         }
     }
-    public static void depositAndWithdraw(int itemID, int amount) {
+
+    public static void depositAndWithdraw(int itemId, int specifiedAmount) {
         if (!Bank.opened() && Bank.inViewport()) {
             if (Bank.open()) {
                 Condition.wait(Bank::opened, 150, 10);
             }
         }
-        if (Bank.stream().id(itemID).first().stackSize() < amount) {
-            mMain.state = "We ran out of " + itemID;
+        if (Bank.stream().id(itemId).first().stackSize() < specifiedAmount) {
+            mMain.state = "We ran out of " + itemId;
             System.out.println("We ran out of items");
             SkillData.setSkillDone();
             System.out.println("Skill was set to done");
@@ -49,10 +55,14 @@ public class InteractionsHelper {
             System.out.println("taskRunning was set false");
         } else {
             Bank.depositInventory();
-            Condition.wait(Inventory::isEmpty, 150, 10);
-            System.out.println("Withdrawing " + itemID + " amount:" + amount);
-            Bank.withdraw(itemID, amount);
-            Condition.wait( () -> Inventory.stream().id(itemID).isNotEmpty(), 150, 10);
+            System.out.println("Withdrawing " + itemId + " amount:" + specifiedAmount);
+            if (specifiedAmount == -1) {
+                Bank.withdraw(itemId, Bank.Amount.ALL);
+                Condition.wait(() -> Inventory.stream().id(itemId).isNotEmpty(), 150, 10);
+            } else {
+                Bank.withdraw(itemId, specifiedAmount);
+                Condition.wait(() -> Inventory.stream().id(itemId).isNotEmpty(), 150, 10);
+            }
         }
     }
 
@@ -85,14 +95,14 @@ public class InteractionsHelper {
                 System.out.println("Click component");
                 Widgets.widget(widgetID).component(componentID).click();
                 if(Condition.wait(() -> !Widgets.widget(widgetID).valid(), 150, 20)){
-                    System.out.println("Widget no longer valid");
+                    System.out.println("Widget no longer valid, sleeping");
                     Condition.wait(()-> Inventory.stream().id(combineWithItemID).isEmpty() || Chat.canContinue(), 1000, 80);
                     System.out.println("CombineWithItem is empty or leveled up");
                 }
             }
         }
     }
-    public static void interactWithGameobject(int requiredItemID, GameObject gameObject, int widgetID, int componentID, String action, int count) {
+    public static void interactWithGameobject(int requiredItemID, GameObject gameObject, int widgetID, int componentID, String action, int itemCountToReset) {
         if (!ScriptManager.INSTANCE.isStopping()) {
             System.out.println("Interact with gameobject");
             gameObject.interact(action);
@@ -101,8 +111,8 @@ public class InteractionsHelper {
                 System.out.println("Click widget");
                 Widgets.widget(widgetID).component(componentID).click();
                 if(Condition.wait(() -> !Widgets.widget(widgetID).valid(), 500, 20)){
-                    System.out.println("Widget no longer valid");
-                    Condition.wait(()-> Inventory.stream().id(requiredItemID).count() < count || Chat.canContinue(), 1000, 80);
+                    System.out.println("Widget no longer valid, sleeping");
+                    Condition.wait(()-> Inventory.stream().id(requiredItemID).count() < itemCountToReset || Chat.canContinue(), 1000, 80);
                     System.out.println("CombineWithItem is empty or leveled up");
                 }
             }
