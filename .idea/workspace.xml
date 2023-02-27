@@ -5,33 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c7dd1c8c-f10c-49ed-8219-521bd6f55188" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Hunter/StartHunter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Quests/NaturalHistory/InteractWithPlaque.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Quests/NaturalHistory/MuseumQuiz.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Quests/NaturalHistory/NaturalHistoryConstants.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Quests/QuestData/BaseQuestStep.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Quests/QuestData/CommonMethods.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Quests/QuestData/Conditions.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Quests/QuestData/QuestInformation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Quests/QuestData/SimpleObjectStep.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Quests/QuestData/WalkToInteractiveStep.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.4/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/checksums/checksums.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.4/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/checksums/md5-checksums.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.4/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/checksums/sha1-checksums.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Agility/AgilityHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Agility/AgilityHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Agility/CanifisCourse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Agility/CanifisCourse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Firemaking/DoFiremaking.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Firemaking/DoFiremaking.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Helpers/CombatHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Helpers/CombatHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Helpers/QuestVarpbits.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Quests/QuestData/QuestVarpbits.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Helpers/SkillData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Helpers/SkillData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/MeleeCombat/Crabs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MeleeCombat/Crabs.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/MeleeCombat/MeleeData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MeleeCombat/MeleeData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/RangedCombat/CrabsRanged.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/RangedCombat/CrabsRanged.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/RangedCombat/RangeData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/RangedCombat/RangeData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/script/mMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/script/mMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Quests/NaturalHistory/InteractWithPlaque.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Quests/NaturalHistory/InteractWithPlaque.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Quests/QuestData/Conditions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Quests/QuestData/Conditions.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

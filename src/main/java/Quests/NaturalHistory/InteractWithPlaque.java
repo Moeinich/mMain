@@ -26,7 +26,7 @@ public class InteractWithPlaque extends SimpleObjectStep {
                 new int[] {},
                 () -> Objects.stream().name(NAME_PLAQUE).within(buttonTile, 2).first(),
                 (GameObject go) -> go.interact(NaturalHistoryConstants.ACTION_PLAQUE),
-                Conditions.waitUntilComponentAppears(WIDGET_ANSWER, COMPONENT_QUESTION).call(),
+                () -> Conditions.waitUntilComponentAppears(WIDGET_ANSWER, COMPONENT_QUESTION).call(),
                 "Interacting with plaque", information,
                 Varpbits.varpbit(1014, shiftCount, 0x3) != 3);
         this.answers = answers;
