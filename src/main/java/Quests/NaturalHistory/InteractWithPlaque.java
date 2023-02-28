@@ -14,6 +14,8 @@ import org.powbot.api.rt4.Objects;
 import org.powbot.api.rt4.Varpbits;
 import org.powbot.api.rt4.Widgets;
 
+import java.util.*;
+
 import Quests.QuestData.Conditions;
 import Quests.QuestData.QuestInformation;
 import Quests.QuestData.SimpleObjectStep;
@@ -23,12 +25,19 @@ public class InteractWithPlaque extends SimpleObjectStep {
 
     public InteractWithPlaque(int shiftCount, Tile buttonTile, NaturalHistoryConstants.Question[] answers, QuestInformation information) {
         super(buttonTile,
-                null,
+                Arrays.stream(answers).map(x->x.answer).toArray(String[]::new),
                 () -> Objects.stream().name(NAME_PLAQUE).within(buttonTile, 2).first(),
                 (GameObject go) -> go.interact(NaturalHistoryConstants.ACTION_PLAQUE),
-                () -> Conditions.waitUntilComponentAppears(WIDGET_ANSWER, COMPONENT_QUESTION).call(),
+                (GameObject go) -> {
+                    try {
+                        return Conditions.waitUntilComponentAppears(WIDGET_ANSWER, COMPONENT_QUESTION).call();
+                    } catch (Exception e) {
+                        return false;
+                    }
+                },
                 "Interacting with plaque", information,
-                () -> Varpbits.varpbit(1014, shiftCount, 0x3) != 3);
+                () -> Varpbits.varpbit(1014, shiftCount, 0x3) != 3,
+                false);
         this.answers = answers;
     }
 

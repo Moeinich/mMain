@@ -3,20 +3,21 @@ package Quests.QuestData;
 import org.powbot.api.Tile;
 import org.powbot.api.rt4.GameObject;
 
+import java.util.concurrent.Callable;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
 public class SimpleObjectStep extends WalkToInteractiveStep<GameObject> {
     private final Tile noInteractableTile;
     private final String[] conversation;
-    private final Supplier<GameObject> interactive;
+    private final Callable<GameObject> interactive;
     private final Function<GameObject, Boolean> interaction;
     private final Function<GameObject, Boolean> interactionWait;
     private final String stepName;
     private final Supplier<Boolean> shouldExecute;
     private final boolean forceWeb;
 
-    public SimpleObjectStep(Tile noInteractableTile, String[] conversation, Supplier<GameObject> interactive, Function<GameObject, Boolean> interaction, Function<GameObject, Boolean> interactionWait, String stepName, QuestInformation questInformation, Supplier<Boolean> shouldExecute, boolean forceWeb) {
+    public SimpleObjectStep(Tile noInteractableTile, String[] conversation, Callable<GameObject> interactive, Function<GameObject, Boolean> interaction, Function<GameObject, Boolean> interactionWait, String stepName, QuestInformation questInformation, Supplier<Boolean> shouldExecute, boolean forceWeb) {
         super(noInteractableTile, conversation, forceWeb, questInformation);
         this.conversation = conversation != null ? conversation : new String[0];
         this.interactive = interactive;
@@ -34,7 +35,11 @@ public class SimpleObjectStep extends WalkToInteractiveStep<GameObject> {
     }
 
     public GameObject getInteractive() {
-        return interactive.get();
+        try {
+            return interactive.call();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public Boolean interact(GameObject interactive) {
