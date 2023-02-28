@@ -17,7 +17,7 @@ import java.util.List;
 
 import helpers.PlayerHelper;
 import helpers.SkillData;
-import helpers.Task;
+import helpers.extentions.Task;
 import script.mMain;
 
 public class TeaStall extends Task {

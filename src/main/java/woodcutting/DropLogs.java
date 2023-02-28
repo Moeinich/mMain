@@ -5,7 +5,7 @@ import org.powbot.api.rt4.Item;
 
 import java.util.List;
 
-import helpers.Task;
+import helpers.extentions.Task;
 import script.mMain;
 
 public class DropLogs extends Task {

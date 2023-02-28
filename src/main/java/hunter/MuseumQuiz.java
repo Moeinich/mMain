@@ -2,10 +2,10 @@ package hunter;
 
 import org.powbot.api.rt4.Varpbits;
 
-import helpers.Task;
-import quests.NaturalHistory.NaturalHistory;
-import quests.Common.Models.QuestInformation;
-import quests.Common.QuestVarpbits;
+import helpers.extentions.Task;
+import quests.naturalHistory.NaturalHistory;
+import quests.common.models.QuestInformation;
+import quests.common.QuestVarpbits;
 
 public class MuseumQuiz extends Task {
     @Override

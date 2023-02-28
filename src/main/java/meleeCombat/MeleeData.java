@@ -9,7 +9,7 @@ import org.powbot.api.rt4.Skills;
 import java.util.Arrays;
 import java.util.List;
 
-import helpers.ItemList;
+import helpers.extentions.ItemList;
 
 public class MeleeData {
     public static int[] ironArmor = {ItemList.IRON_PLATEBODY_1115,

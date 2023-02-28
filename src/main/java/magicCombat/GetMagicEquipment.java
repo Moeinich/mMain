@@ -7,9 +7,9 @@ import org.powbot.api.rt4.Players;
 
 import helpers.CombatHelper;
 import helpers.InteractionsHelper;
-import helpers.ItemList;
+import helpers.extentions.ItemList;
 import helpers.PlayerHelper;
-import helpers.Task;
+import helpers.extentions.Task;
 import script.mMain;
 
 public class GetMagicEquipment extends Task {

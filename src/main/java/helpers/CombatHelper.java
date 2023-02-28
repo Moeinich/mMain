@@ -17,6 +17,7 @@ import org.powbot.dax.api.DaxWalker;
 
 import java.util.Arrays;
 
+import helpers.extentions.ItemList;
 import script.mMain;
 
 public class CombatHelper {

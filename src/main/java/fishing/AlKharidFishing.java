@@ -9,7 +9,7 @@ import org.powbot.api.rt4.Players;
 import org.powbot.api.rt4.Skills;
 
 import helpers.PlayerHelper;
-import helpers.Task;
+import helpers.extentions.Task;
 import script.mMain;
 
 public class AlKharidFishing extends Task {

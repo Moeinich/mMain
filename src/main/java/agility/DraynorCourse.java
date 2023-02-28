@@ -7,7 +7,7 @@ import org.powbot.api.rt4.Movement;
 import org.powbot.api.rt4.Skills;
 
 import helpers.PlayerHelper;
-import helpers.Task;
+import helpers.extentions.Task;
 import script.mMain;
 
 public class DraynorCourse extends Task {
@@ -33,33 +33,26 @@ public class DraynorCourse extends Task {
                 mMain.state = "Move to draynor start";
                 Movement.moveTo(AgilityData.DraynorAreas.START.getArea().getRandomTile());
             } else {
-                AgilityHelper helper = new AgilityHelper();
-                helper.handleObstacle(AgilityData.obstacleInfo.draynor1);
+                AgilityHelper.handleObstacle(AgilityData.obstacleInfo.draynor1);
             }
         }
         if (PlayerHelper.withinArea(AgilityData.DraynorAreas.OBSTACLE_2.getArea())) {
-            AgilityHelper helper = new AgilityHelper();
-            helper.handleObstacleWithLoot(AgilityData.obstacleInfo.draynor2);
+            AgilityHelper.handleObstacleWithLoot(AgilityData.obstacleInfo.draynor2);
         }
         if (PlayerHelper.withinArea(AgilityData.DraynorAreas.OBSTACLE_3.getArea())) {
-            AgilityHelper helper = new AgilityHelper();
-            helper.handleObstacleWithLoot(AgilityData.obstacleInfo.draynor3);
+            AgilityHelper.handleObstacleWithLoot(AgilityData.obstacleInfo.draynor3);
         }
         if (PlayerHelper.withinArea(AgilityData.DraynorAreas.OBSTACLE_4.getArea())) {
-            AgilityHelper helper = new AgilityHelper();
-            helper.handleObstacleWithLoot(AgilityData.obstacleInfo.draynor4);
+            AgilityHelper.handleObstacleWithLoot(AgilityData.obstacleInfo.draynor4);
         }
         if (PlayerHelper.withinArea(AgilityData.DraynorAreas.OBSTACLE_5.getArea())) {
-            AgilityHelper helper = new AgilityHelper();
-            helper.handleObstacle(AgilityData.obstacleInfo.draynor5);
+            AgilityHelper.handleObstacle(AgilityData.obstacleInfo.draynor5);
         }
         if (PlayerHelper.withinArea(AgilityData.DraynorAreas.OBSTACLE_6.getArea())) {
-            AgilityHelper helper = new AgilityHelper();
-            helper.handleObstacle(AgilityData.obstacleInfo.draynor6);
+            AgilityHelper.handleObstacle(AgilityData.obstacleInfo.draynor6);
         }
         if (PlayerHelper.withinArea(AgilityData.DraynorAreas.OBSTACLE_7.getArea())) {
-            AgilityHelper helper = new AgilityHelper();
-            helper.handleObstacleWithLoot(AgilityData.obstacleInfo.draynor7);
+            AgilityHelper.handleObstacleWithLoot(AgilityData.obstacleInfo.draynor7);
         }
     }
 }

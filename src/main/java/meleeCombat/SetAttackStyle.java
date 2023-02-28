@@ -8,7 +8,7 @@ import org.powbot.api.rt4.Varpbits;
 import org.powbot.api.rt4.Widget;
 import org.powbot.api.rt4.Widgets;
 
-import helpers.Task;
+import helpers.extentions.Task;
 import script.mMain;
 
 public class SetAttackStyle extends Task {

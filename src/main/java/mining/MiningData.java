@@ -7,7 +7,7 @@ import org.powbot.api.rt4.Inventory;
 import org.powbot.api.rt4.Skills;
 import org.powbot.api.rt4.walking.model.Skill;
 
-import helpers.ItemList;
+import helpers.extentions.ItemList;
 import woodcutting.WoodcuttingData;
 
 public class MiningData {

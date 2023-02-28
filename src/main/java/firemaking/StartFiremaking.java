@@ -8,7 +8,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import helpers.SkillData;
-import helpers.Task;
+import helpers.extentions.Task;
 import script.mMain;
 
 public class StartFiremaking {

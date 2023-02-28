@@ -5,7 +5,7 @@ import static magicCombat.MagicHelpers.isAutoCastOpen;
 import org.powbot.api.rt4.Game;
 
 import helpers.PlayerHelper;
-import helpers.Task;
+import helpers.extentions.Task;
 import script.mMain;
 
 public class SetAutoCastSpell extends Task {

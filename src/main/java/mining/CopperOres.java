@@ -12,7 +12,7 @@ import org.powbot.api.rt4.World;
 
 import helpers.PlayerHelper;
 import helpers.SkillData;
-import helpers.Task;
+import helpers.extentions.Task;
 import script.mMain;
 
 public class CopperOres extends Task {

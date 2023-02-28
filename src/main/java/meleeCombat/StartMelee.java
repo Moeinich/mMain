@@ -7,10 +7,10 @@ import org.powbot.mobile.script.ScriptManager;
 import java.util.Arrays;
 import java.util.List;
 
-import helpers.EatFood;
-import helpers.GetFood;
+import helpers.tasks.EatFood;
+import helpers.tasks.GetFood;
 import helpers.SkillData;
-import helpers.Task;
+import helpers.extentions.Task;
 import script.mMain;
 
 public class StartMelee {

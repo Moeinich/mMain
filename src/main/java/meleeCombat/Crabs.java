@@ -4,7 +4,7 @@ import org.powbot.api.rt4.Constants;
 import org.powbot.api.rt4.Skills;
 
 import helpers.CombatHelper;
-import helpers.Task;
+import helpers.extentions.Task;
 
 public class Crabs extends Task {
     @Override

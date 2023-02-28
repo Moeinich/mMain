@@ -6,7 +6,7 @@ import org.powbot.api.rt4.Constants;
 import org.powbot.api.rt4.Inventory;
 import org.powbot.api.rt4.Skills;
 
-import helpers.ItemList;
+import helpers.extentions.ItemList;
 
 public class WoodcuttingData {
     public static final Area normalTreeLocation = new Area (

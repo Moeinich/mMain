@@ -8,10 +8,10 @@ import org.powbot.api.rt4.Inventory;
 import org.powbot.api.rt4.Skills;
 
 import helpers.InteractionsHelper;
-import helpers.ItemList;
+import helpers.extentions.ItemList;
 import helpers.PlayerHelper;
 import helpers.SkillData;
-import helpers.Task;
+import helpers.extentions.Task;
 import script.mMain;
 
 public class Sardines extends Task {

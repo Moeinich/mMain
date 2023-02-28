@@ -10,9 +10,9 @@ import org.powbot.api.rt4.Skills;
 import org.powbot.mobile.script.ScriptManager;
 
 import helpers.InteractionsHelper;
-import helpers.ItemList;
+import helpers.extentions.ItemList;
 import helpers.SkillData;
-import helpers.Task;
+import helpers.extentions.Task;
 import script.mMain;
 
 public class AttackPotions extends Task {

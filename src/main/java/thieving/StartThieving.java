@@ -8,8 +8,8 @@ import java.util.Arrays;
 import java.util.List;
 
 import helpers.SkillData;
-import helpers.Task;
-import helpers.BankBeforeTask;
+import helpers.extentions.Task;
+import helpers.tasks.BankBeforeTask;
 import script.mMain;
 
 public class StartThieving {

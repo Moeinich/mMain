@@ -1,7 +1,7 @@
 package smithing;
 
 import helpers.SkillData;
-import helpers.Task;
+import helpers.extentions.Task;
 import script.mMain;
 
 import org.powbot.api.rt4.Constants;

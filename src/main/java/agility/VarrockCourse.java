@@ -10,7 +10,7 @@ import org.powbot.api.rt4.Movement;
 import org.powbot.api.rt4.Skills;
 
 import helpers.PlayerHelper;
-import helpers.Task;
+import helpers.extentions.Task;
 import script.mMain;
 
 public class VarrockCourse extends Task {
@@ -36,25 +36,20 @@ public class VarrockCourse extends Task {
                 mMain.state = "Move to Varrock start";
                 Movement.moveTo(AgilityData.VarrockAreas.START.getArea().getRandomTile());
             } else {
-                AgilityHelper helper = new AgilityHelper();
-                helper.handleObstacle(AgilityData.obstacleInfo.varrock1);
+                AgilityHelper.handleObstacle(AgilityData.obstacleInfo.varrock1);
             }
         }
         if (PlayerHelper.withinArea(AgilityData.VarrockAreas.OBSTACLE_2.getArea())) {
-            AgilityHelper helper = new AgilityHelper();
-            helper.handleObstacleWithLoot(AgilityData.obstacleInfo.varrock2);
+            AgilityHelper.handleObstacleWithLoot(AgilityData.obstacleInfo.varrock2);
         }
         if (PlayerHelper.withinArea(AgilityData.VarrockAreas.OBSTACLE_3.getArea())) {
-            AgilityHelper helper = new AgilityHelper();
-            helper.handleObstacleWithLoot(AgilityData.obstacleInfo.varrock3);
+            AgilityHelper.handleObstacleWithLoot(AgilityData.obstacleInfo.varrock3);
         }
         if (PlayerHelper.withinArea(AgilityData.VarrockAreas.OBSTACLE_4.getArea())) {
-            AgilityHelper helper = new AgilityHelper();
-            helper.handleObstacleWithLoot(AgilityData.obstacleInfo.varrock4);
+            AgilityHelper.handleObstacleWithLoot(AgilityData.obstacleInfo.varrock4);
         }
         if (PlayerHelper.withinArea(AgilityData.VarrockAreas.OBSTACLE_5.getArea())) {
-            AgilityHelper helper = new AgilityHelper();
-            helper.handleObstacleWithLoot(AgilityData.obstacleInfo.varrock5);
+            AgilityHelper.handleObstacleWithLoot(AgilityData.obstacleInfo.varrock5);
         }
         if (PlayerHelper.withinArea(AgilityData.VarrockAreas.OBSTACLE_6.getArea())) {
             GameObject VarrockObstacle6 = PlayerHelper.nearestGameObject(8, AgilityData.obstacleInfo.varrock6.getId());
@@ -66,8 +61,7 @@ public class VarrockCourse extends Task {
                 mMain.state = "Move to Varrock OBS6";
                 Movement.step(AgilityData.VarrockAreas.OBSTACLE_6_MOVETO.getArea().getRandomTile());
             } else {
-                AgilityHelper helper = new AgilityHelper();
-                helper.handleObstacleWithLoot(AgilityData.obstacleInfo.varrock6);
+                AgilityHelper.handleObstacle(AgilityData.obstacleInfo.varrock6);
             }
         }
         if (PlayerHelper.withinArea(AgilityData.VarrockAreas.OBSTACLE_7.getArea())) {
@@ -80,18 +74,15 @@ public class VarrockCourse extends Task {
                 mMain.state = "Move to Varrock OBS7";
                 Movement.step(AgilityData.VarrockAreas.OBSTACLE_7_MOVETO.getArea().getRandomTile());
             } else {
-                AgilityHelper helper = new AgilityHelper();
-                helper.handleObstacleWithLoot(AgilityData.obstacleInfo.varrock7);
+                AgilityHelper.handleObstacle(AgilityData.obstacleInfo.varrock7);
             }
         }
 
         if (PlayerHelper.withinArea(AgilityData.VarrockAreas.OBSTACLE_8.getArea())) {
-            AgilityHelper helper = new AgilityHelper();
-            helper.handleObstacleWithLoot(AgilityData.obstacleInfo.varrock8);
+            AgilityHelper.handleObstacleWithLoot(AgilityData.obstacleInfo.varrock8);
         }
         if (PlayerHelper.withinArea(AgilityData.VarrockAreas.OBSTACLE_9.getArea())) {
-            AgilityHelper helper = new AgilityHelper();
-            helper.handleObstacleWithLoot(AgilityData.obstacleInfo.varrock9);
+            AgilityHelper.handleObstacleWithLoot(AgilityData.obstacleInfo.varrock9);
         }
     }
 }

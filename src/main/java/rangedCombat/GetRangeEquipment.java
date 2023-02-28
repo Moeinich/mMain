@@ -3,7 +3,7 @@ package rangedCombat;
 import org.powbot.api.rt4.Players;
 
 import helpers.CombatHelper;
-import helpers.Task;
+import helpers.extentions.Task;
 import script.mMain;
 
 public class GetRangeEquipment extends Task {

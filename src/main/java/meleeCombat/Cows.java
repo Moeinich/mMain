@@ -7,7 +7,7 @@ import org.powbot.api.rt4.Npc;
 import org.powbot.api.rt4.Players;
 import org.powbot.api.rt4.Skills;
 
-import helpers.Task;
+import helpers.extentions.Task;
 import helpers.PlayerHelper;
 import script.mMain;
 

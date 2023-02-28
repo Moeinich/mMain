@@ -7,9 +7,9 @@ import org.powbot.mobile.script.ScriptManager;
 import java.util.Arrays;
 import java.util.List;
 
-import helpers.BankBeforeTask;
+import helpers.tasks.BankBeforeTask;
 import helpers.SkillData;
-import helpers.Task;
+import helpers.extentions.Task;
 import script.mMain;
 
 public class StartRanged {

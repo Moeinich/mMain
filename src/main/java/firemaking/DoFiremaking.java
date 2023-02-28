@@ -4,10 +4,10 @@ import org.powbot.api.Condition;
 import org.powbot.api.rt4.*;
 import org.powbot.api.rt4.walking.model.Skill;
 
-import helpers.ItemList;
+import helpers.extentions.ItemList;
 import helpers.PlayerHelper;
-import helpers.Task;
-import quests.Common.Conditions;
+import helpers.extentions.Task;
+import helpers.extentions.Conditions;
 import script.mMain;
 
 public class DoFiremaking extends Task {

@@ -7,7 +7,7 @@ import org.powbot.mobile.script.ScriptManager;
 import java.util.Arrays;
 import java.util.List;
 
-import helpers.Task;
+import helpers.extentions.Task;
 import helpers.SkillData;
 import script.mMain;
 

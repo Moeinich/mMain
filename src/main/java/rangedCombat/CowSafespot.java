@@ -9,7 +9,7 @@ import org.powbot.api.rt4.walking.model.Skill;
 
 import helpers.PlayerHelper;
 import helpers.SkillData;
-import helpers.Task;
+import helpers.extentions.Task;
 import script.mMain;
 
 public class CowSafespot extends Task {

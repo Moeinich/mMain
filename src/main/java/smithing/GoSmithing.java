@@ -1,7 +1,7 @@
 package smithing;
 
 import helpers.PlayerHelper;
-import helpers.Task;
+import helpers.extentions.Task;
 
 public class GoSmithing extends Task {
     @Override

@@ -11,8 +11,8 @@ import org.powbot.api.rt4.walking.model.Skill;
 import org.powbot.dax.api.DaxWalker;
 
 import helpers.InteractionsHelper;
-import helpers.ItemList;
-import helpers.Task;
+import helpers.extentions.ItemList;
+import helpers.extentions.Task;
 import script.mMain;
 
 public class GetFishingEquipment extends Task {

@@ -8,8 +8,8 @@ import org.powbot.api.rt4.Movement;
 import org.powbot.api.rt4.Players;
 
 import helpers.InteractionsHelper;
-import helpers.ItemList;
-import helpers.Task;
+import helpers.extentions.ItemList;
+import helpers.extentions.Task;
 import script.mMain;
 
 public class GetLogs extends Task {

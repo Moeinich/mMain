@@ -6,7 +6,7 @@ import org.powbot.api.rt4.Movement;
 import org.powbot.api.rt4.Skills;
 
 import helpers.PlayerHelper;
-import helpers.Task;
+import helpers.extentions.Task;
 
 public class GnomeCourse extends Task {
 
@@ -26,33 +26,26 @@ public class GnomeCourse extends Task {
             if (PlayerHelper.withinArea(AgilityData.GnomeAreas.END.getArea())) {
                 Movement.step(AgilityData.GnomeAreas.OBSTACLE_1.getArea().getRandomTile());
             }
-            AgilityHelper helper = new AgilityHelper();
-            helper.handleObstacle(AgilityData.obstacleInfo.gnome1);
+            AgilityHelper.handleObstacle(AgilityData.obstacleInfo.gnome1);
         }
         if (PlayerHelper.withinArea(AgilityData.GnomeAreas.OBSTACLE_2.getArea())) {
-            AgilityHelper helper = new AgilityHelper();
-            helper.handleObstacle(AgilityData.obstacleInfo.gnome2);
+            AgilityHelper.handleObstacle(AgilityData.obstacleInfo.gnome2);
         }
         if (PlayerHelper.withinArea(AgilityData.GnomeAreas.OBSTACLE_3.getArea())) {
-            AgilityHelper helper = new AgilityHelper();
-            helper.handleObstacle(AgilityData.obstacleInfo.gnome3);
+            AgilityHelper.handleObstacle(AgilityData.obstacleInfo.gnome3);
         }
         if (PlayerHelper.withinArea(AgilityData.GnomeAreas.OBSTACLE_4.getArea())) {
-            AgilityHelper helper = new AgilityHelper();
-            helper.handleObstacle(AgilityData.obstacleInfo.gnome4);
+            AgilityHelper.handleObstacle(AgilityData.obstacleInfo.gnome4);
         }
         if (PlayerHelper.withinArea(AgilityData.GnomeAreas.OBSTACLE_5.getArea())) {
-            AgilityHelper helper = new AgilityHelper();
-            helper.handleObstacle(AgilityData.obstacleInfo.gnome5);
+            AgilityHelper.handleObstacle(AgilityData.obstacleInfo.gnome5);
         }
         if (PlayerHelper.withinArea(AgilityData.GnomeAreas.OBSTACLE_6.getArea())) {
-            AgilityHelper helper = new AgilityHelper();
-            helper.handleObstacle(AgilityData.obstacleInfo.gnome6);
+            AgilityHelper.handleObstacle(AgilityData.obstacleInfo.gnome6);
             Condition.wait( () -> PlayerHelper.withinArea(AgilityData.GnomeAreas.OBSTACLE_7.getArea()), 250, 50);
         }
         if (PlayerHelper.withinArea(AgilityData.GnomeAreas.OBSTACLE_7.getArea())) {
-            AgilityHelper helper = new AgilityHelper();
-            helper.handleObstacle(AgilityData.obstacleInfo.gnome7);
+            AgilityHelper.handleObstacle(AgilityData.obstacleInfo.gnome7);
         }
     }
 }
