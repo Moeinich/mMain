@@ -101,13 +101,13 @@ class DruidicRitual(information: QuestInformation) : BaseQuest(information) {
                 val item = Inventory.stream().name(itemName).first()
                 InteractionsHelper.useItemOnInteractive(item, go)
             },
-            { Conditions.waitUntilItemLeavesInventory(itemName, 1) },
+            { Conditions.waitUntilItemLeavesInventory(itemName, 1); true },
             "Converting $itemName",
             information,
             { Inventory.stream().name(itemName).count() > 0 }
         )
-
     }
+
 
     private fun startQuest(): QuestTaskList {
         return QuestTaskList(

@@ -3,8 +3,8 @@ package quests.common.tasks
 import org.powbot.api.Tile
 import org.powbot.api.rt4.Bank
 import org.powbot.api.rt4.Inventory
-import org.powbot.api.rt4.Movement
 import org.powbot.api.rt4.Skills
+import org.powbot.dax.api.DaxWalker
 import org.powbot.mobile.script.ScriptManager
 import quests.common.models.ItemRequirementCondition
 import quests.common.models.SetupResult
@@ -109,7 +109,7 @@ open class SetupTask(
         val nearestBankObject = Bank.nearest()
         if (Tile.Nil === nearestBankObject || !nearestBankObject.tile().matrix().onMap()) {
             logger.log(Level.INFO, "Moving to bank.")
-            Movement.moveToBank(false)
+            DaxWalker.walkToBank()
         } else {
             logger.log(Level.INFO, "Opening bank")
             Bank.open()

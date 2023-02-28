@@ -11,7 +11,7 @@ open class SimpleObjectStep(
     conversation: Array<String>? = arrayOf(),
     val interactive: () -> GameObject,
     val interaction: (GameObject) -> Boolean,
-    val interactionWait: (GameObject) -> Unit,
+    val interactionWait: (GameObject) -> Boolean,
     val stepName: String,
     questInformation: QuestInformation,
     val shouldExecute: () -> Boolean = { true },
