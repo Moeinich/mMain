@@ -5,43 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c7dd1c8c-f10c-49ed-8219-521bd6f55188" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/helpers/extentions/Conditions.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Quests/Common/BankStep.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quests/common/BankStep.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Quests/Common/Base/SimpleNpcStep.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quests/common/base/SimpleNpcStep.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Quests/Common/CloseWidget.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quests/common/CloseWidget.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Quests/Common/Constants.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quests/common/Constants.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Quests/Common/KillNpcStep.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quests/common/KillNpcStep.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Quests/Common/Models/SetupResult.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quests/common/models/SetupResult.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Quests/Common/PickupItemStep.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quests/common/PickupItemStep.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Quests/Common/SetupWeaponStep.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quests/common/SetupWeaponStep.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Quests/Common/helpers/InteractionsHelper.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quests/common/helpers/InteractionsHelper.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Quests/Common/helpers/InterfacesHelper.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quests/common/helpers/InterfacesHelper.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Quests/Common/helpers/QuestCombatHelper.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quests/common/helpers/QuestCombatHelper.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Quests/Common/helpers/SystemMessageListener.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quests/common/helpers/SystemMessageListener.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Quests/Common/tasks/SetupTask.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quests/common/tasks/SetupTask.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Quests/PriestInPeril/PriestInPeril.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quests/PriestInPeril/PriestInPeril.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Quests/PriestInPeril/PriestInPerilConstants.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quests/PriestInPeril/PriestInPerilConstants.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Quests/PriestInPeril/steps/GoUpLadder.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quests/PriestInPeril/steps/GoUpLadder.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Quests/PriestInPeril/steps/temple/BankForEssence.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quests/PriestInPeril/steps/temple/BankForEssence.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Quests/PriestInPeril/steps/temple/GrabSilverKey.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quests/PriestInPeril/steps/temple/GrabSilverKey.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Quests/druidicRitual/DruidicRitual.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quests/druidicRitual/DruidicRitual.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Quests/druidicRitual/DruidicRitualConstants.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quests/druidicRitual/DruidicRitualConstants.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Quests/enterTheAbyss/EnterTheAbyss.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quests/enterTheAbyss/EnterTheAbyss.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Quests/enterTheAbyss/EnterTheAbyssConstants.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quests/enterTheAbyss/EnterTheAbyssConstants.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Quests/enterTheAbyss/tasks/leaveEssence.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quests/enterTheAbyss/tasks/leaveEssence.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Quests/naturalHistory/InteractWithPlague.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quests/naturalHistory/InteractWithPlague.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Quests/naturalHistory/NaturalHistory.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quests/naturalHistory/NaturalHistory.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Quests/naturalHistory/NaturalHistoryConstants.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quests/naturalHistory/NaturalHistoryConstants.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Quests/runeMysteries/RuneMysteries.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quests/runeMysteries/RuneMysteries.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Quests/runeMysteries/RuneMysteriesConstants.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quests/runeMysteries/RuneMysteriesConstants.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Quests/templeOfTheEye/TempleOfTheEye.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quests/templeOfTheEye/TempleOfTheEye.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Quests/templeOfTheEye/TempleOfTheEyeConstants.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quests/templeOfTheEye/TempleOfTheEyeConstants.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Quests/templeOfTheEye/tasks/AlterObject.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quests/templeOfTheEye/tasks/AlterObject.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Quests/templeOfTheEye/tasks/AnswerQuestion.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quests/templeOfTheEye/tasks/AnswerQuestion.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Quests/templeOfTheEye/tasks/FinishAbyssMinigame.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quests/templeOfTheEye/tasks/FinishAbyssMinigame.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Quests/templeOfTheEye/tasks/InteractWithObjectIngame.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quests/templeOfTheEye/tasks/InteractWithObjectIngame.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Quests/templeOfTheEye/tasks/PickupItemIngame.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quests/templeOfTheEye/tasks/PickupItemIngame.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Quests/templeOfTheEye/tasks/TalkToNpcIngame.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quests/templeOfTheEye/tasks/TalkToNpcIngame.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/helpers/extentions/Conditions.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,6 +50,9 @@
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectId" id="2L8wbvKTa5EcV1OTUd22TOeavBS" />
   <component name="ProjectLevelVcsManager">
