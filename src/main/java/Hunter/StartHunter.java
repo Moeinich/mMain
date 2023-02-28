@@ -7,7 +7,6 @@ import org.powbot.mobile.script.ScriptManager;
 import java.util.Arrays;
 import java.util.List;
 
-import Quests.NaturalHistory.MuseumQuiz;
 import Helpers.SkillData;
 import Helpers.Task;
 import script.mMain;

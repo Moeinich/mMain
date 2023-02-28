@@ -1,4 +1,4 @@
-package Quests.QuestData;
+package Quests.QuestData.Base;
 
 import org.powbot.api.Condition;
 import org.powbot.api.Random;

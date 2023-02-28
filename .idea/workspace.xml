@@ -5,9 +5,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c7dd1c8c-f10c-49ed-8219-521bd6f55188" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Hunter/MuseumQuiz.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Quests/NaturalHistory/InteractWithPlague.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Quests/NaturalHistory/NaturalHistory.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Quests/NaturalHistory/NaturalHistoryConstants.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Quests/QuestData/Base/BaseQuest.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Quests/QuestData/Base/BaseQuestStsep.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Quests/QuestData/Base/SimpleObjectStep.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Quests/QuestData/Base/WalkToInteractiveStep.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Quests/QuestData/Models/Configuration.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Quests/QuestData/Models/QuestInformation.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Quests/QuestData/Models/QuestRunnerState.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Quests/QuestData/Models/SetupResult.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Quests/QuestData/QuestTaskList.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Quests/QuestData/SimpleConversationStep.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Quests/NaturalHistory/InteractWithPlaque.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Quests/NaturalHistory/InteractWithPlaque.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Quests/QuestData/SimpleObjectStep.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Quests/QuestData/SimpleObjectStep.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Hunter/StartHunter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Hunter/StartHunter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Quests/NaturalHistory/InteractWithPlaque.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Quests/NaturalHistory/MuseumQuiz.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Quests/NaturalHistory/NaturalHistoryConstants.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Quests/QuestData/BaseQuestStep.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Quests/QuestData/CommonMethods.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Quests/QuestData/Base/CommonMethods.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Quests/QuestData/QuestInformation.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Quests/QuestData/SimpleObjectStep.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Quests/QuestData/WalkToInteractiveStep.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,6 +60,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Kotlin Class" />
         <option value="Class" />
       </list>
     </option>
@@ -57,15 +79,15 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;org.intellij.sdk.settings.AppSettingsConfigurable&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "cidr.known.project.marker": "true",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="MagicCombat" />
@@ -79,6 +101,9 @@
       <recent name="Woodcutting.woodcuttingData" />
       <recent name="Cooking.cookingData" />
       <recent name="cookingData.java" />
+    </key>
+    <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
+      <recent name="Quests.QuestData.Base" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="Helpers.Quests" />
