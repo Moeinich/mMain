@@ -17,7 +17,7 @@ import script.mMain;
 public class CanifisCourse extends Task {
 
     public boolean activate() {
-        return Skills.realLevel(Constants.SKILLS_AGILITY) >= 40 && Skills.realLevel(Constants.SKILLS_AGILITY) <= 80;
+        return Skills.realLevel(Constants.SKILLS_AGILITY) >= 40 && Skills.realLevel(Constants.SKILLS_AGILITY) <= 59;
     }
     @Override
     public boolean execute() {

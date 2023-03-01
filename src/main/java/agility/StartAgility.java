@@ -23,7 +23,9 @@ public class StartAgility {
                 new GnomeCourse(),
                 new DraynorCourse(),
                 new VarrockCourse(),
-                new CanifisCourse()
+                new CanifisCourse(),
+                new SeersCourse()
+
         );
 
         for (Task task : agilityTasks) {

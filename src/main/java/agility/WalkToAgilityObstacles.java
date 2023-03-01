@@ -37,13 +37,22 @@ public class WalkToAgilityObstacles extends Task {
         {
             return true;
         }
-        //CANIFIS
+        //Canifis
+        else if (Skills.realLevel(Constants.SKILLS_AGILITY) >= 40
+                && !PlayerHelper.withinArea(AgilityData.CanifisAreas.FLOOR.getArea())
+                && !PlayerHelper.withinArea(AgilityData.CanifisAreas.FIRST.getArea())
+                && !PlayerHelper.withinArea(AgilityData.CanifisAreas.MID.getArea())
+                && !PlayerHelper.withinArea(AgilityData.CanifisAreas.TOP.getArea()))
+        {
+            return true;
+        }
+        //Seers
         else return !SkillData.agilityDone
-                    && Skills.realLevel(Constants.SKILLS_AGILITY) >= 40
-                    && !PlayerHelper.withinArea(AgilityData.CanifisAreas.FLOOR.getArea())
-                    && !PlayerHelper.withinArea(AgilityData.CanifisAreas.FIRST.getArea())
-                    && !PlayerHelper.withinArea(AgilityData.CanifisAreas.MID.getArea())
-                    && !PlayerHelper.withinArea(AgilityData.CanifisAreas.TOP.getArea());
+                    && Skills.realLevel(Constants.SKILLS_AGILITY) >= 60
+                    && !PlayerHelper.withinArea(AgilityData.SeersAreas.FLOOR.getArea())
+                    && !PlayerHelper.withinArea(AgilityData.SeersAreas.FIRST.getArea())
+                    && !PlayerHelper.withinArea(AgilityData.SeersAreas.MID.getArea())
+                    && !PlayerHelper.withinArea(AgilityData.SeersAreas.TOP.getArea());
     }
     @Override
     public boolean execute() {
