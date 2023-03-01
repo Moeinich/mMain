@@ -20,7 +20,7 @@ public class StartFiremaking {
         );
 
         for (Task task : firemakingTasks) {
-            if (Skills.realLevel(Constants.SKILLS_FIREMAKING) >= 50 || SkillData.firemakingDone) {
+            if (Skills.realLevel(Constants.SKILLS_FIREMAKING) >= 50 || SkillData.skillsMap.get("firemaking")) {
                 mMain.state = "Firemaking done!";
                 SkillData.setSkillDone();
                 mMain.taskRunning.set(false);

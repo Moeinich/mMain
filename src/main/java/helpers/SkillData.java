@@ -4,88 +4,45 @@ import org.powbot.api.Area;
 import org.powbot.api.Tile;
 import org.powbot.api.rt4.Varpbits;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import script.mMain;
 
 public class SkillData {
     //Skill finished
-    public static Boolean miningDone = false;
-    public static Boolean fishingDone = false;
-    public static Boolean meleeCombatDone = false;
-    public static Boolean woodcuttingDone = false;
-    public static Boolean cookingDone = false;
-    public static Boolean firemakingDone = false;
-    public static Boolean smithingDone = false;
-    public static Boolean thievingDone = false;
-    public static Boolean craftingDone = false;
-    public static Boolean fletchingDone = false;
-    public static Boolean agilityDone = false;
-    public static Boolean herbloreDone = false;
-    public static Boolean huntingDone = false;
-    public static Boolean rangeCombatDone = false;
-    public static Boolean magicCombatDone = false;
-
-    public static boolean allSkillsDone() {
-        return miningDone
-                && fishingDone
-                && woodcuttingDone
-                && cookingDone
-                && firemakingDone
-                && smithingDone
-                && thievingDone
-                && craftingDone
-                && fletchingDone
-                && agilityDone
-                && herbloreDone
-                && meleeCombatDone
-                && rangeCombatDone
-                && magicCombatDone;
+    public static final Map<String, Boolean> skillsMap = new HashMap<>();
+    static {
+        skillsMap.put("mining", false);
+        skillsMap.put("fishing", false);
+        skillsMap.put("woodcutting", false);
+        skillsMap.put("cooking", false);
+        skillsMap.put("firemaking", false);
+        skillsMap.put("smithing", false);
+        skillsMap.put("thieving", false);
+        skillsMap.put("crafting", false);
+        skillsMap.put("fletching", false);
+        skillsMap.put("agility", false);
+        skillsMap.put("herblore", false);
+        skillsMap.put("hunter", false);
+        skillsMap.put("melee", false);
+        skillsMap.put("ranged", false);
+        skillsMap.put("magic", false);
     }
+
     public static void setSkillDone() {
-        if (mMain.runningSkill.equals("mining")) {
-            miningDone = true;
+        String skill = mMain.runningSkill.toLowerCase();
+        if (skillsMap.containsKey(skill)) {
+            skillsMap.put(skill, true);
         }
-        if (mMain.runningSkill.equals("fishing")) {
-            fishingDone = true;
+    }
+    public static boolean allSkillsDone() {
+        for (Boolean value : skillsMap.values()) {
+            if (!value) {
+                return false;
+            }
         }
-        if (mMain.runningSkill.equals("woodcutting")) {
-            woodcuttingDone = true;
-        }
-        if (mMain.runningSkill.equals("cooking")) {
-            cookingDone = true;
-        }
-        if (mMain.runningSkill.equals("firemaking")) {
-            firemakingDone = true;
-        }
-        if (mMain.runningSkill.equals("smithing")) {
-            smithingDone = true;
-        }
-        if (mMain.runningSkill.equals("thieving")) {
-            thievingDone = true;
-        }
-        if (mMain.runningSkill.equals("crafting")) {
-            craftingDone = true;
-        }
-        if (mMain.runningSkill.equals("fletching")) {
-            fletchingDone = true;
-        }
-        if (mMain.runningSkill.equals("agility")) {
-            agilityDone = true;
-        }
-        if (mMain.runningSkill.equals("herblore")) {
-            herbloreDone = true;
-        }
-        if (mMain.runningSkill.equals("hunter")) {
-        huntingDone = true;
-        }
-        if (mMain.runningSkill.equals("Melee")) {
-            meleeCombatDone = true;
-        }
-        if (mMain.runningSkill.equals("Ranged")) {
-            rangeCombatDone = true;
-        }
-        if (mMain.runningSkill.equals("Magic")) {
-            rangeCombatDone = true;
-        }
+        return true;
     }
 
 

@@ -20,7 +20,7 @@ public class StartCooking {
         );
 
         for (Task task : cookingTasks) {
-            if (Skills.realLevel(Constants.SKILLS_COOKING) >= 70 || SkillData.cookingDone) {
+            if (Skills.realLevel(Constants.SKILLS_COOKING) >= 70 || SkillData.skillsMap.get("cooking")) {
                 mMain.state = "Cooking done!";
                 SkillData.setSkillDone();
                 mMain.taskRunning.set(false);

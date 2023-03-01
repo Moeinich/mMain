@@ -219,77 +219,77 @@ public class mMain extends AbstractScript {
                 //in case you want to do x skill only.
 
             case "agility":
-                if (SkillData.agilityDone) {
+                if (SkillData.skillsMap.get("agility")) {
                     ScriptManager.INSTANCE.stop();
                 } else startAgility.Agility();
                 break;
             case "cooking":
-                if (SkillData.cookingDone) {
+                if (SkillData.skillsMap.get("cooking")) {
                     ScriptManager.INSTANCE.stop();
                 } else startCooking.Cooking();
                 break;
             case "crafting":
-                if (SkillData.craftingDone) {
+                if (SkillData.skillsMap.get("crafting")) {
                     ScriptManager.INSTANCE.stop();
                 } else startCrafting.Crafting();
                 break;
             case "firemaking":
-                if (SkillData.firemakingDone) {
+                if (SkillData.skillsMap.get("firemaking")) {
                     ScriptManager.INSTANCE.stop();
                 } else startFiremaking.Firemaking();
                 break;
             case "fishing":
-                if (SkillData.fishingDone) {
+                if (SkillData.skillsMap.get("fishing")) {
                     ScriptManager.INSTANCE.stop();
                 } else startFishing.Fishing();
                 break;
             case "fletching":
-                if (SkillData.fletchingDone) {
+                if (SkillData.skillsMap.get("fletching")) {
                     ScriptManager.INSTANCE.stop();
                 } else startFletching.Fletching();
                 break;
             case "herblore":
-                if (SkillData.herbloreDone) {
+                if (SkillData.skillsMap.get("herblore")) {
                     ScriptManager.INSTANCE.stop();
                 } else startHerblore.Herblore();
                 break;
             case "hunter":
-                if (SkillData.huntingDone) {
+                if (SkillData.skillsMap.get("hunter")) {
                     ScriptManager.INSTANCE.stop();
                 } else startHunter.Hunter();
                 break;
             case "Magic":
-                if (SkillData.magicCombatDone) {
+                if (SkillData.skillsMap.get("magic")) {
                     ScriptManager.INSTANCE.stop();
                 } else startMagic.Magic();
                 break;
             case "Melee":
-                if (SkillData.meleeCombatDone) {
+                if (SkillData.skillsMap.get("melee")) {
                     ScriptManager.INSTANCE.stop();
                 } else startMelee.Melee();
                 break;
             case "mining":
-                if (SkillData.miningDone) {
+                if (SkillData.skillsMap.get("mining")) {
                     ScriptManager.INSTANCE.stop();
                 } else startMining.Mining();
                 break;
             case "Ranged":
-                if (SkillData.rangeCombatDone) {
+                if (SkillData.skillsMap.get("range")) {
                     ScriptManager.INSTANCE.stop();
                 } else startRanged.Ranged();
                 break;
             case "smithing":
-                if (SkillData.smithingDone) {
+                if (SkillData.skillsMap.get("smithing")) {
                     ScriptManager.INSTANCE.stop();
                 } else startSmithing.Smithing();
                 break;
             case "thieving":
-                if (SkillData.thievingDone) {
+                if (SkillData.skillsMap.get("thieving")) {
                     ScriptManager.INSTANCE.stop();
                 } else startThieving.Thieving();
                 break;
             case "woodcutting":
-                if (SkillData.woodcuttingDone) {
+                if (SkillData.skillsMap.get("woodcutting")) {
                     ScriptManager.INSTANCE.stop();
                 } else startWoodcutting.Woodcutting();
                 break;

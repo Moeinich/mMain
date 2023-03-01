@@ -28,7 +28,7 @@ public class StartFletching {
         );
 
         for (Task task : fletchingTasks) {
-            if (Skills.realLevel(Constants.SKILLS_FLETCHING) >= 70 || SkillData.fletchingDone) {
+            if (Skills.realLevel(Constants.SKILLS_FLETCHING) >= 70 || SkillData.skillsMap.get("fletching")) {
                 mMain.state = "Fletching done!";
                 SkillData.setSkillDone();
                 mMain.taskRunning.set(false);

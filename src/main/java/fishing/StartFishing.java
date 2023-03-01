@@ -23,7 +23,7 @@ public class StartFishing {
         );
 
         for (Task task : fishingTasks) {
-            if (Skills.realLevel(Constants.SKILLS_FISHING) >= 70 || SkillData.fishingDone) {
+            if (Skills.realLevel(Constants.SKILLS_FISHING) >= 70 || SkillData.skillsMap.get("fishing")) {
                 mMain.state = "Fishing done!";
                 SkillData.setSkillDone();
                 mMain.taskRunning.set(false);

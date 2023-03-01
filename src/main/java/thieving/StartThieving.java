@@ -23,7 +23,7 @@ public class StartThieving {
         );
 
         for (Task task : thievingTasks) {
-            if (Skills.realLevel(Constants.SKILLS_THIEVING) >= 60 || SkillData.thievingDone) {
+            if (Skills.realLevel(Constants.SKILLS_THIEVING) >= 60 || SkillData.skillsMap.get("thieving")) {
                 mMain.state = "Thieving done!";
                 SkillData.setSkillDone();
                 mMain.taskRunning.set(false);

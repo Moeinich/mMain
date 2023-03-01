@@ -23,7 +23,7 @@ public class StartMining {
         );
 
         for (Task task : miningTasks) {
-            if (Skills.realLevel(Constants.SKILLS_MINING) >= 70 || SkillData.miningDone) {
+            if (Skills.realLevel(Constants.SKILLS_MINING) >= 70 || SkillData.skillsMap.get("mining")) {
                 mMain.state = "Mining done!";
                 SkillData.setSkillDone();
                 mMain.taskRunning.set(false);

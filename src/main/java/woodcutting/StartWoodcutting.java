@@ -24,7 +24,7 @@ public class StartWoodcutting {
         );
 
         for (Task task : woodcuttingTasks) {
-            if (Skills.realLevel(Constants.SKILLS_WOODCUTTING) >= 70 || SkillData.woodcuttingDone) {
+            if (Skills.realLevel(Constants.SKILLS_WOODCUTTING) >= 70 || SkillData.skillsMap.get("woodcutting")) {
                 mMain.state = "Woodcutting done!";
                 SkillData.setSkillDone();
                 mMain.taskRunning.set(false);

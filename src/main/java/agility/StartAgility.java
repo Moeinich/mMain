@@ -27,7 +27,7 @@ public class StartAgility {
         );
 
         for (Task task : agilityTasks) {
-            if (Skills.realLevel(Constants.SKILLS_AGILITY) >= 70 || SkillData.agilityDone) {
+            if (Skills.realLevel(Constants.SKILLS_AGILITY) >= 70 || SkillData.skillsMap.get("agility")) {
                 mMain.state = "Agility done!";
                 SkillData.setSkillDone();
                 mMain.taskRunning.set(false);

@@ -24,7 +24,7 @@ public class StartSmithing {
         );
 
         for (Task task : smithingTasks) {
-            if (Skills.realLevel(Constants.SKILLS_SMITHING) >= 70 || SkillData.smithingDone) {
+            if (Skills.realLevel(Constants.SKILLS_SMITHING) >= 70 || SkillData.skillsMap.get("smithing")) {
                 mMain.state = "Smithing done!";
                 SkillData.setSkillDone();
                 mMain.taskRunning.set(false);

@@ -21,7 +21,7 @@ public class StartHerblore {
         );
 
         for (Task task : herbloreTasks) {
-            if (Skills.realLevel(Constants.SKILLS_HERBLORE) >= 70 || SkillData.herbloreDone) {
+            if (Skills.realLevel(Constants.SKILLS_HERBLORE) >= 70 || SkillData.skillsMap.get("herblore")) {
                 mMain.state = "Herblore done!";
                 SkillData.setSkillDone();
                 mMain.taskRunning.set(false);

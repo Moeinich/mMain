@@ -14,7 +14,7 @@ import script.mMain;
 
 public class StartMagic {
     public void Magic() {
-        mMain.runningSkill = "Magic";
+        mMain.runningSkill = "magic";
         List<Task> magicTasks = Arrays.asList(
                 new BankBeforeTask(),
                 new GetMagicEquipment(),
@@ -23,7 +23,7 @@ public class StartMagic {
         );
 
         for (Task task : magicTasks) {
-            if (Skills.realLevel(Constants.SKILLS_MAGIC) >= 55 || SkillData.magicCombatDone) {
+            if (Skills.realLevel(Constants.SKILLS_MAGIC) >= 55 || SkillData.skillsMap.get("magic")) {
                 mMain.state = "Magic done!";
                 SkillData.setSkillDone();
                 mMain.taskRunning.set(false);

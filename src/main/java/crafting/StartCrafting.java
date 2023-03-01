@@ -25,7 +25,7 @@ public class StartCrafting {
         );
 
         for (Task task : craftingTasks) {
-            if (Skills.realLevel(Constants.SKILLS_CRAFTING) >= 70 || SkillData.craftingDone) {
+            if (Skills.realLevel(Constants.SKILLS_CRAFTING) >= 70 || SkillData.skillsMap.get("crafting")) {
                 mMain.state = "Crafting done!";
                 SkillData.setSkillDone();
                 mMain.taskRunning.set(false);

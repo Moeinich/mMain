@@ -7,6 +7,7 @@ import org.powbot.mobile.script.ScriptManager;
 import java.util.Arrays;
 import java.util.List;
 
+import helpers.tasks.BankBeforeTask;
 import helpers.tasks.EatFood;
 import helpers.tasks.GetFood;
 import helpers.SkillData;
@@ -15,9 +16,9 @@ import script.mMain;
 
 public class StartMelee {
     public void Melee() {
-        mMain.runningSkill = "Melee";
+        mMain.runningSkill = "melee";
         List<Task> meleeTasks = Arrays.asList(
-                //new BankBeforeTask(),
+                new BankBeforeTask(),
                 new GetEquipment(),
                 new SetAttackStyle(),
                 new GetFood(),
@@ -31,7 +32,7 @@ public class StartMelee {
             if (Skills.realLevel(Constants.SKILLS_STRENGTH) >= 70
                     && Skills.realLevel(Constants.SKILLS_ATTACK) >= 70
                     && Skills.realLevel(Constants.SKILLS_DEFENSE) >= 70
-                    || SkillData.meleeCombatDone) {
+                    || SkillData.skillsMap.get("melee")) {
                 mMain.state = "Melee done!";
                 SkillData.setSkillDone();
                 mMain.taskRunning.set(false);
