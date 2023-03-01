@@ -5,7 +5,7 @@ import org.powbot.api.rt4.Skills.experience
 import org.powbot.api.rt4.walking.model.Skill
 import java.util.concurrent.Callable
 
-object Conditions {
+class Conditions {
     fun waitUntilItemEntersInventory(
         itemName: String,
         itemCount: Int,
@@ -66,7 +66,6 @@ object Conditions {
         return Callable<Boolean> { Players.local().animation() == -1 }
     }
 
-    @JvmStatic
     fun expGained(skill: Skill?): Boolean {
         val startExp = experience(skill!!)
         return experience(skill) > startExp

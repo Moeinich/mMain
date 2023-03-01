@@ -77,17 +77,17 @@ class NaturalHistory(information: QuestInformation) : BaseQuest(information) {
     }
 
     override fun getQuestStep(stepPosition: Int): BaseQuestStep? {
-        if (stepPosition == 0) {
-            return startQuest
+        return if (stepPosition == 0) {
+            startQuest
         } else if (stepPosition == 1073741822) {
-            return finishQuest
+            finishQuest
         } else if (stepPosition == -1073741826){
             information.complete = true
             CommonMethods.closeQuestComplete()
-            return null
+            null
         }else {
             logger.info("Step $stepPosition")
-            return answerQuestions().processStep()
+            answerQuestions().processStep()
         }
     }
 
