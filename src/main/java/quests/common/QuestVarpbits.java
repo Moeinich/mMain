@@ -75,7 +75,7 @@ public class QuestVarpbits {
     public static final Quest ONE_SMALL_FAVOUR = new Quest("One Small Favour", 487, -1);
     public static final Quest PIRATES_TREASURE = new Quest("Pirate's Treasure", 42, 4);
     public static final Quest PLAGUE_CITY = new Quest("Plague City", 165, 29);
-    public static final Quest PRIEST_IN_PERIL = new Quest("Priest in Peril", 302, 0, true);
+    public static final Quest PRIEST_IN_PERIL = new Quest("Priest in Peril", 302, 61, true);
     public static final Quest PRINCE_ALI_RESCUE = new Quest("Prince Ali Rescue", 273, -1);
     public static final Quest REGICIDE = new Quest("Regicide", 328, -1);
     public static final Quest ROMEO_AND_JULIET = new Quest("Romeo & Juliet", 144, 100);

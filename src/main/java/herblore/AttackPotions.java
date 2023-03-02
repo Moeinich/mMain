@@ -28,7 +28,7 @@ public class AttackPotions extends Task {
     public boolean execute() {
         if (Skills.realLevel(Constants.SKILLS_HERBLORE) < 3) {
             mMain.state = "Druidic ritual not done";
-            SkillData.herbloreDone = true;
+            SkillData.setSkillDone();
             mMain.taskRunning.set(false);
         }
 

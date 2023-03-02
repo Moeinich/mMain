@@ -43,8 +43,7 @@ import quests.priestInPeril.steps.GoUpLadder
 import quests.priestInPeril.steps.temple.BankForEssence
 import quests.priestInPeril.steps.temple.GrabSilverKey
 
-class PriestInPeril {
-    class PriestInPeril(information: QuestInformation) : BaseQuest(information) {
+class PriestInPeril(information: QuestInformation) : BaseQuest(information) {
         val runeEssence = ItemRequirement(ITEM_RUNE_ESSENCE, false, 50)
         val pureEssence = ItemRequirement(ITEM_PURE_ESSENCE, false, 50)
         private val bucketRequirement = ItemRequirementCondition(ITEM_BUCKET, false, 1)
@@ -204,5 +203,4 @@ class PriestInPeril {
                 talkToDrezelInPrisonAgain
             )
         }
-    }
 }

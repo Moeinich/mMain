@@ -27,6 +27,7 @@ public class SkillData {
         skillsMap.put("hunter", false);
         skillsMap.put("melee", false);
         skillsMap.put("ranged", false);
+        skillsMap.put("runecrafting", false);
         skillsMap.put("magic", false);
     }
 

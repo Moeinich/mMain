@@ -55,7 +55,6 @@ import quests.common.QuestTaskList
 import quests.common.SimpleConversationStep
 
 class NaturalHistory(information: QuestInformation) : BaseQuest(information) {
-
     private val startQuest = SimpleConversationStep(
         NAME_ORLANDO_SMITH,
         TILE_ORLANDO_SMITH,

@@ -22,9 +22,8 @@ public class CanifisCourse extends Task {
     @Override
     public boolean execute() {
         if (Varpbits.varpbit(QuestVarpbits.PRIEST_IN_PERIL.getQuestVarbit()) != QuestVarpbits.PRIEST_IN_PERIL.getFinishedValue()) {
-            System.out.println("Priest in Peril not done, blacklisting agility.");
+            System.out.println("Priest in Peril not done, skipping agility for now");
             mMain.state = "PiP not done";
-            SkillData.setSkillDone();
             mMain.taskRunning.set(false);
         }
 

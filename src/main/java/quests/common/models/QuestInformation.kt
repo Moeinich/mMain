@@ -2,14 +2,13 @@ package quests.common.models
 
 import quests.common.base.BaseQuestStep
 import quests.common.QuestVarpbits
-import org.powbot.api.rt4.Item
 import org.powbot.api.rt4.Magic
 
 
 class QuestInformation(
     val questVarbits: QuestVarpbits.Quest,
     val foodName: Array<String>,
-    val weaponName: Item? = null,
+    val weaponName: String? = null,
     var spell: Magic.Spell? = null
 ) {
 

@@ -19,6 +19,7 @@ public class StartMelee {
         mMain.runningSkill = "melee";
         List<Task> meleeTasks = Arrays.asList(
                 new BankBeforeTask(),
+                new doPriestInPeril(),
                 new GetEquipment(),
                 new SetAttackStyle(),
                 new GetFood(),

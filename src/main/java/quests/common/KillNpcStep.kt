@@ -1,11 +1,11 @@
 package quests.common
 
+import helpers.extentions.Conditions
 import org.powbot.api.Condition
 import org.powbot.api.Tile
 import org.powbot.api.rt4.Constants
 import org.powbot.api.rt4.*
 import quests.common.base.SimpleNpcStep
-import helpers.extentions.Conditions
 import quests.common.helpers.CombatHelper
 import quests.common.models.QuestInformation
 import java.util.concurrent.Callable

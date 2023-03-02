@@ -19,7 +19,7 @@ public class StartHunter {
         );
 
         for (Task task : huntingTasks) {
-            if (Skills.realLevel(Constants.SKILLS_HUNTER) >= 70 || SkillData.skillsMap.get("hunter")) {
+            if (Skills.realLevel(Constants.SKILLS_HUNTER) >= 9 || SkillData.skillsMap.get("hunter")) {
                 mMain.state = "Hunter done!";
                 SkillData.setSkillDone();
                 mMain.taskRunning.set(false);

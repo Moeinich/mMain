@@ -47,8 +47,7 @@ public class WalkToAgilityObstacles extends Task {
             return true;
         }
         //Seers
-        else return !SkillData.agilityDone
-                    && Skills.realLevel(Constants.SKILLS_AGILITY) >= 60
+        else return Skills.realLevel(Constants.SKILLS_AGILITY) >= 60
                     && !PlayerHelper.withinArea(AgilityData.SeersAreas.FLOOR.getArea())
                     && !PlayerHelper.withinArea(AgilityData.SeersAreas.FIRST.getArea())
                     && !PlayerHelper.withinArea(AgilityData.SeersAreas.MID.getArea())
@@ -56,13 +55,8 @@ public class WalkToAgilityObstacles extends Task {
     }
     @Override
     public boolean execute() {
-        if (Skills.realLevel(Constants.SKILLS_AGILITY) >= 70) {
-            mMain.taskRunning.set(false);
-            SkillData.setSkillDone();
-        } else {
-            mMain.state = "Going to Agility course";
-            PlayerHelper.walkToTile(AgilityData.movementAgility());
-        }
+        mMain.state = "Going to Agility course";
+        PlayerHelper.walkToTile(AgilityData.movementAgility());
         return false;
     }
 }

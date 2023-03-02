@@ -15,12 +15,12 @@ class SetupWeaponStep(val information: QuestInformation, val shouldExecute: Call
             return false
         }
         val currentWeapon = Equipment.itemAt(Equipment.Slot.MAIN_HAND)
-        if (currentWeapon.name() != information.weaponName!!.name()) {
+        if (currentWeapon.name() != information.weaponName!!) {
             Game.tab(Game.Tab.INVENTORY)
-            val weapon = Inventory.stream().name(information.weaponName.name()).first()
-            logger.info("SetupWeaponStep: Wielding weapon ${information.weaponName.name()}")
+            val weapon = Inventory.stream().name(information.weaponName).first()
+            logger.info("SetupWeaponStep: Wielding weapon ${information.weaponName}")
             if (weapon.interact("Wield")) {
-                Condition.wait(Conditions.waitUntilItemLeavesInventory(information.weaponName.name(), 1))
+                Condition.wait(Conditions.waitUntilItemLeavesInventory(information.weaponName, 1))
             } else {
                 return false
             }
@@ -46,7 +46,7 @@ class SetupWeaponStep(val information: QuestInformation, val shouldExecute: Call
     }
 
     private fun alreadySetup() : Boolean{
-        return information.weaponName?.name() == Equipment.itemAt(Equipment.Slot.MAIN_HAND).name() && (information.spell == null || MagicHelpers.isAutoCasting())
+        return information.weaponName == Equipment.itemAt(Equipment.Slot.MAIN_HAND).name() && (information.spell == null || MagicHelpers.isAutoCasting())
     }
 
     override fun run() {

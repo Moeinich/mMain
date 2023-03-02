@@ -33,8 +33,8 @@ import helpers.SkillData;
 
 @ScriptManifest(
         name = "mMain",
-        description = "Progressively levels different skills",
-        version = "0.2.4",
+        description = "Progressively levels different skills and does a few quests",
+        version = "0.3.0",
         category = ScriptCategory.Other
 )
 @ScriptConfiguration.List(
@@ -42,8 +42,11 @@ import helpers.SkillData;
                 @ScriptConfiguration(
                         name =  "Mode",
                         description = "Which skill would you like to do?",
-                        defaultValue = "Progressive",
-                        allowedValues = {"Progressive", "mining", "fishing", "woodcutting", "cooking", "firemaking", "smithing", "thieving", "crafting", "fletching", "agility", "herblore", "hunter", "Ranged", "Magic", "Melee"},
+                        defaultValue = "Melee",
+                        allowedValues = {
+                                "Progressive", "Mining", "Fishing", "Woodcutting", "Cooking", "Firemaking", "Smithing", "Thieving",
+                                "Crafting", "Fletching", "Agility", "Herblore", "Hunter", "Ranged", "Magic", "Melee"
+                        },
                         optionType = OptionType.STRING
                  )
         }
@@ -188,6 +191,7 @@ public class mMain extends AbstractScript {
                             startFishing::Fishing,
                             startFletching::Fletching,
                             startHerblore::Herblore,
+                            startHunter::Hunter,
                             startMagic::Magic,
                             startMelee::Melee,
                             startMining::Mining,
@@ -218,42 +222,42 @@ public class mMain extends AbstractScript {
                 //Starting individual progressive skills
                 //in case you want to do x skill only.
 
-            case "agility":
+            case "Agility":
                 if (SkillData.skillsMap.get("agility")) {
                     ScriptManager.INSTANCE.stop();
                 } else startAgility.Agility();
                 break;
-            case "cooking":
+            case "Cooking":
                 if (SkillData.skillsMap.get("cooking")) {
                     ScriptManager.INSTANCE.stop();
                 } else startCooking.Cooking();
                 break;
-            case "crafting":
+            case "Crafting":
                 if (SkillData.skillsMap.get("crafting")) {
                     ScriptManager.INSTANCE.stop();
                 } else startCrafting.Crafting();
                 break;
-            case "firemaking":
+            case "Firemaking":
                 if (SkillData.skillsMap.get("firemaking")) {
                     ScriptManager.INSTANCE.stop();
                 } else startFiremaking.Firemaking();
                 break;
-            case "fishing":
+            case "Fishing":
                 if (SkillData.skillsMap.get("fishing")) {
                     ScriptManager.INSTANCE.stop();
                 } else startFishing.Fishing();
                 break;
-            case "fletching":
+            case "Fletching":
                 if (SkillData.skillsMap.get("fletching")) {
                     ScriptManager.INSTANCE.stop();
                 } else startFletching.Fletching();
                 break;
-            case "herblore":
+            case "Herblore":
                 if (SkillData.skillsMap.get("herblore")) {
                     ScriptManager.INSTANCE.stop();
                 } else startHerblore.Herblore();
                 break;
-            case "hunter":
+            case "Hunter":
                 if (SkillData.skillsMap.get("hunter")) {
                     ScriptManager.INSTANCE.stop();
                 } else startHunter.Hunter();
@@ -268,7 +272,7 @@ public class mMain extends AbstractScript {
                     ScriptManager.INSTANCE.stop();
                 } else startMelee.Melee();
                 break;
-            case "mining":
+            case "Mining":
                 if (SkillData.skillsMap.get("mining")) {
                     ScriptManager.INSTANCE.stop();
                 } else startMining.Mining();
@@ -278,17 +282,17 @@ public class mMain extends AbstractScript {
                     ScriptManager.INSTANCE.stop();
                 } else startRanged.Ranged();
                 break;
-            case "smithing":
+            case "Smithing":
                 if (SkillData.skillsMap.get("smithing")) {
                     ScriptManager.INSTANCE.stop();
                 } else startSmithing.Smithing();
                 break;
-            case "thieving":
+            case "Thieving":
                 if (SkillData.skillsMap.get("thieving")) {
                     ScriptManager.INSTANCE.stop();
                 } else startThieving.Thieving();
                 break;
-            case "woodcutting":
+            case "Woodcutting":
                 if (SkillData.skillsMap.get("woodcutting")) {
                     ScriptManager.INSTANCE.stop();
                 } else startWoodcutting.Woodcutting();
