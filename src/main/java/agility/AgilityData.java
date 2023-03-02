@@ -51,7 +51,7 @@ public class AgilityData {
         seers2(14928, "Jump", "Gap", "Handle: OBS2"),
         seers3(14932, "Cross", "Tightrope", "Handle: OBS3"),
         seers4(14929, "Jump", "Gap", "Handle: OBS4"),
-        seers5(14930, "Gap", "Gap", "Handle: OBS5"),
+        seers5(14930, "Jump", "Gap", "Handle: OBS5"),
         seers6(14931, "Jump", "Edge", "OHandle: BS6");
 
         private final int id;
@@ -203,7 +203,7 @@ public class AgilityData {
         FIRST(new Area(new Tile(2684, 3501, 1), new Tile(2733, 3452, 1))),
         MID(new Area(new Tile(2684, 3501, 2), new Tile(2733, 3452, 2))),
         TOP(new Area(new Tile(2684, 3501, 3), new Tile(2733, 3452, 3))),
-        START(new Area(new Tile(2728, 3489, 0), new Tile(2728, 3486, 0), new Tile(2726, 3486, 0), new Tile(2726, 3484, 0), new Tile(2729, 3484, 0), new Tile(2730, 3484, 0), new Tile(2730, 3489, 0))),
+        START(new Area(new Tile(2727, 3486, 0), new Tile(2729, 3485, 0))),
         OBSTACLE_2(new Area(new Tile(2720, 3498, 3), new Tile(2730, 3489, 3))),
         OBSTACLE_3(new Area(new Tile(2702, 3499, 2), new Tile(2715, 3486, 2))),
         OBSTACLE_4(new Area(new Tile(2709, 3480, 2), new Tile(2716, 3476, 2))),
@@ -236,9 +236,8 @@ public class AgilityData {
         if (Skills.realLevel(Constants.SKILLS_AGILITY) >= 40 && Skills.realLevel(Constants.SKILLS_AGILITY) <= 59) {
             return CanifisAreas.START.getArea().getRandomTile();
         }
-
         if (Skills.realLevel(Constants.SKILLS_AGILITY) >= 60 && Skills.realLevel(Constants.SKILLS_AGILITY) <= 80) {
-            return CanifisAreas.START.getArea().getRandomTile();
+            return SeersAreas.START.getArea().getRandomTile();
         }
 
         return null;
