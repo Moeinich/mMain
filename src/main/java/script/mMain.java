@@ -34,7 +34,7 @@ import helpers.SkillData;
 @ScriptManifest(
         name = "mMain",
         description = "Progressively levels different skills and does a few quests",
-        version = "0.3.0",
+        version = "0.3.1",
         category = ScriptCategory.Other
 )
 @ScriptConfiguration.List(

@@ -32,7 +32,7 @@ public class PlayerHelper {
     }
     public static void bankForFood(int foodName, int amount) {
         mMain.state = "Bank for food";
-        if (Bank.nearest().tile().distanceTo(Players.local()) > 5) {
+        if (Bank.nearest().tile().distanceTo(Players.local()) >= 6) {
             System.out.println("Moving to bank to grab food");
             Movement.moveToBank();
         }

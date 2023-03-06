@@ -132,20 +132,22 @@ class BankStep(
     }
 
     private fun setupInventory() {
+        logger.info("Entered setupInventory step")
         if (Bank.depositAllExcept(*itemsToKeep)) {
             val requirements = conditions.map { it.chosenRequirement!! }.toList()
             requirements.forEach { r ->
-                val chosenItem = Inventory.stream().name(r.name).count(true)
+                val chosenItem = Inventory.stream().name(r.name).first().stackSize()
                 if (chosenItem >= r.countRequired) {
                     logger.info("BS: Has required item ${r.name}")
                     return@forEach
                 }
-                val missingCount = r.countRequired - chosenItem.toInt()
-                if (Bank.stream().name(r.name).count(true) < missingCount) {
+                val missingCount = r.countRequired - chosenItem
+                if (Bank.stream().name(r.name).first().stackSize() < missingCount) {
                     logger.info("Missing $missingCount ${r.name}")
                     Notifications.showNotification("Missing $missingCount ${r.name}")
                     ScriptManager.stop()
                 }
+                logger.info("Withdrawing item")
                 Bank.withdraw(r.name, missingCount)
             }
         }
@@ -179,7 +181,7 @@ class BankStep(
      *  @return true if we successfully setup
      */
     private fun setupConditions(): Boolean {
-        var canCalculate = conditions.all { it.chosenRequirement != null }
+        val canCalculate = conditions.all { it.chosenRequirement != null }
         if (canCalculate) {
             calculateInventory()
         }

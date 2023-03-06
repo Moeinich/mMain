@@ -11,6 +11,7 @@ import quests.priestInPeril.PriestInPeril;
 import script.mMain;
 
 public class doPriestInPeril extends Task {
+    PriestInPeril priestInPeril = new PriestInPeril(new QuestInformation(QuestVarpbits.PRIEST_IN_PERIL, new String[]{"Lobster"}, "Adamant scimitar", null));
     @Override
     public boolean activate() {
         return Skills.realLevel(Skill.Defence) >= 30
@@ -21,7 +22,6 @@ public class doPriestInPeril extends Task {
     @Override
     public boolean execute() {
         mMain.state = "Priest in Peril";
-        PriestInPeril priestInPeril = new PriestInPeril(new QuestInformation(QuestVarpbits.PRIEST_IN_PERIL, new String[]{"Lobster"}, "Adamant scimitar", null));
         priestInPeril.run();
         return false;
     }

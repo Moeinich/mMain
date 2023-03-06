@@ -31,7 +31,7 @@ public class AgilityHelper {
             PlayerHelper.lootItems("Take", "Mark of grace");
         }
 
-        GameObject obstacleObject = PlayerHelper.nearestGameObject(10, obstacleInfo.getId());
+        GameObject obstacleObject = PlayerHelper.nearestGameObject(15, obstacleInfo.getId());
         if (obstacleObject.inViewport()) {
             mMain.state = obstacleInfo.getDescription();
             if (obstacleObject.interact(obstacleInfo.getAction(), obstacleInfo.getName())) {
