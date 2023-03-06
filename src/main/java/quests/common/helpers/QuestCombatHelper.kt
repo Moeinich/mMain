@@ -6,7 +6,7 @@ import org.powbot.api.rt4.*
 
 object CombatHelper {
     private var lowerAmount = 40
-    private var higherAmount = 50
+    private var higherAmount = 60
     private var hpToEatAt = Random.nextInt(lowerAmount, higherAmount)
 
     fun updateHealthToEatAt(lower: Int, high: Int) {
@@ -19,7 +19,6 @@ object CombatHelper {
         if (foodName.isEmpty()) {
             return false
         }
-
         return Combat.healthPercent() <= hpToEatAt
     }
 
