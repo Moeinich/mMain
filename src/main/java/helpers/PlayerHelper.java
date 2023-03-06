@@ -103,9 +103,20 @@ public class PlayerHelper {
         return Npcs.stream().within(withinArea).name(npcName).filter(n -> n.healthPercent() == 100).nearest().first();
     }
     public static boolean hasItem(int... itemID) {
-        return Inventory.stream().id(itemID).isNotEmpty();
+        for (int id : itemID) {
+            if (Inventory.stream().id(id).isEmpty()) {
+                return false;
+            }
+        }
+        return true;
     }
+
     public static boolean hasItem(String... itemName) {
-        return Inventory.stream().name(itemName).isNotEmpty();
+        for (String id : itemName) {
+            if (Inventory.stream().name(id).isEmpty()) {
+                return false;
+            }
+        }
+        return true;
     }
 }

@@ -44,6 +44,14 @@ class BankStep(
         if (combat && questInformation.spell != null) {
             addMagicReq(updatedConditions, calculatedItemsToKeep)
         }
+        if (questInformation.weaponName != null) {
+            logger.info("Weapon is required ${questInformation.weaponName}")
+            calculatedItemsToKeep.add(questInformation.weaponName)
+            val requirement = ItemRequirement(questInformation.weaponName, false, 1)
+            val itemRequirementCondition = ItemRequirementCondition(requirement)
+            itemRequirementCondition.chosenRequirement = requirement
+            updatedConditions.add(itemRequirementCondition)
+        }
         if (foodRequired) {
             val foodName = questInformation.foodName.first()
             logger.info("Food is required $foodName")

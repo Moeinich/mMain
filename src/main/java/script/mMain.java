@@ -286,7 +286,7 @@ public class mMain extends AbstractScript {
                 } else startMining.Mining();
                 break;
             case "Ranged":
-                if (SkillData.skillsMap.get("range")) {
+                if (SkillData.skillsMap.get("ranged")) {
                     ScriptManager.INSTANCE.stop();
                 } else startRanged.Ranged();
                 break;
