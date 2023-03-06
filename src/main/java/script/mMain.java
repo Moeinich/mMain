@@ -59,7 +59,13 @@ public class mMain extends AbstractScript {
     //adb.exe forward tcp:61666 tcp:61666
 
     public static void main(String[] args) {
-        new ScriptUploader().uploadAndStart("mMain", "christianflores@grind.rs", "emulator-5554", true, true);
+        new ScriptUploader().uploadAndStart(
+                "mMain",
+                "christianflores@grind.rs",
+                "emulator-5554",
+                true,
+                true
+        );
     }
 
     final int MIN_TIME_LIMIT = 3600000;

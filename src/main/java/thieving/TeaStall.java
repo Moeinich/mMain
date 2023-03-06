@@ -57,7 +57,7 @@ public class TeaStall extends Task {
             ShouldWorldhop();
         }
         //Thieving loop
-        if (Players.stream().within(ThievingData.teaStallArea).count() == 1) {
+        if (Players.stream().within(ThievingData.teaStallArea).count() == 1 && Players.local().tile().equals(ThievingData.movementThieving())) {
             if (shouldDropItems()) {
                 dropItems();
             } else if (!Inventory.isFull()) {

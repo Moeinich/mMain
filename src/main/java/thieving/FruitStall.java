@@ -69,7 +69,7 @@ public class FruitStall extends Task {
                 ShouldWorldhop();
             }
             //Thieving loop
-            if (Players.stream().within(ThievingData.fruitStallArea).count() == 1) {
+            if (Players.stream().within(ThievingData.fruitStallArea).count() == 1 && Players.local().tile().equals(ThievingData.movementThieving())) {
                 if (shouldDropItems()) {
                     dropItems();
                 } else if (!Inventory.isFull()) {
@@ -89,7 +89,7 @@ public class FruitStall extends Task {
             if (!fruitStall.inViewport()) { // Need to turn camera to the stall
                 mMain.state = "Turning camera";
                 Camera.turnTo(fruitStall);
-                Condition.wait(() -> fruitStall.inViewport(), 250, 10);
+                Condition.wait(fruitStall::inViewport, 250, 10);
             } else { // Fruit stall isn't null and in view
                 mMain.state = "Stealing fruit";
                 fruitStall.interact("Steal-from");
