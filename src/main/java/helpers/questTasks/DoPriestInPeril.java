@@ -4,6 +4,8 @@ import org.powbot.api.rt4.Skills;
 import org.powbot.api.rt4.Varpbits;
 import org.powbot.api.rt4.walking.model.Skill;
 
+import helpers.CombatHelper;
+import helpers.extentions.ItemList;
 import quests.QuestInitializer;
 import helpers.extentions.Task;
 import quests.common.QuestVarpbits;

@@ -5,7 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c7dd1c8c-f10c-49ed-8219-521bd6f55188" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gradle/7.4/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/checksums/checksums.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.4/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/checksums/md5-checksums.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.4/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/checksums/sha1-checksums.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/helpers/questTasks/DoPriestInPeril.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/helpers/questTasks/DoPriestInPeril.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/meleeCombat/StartMelee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/meleeCombat/StartMelee.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/quests/QuestInitializer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quests/QuestInitializer.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/quests/common/BankStep.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quests/common/BankStep.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

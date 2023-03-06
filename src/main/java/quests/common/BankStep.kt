@@ -1,5 +1,6 @@
 package quests.common
 
+import helpers.extentions.count
 import org.powbot.api.Notifications
 import org.powbot.api.Tile
 import org.powbot.api.requirement.RunePowerRequirement
@@ -51,7 +52,7 @@ class BankStep(
             val usedSlots = updatedConditions.filter {
                 it.chosenRequirement != null
             }.sumOf { if (it.chosenRequirement!!.stackable) 1 else it.chosenRequirement!!.countRequired }
-            val foodToWithdraw = 28 - usedSlots
+            val foodToWithdraw = 20 - usedSlots
             logger.info("Food required $foodToWithdraw")
             val requirement = ItemRequirement(foodName, true, foodToWithdraw)
             val itemRequirementCondition = ItemRequirementCondition(requirement)
@@ -68,7 +69,7 @@ class BankStep(
             logger.info("Condition ${it.chosenRequirement!!.name}")
         }
         logger.info("Updated calculated inventory")
-        logger.info("Missing items ${conditions.filter { it.chosenRequirement == null }.joinToString(" ")}")
+        logger.info("Missing items ${conditions.filter { it.chosenRequirement == null }.joinToString(",")}")
     }
 
     private fun addMagicReq(
@@ -132,22 +133,20 @@ class BankStep(
     }
 
     private fun setupInventory() {
-        logger.info("Entered setupInventory step")
         if (Bank.depositAllExcept(*itemsToKeep)) {
             val requirements = conditions.map { it.chosenRequirement!! }.toList()
             requirements.forEach { r ->
-                val chosenItem = Inventory.stream().name(r.name).first().stackSize()
+                val chosenItem = Inventory.stream().name(r.name).count(true)
                 if (chosenItem >= r.countRequired) {
                     logger.info("BS: Has required item ${r.name}")
                     return@forEach
                 }
-                val missingCount = r.countRequired - chosenItem
-                if (Bank.stream().name(r.name).first().stackSize() < missingCount) {
+                val missingCount = r.countRequired - chosenItem.toInt()
+                if (Bank.stream().name(r.name).count(true) < missingCount) {
                     logger.info("Missing $missingCount ${r.name}")
                     Notifications.showNotification("Missing $missingCount ${r.name}")
                     ScriptManager.stop()
                 }
-                logger.info("Withdrawing item")
                 Bank.withdraw(r.name, missingCount)
             }
         }
@@ -169,7 +168,7 @@ class BankStep(
             val requirement = it.chosenRequirement!!
 
             logger.info("Checking requirement ${requirement.name}")
-            if (Inventory.stream().name(requirement.name).count() < requirement.countRequired) {
+            if (Inventory.count(requirement.name) < requirement.countRequired) {
                 return false
             }
         }
@@ -181,7 +180,7 @@ class BankStep(
      *  @return true if we successfully setup
      */
     private fun setupConditions(): Boolean {
-        val canCalculate = conditions.all { it.chosenRequirement != null }
+        var canCalculate = conditions.all { it.chosenRequirement != null }
         if (canCalculate) {
             calculateInventory()
         }
