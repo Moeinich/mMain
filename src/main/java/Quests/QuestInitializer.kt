@@ -19,6 +19,7 @@ object QuestInitializer {
             null
         )
     )
+
     @JvmField
     var naturalHistory = NaturalHistory(
         QuestInformation(
@@ -28,6 +29,7 @@ object QuestInitializer {
             null
         )
     )
+
     @JvmField
     var runeMysteries = RuneMysteries(
         QuestInformation(
@@ -37,6 +39,7 @@ object QuestInitializer {
             null
         )
     )
+
     @JvmField
     var enterTheAbyss = EnterTheAbyss(
         QuestInformation(
@@ -46,6 +49,7 @@ object QuestInitializer {
             null
         )
     )
+
     @JvmField
     var templeOfTheEye = TempleOfTheEye(
         QuestInformation(
@@ -55,6 +59,7 @@ object QuestInitializer {
             null
         )
     )
+
     @JvmField
     var druidicRitual = DruidicRitual(
         QuestInformation(

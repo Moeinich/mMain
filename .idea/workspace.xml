@@ -5,13 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c7dd1c8c-f10c-49ed-8219-521bd6f55188" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/helpers/questTasks/doDruidicRitual.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShoppingList" beforeDir="false" afterPath="$PROJECT_DIR$/ShoppingList" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Quests/QuestInitializer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Quests/QuestInitializer.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/herblore/AttackPotions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/herblore/AttackPotions.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/herblore/StartHerblore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/herblore/StartHerblore.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/quests/QuestInitializer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quests/QuestInitializer.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
