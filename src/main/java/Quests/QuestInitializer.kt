@@ -2,6 +2,7 @@ package quests
 
 import quests.common.QuestVarpbits
 import quests.common.models.QuestInformation
+import quests.druidicRitual.DruidicRitual
 import quests.enterTheAbyss.EnterTheAbyss
 import quests.naturalHistory.NaturalHistory
 import quests.priestInPeril.PriestInPeril
@@ -22,7 +23,7 @@ object QuestInitializer {
     var naturalHistory = NaturalHistory(
         QuestInformation(
             QuestVarpbits.NATURAL_HISTORY,
-            arrayOf("Cake"),
+            arrayOf("Lobster"),
             null,
             null
         )
@@ -31,7 +32,7 @@ object QuestInitializer {
     var runeMysteries = RuneMysteries(
         QuestInformation(
             QuestVarpbits.RUNE_MYSTERIES,
-            arrayOf("Cake"),
+            arrayOf("Lobster"),
             null,
             null
         )
@@ -40,7 +41,7 @@ object QuestInitializer {
     var enterTheAbyss = EnterTheAbyss(
         QuestInformation(
             QuestVarpbits.ENTER_THE_ABYSS,
-            arrayOf("Cake"),
+            arrayOf("Lobster"),
             null,
             null
         )
@@ -48,8 +49,17 @@ object QuestInitializer {
     @JvmField
     var templeOfTheEye = TempleOfTheEye(
         QuestInformation(
-            QuestVarpbits.ENTER_THE_ABYSS,
-            arrayOf("Cake"),
+            QuestVarpbits.TEMPLE_OF_THE_EYE,
+            arrayOf("Lobster"),
+            null,
+            null
+        )
+    )
+    @JvmField
+    var druidicRitual = DruidicRitual(
+        QuestInformation(
+            QuestVarpbits.DRUIDIC_RITUAL,
+            arrayOf("Lobster"),
             null,
             null
         )

@@ -7,6 +7,7 @@ import org.powbot.mobile.script.ScriptManager;
 import java.util.Arrays;
 import java.util.List;
 
+import helpers.questTasks.doDruidicRitual;
 import helpers.tasks.GoToBank;
 import helpers.SkillData;
 import helpers.extentions.Task;
@@ -17,6 +18,7 @@ public class StartHerblore {
         mMain.runningSkill = "herblore";
         List<Task> herbloreTasks = Arrays.asList(
                 new GoToBank(),
+                new doDruidicRitual(),
                 new AttackPotions()
         );
 

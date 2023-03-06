@@ -10,11 +10,20 @@ Let pow close level up messages. Please have these items on ur account:
 - [X] Do a proper timer to switch between tasks
 - [X] Make skills work with skill switching.
 
+**Quests**
+- [X] Museum quiz to start hunter
+- [X] Priest in peril at 30/30/30 melee stats
+- [X] Rune mysteries for RC
+- [X] Abyss miniquest for RC
+- [X] Temple of the Eye for RC
+- [X] Druidic ritual for herblore
+
 **agility**
 - [X] 1-10 Gnome course
 - [X] 10-30 Draynor course
 - [X] 30-40 Varrock course
 - [X] 40-60 Canifis course
+- [X] 60-70 Seers
 
 **cooking:**
 - [X] Sardines 1-35
@@ -25,7 +34,7 @@ Let pow close level up messages. Please have these items on ur account:
 - [X] 12-33 Empty Oil Lamp
 - [X] 33-42 Vial
 - [X] 42-46 Empty fishbowl
-- [X] 46-? Unpowered Orbs.
+- [X] 46-70 Unpowered Orbs.
 
 **firemaking**
 - [X] Light fires at Falador from the logs in bank.
@@ -56,6 +65,7 @@ Let pow close level up messages. Please have these items on ur account:
 **Melee**
 - [X] 1-15 Goblins
 - [X] 15-30 Cows
+- [X] 30-70s Sand crabs
 - [X] Switches gear along the way
 
 **mining:**
@@ -65,6 +75,7 @@ Let pow close level up messages. Please have these items on ur account:
 
 **Ranged**
 - [X] 1-30 Safespot cows
+- [X] 30-70s Sand crabs
 - [X] Switches gear along the way
 
 **smithing**

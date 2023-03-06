@@ -2,16 +2,13 @@ package herblore;
 
 import org.powbot.api.Condition;
 import org.powbot.api.rt4.Bank;
-import org.powbot.api.rt4.Constants;
 import org.powbot.api.rt4.Game;
 import org.powbot.api.rt4.Inventory;
 import org.powbot.api.rt4.Players;
-import org.powbot.api.rt4.Skills;
 import org.powbot.mobile.script.ScriptManager;
 
 import helpers.InteractionsHelper;
 import helpers.extentions.ItemList;
-import helpers.SkillData;
 import helpers.extentions.Task;
 import script.mMain;
 
@@ -26,17 +23,11 @@ public class AttackPotions extends Task {
     }
     @Override
     public boolean execute() {
-        if (Skills.realLevel(Constants.SKILLS_HERBLORE) < 3) {
-            mMain.state = "Druidic ritual not done";
-            SkillData.setSkillDone();
-            mMain.taskRunning.set(false);
-        }
-
-        if (Skills.realLevel(Constants.SKILLS_HERBLORE) >= 3 && Game.tab(Game.Tab.INVENTORY) && (Inventory.stream().id(ToolID).isEmpty() || Inventory.stream().id(CombineWithItemID).isEmpty())) {
+        if (Game.tab(Game.Tab.INVENTORY) && (Inventory.stream().id(ToolID).isEmpty() || Inventory.stream().id(CombineWithItemID).isEmpty())) {
             mMain.state = "Banking loop";
             bank();
         }
-        if (Skills.realLevel(Constants.SKILLS_HERBLORE) >= 3 && Game.tab(Game.Tab.INVENTORY) && !Bank.opened() && Inventory.stream().id(CombineWithItemID, ToolID).isNotEmpty()) {
+        if (Game.tab(Game.Tab.INVENTORY) && !Bank.opened() && Inventory.stream().id(CombineWithItemID, ToolID).isNotEmpty()) {
             mMain.state = "craft loop";
             craft();
         }
