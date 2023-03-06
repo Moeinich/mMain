@@ -14,7 +14,7 @@ public class doTempleOfTheEye extends Task {
     }
     @Override
     public boolean execute() {
-        mMain.state = "Museum quiz";
+        mMain.state = "Quest: " + QuestVarpbits.TEMPLE_OF_THE_EYE.getQuestName();
         QuestInitializer.templeOfTheEye.run();
         return false;
     }

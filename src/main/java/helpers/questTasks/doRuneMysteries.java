@@ -14,7 +14,7 @@ public class doRuneMysteries extends Task {
     }
     @Override
     public boolean execute() {
-        mMain.state = "Museum quiz";
+        mMain.state = "Quest: " + QuestVarpbits.RUNE_MYSTERIES.getQuestName();
         QuestInitializer.runeMysteries.run();
         return false;
     }

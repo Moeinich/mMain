@@ -14,7 +14,7 @@ public class DoMuseumQuiz extends Task {
     }
     @Override
     public boolean execute() {
-        mMain.state = "Museum quiz";
+        mMain.state = "Quest: " + QuestVarpbits.NATURAL_HISTORY.getQuestName();
         QuestInitializer.naturalHistory.run();
         return false;
     }

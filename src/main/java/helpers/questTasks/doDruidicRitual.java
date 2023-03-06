@@ -14,7 +14,7 @@ public class doDruidicRitual extends Task {
     }
     @Override
     public boolean execute() {
-        mMain.state = "Druidic Ritual";
+        mMain.state = "Quest: " + QuestVarpbits.DRUIDIC_RITUAL.getQuestName();
         QuestInitializer.druidicRitual.run();
         return false;
     }

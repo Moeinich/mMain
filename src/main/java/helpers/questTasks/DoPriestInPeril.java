@@ -19,7 +19,7 @@ public class DoPriestInPeril extends Task {
     }
     @Override
     public boolean execute() {
-        mMain.state = "Priest in Peril";
+        mMain.state = "Quest: " + QuestVarpbits.PRIEST_IN_PERIL.getQuestName();
         QuestInitializer.priestInPeril.run();
         return false;
     }

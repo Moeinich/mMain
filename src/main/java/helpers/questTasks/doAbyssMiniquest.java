@@ -14,7 +14,7 @@ public class doAbyssMiniquest extends Task {
     }
     @Override
     public boolean execute() {
-        mMain.state = "Museum quiz";
+        mMain.state = "Quest: " + QuestVarpbits.ENTER_THE_ABYSS.getQuestName();
         QuestInitializer.enterTheAbyss.run();
         return false;
     }
