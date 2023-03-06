@@ -9,18 +9,23 @@ import java.util.List;
 
 import helpers.SkillData;
 import helpers.extentions.Task;
-import hunter.MuseumQuiz;
+import helpers.questTasks.doAbyssMiniquest;
+import helpers.questTasks.doRuneMysteries;
+import helpers.questTasks.doTempleOfTheEye;
 import script.mMain;
 
 public class startRunecrafting {
     public void Runecrafting() {
         mMain.runningSkill = "runecrafting";
         List<Task> runecraftingTasks = Arrays.asList(
-                new MuseumQuiz()
+                new doRuneMysteries(),
+                new doAbyssMiniquest(),
+                new EarthRunes(),
+                new doTempleOfTheEye()
         );
 
         for (Task task : runecraftingTasks) {
-            if (Skills.realLevel(Constants.SKILLS_RUNECRAFTING) >= 9 || SkillData.skillsMap.get("runecrafting")) {
+            if (Skills.realLevel(Constants.SKILLS_RUNECRAFTING) >= 20 || SkillData.skillsMap.get("runecrafting")) {
                 mMain.state = "Runecrafting done!";
                 SkillData.setSkillDone();
                 mMain.taskRunning.set(false);

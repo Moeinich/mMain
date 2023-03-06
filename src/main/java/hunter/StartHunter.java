@@ -9,13 +9,14 @@ import java.util.List;
 
 import helpers.SkillData;
 import helpers.extentions.Task;
+import helpers.questTasks.DoMuseumQuiz;
 import script.mMain;
 
 public class StartHunter {
     public void Hunter() {
         mMain.runningSkill = "hunter";
         List<Task> huntingTasks = Arrays.asList(
-                new MuseumQuiz()
+                new DoMuseumQuiz()
         );
 
         for (Task task : huntingTasks) {

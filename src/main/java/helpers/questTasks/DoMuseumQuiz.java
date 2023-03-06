@@ -1,14 +1,13 @@
-package hunter;
+package helpers.questTasks;
 
 import org.powbot.api.rt4.Varpbits;
 
 import helpers.extentions.Task;
+import quests.QuestInitializer;
 import quests.common.QuestVarpbits;
-import quests.naturalHistory.NaturalHistory;
-import quests.common.models.QuestInformation;
 import script.mMain;
 
-public class MuseumQuiz extends Task {
+public class DoMuseumQuiz extends Task {
     @Override
     public boolean activate() {
         return Varpbits.varpbit(QuestVarpbits.NATURAL_HISTORY.getQuestVarbit()) != QuestVarpbits.NATURAL_HISTORY.getFinishedValue();
@@ -16,8 +15,7 @@ public class MuseumQuiz extends Task {
     @Override
     public boolean execute() {
         mMain.state = "Museum quiz";
-        NaturalHistory naturalHistory = new NaturalHistory(new QuestInformation(QuestVarpbits.NATURAL_HISTORY, new String[]{"Cake"}, null, null));
-        naturalHistory.run();
+        QuestInitializer.naturalHistory.run();
         return false;
     }
 }

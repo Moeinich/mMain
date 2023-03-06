@@ -5,14 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c7dd1c8c-f10c-49ed-8219-521bd6f55188" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Quests/QuestInitializer.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/helpers/questTasks/doAbyssMiniquest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/helpers/questTasks/doRuneMysteries.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/helpers/questTasks/doTempleOfTheEye.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/runecrafting/EarthRunes.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/agility/AgilityHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/agility/AgilityHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/agility/WalkToAgilityObstacles.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/agility/WalkToAgilityObstacles.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/helpers/PlayerHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/helpers/PlayerHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/meleeCombat/doPriestInPeril.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/meleeCombat/doPriestInPeril.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/quests/common/BankStep.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quests/common/BankStep.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/helpers/CombatHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/helpers/CombatHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hunter/MuseumQuiz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/helpers/questTasks/DoMuseumQuiz.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hunter/StartHunter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hunter/StartHunter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/meleeCombat/StartMelee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/meleeCombat/StartMelee.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/meleeCombat/doPriestInPeril.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/helpers/questTasks/DoPriestInPeril.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/quests/common/QuestVarpbits.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quests/common/QuestVarpbits.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/runecrafting/startRunecrafting.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/runecrafting/startRunecrafting.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/script/mMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/script/mMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/thieving/FruitStall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/thieving/FruitStall.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,6 +90,7 @@
       <recent name="MagicCombat" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/java/quests/common" />
       <recent name="$PROJECT_DIR$/src/main/java/Agility" />
     </key>
     <key name="MoveMembersDialog.RECENTS_KEY">

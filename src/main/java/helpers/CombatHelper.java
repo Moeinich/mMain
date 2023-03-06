@@ -18,6 +18,9 @@ import org.powbot.dax.api.DaxWalker;
 import java.util.Arrays;
 
 import helpers.extentions.ItemList;
+import quests.common.QuestVarpbits;
+import quests.common.models.QuestInformation;
+import quests.priestInPeril.PriestInPeril;
 import script.mMain;
 
 public class CombatHelper {

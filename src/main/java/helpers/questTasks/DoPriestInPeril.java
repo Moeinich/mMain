@@ -1,17 +1,15 @@
-package meleeCombat;
+package helpers.questTasks;
 
 import org.powbot.api.rt4.Skills;
 import org.powbot.api.rt4.Varpbits;
 import org.powbot.api.rt4.walking.model.Skill;
 
+import quests.QuestInitializer;
 import helpers.extentions.Task;
 import quests.common.QuestVarpbits;
-import quests.common.models.QuestInformation;
-import quests.priestInPeril.PriestInPeril;
 import script.mMain;
 
-public class doPriestInPeril extends Task {
-    PriestInPeril priestInPeril = new PriestInPeril(new QuestInformation(QuestVarpbits.PRIEST_IN_PERIL, new String[]{"Lobster"}, "Adamant scimitar", null));
+public class DoPriestInPeril extends Task {
     @Override
     public boolean activate() {
         return Skills.realLevel(Skill.Defence) >= 30
@@ -22,7 +20,7 @@ public class doPriestInPeril extends Task {
     @Override
     public boolean execute() {
         mMain.state = "Priest in Peril";
-        priestInPeril.run();
+        QuestInitializer.priestInPeril.run();
         return false;
     }
 }

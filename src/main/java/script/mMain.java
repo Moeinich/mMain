@@ -45,7 +45,7 @@ import helpers.SkillData;
                         defaultValue = "Melee",
                         allowedValues = {
                                 "Progressive", "Mining", "Fishing", "Woodcutting", "Cooking", "Firemaking", "Smithing", "Thieving",
-                                "Crafting", "Fletching", "Agility", "Herblore", "Hunter", "Ranged", "Magic", "Melee"
+                                "Crafting", "Fletching", "Agility", "Herblore", "Hunter", "Ranged", "Runecrafting", "Magic", "Melee"
                         },
                         optionType = OptionType.STRING
                  )
@@ -108,6 +108,7 @@ public class mMain extends AbstractScript {
                 .trackSkill(Skill.Hunter, TrackSkillOption.LevelProgressBar)
                 .trackSkill(Skill.Agility, TrackSkillOption.LevelProgressBar)
                 .trackSkill(Skill.Ranged, TrackSkillOption.LevelProgressBar)
+                .trackSkill(Skill.Runecrafting, TrackSkillOption.LevelProgressBar)
                 .trackSkill(Skill.Magic, TrackSkillOption.LevelProgressBar)
                 .trackSkill(Skill.Defence, TrackSkillOption.LevelProgressBar)
                 .trackSkill(Skill.Strength, TrackSkillOption.LevelProgressBar)
@@ -156,6 +157,7 @@ public class mMain extends AbstractScript {
         var startMelee = new meleeCombat.StartMelee();
         var startMining = new mining.StartMining();
         var startRanged = new rangedCombat.StartRanged();
+        var startRunecrafting = new runecrafting.startRunecrafting();
         var startSmithing = new smithing.StartSmithing();
         var startThieving = new thieving.StartThieving();
         var startWoodcutting = new woodcutting.StartWoodcutting();
@@ -281,6 +283,11 @@ public class mMain extends AbstractScript {
                 if (SkillData.skillsMap.get("range")) {
                     ScriptManager.INSTANCE.stop();
                 } else startRanged.Ranged();
+                break;
+            case "Runecrafting":
+                if (SkillData.skillsMap.get("runecrafting")) {
+                    ScriptManager.INSTANCE.stop();
+                } else startRunecrafting.Runecrafting();
                 break;
             case "Smithing":
                 if (SkillData.skillsMap.get("smithing")) {

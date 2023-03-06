@@ -7,6 +7,7 @@ import org.powbot.mobile.script.ScriptManager;
 import java.util.Arrays;
 import java.util.List;
 
+import helpers.questTasks.DoPriestInPeril;
 import helpers.tasks.BankBeforeTask;
 import helpers.tasks.EatFood;
 import helpers.tasks.GetFood;
@@ -19,7 +20,7 @@ public class StartMelee {
         mMain.runningSkill = "melee";
         List<Task> meleeTasks = Arrays.asList(
                 new BankBeforeTask(),
-                new doPriestInPeril(),
+                new DoPriestInPeril(),
                 new GetEquipment(),
                 new SetAttackStyle(),
                 new GetFood(),
