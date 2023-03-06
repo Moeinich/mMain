@@ -7,6 +7,7 @@ import org.powbot.api.Point
 import org.powbot.api.Tile
 import org.powbot.api.rt4.*
 import org.powbot.api.rt4.walking.WebWalkingResult
+import quests.common.helpers.CombatHelper
 import java.util.logging.Level
 
 /**
@@ -110,6 +111,10 @@ abstract class WalkToInteractiveStep<T : Interactive>(
             .setRunMin(20)
             .setRunMax(50)
             .setWalkUntil {
+                if (CombatHelper.shouldEat(*questInformation.foodName, *extraFood)) {
+                    CombatHelper.eatFood(*questInformation.foodName, *extraFood)
+                }
+
                 val interactive = getInteractive()
                 interactive.valid() &&
                         interactive.inViewport(true) &&

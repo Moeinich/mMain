@@ -1,6 +1,7 @@
 package runecrafting;
 
 import org.powbot.api.rt4.Constants;
+import org.powbot.api.rt4.Players;
 import org.powbot.api.rt4.Skills;
 import org.powbot.mobile.script.ScriptManager;
 
@@ -25,6 +26,10 @@ public class startRunecrafting {
         );
 
         for (Task task : runecraftingTasks) {
+            if (Players.local().getCombatLevel() < 20) {
+                mMain.state = "Skipping RC";
+                mMain.taskRunning.set(false);
+            }
             if (Skills.realLevel(Constants.SKILLS_RUNECRAFTING) >= 20 || SkillData.skillsMap.get("runecrafting")) {
                 mMain.state = "Runecrafting done!";
                 SkillData.setSkillDone();

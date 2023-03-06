@@ -6,11 +6,11 @@ import org.powbot.api.requirement.RunePowerRequirement
 import org.powbot.api.rt4.*
 import org.powbot.mobile.script.ScriptManager
 import quests.common.base.BaseQuestStep
+import quests.common.helpers.CombatHelper
 import quests.common.models.ItemRequirement
 import quests.common.models.ItemRequirementCondition
 import quests.common.models.QuestInformation
 import quests.common.models.SetupResult
-import quests.common.helpers.CombatHelper
 import quests.common.tasks.SetupTask
 import java.util.concurrent.Callable
 

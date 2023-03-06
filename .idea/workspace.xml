@@ -5,14 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c7dd1c8c-f10c-49ed-8219-521bd6f55188" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Quests/common/helpers/CombatHelper.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShoppingList" beforeDir="false" afterPath="$PROJECT_DIR$/ShoppingList" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/helpers/questTasks/DoMuseumQuiz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/helpers/questTasks/DoMuseumQuiz.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/helpers/questTasks/DoPriestInPeril.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/helpers/questTasks/DoPriestInPeril.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/helpers/questTasks/doAbyssMiniquest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/helpers/questTasks/doAbyssMiniquest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/helpers/questTasks/doDruidicRitual.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/helpers/questTasks/doDruidicRitual.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/helpers/CombatHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/helpers/CombatHelper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/helpers/questTasks/doRuneMysteries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/helpers/questTasks/doRuneMysteries.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/helpers/questTasks/doTempleOfTheEye.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/helpers/questTasks/doTempleOfTheEye.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/quests/common/BankStep.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quests/common/BankStep.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/quests/common/KillNpcStep.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quests/common/KillNpcStep.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/quests/common/base/WalkToInteractiveStep.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quests/common/base/WalkToInteractiveStep.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/quests/runeMysteries/RuneMysteries.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quests/runeMysteries/RuneMysteries.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/runecrafting/startRunecrafting.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/runecrafting/startRunecrafting.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/script/mMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/script/mMain.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,8 +46,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Kotlin Class" />
         <option value="Class" />
+        <option value="Kotlin Class" />
       </list>
     </option>
   </component>
