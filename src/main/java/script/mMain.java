@@ -58,7 +58,7 @@ import woodcutting.StartWoodcutting;
                 @ScriptConfiguration(
                         name =  "Mode",
                         description = "Which skill would you like to do?",
-                        defaultValue = "progressive",
+                        defaultValue = "melee",
                         allowedValues = {
                                 "progressive", "mining", "fishing", "woodcutting", "cooking", "firemaking", "smithing", "thieving",
                                 "crafting", "fletching", "agility", "herblore", "hunter", "ranged", "runecrafting", "magic", "melee"
@@ -207,25 +207,23 @@ public class mMain extends AbstractScript {
                         mMain.shouldBank = true;
                         System.out.println("shouldBank set true");
                     }
-                    //Shuffle tasks
-                    Start nextTask = tasks.get(Random.nextInt(0, tasks.size()));
-                    System.out.println("New task chosen: " + nextTask);
+
+                    Start nextTask = tasks.get(Random.nextInt(0, tasks.size())); //Randomize next task
+                    System.out.println("New task chosen: " + nextTask.getClass().getSimpleName());
 
                     if (!taskRunning.get()) {
-                        runtime.reset(Random.nextInt(MIN_TIME_LIMIT, MAX_TIME_LIMIT));
-                        System.out.println("Runtime reset to: " + runtime + "ms");
+                        runtime.reset(Random.nextInt(MIN_TIME_LIMIT, MAX_TIME_LIMIT)); //Randomize runtime value
+                        System.out.println("Runtime reset to: " + runtime.timeLeft() + "ms");
 
-                        taskRunning.set(true);
+                        taskRunning.set(true); //Set taskRunning to true after we've randomized task+runtime
                         System.out.println("Taskrunning set true");
                     }
-
+                    //Enter loop of running the task!
                     while (!ScriptManager.INSTANCE.isStopping() && !runtime.hasFinished() && taskRunning.get()) {
-                        mMain.state = "Starting " + nextTask;
                         nextTask.start();
                     }
-
                     tasks.removeIf(task -> SkillData.skillsMap.get(mMain.runningSkill)); //Remove task if its marked done!
-                    taskRunning.set(false);
+                    taskRunning.set(false); //Finally, set taskRunning to false, so we're ready for the next iteration.
                 });
             }
         } else {

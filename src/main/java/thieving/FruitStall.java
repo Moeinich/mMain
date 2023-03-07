@@ -123,6 +123,7 @@ public class FruitStall extends Task {
             SkillData.KOUREND_FAVOR.hosidiusFavorValue = SkillData.KOUREND_FAVOR.HOSIDIUS.getValue();
         }
         if (SkillData.KOUREND_FAVOR.hosidiusFavorValue <= 19) {
+            System.out.println("We dont have enough hosidius favor");
             mMain.state = "Thieving done!";
             SkillData.setSkillDone();
             mMain.taskRunning.set(false);

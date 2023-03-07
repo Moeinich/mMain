@@ -9,7 +9,7 @@ import script.mMain;
 public class GetEquipment extends Task {
     @Override
     public boolean activate() {
-        return Players.local().isRendered() && CombatHelper.needEquipment(MeleeData.meleeEquipment());
+        return Players.local().inViewport() && CombatHelper.needEquipment(MeleeData.meleeEquipment());
     }
 
     @Override

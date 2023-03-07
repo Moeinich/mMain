@@ -15,7 +15,7 @@ import script.mMain;
 public class GetMagicEquipment extends Task {
     @Override
     public boolean activate() {
-        return Players.local().isRendered() && CombatHelper.needEquipment(MagicData.magicEquipment()) || !PlayerHelper.hasItem(MagicData.Runes);
+        return Players.local().inViewport() && CombatHelper.needEquipment(MagicData.magicEquipment()) || !PlayerHelper.hasItem(MagicData.Runes);
     }
 
     @Override

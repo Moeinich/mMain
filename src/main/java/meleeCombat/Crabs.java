@@ -3,8 +3,8 @@ package meleeCombat;
 import org.powbot.api.rt4.Constants;
 import org.powbot.api.rt4.Skills;
 
-import helpers.CombatHelper;
 import helpers.extentions.Task;
+import helpers.tasks.killCrabs;
 
 public class Crabs extends Task {
     @Override
@@ -16,7 +16,7 @@ public class Crabs extends Task {
 
     @Override
     public boolean execute() {
-        CombatHelper.doCrabs();
+        killCrabs.doCrabs();
         return false;
     }
 }
