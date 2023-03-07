@@ -4,6 +4,7 @@ import org.powbot.api.Area;
 import org.powbot.api.Tile;
 import org.powbot.api.rt4.Inventory;
 import org.powbot.api.rt4.Movement;
+import org.powbot.api.rt4.Players;
 import org.powbot.api.rt4.Skills;
 import org.powbot.api.rt4.walking.model.Skill;
 
@@ -28,7 +29,9 @@ public class EarthRunes extends Task {
             Movement.moveTo(varrockEastBank.getRandomTile());
         }
         if (Inventory.stream().name("Pure essence").isNotEmpty()) {
-
+            if (!outsideAltar.contains(Players.local())) {
+                Movement.moveTo(outsideAltar.getRandomTile());
+            }
         }
         return false;
     }

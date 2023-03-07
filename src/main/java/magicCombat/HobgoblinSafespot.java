@@ -43,7 +43,7 @@ public class HobgoblinSafespot extends Task {
             mMain.state = "Attack";
             if (hobgoblin.inViewport() && hobgoblin.interact("Attack")) {
                 mMain.state = "Waiting for kill";
-                Condition.wait(() -> hobgoblin.healthPercent() == 0, 700, 100);
+                Condition.wait(() -> hobgoblin.healthPercent() == 0 || !MagicData.HobgoblinSafeSpotArea.contains(Players.local()), 700, 100);
             }
         }
     }

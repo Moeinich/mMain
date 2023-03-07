@@ -5,10 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c7dd1c8c-f10c-49ed-8219-521bd6f55188" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/magicCombat/HobgoblinSafespot.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/magicCombat/CowSafespot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/magicCombat/CowSafespot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/magicCombat/MagicData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/magicCombat/MagicData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/magicCombat/HobgoblinSafespot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/magicCombat/HobgoblinSafespot.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/runecrafting/EarthRunes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/runecrafting/EarthRunes.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
