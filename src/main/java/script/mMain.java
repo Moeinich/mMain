@@ -58,7 +58,7 @@ import woodcutting.StartWoodcutting;
                 @ScriptConfiguration(
                         name =  "Mode",
                         description = "Which skill would you like to do?",
-                        defaultValue = "Melee",
+                        defaultValue = "progressive",
                         allowedValues = {
                                 "progressive", "mining", "fishing", "woodcutting", "cooking", "firemaking", "smithing", "thieving",
                                 "crafting", "fletching", "agility", "herblore", "hunter", "ranged", "runecrafting", "magic", "melee"
@@ -117,7 +117,7 @@ public class mMain extends AbstractScript {
     @Override
     public void onStart() {
         String skill = getOption("Mode");
-        runningSkill = "Determining...";
+        runningSkill = "Determining..";
         state = "Starting...";
         InteractionsHelper.cameraCheck();
         Notifications.showNotification("mMain starting " + skill);
@@ -133,7 +133,7 @@ public class mMain extends AbstractScript {
                 .addString("Mode: ", () -> skill)
                 .addString("State: ", () -> state);
 
-        if (skill.equals("Progressive")) {
+        if (skill.equals("progressive")) {
             builder.addString("Running: ", () -> runningSkill)
             .addString("Skill switch: ", () -> formattedTime[0]);
         }
@@ -150,7 +150,7 @@ public class mMain extends AbstractScript {
                 .trackSkill(Skill.Hunter, TrackSkillOption.LevelProgressBar)
                 .trackSkill(Skill.Agility, TrackSkillOption.LevelProgressBar)
                 .trackSkill(Skill.Ranged, TrackSkillOption.LevelProgressBar)
-                .trackSkill(Skill.Runecrafting, TrackSkillOption.LevelProgressBar)
+                //.trackSkill(Skill.Runecrafting, TrackSkillOption.LevelProgressBar)
                 .trackSkill(Skill.Magic, TrackSkillOption.LevelProgressBar)
                 .trackSkill(Skill.Defence, TrackSkillOption.LevelProgressBar)
                 .trackSkill(Skill.Strength, TrackSkillOption.LevelProgressBar)
@@ -196,33 +196,31 @@ public class mMain extends AbstractScript {
         }
         String skill = getOption("Mode");
 
-        if ("Progressive".equals(skill)) {
+        if (skill.equals("progressive")) {
             List<Start> tasks = new ArrayList<>(skillStarters.values());
-            tasks.removeIf(task -> SkillData.skillsMap.get(mMain.runningSkill));
             if (tasks.isEmpty()) {
                 ScriptManager.INSTANCE.stop();
-            } else {
+            } else if (!taskRunning.get()){
                 mMain.state = "Resetting task";
                 if (!mMain.shouldBank) {
                     mMain.shouldBank = true;
                     System.out.println("shouldBank set true");
                 }
+                    Start nextTask = tasks.get(Random.nextInt(0, tasks.size()));
+                    mMain.state = "Starting " + nextTask;
 
-                Start nextTask = tasks.get(Random.nextInt(0, tasks.size()));
-                mMain.state = "Starting " + nextTask;
+                    runtime.reset(Random.nextInt(MIN_TIME_LIMIT, MAX_TIME_LIMIT));
+                    System.out.println("Runtime reset to: " + runtime + "ms");
 
-                runtime.reset(Random.nextInt(MIN_TIME_LIMIT, MAX_TIME_LIMIT));
-                System.out.println("Runtime reset to: " + runtime + "ms");
-
-                taskRunning.set(true);
-                System.out.println("Taskrunning set true");
-
+                    taskRunning.set(true);
+                    System.out.println("Taskrunning set true");
                 taskHandler.execute(() -> {
                     try {
                         while (!ScriptManager.INSTANCE.isStopping() && !runtime.hasFinished() && taskRunning.get()) {
                             nextTask.start();
                         }
                     } finally {
+                        tasks.removeIf(task -> SkillData.skillsMap.get(mMain.runningSkill));
                         taskRunning.set(false);
                     }
                 });
