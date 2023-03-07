@@ -1,6 +1,7 @@
 package quests.common
 
 import helpers.extentions.count
+import helpers.extentions.itemEquipped
 import org.powbot.api.Notifications
 import org.powbot.api.Tile
 import org.powbot.api.requirement.RunePowerRequirement
@@ -44,7 +45,7 @@ class BankStep(
         if (combat && questInformation.spell != null) {
             addMagicReq(updatedConditions, calculatedItemsToKeep)
         }
-        if (combat && questInformation.weaponName != null && Equipment.stream().name(questInformation.weaponName).isNotEmpty()) {
+        if (combat && questInformation.weaponName != null && !Equipment.itemEquipped(questInformation.weaponName)) {
             logger.info("Weapon is required ${questInformation.weaponName}")
             calculatedItemsToKeep.add(questInformation.weaponName)
             val requirement = ItemRequirement(questInformation.weaponName, false, 1)

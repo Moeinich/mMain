@@ -183,11 +183,13 @@ public class CombatHelper {
                         CombatHelper.lastInteractionTime = System.currentTimeMillis();
                         CombatHelper.interactionTimeRandomizer = CombatHelper.lastInteractionTime + Random.nextInt(90000, 180000);
                         shouldReset = false;
+                        System.out.println("shouldReset set to false");
                     }
                 }
             }
         }  else if (!shouldReset) {
             if (PlayerHelper.withinArea(CombatHelper.crabArea)) {
+                System.out.println("Step to crab location tile");
                 Movement.step(CombatHelper.crabLocation);
             } else {
                 mMain.state = "Walk to crabs";

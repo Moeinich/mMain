@@ -175,10 +175,6 @@ public class mMain extends AbstractScript {
 
         switch (skill) {
             case "Progressive":
-                if (SkillData.allSkillsDone()) {
-                    ScriptManager.INSTANCE.stop();
-                }
-
                 final CountDownLatch taskLatch = new CountDownLatch(1);
                 if (taskRunning.compareAndSet(false, true) || runtime.timeLeft() <= 0) {
                     if (runtime.timeLeft() <= 0 || !taskRunning.get()) {
@@ -209,11 +205,11 @@ public class mMain extends AbstractScript {
                             startWoodcutting::Woodcutting
                             //Add future skills to this tasklist!
                     );
-                    final int taskIndex = ThreadLocalRandom.current().nextInt(0, tasks.size());
-                    System.out.println("Task changed: " + taskIndex);
                     taskHandler.execute(() -> {
                         try {
                             while(!ScriptManager.INSTANCE.isStopping() && !runtime.hasFinished() && taskRunning.get()) {
+                                int taskIndex = ThreadLocalRandom.current().nextInt(0, tasks.size()); // Randomly select a task
+                                System.out.println("Task changed: " + taskIndex);
                                 taskLatch.await(); // Wait for task to complete
                                 tasks.get(taskIndex).run();
                             }

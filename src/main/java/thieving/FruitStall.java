@@ -112,7 +112,7 @@ public class FruitStall extends Task {
             PlayerHelper.walkToTile(ThievingData.movementThieving());
             Condition.wait(() -> ThievingData.movementThieving().tile().distanceTo(Players.local()) < 3, 150, 20);
             if (ThievingData.movementThieving().tile().distanceTo(Players.local()) <= 2) {
-                Movement.step(ThievingData.movementThieving());
+                Movement.step(ThievingData.movementThieving(), 0);
             }
         }
     }
