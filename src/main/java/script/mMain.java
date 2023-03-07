@@ -26,6 +26,7 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import fletching.StartFletching;
 import helpers.InteractionsHelper;
@@ -200,18 +201,22 @@ public class mMain extends AbstractScript {
                             startMelee::Melee,
                             startMining::Mining,
                             startRanged::Ranged,
+                            //startRunecrafting::Runecrafting,
                             startSmithing::Smithing,
                             startThieving::Thieving,
                             startWoodcutting::Woodcutting
                             //Add future skills to this tasklist!
                     );
+                    AtomicInteger taskIndex = new AtomicInteger(ThreadLocalRandom.current().nextInt(0, tasks.size()));
+                    System.out.println("Task changed: " + taskIndex);
                     taskHandler.execute(() -> {
                         try {
                             while(!ScriptManager.INSTANCE.isStopping() && !runtime.hasFinished() && taskRunning.get()) {
-                                int taskIndex = ThreadLocalRandom.current().nextInt(0, tasks.size()); // Randomly select a task
-                                System.out.println("Task changed: " + taskIndex);
+                                int currentIndex = taskIndex.get();
                                 taskLatch.await(); // Wait for task to complete
-                                tasks.get(taskIndex).run();
+                                tasks.get(currentIndex).run();
+                                taskIndex.set(ThreadLocalRandom.current().nextInt(0, tasks.size())); // Update the taskIndex to a new random value
+                                System.out.println("Task changed: " + taskIndex.get());
                             }
                         } catch (InterruptedException e) {
                             e.printStackTrace();
