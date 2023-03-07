@@ -176,6 +176,28 @@ public class mMain extends AbstractScript {
 
         switch (skill) {
             case "Progressive":
+                List<Runnable> tasks = Arrays.asList(
+                        startAgility::Agility,
+                        startCooking::Cooking,
+                        startCrafting::Crafting,
+                        startFiremaking::Firemaking,
+                        startFishing::Fishing,
+                        startFletching::Fletching,
+                        startHerblore::Herblore,
+                        startHunter::Hunter,
+                        startMagic::Magic,
+                        startMelee::Melee,
+                        startMining::Mining,
+                        startRanged::Ranged,
+                        //startRunecrafting::Runecrafting,
+                        startSmithing::Smithing,
+                        startThieving::Thieving,
+                        startWoodcutting::Woodcutting
+                        //Add future skills to this tasklist!
+                );
+                AtomicInteger taskIndex = new AtomicInteger(ThreadLocalRandom.current().nextInt(0, tasks.size()));
+                System.out.println("Task changed: " + taskIndex.get());
+
                 final CountDownLatch taskLatch = new CountDownLatch(1);
                 if (taskRunning.compareAndSet(false, true) || runtime.timeLeft() <= 0) {
                     if (runtime.timeLeft() <= 0 || !taskRunning.get()) {
@@ -183,32 +205,13 @@ public class mMain extends AbstractScript {
                             mMain.shouldBank = true;
                             System.out.println("shouldBank set true");
                         } else {
+                            taskIndex.set(ThreadLocalRandom.current().nextInt(0, tasks.size()));
+                            System.out.println("Task changed: " + taskIndex.get());
                             runtime.reset(Random.nextInt(MIN_TIME_LIMIT, MAX_TIME_LIMIT));
                             System.out.println("Runtime reset");
                         }
                     }
 
-                    List<Runnable> tasks = Arrays.asList(
-                            startAgility::Agility,
-                            startCooking::Cooking,
-                            startCrafting::Crafting,
-                            startFiremaking::Firemaking,
-                            startFishing::Fishing,
-                            startFletching::Fletching,
-                            startHerblore::Herblore,
-                            startHunter::Hunter,
-                            startMagic::Magic,
-                            startMelee::Melee,
-                            startMining::Mining,
-                            startRanged::Ranged,
-                            //startRunecrafting::Runecrafting,
-                            startSmithing::Smithing,
-                            startThieving::Thieving,
-                            startWoodcutting::Woodcutting
-                            //Add future skills to this tasklist!
-                    );
-                    AtomicInteger taskIndex = new AtomicInteger(ThreadLocalRandom.current().nextInt(0, tasks.size()));
-                    System.out.println("Task changed: " + taskIndex);
                     taskHandler.execute(() -> {
                         try {
                             while(!ScriptManager.INSTANCE.isStopping() && !runtime.hasFinished() && taskRunning.get()) {
@@ -219,8 +222,6 @@ public class mMain extends AbstractScript {
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         } finally {
-                            taskIndex.set(ThreadLocalRandom.current().nextInt(0, tasks.size())); // Update the taskIndex to a new random value
-                            System.out.println("Task changed: " + taskIndex.get());
                             taskRunning.set(false);
                         }
                     });
