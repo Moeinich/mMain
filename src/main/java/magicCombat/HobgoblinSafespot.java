@@ -5,17 +5,19 @@ import org.powbot.api.rt4.Constants;
 import org.powbot.api.rt4.Npc;
 import org.powbot.api.rt4.Players;
 import org.powbot.api.rt4.Skills;
+import org.powbot.api.rt4.walking.model.Skill;
 
 import helpers.CombatHelper;
 import helpers.PlayerHelper;
 import helpers.SkillData;
+import helpers.extentions.Conditions;
 import helpers.extentions.Task;
 import script.mMain;
 
-public class CowSafespot extends Task {
+public class HobgoblinSafespot extends Task {
     @Override
     public boolean activate() {
-        return Skills.realLevel(Constants.SKILLS_MAGIC) <= 12;
+        return Skills.realLevel(Constants.SKILLS_MAGIC) >= 13 && Skills.realLevel(Constants.SKILLS_MAGIC) <= 54;
     }
     @Override
     public boolean execute() {
@@ -23,11 +25,11 @@ public class CowSafespot extends Task {
                 && !CombatHelper.needEquipment(MagicData.magicEquipment())
                 && MagicHelpers.getAutoCastSpell().getSpell() == MagicData.MagicSpell())
         {
-            if (!PlayerHelper.withinArea(SkillData.CowSafeSpotArea)) {
+            if (!PlayerHelper.withinArea(MagicData.HobgoblinSafeSpotArea)) {
                 mMain.state = "Go safespot";
-                PlayerHelper.walkToTile(SkillData.CowSafeSpotArea.getRandomTile());
+                PlayerHelper.walkToTile(MagicData.HobgoblinSafeSpotArea.getRandomTile());
             }
-            if (PlayerHelper.withinArea(SkillData.CowSafeSpotArea)) {
+            if (PlayerHelper.withinArea(MagicData.HobgoblinSafeSpotArea)) {
                 ShouldFight();
             }
         }
@@ -36,12 +38,12 @@ public class CowSafespot extends Task {
     }
 
     private void ShouldFight() {
-        if (PlayerHelper.withinArea(SkillData.CowSafeSpotArea) && !Players.local().healthBarVisible()) {
-            Npc cow = PlayerHelper.nearestCombatNpc(SkillData.CowArea, "Cow", "Cow calf");
+        if (PlayerHelper.withinArea(MagicData.HobgoblinSafeSpotArea) && !Players.local().healthBarVisible()) {
+            Npc hobgoblin = PlayerHelper.nearestCombatNpc(MagicData.HobgoblinArea, "Hobgoblin");
             mMain.state = "Attack";
-            if (cow.inViewport() && cow.interact("Attack")) {
+            if (hobgoblin.inViewport() && hobgoblin.interact("Attack")) {
                 mMain.state = "Waiting for kill";
-                Condition.wait(() -> cow.healthPercent() == 0,900,100);
+                Condition.wait(() -> hobgoblin.healthPercent() == 0, 700, 100);
             }
         }
     }

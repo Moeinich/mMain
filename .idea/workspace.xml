@@ -5,16 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c7dd1c8c-f10c-49ed-8219-521bd6f55188" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/helpers/extentions/Equipment.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/magicCombat/HobgoblinSafespot.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/agility/AgilityHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/agility/AgilityHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/helpers/CombatHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/helpers/CombatHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/helpers/SkillData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/helpers/SkillData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/meleeCombat/StartMelee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/meleeCombat/StartMelee.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/quests/common/BankStep.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/quests/common/BankStep.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/magicCombat/CowSafespot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/magicCombat/CowSafespot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/magicCombat/MagicData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/magicCombat/MagicData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/runecrafting/EarthRunes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/runecrafting/EarthRunes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/script/mMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/script/mMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/thieving/FruitStall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/thieving/FruitStall.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,6 +81,7 @@
       <recent name="MagicCombat" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/java/magicCombat" />
       <recent name="$PROJECT_DIR$/src/main/java/quests/common" />
       <recent name="$PROJECT_DIR$/src/main/java/Agility" />
     </key>

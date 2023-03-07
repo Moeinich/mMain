@@ -1,5 +1,7 @@
 package magicCombat;
 
+import org.powbot.api.Area;
+import org.powbot.api.Tile;
 import org.powbot.api.rt4.Constants;
 import org.powbot.api.rt4.Magic;
 import org.powbot.api.rt4.Skills;
@@ -7,6 +9,14 @@ import org.powbot.api.rt4.Skills;
 import helpers.extentions.ItemList;
 
 public class MagicData {
+    public static final Area HobgoblinSafeSpotArea = new Area(
+            new Tile(2914, 3292, 0),
+            new Tile(2912, 3297, 0),
+            new Tile(2914, 3297, 0),
+            new Tile(2915, 3293, 0)
+    );
+
+    public static final Area HobgoblinArea = new Area(new Tile(2901, 3300, 0), new Tile(2911, 3287, 0));
 
     //Mage setups!
     public static int[] LowMage = {ItemList.ZAMORAK_ROBE_1035, ItemList.ZAMORAK_ROBE_1033, ItemList.BLUE_WIZARD_HAT_579, ItemList.STAFF_OF_AIR_1381, ItemList.AMULET_OF_GLORY_1704, ItemList.COMBAT_BRACELET_11126, ItemList.RED_CAPE_1007};
