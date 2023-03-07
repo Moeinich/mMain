@@ -5,12 +5,9 @@ import org.powbot.api.rt4.Constants;
 import org.powbot.api.rt4.Npc;
 import org.powbot.api.rt4.Players;
 import org.powbot.api.rt4.Skills;
-import org.powbot.api.rt4.walking.model.Skill;
 
 import helpers.CombatHelper;
 import helpers.PlayerHelper;
-import helpers.SkillData;
-import helpers.extentions.Conditions;
 import helpers.extentions.Task;
 import script.mMain;
 

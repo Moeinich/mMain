@@ -19,7 +19,8 @@ public class StartMagic {
                 new BankBeforeTask(),
                 new GetMagicEquipment(),
                 new SetAutoCastSpell(),
-                new CowSafespot()
+                new CowSafespot(),
+                new HobgoblinSafespot()
         );
 
         for (Task task : magicTasks) {
