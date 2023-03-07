@@ -12,8 +12,8 @@ import helpers.extentions.Task;
 import helpers.questTasks.DoMuseumQuiz;
 import script.mMain;
 
-public class StartHunter {
-    public void Hunter() {
+public class StartHunter implements mMain.Start{
+    public void start() {
         mMain.runningSkill = "hunter";
         List<Task> huntingTasks = Arrays.asList(
                 new DoMuseumQuiz()

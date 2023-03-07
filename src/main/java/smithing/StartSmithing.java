@@ -11,8 +11,8 @@ import org.powbot.mobile.script.ScriptManager;
 import java.util.Arrays;
 import java.util.List;
 
-public class StartSmithing {
-    public void Smithing() {
+public class StartSmithing implements mMain.Start{
+    public void start() {
         mMain.runningSkill = "smithing";
         List<Task> smithingTasks = Arrays.asList(
                 new GoSmithing(),

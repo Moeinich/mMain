@@ -13,8 +13,8 @@ import helpers.SkillData;
 import helpers.extentions.Task;
 import script.mMain;
 
-public class StartHerblore {
-    public void Herblore() {
+public class StartHerblore implements mMain.Start{
+    public void start() {
         mMain.runningSkill = "herblore";
         List<Task> herbloreTasks = Arrays.asList(
                 new GoToBank(),

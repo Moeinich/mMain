@@ -11,8 +11,8 @@ import helpers.SkillData;
 import helpers.extentions.Task;
 import script.mMain;
 
-public class StartFiremaking {
-    public void Firemaking() {
+public class StartFiremaking implements mMain.Start{
+    public void start() {
         mMain.runningSkill = "firemaking";
         List<Task> firemakingTasks = Arrays.asList(
                 new GetLogs(),

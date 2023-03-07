@@ -15,8 +15,8 @@ import helpers.SkillData;
 import helpers.extentions.Task;
 import script.mMain;
 
-public class StartMelee {
-    public void Melee() {
+public class StartMelee implements mMain.Start{
+    public void start() {
         mMain.runningSkill = "melee";
         List<Task> meleeTasks = Arrays.asList(
                 new BankBeforeTask(),

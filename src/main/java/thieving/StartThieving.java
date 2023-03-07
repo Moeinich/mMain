@@ -12,8 +12,8 @@ import helpers.extentions.Task;
 import helpers.tasks.BankBeforeTask;
 import script.mMain;
 
-public class StartThieving {
-    public void Thieving() {
+public class StartThieving implements mMain.Start{
+    public void start() {
         mMain.runningSkill = "thieving";
         List<Task> thievingTasks = Arrays.asList(
                 new BankBeforeTask(),

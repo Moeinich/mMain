@@ -6,7 +6,23 @@
   <component name="ChangeListManager">
     <list default="true" id="c7dd1c8c-f10c-49ed-8219-521bd6f55188" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/agility/StartAgility.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/agility/StartAgility.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cooking/StartCooking.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cooking/StartCooking.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/crafting/StartCrafting.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/crafting/StartCrafting.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/firemaking/StartFiremaking.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/firemaking/StartFiremaking.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fishing/StartFishing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fishing/StartFishing.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fletching/StartFletching.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fletching/StartFletching.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/herblore/StartHerblore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/herblore/StartHerblore.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hunter/StartHunter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hunter/StartHunter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/magicCombat/StartMagic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/magicCombat/StartMagic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/meleeCombat/StartMelee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/meleeCombat/StartMelee.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mining/StartMining.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mining/StartMining.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/rangedCombat/StartRanged.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rangedCombat/StartRanged.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/runecrafting/startRunecrafting.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/runecrafting/startRunecrafting.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/script/mMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/script/mMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/smithing/StartSmithing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/smithing/StartSmithing.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/thieving/StartThieving.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/thieving/StartThieving.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/woodcutting/StartWoodcutting.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/woodcutting/StartWoodcutting.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

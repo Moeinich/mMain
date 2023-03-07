@@ -12,8 +12,8 @@ import helpers.SkillData;
 import helpers.extentions.Task;
 import script.mMain;
 
-public class StartFletching {
-    public void Fletching() {
+public class StartFletching implements mMain.Start{
+    public void start() {
         mMain.runningSkill = "fletching";
         List<Task> fletchingTasks = Arrays.asList(
                 new GoToBank(),

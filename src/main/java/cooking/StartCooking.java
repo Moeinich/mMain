@@ -11,8 +11,8 @@ import org.powbot.mobile.script.ScriptManager;
 import java.util.Arrays;
 import java.util.List;
 
-public class StartCooking {
-    public void Cooking() {
+public class StartCooking implements mMain.Start {
+    public void start() {
         mMain.runningSkill = "cooking";
         List<Task> cookingTasks = Arrays.asList(
                 new Sardines(),

@@ -17,19 +17,35 @@ import org.powbot.mobile.service.ScriptUploader;
 import java.time.Duration;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 
+import agility.StartAgility;
+import cooking.StartCooking;
+import crafting.StartCrafting;
+import firemaking.StartFiremaking;
+import fishing.StartFishing;
 import fletching.StartFletching;
 import helpers.InteractionsHelper;
 import helpers.SkillData;
+import herblore.StartHerblore;
+import hunter.StartHunter;
+import magicCombat.StartMagic;
+import meleeCombat.StartMelee;
+import mining.StartMining;
+import rangedCombat.StartRanged;
+import runecrafting.startRunecrafting;
+import smithing.StartSmithing;
+import thieving.StartThieving;
+import woodcutting.StartWoodcutting;
 
 @ScriptManifest(
         name = "mMain",
@@ -44,8 +60,8 @@ import helpers.SkillData;
                         description = "Which skill would you like to do?",
                         defaultValue = "Melee",
                         allowedValues = {
-                                "Progressive", "Mining", "Fishing", "Woodcutting", "Cooking", "Firemaking", "Smithing", "Thieving",
-                                "Crafting", "Fletching", "Agility", "Herblore", "Hunter", "Ranged", "Runecrafting", "Magic", "Melee"
+                                "progressive", "mining", "fishing", "woodcutting", "cooking", "firemaking", "smithing", "thieving",
+                                "crafting", "fletching", "agility", "herblore", "hunter", "ranged", "runecrafting", "magic", "melee"
                         },
                         optionType = OptionType.STRING
                  )
@@ -76,6 +92,26 @@ public class mMain extends AbstractScript {
     Executor taskHandler = Executors.newSingleThreadExecutor();
     public static final AtomicBoolean taskRunning = new AtomicBoolean(false);
     private final Stopwatch runtime = new Stopwatch();
+
+    private static final Map<String, Start> skillStarters = new HashMap<>();
+    static {
+        skillStarters.put("agility", new StartAgility());
+        skillStarters.put("cooking", new StartCooking());
+        skillStarters.put("crafting", new StartCrafting());
+        skillStarters.put("firemaking", new StartFiremaking());
+        skillStarters.put("fishing", new StartFishing());
+        skillStarters.put("fletching", new StartFletching());
+        skillStarters.put("herblore", new StartHerblore());
+        skillStarters.put("hunter", new StartHunter());
+        skillStarters.put("magic", new StartMagic());
+        skillStarters.put("melee", new StartMelee());
+        skillStarters.put("mining", new StartMining());
+        skillStarters.put("ranged", new StartRanged());
+        skillStarters.put("runecrafting", new startRunecrafting());
+        skillStarters.put("smithing", new StartSmithing());
+        skillStarters.put("thieving", new StartThieving());
+        skillStarters.put("woodcutting", new StartWoodcutting());
+    }
 
 
     @Override
@@ -149,31 +185,58 @@ public class mMain extends AbstractScript {
         }
     }
 
+    public interface Start {
+        void start();
+    }
+
     @Override
     public void poll() {
-        var startAgility = new agility.StartAgility();
-        var startCooking = new cooking.StartCooking();
-        var startCrafting = new crafting.StartCrafting();
-        var startFiremaking = new firemaking.StartFiremaking();
-        var startFishing = new fishing.StartFishing();
-        var startFletching = new StartFletching();
-        var startHerblore = new herblore.StartHerblore();
-        var startHunter = new hunter.StartHunter();
-        var startMagic = new magicCombat.StartMagic();
-        var startMelee = new meleeCombat.StartMelee();
-        var startMining = new mining.StartMining();
-        var startRanged = new rangedCombat.StartRanged();
-        var startRunecrafting = new runecrafting.startRunecrafting();
-        var startSmithing = new smithing.StartSmithing();
-        var startThieving = new thieving.StartThieving();
-        var startWoodcutting = new woodcutting.StartWoodcutting();
-
         if (SkillData.allSkillsDone()) {
             ScriptManager.INSTANCE.stop();
         }
         String skill = getOption("Mode");
 
-        switch (skill) {
+        if ("Progressive".equals(skill)) {
+            List<Start> tasks = new ArrayList<>(skillStarters.values());
+            tasks.removeIf(task -> SkillData.skillsMap.get(mMain.runningSkill));
+            if (tasks.isEmpty()) {
+                ScriptManager.INSTANCE.stop();
+            } else {
+                mMain.state = "Resetting task";
+                if (!mMain.shouldBank) {
+                    mMain.shouldBank = true;
+                    System.out.println("shouldBank set true");
+                }
+
+                Start nextTask = tasks.get(Random.nextInt(0, tasks.size()));
+                mMain.state = "Starting " + nextTask;
+
+                runtime.reset(Random.nextInt(MIN_TIME_LIMIT, MAX_TIME_LIMIT));
+                System.out.println("Runtime reset to: " + runtime + "ms");
+
+                taskRunning.set(true);
+                System.out.println("Taskrunning set true");
+
+                taskHandler.execute(() -> {
+                    try {
+                        while (!ScriptManager.INSTANCE.isStopping() && !runtime.hasFinished() && taskRunning.get()) {
+                            nextTask.start();
+                        }
+                    } finally {
+                        taskRunning.set(false);
+                    }
+                });
+            }
+        } else {
+            Start start = skillStarters.get(skill);
+            if (SkillData.skillsMap.get(skill)) {
+                ScriptManager.INSTANCE.stop();
+            } else {
+                start.start();
+            }
+        }
+
+        /*switch (skill) {
             case "Progressive":
                 List<Runnable> tasks = Arrays.asList(
                         startAgility::Agility,
@@ -222,8 +285,6 @@ public class mMain extends AbstractScript {
                 break;
 
                 //Starting individual progressive skills
-                //in case you want to do x skill only.
-
             case "Agility":
                 if (SkillData.skillsMap.get("agility")) {
                     ScriptManager.INSTANCE.stop();
@@ -304,6 +365,6 @@ public class mMain extends AbstractScript {
                     ScriptManager.INSTANCE.stop();
                 } else startWoodcutting.Woodcutting();
                 break;
-        }
+        }*/
     }
 }

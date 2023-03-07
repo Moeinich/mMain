@@ -11,8 +11,8 @@ import helpers.extentions.Task;
 import helpers.SkillData;
 import script.mMain;
 
-public class StartWoodcutting {
-    public void Woodcutting() {
+public class StartWoodcutting implements mMain.Start{
+    public void start() {
         mMain.runningSkill = "woodcutting";
         List<Task> woodcuttingTasks = Arrays.asList(
                 new GetAxe(),

@@ -12,8 +12,8 @@ import helpers.SkillData;
 import helpers.extentions.Task;
 import script.mMain;
 
-public class StartRanged {
-    public void Ranged() {
+public class StartRanged implements mMain.Start{
+    public void start() {
         mMain.runningSkill = "ranged";
         List<Task> rangeTasks = Arrays.asList(
                 new BankBeforeTask(),

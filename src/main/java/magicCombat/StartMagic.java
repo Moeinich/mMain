@@ -12,8 +12,8 @@ import helpers.SkillData;
 import helpers.extentions.Task;
 import script.mMain;
 
-public class StartMagic {
-    public void Magic() {
+public class StartMagic implements mMain.Start{
+    public void start() {
         mMain.runningSkill = "magic";
         List<Task> magicTasks = Arrays.asList(
                 new BankBeforeTask(),

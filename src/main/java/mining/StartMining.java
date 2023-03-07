@@ -12,8 +12,8 @@ import helpers.SkillData;
 import helpers.extentions.Task;
 import script.mMain;
 
-public class StartMining {
-    public void Mining() {
+public class StartMining implements mMain.Start{
+    public void start() {
         mMain.runningSkill = "mining";
         List<Task> miningTasks = Arrays.asList(
                 new GetPickaxe(),

@@ -12,8 +12,8 @@ import helpers.SkillData;
 import helpers.extentions.Task;
 import script.mMain;
 
-public class StartCrafting {
-    public void Crafting() {
+public class StartCrafting implements mMain.Start{
+    public void start() {
         mMain.runningSkill = "crafting";
         List<Task> craftingTasks = Arrays.asList(
                 new GoToBank(),

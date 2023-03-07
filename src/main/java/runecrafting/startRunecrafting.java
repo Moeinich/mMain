@@ -15,8 +15,8 @@ import helpers.questTasks.doRuneMysteries;
 import helpers.questTasks.doTempleOfTheEye;
 import script.mMain;
 
-public class startRunecrafting {
-    public void Runecrafting() {
+public class startRunecrafting implements mMain.Start{
+    public void start() {
         mMain.runningSkill = "runecrafting";
         List<Task> runecraftingTasks = Arrays.asList(
                 new doRuneMysteries(),

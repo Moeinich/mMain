@@ -13,8 +13,8 @@ import helpers.SkillData;
 import helpers.extentions.Task;
 import script.mMain;
 
-public class StartAgility {
-    public void Agility() {
+public class StartAgility implements mMain.Start {
+    public void start() {
         mMain.runningSkill = "agility";
         List<Task> agilityTasks = Arrays.asList(
                 new GetFood(),
