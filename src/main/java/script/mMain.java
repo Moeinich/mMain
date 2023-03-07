@@ -215,12 +215,12 @@ public class mMain extends AbstractScript {
                                 int currentIndex = taskIndex.get();
                                 taskLatch.await(); // Wait for task to complete
                                 tasks.get(currentIndex).run();
-                                taskIndex.set(ThreadLocalRandom.current().nextInt(0, tasks.size())); // Update the taskIndex to a new random value
-                                System.out.println("Task changed: " + taskIndex.get());
                             }
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         } finally {
+                            taskIndex.set(ThreadLocalRandom.current().nextInt(0, tasks.size())); // Update the taskIndex to a new random value
+                            System.out.println("Task changed: " + taskIndex.get());
                             taskRunning.set(false);
                         }
                     });
