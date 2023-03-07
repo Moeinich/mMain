@@ -38,7 +38,8 @@ public class DoFiremaking extends Task {
                 mMain.state = "Lighting.. " + "L:" + fmSpot;
                 if (Inventory.stream().id(FiremakingData.logs).first().interact("Use")) {
                     if (Inventory.stream().id(ItemList.TINDERBOX_590).first().interact("Use")) {
-                        Condition.wait( () -> (Conditions.Companion.expGained(Skill.Firemaking) || !PlayerHelper.withinArea(FiremakingData.doFiremakingArea)), 500, 50);
+                        int startExp = Skills.experience(Skill.Firemaking);
+                        Condition.wait( () -> (startExp != Skills.experience(Skill.Firemaking) || !PlayerHelper.withinArea(FiremakingData.doFiremakingArea)), 500, 50);
                     }
                 }
                 if (Inventory.stream().id(FiremakingData.logs).isEmpty()) {
