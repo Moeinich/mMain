@@ -200,29 +200,32 @@ public class mMain extends AbstractScript {
             List<Start> tasks = new ArrayList<>(skillStarters.values());
             if (tasks.isEmpty()) {
                 ScriptManager.INSTANCE.stop();
-            } else if (!taskRunning.get()){
-                mMain.state = "Resetting task";
-                if (!mMain.shouldBank) {
-                    mMain.shouldBank = true;
-                    System.out.println("shouldBank set true");
-                }
-                    Start nextTask = tasks.get(Random.nextInt(0, tasks.size()));
-                    mMain.state = "Starting " + nextTask;
-
-                    runtime.reset(Random.nextInt(MIN_TIME_LIMIT, MAX_TIME_LIMIT));
-                    System.out.println("Runtime reset to: " + runtime + "ms");
-
-                    taskRunning.set(true);
-                    System.out.println("Taskrunning set true");
+            } else {
                 taskHandler.execute(() -> {
-                    try {
-                        while (!ScriptManager.INSTANCE.isStopping() && !runtime.hasFinished() && taskRunning.get()) {
-                            nextTask.start();
-                        }
-                    } finally {
-                        tasks.removeIf(task -> SkillData.skillsMap.get(mMain.runningSkill));
-                        taskRunning.set(false);
+                    mMain.state = "Resetting task";
+                    if (!mMain.shouldBank) {
+                        mMain.shouldBank = true;
+                        System.out.println("shouldBank set true");
                     }
+                    //Shuffle tasks
+                    Start nextTask = tasks.get(Random.nextInt(0, tasks.size()));
+                    System.out.println("New task chosen: " + nextTask);
+
+                    if (!taskRunning.get()) {
+                        runtime.reset(Random.nextInt(MIN_TIME_LIMIT, MAX_TIME_LIMIT));
+                        System.out.println("Runtime reset to: " + runtime + "ms");
+
+                        taskRunning.set(true);
+                        System.out.println("Taskrunning set true");
+                    }
+
+                    while (!ScriptManager.INSTANCE.isStopping() && !runtime.hasFinished() && taskRunning.get()) {
+                        mMain.state = "Starting " + nextTask;
+                        nextTask.start();
+                    }
+
+                    tasks.removeIf(task -> SkillData.skillsMap.get(mMain.runningSkill)); //Remove task if its marked done!
+                    taskRunning.set(false);
                 });
             }
         } else {
