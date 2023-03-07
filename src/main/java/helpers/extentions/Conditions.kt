@@ -66,9 +66,9 @@ class Conditions {
             return Callable<Boolean> { Players.local().animation() == -1 }
         }
 
-        fun expGained(skill: Skill): Boolean{
+        fun expGained(skill: Skill): Callable<Boolean>{
             val startExp = Skills.experience(skill)
-            return  Skills.experience(skill) > startExp
+            return  Callable {Skills.experience(skill) > startExp}
         }
 
         fun waitUntilComponentAppears(widget: Int, component: Int): Callable<Boolean> {

@@ -43,7 +43,7 @@ public class CowSafespot extends Task {
         if (cow.inViewport()) {
             if (cow.interact("Attack")) {
                 mMain.state = "Waiting for kill";
-                Condition.wait(() -> cow.healthPercent() == 0,900,40);
+                Condition.wait(() -> cow.healthPercent() == 0,900,100);
             }
         }
     }

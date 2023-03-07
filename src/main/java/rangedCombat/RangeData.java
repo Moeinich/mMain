@@ -16,7 +16,7 @@ public class RangeData {
         if (Skills.realLevel(Constants.SKILLS_RANGE) >= 30 && Skills.realLevel(Constants.SKILLS_DEFENSE) >= 30) {
             return MedRangedSetup;
         }
-        if (Skills.realLevel(Constants.SKILLS_RANGE) <= 29) {
+        if (Skills.realLevel(Constants.SKILLS_RANGE) >= 20) {
             return LowPlusRangedSetup;
         }
         else return LowRangedSetup;

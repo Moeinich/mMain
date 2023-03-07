@@ -44,7 +44,7 @@ class BankStep(
         if (combat && questInformation.spell != null) {
             addMagicReq(updatedConditions, calculatedItemsToKeep)
         }
-        if (questInformation.weaponName != null) {
+        if (combat && questInformation.weaponName != null && Equipment.stream().name(questInformation.weaponName).isNotEmpty()) {
             logger.info("Weapon is required ${questInformation.weaponName}")
             calculatedItemsToKeep.add(questInformation.weaponName)
             val requirement = ItemRequirement(questInformation.weaponName, false, 1)

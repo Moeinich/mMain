@@ -5,6 +5,7 @@ import org.powbot.api.rt4.GameObject;
 import org.powbot.api.rt4.GroundItem;
 import org.powbot.api.rt4.GroundItems;
 import org.powbot.api.rt4.Players;
+import org.powbot.api.rt4.Skills;
 import org.powbot.api.rt4.walking.model.Skill;
 
 import helpers.PlayerHelper;
@@ -18,7 +19,7 @@ public class AgilityHelper {
         if (obstacleObject.inViewport()) {
             mMain.state = obstacleInfo.getDescription();
             if (obstacleObject.interact(obstacleInfo.getAction(), obstacleInfo.getName())) {
-                Condition.wait( () -> (Conditions.Companion.expGained(Skill.Agility) || Players.local().healthBarVisible()), 700, 10);
+                Condition.wait( () -> (Conditions.Companion.expGained(Skill.Agility).call() || Players.local().healthBarVisible()), 700, 10);
                 System.out.println("Healthbar visible or we gained xp");
             }
         }
@@ -35,7 +36,7 @@ public class AgilityHelper {
         if (obstacleObject.inViewport()) {
             mMain.state = obstacleInfo.getDescription();
             if (obstacleObject.interact(obstacleInfo.getAction(), obstacleInfo.getName())) {
-                Condition.wait( () -> (Conditions.Companion.expGained(Skill.Agility) || Players.local().healthBarVisible()), 700, 10);
+                Condition.wait( () -> (Conditions.Companion.expGained(Skill.Agility).call() || Players.local().healthBarVisible()), 700, 10);
                 System.out.println("Healthbar visible or we gained xp");
             }
         }
