@@ -1,6 +1,5 @@
 package quests
 
-import org.powbot.api.rt4.Magic
 import quests.common.QuestVarpbits
 import quests.common.models.QuestInformation
 import quests.druidicRitual.DruidicRitual
