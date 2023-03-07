@@ -196,17 +196,18 @@ public class mMain extends AbstractScript {
                 );
                 AtomicInteger taskIndex = new AtomicInteger(0);
 
-                if (taskRunning.compareAndSet(false, true) || runtime.timeLeft() <= 0) {
-                    if (runtime.timeLeft() <= 0 || !taskRunning.get()) {
-                        if (!mMain.shouldBank) {
-                            mMain.shouldBank = true;
-                            System.out.println("shouldBank set true");
-                        } else {
-                            taskIndex.set(ThreadLocalRandom.current().nextInt(0, tasks.size())); // Update the taskIndex to a new random value
-                            System.out.println("Task changed: " + taskIndex.get());
-                            runtime.reset(Random.nextInt(MIN_TIME_LIMIT, MAX_TIME_LIMIT));
-                            System.out.println("Runtime reset to: " + runtime + "ms");
-                        }
+                if (!taskRunning.get() || runtime.timeLeft() <= 0) {
+                    mMain.state = "Resetting task";
+                    if (!mMain.shouldBank) {
+                        mMain.shouldBank = true;
+                        System.out.println("shouldBank set true");
+                    } else {
+                        taskIndex.set(ThreadLocalRandom.current().nextInt(0, tasks.size())); // Update the taskIndex to a new random value
+                        System.out.println("Task changed: " + taskIndex.get());
+                        runtime.reset(Random.nextInt(MIN_TIME_LIMIT, MAX_TIME_LIMIT));
+                        System.out.println("Runtime reset to: " + runtime + "ms");
+                        taskRunning.set(true);
+                        System.out.println("Taskrunning set to true");
                     }
                     taskHandler.execute(() -> {
                         try {
