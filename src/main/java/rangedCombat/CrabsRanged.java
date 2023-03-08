@@ -4,7 +4,7 @@ import org.powbot.api.rt4.Constants;
 import org.powbot.api.rt4.Skills;
 
 import helpers.extentions.Task;
-import helpers.tasks.killCrabs;
+import helpers.tasks.KillCrabs;
 
 public class CrabsRanged extends Task {
 
@@ -16,7 +16,7 @@ public class CrabsRanged extends Task {
 
     @Override
     public boolean execute() {
-        killCrabs.doCrabs();
+        KillCrabs.doCrabs();
         return false;
     }
 }

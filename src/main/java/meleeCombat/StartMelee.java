@@ -19,7 +19,7 @@ public class StartMelee implements mMain.Start{
     public void start() {
         mMain.runningSkill = "melee";
         List<Task> meleeTasks = Arrays.asList(
-                //new BankBeforeTask(),
+                new BankBeforeTask(),
                 new DoPriestInPeril(),
                 new GetEquipment(),
                 new SetAttackStyle(),

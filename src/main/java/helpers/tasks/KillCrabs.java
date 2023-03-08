@@ -14,7 +14,7 @@ import helpers.PlayerHelper;
 import helpers.SkillData;
 import script.mMain;
 
-public class killCrabs {
+public class KillCrabs {
     public static final Tile crabLocation = new Tile(1773,3461,0);
     public static final Area crabResetArea = new Area(new Tile(1759, 3504, 0), new Tile(1768, 3498, 0));
     public static final Tile crabWorldhop = new Tile(1775, 3475, 0);
