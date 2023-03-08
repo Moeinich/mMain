@@ -19,8 +19,8 @@ public class AgilityHelper {
         if (obstacleObject.inViewport()) {
             mMain.state = obstacleInfo.getDescription();
             if (obstacleObject.interact(obstacleInfo.getAction(), obstacleInfo.getName())) {
-                int startExp = Skills.experience(Skill.Firemaking);
-                Condition.wait( () -> (startExp != Skills.experience(Skill.Firemaking) || Players.local().healthBarVisible()), 700, 10);
+                int startExp = Skills.experience(Skill.Agility);
+                Condition.wait( () -> (startExp != Skills.experience(Skill.Agility) || Players.local().healthBarVisible()), 700, 10);
                 System.out.println("Healthbar visible or we gained xp");
             }
         }
@@ -37,8 +37,8 @@ public class AgilityHelper {
         if (obstacleObject.inViewport()) {
             mMain.state = obstacleInfo.getDescription();
             if (obstacleObject.interact(obstacleInfo.getAction(), obstacleInfo.getName())) {
-                int startExp = Skills.experience(Skill.Firemaking);
-                Condition.wait( () -> (startExp != Skills.experience(Skill.Firemaking) || Players.local().healthBarVisible()), 700, 10);
+                int startExp = Skills.experience(Skill.Agility);
+                Condition.wait( () -> (startExp != Skills.experience(Skill.Agility) || Players.local().healthBarVisible()), 700, 10);
                 System.out.println("Healthbar visible or we gained xp");
             }
         }
