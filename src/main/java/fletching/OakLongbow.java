@@ -60,7 +60,7 @@ public class OakLongbow extends Task {
         }
         if (Inventory.stream().id(ToolID).isNotEmpty()) {
             Bank.depositAllExcept(ToolID);
-            InteractionsHelper.withdrawItem(CombineWithItemID, 27);
+            InteractionsHelper.withdrawItem(CombineWithItemID, -1);
             Bank.close();
             Condition.wait( () -> !Bank.opened(), 500, 50);
         }

@@ -56,7 +56,7 @@ import woodcutting.StartWoodcutting;
                 @ScriptConfiguration(
                         name =  "Mode",
                         description = "Which skill would you like to do?",
-                        defaultValue = "progressive",
+                        defaultValue = "fletching",
                         allowedValues = {
                                 "progressive", "mining", "fishing", "woodcutting", "cooking", "firemaking", "smithing", "thieving",
                                 "crafting", "fletching", "agility", "herblore", "hunter", "ranged", "runecrafting", "magic", "melee"
@@ -221,7 +221,7 @@ public class mMain extends AbstractScript {
                         nextTask.start();
                     }
                     tasks.removeIf(task -> SkillData.skillsMap.get(mMain.runningSkill)); //Remove task if its marked done!
-                    taskRunning.set(false); //Finally, set taskRunning to false, so we're ready for the next iteration.
+                    taskRunning.set(false); //Finally, set taskRunning to false, so we're ready for the next skill task.
                 });
             }
         } else {

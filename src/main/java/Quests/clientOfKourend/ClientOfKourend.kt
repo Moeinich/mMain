@@ -7,6 +7,7 @@ import com.open.quester.common.WalkToExactTile
 import helpers.extentions.count
 import org.powbot.api.rt4.Inventory
 import org.powbot.api.rt4.Players
+import org.powbot.api.rt4.Varpbits
 import org.powbot.api.rt4.Widgets
 import quests.clientOfKourend.ClientOfKourendConstants.CONVERSATION_FINISH_VEOS
 import quests.clientOfKourend.ClientOfKourendConstants.CONVERSATION_START_VEOS

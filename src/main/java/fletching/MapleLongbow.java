@@ -40,15 +40,19 @@ public class MapleLongbow extends Task {
         }
 
         if (Game.tab(Game.Tab.INVENTORY) && (Inventory.stream().id(ToolID).isEmpty() || Inventory.stream().id(CombineWithItemID).isEmpty()) || Inventory.stream().id(BowID).isEmpty()) {
+            mMain.state = "Banking loop";
+            System.out.println("Entering bank loop");
             if (!Bank.opened()) {
+                System.out.println("Opening bank");
                 Bank.open();
+                Condition.wait(Bank::opened, 250, 10);
             }
             if (Bank.stream().id(CombineWithItemID).isNotEmpty()) {
-                mMain.state = "Banking loop";
+                mMain.state = "Banking for fletching";
                 BankForFletching();
             }
             if (Bank.stream().id(BowID).isNotEmpty() && Bank.stream().id(BowStringID).isNotEmpty()) {
-                mMain.state = "Bank Stringing";
+                mMain.state = "Banking for stringing";
                 BankForStringing();
             }
         }
@@ -84,7 +88,7 @@ public class MapleLongbow extends Task {
         }
         if (Inventory.stream().id(ToolID).isNotEmpty()) {
             Bank.depositAllExcept(ToolID);
-            InteractionsHelper.withdrawItem(CombineWithItemID, 27);
+            InteractionsHelper.withdrawItem(CombineWithItemID, -1);
             Bank.close();
             Condition.wait( () -> !Bank.opened(), 500, 50);
         }

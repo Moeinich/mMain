@@ -7,6 +7,7 @@ import org.powbot.mobile.script.ScriptManager;
 import java.util.Arrays;
 import java.util.List;
 
+import helpers.tasks.BankBeforeTask;
 import helpers.tasks.GoToBank;
 import helpers.SkillData;
 import helpers.extentions.Task;

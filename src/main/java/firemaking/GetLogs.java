@@ -34,7 +34,7 @@ public class GetLogs extends Task {
         if (Bank.opened() && Inventory.stream().id(FiremakingData.logs).isEmpty()) {
             mMain.state = "Withdraw logs";
             if (Bank.stream().id(ItemList.LOGS_1511).isNotEmpty() || Bank.stream().id(ItemList.OAK_LOGS_1521).isNotEmpty() || Bank.stream().id(ItemList.WILLOW_LOGS_1519).isNotEmpty()) {
-                InteractionsHelper.withdrawItem(FiremakingData.withdrawLogs(), 27);
+                InteractionsHelper.withdrawItem(FiremakingData.withdrawLogs(), -1);
                 Condition.wait( () -> (Inventory.stream().id(FiremakingData.logs).isNotEmpty()), 250, 50);
                 Bank.close();
             }
