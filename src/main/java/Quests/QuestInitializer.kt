@@ -1,5 +1,6 @@
 package quests
 
+import quests.clientOfKourend.ClientOfKourend
 import quests.common.QuestVarpbits
 import quests.common.models.QuestInformation
 import quests.druidicRitual.DruidicRitual
@@ -64,6 +65,16 @@ object QuestInitializer {
     var druidicRitual = DruidicRitual(
         QuestInformation(
             QuestVarpbits.DRUIDIC_RITUAL,
+            arrayOf("Lobster"),
+            null,
+            null
+        )
+    )
+
+    @JvmField
+    var clientOfKourend = ClientOfKourend(
+        QuestInformation(
+            QuestVarpbits.CLIENT_OF_KOUREND,
             arrayOf("Lobster"),
             null,
             null
