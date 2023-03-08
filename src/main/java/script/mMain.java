@@ -26,7 +26,6 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.concurrent.atomic.AtomicInteger;
 
 import agility.StartAgility;
 import cooking.StartCooking;
@@ -42,7 +41,6 @@ import magicCombat.StartMagic;
 import meleeCombat.StartMelee;
 import mining.StartMining;
 import rangedCombat.StartRanged;
-import runecrafting.startRunecrafting;
 import smithing.StartSmithing;
 import thieving.StartThieving;
 import woodcutting.StartWoodcutting;
@@ -58,7 +56,7 @@ import woodcutting.StartWoodcutting;
                 @ScriptConfiguration(
                         name =  "Mode",
                         description = "Which skill would you like to do?",
-                        defaultValue = "melee",
+                        defaultValue = "progressive",
                         allowedValues = {
                                 "progressive", "mining", "fishing", "woodcutting", "cooking", "firemaking", "smithing", "thieving",
                                 "crafting", "fletching", "agility", "herblore", "hunter", "ranged", "runecrafting", "magic", "melee"
@@ -107,7 +105,7 @@ public class mMain extends AbstractScript {
         skillStarters.put("melee", new StartMelee());
         skillStarters.put("mining", new StartMining());
         skillStarters.put("ranged", new StartRanged());
-        skillStarters.put("runecrafting", new startRunecrafting());
+        //skillStarters.put("runecrafting", new startRunecrafting());
         skillStarters.put("smithing", new StartSmithing());
         skillStarters.put("thieving", new StartThieving());
         skillStarters.put("woodcutting", new StartWoodcutting());
