@@ -19,9 +19,10 @@ public class AgilityHelper {
         if (obstacleObject.inViewport()) {
             mMain.state = obstacleInfo.getDescription();
             if (obstacleObject.interact(obstacleInfo.getAction(), obstacleInfo.getName())) {
+                System.out.println("Clicked obstacle, sleeping");
                 int startExp = Skills.experience(Skill.Agility);
                 Condition.wait( () -> (startExp != Skills.experience(Skill.Agility) || Players.local().healthBarVisible()), 700, 10);
-                System.out.println("Healthbar visible or we gained xp");
+                System.out.println("Stopped sleeping - We gained xp or failed the obstacle");
             }
         }
     }
@@ -37,9 +38,10 @@ public class AgilityHelper {
         if (obstacleObject.inViewport()) {
             mMain.state = obstacleInfo.getDescription();
             if (obstacleObject.interact(obstacleInfo.getAction(), obstacleInfo.getName())) {
+                System.out.println("Clicked obstacle, sleeping");
                 int startExp = Skills.experience(Skill.Agility);
                 Condition.wait( () -> (startExp != Skills.experience(Skill.Agility) || Players.local().healthBarVisible()), 700, 10);
-                System.out.println("Healthbar visible or we gained xp");
+                System.out.println("Stopped sleeping - We gained xp or failed the obstacle");
             }
         }
     }

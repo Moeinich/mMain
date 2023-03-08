@@ -76,6 +76,7 @@ public class CombatHelper {
     }
     private static void equipMissingItems(int[] equipment) {
         if (Bank.opened()) {
+            System.out.println("Closing bank");
             Bank.close();
             Condition.wait( () -> !Bank.opened(), WAIT_TIMEOUT, WAIT_RETRIES);
         }
@@ -102,7 +103,7 @@ public class CombatHelper {
                 interactionType = "Wield";
             }
             if (interactionType != null && itemToEquip.interact(interactionType, itemToEquip.name())) {
-                System.out.println("Equipped missing item");
+                System.out.println("Equipped missing item: " + itemToEquip);
                 Condition.wait(() -> CombatHelper.hasEquipped(item.getId()), 250, 10);
             }
         }

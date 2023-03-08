@@ -18,12 +18,12 @@ public class InteractionsHelper {
     public static void withdrawItem(int itemId, int specifiedAmount) {
         if (!Bank.opened() && Bank.inViewport()) {
             if (Bank.open()) {
+                System.out.println("Open bank to withdraw item: " + itemId + " amount: " + specifiedAmount);
                 Condition.wait(Bank::opened, 150, 10);
             }
         }
         if (Bank.stream().id(itemId).first().stackSize() < specifiedAmount || Bank.stream().id(itemId).isEmpty()) {
-            mMain.state = "We ran out of " + itemId;
-            System.out.println("We ran out of items");
+            System.out.println("We ran out of item: " + itemId);
             SkillData.setSkillDone();
             System.out.println("Skill was set to done");
             mMain.taskRunning.set(false); //Skip task on progressive
@@ -43,14 +43,14 @@ public class InteractionsHelper {
     public static void depositAndWithdraw(int itemId, int specifiedAmount) {
         if (!Bank.opened() && Bank.inViewport()) {
             if (Bank.open()) {
+                System.out.println("Open bank to withdraw item: " + itemId + " amount: " + specifiedAmount);
                 Condition.wait(Bank::opened, 150, 10);
             }
         }
         if (Bank.stream().id(itemId).first().stackSize() < specifiedAmount) {
-            mMain.state = "We ran out of " + itemId;
-            System.out.println("We ran out of items");
+            System.out.println("We ran out of: " + itemId);
             SkillData.setSkillDone();
-            System.out.println("Skill was set to done");
+            System.out.println("Running skill was set to done");
             mMain.taskRunning.set(false); //Skip task on progressive
             System.out.println("taskRunning was set false");
         } else {
@@ -67,11 +67,12 @@ public class InteractionsHelper {
     }
 
     public static void cameraCheck() {
-        if (Game.tab(Game.Tab.SETTINGS) && Players.local().isRendered() && Camera.getZoom() > 4) {
+        if (Game.tab(Game.Tab.SETTINGS) && Players.local().inViewport() && Camera.getZoom() > 4) {
             System.out.println("Moving camera slider");
-                Camera.moveZoomSlider(Camera.ZOOM_MAX);
-                Game.tab(Game.Tab.INVENTORY);
-                Condition.wait( () -> Camera.getZoom() < 3, 250, 50);
+            Camera.moveZoomSlider(Camera.ZOOM_MAX);
+            System.out.println("Go back to inventory tab");
+            Game.tab(Game.Tab.INVENTORY);
+            Condition.wait( () -> Camera.getZoom() < 3, 250, 50);
         }
     }
 

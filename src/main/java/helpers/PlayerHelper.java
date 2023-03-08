@@ -19,6 +19,8 @@ import org.powbot.api.rt4.Widgets;
 import org.powbot.dax.api.DaxWalker;
 import org.powbot.dax.teleports.Teleport;
 
+import java.util.Arrays;
+
 import script.mMain;
 
 public class PlayerHelper {
@@ -105,18 +107,22 @@ public class PlayerHelper {
     public static boolean hasItem(int... itemID) {
         for (int id : itemID) {
             if (Inventory.stream().id(id).isEmpty()) {
+                System.out.println("We dont have: " + Arrays.toString(itemID));
                 return false;
             }
         }
+        System.out.println("We do have: " + Arrays.toString(itemID));
         return true;
     }
 
     public static boolean hasItem(String... itemName) {
         for (String id : itemName) {
             if (Inventory.stream().name(id).isEmpty()) {
+                System.out.println("We dont have: " + Arrays.toString(itemName));
                 return false;
             }
         }
+        System.out.println("We do have: " + Arrays.toString(itemName));
         return true;
     }
 }
