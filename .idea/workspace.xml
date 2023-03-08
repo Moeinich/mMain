@@ -5,12 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c7dd1c8c-f10c-49ed-8219-521bd6f55188" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Quests/clientOfKourend/tasks/useLamp.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/helpers/tasks/killCrabs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/helpers/tasks/KillCrabs.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/meleeCombat/Crabs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/meleeCombat/Crabs.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/meleeCombat/StartMelee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/meleeCombat/StartMelee.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rangedCombat/CrabsRanged.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rangedCombat/CrabsRanged.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/runecrafting/startRunecrafting.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/runecrafting/startRunecrafting.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Quests/clientOfKourend/ClientOfKourend.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Quests/clientOfKourend/ClientOfKourend.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Quests/clientOfKourend/ClientOfKourendConstants.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Quests/clientOfKourend/ClientOfKourendConstants.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

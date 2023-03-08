@@ -21,11 +21,11 @@ object ClientOfKourendConstants {
     const val NAME_VEOS_CLIENT = "Veos' Client"
 
     val TILE_VEOS_AND_VEOS_CLIENT = Tile(1824, 3690, 0)
-    val TILE_LEENZ = Tile(1807, 3725, 0)
-    val TILE_REGATH = Tile(1719, 3725, 0)
-    val TILE_MUNTY = Tile(1551, 3751, 0)
-    val TILE_JENNIFER = Tile(1518, 3590, 0)
-    val TILE_HORACE = Tile(1772, 3588, 0)
+    val TILE_LEENZ = Tile(1807, 3726, 0)
+    val TILE_REGATH = Tile(1720, 3724, 0)
+    val TILE_MUNTY = Tile(1551, 3752, 0)
+    val TILE_JENNIFER = Tile(1518, 3586, 0)
+    val TILE_HORACE = Tile(1774, 3589, 0)
     val TILE_DARK_ALTAR = Tile(1713, 3882, 0)
 
     val CONVERSATION_START_VEOS = arrayOf("Have you got any quests for me?", "Sounds interesting! How can I help?", "Yes.")
