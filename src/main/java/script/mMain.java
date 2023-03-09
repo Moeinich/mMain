@@ -148,7 +148,7 @@ public class mMain extends AbstractScript {
                 .trackSkill(Skill.Hunter, TrackSkillOption.LevelProgressBar)
                 .trackSkill(Skill.Agility, TrackSkillOption.LevelProgressBar)
                 .trackSkill(Skill.Ranged, TrackSkillOption.LevelProgressBar)
-                //.trackSkill(Skill.Runecrafting, TrackSkillOption.LevelProgressBar)
+                .trackSkill(Skill.Runecrafting, TrackSkillOption.LevelProgressBar)
                 .trackSkill(Skill.Magic, TrackSkillOption.LevelProgressBar)
                 .trackSkill(Skill.Defence, TrackSkillOption.LevelProgressBar)
                 .trackSkill(Skill.Strength, TrackSkillOption.LevelProgressBar)
@@ -162,6 +162,87 @@ public class mMain extends AbstractScript {
             formattedTime[0] = TIMER_FORMAT.format(remainingTime[0]);
         }, 0, 1, TimeUnit.SECONDS);
     }
+
+    @Override
+    public void poll() {
+        if (SkillData.allSkillsDone()) {
+            ScriptManager.INSTANCE.stop();
+        }
+        String skill = getOption("Mode");
+
+        if (skill.equals("progressive")) {
+            List<Start> tasks = new ArrayList<>(skillStarters.values());
+            if (tasks.isEmpty()) {
+                ScriptManager.INSTANCE.stop();
+            } else {
+                Start nextTask = null;
+                if (runtime.hasFinished() || !taskRunning.get()) {
+                    mMain.state = "Resetting task";
+
+                    markTasksDone(tasks);
+                    System.out.println("If task was done, removed it from list");
+
+                    nextTask = chooseNextTask(tasks);
+                    System.out.println("Next task chosen");
+
+                    resetRuntime();
+                    System.out.println("Runtime reset");
+
+                    setTaskRunning();
+                    System.out.println("Taskrunning set true");
+                }
+                if (taskRunning.get()) {
+                    runTask(nextTask);
+                }
+            }
+        } else {
+            Start start = skillStarters.get(skill);
+            if (SkillData.skillsMap.get(skill)) {
+                ScriptManager.INSTANCE.stop();
+            } else {
+                start.start();
+            }
+        }
+    }
+
+    private Start chooseNextTask(List<Start> tasks) {
+        Start nextTask = tasks.get(Random.nextInt(0, tasks.size())); //Randomize next task
+        System.out.println("New task chosen: " + nextTask.getClass().getSimpleName());
+        return nextTask;
+    }
+
+    private void resetRuntime() {
+        if (!mMain.shouldBank) {
+            mMain.shouldBank = true;
+            System.out.println("shouldBank set true");
+        }
+        runtime.reset(Random.nextInt(MIN_TIME_LIMIT, MAX_TIME_LIMIT)); //Randomize runtime value
+        System.out.println("Runtime reset to: " + runtime.timeLeft() + "ms");
+    }
+
+    private void setTaskRunning() {
+        taskRunning.set(true); //Set taskRunning to true after we've randomized task+runtime
+        System.out.println("Taskrunning set true");
+    }
+    private void setTaskNotRunning() {
+        taskRunning.set(false); //Finally, set taskRunning to false, so we're ready for the next skill task.
+    }
+
+    private void runTask(Start task) {
+        taskHandler.execute(() -> {
+            if (runtime.hasFinished() || !taskRunning.get()) {
+                setTaskNotRunning();
+                System.out.println("We finished our task, exiting task loop");
+            }
+            task.start();
+        });
+    }
+
+    private void markTasksDone(List<Start> tasks) {
+        tasks.removeIf(task -> SkillData.skillsMap.get(mMain.runningSkill)); //Remove task if its marked done!
+    }
+
+
     public static class Stopwatch {
         private long stopTime;
 
@@ -185,52 +266,5 @@ public class mMain extends AbstractScript {
 
     public interface Start {
         void start();
-    }
-
-    @Override
-    public void poll() {
-        if (SkillData.allSkillsDone()) {
-            ScriptManager.INSTANCE.stop();
-        }
-        String skill = getOption("Mode");
-
-        if (skill.equals("progressive")) {
-            List<Start> tasks = new ArrayList<>(skillStarters.values());
-            if (tasks.isEmpty()) {
-                ScriptManager.INSTANCE.stop();
-            } else {
-                taskHandler.execute(() -> {
-                    mMain.state = "Resetting task";
-                    if (!mMain.shouldBank) {
-                        mMain.shouldBank = true;
-                        System.out.println("shouldBank set true");
-                    }
-
-                    Start nextTask = tasks.get(Random.nextInt(0, tasks.size())); //Randomize next task
-                    System.out.println("New task chosen: " + nextTask.getClass().getSimpleName());
-
-                    if (!taskRunning.get()) {
-                        runtime.reset(Random.nextInt(MIN_TIME_LIMIT, MAX_TIME_LIMIT)); //Randomize runtime value
-                        System.out.println("Runtime reset to: " + runtime.timeLeft() + "ms");
-
-                        taskRunning.set(true); //Set taskRunning to true after we've randomized task+runtime
-                        System.out.println("Taskrunning set true");
-                    }
-                    //Enter loop of running the task!
-                    while (!ScriptManager.INSTANCE.isStopping() && !runtime.hasFinished() && taskRunning.get()) {
-                        nextTask.start();
-                    }
-                    tasks.removeIf(task -> SkillData.skillsMap.get(mMain.runningSkill)); //Remove task if its marked done!
-                    taskRunning.set(false); //Finally, set taskRunning to false, so we're ready for the next skill task.
-                });
-            }
-        } else {
-            Start start = skillStarters.get(skill);
-            if (SkillData.skillsMap.get(skill)) {
-                ScriptManager.INSTANCE.stop();
-            } else {
-                start.start();
-            }
-        }
     }
 }
