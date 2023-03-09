@@ -153,11 +153,10 @@ class ClientOfKourend(information: QuestInformation) : BaseQuest(information) {
     private fun useCertificate(): QuestTaskList {
         return QuestTaskList(
             InteractWithItem(ITEM_KOUREND_FAVOUR_CERTIFICATE, "Read", { Inventory.stream().name(ITEM_KOUREND_FAVOUR_CERTIFICATE).count().toInt() == 1 }, { Widgets.widget(219).valid() }),
-            InteractWithWidget(219, 1,  "Hosidius"), //Needs to use keyboard "2" here
-            InteractWithWidget(229, 2, "Click here to continue"),
-            InteractWithWidget(240, 26, "Confirm"),
+            InteractWithWidget(219, 1,  "Hosidius", 2) { Widgets.widget(229).valid() },
+            InteractWithWidget(229, 2, "Click here to continue") { Widgets.widget(240).valid() },
+            InteractWithWidget(240, 26, "Confirm") { Widgets.widget(219).valid() },
             InteractWithWidget(219, 1, "Yes"),
-
             )
     }
 
