@@ -144,7 +144,7 @@ class ClientOfKourend(information: QuestInformation) : BaseQuest(information) {
                 { Inventory.stream().name(ITEM_ANTIQUE_LAMP).count().toInt() > 0 },
                 { Widgets.widget(240).valid() }
             ),
-            InteractWithWidget(240, 14, "Slayer"),
+            InteractWithWidget(240, 14, "Slayer") { Widgets.component(229, 26).valid() },
             InteractWithWidget(240, 26, "Confirm"),
             )
     }
