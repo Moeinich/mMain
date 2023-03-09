@@ -9,10 +9,7 @@ import org.powbot.api.rt4.*
 object InteractionsHelper {
 
     fun useItemOn(firstItem: Item, secondItem: Item): Boolean {
-        if (!Inventory.opened()) {
-            Inventory.open()
-        }
-
+        Game.tab(Game.Tab.INVENTORY)
         var selectedItem = Inventory.selectedItem()
         if (selectedItem != firstItem) {
             if (!deselectItem()) {

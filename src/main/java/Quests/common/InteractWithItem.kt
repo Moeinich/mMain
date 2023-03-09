@@ -1,6 +1,7 @@
 package com.open.quester.common
 
 import org.powbot.api.Condition
+import org.powbot.api.rt4.Game
 import org.powbot.api.rt4.Inventory
 import org.powbot.api.rt4.Item
 import quests.common.base.BaseQuestStep
@@ -16,6 +17,7 @@ class InteractWithItem(
     }
 
     override fun run() {
+        Game.tab(Game.Tab.INVENTORY)
         val item = Inventory.stream().name(itemName).first()
         if (item != Item.Nil && item.interact(action)) {
             Condition.wait(validated)
