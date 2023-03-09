@@ -9,6 +9,7 @@ import quests.naturalHistory.NaturalHistory
 import quests.priestInPeril.PriestInPeril
 import quests.runeMysteries.RuneMysteries
 import quests.templeOfTheEye.TempleOfTheEye
+import quests.xMarksTheSpot.XMarksTheSpot
 
 object QuestInitializer {
     @JvmField
@@ -79,5 +80,16 @@ object QuestInitializer {
             null,
             null
         )
+    )
+
+
+    @JvmField
+    var xMarksTheSpot = XMarksTheSpot(
+            QuestInformation(
+                    QuestVarpbits.X_MARKS_THE_SPOT,
+                    arrayOf("Lobster"),
+                    null,
+                    null
+            )
     )
 }
