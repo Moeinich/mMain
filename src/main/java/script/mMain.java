@@ -1,13 +1,17 @@
 package script;
 
+import com.google.common.eventbus.Subscribe;
+
+import org.powbot.api.Condition;
 import org.powbot.api.Random;
+import org.powbot.api.event.BreakEndedEvent;
+import org.powbot.api.event.BreakStartedEvent;
 import org.powbot.api.rt4.walking.model.Skill;
 import org.powbot.api.script.AbstractScript;
 import org.powbot.api.script.OptionType;
 import org.powbot.api.script.ScriptCategory;
 import org.powbot.api.script.ScriptConfiguration;
 import org.powbot.api.script.ScriptManifest;
-import org.powbot.api.script.ScriptState;
 import org.powbot.api.script.paint.Paint;
 import org.powbot.api.script.paint.PaintBuilder;
 import org.powbot.api.script.paint.TrackSkillOption;
@@ -81,6 +85,21 @@ public class mMain extends AbstractScript {
                 true
         );
     }
+
+    private boolean isBreaking = false;
+
+    @Subscribe
+    public void breakStarted(BreakStartedEvent event) {
+        System.out.print("Breaking started");
+        isBreaking = true;
+    }
+
+    @Subscribe
+    public void breakEnded(BreakEndedEvent event) {
+        System.out.print("Breaking ended");
+        isBreaking = false;
+    }
+
 
     final int MIN_TIME_LIMIT = 3600000;
     final int MAX_TIME_LIMIT = 5400000;
@@ -194,7 +213,9 @@ public class mMain extends AbstractScript {
                     }
                     //Enter loop of running the task!
                     while (!ScriptManager.INSTANCE.isStopping() && !runtime.hasFinished() && taskRunning.get()) {
-                        nextTask.start();
+                        if (!isBreaking) {
+                            nextTask.start();
+                        } else Condition.sleep(Random.nextInt(400, 1000));
                     }
                     tasks.removeIf(task -> SkillData.skillsMap.get(mMain.runningSkill)); //Remove task if its marked done!
                     taskRunning.set(false); //Finally, set taskRunning to false, so we're ready for the next skill task.

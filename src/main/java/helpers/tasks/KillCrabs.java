@@ -105,6 +105,7 @@ public class KillCrabs {
             Movement.step(crabLocation);
             Condition.wait(() -> PlayerHelper.atTile(crabLocation), 150, 10);
         } else {
+            mMain.state = "Move to crab location";
             System.out.println("Move to crab location tile");
             Movement.moveTo(crabLocation);
         }
