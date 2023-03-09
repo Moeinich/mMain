@@ -70,8 +70,6 @@ public class InteractionsHelper {
         if (Game.tab(Game.Tab.SETTINGS) && Players.local().inViewport() && Camera.getZoom() > 4) {
             System.out.println("Moving camera slider");
             Camera.moveZoomSlider(Camera.ZOOM_MAX);
-            System.out.println("Go back to inventory tab");
-            Game.tab(Game.Tab.INVENTORY);
             Condition.wait( () -> Camera.getZoom() < 3, 250, 50);
         }
     }
