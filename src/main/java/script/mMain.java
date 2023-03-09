@@ -1,6 +1,5 @@
 package script;
 
-import org.powbot.api.Notifications;
 import org.powbot.api.Random;
 import org.powbot.api.rt4.walking.model.Skill;
 import org.powbot.api.script.AbstractScript;
@@ -8,6 +7,7 @@ import org.powbot.api.script.OptionType;
 import org.powbot.api.script.ScriptCategory;
 import org.powbot.api.script.ScriptConfiguration;
 import org.powbot.api.script.ScriptManifest;
+import org.powbot.api.script.ScriptState;
 import org.powbot.api.script.paint.Paint;
 import org.powbot.api.script.paint.PaintBuilder;
 import org.powbot.api.script.paint.TrackSkillOption;
@@ -119,7 +119,6 @@ public class mMain extends AbstractScript {
         runningSkill = "Determining..";
         state = "Starting...";
         InteractionsHelper.cameraCheck();
-        Notifications.showNotification("mMain starting " + skill);
 
         final DateTimeFormatter TIMER_FORMAT = DateTimeFormatter.ofPattern("HH:mm:ss");
         ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();
@@ -154,7 +153,7 @@ public class mMain extends AbstractScript {
                 .trackSkill(Skill.Defence, TrackSkillOption.LevelProgressBar)
                 .trackSkill(Skill.Strength, TrackSkillOption.LevelProgressBar)
                 .trackSkill(Skill.Attack, TrackSkillOption.LevelProgressBar);
-        Paint p = builder.x(40).y(300).build();
+        Paint p = builder.x(40).y(100).build();
         addPaint(p);
 
         executor.scheduleAtFixedRate(() -> {
