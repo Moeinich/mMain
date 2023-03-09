@@ -12,7 +12,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class StartSmithing implements mMain.Start{
-    public void start() {
+    public void run() {
         mMain.runningSkill = "smithing";
         List<Task> smithingTasks = Arrays.asList(
                 new GoSmithing(),
@@ -27,7 +27,7 @@ public class StartSmithing implements mMain.Start{
             if (Skills.realLevel(Constants.SKILLS_SMITHING) >= 70 || SkillData.skillsMap.get("smithing")) {
                 mMain.state = "Smithing done!";
                 SkillData.setSkillDone();
-                mMain.taskRunning.set(false);
+                mMain.skillRunning.set(false);
             }
             if (task.activate()) {
                 task.execute();

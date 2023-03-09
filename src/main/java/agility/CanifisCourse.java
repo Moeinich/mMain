@@ -9,7 +9,6 @@ import org.powbot.api.rt4.Skills;
 import org.powbot.api.rt4.Varpbits;
 
 import helpers.PlayerHelper;
-import helpers.SkillData;
 import helpers.extentions.Task;
 import quests.common.QuestVarpbits;
 import script.mMain;
@@ -24,7 +23,7 @@ public class CanifisCourse extends Task {
         if (Varpbits.varpbit(QuestVarpbits.PRIEST_IN_PERIL.getQuestVarbit()) != QuestVarpbits.PRIEST_IN_PERIL.getFinishedValue()) {
             System.out.println("Priest in Peril not done, skipping agility for now");
             mMain.state = "PiP not done";
-            mMain.taskRunning.set(false);
+            mMain.skillRunning.set(false);
         }
 
         if (!Movement.running() && Movement.energyLevel() > 30) {

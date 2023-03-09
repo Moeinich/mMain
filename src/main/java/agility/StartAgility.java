@@ -14,7 +14,7 @@ import helpers.extentions.Task;
 import script.mMain;
 
 public class StartAgility implements mMain.Start {
-    public void start() {
+    public void run() {
         mMain.runningSkill = "agility";
         List<Task> agilityTasks = Arrays.asList(
                 new GetFood(),
@@ -32,7 +32,7 @@ public class StartAgility implements mMain.Start {
             if (Skills.realLevel(Constants.SKILLS_AGILITY) >= 70 || SkillData.skillsMap.get("agility")) {
                 mMain.state = "Agility done!";
                 SkillData.setSkillDone();
-                mMain.taskRunning.set(false);
+                mMain.skillRunning.set(false);
             }
             if (task.activate()) {
                 task.execute();

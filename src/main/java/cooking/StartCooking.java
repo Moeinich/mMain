@@ -12,7 +12,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class StartCooking implements mMain.Start {
-    public void start() {
+    public void run() {
         mMain.runningSkill = "cooking";
         List<Task> cookingTasks = Arrays.asList(
                 new Sardines(),
@@ -23,7 +23,7 @@ public class StartCooking implements mMain.Start {
             if (Skills.realLevel(Constants.SKILLS_COOKING) >= 70 || SkillData.skillsMap.get("cooking")) {
                 mMain.state = "Cooking done!";
                 SkillData.setSkillDone();
-                mMain.taskRunning.set(false);
+                mMain.skillRunning.set(false);
             }
             if (task.activate()) {
                 task.execute();

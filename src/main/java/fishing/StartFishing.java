@@ -13,7 +13,7 @@ import helpers.extentions.Task;
 import script.mMain;
 
 public class StartFishing implements mMain.Start{
-    public void start() {
+    public void run() {
         mMain.runningSkill = "fishing";
         List<Task> fishingTasks = Arrays.asList(
                 new GetFishingEquipment(),
@@ -26,7 +26,7 @@ public class StartFishing implements mMain.Start{
             if (Skills.realLevel(Constants.SKILLS_FISHING) >= 70 || SkillData.skillsMap.get("fishing")) {
                 mMain.state = "Fishing done!";
                 SkillData.setSkillDone();
-                mMain.taskRunning.set(false);
+                mMain.skillRunning.set(false);
             }
             if (task.activate()) {
                 task.execute();

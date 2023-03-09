@@ -13,7 +13,7 @@ import helpers.extentions.Task;
 import script.mMain;
 
 public class StartCrafting implements mMain.Start{
-    public void start() {
+    public void run() {
         mMain.runningSkill = "crafting";
         List<Task> craftingTasks = Arrays.asList(
                 new GoToBank(),
@@ -28,7 +28,7 @@ public class StartCrafting implements mMain.Start{
             if (Skills.realLevel(Constants.SKILLS_CRAFTING) >= 70 || SkillData.skillsMap.get("crafting")) {
                 mMain.state = "Crafting done!";
                 SkillData.setSkillDone();
-                mMain.taskRunning.set(false);
+                mMain.skillRunning.set(false);
             }
             if (task.activate()) {
                 task.execute();

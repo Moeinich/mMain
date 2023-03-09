@@ -12,7 +12,7 @@ import helpers.SkillData;
 import script.mMain;
 
 public class StartWoodcutting implements mMain.Start{
-    public void start() {
+    public void run() {
         mMain.runningSkill = "woodcutting";
         List<Task> woodcuttingTasks = Arrays.asList(
                 new GetAxe(),
@@ -27,7 +27,7 @@ public class StartWoodcutting implements mMain.Start{
             if (Skills.realLevel(Constants.SKILLS_WOODCUTTING) >= 70 || SkillData.skillsMap.get("woodcutting")) {
                 mMain.state = "Woodcutting done!";
                 SkillData.setSkillDone();
-                mMain.taskRunning.set(false);
+                mMain.skillRunning.set(false);
             }
             if (task.activate()) {
                 task.execute();

@@ -26,7 +26,7 @@ public class InteractionsHelper {
             System.out.println("We ran out of item: " + itemId);
             SkillData.setSkillDone();
             System.out.println("Skill was set to done");
-            mMain.taskRunning.set(false); //Skip task on progressive
+            mMain.skillRunning.set(false); //Skip task on progressive
             System.out.println("taskRunning was set false");
         } else {
             System.out.println("Withdrawing " + itemId + " amount:" + specifiedAmount);
@@ -51,7 +51,7 @@ public class InteractionsHelper {
             System.out.println("We ran out of: " + itemId);
             SkillData.setSkillDone();
             System.out.println("Running skill was set to done");
-            mMain.taskRunning.set(false); //Skip task on progressive
+            mMain.skillRunning.set(false); //Skip task on progressive
             System.out.println("taskRunning was set false");
         } else {
             Bank.depositInventory();

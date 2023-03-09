@@ -46,7 +46,7 @@ public class TeaStall extends Task {
         if (Skills.realLevel(Constants.SKILLS_THIEVING) >= 60) {
             mMain.state = "Thieving done!";
             SkillData.setSkillDone();
-            mMain.taskRunning.set(false);
+            mMain.skillRunning.set(false);
         }
         //Go to thieving spot
         if (!Players.local().tile().equals(ThievingData.movementThieving()) && !(ThievingData.movementThieving().tile().distanceTo(Players.local()) < 3)) {

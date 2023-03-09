@@ -13,7 +13,7 @@ import helpers.tasks.BankBeforeTask;
 import script.mMain;
 
 public class StartThieving implements mMain.Start{
-    public void start() {
+    public void run() {
         mMain.runningSkill = "thieving";
         List<Task> thievingTasks = Arrays.asList(
                 new BankBeforeTask(),
@@ -26,7 +26,7 @@ public class StartThieving implements mMain.Start{
             if (Skills.realLevel(Constants.SKILLS_THIEVING) >= 60 || SkillData.skillsMap.get("thieving")) {
                 mMain.state = "Thieving done!";
                 SkillData.setSkillDone();
-                mMain.taskRunning.set(false);
+                mMain.skillRunning.set(false);
             }
             if (task.activate()) {
                 task.execute();

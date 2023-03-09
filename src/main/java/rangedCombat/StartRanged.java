@@ -13,7 +13,7 @@ import helpers.extentions.Task;
 import script.mMain;
 
 public class StartRanged implements mMain.Start{
-    public void start() {
+    public void run() {
         mMain.runningSkill = "ranged";
         List<Task> rangeTasks = Arrays.asList(
                 new BankBeforeTask(),
@@ -26,7 +26,7 @@ public class StartRanged implements mMain.Start{
             if (Skills.realLevel(Constants.SKILLS_RANGE) >= 30 || SkillData.skillsMap.get("ranged")) {
                 mMain.state = "Range done!";
                 SkillData.setSkillDone();
-                mMain.taskRunning.set(false);
+                mMain.skillRunning.set(false);
             }
             if (task.activate()) {
                 task.execute();

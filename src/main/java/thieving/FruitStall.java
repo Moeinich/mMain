@@ -126,7 +126,7 @@ public class FruitStall extends Task {
             System.out.println("We dont have enough hosidius favor");
             mMain.state = "Thieving done!";
             SkillData.setSkillDone();
-            mMain.taskRunning.set(false);
+            mMain.skillRunning.set(false);
         } else SkillData.KOUREND_FAVOR.checkedFavor = true;
     }
 }

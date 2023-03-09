@@ -7,14 +7,13 @@ import org.powbot.mobile.script.ScriptManager;
 import java.util.Arrays;
 import java.util.List;
 
-import helpers.tasks.BankBeforeTask;
 import helpers.tasks.GoToBank;
 import helpers.SkillData;
 import helpers.extentions.Task;
 import script.mMain;
 
 public class StartFletching implements mMain.Start{
-    public void start() {
+    public void run() {
         mMain.runningSkill = "fletching";
         List<Task> fletchingTasks = Arrays.asList(
                 new GoToBank(),
@@ -32,7 +31,7 @@ public class StartFletching implements mMain.Start{
             if (Skills.realLevel(Constants.SKILLS_FLETCHING) >= 70 || SkillData.skillsMap.get("fletching")) {
                 mMain.state = "Fletching done!";
                 SkillData.setSkillDone();
-                mMain.taskRunning.set(false);
+                mMain.skillRunning.set(false);
             }
             if (task.activate()) {
                 task.execute();

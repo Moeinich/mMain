@@ -13,7 +13,7 @@ import helpers.extentions.Task;
 import script.mMain;
 
 public class StartMining implements mMain.Start{
-    public void start() {
+    public void run() {
         mMain.runningSkill = "mining";
         List<Task> miningTasks = Arrays.asList(
                 new GetPickaxe(),
@@ -26,7 +26,7 @@ public class StartMining implements mMain.Start{
             if (Skills.realLevel(Constants.SKILLS_MINING) >= 70 || SkillData.skillsMap.get("mining")) {
                 mMain.state = "Mining done!";
                 SkillData.setSkillDone();
-                mMain.taskRunning.set(false);
+                mMain.skillRunning.set(false);
             }
             if (task.activate()) {
                 task.execute();

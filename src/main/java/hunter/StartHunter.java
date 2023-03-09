@@ -13,7 +13,7 @@ import helpers.questTasks.DoMuseumQuiz;
 import script.mMain;
 
 public class StartHunter implements mMain.Start{
-    public void start() {
+    public void run() {
         mMain.runningSkill = "hunter";
         List<Task> huntingTasks = Arrays.asList(
                 new DoMuseumQuiz()
@@ -23,7 +23,7 @@ public class StartHunter implements mMain.Start{
             if (Skills.realLevel(Constants.SKILLS_HUNTER) >= 9 || SkillData.skillsMap.get("hunter")) {
                 mMain.state = "Hunter done!";
                 SkillData.setSkillDone();
-                mMain.taskRunning.set(false);
+                mMain.skillRunning.set(false);
             }
             if (task.activate()) {
                 task.execute();

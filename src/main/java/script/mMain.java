@@ -107,7 +107,7 @@ public class mMain extends AbstractScript {
     public static String state;
     public static Boolean shouldBank = true;
     Executor taskHandler = Executors.newSingleThreadExecutor();
-    public static final AtomicBoolean taskRunning = new AtomicBoolean(false);
+    public static final AtomicBoolean skillRunning = new AtomicBoolean(false);
     private final Stopwatch runtime = new Stopwatch();
 
     private static final Map<String, Start> skillStarters = new HashMap<>();
@@ -201,24 +201,24 @@ public class mMain extends AbstractScript {
                         System.out.println("shouldBank set true");
                     }
 
-                    Start nextTask = tasks.get(Random.nextInt(0, tasks.size())); //Randomize next task
-                    System.out.println("New task chosen: " + nextTask.getClass().getSimpleName());
+                    Start skillLoop = tasks.get(Random.nextInt(0, tasks.size())); //Randomize next task
+                    System.out.println("New task chosen: " + skillLoop.getClass().getSimpleName());
 
-                    if (!taskRunning.get()) {
+                    if (!skillRunning.get()) {
                         runtime.reset(Random.nextInt(MIN_TIME_LIMIT, MAX_TIME_LIMIT)); //Randomize runtime value
                         System.out.println("Runtime reset to: " + runtime.timeLeft() + "ms");
 
-                        taskRunning.set(true); //Set taskRunning to true after we've randomized task+runtime
+                        skillRunning.set(true); //Set taskRunning to true after we've randomized task+runtime
                         System.out.println("Taskrunning set true");
                     }
                     //Enter loop of running the task!
-                    while (!ScriptManager.INSTANCE.isStopping() && !runtime.hasFinished() && taskRunning.get()) {
+                    while (!ScriptManager.INSTANCE.isStopping() && !runtime.hasFinished() && skillRunning.get()) {
                         if (!isBreaking) {
-                            nextTask.start();
+                            skillLoop.run();
                         } else Condition.sleep(Random.nextInt(400, 1000));
                     }
                     tasks.removeIf(task -> SkillData.skillsMap.get(mMain.runningSkill)); //Remove task if its marked done!
-                    taskRunning.set(false); //Finally, set taskRunning to false, so we're ready for the next skill task.
+                    skillRunning.set(false); //Finally, set taskRunning to false, so we're ready for the next skill task.
                 });
             }
         } else {
@@ -226,7 +226,7 @@ public class mMain extends AbstractScript {
             if (SkillData.skillsMap.get(skill)) {
                 ScriptManager.INSTANCE.stop();
             } else {
-                start.start();
+                start.run();
             }
         }
     }
@@ -253,6 +253,6 @@ public class mMain extends AbstractScript {
     }
 
     public interface Start {
-        void start();
+        void run();
     }
 }

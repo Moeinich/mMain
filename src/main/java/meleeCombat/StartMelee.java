@@ -16,7 +16,7 @@ import helpers.extentions.Task;
 import script.mMain;
 
 public class StartMelee implements mMain.Start{
-    public void start() {
+    public void run() {
         mMain.runningSkill = "melee";
         List<Task> meleeTasks = Arrays.asList(
                 new BankBeforeTask(),
@@ -37,7 +37,7 @@ public class StartMelee implements mMain.Start{
                     || SkillData.skillsMap.get("melee")) {
                 mMain.state = "Melee done!";
                 SkillData.setSkillDone();
-                mMain.taskRunning.set(false);
+                mMain.skillRunning.set(false);
             }
             if (task.activate()) {
                 task.execute();

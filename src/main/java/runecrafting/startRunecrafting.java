@@ -16,7 +16,7 @@ import helpers.questTasks.doTempleOfTheEye;
 import script.mMain;
 
 public class startRunecrafting implements mMain.Start{
-    public void start() {
+    public void run() {
         mMain.runningSkill = "runecrafting";
         List<Task> runecraftingTasks = Arrays.asList(
                 new doRuneMysteries(),
@@ -28,12 +28,12 @@ public class startRunecrafting implements mMain.Start{
         for (Task task : runecraftingTasks) {
             if (Players.local().getCombatLevel() < 20) {
                 mMain.state = "Skipping RC, too low combat level for quests";
-                mMain.taskRunning.set(false);
+                mMain.skillRunning.set(false);
             }
             if (Skills.realLevel(Constants.SKILLS_RUNECRAFTING) >= 20 || SkillData.skillsMap.get("runecrafting")) {
                 mMain.state = "Runecrafting done!";
                 SkillData.setSkillDone();
-                mMain.taskRunning.set(false);
+                mMain.skillRunning.set(false);
             }
             if (task.activate()) {
                 task.execute();

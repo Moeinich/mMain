@@ -14,7 +14,7 @@ import helpers.extentions.Task;
 import script.mMain;
 
 public class StartHerblore implements mMain.Start{
-    public void start() {
+    public void run() {
         mMain.runningSkill = "herblore";
         List<Task> herbloreTasks = Arrays.asList(
                 new GoToBank(),
@@ -26,7 +26,7 @@ public class StartHerblore implements mMain.Start{
             if (Skills.realLevel(Constants.SKILLS_HERBLORE) >= 70 || SkillData.skillsMap.get("herblore")) {
                 mMain.state = "Herblore done!";
                 SkillData.setSkillDone();
-                mMain.taskRunning.set(false);
+                mMain.skillRunning.set(false);
             }
             if (task.activate()) {
                 task.execute();

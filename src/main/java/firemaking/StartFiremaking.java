@@ -12,7 +12,7 @@ import helpers.extentions.Task;
 import script.mMain;
 
 public class StartFiremaking implements mMain.Start{
-    public void start() {
+    public void run() {
         mMain.runningSkill = "firemaking";
         List<Task> firemakingTasks = Arrays.asList(
                 new GetLogs(),
@@ -23,7 +23,7 @@ public class StartFiremaking implements mMain.Start{
             if (Skills.realLevel(Constants.SKILLS_FIREMAKING) >= 50 || SkillData.skillsMap.get("firemaking")) {
                 mMain.state = "Firemaking done!";
                 SkillData.setSkillDone();
-                mMain.taskRunning.set(false);
+                mMain.skillRunning.set(false);
             }
             if (task.activate()) {
                 task.execute();

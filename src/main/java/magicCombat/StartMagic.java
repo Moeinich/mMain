@@ -13,7 +13,7 @@ import helpers.extentions.Task;
 import script.mMain;
 
 public class StartMagic implements mMain.Start{
-    public void start() {
+    public void run() {
         mMain.runningSkill = "magic";
         List<Task> magicTasks = Arrays.asList(
                 new BankBeforeTask(),
@@ -27,7 +27,7 @@ public class StartMagic implements mMain.Start{
             if (Skills.realLevel(Constants.SKILLS_MAGIC) >= 55 || SkillData.skillsMap.get("magic")) {
                 mMain.state = "Magic done!";
                 SkillData.setSkillDone();
-                mMain.taskRunning.set(false);
+                mMain.skillRunning.set(false);
             }
             if (task.activate()) {
                 task.execute();
