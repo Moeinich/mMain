@@ -104,7 +104,7 @@ public class QuestVarpbits {
     public static final Quest WHAT_LIES_BELOW = new Quest("What Lies Below", 3523, 150);
     public static final Quest WITCHS_HOUSE = new Quest("Witch's House", 226, 7, true);
     public static final Quest WITCHS_POTION = new Quest("Witch's Potion", 67, 3, true);
-    public static final Quest X_MARKS_THE_SPOT = new Quest("X Marks the Spot", 8063, 8);
+    public static final Quest X_MARKS_THE_SPOT = new Quest("X Marks the Spot", 2111, 49807368);
     public static final Quest TEMPLE_OF_THE_EYE = new Quest("Temple of the Eye", 13738, 130);
     public static final Quest BLACK_KNIGHTS_FORTRESS = new Quest("Black Knights' Fortress", 130, 4);
     public static final Quest DRAGON_SLAYER_I = new Quest("Dragon Slayer I", 176, 10);
