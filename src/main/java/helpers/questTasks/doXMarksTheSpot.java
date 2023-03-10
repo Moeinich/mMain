@@ -16,8 +16,10 @@ public class doXMarksTheSpot extends Task {
     @Override
     public boolean execute() {
         mMain.state = "Quest: " + QuestVarpbits.X_MARKS_THE_SPOT.getQuestName();
-        mMain.runtime.reset(Random.nextInt(mMain.MIN_TIME_LIMIT, mMain.MAX_TIME_LIMIT));
-        QuestInitializer.xMarksTheSpot.run();
+        if (mMain.runtime.timeLeft() <= 30000) {
+            mMain.runtime.reset(Random.nextInt(mMain.MIN_TIME_LIMIT, mMain.MAX_TIME_LIMIT));
+
+        }        QuestInitializer.xMarksTheSpot.run();
         return false;
     }
 }

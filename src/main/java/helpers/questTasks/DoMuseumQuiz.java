@@ -16,8 +16,10 @@ public class DoMuseumQuiz extends Task {
     @Override
     public boolean execute() {
         mMain.state = "Quest: " + QuestVarpbits.NATURAL_HISTORY.getQuestName();
-        mMain.runtime.reset(Random.nextInt(mMain.MIN_TIME_LIMIT, mMain.MAX_TIME_LIMIT));
-        QuestInitializer.naturalHistory.run();
+        if (mMain.runtime.timeLeft() <= 30000) {
+            mMain.runtime.reset(Random.nextInt(mMain.MIN_TIME_LIMIT, mMain.MAX_TIME_LIMIT));
+
+        }        QuestInitializer.naturalHistory.run();
         return false;
     }
 }
