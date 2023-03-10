@@ -40,7 +40,6 @@ public class TreeTeak extends Task {
             }
 
             GameObject treeTeak = Objects.stream().within(1).name("Teak").nearest().first();
-                    //PlayerHelper.nearestGameObject(WoodcuttingData.teakArea, "Teak");
             mMain.state = "Cutting teaks";
             if (treeTeak.interact("Chop")) {
                 System.out.println("Clicked teak");
