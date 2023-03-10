@@ -119,8 +119,8 @@ public class FruitStall extends Task {
     private void CheckFavor() {
         //We need to check hosidius favor!
         if (!SkillData.KOUREND_FAVOR.checkedFavor) {
-            mMain.state = "Favor: " + SkillData.KOUREND_FAVOR.hosidiusFavorValue;
             SkillData.KOUREND_FAVOR.hosidiusFavorValue = SkillData.KOUREND_FAVOR.HOSIDIUS.getValue();
+            mMain.state = "Favor: " + SkillData.KOUREND_FAVOR.hosidiusFavorValue;
         }
         if (SkillData.KOUREND_FAVOR.hosidiusFavorValue <= 19) {
             System.out.println("We dont have enough hosidius favor");
