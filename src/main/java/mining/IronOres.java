@@ -14,6 +14,7 @@ import helpers.PlayerHelper;
 import helpers.SkillData;
 import helpers.extentions.Task;
 import script.mMain;
+import thieving.ThievingData;
 
 public class IronOres extends Task {
     public boolean activate() {
@@ -31,7 +32,7 @@ public class IronOres extends Task {
             }
         }
         if (MiningData.miningIronLocation.equals(Players.local().tile())) {
-            if (Players.stream().within(MiningData.miningIronArea).count() != 1) {
+            if (Players.stream().filter(player -> MiningData.miningIronArea.contains(player.tile()) && !player.equals(Players.local())).isEmpty()) {
                 int[] p2p = SkillData.p2p;
                 int randomWorld = p2p[Random.nextInt(0, p2p.length - 1)];
                 World world = new World(randomWorld, randomWorld, 1, World.Type.MEMBERS, World.Server.RUNE_SCAPE, World.Specialty.NONE);
