@@ -1,5 +1,6 @@
 package helpers.questTasks;
 
+import org.powbot.api.Random;
 import org.powbot.api.rt4.Varpbits;
 
 import helpers.extentions.Task;
@@ -15,6 +16,7 @@ public class DoMuseumQuiz extends Task {
     @Override
     public boolean execute() {
         mMain.state = "Quest: " + QuestVarpbits.NATURAL_HISTORY.getQuestName();
+        mMain.runtime.reset(Random.nextInt(mMain.MIN_TIME_LIMIT, mMain.MAX_TIME_LIMIT));
         QuestInitializer.naturalHistory.run();
         return false;
     }
