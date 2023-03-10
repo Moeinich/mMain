@@ -5,7 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c7dd1c8c-f10c-49ed-8219-521bd6f55188" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/helpers/PlayerHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/helpers/PlayerHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/thieving/FruitStall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/thieving/FruitStall.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/thieving/TeaStall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/thieving/TeaStall.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

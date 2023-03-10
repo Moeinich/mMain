@@ -90,10 +90,6 @@ public class TeaStall extends Task {
         if (!Players.local().tile().equals(ThievingData.movementThieving()) && !(ThievingData.movementThieving().tile().distanceTo(Players.local()) < 3)) { // Need to move to our thieving spot
             mMain.state = "Walking to Thieving spot";
             PlayerHelper.walkToTile(ThievingData.movementThieving());
-            Condition.wait(() -> ThievingData.movementThieving().tile().distanceTo(Players.local()) < 3, 150, 20);
-            if (ThievingData.movementThieving().tile().distanceTo(Players.local()) < 3) {
-                Movement.step(ThievingData.movementThieving());
-            }
         }
     }
 }

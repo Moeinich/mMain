@@ -103,7 +103,6 @@ public class FruitStall extends Task {
     private void WalkToSpot() {
         mMain.state = "Walking to Thieving spot";
         PlayerHelper.walkToTile(ThievingData.movementThieving());
-        Condition.wait(() -> ThievingData.movementThieving().tile().distanceTo(Players.local()) < 3, 150, 20);
     }
     private void CheckFavor() {
         //We need to check hosidius favor!
