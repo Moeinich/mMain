@@ -51,7 +51,8 @@ public class EarthRunes extends Task {
             CombatHelper.gearUp(new int[]{ItemList.EARTH_TIARA_5535});
         }
         if (Inventory.stream().name("Pure essence").isEmpty()) {
-            InteractionsHelper.depositAndWithdraw(ItemList.PURE_ESSENCE_7936, 28);
+            InteractionsHelper.depositAndWithdraw(ItemList.VARROCK_TELEPORT_8007, 5);
+            InteractionsHelper.withdrawItem(ItemList.PURE_ESSENCE_7936, 27);
         }
     }
 
@@ -66,8 +67,5 @@ public class EarthRunes extends Task {
     public void InteractWithAltar() {
         GameObject altar = PlayerHelper.nearestGameObject("Altar");
         altar.interact("Craft-rune");
-    }
-    public void LeaveAltarArea() {
-
     }
 }

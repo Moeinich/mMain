@@ -19,7 +19,7 @@ public class InteractionsHelper {
         if (!Bank.opened() && Bank.inViewport()) {
             if (Bank.open()) {
                 System.out.println("Open bank to withdraw item: " + itemId + " amount: " + specifiedAmount);
-                Condition.wait(Bank::opened, 150, 10);
+                Condition.wait(Bank::opened, 300, 10);
             }
         }
         if (Bank.stream().id(itemId).first().stackSize() < specifiedAmount || Bank.stream().id(itemId).isEmpty()) {
@@ -35,7 +35,7 @@ public class InteractionsHelper {
                 Condition.wait(() -> Inventory.stream().id(itemId).count() == specifiedAmount, 150, 10);
             } else {
                 Bank.withdraw(itemId, specifiedAmount);
-                Condition.wait(() -> Inventory.stream().id(itemId).isNotEmpty(), 150, 10);
+                Condition.wait(() -> Inventory.stream().id(itemId).isNotEmpty(), 300, 10);
             }
         }
     }
@@ -58,10 +58,10 @@ public class InteractionsHelper {
             System.out.println("Withdrawing " + itemId + " amount:" + specifiedAmount);
             if (specifiedAmount == -1) {
                 Bank.withdraw(itemId, Bank.Amount.ALL);
-                Condition.wait(() -> Inventory.stream().id(itemId).isNotEmpty(), 150, 10);
+                Condition.wait(() -> Inventory.stream().id(itemId).isNotEmpty(), 300, 10);
             } else {
                 Bank.withdraw(itemId, specifiedAmount);
-                Condition.wait(() -> Inventory.stream().id(itemId).isNotEmpty(), 150, 10);
+                Condition.wait(() -> Inventory.stream().id(itemId).isNotEmpty(), 300, 10);
             }
         }
     }

@@ -214,7 +214,12 @@ public class mMain extends AbstractScript {
                     while (!ScriptManager.INSTANCE.isStopping() && !runtime.hasFinished() && skillRunning.get()) {
                         if (!isBreaking) {
                             skillLoop.run();
-                        } else Condition.sleep(Random.nextInt(400, 1000));
+                        } else {
+                            System.out.println("Sleeping due to breaking");
+                            Condition.sleep(Random.nextInt(400, 1000));
+                        }
+
+
                     }
                     tasks.removeIf(task -> SkillData.skillsMap.get(mMain.runningSkill)); //Remove task if its marked done!
                     skillRunning.set(false); //Finally, set taskRunning to false, so we're ready for the next skill task.
