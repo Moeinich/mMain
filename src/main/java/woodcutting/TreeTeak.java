@@ -39,9 +39,10 @@ public class TreeTeak extends Task {
                 world.hop();
             }
 
-            GameObject treeTeak = PlayerHelper.nearestGameObject(WoodcuttingData.teakArea, "Teak");
+            GameObject treeTeak = Objects.stream().within(WoodcuttingData.teakArea).name("Teak").nearest().first();
+                    //PlayerHelper.nearestGameObject(WoodcuttingData.teakArea, "Teak");
             mMain.state = "Cutting teaks";
-            if (treeTeak.interact("Chop down", "Teak")) {
+            if (treeTeak.interact("Chop")) {
                 System.out.println("Clicked teak");
                 Condition.wait(() -> Objects.stream().at(treeTeak.tile()).id(WoodcuttingData.teakTreeID).isEmpty() || Chat.canContinue() || Inventory.isFull(), 500, 50);
                 System.out.println("Teak gone, leveled up or inventory full");
