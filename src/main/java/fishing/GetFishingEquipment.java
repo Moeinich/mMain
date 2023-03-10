@@ -30,22 +30,26 @@ public class GetFishingEquipment extends Task {
     public boolean execute() {
         mMain.state = "Go to bank";
         if (Bank.nearest().tile().distanceTo(Players.local()) > 4) {
+            System.out.println("Walking to bank");
             DaxWalker.walkToBank();
         }
 
         if (Bank.nearest().tile().distanceTo(Players.local()) <= 6 && Bank.inViewport() && !Bank.opened()) {
             mMain.state = "Get equipment";
             if (Skills.realLevel(Constants.SKILLS_FISHING) <= 19) {
+                System.out.println("Withdrawing small fishing net");
                 InteractionsHelper.depositAndWithdraw(ItemList.SMALL_FISHING_NET_303, 1);
                 Bank.close();
                 Condition.wait( () -> !Bank.opened(), 250, 50);
             }
             if (Skills.realLevel(Constants.SKILLS_FISHING) >= 20) {
                 if (Inventory.stream().id(ItemList.FLY_FISHING_ROD_309).isEmpty()) {
+                    System.out.println("Withdrawing fly fishing rod");
                     InteractionsHelper.depositAndWithdraw(ItemList.FLY_FISHING_ROD_309, 1);
                     Condition.wait( () -> Inventory.stream().name("Fly fishing rod").isNotEmpty(),150, 50);
                 }
                 if (Inventory.stream().id(ItemList.FEATHER_314).isEmpty()) {
+                    System.out.println("Withdrawing all our feathers");
                     InteractionsHelper.withdrawItem(ItemList.FEATHER_314, -1);
                     Condition.wait( () -> Inventory.stream().name("Feather").isNotEmpty(),150, 50);
                 }

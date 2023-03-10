@@ -17,8 +17,8 @@ public class doAbyssMiniquest extends Task {
     public boolean execute() {
         mMain.state = "Quest: " + QuestVarpbits.ENTER_THE_ABYSS.getQuestName();
         if (mMain.runtime.timeLeft() <= 30000) {
+            System.out.println("Runtime reset due to Enter the Abyss");
             mMain.runtime.reset(Random.nextInt(mMain.MIN_TIME_LIMIT, mMain.MAX_TIME_LIMIT));
-
         }
         QuestInitializer.enterTheAbyss.run();
         return false;

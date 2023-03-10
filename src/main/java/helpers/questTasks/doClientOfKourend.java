@@ -17,6 +17,7 @@ public class doClientOfKourend extends Task {
     public boolean execute() {
         mMain.state = "Quest: " + QuestVarpbits.CLIENT_OF_KOUREND.getQuestName();
         if (mMain.runtime.timeLeft() <= 30000) {
+            System.out.println("Runtime reset due to Client of Kourend");
             mMain.runtime.reset(Random.nextInt(mMain.MIN_TIME_LIMIT, mMain.MAX_TIME_LIMIT));
 
         }        QuestInitializer.clientOfKourend.run();

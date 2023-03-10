@@ -62,7 +62,7 @@ public class FruitStall extends Task {
         }
         if (SkillData.KOUREND_FAVOR.hosidiusFavorValue >= 20) {
             //Go to thieving spot
-            if (!Players.local().tile().equals(ThievingData.movementThieving()) && !(ThievingData.movementThieving().tile().distanceTo(Players.local()) < 3)) {
+            if (!Players.local().tile().equals(ThievingData.movementThieving())) {
                 WalkToSpot();
             }
             //World hop check

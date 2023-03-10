@@ -17,6 +17,7 @@ public class doTempleOfTheEye extends Task {
     public boolean execute() {
         mMain.state = "Quest: " + QuestVarpbits.TEMPLE_OF_THE_EYE.getQuestName();
         if (mMain.runtime.timeLeft() <= 30000) {
+            System.out.println("Runtime reset due to Temple of the Eye");
             mMain.runtime.reset(Random.nextInt(mMain.MIN_TIME_LIMIT, mMain.MAX_TIME_LIMIT));
 
         }        QuestInitializer.templeOfTheEye.run();

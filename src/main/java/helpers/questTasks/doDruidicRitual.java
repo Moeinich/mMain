@@ -17,6 +17,7 @@ public class doDruidicRitual extends Task {
     public boolean execute() {
         mMain.state = "Quest: " + QuestVarpbits.DRUIDIC_RITUAL.getQuestName();
         if (mMain.runtime.timeLeft() <= 30000) {
+            System.out.println("Runtime reset due to Druidic Ritual");
             mMain.runtime.reset(Random.nextInt(mMain.MIN_TIME_LIMIT, mMain.MAX_TIME_LIMIT));
 
         }        QuestInitializer.druidicRitual.run();

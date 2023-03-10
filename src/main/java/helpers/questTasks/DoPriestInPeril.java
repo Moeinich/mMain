@@ -22,6 +22,7 @@ public class DoPriestInPeril extends Task {
     public boolean execute() {
         mMain.state = "Quest: " + QuestVarpbits.PRIEST_IN_PERIL.getQuestName();
         if (mMain.runtime.timeLeft() <= 30000) {
+            System.out.println("Runtime reset due to Priest in Peril");
             mMain.runtime.reset(Random.nextInt(mMain.MIN_TIME_LIMIT, mMain.MAX_TIME_LIMIT));
 
         }        QuestInitializer.priestInPeril.run();

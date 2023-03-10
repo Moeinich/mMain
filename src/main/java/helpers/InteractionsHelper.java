@@ -44,7 +44,7 @@ public class InteractionsHelper {
         if (!Bank.opened() && Bank.inViewport()) {
             if (Bank.open()) {
                 System.out.println("Open bank to withdraw item: " + itemId + " amount: " + specifiedAmount);
-                Condition.wait(Bank::opened, 150, 10);
+                Condition.wait(Bank::opened, 300, 10);
             }
         }
         if (Bank.stream().id(itemId).first().stackSize() < specifiedAmount) {

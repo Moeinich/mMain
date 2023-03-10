@@ -60,11 +60,9 @@ public class Wines extends Task {
     }
     private void withdrawItems() {
         mMain.state = "Withdraw items";
-        if (Bank.stream().id(CombineWithItemID).isNotEmpty()) {
-            InteractionsHelper.withdrawItem(CombineWithItemID, 14);
-            Bank.close();
-            Condition.wait( () -> !Bank.opened(), 500, 50);
-        }
+        InteractionsHelper.withdrawItem(CombineWithItemID, 14);
+        Bank.close();
+        Condition.wait( () -> !Bank.opened(), 500, 50);
     }
     private void craft() {
         while (Inventory.stream().id(CombineWithItemID).count() >= 1) {
