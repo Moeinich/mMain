@@ -41,7 +41,7 @@ public class CowSafespot extends Task {
             mMain.state = "Attack";
             if (cow.inViewport() && cow.interact("Attack")) {
                 mMain.state = "Waiting for kill";
-                Condition.wait(() -> cow.healthPercent() == 0,900,100);
+                Condition.wait(() -> cow.healthPercent() == 0 || Players.local().inCombat(),900,100);
             }
         }
     }
