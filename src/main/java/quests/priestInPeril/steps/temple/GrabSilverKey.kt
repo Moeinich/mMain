@@ -36,6 +36,15 @@ class GrabSilverKey(information: QuestInformation) : WalkToInteractiveStep<GameO
                     currentMonument = -1
                     return
                 }
+            } else {
+                val interactive = getInteractive()
+                if (interactive != GameObject.Nil) {
+                    if (interactive.interact(ACTION_STUDY)) {
+                        Condition.wait { getItemWidget().visible() }
+                    }
+                } else {
+                    logger.info("Could not find an interactable monument")
+                }
             }
             if (item?.name()?.contains("Golden")!!) {
                 logger.info("$currentMonument set to true")
@@ -61,6 +70,7 @@ class GrabSilverKey(information: QuestInformation) : WalkToInteractiveStep<GameO
             }
         }
     }
+
 
     private fun getItemWidget(): Component {
         return Widgets.component(KEY_WIDGET, ITEM_COMPONENT)

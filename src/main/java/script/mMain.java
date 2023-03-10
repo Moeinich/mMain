@@ -101,14 +101,14 @@ public class mMain extends AbstractScript {
     }
 
 
-    final int MIN_TIME_LIMIT = 3600000;
-    final int MAX_TIME_LIMIT = 5400000;
+    public static final int MIN_TIME_LIMIT = 3600000;
+    public static final int MAX_TIME_LIMIT = 5400000;
     public static volatile String runningSkill;
     public static String state;
     public static Boolean shouldBank = true;
     Executor taskHandler = Executors.newSingleThreadExecutor();
     public static final AtomicBoolean skillRunning = new AtomicBoolean(false);
-    private final Stopwatch runtime = new Stopwatch();
+    public static final Stopwatch runtime = new Stopwatch();
 
     private static final Map<String, Start> skillStarters = new HashMap<>();
     static {
@@ -129,7 +129,6 @@ public class mMain extends AbstractScript {
         skillStarters.put("thieving", new StartThieving());
         skillStarters.put("woodcutting", new StartWoodcutting());
     }
-    List<Start> tasks = new ArrayList<>(skillStarters.values());
 
 
     @Override
