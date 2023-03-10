@@ -180,7 +180,7 @@ class ClientOfKourend(information: QuestInformation) : BaseQuest(information) {
             1991 -> return useLamp().processStep()
             1992 -> return useLamp().processStep()
             1993 -> return useCertificate().processStep()
-            1994 -> { //Might be wrong, needs to check after RS update
+            9 -> {
                 information.complete = true
                 CommonMethods.closeQuestComplete()
             }
