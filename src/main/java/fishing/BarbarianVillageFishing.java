@@ -29,7 +29,7 @@ public class BarbarianVillageFishing extends Task {
             Npc BarbarianVillageFishingSpot = PlayerHelper.nearestNpc("Rod Fishing spot");
             if (BarbarianVillageFishingSpot.inViewport() && Players.local().animation() == -1) {
                 if (BarbarianVillageFishingSpot.interact("Lure", "Rod Fishing spot")) {
-                    Condition.wait(() -> Npcs.stream().at(BarbarianVillageFishingSpot.tile()).isEmpty(), 150, 50);
+                    Condition.wait(() -> Npcs.stream().at(BarbarianVillageFishingSpot.tile()).isEmpty(), 500, 50);
                 }
             }
         }

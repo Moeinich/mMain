@@ -9,7 +9,6 @@ import org.powbot.api.rt4.Skills;
 import org.powbot.api.rt4.walking.model.Skill;
 
 import helpers.PlayerHelper;
-import helpers.extentions.Conditions;
 import script.mMain;
 
 public class AgilityHelper {
@@ -27,8 +26,9 @@ public class AgilityHelper {
         }
     }
 
-    public static void handleObstacleWithLoot(IObstacleInfo obstacleInfo) {
-        GroundItem groundItem = GroundItems.stream().within(10).name("Mark of grace").reachable().nearest().first();
+    public static void handleObstacleWithLoot(IObstacleInfo obstacleInfo, Integer... distanceToLoot) {
+        int distance = distanceToLoot.length > 0 ? distanceToLoot[0] : 10;
+        GroundItem groundItem = GroundItems.stream().within(distance).name("Mark of grace").reachable().nearest().first();
         if (groundItem.inViewport()) {
             mMain.state = "Pickup mark";
             PlayerHelper.lootItems("Take", "Mark of grace");

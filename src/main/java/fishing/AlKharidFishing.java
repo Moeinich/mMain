@@ -30,7 +30,7 @@ public class AlKharidFishing extends Task {
             if (AlKharidFishingSpot.inViewport() && Players.local().animation() == -1) {
                 Camera.turnTo(AlKharidFishingSpot);
                 if (AlKharidFishingSpot.interact("Small Net", "Fishing Spot")) {
-                    Condition.wait(() -> Players.local().animation() == -1, 2500, 50);
+                    Condition.wait(() -> Players.local().animation() == -1, 500, 100);
                 }
             }
         }
