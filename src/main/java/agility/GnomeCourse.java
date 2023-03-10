@@ -23,33 +23,31 @@ public class GnomeCourse extends Task {
         return false;
     }
     public void ShouldRunObstacle() {
-        if (PlayerHelper.withinArea(AgilityData.GnomeAreas.OBSTACLE_1.getArea()) || PlayerHelper.withinArea(AgilityData.GnomeAreas.END.getArea())) {
-            if (!PlayerHelper.withinArea(AgilityData.GnomeAreas.START.getArea())) {
-                Movement.moveTo(AgilityData.GnomeAreas.OBSTACLE_1.getArea().getRandomTile());
-            }
+        if (PlayerHelper.withinArea(AgilityData.GnomeAreas.START.getArea())) {
             AgilityHelper.handleObstacle(AgilityData.obstacleInfo.gnome1);
         }
-        if (PlayerHelper.withinArea(AgilityData.GnomeAreas.OBSTACLE_2.getArea())) {
+        else if (PlayerHelper.withinArea(AgilityData.GnomeAreas.OBSTACLE_2.getArea())) {
             AgilityHelper.handleObstacle(AgilityData.obstacleInfo.gnome2);
         }
-        if (PlayerHelper.withinArea(AgilityData.GnomeAreas.OBSTACLE_3.getArea())) {
+        else if (PlayerHelper.withinArea(AgilityData.GnomeAreas.OBSTACLE_3.getArea())) {
             AgilityHelper.handleObstacle(AgilityData.obstacleInfo.gnome3);
         }
-        if (PlayerHelper.withinArea(AgilityData.GnomeAreas.OBSTACLE_4.getArea())) {
+        else if (PlayerHelper.withinArea(AgilityData.GnomeAreas.OBSTACLE_4.getArea())) {
             AgilityHelper.handleObstacle(AgilityData.obstacleInfo.gnome4);
         }
-        if (PlayerHelper.withinArea(AgilityData.GnomeAreas.OBSTACLE_5.getArea())) {
+        else if (PlayerHelper.withinArea(AgilityData.GnomeAreas.OBSTACLE_5.getArea())) {
             AgilityHelper.handleObstacle(AgilityData.obstacleInfo.gnome5);
         }
-        if (PlayerHelper.withinArea(AgilityData.GnomeAreas.OBSTACLE_6.getArea())) {
+        else if (PlayerHelper.withinArea(AgilityData.GnomeAreas.OBSTACLE_6.getArea())) {
             AgilityHelper.handleObstacle(AgilityData.obstacleInfo.gnome6);
             Condition.wait( () -> PlayerHelper.withinArea(AgilityData.GnomeAreas.OBSTACLE_7.getArea()), 250, 50);
         }
-        if (PlayerHelper.withinArea(AgilityData.GnomeAreas.OBSTACLE_7.getArea())) {
+        else if (PlayerHelper.withinArea(AgilityData.GnomeAreas.OBSTACLE_7.getArea())) {
             AgilityHelper.handleObstacle(AgilityData.obstacleInfo.gnome7);
         }
-        if (!PlayerHelper.withinArea(AgilityData.GnomeAreas.LOWER.getArea())) {
-            mMain.state = "Move to Seers start";
+        else {
+            mMain.state = "Move to Gnome start";
+            System.out.println("Moving to Gnome start area");
             Movement.moveTo(AgilityData.SeersAreas.START.getArea().getRandomTile());
         }
     }

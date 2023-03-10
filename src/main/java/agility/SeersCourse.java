@@ -31,30 +31,25 @@ public class SeersCourse extends Task {
     }
 
     public void ShouldRunObstacle() {
-        if (PlayerHelper.withinArea(AgilityData.SeersAreas.FLOOR.getArea())) {
-            if (!PlayerHelper.withinArea(AgilityData.SeersAreas.START.getArea())) {
-                mMain.state = "Move to Seers start";
-                Movement.moveTo(AgilityData.SeersAreas.START.getArea().getRandomTile());
-            } else {
-                AgilityHelper.handleObstacle(AgilityData.obstacleInfo.seers1);
-            }
+        if (PlayerHelper.withinArea(AgilityData.SeersAreas.START.getArea())) {
+            AgilityHelper.handleObstacle(AgilityData.obstacleInfo.seers1);
         }
-        if (PlayerHelper.withinArea(AgilityData.SeersAreas.OBSTACLE_2.getArea())) {
+        else if (PlayerHelper.withinArea(AgilityData.SeersAreas.OBSTACLE_2.getArea())) {
             AgilityHelper.handleObstacleWithLoot(AgilityData.obstacleInfo.seers2);
         }
-        if (PlayerHelper.withinArea(AgilityData.SeersAreas.OBSTACLE_3.getArea())) {
+        else if (PlayerHelper.withinArea(AgilityData.SeersAreas.OBSTACLE_3.getArea())) {
             AgilityHelper.handleObstacleWithLoot(AgilityData.obstacleInfo.seers3);
         }
-        if (PlayerHelper.withinArea(AgilityData.SeersAreas.OBSTACLE_4.getArea())) {
+        else if (PlayerHelper.withinArea(AgilityData.SeersAreas.OBSTACLE_4.getArea())) {
             AgilityHelper.handleObstacleWithLoot(AgilityData.obstacleInfo.seers4);
         }
-        if (PlayerHelper.withinArea(AgilityData.SeersAreas.OBSTACLE_5.getArea())) {
+        else if (PlayerHelper.withinArea(AgilityData.SeersAreas.OBSTACLE_5.getArea())) {
             AgilityHelper.handleObstacleWithLoot(AgilityData.obstacleInfo.seers5);
         }
-        if (PlayerHelper.withinArea(AgilityData.SeersAreas.OBSTACLE_6.getArea())) {
+        else if (PlayerHelper.withinArea(AgilityData.SeersAreas.OBSTACLE_6.getArea())) {
             AgilityHelper.handleObstacleWithLoot(AgilityData.obstacleInfo.seers6);
         }
-        if (!PlayerHelper.withinArea(AgilityData.SeersAreas.FLOOR.getArea())) {
+        else {
             mMain.state = "Move to Seers start";
             Movement.moveTo(AgilityData.SeersAreas.START.getArea().getRandomTile());
         }

@@ -28,34 +28,30 @@ public class DraynorCourse extends Task {
     }
 
     public void ShouldRunObstacle() {
-        if (PlayerHelper.withinArea(AgilityData.DraynorAreas.FLOOR.getArea())) {
-            if (!PlayerHelper.withinArea(AgilityData.DraynorAreas.START.getArea())) {
-                mMain.state = "Move to draynor start";
-                Movement.moveTo(AgilityData.DraynorAreas.START.getArea().getRandomTile());
-            } else {
-                AgilityHelper.handleObstacle(AgilityData.obstacleInfo.draynor1);
-            }
+        if (PlayerHelper.withinArea(AgilityData.DraynorAreas.START.getArea())) {
+            AgilityHelper.handleObstacle(AgilityData.obstacleInfo.draynor1);
         }
-        if (PlayerHelper.withinArea(AgilityData.DraynorAreas.OBSTACLE_2.getArea())) {
+        else if (PlayerHelper.withinArea(AgilityData.DraynorAreas.OBSTACLE_2.getArea())) {
             AgilityHelper.handleObstacleWithLoot(AgilityData.obstacleInfo.draynor2);
         }
-        if (PlayerHelper.withinArea(AgilityData.DraynorAreas.OBSTACLE_3.getArea())) {
+        else if (PlayerHelper.withinArea(AgilityData.DraynorAreas.OBSTACLE_3.getArea())) {
             AgilityHelper.handleObstacleWithLoot(AgilityData.obstacleInfo.draynor3);
         }
-        if (PlayerHelper.withinArea(AgilityData.DraynorAreas.OBSTACLE_4.getArea())) {
+        else if (PlayerHelper.withinArea(AgilityData.DraynorAreas.OBSTACLE_4.getArea())) {
             AgilityHelper.handleObstacleWithLoot(AgilityData.obstacleInfo.draynor4);
         }
-        if (PlayerHelper.withinArea(AgilityData.DraynorAreas.OBSTACLE_5.getArea())) {
+        else if (PlayerHelper.withinArea(AgilityData.DraynorAreas.OBSTACLE_5.getArea())) {
             AgilityHelper.handleObstacle(AgilityData.obstacleInfo.draynor5);
         }
-        if (PlayerHelper.withinArea(AgilityData.DraynorAreas.OBSTACLE_6.getArea())) {
+        else if (PlayerHelper.withinArea(AgilityData.DraynorAreas.OBSTACLE_6.getArea())) {
             AgilityHelper.handleObstacle(AgilityData.obstacleInfo.draynor6);
         }
-        if (PlayerHelper.withinArea(AgilityData.DraynorAreas.OBSTACLE_7.getArea())) {
+        else if (PlayerHelper.withinArea(AgilityData.DraynorAreas.OBSTACLE_7.getArea())) {
             AgilityHelper.handleObstacleWithLoot(AgilityData.obstacleInfo.draynor7);
         }
-        if (!PlayerHelper.withinArea(AgilityData.DraynorAreas.FLOOR.getArea())) {
-            mMain.state = "Move to Seers start";
+        else {
+            mMain.state = "Move to Draynor start";
+            System.out.println("Moving to draynor start area");
             Movement.moveTo(AgilityData.DraynorAreas.START.getArea().getRandomTile());
         }
     }

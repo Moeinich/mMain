@@ -37,39 +37,29 @@ public class CanifisCourse extends Task {
     }
 
     public void ShouldRunObstacle() {
-        if (PlayerHelper.withinArea(AgilityData.CanifisAreas.FLOOR.getArea())) {
-            if (!PlayerHelper.withinArea(AgilityData.CanifisAreas.START.getArea())) {
-                mMain.state = "Move to Canifis start";
-                Movement.moveTo(AgilityData.CanifisAreas.START.getArea().getRandomTile());
-            } else {
-                AgilityHelper.handleObstacle(AgilityData.obstacleInfo.canifis1);
-            }
-        } else if (PlayerHelper.withinArea(AgilityData.CanifisAreas.OBSTACLE_1_BUG.getArea())) {
+        if (PlayerHelper.withinArea(AgilityData.CanifisAreas.START.getArea())) {
+            AgilityHelper.handleObstacle(AgilityData.obstacleInfo.canifis1);
+        }
+        else if (PlayerHelper.withinArea(AgilityData.CanifisAreas.OBSTACLE_1_BUG.getArea())) {
             mMain.state = "Stuck due to RS bug";
             Movement.moveTo(AgilityData.CanifisAreas.OBSTACLE_2_MOVE_TO.getArea().getRandomTile());
         }
-
-        if (PlayerHelper.withinArea(AgilityData.CanifisAreas.OBSTACLE_2.getArea())) {
+        else if (PlayerHelper.withinArea(AgilityData.CanifisAreas.OBSTACLE_2.getArea())) {
             AgilityHelper.handleObstacleWithLoot(AgilityData.obstacleInfo.canifis2);
         }
-
-        if (PlayerHelper.withinArea(AgilityData.CanifisAreas.OBSTACLE_3.getArea())) {
+        else if (PlayerHelper.withinArea(AgilityData.CanifisAreas.OBSTACLE_3.getArea())) {
             AgilityHelper.handleObstacleWithLoot(AgilityData.obstacleInfo.canifis3);
         }
-
-        if (PlayerHelper.withinArea(AgilityData.CanifisAreas.OBSTACLE_4.getArea())) {
+        else if (PlayerHelper.withinArea(AgilityData.CanifisAreas.OBSTACLE_4.getArea())) {
             AgilityHelper.handleObstacleWithLoot(AgilityData.obstacleInfo.canifis4);
         }
-
-        if (PlayerHelper.withinArea(AgilityData.CanifisAreas.OBSTACLE_5.getArea())) {
+        else if (PlayerHelper.withinArea(AgilityData.CanifisAreas.OBSTACLE_5.getArea())) {
             AgilityHelper.handleObstacleWithLoot(AgilityData.obstacleInfo.canifis5);
         }
-
-        if (PlayerHelper.withinArea(AgilityData.CanifisAreas.OBSTACLE_6.getArea())) {
+        else if (PlayerHelper.withinArea(AgilityData.CanifisAreas.OBSTACLE_6.getArea())) {
             AgilityHelper.handleObstacleWithLoot(AgilityData.obstacleInfo.canifis6);
         }
-
-        if (PlayerHelper.withinArea(AgilityData.CanifisAreas.OBSTACLE_7.getArea())) {
+        else if (PlayerHelper.withinArea(AgilityData.CanifisAreas.OBSTACLE_7.getArea())) {
             GameObject CanifisObstacle7 = PlayerHelper.nearestGameObject(10, AgilityData.obstacleInfo.canifis7.getId());
             if (!CanifisObstacle7.inViewport()) {
                 mMain.state = "Moving to obstacle 7";
@@ -78,12 +68,12 @@ public class CanifisCourse extends Task {
                 AgilityHelper.handleObstacleWithLoot(AgilityData.obstacleInfo.canifis7);
             }
         }
-        if (PlayerHelper.withinArea(AgilityData.CanifisAreas.OBSTACLE_8.getArea())) {
+        else if (PlayerHelper.withinArea(AgilityData.CanifisAreas.OBSTACLE_8.getArea())) {
             AgilityHelper.handleObstacleWithLoot(AgilityData.obstacleInfo.canifis8);
         }
-
-        if (!PlayerHelper.withinArea(AgilityData.CanifisAreas.FLOOR.getArea())) {
+        else {
             mMain.state = "Move to Canifis start";
+            System.out.println("Moving to Canifis start area");
             Movement.moveTo(AgilityData.CanifisAreas.START.getArea().getRandomTile());
         }
     }
