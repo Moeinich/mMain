@@ -19,6 +19,7 @@ import helpers.PlayerHelper;
 import helpers.SkillData;
 import helpers.extentions.Task;
 import script.mMain;
+import woodcutting.WoodcuttingData;
 
 public class FruitStall extends Task {
 
@@ -65,7 +66,7 @@ public class FruitStall extends Task {
                 WalkToSpot();
             }
             //World hop check
-            if (PlayerHelper.withinArea(ThievingData.fruitStallArea) && Players.stream().within(ThievingData.fruitStallArea).count() != 1) {
+            if (PlayerHelper.withinArea(ThievingData.fruitStallArea) && Players.stream().filter(player -> player.tile().equals(ThievingData.fruitStallArea) && !player.equals(Players.local())).isNotEmpty()) {
                 ShouldWorldhop();
             }
             //Thieving loop
@@ -85,7 +86,7 @@ public class FruitStall extends Task {
             Condition.wait(() -> Game.tab(Game.Tab.INVENTORY), 250, 10);
         }
         GameObject fruitStall = PlayerHelper.nearestGameObject(2, STALL_ID);
-        if (fruitStall.valid() && Players.stream().within(ThievingData.fruitStallArea).count() == 1) {
+        if (fruitStall.valid() && Players.stream().filter(player -> player.tile().equals(ThievingData.fruitStallArea) && !player.equals(Players.local())).isEmpty()) {
             if (!fruitStall.inViewport()) { // Need to turn camera to the stall
                 mMain.state = "Turning camera";
                 Camera.turnTo(fruitStall);

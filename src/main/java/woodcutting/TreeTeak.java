@@ -32,7 +32,8 @@ public class TreeTeak extends Task {
         }
 
         if (PlayerHelper.withinArea(WoodcuttingData.teakArea) && Players.local().animation() == -1) {
-            if (Players.stream().within(WoodcuttingData.teakArea).count() != 1) {
+            if (Players.stream()
+                    .filter(player -> player.tile().equals(WoodcuttingData.teakLocation) && !player.equals(Players.local())).isNotEmpty()) {
                 int[] p2p = SkillData.p2p;
                 int randomWorld = p2p[Random.nextInt(0, p2p.length - 1)];
                 World world = new World(randomWorld, randomWorld, 1, World.Type.MEMBERS, World.Server.RUNE_SCAPE, World.Specialty.NONE);
