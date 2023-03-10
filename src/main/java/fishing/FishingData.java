@@ -17,12 +17,9 @@ public class FishingData {
     );
 
     public static Tile movementFishing(){
-        if (Skill.Fishing.realLevel() <= 19) {
-            return AlKharidFishingSpot1.getRandomTile();
-        }
         if (Skill.Fishing.realLevel() >= 20) {
             return BarbarianVillageFishingArea.getRandomTile();
         }
-        return null;
+        return AlKharidFishingSpot1.getRandomTile();
     }
 }

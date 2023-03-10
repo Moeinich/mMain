@@ -6,10 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="c7dd1c8c-f10c-49ed-8219-521bd6f55188" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/agility/AgilityHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/agility/AgilityHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/agility/VarrockCourse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/agility/VarrockCourse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fishing/AlKharidFishing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fishing/AlKharidFishing.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fishing/BarbarianVillageFishing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fishing/BarbarianVillageFishing.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/firemaking/GetLogs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/firemaking/GetLogs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fishing/FishingData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fishing/FishingData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mining/MiningData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mining/MiningData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/smithing/SmithingData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/smithing/SmithingData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/thieving/FruitStall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/thieving/FruitStall.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/thieving/ThievingData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/thieving/ThievingData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/woodcutting/WoodcuttingData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/woodcutting/WoodcuttingData.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

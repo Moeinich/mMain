@@ -29,6 +29,6 @@ public class ThievingData {
         if (Skills.realLevel(Constants.SKILLS_THIEVING) >= 25) {
             return fruitStallTile;
         }
-        return null;
+        return thievingMenArea.getRandomTile();
     }
 }

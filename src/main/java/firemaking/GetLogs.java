@@ -6,6 +6,7 @@ import org.powbot.api.rt4.Bank;
 import org.powbot.api.rt4.Inventory;
 import org.powbot.api.rt4.Movement;
 import org.powbot.api.rt4.Players;
+import org.powbot.dax.api.models.RunescapeBank;
 
 import helpers.InteractionsHelper;
 import helpers.extentions.ItemList;
@@ -24,7 +25,7 @@ public class GetLogs extends Task {
         if (Bank.inViewport() && nearestBank.tile().distanceTo(Players.local()) < 4) {
             Bank.open();
         } else {
-            Movement.moveToBank();
+            Movement.moveToBank(RunescapeBank.FALADOR_WEST);
         }
 
         if (Bank.opened() && Inventory.stream().id(ItemList.TINDERBOX_590).isEmpty()) {

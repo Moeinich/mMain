@@ -30,9 +30,6 @@ public class WoodcuttingData {
     public static int[] wcAxes = {ItemList.BRONZE_AXE_1351, ItemList.STEEL_AXE_1353, ItemList.MITHRIL_AXE_1355, ItemList.ADAMANT_AXE_1357, ItemList.RUNE_AXE_1359};
 
     public static Tile movementWoodcutting(){
-        if (Skills.realLevel(Constants.SKILLS_WOODCUTTING) <= 14) {
-            return normalTreeLocation.getRandomTile();
-        }
         if (Skills.realLevel(Constants.SKILLS_WOODCUTTING) >= 15 && (Skills.realLevel(Constants.SKILLS_WOODCUTTING) < 30)) {
             return oakTreeLocation.getRandomTile();
         }
@@ -42,7 +39,7 @@ public class WoodcuttingData {
         if (Skills.realLevel(Constants.SKILLS_WOODCUTTING) >= 35) {
             return teakLocation;
         }
-        return null;
+        return normalTreeLocation.getRandomTile();
     }
 
     public static int withdrawAxe() {
