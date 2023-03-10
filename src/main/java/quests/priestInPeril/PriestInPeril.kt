@@ -140,6 +140,7 @@ class PriestInPeril(information: QuestInformation) : BaseQuest(information) {
                 7 -> talkToDrezelInsidePrison
                 in 8..59 -> giveDrezelEssence.processStep()
                 60 -> {
+                    Chat.completeChat()
                     information.complete = true
                     CommonMethods.closeQuestComplete()
                     null
