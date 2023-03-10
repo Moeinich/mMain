@@ -55,11 +55,11 @@ public class PlayerHelper {
         }
     }
     public static void walkToTile(Tile place, Teleport... teleportBlacklist) {
-        if (place.tile().distanceTo(Players.local()) <= 2) {
+        if (place.tile().distanceTo(Players.local()) <= 1) {
             System.out.println("We are still too far away from tile, stepping");
             Movement.step(place);
             Condition.wait( () -> !Players.local().inMotion(), 900, 100);
-        } else if (place.tile().distanceTo(Players.local()) > 3){
+        } else if (place.tile().distanceTo(Players.local()) > 2){
             System.out.println("Walking to tile");
             DaxWalker.blacklistTeleports(teleportBlacklist);
             DaxWalker.walkTo(place);
