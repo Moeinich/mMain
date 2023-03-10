@@ -30,21 +30,21 @@ class InteractWithPlaque(
 
     override fun run() {
         val question = questionComponent()
-        if (questionComponent() != Component.Nil && question.text().isNotEmpty()) {
-            val question = question.text()
-            val answer = answers.firstOrNull { it.question.equals(question, true) }
+        if (question != Component.Nil && question.text().isNotEmpty()) {
+            val questionText = question.text()
+            val answer = answers.firstOrNull { it.question.equals(questionText, true) }
             if (answer == null) {
-                logger.info("Unable to find answer for question $question")
+                logger.info("Unable to find answer for question $questionText")
                 return
             }
             logger.info("Answering question: $question with $answer")
             val answerComponent =
-                Components.stream(WIDGET_ANSWER).filtered { it.text() != question }.text(answer.answer).first()
+                Components.stream(WIDGET_ANSWER).filtered { it.text() != questionText }.text(answer.answer).first()
             Condition.sleep(Random.nextInt(200, 450)) // Otherwise way too fast
             if (answerComponent != Component.Nil && answerComponent.click()) {
-                var result = Condition.wait {
+                val result = Condition.wait {
                     val component = questionComponent()
-                    component == Component.Nil || component.text() != question
+                    component == Component.Nil || component.text() != questionText
                 }
                 logger.info("Answer result is $result")
             }
