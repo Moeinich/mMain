@@ -69,7 +69,7 @@ public class FruitStall extends Task {
                 ShouldWorldhop();
             }
             //Thieving loop
-            if (Players.stream().within(ThievingData.fruitStallArea).count() == 1 && Players.local().tile().equals(ThievingData.movementThieving())) {
+            if (Players.local().tile().equals(ThievingData.movementThieving())) {
                 if (shouldDropItems()) {
                     dropItems();
                 } else if (!Inventory.isFull()) {
