@@ -119,10 +119,14 @@ public class AgilityData {
         CRATE(new Area (new Tile(3101, 3262, 1), new Tile(3103, 3260, 1))),
         START(new Area(new Tile(3103, 3281, 0), new Tile(3105, 3277, 0))),
         OBSTACLE_2(new Area (new Tile(3102, 3277, 3), new Tile(3097, 3281, 3))),
-        OBSTACLE_3(new Area (new Tile(3089, 3276, 3), new Tile(3091, 3276, 3), new Tile(3090, 3273, 3), new Tile(3089, 3273, 3), new Tile(3088, 3274, 3), new Tile(3088, 3276, 3))),
-        OBSTACLE_4(new Area (new Tile(3089, 3268, 3), new Tile(3094, 3265, 3))),
-        OBSTACLE_5(new Area (new Tile(3088, 3257, 3), new Tile(3088, 3261, 3))),
-        OBSTACLE_6(new Area (new Tile(3087, 3255, 3), new Tile(3094, 3255, 3))),
+        OBSTACLE_3(new Area (new Tile(3092, 3277, 3),
+                new Tile(3090, 3279, 3),
+                new Tile(3085, 3274, 3),
+                new Tile(3089, 3271, 3),
+                new Tile(3094, 3276, 3))),
+        OBSTACLE_4(new Area (new Tile(3088, 3269, 3), new Tile(3095, 3264, 3))),
+        OBSTACLE_5(new Area (new Tile(3088, 3257, 3), new Tile(3089, 3262, 3))),
+        OBSTACLE_6(new Area (new Tile(3087, 3256, 3), new Tile(3094, 3255, 3))),
         OBSTACLE_7(new Area (new Tile(3096, 3261, 3), new Tile(3102, 3256, 3)));
 
         private final Area area;

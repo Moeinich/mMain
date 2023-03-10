@@ -1,5 +1,6 @@
 package agility;
 
+import org.powbot.api.rt4.Camera;
 import org.powbot.api.rt4.Constants;
 import org.powbot.api.rt4.Game;
 import org.powbot.api.rt4.Inventory;
@@ -19,6 +20,10 @@ public class DraynorCourse extends Task {
     public boolean execute() {
         if (!Movement.running() && Movement.energyLevel() > 30) {
             PlayerHelper.enableRun();
+        }
+
+        if (!(Camera.yaw() > 77 && Camera.yaw() < 104) || Camera.pitch() < 85) {
+            Camera.turnTo(90,99);
         }
 
         if (Game.tab(Game.Tab.INVENTORY) && Inventory.stream().action("Eat").isNotEmpty()) {
