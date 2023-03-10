@@ -71,16 +71,10 @@ public class TeaStall extends Task {
             Condition.wait(() -> Game.tab(Game.Tab.INVENTORY), 250, 10);
         }
         GameObject teaStall = PlayerHelper.nearestGameObject(2, STALL_ID);
-        if (teaStall.valid() && Players.stream().within(ThievingData.teaStallArea).count() == 1) {
-            if (!teaStall.inViewport()) { // Need to turn camera to the stall
-                mMain.state = "Turning camera";
-                Camera.turnTo(teaStall);
-                Condition.wait(() -> teaStall.inViewport(), 250, 10);
-            } else { // Fruit stall isn't null and in view
-                mMain.state = "Stealing tea";
-                teaStall.interact("Steal-from");
-                Condition.wait(() -> !teaStall.valid(), 30, 45); // Turns into "market stall" (id:27537) after you steal from it
-            }
+        if (teaStall.valid() && teaStall.inViewport()) {
+            mMain.state = "Stealing tea";
+            teaStall.interact("Steal-from");
+            Condition.wait(() -> !teaStall.valid(), 30, 45); // Turns into "market stall" (id:27537) after you steal from it
         } else {
             mMain.state = "Awaiting restock";
         }

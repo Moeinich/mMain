@@ -85,16 +85,10 @@ public class FruitStall extends Task {
             Condition.wait(() -> Game.tab(Game.Tab.INVENTORY), 250, 10);
         }
         GameObject fruitStall = PlayerHelper.nearestGameObject(2, STALL_ID);
-        if (fruitStall.valid() && Players.stream().filter(player -> ThievingData.fruitStallArea.contains(player.tile()) && !player.equals(Players.local())).isEmpty()) {
-            if (!fruitStall.inViewport()) { // Need to turn camera to the stall
-                mMain.state = "Turning camera";
-                Camera.turnTo(fruitStall);
-                Condition.wait(fruitStall::inViewport, 250, 10);
-            } else { // Fruit stall isn't null and in view
-                mMain.state = "Stealing fruit";
-                fruitStall.interact("Steal-from");
-                Condition.wait(() -> !fruitStall.valid(), 30, 45); // Turns into "market stall" (id:27537) after you steal from it
-            }
+        if (fruitStall.valid() && fruitStall.inViewport()) {
+            mMain.state = "Stealing fruit";
+            fruitStall.interact("Steal-from");
+            Condition.wait(() -> !fruitStall.valid(), 30, 45); // Turns into "market stall" (id:27537) after you steal from it
         } else {
             mMain.state = "Awaiting restock";
         }
