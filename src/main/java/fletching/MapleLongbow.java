@@ -47,13 +47,12 @@ public class MapleLongbow extends Task {
                 Bank.open();
                 Condition.wait(Bank::opened, 250, 10);
             }
-            if (Bank.stream().id(CombineWithItemID).isNotEmpty()) {
-                mMain.state = "Banking for fletching";
-                BankForFletching();
-            }
-            if (Bank.stream().id(BowID).isNotEmpty() && Bank.stream().id(BowStringID).isNotEmpty()) {
-                mMain.state = "Banking for stringing";
+            if (Bank.stream().id(CombineWithItemID).isEmpty()) {
+                System.out.println("Bank for stringing");
                 BankForStringing();
+            } else {
+                System.out.println("Bank for fletching");
+                BankForFletching();
             }
         }
         if (ScriptManager.INSTANCE.isStopping()) {

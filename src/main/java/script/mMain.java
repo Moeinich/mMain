@@ -52,7 +52,7 @@ import woodcutting.StartWoodcutting;
 @ScriptManifest(
         name = "mMain",
         description = "Progressively levels different skills and does a few quests",
-        version = "0.3.2",
+        version = "0.3.3",
         category = ScriptCategory.Other
 )
 @ScriptConfiguration.List(
