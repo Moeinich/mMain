@@ -224,9 +224,6 @@ public class AgilityData {
 
 
     public static Tile movementAgility(){
-        if (Skills.realLevel(Constants.SKILLS_AGILITY) <= 9) {
-            return GnomeAreas.START.getArea().getRandomTile();
-        }
         if (Skills.realLevel(Constants.SKILLS_AGILITY) >= 10 && Skills.realLevel(Constants.SKILLS_AGILITY) <= 29) {
             return DraynorAreas.START.getArea().getRandomTile();
         }
@@ -239,7 +236,6 @@ public class AgilityData {
         if (Skills.realLevel(Constants.SKILLS_AGILITY) >= 60 && Skills.realLevel(Constants.SKILLS_AGILITY) <= 80) {
             return SeersAreas.START.getArea().getRandomTile();
         }
-
-        return null;
+        return GnomeAreas.START.getArea().getRandomTile();
     }
 }

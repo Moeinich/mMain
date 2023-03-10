@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="client-sdk">
-    <CLASSES>
-      <root url="jar://$USER_HOME$/Downloads/client-sdk.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>
