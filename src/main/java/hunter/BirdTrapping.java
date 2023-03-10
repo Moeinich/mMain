@@ -59,7 +59,7 @@ public class BirdTrapping extends Task {
         }
         if (feldipHuntingArea.contains(Players.local()) && !Inventory.isFull()) {
             for (int i = 0; i < trapTileArray.length && i < maxTraps; i++) {
-                placeTrapsOnTiles(new Tile[]{trapTileArray[i]});
+                checkTrapStatusOnTile(new Tile[]{trapTileArray[i]});
             }
             Condition.sleep(Random.nextInt(250, 1000));
         }
@@ -71,7 +71,7 @@ public class BirdTrapping extends Task {
         Movement.moveTo(feldipHuntingArea.getRandomTile());
     }
     
-    public void placeTrapsOnTiles(Tile[] tiles) {
+    public void checkTrapStatusOnTile(Tile[] tiles) {
         System.out.println("We are placing traps on missing tiles!");
         for (Tile tile : tiles) {
             if (TrapStatus.shouldPlaceTrap(tile)) {

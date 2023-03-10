@@ -32,8 +32,7 @@ public class TreeTeak extends Task {
         }
 
         if (PlayerHelper.withinArea(WoodcuttingData.teakArea) && Players.local().animation() == -1) {
-            if (Players.stream()
-                    .filter(player -> player.tile().equals(WoodcuttingData.teakLocation) && !player.equals(Players.local())).isNotEmpty()) {
+            if (Players.stream().filter(player -> player.tile().equals(WoodcuttingData.teakLocation) && !player.equals(Players.local())).isNotEmpty()) {
                 int[] p2p = SkillData.p2p;
                 int randomWorld = p2p[Random.nextInt(0, p2p.length - 1)];
                 World world = new World(randomWorld, randomWorld, 1, World.Type.MEMBERS, World.Server.RUNE_SCAPE, World.Specialty.NONE);
@@ -42,6 +41,7 @@ public class TreeTeak extends Task {
 
             GameObject treeTeak = PlayerHelper.nearestGameObject(WoodcuttingData.teakArea, "Teak");
             mMain.state = "Cutting teaks";
+            System.out.println("Are we looping here?");
             if (treeTeak.interact("Chop down", "Teak")) {
                 System.out.println("Clicked teak");
                 Condition.wait(() -> Objects.stream().at(treeTeak.tile()).id(WoodcuttingData.teakTreeID).isEmpty() || Chat.canContinue() || Inventory.isFull(), 500, 50);
