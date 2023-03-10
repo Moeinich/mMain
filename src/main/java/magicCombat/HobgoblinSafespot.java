@@ -1,6 +1,7 @@
 package magicCombat;
 
 import org.powbot.api.Condition;
+import org.powbot.api.Random;
 import org.powbot.api.rt4.Constants;
 import org.powbot.api.rt4.Npc;
 import org.powbot.api.rt4.Players;
@@ -40,7 +41,8 @@ public class HobgoblinSafespot extends Task {
             mMain.state = "Attack";
             if (hobgoblin.inViewport() && hobgoblin.interact("Attack")) {
                 mMain.state = "Waiting for kill";
-                Condition.wait(() -> hobgoblin.healthPercent() == 0 || Players.local().inCombat() || !MagicData.HobgoblinSafeSpotArea.contains(Players.local()), 700, 100);
+                Condition.wait(() -> hobgoblin.healthPercent() == 0 || !MagicData.HobgoblinSafeSpotArea.contains(Players.local()), 700, 100);
+                Condition.sleep(Random.nextInt(250, 300));
             }
         }
     }

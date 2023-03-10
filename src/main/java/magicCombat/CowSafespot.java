@@ -1,6 +1,7 @@
 package magicCombat;
 
 import org.powbot.api.Condition;
+import org.powbot.api.Random;
 import org.powbot.api.rt4.Constants;
 import org.powbot.api.rt4.Npc;
 import org.powbot.api.rt4.Players;
@@ -41,7 +42,8 @@ public class CowSafespot extends Task {
             mMain.state = "Attack";
             if (cow.inViewport() && cow.interact("Attack")) {
                 mMain.state = "Waiting for kill";
-                Condition.wait(() -> cow.healthPercent() == 0 || Players.local().inCombat(),900,100);
+                Condition.wait(() -> cow.healthPercent() == 0,900,100);
+                Condition.sleep(Random.nextInt(250, 300));
             }
         }
     }
