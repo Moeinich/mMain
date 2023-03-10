@@ -65,7 +65,7 @@ public class EarthRunes extends Task {
     }
     public void InteractWithAltar() {
         GameObject altar = PlayerHelper.nearestGameObject("Altar");
-        altar.interact("Use");
+        altar.interact("Craft-rune");
     }
     public void LeaveAltarArea() {
 
