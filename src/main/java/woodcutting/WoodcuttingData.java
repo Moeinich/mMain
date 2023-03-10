@@ -19,7 +19,7 @@ public class WoodcuttingData {
             new Tile(3056,3255), new Tile(3064, 3249)
     );
     public static final Area teakArea = new Area (
-            new Tile(2185,2987), new Tile(2185, 2991)
+            new Tile(2185, 2990, 0), new Tile(2185, 2987, 0)
     );
     public static final Tile teakLocation = new Tile (2185,2989);
     //Woodcutting
