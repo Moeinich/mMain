@@ -1,6 +1,7 @@
 package script;
 
 import org.powbot.api.Random;
+import org.powbot.api.rt4.Game;
 import org.powbot.api.rt4.walking.model.Skill;
 import org.powbot.api.script.AbstractScript;
 import org.powbot.api.script.OptionType;
@@ -196,7 +197,9 @@ public class mMain extends AbstractScript {
                     }
                     //Enter loop of running the task!
                     while (!ScriptManager.INSTANCE.isStopping() && !runtime.hasFinished() && skillRunning.get()) {
-                        skillLoop.run();
+                        if (Game.loggedIn()) {
+                            skillLoop.run();
+                        }
                     }
                     tasks.removeIf(task -> SkillData.skillsMap.get(mMain.runningSkill)); //Remove task if its marked done!
                     skillRunning.set(false); //Finally, set taskRunning to false, so we're ready for the next skill task.
