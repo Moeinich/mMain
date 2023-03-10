@@ -49,15 +49,15 @@ public class TeaStall extends Task {
             mMain.skillRunning.set(false);
         }
         //Go to thieving spot
-        if (!Players.local().tile().equals(ThievingData.movementThieving()) && !(ThievingData.movementThieving().tile().distanceTo(Players.local()) < 3)) {
+        else if (!Players.local().tile().equals(ThievingData.movementThieving()) && !(ThievingData.movementThieving().tile().distanceTo(Players.local()) < 3)) {
             WalkToSpot();
         }
         //World hop check
-        if (PlayerHelper.withinArea(ThievingData.teaStallArea) && Players.stream().within(ThievingData.teaStallArea).count() != 1) {
+        else if (PlayerHelper.withinArea(ThievingData.teaStallArea) && Players.stream().within(ThievingData.teaStallArea).count() != 1) {
             ShouldWorldhop();
         }
         //Thieving loop
-        if (Players.stream().within(ThievingData.teaStallArea).count() == 1 && Players.local().tile().equals(ThievingData.movementThieving())) {
+        else if (Players.local().tile().equals(ThievingData.movementThieving())) {
             if (shouldDropItems()) {
                 dropItems();
             } else if (!Inventory.isFull()) {

@@ -65,11 +65,11 @@ public class FruitStall extends Task {
                 WalkToSpot();
             }
             //World hop check
-            if (PlayerHelper.withinArea(ThievingData.fruitStallArea) && Players.stream().filter(player -> player.tile().equals(ThievingData.fruitStallTile) && !player.equals(Players.local())).isNotEmpty()) {
+            else if (PlayerHelper.withinArea(ThievingData.fruitStallArea) && Players.stream().filter(player -> player.tile().equals(ThievingData.fruitStallTile) && !player.equals(Players.local())).isNotEmpty()) {
                 ShouldWorldhop();
             }
             //Thieving loop
-            if (Players.local().tile().equals(ThievingData.movementThieving())) {
+            else if (Players.local().tile().equals(ThievingData.movementThieving())) {
                 if (shouldDropItems()) {
                     dropItems();
                 } else if (!Inventory.isFull()) {
