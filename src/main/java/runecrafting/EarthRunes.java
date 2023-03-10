@@ -11,6 +11,7 @@ import org.powbot.api.rt4.Skills;
 import org.powbot.api.rt4.walking.model.Skill;
 
 import helpers.CombatHelper;
+import helpers.InteractionsHelper;
 import helpers.PlayerHelper;
 import helpers.extentions.ItemList;
 import helpers.extentions.Task;
@@ -46,7 +47,12 @@ public class EarthRunes extends Task {
 
     public void Bank() {
         Movement.moveTo(varrockEastBank.getRandomTile());
-        CombatHelper.gearUp(new int[]{ItemList.EARTH_TIARA_5535});
+        if (CombatHelper.needEquipment(new int[]{ItemList.EARTH_TIARA_5535})) {
+            CombatHelper.gearUp(new int[]{ItemList.EARTH_TIARA_5535});
+        }
+        if (Inventory.stream().name("Pure essence").isEmpty()) {
+            InteractionsHelper.depositAndWithdraw(ItemList.PURE_ESSENCE_7936, 28);
+        }
     }
 
     public void RunToAltar() {
@@ -61,7 +67,7 @@ public class EarthRunes extends Task {
         GameObject altar = PlayerHelper.nearestGameObject("Altar");
         altar.interact("Use");
     }
-    public void leaveAltarArea() {
+    public void LeaveAltarArea() {
 
     }
 }

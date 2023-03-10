@@ -4,7 +4,11 @@ import static hunter.helpers.TrapStatus.birdSnareFailedID;
 import static hunter.helpers.TrapStatus.birdSnareSuccessID;
 
 import org.powbot.api.Area;
+import org.powbot.api.Condition;
+import org.powbot.api.Locatable;
+import org.powbot.api.Random;
 import org.powbot.api.Tile;
+import org.powbot.api.rt4.Bank;
 import org.powbot.api.rt4.GameObject;
 import org.powbot.api.rt4.Inventory;
 import org.powbot.api.rt4.Item;
@@ -16,20 +20,22 @@ import org.powbot.api.rt4.walking.model.Skill;
 
 import java.util.List;
 
+import helpers.InteractionsHelper;
+import helpers.extentions.ItemList;
 import helpers.extentions.Task;
 import hunter.helpers.AmountOfTraps;
 import hunter.helpers.TrapStatus;
+import script.mMain;
 
 public class BirdTrapping extends Task {
-    public static Area feldipHuntingArea = new Area(new Tile(2310, 3587, 0), new Tile(2313, 3584, 0));
+    public static Area feldipHuntingArea = new Area(new Tile(2362, 3588, 0), new Tile(2356, 3594, 0));
     int maxTraps = AmountOfTraps.getOutputValue(Skill.Hunter);
-    Tile[] trapTileArray = { //Note: none of these tiles are correct.
-            new Tile(2474, 3438, 0),
-            new Tile(2474, 3440, 0),
-            new Tile(2476, 3438, 0),
-            new Tile(2476, 3440, 0),
-            new Tile(2478, 3438, 0),
-            new Tile(2478, 3440, 0)
+    Tile[] trapTileArray = {
+            new Tile(2359, 3592, 0),
+            new Tile(2359, 3590, 0),
+            new Tile(2360, 3591, 0),
+            new Tile(2358, 3591, 0),
+            new Tile(2358, 3590, 0)
     };
 
 
@@ -39,6 +45,10 @@ public class BirdTrapping extends Task {
     }
     @Override
     public boolean execute() {
+        if (Inventory.stream().id(ItemList.BIRD_SNARE_10006).isEmpty()) {
+            bank();
+        }
+
         if (!feldipHuntingArea.contains(Players.local())) {
             moveToFeldipHuntingArea();
         }
@@ -51,7 +61,7 @@ public class BirdTrapping extends Task {
             for (int i = 0; i < trapTileArray.length && i < maxTraps; i++) {
                 placeTrapsOnTiles(new Tile[]{trapTileArray[i]});
             }
-            return true;
+            Condition.sleep(Random.nextInt(250, 1000));
         }
         return false;
     }
@@ -62,6 +72,7 @@ public class BirdTrapping extends Task {
     }
     
     public void placeTrapsOnTiles(Tile[] tiles) {
+        System.out.println("We are placing traps on missing tiles!");
         for (Tile tile : tiles) {
             if (TrapStatus.shouldPlaceTrap(tile)) {
                 placeBirdSnare(tile);
@@ -71,15 +82,33 @@ public class BirdTrapping extends Task {
     private void placeBirdSnare(Tile tile) {
         if (Players.local().tile().equals(tile)) {
             GameObject birdSnareObject = Objects.stream().within(tile, 0).id(birdSnareFailedID, birdSnareSuccessID).nearest().first();
-            //pickup bird snare
+            Item birdsnareItem = Inventory.stream().id(ItemList.BIRD_SNARE_10006).first();
+
             if (birdSnareObject != null) {
-                //pickup the object!
+                System.out.println("Picking up birdsnare on tile: " + tile);
+                birdSnareObject.interact("Pick-up");
+            } else {
+                System.out.println("Setting up new trap on: " + tile);
+                birdsnareItem.click();
             }
-
-            //Place a new birdsnare
-
         } else {
+            System.out.println("Stepping to tile: " + tile);
             Movement.step(tile);
+            Condition.wait(() -> Players.local().tile().equals(tile) && !Players.local().inMotion(), 300, 10);
+        }
+    }
+    private void bank() {
+        Locatable nearestBank = Bank.nearest();
+        if (Bank.inViewport() && nearestBank.tile().distanceTo(Players.local()) < 4) {
+            Bank.open();
+        } else {
+            System.out.println("Moving to bank");
+            Movement.moveToBank();
+        }
+
+        if (Bank.opened() && Inventory.stream().id(ItemList.BIRD_SNARE_10006).isEmpty()) {
+            mMain.state = "Withdraw Bird snare";
+            InteractionsHelper.depositAndWithdraw(ItemList.BIRD_SNARE_10006, 5);
         }
     }
 }

@@ -17,6 +17,8 @@ Let pow close level up messages. Please have these items on ur account:
 - [X] Abyss miniquest for RC
 - [X] Temple of the Eye for RC
 - [X] Druidic ritual for herblore
+- [X] X Marks the Spot to unlock hosidius + slayer xp
+- [X] Client of Kourend for Hosidius favour + slayer xp
 
 **agility**
 - [X] 1-10 Gnome course
@@ -58,6 +60,11 @@ Let pow close level up messages. Please have these items on ur account:
 **herblore**
 - [X] 3-45 Attack potions
 
+**hunter**
+- [X] Natural History quiz to 9
+- [ ] Bird trapping
+- [ ] Falconry
+
 **Magic**
 - [X] 1-30 Safespot cows
 - [X] Switches gear along the way
@@ -77,6 +84,12 @@ Let pow close level up messages. Please have these items on ur account:
 - [X] 1-30 Safespot cows
 - [X] 30-70s Sand crabs
 - [X] Switches gear along the way
+
+**Runecrafting**
+- [X] Rune mysteries
+- [X] Abyss miniquest
+- [ ] Earth runes to 10
+- [X] Temple of the eye
 
 **smithing**
 - [X] 1-5 Bronze daggers

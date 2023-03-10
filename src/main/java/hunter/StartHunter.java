@@ -17,6 +17,7 @@ public class StartHunter implements mMain.Start{
         mMain.runningSkill = "hunter";
         List<Task> huntingTasks = Arrays.asList(
                 new DoMuseumQuiz()
+                //new BirdTrapping()
         );
 
         for (Task task : huntingTasks) {
