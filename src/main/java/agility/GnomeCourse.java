@@ -7,6 +7,7 @@ import org.powbot.api.rt4.Skills;
 
 import helpers.PlayerHelper;
 import helpers.extentions.Task;
+import script.mMain;
 
 public class GnomeCourse extends Task {
 
@@ -23,8 +24,8 @@ public class GnomeCourse extends Task {
     }
     public void ShouldRunObstacle() {
         if (PlayerHelper.withinArea(AgilityData.GnomeAreas.OBSTACLE_1.getArea()) || PlayerHelper.withinArea(AgilityData.GnomeAreas.END.getArea())) {
-            if (PlayerHelper.withinArea(AgilityData.GnomeAreas.END.getArea())) {
-                Movement.step(AgilityData.GnomeAreas.OBSTACLE_1.getArea().getRandomTile());
+            if (!PlayerHelper.withinArea(AgilityData.GnomeAreas.START.getArea())) {
+                Movement.moveTo(AgilityData.GnomeAreas.OBSTACLE_1.getArea().getRandomTile());
             }
             AgilityHelper.handleObstacle(AgilityData.obstacleInfo.gnome1);
         }
@@ -46,6 +47,10 @@ public class GnomeCourse extends Task {
         }
         if (PlayerHelper.withinArea(AgilityData.GnomeAreas.OBSTACLE_7.getArea())) {
             AgilityHelper.handleObstacle(AgilityData.obstacleInfo.gnome7);
+        }
+        if (!PlayerHelper.withinArea(AgilityData.GnomeAreas.LOWER.getArea())) {
+            mMain.state = "Move to Seers start";
+            Movement.moveTo(AgilityData.SeersAreas.START.getArea().getRandomTile());
         }
     }
 }

@@ -19,7 +19,7 @@ public class StartAgility implements mMain.Start {
         List<Task> agilityTasks = Arrays.asList(
                 new GetFood(),
                 new EatFood(),
-                new WalkToAgilityObstacles(),
+                //new WalkToAgilityObstacles(),
                 new GnomeCourse(),
                 new DraynorCourse(),
                 new VarrockCourse(),

@@ -78,9 +78,13 @@ public class CanifisCourse extends Task {
                 AgilityHelper.handleObstacleWithLoot(AgilityData.obstacleInfo.canifis7);
             }
         }
-
         if (PlayerHelper.withinArea(AgilityData.CanifisAreas.OBSTACLE_8.getArea())) {
             AgilityHelper.handleObstacleWithLoot(AgilityData.obstacleInfo.canifis8);
+        }
+
+        if (!PlayerHelper.withinArea(AgilityData.CanifisAreas.FLOOR.getArea())) {
+            mMain.state = "Move to Canifis start";
+            Movement.moveTo(AgilityData.CanifisAreas.START.getArea().getRandomTile());
         }
     }
 }

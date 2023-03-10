@@ -54,5 +54,9 @@ public class SeersCourse extends Task {
         if (PlayerHelper.withinArea(AgilityData.SeersAreas.OBSTACLE_6.getArea())) {
             AgilityHelper.handleObstacleWithLoot(AgilityData.obstacleInfo.seers6);
         }
+        if (!PlayerHelper.withinArea(AgilityData.SeersAreas.FLOOR.getArea())) {
+            mMain.state = "Move to Seers start";
+            Movement.moveTo(AgilityData.SeersAreas.START.getArea().getRandomTile());
+        }
     }
 }

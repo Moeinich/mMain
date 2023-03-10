@@ -84,5 +84,9 @@ public class VarrockCourse extends Task {
         if (PlayerHelper.withinArea(AgilityData.VarrockAreas.OBSTACLE_9.getArea())) {
             AgilityHelper.handleObstacleWithLoot(AgilityData.obstacleInfo.varrock9);
         }
+        if (!PlayerHelper.withinArea(AgilityData.VarrockAreas.FLOOR.getArea())) {
+            mMain.state = "Move to Seers start";
+            Movement.moveTo(AgilityData.VarrockAreas.START.getArea().getRandomTile());
+        }
     }
 }

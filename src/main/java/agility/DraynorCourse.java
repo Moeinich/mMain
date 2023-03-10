@@ -54,5 +54,9 @@ public class DraynorCourse extends Task {
         if (PlayerHelper.withinArea(AgilityData.DraynorAreas.OBSTACLE_7.getArea())) {
             AgilityHelper.handleObstacleWithLoot(AgilityData.obstacleInfo.draynor7);
         }
+        if (!PlayerHelper.withinArea(AgilityData.DraynorAreas.FLOOR.getArea())) {
+            mMain.state = "Move to Seers start";
+            Movement.moveTo(AgilityData.DraynorAreas.START.getArea().getRandomTile());
+        }
     }
 }

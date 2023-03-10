@@ -196,7 +196,6 @@ public class AgilityData {
         }
     }
 
-
     //Seers
     public enum SeersAreas {
         FLOOR(new Area(new Tile(2684, 3501, 0), new Tile(2733, 3452, 0))),

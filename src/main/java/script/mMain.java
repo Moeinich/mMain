@@ -60,7 +60,7 @@ import woodcutting.StartWoodcutting;
                 @ScriptConfiguration(
                         name =  "Mode",
                         description = "Which skill would you like to do?",
-                        defaultValue = "woodcutting",
+                        defaultValue = "agility",
                         allowedValues = {
                                 "progressive", "mining", "fishing", "woodcutting", "cooking", "firemaking", "smithing", "thieving",
                                 "crafting", "fletching", "agility", "herblore", "hunter", "ranged", "runecrafting", "magic", "melee"
@@ -194,6 +194,10 @@ public class mMain extends AbstractScript {
                 ScriptManager.INSTANCE.stop();
             } else {
                 taskHandler.execute(() -> {
+                    if (ScriptManager.INSTANCE.isStopping()) {
+                        ScriptManager.INSTANCE.stop();
+                    }
+
                     mMain.state = "Resetting task";
                     if (!mMain.shouldBank) {
                         mMain.shouldBank = true;
