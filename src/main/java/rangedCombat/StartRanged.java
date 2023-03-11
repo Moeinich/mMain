@@ -16,7 +16,7 @@ public class StartRanged implements mMain.Start{
     public void run() {
         mMain.runningSkill = "ranged";
         List<Task> rangeTasks = Arrays.asList(
-                new BankBeforeTask(),
+                //new BankBeforeTask(),
                 new GetRangeEquipment(),
                 new CowSafespot(),
                 new CrabsRanged()

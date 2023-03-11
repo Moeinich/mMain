@@ -61,7 +61,7 @@ import woodcutting.StartWoodcutting;
                 @ScriptConfiguration(
                         name =  "Mode",
                         description = "Which skill would you like to do?",
-                        defaultValue = "progressive",
+                        defaultValue = "ranged",
                         allowedValues = {
                                 "progressive", "mining", "fishing", "woodcutting", "cooking", "firemaking", "smithing", "thieving",
                                 "crafting", "fletching", "agility", "herblore", "hunter", "ranged", "runecrafting", "magic", "melee"

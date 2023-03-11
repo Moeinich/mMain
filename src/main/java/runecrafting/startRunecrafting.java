@@ -21,8 +21,8 @@ public class startRunecrafting implements mMain.Start{
         List<Task> runecraftingTasks = Arrays.asList(
                 new doRuneMysteries(),
                 new doAbyssMiniquest(),
-                new EarthRunes(),
-                new doTempleOfTheEye()
+                new EarthRunes()
+                //new doTempleOfTheEye()
         );
 
         for (Task task : runecraftingTasks) {
@@ -30,7 +30,7 @@ public class startRunecrafting implements mMain.Start{
                 mMain.state = "Skipping RC, too low combat level for quests";
                 mMain.skillRunning.set(false);
             }
-            if (Skills.realLevel(Constants.SKILLS_RUNECRAFTING) >= 27 || SkillData.skillsMap.get("runecrafting")) {
+            if (Skills.realLevel(Constants.SKILLS_RUNECRAFTING) >= 10 || SkillData.skillsMap.get("runecrafting")) {
                 mMain.state = "Runecrafting done!";
                 SkillData.setSkillDone();
                 mMain.skillRunning.set(false);

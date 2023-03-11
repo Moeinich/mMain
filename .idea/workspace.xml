@@ -14,7 +14,12 @@
       <change beforePath="$PROJECT_DIR$/.gradle/7.4/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/agility/CanifisCourse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/agility/CanifisCourse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/helpers/SkillData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/helpers/SkillData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/rangedCombat/CowSafespot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rangedCombat/CowSafespot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/rangedCombat/CrabsRanged.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rangedCombat/CrabsRanged.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/rangedCombat/GetRangeEquipment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rangedCombat/GetRangeEquipment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/rangedCombat/StartRanged.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rangedCombat/StartRanged.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/runecrafting/startRunecrafting.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/runecrafting/startRunecrafting.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/script/mMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/script/mMain.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

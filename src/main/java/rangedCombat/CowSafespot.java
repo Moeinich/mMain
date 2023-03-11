@@ -5,6 +5,7 @@ import org.powbot.api.Random;
 import org.powbot.api.rt4.Combat;
 import org.powbot.api.rt4.Constants;
 import org.powbot.api.rt4.Npc;
+import org.powbot.api.rt4.Players;
 import org.powbot.api.rt4.Skills;
 import org.powbot.api.rt4.walking.model.Skill;
 
@@ -39,13 +40,14 @@ public class CowSafespot extends Task {
     }
 
     private void ShouldFight() {
-        Npc cow = PlayerHelper.nearestCombatNpc(SkillData.CowArea, "Cow", "Cow calf");
-        mMain.state = "Attack";
+        mMain.state = "Fighting";
+        Npc cow = PlayerHelper.nearestCombatNpc(SkillData.TightCowArea, "Cow", "Cow calf");
         if (cow.inViewport()) {
+            System.out.println("Cow in viewport");
             if (cow.interact("Attack")) {
-                mMain.state = "Waiting for kill";
+                System.out.println("Interacted with cow");
                 Condition.wait(() -> cow.healthPercent() == 0,900,100);
-                Condition.sleep(Random.nextInt(250, 300));
+                System.out.println("Cow dead or player no longer in combat");
             }
         }
     }
