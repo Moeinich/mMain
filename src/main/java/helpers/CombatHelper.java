@@ -103,7 +103,7 @@ public class CombatHelper {
                 interactionType = "Wield";
             }
             if (interactionType != null && itemToEquip.interact(interactionType, itemToEquip.name())) {
-                System.out.println("Equipped missing item: " + itemToEquip);
+                System.out.println("Equipped missing item: " + itemToEquip.name());
                 Condition.wait(() -> CombatHelper.hasEquipped(item.getId()), 250, 10);
             }
         }

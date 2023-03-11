@@ -9,7 +9,7 @@ import script.mMain;
 public class GetRangeEquipment extends Task {
     @Override
     public boolean activate() {
-        return Players.local().inViewport() && CombatHelper.needEquipment(RangeData.rangeEquipment());
+        return CombatHelper.needEquipment(RangeData.rangeEquipment());
     }
 
     @Override

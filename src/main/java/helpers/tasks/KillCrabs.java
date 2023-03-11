@@ -26,7 +26,8 @@ public class KillCrabs {
     public static void doCrabs() {
         if (Players.stream()
                 .filter(player -> player.tile().equals(crabLocation) && !player.equals(Players.local()))
-                .isNotEmpty()) {
+                .isNotEmpty())
+        {
             hopWorld();
         } else if (!shouldReset) {
             if (!PlayerHelper.atTile(crabLocation)) {

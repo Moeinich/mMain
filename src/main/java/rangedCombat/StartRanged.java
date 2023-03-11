@@ -16,14 +16,14 @@ public class StartRanged implements mMain.Start{
     public void run() {
         mMain.runningSkill = "ranged";
         List<Task> rangeTasks = Arrays.asList(
-                //new BankBeforeTask(),
+                new BankBeforeTask(),
                 new GetRangeEquipment(),
                 new CowSafespot(),
                 new CrabsRanged()
         );
 
         for (Task task : rangeTasks) {
-            if (Skills.realLevel(Constants.SKILLS_RANGE) >= 30 || SkillData.skillsMap.get("ranged")) {
+            if (Skills.realLevel(Constants.SKILLS_RANGE) >= 70 || SkillData.skillsMap.get("ranged")) {
                 mMain.state = "Range done!";
                 SkillData.setSkillDone();
                 mMain.skillRunning.set(false);
