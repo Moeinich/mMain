@@ -44,7 +44,8 @@ public class BronzePlatebody extends Task {
             if (Inventory.stream().name("Hammer").isEmpty()) {
                 System.out.print("Getting hammer");
                 InteractionsHelper.depositAndWithdraw(ItemList.HAMMER_2347, 1);
-            } else {
+            }
+            else if (Inventory.stream().name("Bronze bar").count() < 5) {
                 System.out.print("Getting bronze bars");
                 Bank.depositAllExcept("Hammer", "Bronze bar");
                 InteractionsHelper.withdrawItem(ItemList.BRONZE_BAR_2349, 27);

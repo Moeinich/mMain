@@ -45,7 +45,8 @@ public class SteelPlatebody extends Task {
             if (Inventory.stream().name("Hammer").isEmpty()) {
                 System.out.println("Get a hammer");
                 InteractionsHelper.depositAndWithdraw(ItemList.HAMMER_2347, 1);
-            } else {
+            }
+            else if (Inventory.stream().name("Steel bar").count() < 5) {
                 Bank.depositAllExcept("Hammer", "Steel bar");
                 System.out.println("Withdraw steel bars");
                 InteractionsHelper.withdrawItem(ItemList.STEEL_BAR_2353, 27);

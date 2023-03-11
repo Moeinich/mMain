@@ -44,7 +44,8 @@ public class BronzeDagger extends Task {
             if (Inventory.stream().name("Hammer").isEmpty()) {
                 System.out.print("Getting hammer");
                 InteractionsHelper.depositAndWithdraw(ItemList.HAMMER_2347, 1);
-            } else {
+            }
+            else if (Inventory.stream().name("Bronze bar").count() < 2) {
                 Bank.depositAllExcept("Hammer", "Bronze bar");
                 System.out.print("Getting bronze bars");
                 InteractionsHelper.withdrawItem(ItemList.BRONZE_BAR_2349, 27);

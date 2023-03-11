@@ -45,7 +45,8 @@ public class IronPlatebody extends Task {
             if (Inventory.stream().name("Hammer").isEmpty()) {
                 System.out.println("Get a hammer");
                 InteractionsHelper.depositAndWithdraw(ItemList.HAMMER_2347, 1);
-            } else {
+            }
+            else if (Inventory.stream().name("Iron bar").count() < 5) {
                 Bank.depositAllExcept("Hammer", "Iron bar");
                 System.out.println("Withdraw Iron bars");
                 InteractionsHelper.withdrawItem(ItemList.IRON_BAR_2351, 27);

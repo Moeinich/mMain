@@ -39,49 +39,51 @@ public class VarrockCourse extends Task {
         if (PlayerHelper.withinArea(AgilityData.VarrockAreas.START.getArea())) {
             AgilityHelper.handleObstacle(AgilityData.obstacleInfo.varrock1);
         }
-        else if (PlayerHelper.withinArea(AgilityData.VarrockAreas.OBSTACLE_2.getArea())) {
-            AgilityHelper.handleObstacleWithLoot(AgilityData.obstacleInfo.varrock2);
-        }
-        else if (PlayerHelper.withinArea(AgilityData.VarrockAreas.OBSTACLE_3.getArea())) {
-            AgilityHelper.handleObstacleWithLoot(AgilityData.obstacleInfo.varrock3);
-        }
-        else if (PlayerHelper.withinArea(AgilityData.VarrockAreas.OBSTACLE_4.getArea())) {
-            AgilityHelper.handleObstacleWithLoot(AgilityData.obstacleInfo.varrock4);
-        }
-        else if (PlayerHelper.withinArea(AgilityData.VarrockAreas.OBSTACLE_5.getArea())) {
-            AgilityHelper.handleObstacleWithLoot(AgilityData.obstacleInfo.varrock5);
-        }
-        else if (PlayerHelper.withinArea(AgilityData.VarrockAreas.OBSTACLE_6.getArea())) {
-            GameObject VarrockObstacle6 = PlayerHelper.nearestGameObject(8, AgilityData.obstacleInfo.varrock6.getId());
-            GroundItem groundItem = GroundItems.stream().within(10).name("Mark of grace").reachable().nearest().first();
-            if (groundItem.inViewport()) {
-                mMain.state = "Pickup mark";
-                PlayerHelper.lootItems("Take", "Mark of grace");
-            } else if (!VarrockObstacle6.inViewport()) {
-                mMain.state = "Move to Varrock OBS6";
-                Movement.step(AgilityData.VarrockAreas.OBSTACLE_6_MOVETO.getArea().getRandomTile());
-            } else {
-                AgilityHelper.handleObstacle(AgilityData.obstacleInfo.varrock6);
+        if (PlayerHelper.withinArea(AgilityData.VarrockAreas.TOP.getArea()) || PlayerHelper.withinArea(AgilityData.VarrockAreas.MID.getArea())) {
+            if (PlayerHelper.withinArea(AgilityData.VarrockAreas.OBSTACLE_2.getArea())) {
+                AgilityHelper.handleObstacleWithLoot(AgilityData.obstacleInfo.varrock2);
             }
-        }
-        else if (PlayerHelper.withinArea(AgilityData.VarrockAreas.OBSTACLE_7.getArea())) {
-            GameObject VarrockObstacle7 = PlayerHelper.nearestGameObject(8, AgilityData.obstacleInfo.varrock7.getId());
-            GroundItem groundItem = GroundItems.stream().within(10).name("Mark of grace").reachable().nearest().first();
-            if (groundItem.inViewport()) {
-                mMain.state = "Pickup mark";
-                PlayerHelper.lootItems("Take", "Mark of grace");
-            } else if (!VarrockObstacle7.inViewport()) {
-                mMain.state = "Move to Varrock OBS7";
-                Movement.step(AgilityData.VarrockAreas.OBSTACLE_7_MOVETO.getArea().getRandomTile());
-            } else {
-                AgilityHelper.handleObstacle(AgilityData.obstacleInfo.varrock7);
+            else if (PlayerHelper.withinArea(AgilityData.VarrockAreas.OBSTACLE_3.getArea())) {
+                AgilityHelper.handleObstacleWithLoot(AgilityData.obstacleInfo.varrock3);
             }
-        }
-        else if (PlayerHelper.withinArea(AgilityData.VarrockAreas.OBSTACLE_8.getArea())) {
-            AgilityHelper.handleObstacleWithLoot(AgilityData.obstacleInfo.varrock8);
-        }
-        else if (PlayerHelper.withinArea(AgilityData.VarrockAreas.OBSTACLE_9.getArea())) {
-            AgilityHelper.handleObstacleWithLoot(AgilityData.obstacleInfo.varrock9);
+            else if (PlayerHelper.withinArea(AgilityData.VarrockAreas.OBSTACLE_4.getArea())) {
+                AgilityHelper.handleObstacleWithLoot(AgilityData.obstacleInfo.varrock4);
+            }
+            else if (PlayerHelper.withinArea(AgilityData.VarrockAreas.OBSTACLE_5.getArea())) {
+                AgilityHelper.handleObstacleWithLoot(AgilityData.obstacleInfo.varrock5);
+            }
+            else if (PlayerHelper.withinArea(AgilityData.VarrockAreas.OBSTACLE_6.getArea())) {
+                GameObject VarrockObstacle6 = PlayerHelper.nearestGameObject(8, AgilityData.obstacleInfo.varrock6.getId());
+                GroundItem groundItem = GroundItems.stream().within(10).name("Mark of grace").reachable().nearest().first();
+                if (groundItem.inViewport()) {
+                    mMain.state = "Pickup mark";
+                    PlayerHelper.lootItems("Take", "Mark of grace");
+                } else if (!VarrockObstacle6.inViewport()) {
+                    mMain.state = "Move to Varrock OBS6";
+                    Movement.step(AgilityData.VarrockAreas.OBSTACLE_6_MOVETO.getArea().getRandomTile());
+                } else {
+                    AgilityHelper.handleObstacle(AgilityData.obstacleInfo.varrock6);
+                }
+            }
+            else if (PlayerHelper.withinArea(AgilityData.VarrockAreas.OBSTACLE_7.getArea())) {
+                GameObject VarrockObstacle7 = PlayerHelper.nearestGameObject(8, AgilityData.obstacleInfo.varrock7.getId());
+                GroundItem groundItem = GroundItems.stream().within(10).name("Mark of grace").reachable().nearest().first();
+                if (groundItem.inViewport()) {
+                    mMain.state = "Pickup mark";
+                    PlayerHelper.lootItems("Take", "Mark of grace");
+                } else if (!VarrockObstacle7.inViewport()) {
+                    mMain.state = "Move to Varrock OBS7";
+                    Movement.step(AgilityData.VarrockAreas.OBSTACLE_7_MOVETO.getArea().getRandomTile());
+                } else {
+                    AgilityHelper.handleObstacle(AgilityData.obstacleInfo.varrock7);
+                }
+            }
+            else if (PlayerHelper.withinArea(AgilityData.VarrockAreas.OBSTACLE_8.getArea())) {
+                AgilityHelper.handleObstacleWithLoot(AgilityData.obstacleInfo.varrock8);
+            }
+            else if (PlayerHelper.withinArea(AgilityData.VarrockAreas.OBSTACLE_9.getArea())) {
+                AgilityHelper.handleObstacleWithLoot(AgilityData.obstacleInfo.varrock9);
+            }
         }
         else {
             mMain.state = "Move to Seers start";
