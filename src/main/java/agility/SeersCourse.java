@@ -34,20 +34,22 @@ public class SeersCourse extends Task {
         if (PlayerHelper.withinArea(AgilityData.SeersAreas.START.getArea())) {
             AgilityHelper.handleObstacle(AgilityData.obstacleInfo.seers1);
         }
-        else if (PlayerHelper.withinArea(AgilityData.SeersAreas.OBSTACLE_2.getArea())) {
-            AgilityHelper.handleObstacleWithLoot(AgilityData.obstacleInfo.seers2);
-        }
-        else if (PlayerHelper.withinArea(AgilityData.SeersAreas.OBSTACLE_3.getArea())) {
-            AgilityHelper.handleObstacleWithLoot(AgilityData.obstacleInfo.seers3);
-        }
-        else if (PlayerHelper.withinArea(AgilityData.SeersAreas.OBSTACLE_4.getArea())) {
-            AgilityHelper.handleObstacleWithLoot(AgilityData.obstacleInfo.seers4);
-        }
-        else if (PlayerHelper.withinArea(AgilityData.SeersAreas.OBSTACLE_5.getArea())) {
-            AgilityHelper.handleObstacleWithLoot(AgilityData.obstacleInfo.seers5);
-        }
-        else if (PlayerHelper.withinArea(AgilityData.SeersAreas.OBSTACLE_6.getArea())) {
-            AgilityHelper.handleObstacleWithLoot(AgilityData.obstacleInfo.seers6);
+        if (PlayerHelper.withinArea(AgilityData.SeersAreas.TOP.getArea()) || PlayerHelper.withinArea(AgilityData.SeersAreas.MID.getArea())) {
+            if (PlayerHelper.withinArea(AgilityData.SeersAreas.OBSTACLE_2.getArea())) {
+                AgilityHelper.handleObstacleWithLoot(AgilityData.obstacleInfo.seers2);
+            }
+            else if (PlayerHelper.withinArea(AgilityData.SeersAreas.OBSTACLE_3.getArea())) {
+                AgilityHelper.handleObstacleWithLoot(AgilityData.obstacleInfo.seers3);
+            }
+            else if (PlayerHelper.withinArea(AgilityData.SeersAreas.OBSTACLE_4.getArea())) {
+                AgilityHelper.handleObstacleWithLoot(AgilityData.obstacleInfo.seers4);
+            }
+            else if (PlayerHelper.withinArea(AgilityData.SeersAreas.OBSTACLE_5.getArea())) {
+                AgilityHelper.handleObstacleWithLoot(AgilityData.obstacleInfo.seers5);
+            }
+            else if (PlayerHelper.withinArea(AgilityData.SeersAreas.OBSTACLE_6.getArea())) {
+                AgilityHelper.handleObstacleWithLoot(AgilityData.obstacleInfo.seers6);
+            }
         }
         else {
             mMain.state = "Move to Seers start";
