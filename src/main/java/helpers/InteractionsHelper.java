@@ -89,7 +89,7 @@ public class InteractionsHelper {
             if (Inventory.selectedItem().id() == requiredItemID) {
                 System.out.println("Use tool on combine item");
                 CombineWithID.interact("Use");
-                Condition.wait(() -> Widgets.widget(widgetID).valid(), 500, 20);
+                Condition.wait(() -> Widgets.widget(widgetID).valid(), 250, 20);
                 System.out.println("Widget valid!");
             }
             if (Widgets.widget(widgetID).valid()) {
