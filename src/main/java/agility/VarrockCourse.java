@@ -1,20 +1,20 @@
 package agility;
 
-import static agility.AgilityData.VarrockAreas.FIRST;
-import static agility.AgilityData.VarrockAreas.GHOST;
-import static agility.AgilityData.VarrockAreas.MID;
-import static agility.AgilityData.VarrockAreas.OBSTACLE_2;
-import static agility.AgilityData.VarrockAreas.OBSTACLE_3;
-import static agility.AgilityData.VarrockAreas.OBSTACLE_4;
-import static agility.AgilityData.VarrockAreas.OBSTACLE_5;
-import static agility.AgilityData.VarrockAreas.OBSTACLE_6;
-import static agility.AgilityData.VarrockAreas.OBSTACLE_6_MOVETO;
-import static agility.AgilityData.VarrockAreas.OBSTACLE_7;
-import static agility.AgilityData.VarrockAreas.OBSTACLE_7_MOVETO;
-import static agility.AgilityData.VarrockAreas.OBSTACLE_8;
-import static agility.AgilityData.VarrockAreas.OBSTACLE_9;
-import static agility.AgilityData.VarrockAreas.START;
-import static agility.AgilityData.VarrockAreas.TOP;
+import static agility.AgilityData.AgilityAreas.VARROCK_FIRST;
+import static agility.AgilityData.AgilityAreas.VARROCK_GHOST;
+import static agility.AgilityData.AgilityAreas.VARROCK_MID;
+import static agility.AgilityData.AgilityAreas.VARROCK_OBSTACLE_2;
+import static agility.AgilityData.AgilityAreas.VARROCK_OBSTACLE_3;
+import static agility.AgilityData.AgilityAreas.VARROCK_OBSTACLE_4;
+import static agility.AgilityData.AgilityAreas.VARROCK_OBSTACLE_5;
+import static agility.AgilityData.AgilityAreas.VARROCK_OBSTACLE_6;
+import static agility.AgilityData.AgilityAreas.VARROCK_OBSTACLE_6_MOVETO;
+import static agility.AgilityData.AgilityAreas.VARROCK_OBSTACLE_7;
+import static agility.AgilityData.AgilityAreas.VARROCK_OBSTACLE_7_MOVETO;
+import static agility.AgilityData.AgilityAreas.VARROCK_OBSTACLE_8;
+import static agility.AgilityData.AgilityAreas.VARROCK_OBSTACLE_9;
+import static agility.AgilityData.AgilityAreas.VARROCK_START;
+import static agility.AgilityData.AgilityAreas.VARROCK_TOP;
 import static agility.AgilityData.obstacleInfo.varrock1;
 import static agility.AgilityData.obstacleInfo.varrock2;
 import static agility.AgilityData.obstacleInfo.varrock3;
@@ -29,9 +29,6 @@ import org.powbot.api.Condition;
 import org.powbot.api.rt4.Camera;
 import org.powbot.api.rt4.Constants;
 import org.powbot.api.rt4.Game;
-import org.powbot.api.rt4.GameObject;
-import org.powbot.api.rt4.GroundItem;
-import org.powbot.api.rt4.GroundItems;
 import org.powbot.api.rt4.Inventory;
 import org.powbot.api.rt4.Movement;
 import org.powbot.api.rt4.Players;
@@ -63,61 +60,61 @@ public class VarrockCourse extends Task {
     }
 
     public void ShouldRunObstacle() {
-        if (PlayerHelper.withinArea(START.getArea())) {
+        if (PlayerHelper.withinArea(VARROCK_START.getArea())) {
             AgilityHelper.handleObstacle(varrock1);
         }
-        if (PlayerHelper.withinArea(TOP.getArea())
-                || PlayerHelper.withinArea(MID.getArea())
-                || PlayerHelper.withinArea(GHOST.getArea())
-                || PlayerHelper.withinArea(FIRST.getArea()))
+        if (PlayerHelper.withinArea(VARROCK_TOP.getArea())
+                || PlayerHelper.withinArea(VARROCK_MID.getArea())
+                || PlayerHelper.withinArea(VARROCK_GHOST.getArea())
+                || PlayerHelper.withinArea(VARROCK_FIRST.getArea()))
         {
-            if (PlayerHelper.withinArea(OBSTACLE_2.getArea())) {
+            if (PlayerHelper.withinArea(VARROCK_OBSTACLE_2.getArea())) {
                 AgilityHelper.handleObstacleWithLoot(varrock2);
             }
-            else if (PlayerHelper.withinArea(OBSTACLE_3.getArea())) {
+            else if (PlayerHelper.withinArea(VARROCK_OBSTACLE_3.getArea())) {
                 AgilityHelper.handleObstacleWithLoot(varrock3);
             }
-            else if (PlayerHelper.withinArea(OBSTACLE_4.getArea())) {
+            else if (PlayerHelper.withinArea(VARROCK_OBSTACLE_4.getArea())) {
                 AgilityHelper.handleObstacleWithLoot(varrock4);
             }
-            else if (PlayerHelper.withinArea(OBSTACLE_5.getArea())) {
+            else if (PlayerHelper.withinArea(VARROCK_OBSTACLE_5.getArea())) {
                 AgilityHelper.handleObstacleWithLoot(varrock5);
             }
-            else if (PlayerHelper.withinArea(OBSTACLE_6.getArea())) {
+            else if (PlayerHelper.withinArea(VARROCK_OBSTACLE_6.getArea())) {
                 if (PlayerHelper.nearestGroundItem(15, "Mark of grace").inViewport()) {
                     mMain.state = "Pickup mark";
                     PlayerHelper.lootItems("Take", "Mark of grace");
                 } else if (!PlayerHelper.nearestGameObject(8, varrock6.getId()).inViewport()) {
                     mMain.state = "Move to Varrock OBS6";
-                    Movement.step(OBSTACLE_6_MOVETO.getArea().getRandomTile());
-                    Condition.wait(() -> OBSTACLE_6_MOVETO.getArea().contains(Players.local()), 300, 10);
+                    Movement.step(VARROCK_OBSTACLE_6_MOVETO.getArea().getRandomTile());
+                    Condition.wait(() -> VARROCK_OBSTACLE_6_MOVETO.getArea().contains(Players.local()), 300, 10);
                 } else {
                     AgilityHelper.handleObstacle(varrock6);
                 }
             }
-            else if (PlayerHelper.withinArea(OBSTACLE_7.getArea())) {
+            else if (PlayerHelper.withinArea(VARROCK_OBSTACLE_7.getArea())) {
                 if (PlayerHelper.nearestGroundItem(10,"Mark of grace").inViewport()) {
                     mMain.state = "Pickup mark";
                     PlayerHelper.lootItems("Take", "Mark of grace");
                 } else if (!PlayerHelper.nearestGameObject(8, varrock7.getId()).inViewport()) {
                     mMain.state = "Move to Varrock OBS7";
-                    Movement.step(OBSTACLE_7_MOVETO.getArea().getRandomTile());
-                    Condition.wait(() -> OBSTACLE_7_MOVETO.getArea().contains(Players.local()), 300, 10);
+                    Movement.step(VARROCK_OBSTACLE_7_MOVETO.getArea().getRandomTile());
+                    Condition.wait(() -> VARROCK_OBSTACLE_7_MOVETO.getArea().contains(Players.local()), 300, 10);
                 } else {
                     AgilityHelper.handleObstacle(varrock7);
                 }
             }
-            else if (PlayerHelper.withinArea(OBSTACLE_8.getArea())) {
+            else if (PlayerHelper.withinArea(VARROCK_OBSTACLE_8.getArea())) {
                 AgilityHelper.handleObstacleWithLoot(varrock8);
             }
-            else if (PlayerHelper.withinArea(OBSTACLE_9.getArea())) {
+            else if (PlayerHelper.withinArea(VARROCK_OBSTACLE_9.getArea())) {
                 AgilityHelper.handleObstacleWithLoot(varrock9);
             }
         }
         else {
             mMain.state = "Move to Seers start";
             System.out.println("Moving to Seers start area");
-            Movement.moveTo(START.getArea().getRandomTile());
+            Movement.moveTo(VARROCK_START.getArea().getRandomTile());
         }
     }
 }
