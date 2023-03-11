@@ -272,7 +272,6 @@ class TempleOfTheEye(information: QuestInformation) : BaseQuest(information) {
             { Inventory.count(ITEM_CHISEL) == 0 }, "Take", "Picking up pickaxe",
             OFFSET_FELIX, information
         ),
-
         AlterInteraction(
             Tile.Nil,
             arrayOf(),

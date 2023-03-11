@@ -1,11 +1,13 @@
 package runecrafting;
 
 import org.powbot.api.Area;
+import org.powbot.api.Condition;
 import org.powbot.api.Tile;
 import org.powbot.api.rt4.Equipment;
 import org.powbot.api.rt4.GameObject;
 import org.powbot.api.rt4.Inventory;
 import org.powbot.api.rt4.Movement;
+import org.powbot.api.rt4.Objects;
 import org.powbot.api.rt4.Players;
 import org.powbot.api.rt4.Skills;
 import org.powbot.api.rt4.walking.model.Skill;
@@ -29,17 +31,18 @@ public class EarthRunes extends Task {
     }
     @Override
     public boolean execute() {
-
         mMain.state = "Make earth runes";
         if (Inventory.stream().name("Pure essence").isEmpty() || Equipment.stream().name("Earth Tiara").isEmpty()) {
+            mMain.state = "Bank for essence";
             Bank();
         }
-        if (Inventory.stream().name("Pure essence").isNotEmpty()) {
-            if (!middleofAltarArea.contains(Players.local())) {
-                RunToAltar();
-            }
-            if (middleofAltarArea.contains(Players.local())) {
+        if (Inventory.stream().name("Pure essence").isNotEmpty() && Equipment.stream().name("Earth Tiara").isNotEmpty()) {
+            if (insideAltar.contains(Players.local())) {
+                mMain.state = "inside altar!";
                 InteractWithAltar();
+            } else {
+                mMain.state = "outside altar!";
+                RunToAltar();
             }
         }
         return false;
@@ -48,6 +51,7 @@ public class EarthRunes extends Task {
     public void Bank() {
         Movement.moveTo(varrockEastBank.getRandomTile());
         if (CombatHelper.needEquipment(new int[]{ItemList.EARTH_TIARA_5535})) {
+            System.out.println("Getting earth tiara");
             CombatHelper.gearUp(new int[]{ItemList.EARTH_TIARA_5535});
         }
         if (Inventory.stream().name("Pure essence").isEmpty()) {
@@ -57,15 +61,22 @@ public class EarthRunes extends Task {
     }
 
     public void RunToAltar() {
-        if (!outsideAltar.contains(Players.local())) {
-            Movement.moveTo(outsideAltar.getRandomTile());
+        GameObject mysteriesRuins = Objects.stream().action("Enter", "Mysteries ruins").nearest().first();
+        if (mysteriesRuins.inViewport()) {
+            if (mysteriesRuins.click()) {
+                Condition.wait(() ->PlayerHelper.withinArea(insideAltar), 1000, 50);
+            }
         }
-        if (insideAltar.contains(Players.local()) && !middleofAltarArea.contains(Players.local())) {
-            Movement.moveTo(middleofAltarArea.getRandomTile());
+        if (!outsideAltar.contains(Players.local())) {
+            System.out.println("Moving to altar ruins");
+            Movement.moveTo(outsideAltar.getRandomTile());
         }
     }
     public void InteractWithAltar() {
         GameObject altar = PlayerHelper.nearestGameObject("Altar");
-        altar.interact("Craft-rune");
+        System.out.print("Interacting with altar");
+        if (altar.interact("Craft-rune")) {
+            Condition.wait(() -> Inventory.stream().id(ItemList.PURE_ESSENCE_7936).isEmpty(), 250, 50);
+        }
     }
 }

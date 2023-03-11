@@ -1,6 +1,9 @@
 package script;
 
+import com.google.common.eventbus.Subscribe;
+
 import org.powbot.api.Random;
+import org.powbot.api.event.MessageEvent;
 import org.powbot.api.rt4.Game;
 import org.powbot.api.rt4.walking.model.Skill;
 import org.powbot.api.script.AbstractScript;
@@ -40,6 +43,9 @@ import hunter.StartHunter;
 import magicCombat.StartMagic;
 import meleeCombat.StartMelee;
 import mining.StartMining;
+import quests.common.base.BaseQuest;
+import quests.common.helpers.SystemMessageManager;
+import quests.templeOfTheEye.TempleOfTheEye;
 import rangedCombat.StartRanged;
 import runecrafting.startRunecrafting;
 import smithing.StartSmithing;
@@ -239,5 +245,11 @@ public class mMain extends AbstractScript {
 
     public interface Start {
         void run();
+    }
+
+    @Subscribe
+    public void messaged(MessageEvent messageEvent) {
+        SystemMessageManager manager = SystemMessageManager.INSTANCE;
+        manager.messageRecieved(messageEvent);
     }
 }
