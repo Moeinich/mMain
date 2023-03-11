@@ -5,6 +5,7 @@ import org.powbot.api.rt4.Constants;
 import org.powbot.api.rt4.Game;
 import org.powbot.api.rt4.Inventory;
 import org.powbot.api.rt4.Movement;
+import org.powbot.api.rt4.Player;
 import org.powbot.api.rt4.Skills;
 
 import helpers.PlayerHelper;
@@ -36,23 +37,25 @@ public class DraynorCourse extends Task {
         if (PlayerHelper.withinArea(AgilityData.DraynorAreas.START.getArea())) {
             AgilityHelper.handleObstacle(AgilityData.obstacleInfo.draynor1);
         }
-        else if (PlayerHelper.withinArea(AgilityData.DraynorAreas.OBSTACLE_2.getArea())) {
-            AgilityHelper.handleObstacleWithLoot(AgilityData.obstacleInfo.draynor2);
-        }
-        else if (PlayerHelper.withinArea(AgilityData.DraynorAreas.OBSTACLE_3.getArea())) {
-            AgilityHelper.handleObstacleWithLoot(AgilityData.obstacleInfo.draynor3);
-        }
-        else if (PlayerHelper.withinArea(AgilityData.DraynorAreas.OBSTACLE_4.getArea())) {
-            AgilityHelper.handleObstacleWithLoot(AgilityData.obstacleInfo.draynor4);
-        }
-        else if (PlayerHelper.withinArea(AgilityData.DraynorAreas.OBSTACLE_5.getArea())) {
-            AgilityHelper.handleObstacle(AgilityData.obstacleInfo.draynor5);
-        }
-        else if (PlayerHelper.withinArea(AgilityData.DraynorAreas.OBSTACLE_6.getArea())) {
-            AgilityHelper.handleObstacle(AgilityData.obstacleInfo.draynor6);
-        }
-        else if (PlayerHelper.withinArea(AgilityData.DraynorAreas.OBSTACLE_7.getArea())) {
-            AgilityHelper.handleObstacleWithLoot(AgilityData.obstacleInfo.draynor7);
+        else if (PlayerHelper.withinArea(AgilityData.DraynorAreas.TOP.getArea())) {
+            if (PlayerHelper.withinArea(AgilityData.DraynorAreas.OBSTACLE_2.getArea())) {
+                AgilityHelper.handleObstacleWithLoot(AgilityData.obstacleInfo.draynor2);
+            }
+            else if (PlayerHelper.withinArea(AgilityData.DraynorAreas.OBSTACLE_3.getArea())) {
+                AgilityHelper.handleObstacleWithLoot(AgilityData.obstacleInfo.draynor3);
+            }
+            else if (PlayerHelper.withinArea(AgilityData.DraynorAreas.OBSTACLE_4.getArea())) {
+                AgilityHelper.handleObstacleWithLoot(AgilityData.obstacleInfo.draynor4);
+            }
+            else if (PlayerHelper.withinArea(AgilityData.DraynorAreas.OBSTACLE_5.getArea())) {
+                AgilityHelper.handleObstacle(AgilityData.obstacleInfo.draynor5);
+            }
+            else if (PlayerHelper.withinArea(AgilityData.DraynorAreas.OBSTACLE_6.getArea())) {
+                AgilityHelper.handleObstacle(AgilityData.obstacleInfo.draynor6);
+            }
+            else if (PlayerHelper.withinArea(AgilityData.DraynorAreas.OBSTACLE_7.getArea())) {
+                AgilityHelper.handleObstacleWithLoot(AgilityData.obstacleInfo.draynor7);
+            }
         }
         else {
             mMain.state = "Move to Draynor start";

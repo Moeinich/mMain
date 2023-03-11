@@ -9,6 +9,7 @@ import quests.common.QuestVarpbits;
 import script.mMain;
 
 public class doRuneMysteries extends Task {
+
     @Override
     public boolean activate() {
         return Varpbits.varpbit(QuestVarpbits.RUNE_MYSTERIES.getQuestVarbit()) != QuestVarpbits.RUNE_MYSTERIES.getFinishedValue();

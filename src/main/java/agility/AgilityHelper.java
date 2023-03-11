@@ -1,6 +1,7 @@
 package agility;
 
 import org.powbot.api.Condition;
+import org.powbot.api.rt4.Camera;
 import org.powbot.api.rt4.GameObject;
 import org.powbot.api.rt4.GroundItem;
 import org.powbot.api.rt4.GroundItems;

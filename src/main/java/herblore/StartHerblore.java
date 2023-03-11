@@ -17,8 +17,8 @@ public class StartHerblore implements mMain.Start{
     public void run() {
         mMain.runningSkill = "herblore";
         List<Task> herbloreTasks = Arrays.asList(
-                new GoToBank(),
                 new doDruidicRitual(),
+                new GoToBank(),
                 new AttackPotions()
         );
 

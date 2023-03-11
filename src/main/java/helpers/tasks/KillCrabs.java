@@ -76,10 +76,10 @@ public class KillCrabs {
     }
 
     private static void sleep() {
-        System.out.println("Sleeping...");
-        System.out.println("next interaction time: " + (interactionTimeRandomizer - lastInteractionTime) + "ms");
         mMain.state = "Sleeping..";
         lastInteractionTime = System.currentTimeMillis();
+        System.out.println("We are still interacting.. sleeping...");
+        System.out.println("next interaction time: " + (interactionTimeRandomizer - lastInteractionTime) + "ms");
         Condition.sleep(Random.nextInt(5000, 15000));
     }
 

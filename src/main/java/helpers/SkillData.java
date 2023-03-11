@@ -2,7 +2,9 @@ package helpers;
 
 import org.powbot.api.Area;
 import org.powbot.api.Tile;
+import org.powbot.api.rt4.Component;
 import org.powbot.api.rt4.Varpbits;
+import org.powbot.api.rt4.Widgets;
 
 import java.util.HashMap;
 import java.util.Map;

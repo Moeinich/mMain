@@ -19,6 +19,7 @@ import quests.common.helpers.InteractionsHelper
 import quests.common.models.ItemRequirementCondition
 import quests.common.models.QuestInformation
 import quests.common.models.QuestRequirements
+import quests.druidicRitual.DruidicRitualConstants.FIRST_CONVERSATION
 import quests.druidicRitual.DruidicRitualConstants.ITEM_BEAR_MEAT
 import quests.druidicRitual.DruidicRitualConstants.ITEM_ENCHANTED_BEAR
 import quests.druidicRitual.DruidicRitualConstants.ITEM_ENCHANTED_BEEF
@@ -28,8 +29,10 @@ import quests.druidicRitual.DruidicRitualConstants.ITEM_RAT_MEAT
 import quests.druidicRitual.DruidicRitualConstants.ITEM_RAW_BEEF
 import quests.druidicRitual.DruidicRitualConstants.ITEM_RAW_CHICKEN
 import quests.druidicRitual.DruidicRitualConstants.NAME_CAULDRON_DOOR
+import quests.druidicRitual.DruidicRitualConstants.NPC_KAQEMEEX
 import quests.druidicRitual.DruidicRitualConstants.NPC_SANFEW
 import quests.druidicRitual.DruidicRitualConstants.SANFEW_CONVERESATION
+import quests.druidicRitual.DruidicRitualConstants.TILE_KAQEMEEX
 import quests.druidicRitual.DruidicRitualConstants.TILE_SANFER_UPSTAIRS
 
 class DruidicRitual(information: QuestInformation) : BaseQuest(information) {
@@ -42,12 +45,12 @@ class DruidicRitual(information: QuestInformation) : BaseQuest(information) {
     )
 
     private val talkToKaqemeex = SimpleConversationStep(
-        DruidicRitualConstants.NPC_KAQEMEEX, DruidicRitualConstants.TILE_KAQEMEEX,
-        DruidicRitualConstants.FIRST_CONVERSATION, "Talking to Kaqemeex",
-        information
+        NPC_KAQEMEEX, TILE_KAQEMEEX, FIRST_CONVERSATION,
+        "Talking to Kaqemeex", information
     )
 
     private val startQuest = startQuest()
+
     private val talkToSanfew = SimpleConversationStep(
         NPC_SANFEW, TILE_SANFER_UPSTAIRS, SANFEW_CONVERESATION,
         "Talking to Sanfew", information
