@@ -104,6 +104,9 @@ public class PlayerHelper {
     public static Npc nearestCombatNpc(Area withinArea, String... npcName) {
         return Npcs.stream().within(withinArea).name(npcName).filter(n -> n.healthPercent() == 100).nearest().first();
     }
+    public static GroundItem nearestGroundItem(int radius, String... name) {
+        return GroundItems.stream().within(radius).name(name).nearest().first();
+    }
     public static boolean hasItem(int... itemID) {
         for (int id : itemID) {
             if (Inventory.stream().id(id).isEmpty()) {

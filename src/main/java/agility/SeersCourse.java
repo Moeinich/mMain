@@ -1,5 +1,21 @@
 package agility;
 
+import static agility.AgilityData.SeersAreas.FIRST;
+import static agility.AgilityData.SeersAreas.MID;
+import static agility.AgilityData.SeersAreas.OBSTACLE_2;
+import static agility.AgilityData.SeersAreas.OBSTACLE_3;
+import static agility.AgilityData.SeersAreas.OBSTACLE_4;
+import static agility.AgilityData.SeersAreas.OBSTACLE_5;
+import static agility.AgilityData.SeersAreas.OBSTACLE_6;
+import static agility.AgilityData.SeersAreas.START;
+import static agility.AgilityData.SeersAreas.TOP;
+import static agility.AgilityData.obstacleInfo.seers1;
+import static agility.AgilityData.obstacleInfo.seers2;
+import static agility.AgilityData.obstacleInfo.seers3;
+import static agility.AgilityData.obstacleInfo.seers4;
+import static agility.AgilityData.obstacleInfo.seers5;
+import static agility.AgilityData.obstacleInfo.seers6;
+
 import org.powbot.api.rt4.Constants;
 import org.powbot.api.rt4.Game;
 import org.powbot.api.rt4.GameObject;
@@ -31,32 +47,32 @@ public class SeersCourse extends Task {
     }
 
     public void ShouldRunObstacle() {
-        if (PlayerHelper.withinArea(AgilityData.SeersAreas.START.getArea())) {
-            AgilityHelper.handleObstacle(AgilityData.obstacleInfo.seers1);
+        if (PlayerHelper.withinArea(START.getArea())) {
+            AgilityHelper.handleObstacle(seers1);
         }
-        if (PlayerHelper.withinArea(AgilityData.SeersAreas.TOP.getArea())
-                || PlayerHelper.withinArea(AgilityData.SeersAreas.MID.getArea())
-                || PlayerHelper.withinArea(AgilityData.SeersAreas.FIRST.getArea()))
+        if (PlayerHelper.withinArea(TOP.getArea())
+                || PlayerHelper.withinArea(MID.getArea())
+                || PlayerHelper.withinArea(FIRST.getArea()))
         {
-            if (PlayerHelper.withinArea(AgilityData.SeersAreas.OBSTACLE_2.getArea())) {
-                AgilityHelper.handleObstacleWithLoot(AgilityData.obstacleInfo.seers2);
+            if (PlayerHelper.withinArea(OBSTACLE_2.getArea())) {
+                AgilityHelper.handleObstacleWithLoot(seers2);
             }
-            else if (PlayerHelper.withinArea(AgilityData.SeersAreas.OBSTACLE_3.getArea())) {
-                AgilityHelper.handleObstacleWithLoot(AgilityData.obstacleInfo.seers3);
+            else if (PlayerHelper.withinArea(OBSTACLE_3.getArea())) {
+                AgilityHelper.handleObstacleWithLoot(seers3);
             }
-            else if (PlayerHelper.withinArea(AgilityData.SeersAreas.OBSTACLE_4.getArea())) {
-                AgilityHelper.handleObstacleWithLoot(AgilityData.obstacleInfo.seers4);
+            else if (PlayerHelper.withinArea(OBSTACLE_4.getArea())) {
+                AgilityHelper.handleObstacleWithLoot(seers4);
             }
-            else if (PlayerHelper.withinArea(AgilityData.SeersAreas.OBSTACLE_5.getArea())) {
-                AgilityHelper.handleObstacleWithLoot(AgilityData.obstacleInfo.seers5);
+            else if (PlayerHelper.withinArea(OBSTACLE_5.getArea())) {
+                AgilityHelper.handleObstacleWithLoot(seers5);
             }
-            else if (PlayerHelper.withinArea(AgilityData.SeersAreas.OBSTACLE_6.getArea())) {
-                AgilityHelper.handleObstacleWithLoot(AgilityData.obstacleInfo.seers6);
+            else if (PlayerHelper.withinArea(OBSTACLE_6.getArea())) {
+                AgilityHelper.handleObstacleWithLoot(seers6);
             }
         }
         else {
             mMain.state = "Move to Seers start";
-            Movement.moveTo(AgilityData.SeersAreas.START.getArea().getRandomTile());
+            Movement.moveTo(START.getArea().getRandomTile());
         }
     }
 }

@@ -29,8 +29,7 @@ public class AgilityHelper {
 
     public static void handleObstacleWithLoot(IObstacleInfo obstacleInfo, Integer... distanceToLoot) {
         int distance = distanceToLoot.length > 0 ? distanceToLoot[0] : 10;
-        GroundItem groundItem = GroundItems.stream().within(distance).name("Mark of grace").reachable().nearest().first();
-        if (groundItem.inViewport()) {
+        if (PlayerHelper.nearestGroundItem(distance, "Mark of grace").inViewport()) {
             mMain.state = "Pickup mark";
             PlayerHelper.lootItems("Take", "Mark of grace");
         }
