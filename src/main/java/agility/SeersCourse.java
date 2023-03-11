@@ -34,7 +34,10 @@ public class SeersCourse extends Task {
         if (PlayerHelper.withinArea(AgilityData.SeersAreas.START.getArea())) {
             AgilityHelper.handleObstacle(AgilityData.obstacleInfo.seers1);
         }
-        if (PlayerHelper.withinArea(AgilityData.SeersAreas.TOP.getArea()) || PlayerHelper.withinArea(AgilityData.SeersAreas.MID.getArea())) {
+        if (PlayerHelper.withinArea(AgilityData.SeersAreas.TOP.getArea())
+                || PlayerHelper.withinArea(AgilityData.SeersAreas.MID.getArea())
+                || PlayerHelper.withinArea(AgilityData.SeersAreas.FIRST.getArea()))
+        {
             if (PlayerHelper.withinArea(AgilityData.SeersAreas.OBSTACLE_2.getArea())) {
                 AgilityHelper.handleObstacleWithLoot(AgilityData.obstacleInfo.seers2);
             }

@@ -39,7 +39,11 @@ public class VarrockCourse extends Task {
         if (PlayerHelper.withinArea(AgilityData.VarrockAreas.START.getArea())) {
             AgilityHelper.handleObstacle(AgilityData.obstacleInfo.varrock1);
         }
-        if (PlayerHelper.withinArea(AgilityData.VarrockAreas.TOP.getArea()) || PlayerHelper.withinArea(AgilityData.VarrockAreas.MID.getArea())) {
+        if (PlayerHelper.withinArea(AgilityData.VarrockAreas.TOP.getArea())
+                || PlayerHelper.withinArea(AgilityData.VarrockAreas.MID.getArea())
+                || PlayerHelper.withinArea(AgilityData.VarrockAreas.GHOST.getArea())
+                || PlayerHelper.withinArea(AgilityData.VarrockAreas.FIRST.getArea()))
+        {
             if (PlayerHelper.withinArea(AgilityData.VarrockAreas.OBSTACLE_2.getArea())) {
                 AgilityHelper.handleObstacleWithLoot(AgilityData.obstacleInfo.varrock2);
             }
