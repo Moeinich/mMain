@@ -14,7 +14,6 @@ import static agility.AgilityData.AgilityAreas.CANIFIS_OBSTACLE_7_MOVE_TO;
 import static agility.AgilityData.AgilityAreas.CANIFIS_OBSTACLE_8;
 import static agility.AgilityData.AgilityAreas.CANIFIS_START;
 import static agility.AgilityData.AgilityAreas.CANIFIS_TOP;
-import static agility.AgilityData.AgilityAreas.DRAYNOR_TOP;
 import static agility.AgilityData.obstacleInfo.canifis1;
 import static agility.AgilityData.obstacleInfo.canifis2;
 import static agility.AgilityData.obstacleInfo.canifis3;
@@ -65,15 +64,15 @@ public class CanifisCourse extends Task {
         if (PlayerHelper.withinArea(CANIFIS_START.getArea())) {
             AgilityHelper.handleObstacle(canifis1);
         }
-        else if (PlayerHelper.withinArea(CANIFIS_OBSTACLE_1_BUG.getArea())) {
-            mMain.state = "Stuck due to RS bug";
-            Movement.moveTo(CANIFIS_OBSTACLE_2_MOVE_TO.getArea().getRandomTile());
-        }
         else if (PlayerHelper.withinArea(CANIFIS_FIRST.getArea())
                 || PlayerHelper.withinArea(CANIFIS_MID.getArea())
                 || PlayerHelper.withinArea(CANIFIS_TOP.getArea()) )
         {
-            if (PlayerHelper.withinArea(CANIFIS_OBSTACLE_2.getArea())) {
+            if (PlayerHelper.withinArea(CANIFIS_OBSTACLE_1_BUG.getArea())) {
+                mMain.state = "Stuck due to RS bug";
+                Movement.moveTo(CANIFIS_OBSTACLE_2_MOVE_TO.getArea().getRandomTile());
+            }
+            else if (PlayerHelper.withinArea(CANIFIS_OBSTACLE_2.getArea())) {
                 AgilityHelper.handleObstacleWithLoot(canifis2);
             }
             else if (PlayerHelper.withinArea(CANIFIS_OBSTACLE_3.getArea())) {
