@@ -47,7 +47,7 @@ public class PlayerHelper {
     }
 
     public static void lootItems(String Action, String ItemName) {
-        GroundItem groundItem = GroundItems.stream().within(7).name(ItemName).nearest().first();
+        GroundItem groundItem = GroundItems.stream().within(12).name(ItemName).nearest().first();
         if (groundItem.inViewport()){
             System.out.println("Looting grounditem " + ItemName);
             groundItem.interact(Action, ItemName);
