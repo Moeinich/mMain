@@ -66,10 +66,15 @@ public class MapleLongbow extends Task {
         withdrawItems();
     }
     private void BankForStringing() {
-        InteractionsHelper.depositAndWithdraw(BowID, 14);
-        InteractionsHelper.withdrawItem(BowStringID, 14);
-        Bank.close();
-        Condition.wait( () -> !Bank.opened(), 150, 50);
+        if (Inventory.stream().id(BowID).isEmpty()) {
+            InteractionsHelper.depositAndWithdraw(BowID, 14);
+        }
+        else if (Inventory.stream().id(BowID).isNotEmpty()) {
+            InteractionsHelper.withdrawItem(BowStringID, 14);
+        } else {
+            Bank.close();
+            Condition.wait( () -> !Bank.opened(), 150, 50);
+        }
     }
 
     private void checkTool() {
