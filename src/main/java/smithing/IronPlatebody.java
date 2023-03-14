@@ -24,7 +24,7 @@ public class IronPlatebody extends Task {
 
     @Override
     public boolean execute() {
-        if (Game.tab(Game.Tab.INVENTORY) && Inventory.stream().name("Iron bar").count() <= 4 || Inventory.stream().name("Hammer").isEmpty()) {
+        if (Game.tab(Game.Tab.INVENTORY) && Inventory.stream().name("Iron bar").count() <= 4 || !PlayerHelper.hasItem("Hammer")) {
             ShouldBank();
         }
         if (Game.tab(Game.Tab.INVENTORY) && Inventory.stream().name("Iron bar").count() >= 5) {
@@ -42,7 +42,7 @@ public class IronPlatebody extends Task {
                 System.out.println("opening bank");
                 Bank.open();
             }
-            if (Inventory.stream().name("Hammer").isEmpty()) {
+            if (!PlayerHelper.hasItem("Hammer")) {
                 System.out.println("Get a hammer");
                 InteractionsHelper.depositAndWithdraw(ItemList.HAMMER_2347, 1);
             }

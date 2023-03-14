@@ -9,6 +9,7 @@ import org.powbot.api.rt4.Players;
 import org.powbot.dax.api.models.RunescapeBank;
 
 import helpers.InteractionsHelper;
+import helpers.PlayerHelper;
 import helpers.extentions.ItemList;
 import helpers.extentions.Task;
 import script.mMain;
@@ -28,11 +29,11 @@ public class GetLogs extends Task {
             Movement.moveToBank(RunescapeBank.FALADOR_WEST);
         }
 
-        if (Bank.opened() && Inventory.stream().id(ItemList.TINDERBOX_590).isEmpty()) {
+        if (Bank.opened() && !PlayerHelper.hasItem("Tinderbox")) {
             mMain.state = "Withdraw Tinderbox";
             InteractionsHelper.depositAndWithdraw(ItemList.TINDERBOX_590, 1);
         }
-        if (Bank.opened() && Inventory.stream().id(FiremakingData.logs).isEmpty()) {
+        if (Bank.opened() && !PlayerHelper.hasItem(FiremakingData.logs)) {
             mMain.state = "Withdraw logs";
             if (Bank.stream().id(ItemList.LOGS_1511).isNotEmpty() || Bank.stream().id(ItemList.OAK_LOGS_1521).isNotEmpty() || Bank.stream().id(ItemList.WILLOW_LOGS_1519).isNotEmpty()) {
                 InteractionsHelper.withdrawItem(FiremakingData.withdrawLogs(), -1);

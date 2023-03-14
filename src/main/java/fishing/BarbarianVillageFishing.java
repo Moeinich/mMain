@@ -15,7 +15,7 @@ import script.mMain;
 public class BarbarianVillageFishing extends Task {
     @Override
     public boolean activate() {
-        return  Skills.realLevel(Constants.SKILLS_FISHING) >= 20 && Inventory.stream().name("Fly fishing rod").isNotEmpty() && Inventory.stream().name("Feather").isNotEmpty();
+        return  Skills.realLevel(Constants.SKILLS_FISHING) >= 20 && PlayerHelper.hasItem("Fly fishing rod") && PlayerHelper.hasItem("Feather");
     }
     @Override
     public boolean execute() {

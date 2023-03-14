@@ -22,7 +22,6 @@ import script.mMain;
 public class EarthRunes extends Task {
     Area outsideAltar = new Area(new Tile(3302, 3478, 0), new Tile(3309, 3472, 0));
     Area insideAltar = new Area(new Tile(2627, 4862, 0), new Tile(2685, 4814, 0));
-    Area middleofAltarArea = new Area(new Tile(2652, 4844, 0), new Tile(2663, 4833, 0));
     Area varrockEastBank = new Area(new Tile(3250, 3423, 0), new Tile(3257, 3419, 0));
 
     @Override
@@ -32,11 +31,11 @@ public class EarthRunes extends Task {
     @Override
     public boolean execute() {
         mMain.state = "Make earth runes";
-        if (Inventory.stream().name("Pure essence").isEmpty() || Equipment.stream().name("Earth Tiara").isEmpty()) {
+        if (!PlayerHelper.hasItem("Pure essence") || Equipment.stream().name("Earth Tiara").isEmpty()) {
             mMain.state = "Bank for essence";
             Bank();
         }
-        if (Inventory.stream().name("Pure essence").isNotEmpty() && Equipment.stream().name("Earth Tiara").isNotEmpty()) {
+        if (PlayerHelper.hasItem("Pure essence") && Equipment.stream().name("Earth Tiara").isNotEmpty()) {
             if (insideAltar.contains(Players.local())) {
                 mMain.state = "inside altar!";
                 InteractWithAltar();
@@ -54,7 +53,7 @@ public class EarthRunes extends Task {
             System.out.println("Getting earth tiara");
             CombatHelper.gearUp(new int[]{ItemList.EARTH_TIARA_5535});
         }
-        if (Inventory.stream().name("Pure essence").isEmpty()) {
+        if (!PlayerHelper.hasItem("Pure essence")) {
             InteractionsHelper.depositAndWithdraw(ItemList.VARROCK_TELEPORT_8007, 5);
             InteractionsHelper.withdrawItem(ItemList.PURE_ESSENCE_7936, 27);
         }

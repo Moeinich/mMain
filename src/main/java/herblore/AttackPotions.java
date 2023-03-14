@@ -8,6 +8,7 @@ import org.powbot.api.rt4.Players;
 import org.powbot.mobile.script.ScriptManager;
 
 import helpers.InteractionsHelper;
+import helpers.PlayerHelper;
 import helpers.extentions.ItemList;
 import helpers.extentions.Task;
 import script.mMain;
@@ -23,11 +24,11 @@ public class AttackPotions extends Task {
     }
     @Override
     public boolean execute() {
-        if (Game.tab(Game.Tab.INVENTORY) && (Inventory.stream().id(ToolID).isEmpty() || Inventory.stream().id(CombineWithItemID).isEmpty())) {
+        if (Game.tab(Game.Tab.INVENTORY) && (!PlayerHelper.hasItem(ToolID) || !PlayerHelper.hasItem(CombineWithItemID))) {
             mMain.state = "Banking loop";
             bank();
         }
-        if (Game.tab(Game.Tab.INVENTORY) && !Bank.opened() && Inventory.stream().id(CombineWithItemID, ToolID).isNotEmpty()) {
+        if (Game.tab(Game.Tab.INVENTORY) && !Bank.opened() && PlayerHelper.hasItem(ToolID, CombineWithItemID)) {
             mMain.state = "craft loop";
             craft();
         }
@@ -44,14 +45,14 @@ public class AttackPotions extends Task {
 
     private void GetEyes() {
         mMain.state = "Grabbing eyes";
-        if (Inventory.stream().id(ToolID).isEmpty()) {
+        if (!PlayerHelper.hasItem(ToolID)) {
             InteractionsHelper.depositAndWithdraw(ToolID, 14);
         }
 
     }
     private void GetUnfinishedPotions() {
         mMain.state = "Grabbing Guam pot(unf)";
-        if (Inventory.stream().id(ToolID).isNotEmpty()) {
+        if (PlayerHelper.hasItem(ToolID)) {
             Bank.depositAllExcept(ToolID);
             InteractionsHelper.withdrawItem(CombineWithItemID, 14);
             Bank.close();

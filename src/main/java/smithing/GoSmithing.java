@@ -6,10 +6,7 @@ import helpers.extentions.Task;
 public class GoSmithing extends Task {
     @Override
     public boolean activate() {
-        if (!PlayerHelper.withinArea(SmithingData.smithingArea)) {
-            return true;
-        }
-        return false;
+        return !PlayerHelper.withinArea(SmithingData.smithingArea);
     }
 
     @Override

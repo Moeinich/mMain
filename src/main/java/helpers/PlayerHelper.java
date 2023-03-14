@@ -110,7 +110,7 @@ public class PlayerHelper {
     public static boolean hasItem(int... itemID) {
         for (int id : itemID) {
             if (Inventory.stream().id(id).isEmpty()) {
-                System.out.println("We dont have: " + Arrays.toString(itemID));
+                System.out.println("We dont have: " + Arrays.toString(itemID) + " in inventory");
                 return false;
             }
         }
@@ -121,7 +121,7 @@ public class PlayerHelper {
     public static boolean hasItem(String... itemName) {
         for (String id : itemName) {
             if (Inventory.stream().name(id).isEmpty()) {
-                System.out.println("We dont have: " + Arrays.toString(itemName));
+                System.out.println("We dont have: " + Arrays.toString(itemName) + " in inventory");
                 return false;
             }
         }

@@ -15,7 +15,7 @@ public class DoFiremaking extends Task {
     int CurrentXP = Skills.experience(Skill.Firemaking);
     @Override
     public boolean activate() {
-        return Inventory.stream().id(FiremakingData.logs).isNotEmpty() && Inventory.stream().id(ItemList.TINDERBOX_590).isNotEmpty();
+        return PlayerHelper.hasItem(FiremakingData.logs) && PlayerHelper.hasItem("Tinderbox");
     }
     @Override
     public boolean execute() {
@@ -42,7 +42,7 @@ public class DoFiremaking extends Task {
                         Condition.wait( () -> (startExp != Skills.experience(Skill.Firemaking) || !PlayerHelper.withinArea(FiremakingData.doFiremakingArea)), 500, 50);
                     }
                 }
-                if (Inventory.stream().id(FiremakingData.logs).isEmpty()) {
+                if (!PlayerHelper.hasItem(FiremakingData.logs)) {
                     mMain.state = "Switch lane";
                     fmSpot += 1;
                 }

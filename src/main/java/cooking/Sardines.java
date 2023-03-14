@@ -4,13 +4,12 @@ import org.powbot.api.rt4.Bank;
 import org.powbot.api.rt4.Constants;
 import org.powbot.api.rt4.Game;
 import org.powbot.api.rt4.GameObject;
-import org.powbot.api.rt4.Inventory;
 import org.powbot.api.rt4.Skills;
 
 import helpers.InteractionsHelper;
-import helpers.extentions.ItemList;
 import helpers.PlayerHelper;
 import helpers.SkillData;
+import helpers.extentions.ItemList;
 import helpers.extentions.Task;
 import script.mMain;
 
@@ -25,10 +24,10 @@ public class Sardines extends Task {
             mMain.state = "Move to edgeville";
             MoveToEdgeville();
         }
-        if (Game.tab(Game.Tab.INVENTORY) && Inventory.stream().name("Raw sardine").isEmpty()) {
+        if (Game.tab(Game.Tab.INVENTORY) && !PlayerHelper.hasItem("Raw sardine")) {
             ShouldBank();
         }
-        if (Game.tab(Game.Tab.INVENTORY) && Inventory.stream().name("Raw sardine").isNotEmpty()) {
+        if (Game.tab(Game.Tab.INVENTORY) && PlayerHelper.hasItem("Raw sardine")) {
             ShouldCook();
         }
         return false;

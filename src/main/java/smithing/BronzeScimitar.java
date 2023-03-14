@@ -24,7 +24,7 @@ public class BronzeScimitar extends Task {
 
     @Override
     public boolean execute() {
-        if (Game.tab(Game.Tab.INVENTORY) && Inventory.stream().name("Bronze bar").count() <= 2 || Inventory.stream().name("Hammer").isEmpty()) {
+        if (Game.tab(Game.Tab.INVENTORY) && Inventory.stream().name("Bronze bar").count() <= 2 || !PlayerHelper.hasItem("Hammer")) {
             ShouldBank();
         }
         if (Game.tab(Game.Tab.INVENTORY) && Inventory.stream().name("Bronze bar").count() >= 2) {
@@ -41,7 +41,7 @@ public class BronzeScimitar extends Task {
             if (!Bank.opened() && Bank.inViewport()) {
                 Bank.open();
             }
-            if (Inventory.stream().name("Hammer").isEmpty()) {
+            if (!PlayerHelper.hasItem("Hammer")) {
                 System.out.print("Getting hammer");
                 InteractionsHelper.depositAndWithdraw(ItemList.HAMMER_2347, 1);
             }

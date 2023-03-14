@@ -25,14 +25,14 @@ public class GetMagicEquipment extends Task {
             CombatHelper.gearUp(MagicData.magicEquipment());
         } else if (!CombatHelper.needEquipment(MagicData.magicEquipment()) && !PlayerHelper.hasItem(MagicData.Runes)) {
             mMain.state = "Getting runes";
-            if (Inventory.stream().id(ItemList.AIR_RUNE_556).isEmpty()) {
+            if (!PlayerHelper.hasItem("Air rune")) {
                 Bank.depositInventory();
                 InteractionsHelper.withdrawItem(ItemList.AIR_RUNE_556, -1);
-                Condition.wait(() -> PlayerHelper.hasItem(ItemList.AIR_RUNE_556), 150, 50);
+                Condition.wait(() -> PlayerHelper.hasItem("Air rune"), 150, 50);
             }
-            if (Inventory.stream().id(ItemList.MIND_RUNE_558).isEmpty()) {
+            if (!PlayerHelper.hasItem("Mind rune")) {
                 InteractionsHelper.withdrawItem(ItemList.MIND_RUNE_558, -1);
-                Condition.wait(() -> PlayerHelper.hasItem(ItemList.MIND_RUNE_558), 150, 50);
+                Condition.wait(() -> PlayerHelper.hasItem("Mind rune"), 150, 50);
                 Bank.close();
             }
         }

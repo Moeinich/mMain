@@ -21,6 +21,7 @@ import org.powbot.api.rt4.walking.model.Skill;
 import java.util.List;
 
 import helpers.InteractionsHelper;
+import helpers.PlayerHelper;
 import helpers.extentions.ItemList;
 import helpers.extentions.Task;
 import hunter.helpers.AmountOfTraps;
@@ -45,7 +46,7 @@ public class BirdTrapping extends Task {
     }
     @Override
     public boolean execute() {
-        if (Inventory.stream().id(ItemList.BIRD_SNARE_10006).isEmpty()) {
+        if (!PlayerHelper.hasItem("Bird snare")) {
             bank();
         }
 
@@ -106,7 +107,7 @@ public class BirdTrapping extends Task {
             Movement.moveToBank();
         }
 
-        if (Bank.opened() && Inventory.stream().id(ItemList.BIRD_SNARE_10006).isEmpty()) {
+        if (Bank.opened() && !PlayerHelper.hasItem("Bird snare")) {
             mMain.state = "Withdraw Bird snare";
             InteractionsHelper.depositAndWithdraw(ItemList.BIRD_SNARE_10006, 5);
         }

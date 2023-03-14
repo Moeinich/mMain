@@ -3,7 +3,6 @@ package mining;
 
 import org.powbot.api.Condition;
 import org.powbot.api.rt4.Bank;
-import org.powbot.api.rt4.Inventory;
 import org.powbot.api.rt4.Players;
 import org.powbot.dax.api.DaxWalker;
 
@@ -11,7 +10,6 @@ import helpers.InteractionsHelper;
 import helpers.PlayerHelper;
 import helpers.extentions.Task;
 import script.mMain;
-import woodcutting.WoodcuttingData;
 
 public class GetPickaxe extends Task {
     @Override

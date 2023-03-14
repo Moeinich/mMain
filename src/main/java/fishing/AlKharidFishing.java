@@ -15,7 +15,7 @@ import script.mMain;
 public class AlKharidFishing extends Task {
     @Override
     public boolean activate() {
-        return  Skills.realLevel(Constants.SKILLS_FISHING) <= 19 && Inventory.stream().name("Small fishing net").isNotEmpty();
+        return  Skills.realLevel(Constants.SKILLS_FISHING) <= 19 && PlayerHelper.hasItem("Small fishing net");
     }
     @Override
     public boolean execute() {

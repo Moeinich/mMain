@@ -8,7 +8,10 @@ import org.powbot.api.rt4.Inventory;
 import org.powbot.api.rt4.Skills;
 import org.powbot.mobile.script.ScriptManager;
 
+import javax.tools.Tool;
+
 import helpers.InteractionsHelper;
+import helpers.PlayerHelper;
 import helpers.extentions.ItemList;
 import helpers.extentions.Task;
 import script.mMain;
@@ -26,11 +29,11 @@ public class ArrowShafts extends Task {
 
     @Override
     public boolean execute() {
-        if (Game.tab(Game.Tab.INVENTORY) && (Inventory.stream().id(ToolID).isEmpty() || Inventory.stream().id(CombineWithItemID).isEmpty())) {
+        if (Game.tab(Game.Tab.INVENTORY) && (!PlayerHelper.hasItem(ToolID) || !PlayerHelper.hasItem(CombineWithItemID))) {
             mMain.state = "Banking loop";
             bank();
         }
-        if (Game.tab(Game.Tab.INVENTORY) && !Bank.opened() && Inventory.stream().id(CombineWithItemID).isNotEmpty()) {
+        if (Game.tab(Game.Tab.INVENTORY) && !Bank.opened() && PlayerHelper.hasItem(CombineWithItemID)) {
             mMain.state = "craft loop";
             fletch();
         }
@@ -47,7 +50,7 @@ public class ArrowShafts extends Task {
 
     private void checkTool() {
         mMain.state = "Checking tool..";
-        if (Inventory.stream().id(ToolID).isEmpty()) {
+        if (!PlayerHelper.hasItem(ToolID)) {
             InteractionsHelper.depositAndWithdraw(ToolID, 1);
         }
 
@@ -58,7 +61,7 @@ public class ArrowShafts extends Task {
             Bank.open();
             Condition.wait(Bank::opened, 150, 50);
         }
-        if (Inventory.stream().id(ToolID).isNotEmpty()) {
+        if (PlayerHelper.hasItem(ToolID)) {
             Bank.depositAllExcept(ToolID);
             InteractionsHelper.withdrawItem(CombineWithItemID, -1);
             Bank.close();

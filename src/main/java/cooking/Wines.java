@@ -11,6 +11,7 @@ import org.powbot.dax.api.DaxWalker;
 import org.powbot.mobile.script.ScriptManager;
 
 import helpers.InteractionsHelper;
+import helpers.PlayerHelper;
 import helpers.extentions.ItemList;
 import helpers.extentions.Task;
 import script.mMain;
@@ -32,11 +33,11 @@ public class Wines extends Task {
         if (Bank.nearest().tile().distanceTo(Players.local()) > 4) {
             DaxWalker.walkToBank();
         }
-        if (Game.tab(Game.Tab.INVENTORY) && (Inventory.stream().id(ToolID).isEmpty() || Inventory.stream().id(CombineWithItemID).isEmpty())) {
+        if (Game.tab(Game.Tab.INVENTORY) && (!PlayerHelper.hasItem(ToolID) || !PlayerHelper.hasItem(CombineWithItemID))) {
             mMain.state = "Banking loop";
             bank();
         }
-        if (Game.tab(Game.Tab.INVENTORY) && !Bank.opened() && Inventory.stream().id(CombineWithItemID, ToolID).isNotEmpty()) {
+        if (Game.tab(Game.Tab.INVENTORY) && !Bank.opened() && PlayerHelper.hasItem(ToolID,CombineWithItemID)) {
             mMain.state = "Craft loop";
             craft();
         }
