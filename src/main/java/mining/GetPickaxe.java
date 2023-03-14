@@ -8,13 +8,15 @@ import org.powbot.api.rt4.Players;
 import org.powbot.dax.api.DaxWalker;
 
 import helpers.InteractionsHelper;
+import helpers.PlayerHelper;
 import helpers.extentions.Task;
 import script.mMain;
+import woodcutting.WoodcuttingData;
 
 public class GetPickaxe extends Task {
     @Override
     public boolean activate() {
-        return Players.local().isRendered() && Inventory.stream().id(MiningData.withdrawPickaxe()).isEmpty();
+        return Players.local().isRendered() && PlayerHelper.hasItem(MiningData.withdrawPickaxe());
     }
 
     @Override
@@ -23,7 +25,7 @@ public class GetPickaxe extends Task {
             mMain.state = "Moving to bank";
             DaxWalker.walkToBank();
         }
-        if (!Bank.opened()) {
+        if (!Bank.opened() && PlayerHelper.hasItem(MiningData.withdrawPickaxe())) {
             mMain.state = "Get pickaxe - Withdraw";
             if (Bank.open()) {
                 InteractionsHelper.depositAndWithdraw(MiningData.withdrawPickaxe(), 1);

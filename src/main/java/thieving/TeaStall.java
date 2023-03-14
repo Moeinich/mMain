@@ -2,13 +2,11 @@ package thieving;
 
 import org.powbot.api.Condition;
 import org.powbot.api.Random;
-import org.powbot.api.rt4.Camera;
 import org.powbot.api.rt4.Constants;
 import org.powbot.api.rt4.Game;
 import org.powbot.api.rt4.GameObject;
 import org.powbot.api.rt4.Inventory;
 import org.powbot.api.rt4.Item;
-import org.powbot.api.rt4.Movement;
 import org.powbot.api.rt4.Players;
 import org.powbot.api.rt4.Skills;
 import org.powbot.api.rt4.World;
