@@ -3,12 +3,13 @@
 **You really shouldnt run this**
 
 **Things to note:**
-Let pow close level up messages. Please have these items on ur account:
+- Let pow close level up messages.
 - Have ShoppingList items on ur account.
 
 **Progressive:**
-- [X] Do a proper timer to switch between tasks
+- [X] Do a timer to switch between tasks
 - [X] Make skills work with skill switching.
+- [ ] Eliminate the while loop in progressive mode
 
 **Quests**
 - [X] Museum quiz to start hunter
@@ -88,8 +89,8 @@ Let pow close level up messages. Please have these items on ur account:
 **Runecrafting**
 - [X] Rune mysteries
 - [X] Abyss miniquest
-- [ ] Earth runes to 10
-- [X] Temple of the eye
+- [X] Earth runes to 10
+- [ ] Temple of the eye
 
 **smithing**
 - [X] 1-5 Bronze daggers
