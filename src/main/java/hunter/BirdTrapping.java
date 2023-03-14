@@ -66,12 +66,12 @@ public class BirdTrapping extends Task {
         return false;
     }
 
-    public void moveToFeldipHuntingArea() {
+    private void moveToFeldipHuntingArea() {
         System.out.println("Moving to feldip hunting area");
         Movement.moveTo(feldipHuntingArea.getRandomTile());
     }
-    
-    public void checkTrapStatusOnTile(Tile[] tiles) {
+
+    private void checkTrapStatusOnTile(Tile[] tiles) {
         System.out.println("We are placing traps on missing tiles!");
         for (Tile tile : tiles) {
             if (TrapStatus.shouldPlaceTrap(tile)) {
