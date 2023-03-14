@@ -46,8 +46,9 @@ public class PlayerHelper {
         }
     }
 
-    public static void lootItems(String Action, String ItemName) {
-        GroundItem groundItem = GroundItems.stream().within(12).name(ItemName).nearest().first();
+    public static void lootItems(String Action, String ItemName, Integer... distanceToLoot) {
+        int distance = distanceToLoot.length > 0 ? distanceToLoot[0] : 10;
+        GroundItem groundItem = GroundItems.stream().within(distance).name(ItemName).nearest().first();
         if (groundItem.inViewport()){
             System.out.println("Looting grounditem " + ItemName);
             groundItem.interact(Action, ItemName);
