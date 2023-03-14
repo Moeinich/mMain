@@ -14,7 +14,7 @@ import script.mMain;
 public class GetPickaxe extends Task {
     @Override
     public boolean activate() {
-        return Players.local().isRendered() && PlayerHelper.hasItem(MiningData.withdrawPickaxe());
+        return Players.local().isRendered() && !PlayerHelper.hasItem(MiningData.withdrawPickaxe());
     }
 
     @Override
@@ -23,7 +23,7 @@ public class GetPickaxe extends Task {
             mMain.state = "Moving to bank";
             DaxWalker.walkToBank();
         }
-        if (!Bank.opened() && PlayerHelper.hasItem(MiningData.withdrawPickaxe())) {
+        if (!Bank.opened() && !PlayerHelper.hasItem(MiningData.withdrawPickaxe())) {
             mMain.state = "Get pickaxe - Withdraw";
             if (Bank.open()) {
                 InteractionsHelper.depositAndWithdraw(MiningData.withdrawPickaxe(), 1);

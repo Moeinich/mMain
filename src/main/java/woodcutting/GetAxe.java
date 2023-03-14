@@ -15,7 +15,7 @@ public class GetAxe extends Task {
 
     @Override
     public boolean activate() {
-        return Players.local().isRendered() && PlayerHelper.hasItem(WoodcuttingData.withdrawAxe());
+        return Players.local().isRendered() && !PlayerHelper.hasItem(WoodcuttingData.withdrawAxe());
     }
     @Override
     public boolean execute() {
@@ -23,7 +23,7 @@ public class GetAxe extends Task {
             mMain.state = "Get axe - GoToBank";
             DaxWalker.walkToBank();
         }
-        if (!Bank.opened() && PlayerHelper.hasItem(WoodcuttingData.withdrawAxe())) {
+        if (!Bank.opened() && !PlayerHelper.hasItem(WoodcuttingData.withdrawAxe())) {
             mMain.state = "Get axe - Withdraw";
             if (Bank.open()) {
                 InteractionsHelper.depositAndWithdraw(WoodcuttingData.withdrawAxe(), 1);
