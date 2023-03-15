@@ -33,7 +33,7 @@ public class StartAgility implements mMain.Start {
                 SkillData.setSkillDone();
                 mMain.skillRunning.set(false);
             }
-            if (task.activate()) {
+            else if (task.activate()) {
                 task.execute();
                 if (ScriptManager.INSTANCE.isStopping()) {
                     ScriptManager.INSTANCE.stop();

@@ -30,12 +30,12 @@ public class startRunecrafting implements mMain.Start{
                 mMain.state = "Skipping RC, too low combat level for quests";
                 mMain.skillRunning.set(false);
             }
-            if (Skills.realLevel(Constants.SKILLS_RUNECRAFTING) >= 10 || SkillData.skillsMap.get("runecrafting")) {
+            else if (Skills.realLevel(Constants.SKILLS_RUNECRAFTING) >= 10 || SkillData.skillsMap.get("runecrafting")) {
                 mMain.state = "Runecrafting done!";
                 SkillData.setSkillDone();
                 mMain.skillRunning.set(false);
             }
-            if (task.activate()) {
+            else if (task.activate()) {
                 task.execute();
                 if (ScriptManager.INSTANCE.isStopping()) {
                     ScriptManager.INSTANCE.stop();
