@@ -180,28 +180,29 @@ public class mMain extends AbstractScript {
                 ScriptManager.INSTANCE.stop();
             } else {
                 taskHandler.execute(() -> {
+                    Start skillLoop = null;
                     if (ScriptManager.INSTANCE.isStopping()) {
                         ScriptManager.INSTANCE.stop();
-                    }
+                    } else {
+                        mMain.state = "Resetting task";
+                        if (!mMain.shouldBank) {
+                            mMain.shouldBank = true;
+                            System.out.println("shouldBank set true");
+                        }
 
-                    mMain.state = "Resetting task";
-                    if (!mMain.shouldBank) {
-                        mMain.shouldBank = true;
-                        System.out.println("shouldBank set true");
-                    }
+                        skillLoop = tasks.get(Random.nextInt(0, tasks.size())); //Randomize next task
+                        System.out.println("New task chosen: " + skillLoop.getClass().getSimpleName());
 
-                    Start skillLoop = tasks.get(Random.nextInt(0, tasks.size())); //Randomize next task
-                    System.out.println("New task chosen: " + skillLoop.getClass().getSimpleName());
+                        if (!skillRunning.get()) {
+                            runtime.reset(Random.nextInt(MIN_TIME_LIMIT, MAX_TIME_LIMIT)); //Randomize runtime value
+                            System.out.println("Runtime reset to: " + runtime.timeLeft() + "ms");
 
-                    if (!skillRunning.get()) {
-                        runtime.reset(Random.nextInt(MIN_TIME_LIMIT, MAX_TIME_LIMIT)); //Randomize runtime value
-                        System.out.println("Runtime reset to: " + runtime.timeLeft() + "ms");
-
-                        skillRunning.set(true); //Set taskRunning to true after we've randomized task+runtime
-                        System.out.println("Taskrunning set true");
+                            skillRunning.set(true); //Set taskRunning to true after we've randomized task+runtime
+                            System.out.println("Taskrunning set true");
+                        }
                     }
                     //Enter loop of running the task!
-                    while (!ScriptManager.INSTANCE.isStopping() && !runtime.hasFinished() && skillRunning.get()) {
+                    while (!ScriptManager.INSTANCE.isStopping() && !runtime.hasFinished() && skillRunning.get() && skillLoop != null) {
                         if (Game.loggedIn()) {
                             skillLoop.run();
                         }
