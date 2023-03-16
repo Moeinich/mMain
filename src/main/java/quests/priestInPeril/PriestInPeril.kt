@@ -115,6 +115,12 @@ class PriestInPeril(information: QuestInformation) : BaseQuest(information) {
 
         private val giveDrezelEssence = QuestTaskList(BankForEssence(essenceCondition), talkToDrezelUnderground)
 
+        private val talkToDrezelUndergroundAfterQuest = SimpleConversationStep(
+            NAME_DREZEL,
+            TILE_DREZEL_UNDERGROUND, arrayOf(), "Unlocking Canifis", information
+        )
+
+
         override fun addRequirements(): QuestRequirements {
             val itemRequirements: MutableList<ItemRequirementCondition> = mutableListOf()
 
@@ -139,12 +145,7 @@ class PriestInPeril(information: QuestInformation) : BaseQuest(information) {
                 6 -> burnTheVampire.processStep()
                 7 -> talkToDrezelInsidePrison
                 in 8..59 -> giveDrezelEssence.processStep()
-                60 -> {
-                    Chat.completeChat()
-                    information.complete = true
-                    CommonMethods.closeQuestComplete()
-                    null
-                }
+                60 -> talkToDrezelUndergroundAfterQuest
                 61 -> {
                     information.complete = true
                     CommonMethods.closeQuestComplete()
