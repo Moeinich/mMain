@@ -19,10 +19,10 @@ import script.mMain;
 public class GetFishingEquipment extends Task {
     @Override
     public boolean activate() {
-        if (Skill.Fishing.realLevel() <= 19 && Game.tab(Game.Tab.INVENTORY) && PlayerHelper.hasItem("Small fishing net")) {
+        if (Skill.Fishing.realLevel() <= 19 && Game.tab(Game.Tab.INVENTORY) && !PlayerHelper.hasItem("Small fishing net")) {
             return true;
         }
-        if (Skill.Fishing.realLevel() >= 20 && Game.tab(Game.Tab.INVENTORY) && PlayerHelper.hasItem("Fly fishing rod") && PlayerHelper.hasItem("Feather")) {
+        if (Skill.Fishing.realLevel() >= 20 && Game.tab(Game.Tab.INVENTORY) && !PlayerHelper.hasItem("Fly fishing rod") && !PlayerHelper.hasItem("Feather")) {
             return true;
         }
         return false;
