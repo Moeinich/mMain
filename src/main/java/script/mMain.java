@@ -116,7 +116,6 @@ public class mMain extends AbstractScript {
         skillStarters.put("woodcutting", new StartWoodcutting());
     }
 
-
     @Override
     public void onStart() {
         String skill = getOption("Mode");
